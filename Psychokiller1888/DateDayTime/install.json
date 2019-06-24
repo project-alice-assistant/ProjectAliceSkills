@@ -1,0 +1,11 @@
+{
+	"name": "DateDayTimeYear",
+	"version": "1.0",
+	"author": "Psycho",
+	"desc": "Ask for the time, date, day and year",
+	"aliceMinVersion": "",
+	"requirements": [],
+	"conditions": {
+		"lang": ["en", "fr"]
+	}
+}
