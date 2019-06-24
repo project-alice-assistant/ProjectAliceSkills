@@ -2,6 +2,7 @@
 	"name": "IcanhazdadjokeDotCom",
 	"version": "1.0",
 	"author": "Psycho",
+	"desc": "Get a random dad joke on demand!",
 	"aliceMinVersion": "",
 	"requirements": [],
 	"conditions": {
