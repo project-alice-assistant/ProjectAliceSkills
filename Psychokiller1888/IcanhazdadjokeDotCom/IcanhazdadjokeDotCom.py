@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-import managers.base.Managers as managers
-from models.Intent import Intent
-from models.Module import Module
-from models.DialogSession import DialogSession
+import alice.base.Managers as managers
+from alice.base.model.Intent import Intent
+from alice.base.model import Module
+from alice.dialog.model.DialogSession import DialogSession
 import requests
 
 
@@ -35,8 +35,8 @@ class IcanhazdadjokeDotCom(Module):
 
 			response = requests.get(url, headers=headers)
 			if response is not None:
-				managers.server.MqttServer.endTalk(session.sessionId, text=response.text)
+				managers.MqttServer.endTalk(session.sessionId, text=response.text)
 			else:
-				managers.server.MqttServer.endTalk(session.sessionId, managers.voice.RandomTalkManager.getRandomTalk(self.name, 'noJoke'))
+				managers.MqttServer.endTalk(session.sessionId, managers.TalkManager.getRandomTalk(self.name, 'noJoke'))
 
 		return True

@@ -2,10 +2,10 @@
 
 from datetime import datetime
 
-import managers.base.Managers    as managers
-from models.Intent import Intent
-from models.Module import Module
-from models.DialogSession import DialogSession
+import alice.base.Managers    as managers
+from alice.base.model.Intent import Intent
+from alice.base.model.Module import Module
+from alice.dialog.model.DialogSession import DialogSession
 
 
 class DateDayTimeYear(Module):
@@ -37,7 +37,7 @@ class DateDayTimeYear(Module):
 		sessionId = session.sessionId
 
 		if intent == self._INTENT_GET_TIME:
-			if managers.voice.LanguageManager.activeLanguage == 'en':
+			if managers.LanguageManager.activeLanguage == 'en':
 				hours = datetime.now().strftime('%I')
 				minutes = datetime.now().strftime('%M')
 				part = datetime.now().strftime('%p')
@@ -49,22 +49,22 @@ class DateDayTimeYear(Module):
 					minutes = 'oh {}'.format(minutes)
 
 				time = '{} {} {}'.format(hours, minutes, part)
-			elif managers.voice.LanguageManager.activeLanguage == 'fr':
+			elif managers.LanguageManager.activeLanguage == 'fr':
 				time = datetime.now().strftime('%H heure %M').lstrip('0').replace(' 0', ' ')
 			else:
 				time = datetime.now().strftime('%H %M').lstrip('0').replace(' 0', ' ')
 
-			managers.server.MqttServer.endTalk(sessionId, managers.voice.RandomTalkManager.getRandomTalk(self.name, 'time').format(time), client=siteId)
+			managers.MqttServer.endTalk(sessionId, managers.TalkManager.answer(self.name, 'time').format(time), client=siteId)
 		elif intent == self._INTENT_GET_DATE:
 			date = datetime.now().strftime('%d %B %Y')
-			date = managers.voice.LanguageManager.localize(date)
-			managers.server.MqttServer.endTalk(sessionId, managers.voice.RandomTalkManager.getRandomTalk(self.name, 'date').format(date), client=siteId)
+			date = managers.LanguageManager.localize(date)
+			managers.MqttServer.endTalk(sessionId, managers.TalkManager.answer(self.name, 'date').format(date), client=siteId)
 		elif intent == self._INTENT_GET_DAY:
 			day = datetime.now().strftime('%A')
-			day = managers.voice.LanguageManager.localize(day)
-			managers.server.MqttServer.endTalk(sessionId, managers.voice.RandomTalkManager.getRandomTalk(self.name, 'day').format(day), client=siteId)
+			day = managers.LanguageManager.localize(day)
+			managers.MqttServer.endTalk(sessionId, managers.TalkManager.answer(self.name, 'day').format(day), client=siteId)
 		elif intent == self._INTENT_GET_YEAR:
 			year = datetime.now().strftime('%Y')
-			managers.server.MqttServer.endTalk(sessionId, managers.voice.RandomTalkManager.getRandomTalk(self.name, 'day').format(year), client=siteId)
+			managers.MqttServer.endTalk(sessionId, managers.TalkManager.answer(self.name, 'day').format(year), client=siteId)
 
 		return True
