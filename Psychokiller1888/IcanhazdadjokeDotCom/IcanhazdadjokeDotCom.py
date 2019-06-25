@@ -9,7 +9,6 @@ import requests
 
 class IcanhazdadjokeDotCom(Module):
 
-	NAME 				= 'IcanhazdadjokeDotCom'
 	_INTENT_TELL_A_JOKE = Intent('hermes/intent/{owner}:tellAJoke')
 
 	def __init__(self):
@@ -17,7 +16,7 @@ class IcanhazdadjokeDotCom(Module):
 			self._INTENT_TELL_A_JOKE
 		]
 
-		super(IcanhazdadjokeDotCom, self).__init__(self.NAME, self._SUPPORTED_INTENTS)
+		super(IcanhazdadjokeDotCom, self).__init__(self._SUPPORTED_INTENTS)
 
 
 	def onMessage(self, intent: str, session: DialogSession) -> bool:

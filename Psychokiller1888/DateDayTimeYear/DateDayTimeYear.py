@@ -10,8 +10,6 @@ from alice.dialog.model.DialogSession import DialogSession
 
 class DateDayTimeYear(Module):
 
-	NAME 				= 'DateDayTimeYear'
-
 	_INTENT_GET_TIME 	= Intent('hermes/intent/{owner}:GetTime')
 	_INTENT_GET_DATE 	= Intent('hermes/intent/{owner}:GetDate')
 	_INTENT_GET_DAY 	= Intent('hermes/intent/{owner}:GetDay')
@@ -26,7 +24,7 @@ class DateDayTimeYear(Module):
 			self._INTENT_GET_YEAR
 		]
 
-		super(DateDayTimeYear, self).__init__(self.NAME, self._SUPPORTED_INTENTS)
+		super(DateDayTimeYear, self).__init__(self._SUPPORTED_INTENTS)
 
 
 	def onMessage(self, intent: str, session: DialogSession) -> bool:
