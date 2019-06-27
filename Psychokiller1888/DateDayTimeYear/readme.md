@@ -3,7 +3,7 @@
 ### Desc
 Ask for the time, date, day and year
 
-- Version: 1.0
+- Version: 1.01
 - Author: Psycho
 - Alice minimum version: N/A
 - Conditions:
