@@ -2,10 +2,10 @@
 
 from datetime import datetime
 
-import alice.base.Managers    as managers
-from alice.base.model.Intent import Intent
-from alice.base.model.Module import Module
-from alice.dialog.model.DialogSession import DialogSession
+import core.base.Managers    as managers
+from core.base.model.Intent import Intent
+from core.base.model.Module import Module
+from core.dialog.model.DialogSession import DialogSession
 
 
 class DateDayTimeYear(Module):

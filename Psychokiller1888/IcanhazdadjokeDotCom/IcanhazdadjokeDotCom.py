@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 
-import alice.base.Managers as managers
-from alice.base.model.Intent import Intent
-from alice.base.model import Module
-from alice.dialog.model.DialogSession import DialogSession
+import core.base.Managers as managers
+from core.base.model.Intent import Intent
+from core.base.model import Module
+from core.dialog.model.DialogSession import DialogSession
 import requests
 
 
 class IcanhazdadjokeDotCom(Module):
 
-	_INTENT_TELL_A_JOKE = Intent('hermes/intent/{owner}:tellAJoke')
+	_INTENT_TELL_A_JOKE = Intent('hermes/intent/{owner}:TellAJoke')
 
 	def __init__(self):
 		self._SUPPORTED_INTENTS	= [
