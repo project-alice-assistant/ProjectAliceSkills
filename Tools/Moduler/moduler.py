@@ -351,6 +351,6 @@ if __name__ == '__main__':
 	print('All done!')
 	print('You can now start creating your module. You will find the main class in {}/{}.py'.format(modulePath, answers['moduleName']))
 	print()
-	print('Remember to edit the dialogTemplate/${lang}.json and remove the dummy data!!')
+	print('Remember to edit the dialogTemplate/XYZ.json and remove the dummy data!!')
 	print()
 	print('Thank you for creating for Project Alice')
