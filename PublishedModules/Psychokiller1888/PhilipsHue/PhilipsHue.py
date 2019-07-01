@@ -82,8 +82,6 @@ class PhilipsHue(Module):
 
 				if not hueConfigFileExists:
 					self._logger.info('- [{}] No philipsHueConf.conf file in PhilipsHue module directory'.format(self.name))
-					with open(hueConfigFile, 'w') as f:
-						pass
 
 				self._bridge = Bridge(ip=managers.ConfigManager.getModuleConfigByName(self.name, 'phueBridgeIp'), config_file_path=hueConfigFile)
 
