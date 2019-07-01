@@ -6,8 +6,9 @@
 ### Desc
 Ask for the time, date, day and year
 
-- Version: 1.01
+- Version: 0.1
 - Author: Psycho
+- Maintainers: N/A
 - Alice minimum version: N/A
 - Conditions:
   - EN, FR

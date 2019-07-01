@@ -8,6 +8,7 @@ Get a random dad joke on demand
 
 - Version: 1.02
 - Author: Psycho
+- Maintainers: N/A
 - Alice minimum version: N/A
 - Conditions:
   - EN

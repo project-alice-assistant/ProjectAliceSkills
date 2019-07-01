@@ -1,7 +1,8 @@
 {
 	"name": "DateDayTimeYear",
-	"version": 1.01,
+	"version": 0.1,
 	"author": "Psychokiller1888",
+	"maintainers": [""],
 	"desc": "Ask for the time, date, day and year",
 	"aliceMinVersion": "",
 	"requirements": [],

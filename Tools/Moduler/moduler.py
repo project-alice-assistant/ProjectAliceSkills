@@ -97,7 +97,7 @@ class %moduleName%(Module):
 
 INSTALL_JSON = '''{
 	"name": "%moduleName%",
-	"version": "1.0",
+	"version": 1.0,
 	"author": "%username%",
 	"maintainers": [""],
 	"desc": "%description%",
@@ -163,15 +163,32 @@ TALKS = '''{
 
 README = '''# %moduleName%
 
+### Download
+`wget http://bit.ly/????????? -O ~/ProjectAlice/system/moduleInstallTickets/%moduleName%.install`
+
 ### Desc
 %description%
 
 - Version: 1.0
 - Author: %username%
+- Maintainers: N/A
 - Alice minimum version: N/A
 - Conditions:
 %langs%
-- Requirements: N/A'''
+- Requirements: N/A
+
+Configuration
+=============
+
+`foo`:
+ - type: `bar`
+ - desc: `baz`
+ 
+`bar`:
+ - type: `baz`
+ - desc: `bar`
+
+'''
 
 print()
 print('Hey welcome in this basic module creation tool!')

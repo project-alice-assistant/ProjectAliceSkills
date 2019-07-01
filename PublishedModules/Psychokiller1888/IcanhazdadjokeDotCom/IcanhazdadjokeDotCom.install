@@ -1,7 +1,8 @@
 {
 	"name": "IcanhazdadjokeDotCom",
-	"version": "1.02",
+	"version": 0.1,
 	"author": "Psychokiller1888",
+	"maintainers": [""],
 	"desc": "Get a random dad joke on demand!",
 	"aliceMinVersion": "",
 	"requirements": [],
