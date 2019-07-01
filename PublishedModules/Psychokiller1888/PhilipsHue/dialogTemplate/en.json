@@ -1,0 +1,567 @@
+{
+    "module": "PhilipsHue",
+    "icon": "lights",
+    "description": "Handle your Philips Hue lights from anywhere",
+    "slotTypes": [
+        {
+            "name": "Room",
+            "matchingStrictness": null,
+            "automaticallyExtensible": false,
+            "useSynonyms": false,
+            "values": [
+                {
+                    "value": "basement",
+                    "synonyms": []
+                },
+                {
+                    "value": "kitchen",
+                    "synonyms": []
+                },
+                {
+                    "value": "boudoir",
+                    "synonyms": []
+                },
+                {
+                    "value": "office",
+                    "synonyms": []
+                },
+                {
+                    "value": "atrium",
+                    "synonyms": []
+                },
+                {
+                    "value": "classroom",
+                    "synonyms": []
+                },
+                {
+                    "value": "bathroom",
+                    "synonyms": []
+                },
+                {
+                    "value": "living room",
+                    "synonyms": []
+                },
+                {
+                    "value": "pantry",
+                    "synonyms": []
+                },
+                {
+                    "value": "vestibule",
+                    "synonyms": []
+                },
+                {
+                    "value": "operating theater",
+                    "synonyms": []
+                },
+                {
+                    "value": "drawing room",
+                    "synonyms": []
+                },
+                {
+                    "value": "attic",
+                    "synonyms": []
+                },
+                {
+                    "value": "bedroom",
+                    "synonyms": []
+                },
+                {
+                    "value": "courtroom",
+                    "synonyms": []
+                },
+                {
+                    "value": "Bank vault",
+                    "synonyms": []
+                },
+                {
+                    "value": "studio",
+                    "synonyms": []
+                },
+                {
+                    "value": "sunroom",
+                    "synonyms": []
+                },
+                {
+                    "value": "control room",
+                    "synonyms": []
+                },
+                {
+                    "value": "command center",
+                    "synonyms": []
+                },
+                {
+                    "value": "cubicle",
+                    "synonyms": []
+                },
+                {
+                    "value": "foyer",
+                    "synonyms": []
+                },
+                {
+                    "value": "dining room",
+                    "synonyms": []
+                },
+                {
+                    "value": "auditorium",
+                    "synonyms": []
+                },
+                {
+                    "value": "changing room",
+                    "synonyms": []
+                },
+                {
+                    "value": "showroom",
+                    "synonyms": []
+                },
+                {
+                    "value": "cella",
+                    "synonyms": []
+                },
+                {
+                    "value": "toilet",
+                    "synonyms": []
+                },
+                {
+                    "value": "study",
+                    "synonyms": []
+                },
+                {
+                    "value": "antechamber",
+                    "synonyms": []
+                },
+                {
+                    "value": "great room",
+                    "synonyms": []
+                },
+                {
+                    "value": "conference hall",
+                    "synonyms": []
+                },
+                {
+                    "value": "laundry room",
+                    "synonyms": []
+                },
+                {
+                    "value": "waiting room",
+                    "synonyms": []
+                },
+                {
+                    "value": "wiring closet",
+                    "synonyms": []
+                },
+                {
+                    "value": "nursery",
+                    "synonyms": []
+                },
+                {
+                    "value": "great chamber",
+                    "synonyms": []
+                },
+                {
+                    "value": "tepidarium",
+                    "synonyms": []
+                },
+                {
+                    "value": "assembly hall",
+                    "synonyms": []
+                },
+                {
+                    "value": "reverberation room",
+                    "synonyms": []
+                },
+                {
+                    "value": "lecture hall",
+                    "synonyms": []
+                },
+                {
+                    "value": "debate chamber",
+                    "synonyms": []
+                },
+                {
+                    "value": "area of refuge",
+                    "synonyms": []
+                },
+                {
+                    "value": "anatomical theatre",
+                    "synonyms": []
+                },
+                {
+                    "value": "long gallery",
+                    "synonyms": []
+                },
+                {
+                    "value": "function hall",
+                    "synonyms": []
+                },
+                {
+                    "value": "isolation ward",
+                    "synonyms": []
+                },
+                {
+                    "value": "Ship station",
+                    "synonyms": []
+                },
+                {
+                    "value": "porters' lodge",
+                    "synonyms": []
+                },
+                {
+                    "value": "outside",
+                    "synonyms": []
+                },
+                {
+                    "value": "balcony",
+                    "synonyms": []
+                },
+                {
+                    "value": "terrasse",
+                    "synonyms": []
+                },
+                {
+                    "value": "garden",
+                    "synonyms": []
+                },
+                {
+                    "value": "lake",
+                    "synonyms": []
+                },
+                {
+                    "value": "second room",
+                    "synonyms": []
+                },
+                {
+                    "value": "little room",
+                    "synonyms": []
+                },
+                {
+                    "value": "workshop",
+                    "synonyms": []
+                },
+                {
+                    "value": "everywhere",
+                    "synonyms": [
+                        ""
+                    ]
+                },
+                {
+                    "value": "stairs",
+                    "synonyms": [
+                        ""
+                    ]
+                },
+                {
+                    "value": "entrance",
+                    "synonyms": [
+                        ""
+                    ]
+                },
+                {
+                    "value": "night tables",
+                    "synonyms": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "LightScene",
+            "matchingStrictness": null,
+            "automaticallyExtensible": true,
+            "useSynonyms": true,
+            "values": [
+                {
+                    "value": "watching TV",
+                    "synonyms": [
+                        "watching television",
+                        "watching tv"
+                    ]
+                },
+                {
+                    "value": "day light",
+                    "synonyms": [
+                        "daylight"
+                    ]
+                },
+                {
+                    "value": "going bed",
+                    "synonyms": [
+                        "going to bed",
+                        "go bed",
+                        "go in bed"
+                    ]
+                },
+                {
+                    "value": "waking up",
+                    "synonyms": [
+                        "wake up"
+                    ]
+                },
+                {
+                    "value": "relax",
+                    "synonyms": [
+                        ""
+                    ]
+                },
+                {
+                    "value": "read",
+                    "synonyms": [
+                        ""
+                    ]
+                },
+                {
+                    "value": "concentrate",
+                    "synonyms": [
+                        ""
+                    ]
+                },
+                {
+                    "value": "energize",
+                    "synonyms": [
+                        ""
+                    ]
+                },
+                {
+                    "value": "eating",
+                    "synonyms": [
+                        ""
+                    ]
+                },
+                {
+                    "value": "bright",
+                    "synonyms": [
+                        ""
+                    ]
+                },
+                {
+                    "value": "dimmed",
+                    "synonyms": [
+                        ""
+                    ]
+                },
+                {
+                    "value": "nightlight",
+                    "synonyms": [
+                        "night light"
+                    ]
+                },
+                {
+                    "value": "evening",
+                    "synonyms": [
+                        ""
+                    ]
+                },
+                {
+                    "value": "makeup",
+                    "synonyms": [
+                        "make up"
+                    ]
+                },
+                {
+                    "value": "early morning",
+                    "synonyms": [
+                        ""
+                    ]
+                },
+                {
+                    "value": "morning",
+                    "synonyms": [
+                        ""
+                    ]
+                },
+                {
+                    "value": "afternoon",
+                    "synonyms": [
+                        ""
+                    ]
+                },
+                {
+                    "value": "night",
+                    "synonyms": [
+                        ""
+                    ]
+                },
+                {
+                    "value": "sleeping",
+                    "synonyms": [
+                        ""
+                    ]
+                }
+            ]
+        }
+    ],
+    "intents": [
+        {
+            "name": "PowerOffLights",
+            "description": "Turns off a light",
+            "enabledByDefault": true,
+            "utterances": [
+                "Please lights off {everywhere:=>Room}",
+                "Light off {everywhere:=>Room}",
+                "Lights off {everywhere:=>Room}",
+                "Turn off the lights please",
+                "Turn off the lights",
+                "Lights off",
+                "Lights off please",
+                "Please turn off the lights in the {kitchen:=>Room}",
+                "Light off in the {kitchen:=>Room}",
+                "Turn off the lights in the {kitchen:=>Room}",
+                "Some darkness in the {kitchen:=>Room} please",
+                "Please turn off the light in the {kitchen:=>Room}",
+                "Lights off in the {kitchen:=>Room}",
+                "Turn off the light in the {kitchen:=>Room}"
+            ],
+            "slots": [
+                {
+                    "name": "Room",
+                    "description": null,
+                    "required": false,
+                    "type": "Room",
+                    "missingQuestion": "Which room?"
+                }
+            ]
+        },
+        {
+            "name": "DimLights",
+            "description": "",
+            "enabledByDefault": true,
+            "utterances": [
+                "set to {50%:=>Percent} the lights in the {kitchen:=>Room}",
+                "please set the lights in the {kitchen:=>Room} to {50%:=>Percent}",
+                "dim the light {everywhere:=>Room} to {50 percent:=>Percent}",
+                "please dim the lights to {25%:=>Percent}",
+                "dim the lights in the {kitchen:=>Room} to {25%:=>Percent}",
+                "dim the lights in the {bedroom:=>Room}",
+                "dim the lights to {25 percent:=>Percent}",
+                "please dim the lights",
+                "dim the lights"
+            ],
+            "slots": [
+                {
+                    "name": "Room",
+                    "description": null,
+                    "required": false,
+                    "type": "Room",
+                    "missingQuestion": ""
+                },
+                {
+                    "name": "Percent",
+                    "description": null,
+                    "required": false,
+                    "type": "snips/percentage",
+                    "missingQuestion": ""
+                }
+            ]
+        },
+        {
+            "name": "ManageLights",
+            "description": "",
+            "enabledByDefault": true,
+            "utterances": [
+                "please lights {everywhere:=>Room}",
+                "lights {everywhere:=>Room} please",
+                "lights {everywhere:=>Room}",
+                "please light in the {bathroom:=>Room}",
+                "light in the {office:=>Room}",
+                "lights in the {office:=>Room} please",
+                "toggle lights in the {entrance:=>Room}",
+                "lights in the {bedroom:=>Room} please",
+                "toggle the lights in the {kitchen:=>Room}",
+                "lights in the {kitchen:=>Room}",
+                "toggle the lights please",
+                "please toggle the lights",
+                "toggle the lights",
+                "lights please",
+                "please lights"
+            ],
+            "slots": [
+                {
+                    "name": "Room",
+                    "description": null,
+                    "required": false,
+                    "type": "Room",
+                    "missingQuestion": ""
+                }
+            ]
+        },
+        {
+            "name": "PowerOnLights",
+            "description": "turns a light on",
+            "enabledByDefault": true,
+            "utterances": [
+                "light in the {office:=>Room}",
+                "lights",
+                "turn on the lights {everywhere:=>Room}",
+                "please turn on the lights {everywhere:=>Room}",
+                "lights on {everywhere:=>Room}",
+                "please turn on the lights",
+                "turn on the lights please",
+                "turn on the lights",
+                "Light on in the {kitchen:=>Room} and {bathroom:=>Room}",
+                "Turn on the light in the {kitchen:=>Room}",
+                "Can I have light in the {kitchen:=>Room} please",
+                "Can I have light in the {kitchen:=>Room}",
+                "Illuminate the {kitchen:=>Room}",
+                "Please light the {kitchen:=>Room}",
+                "Lights on in the {kitchen:=>Room}",
+                "Turn on the lights in the {kitchen:=>Room}"
+            ],
+            "slots": [
+                {
+                    "name": "Room",
+                    "description": null,
+                    "required": false,
+                    "type": "Room",
+                    "missingQuestion": "In which room?"
+                }
+            ]
+        },
+        {
+            "name": "SetLightsScene",
+            "description": "",
+            "enabledByDefault": true,
+            "utterances": [
+                "change the lights in the {bedroom:=>Room} to {going bed:=>Scene}",
+                "change the light in the {bedroom:=>Room} to {going bed:=>Scene}",
+                "set the light in the {living room:=>Room} to {watching tv:=>Scene}",
+                "set the lights in the {living room:=>Room} to {watching tv:=>Scene}",
+                "set the light to {energize:=>Scene} please",
+                "set the lights to {read:=>Scene}",
+                "change the light to {relax:=>Scene}",
+                "change the lights to {concentrate:=>Scene}",
+                "change the light to {going bed:=>Scene} in the {bedroom:=>Room}",
+                "set the lights to {watching tv:=>Scene} in the {living room:=>Room}",
+                "lights to {eating:=>Scene} in the {living room:=>Room}",
+                "set the lights to {relax:=>Scene}",
+                "lights in the {bedroom:=>Room} to {daylight:=>Scene}",
+                "change the lights to {going bed:=>Scene}",
+                "lights to {day light:=>Scene}",
+                "set the lights in the {kitchen:=>Room} to {day light:=>Scene}",
+                "set the {bedroom:=>Room} lights to {waking up:=>Scene}",
+                "set the {bedroom:=>Room} scene to {waking up:=>Scene}",
+                "set the {bedroom:=>Room} light scenery to {going bed:=>Scene}",
+                "change the lights in the {living room:=>Room} to {watching tv:=>Scene}",
+                "change the lighting to {watching tv:=>Scene}",
+                "please set the scenery to {watching tv:=>Scene}",
+                "set the scenery to {watching tv:=>Scene}",
+                "set the light scenery to {day light:=>Scene}",
+                "set the lights to {going bed:=>Scene}"
+            ],
+            "slots": [
+                {
+                    "name": "Scene",
+                    "description": null,
+                    "required": false,
+                    "type": "LightScene",
+                    "missingQuestion": "what scenery?"
+                },
+                {
+                    "name": "Room",
+                    "description": null,
+                    "required": false,
+                    "type": "Room",
+                    "missingQuestion": "which room?"
+                }
+            ]
+        }
+    ]
+}

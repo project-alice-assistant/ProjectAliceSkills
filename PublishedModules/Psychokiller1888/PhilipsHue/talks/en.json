@@ -1,0 +1,81 @@
+{
+	"pressBridgeButton": [
+		"Please press the Philips Hue bridge button"
+	],
+	"pressBridgeButtonConfirmation": [
+		"You Philips Hue bridge is now configured"
+	],
+	"pressBridgeButtonTimeout": [
+		"You didn't press the button, your bridge will stay unavailable"
+	],
+	"roomUnknown": {
+		"default": [
+			"Sorry, the room {} is not equipped with smart lights",
+			"I can't, no smart lights in room {}"
+		],
+		"short": [
+			"I can't, no smart lights"
+		]
+	},
+	"sceneUnknown": {
+		"default": [
+			"The scenery \"{}\" is unknown to me",
+			"Sorry, can't do that, I don't know the scenery {}"
+		],
+		"short": [
+			"I don't know this scenery"
+		]
+	},
+	"confirm": [
+		"Ok!",
+		"Done"
+	],
+	"cantSpecifyMoreThanOneScene": {
+		"default": [
+			"Sorry, you cannot specify more than one scenery at once",
+			"You can only specify one scene to set at once"
+		],
+		"short": [
+			"Multiple sceneries not supported"
+		]
+	},
+	"lightBridgeFailure": {
+		"default": [
+			"I'm sorry, but the bridge wasn't found, I can't control your lights",
+			"The hub seems down, light control is not possible"
+		],
+		"short": [
+			"Smart lights hub not connected"
+		]
+	},
+	"lightBridgeNotRegistered": {
+		"default": [
+			"Please reboot the unit and press the Philips Hue bridge button. Smart lights are not connected"
+		],
+		"short": [
+			"Reboot and press the Philips Hue bridge button"
+		]
+	},
+	"sceneNotInThisRoom": {
+		"default": {
+			"en": [
+				"This scenery doesn't exist in the room",
+				"I can't find this scene in the room",
+				"The requested scenery doesn't exist in the room"
+			]
+		},
+		"short": {
+			"en": [
+				"I don't know this scenery"
+			]
+		}
+	},
+	"whatPercentage": [
+		"Sure! At what percentage?",
+		"What percentage would you like?"
+	],
+	"whatScenery": [
+		"What scenery?",
+		"Sorry? What scenery do you want?"
+	]
+}
