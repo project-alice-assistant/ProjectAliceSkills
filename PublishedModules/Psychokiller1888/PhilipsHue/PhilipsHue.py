@@ -12,7 +12,7 @@ from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.ProjectAliceExceptions import ModuleStartingFailed, ModuleStartDelayed
 from core.dialog.model.DialogSession import DialogSession
-from phue import Bridge, PhueException, PhueRegistrationException
+from modules.PhilipsHue.libraries.phue import Bridge, PhueException, PhueRegistrationException
 
 
 class PhilipsHue(Module):
@@ -85,20 +85,15 @@ class PhilipsHue(Module):
 
 				self._bridge = Bridge(ip=managers.ConfigManager.getModuleConfigByName(self.name, 'phueBridgeIp'), config_file_path=hueConfigFile)
 
-				if self._bridge is None:
+				if not self._bridge:
 					raise PhueException
 
 				self._bridge.connect()
-
 				if not self._bridge.registered:
 					raise PhueRegistrationException
 				else:
-					if self.delayed:
-						if not hueConfigFileExists:
-							managers.ThreadManager.doLater(interval=3, func=managers.MqttServer.say, args=[managers.TalkManager.randomTalk(self.name, 'pressBridgeButtonConfirmation')])
-					else:
-						self.delayed = True
-						raise ModuleStartDelayed
+					if not hueConfigFileExists:
+						managers.ThreadManager.doLater(interval=3, func=managers.MqttServer.say, args=[managers.TalkManager.randomTalk(self.name, 'pressBridgeButtonConfirmation')])
 			except PhueRegistrationException:
 				if self.delayed:
 					managers.MqttServer.say(text=managers.TalkManager.randomTalk(self.name, 'pressBridgeButton'))
@@ -108,7 +103,7 @@ class PhilipsHue(Module):
 					return self._connectBridge()
 				else:
 					self.delayed = True
-					raise ModuleStartDelayed
+					raise ModuleStartDelayed(self.name)
 			except PhueException as e:
 				self._logger.error('- [{}] Bridge error: {}'.format(self.name, e))
 				return False
@@ -153,9 +148,8 @@ class PhilipsHue(Module):
 
 
 	def onBooted(self):
-		if self.delayed:
-			self.onStart()
-		else:
+		super(PhilipsHue, self).onBooted()
+		if not self.delayed:
 			self.onFullHour()
 
 
