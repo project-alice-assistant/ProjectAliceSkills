@@ -1,3 +1,13 @@
+# Installation
+
+Download the last release zip, extract it and run
+`python3 moduler.py`
+
+Requirements will install by themselves if needed
+
+
+# List of Snips icons
+
 |Icon | Name|
 |-------------------------------------------------------------------------------------------------------------------------|-----------------|
 |![https://console.snips.ai/images/bundles/default-bundle.svg](https://console.snips.ai/images/bundles/default-bundle.svg)|default-bundle|
