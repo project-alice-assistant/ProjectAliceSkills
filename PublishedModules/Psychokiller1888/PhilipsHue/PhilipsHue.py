@@ -12,7 +12,7 @@ from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.ProjectAliceExceptions import ModuleStartingFailed, ModuleStartDelayed
 from core.dialog.model.DialogSession import DialogSession
-from modulesDeprecated.PhilipsHue.libraries.phue import Bridge, PhueException, PhueRegistrationException
+from phue import Bridge, PhueException, PhueRegistrationException
 
 
 class PhilipsHue(Module):
