@@ -182,15 +182,15 @@ class PhilipsHue(Module):
 		place = siteId if siteId != 'default' else managers.ConfigManager.getAliceConfigByName('room')
 
 		room = ''
-		if 'room' in slots:
-			for slot in slots['room']:
+		if 'Room' in slots:
+			for slot in slots['Room']:
 				room = slot.value['value'].lower()
 				if room not in self._groups.keys() and room != 'everywhere':
 					managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk(self.name, 'roomUnknown').format(room), client=siteId)
 					return True
 
-		if 'scene' in slots:
-			for slot in slots['scene']:
+		if 'Scene' in slots:
+			for slot in slots['Scene']:
 				scene = slot.value['value'].lower()
 				if scene not in self._scenes.keys():
 					managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk(self.name, 'sceneUnknown').format(scene), client=siteId)
@@ -198,8 +198,8 @@ class PhilipsHue(Module):
 
 		if intent == self._INTENT_LIGHT_ON:
 			partOfTheDay = commons.partOfTheDay().lower()
-			if 'room' in slots:
-				for slot in slots['room']:
+			if 'Room' in slots:
+				for slot in slots['Room']:
 					room = slot.value['value'].lower()
 					if room == 'everywhere':
 						self._bridge.set_group(0, 'on', True)
@@ -226,8 +226,8 @@ class PhilipsHue(Module):
 					return True
 
 		elif intent == self._INTENT_LIGHT_OFF:
-			if 'room' in slots:
-				for slot in slots['room']:
+			if 'Room' in slots:
+				for slot in slots['Room']:
 					room = slot.value['value'].lower()
 					if room == 'everywhere':
 						self._bridge.set_group(0, 'on', False)
@@ -244,7 +244,7 @@ class PhilipsHue(Module):
 					return True
 
 		elif intent == self._INTENT_LIGHT_SCENE or (previousIntent == self._INTENT_LIGHT_SCENE and intent == self._INTENT_USER_ANSWER):
-			if 'scene' not in slots and 'scene' not in customData:
+			if 'Scene' not in slots and 'Scene' not in customData:
 				managers.MqttServer.continueDialog(
 					sessionId = sessionId,
 					text = managers.TalkManager.randomTalk(self.name, 'whatScenery'),
@@ -260,14 +260,14 @@ class PhilipsHue(Module):
 				if 'scene' in customData:
 					scene = customData['scene']
 				else:
-					if len(slots['scene']) > 1:
+					if len(slots['Scene']) > 1:
 						managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk(self.name, 'cantSpecifyMoreThanOneScene'), client=siteId)
 						return True
 					else:
-						scene = slots['scene'][0].value['value'].lower()
+						scene = slots['Scene'][0].value['value'].lower()
 
-				if 'room' in slots:
-					for slot in slots['room']:
+				if 'Room' in slots:
+					for slot in slots['Room']:
 						room = slot.value['value'].lower()
 						if not self._bridge.run_scene(group_name=self._groups[room].name, scene_name=self._scenes[scene].name):
 							managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk(self.name, 'sceneNotInThisRoom'), client=siteId)
@@ -286,7 +286,7 @@ class PhilipsHue(Module):
 
 		elif intent == self._INTENT_MANAGE_LIGHTS:
 			partOfTheDay = commons.partOfTheDay().lower()
-			if 'room' not in slots:
+			if 'Room' not in slots:
 				room = place
 
 				if room not in self._groups.keys():
@@ -305,7 +305,7 @@ class PhilipsHue(Module):
 							for light in group.lights:
 								light.on = True
 			else:
-				for slot in slots['room']:
+				for slot in slots['Room']:
 					room = slot.value['value'].lower()
 					if room == 'everywhere':
 						self._bridge.set_group(0, 'on', not self._bridge.get_group(0, 'on'))
@@ -324,7 +324,7 @@ class PhilipsHue(Module):
 										light.on = True
 
 		elif intent == self._INTENT_DIM_LIGHTS or previousIntent == self._INTENT_DIM_LIGHTS:
-			if 'percent' not in slots:
+			if 'Percent' not in slots:
 				managers.MqttServer.ask(
 					sessionId = sessionId,
 					text = managers.TalkManager.randomTalk(self.name, 'whatPercentage'),
@@ -336,7 +336,7 @@ class PhilipsHue(Module):
 				)
 				return True
 			else:
-				percentage = int(slots['percent'][0].rawValue.replace('%', ''))
+				percentage = int(slots['Percent'][0].rawValue.replace('%', ''))
 				if percentage < 0:
 					percentage = 0
 				elif percentage > 100:
@@ -344,7 +344,7 @@ class PhilipsHue(Module):
 
 				brightness = int(round(254 / 100 * percentage))
 
-				if 'room' not in slots:
+				if 'Room' not in slots:
 					room = siteId.lower()
 					if room == 'default':
 						room = managers.ConfigManager.getAliceConfigByName('room')
@@ -356,7 +356,7 @@ class PhilipsHue(Module):
 					for light in self._groups[room].lights:
 						light.brightness = brightness
 				else:
-					for slot in slots['room']:
+					for slot in slots['Room']:
 						room = slot.value['value'].lower()
 						if room == 'everywhere':
 							self._bridge.set_group(0, 'brightness', brightness)

@@ -29,7 +29,7 @@ class IcanhazdadjokeDotCom(Module):
 			headers = {
 				'Accept': 'text/plain',
 				'User-Agent': 'Project Alice',
-				'From': 'projectalice@gmail.com'
+				'From': 'projectalice@projectalice.ch'
 			}
 
 			response = requests.get(url, headers=headers)
