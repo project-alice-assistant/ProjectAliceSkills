@@ -4,266 +4,6 @@
     "description": "Handle your Philips Hue lights from anywhere",
     "slotTypes": [
         {
-            "name": "Room",
-            "matchingStrictness": null,
-            "automaticallyExtensible": false,
-            "useSynonyms": false,
-            "values": [
-                {
-                    "value": "basement",
-                    "synonyms": []
-                },
-                {
-                    "value": "kitchen",
-                    "synonyms": []
-                },
-                {
-                    "value": "boudoir",
-                    "synonyms": []
-                },
-                {
-                    "value": "office",
-                    "synonyms": []
-                },
-                {
-                    "value": "atrium",
-                    "synonyms": []
-                },
-                {
-                    "value": "classroom",
-                    "synonyms": []
-                },
-                {
-                    "value": "bathroom",
-                    "synonyms": []
-                },
-                {
-                    "value": "living room",
-                    "synonyms": []
-                },
-                {
-                    "value": "pantry",
-                    "synonyms": []
-                },
-                {
-                    "value": "vestibule",
-                    "synonyms": []
-                },
-                {
-                    "value": "operating theater",
-                    "synonyms": []
-                },
-                {
-                    "value": "drawing room",
-                    "synonyms": []
-                },
-                {
-                    "value": "attic",
-                    "synonyms": []
-                },
-                {
-                    "value": "bedroom",
-                    "synonyms": []
-                },
-                {
-                    "value": "courtroom",
-                    "synonyms": []
-                },
-                {
-                    "value": "Bank vault",
-                    "synonyms": []
-                },
-                {
-                    "value": "studio",
-                    "synonyms": []
-                },
-                {
-                    "value": "sunroom",
-                    "synonyms": []
-                },
-                {
-                    "value": "control room",
-                    "synonyms": []
-                },
-                {
-                    "value": "command center",
-                    "synonyms": []
-                },
-                {
-                    "value": "cubicle",
-                    "synonyms": []
-                },
-                {
-                    "value": "foyer",
-                    "synonyms": []
-                },
-                {
-                    "value": "dining room",
-                    "synonyms": []
-                },
-                {
-                    "value": "auditorium",
-                    "synonyms": []
-                },
-                {
-                    "value": "changing room",
-                    "synonyms": []
-                },
-                {
-                    "value": "showroom",
-                    "synonyms": []
-                },
-                {
-                    "value": "cella",
-                    "synonyms": []
-                },
-                {
-                    "value": "toilet",
-                    "synonyms": []
-                },
-                {
-                    "value": "study",
-                    "synonyms": []
-                },
-                {
-                    "value": "antechamber",
-                    "synonyms": []
-                },
-                {
-                    "value": "great room",
-                    "synonyms": []
-                },
-                {
-                    "value": "conference hall",
-                    "synonyms": []
-                },
-                {
-                    "value": "laundry room",
-                    "synonyms": []
-                },
-                {
-                    "value": "waiting room",
-                    "synonyms": []
-                },
-                {
-                    "value": "wiring closet",
-                    "synonyms": []
-                },
-                {
-                    "value": "nursery",
-                    "synonyms": []
-                },
-                {
-                    "value": "great chamber",
-                    "synonyms": []
-                },
-                {
-                    "value": "tepidarium",
-                    "synonyms": []
-                },
-                {
-                    "value": "assembly hall",
-                    "synonyms": []
-                },
-                {
-                    "value": "reverberation room",
-                    "synonyms": []
-                },
-                {
-                    "value": "lecture hall",
-                    "synonyms": []
-                },
-                {
-                    "value": "debate chamber",
-                    "synonyms": []
-                },
-                {
-                    "value": "area of refuge",
-                    "synonyms": []
-                },
-                {
-                    "value": "anatomical theatre",
-                    "synonyms": []
-                },
-                {
-                    "value": "long gallery",
-                    "synonyms": []
-                },
-                {
-                    "value": "function hall",
-                    "synonyms": []
-                },
-                {
-                    "value": "isolation ward",
-                    "synonyms": []
-                },
-                {
-                    "value": "Ship station",
-                    "synonyms": []
-                },
-                {
-                    "value": "porters' lodge",
-                    "synonyms": []
-                },
-                {
-                    "value": "outside",
-                    "synonyms": []
-                },
-                {
-                    "value": "balcony",
-                    "synonyms": []
-                },
-                {
-                    "value": "terrasse",
-                    "synonyms": []
-                },
-                {
-                    "value": "garden",
-                    "synonyms": []
-                },
-                {
-                    "value": "lake",
-                    "synonyms": []
-                },
-                {
-                    "value": "second room",
-                    "synonyms": []
-                },
-                {
-                    "value": "little room",
-                    "synonyms": []
-                },
-                {
-                    "value": "workshop",
-                    "synonyms": []
-                },
-                {
-                    "value": "everywhere",
-                    "synonyms": [
-                        ""
-                    ]
-                },
-                {
-                    "value": "stairs",
-                    "synonyms": [
-                        ""
-                    ]
-                },
-                {
-                    "value": "entrance",
-                    "synonyms": [
-                        ""
-                    ]
-                },
-                {
-                    "value": "night tables",
-                    "synonyms": [
-                        ""
-                    ]
-                }
-            ]
-        },
-        {
             "name": "LightScene",
             "matchingStrictness": null,
             "automaticallyExtensible": true,
@@ -298,45 +38,31 @@
                 },
                 {
                     "value": "relax",
-                    "synonyms": [
-                        ""
-                    ]
+                    "synonyms": []
                 },
                 {
                     "value": "read",
-                    "synonyms": [
-                        ""
-                    ]
+                    "synonyms": []
                 },
                 {
                     "value": "concentrate",
-                    "synonyms": [
-                        ""
-                    ]
+                    "synonyms": []
                 },
                 {
                     "value": "energize",
-                    "synonyms": [
-                        ""
-                    ]
+                    "synonyms": []
                 },
                 {
                     "value": "eating",
-                    "synonyms": [
-                        ""
-                    ]
+                    "synonyms": []
                 },
                 {
                     "value": "bright",
-                    "synonyms": [
-                        ""
-                    ]
+                    "synonyms": []
                 },
                 {
                     "value": "dimmed",
-                    "synonyms": [
-                        ""
-                    ]
+                    "synonyms": []
                 },
                 {
                     "value": "nightlight",
@@ -346,9 +72,7 @@
                 },
                 {
                     "value": "evening",
-                    "synonyms": [
-                        ""
-                    ]
+                    "synonyms": []
                 },
                 {
                     "value": "makeup",
@@ -358,33 +82,23 @@
                 },
                 {
                     "value": "early morning",
-                    "synonyms": [
-                        ""
-                    ]
+                    "synonyms": []
                 },
                 {
                     "value": "morning",
-                    "synonyms": [
-                        ""
-                    ]
+                    "synonyms": []
                 },
                 {
                     "value": "afternoon",
-                    "synonyms": [
-                        ""
-                    ]
+                    "synonyms": []
                 },
                 {
                     "value": "night",
-                    "synonyms": [
-                        ""
-                    ]
+                    "synonyms": []
                 },
                 {
                     "value": "sleeping",
-                    "synonyms": [
-                        ""
-                    ]
+                    "synonyms": []
                 }
             ]
         }
