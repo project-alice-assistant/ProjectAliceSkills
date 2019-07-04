@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import json
-
 import math
 
 import core.base.Managers as managers
@@ -31,7 +29,7 @@ class Calculator(Module):
 			return False
 
 		siteId = session.siteId
-		slots = session.slots
+		slots = session.slotsAsObjects
 		sessionId = session.sessionId
 
 		if intent == self._INTENT_MATHS:
@@ -39,17 +37,17 @@ class Calculator(Module):
 				managers.MqttServer.continueDialog(sessionId=sessionId, text=managers.TalkManager.randomTalk(self.name, 'notUnderstood'))
 				return True
 
-			func = slots['Function']
+			func = slots['Function'][0].value['value']
 
 			if 'Left' in slots and 'Right' in slots:
-				result = self.calculate(float(slots['Left']), float(slots['Right']), func)
+				result = self.calculate(float(slots['Left'][0].value['value']), float(slots['Right'][0].value['value']), func)
 
 			elif 'Right' in slots and 'Left' not in slots:
 				if not self._lastNumber:
 					managers.MqttServer.endTalk(sessionId=sessionId, text=managers.TalkManager.randomTalk(self.name, 'noPreviousOperation'), client=siteId)
 					return True
 
-				result = self.calculate(self._lastNumber, float(slots['Right']), func)
+				result = self.calculate(self._lastNumber, float(slots['Right'][0].value['value']), func)
 
 			else:
 				managers.MqttServer.continueDialog(sessionId=sessionId, text=managers.TalkManager.randomTalk(self.name, 'notUnderstood'), client=siteId)
