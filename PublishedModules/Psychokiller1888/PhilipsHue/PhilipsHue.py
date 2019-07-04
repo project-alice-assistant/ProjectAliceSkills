@@ -17,13 +17,13 @@ from modules.PhilipsHue.libraries.phue import Bridge, PhueException, PhueRegistr
 
 class PhilipsHue(Module):
 
-	_INTENT_LIGHT_ON = Intent('hermes/intent/{owner}:PowerOnLights')
-	_INTENT_LIGHT_OFF = Intent('hermes/intent/{owner}:PowerOffLights')
-	_INTENT_LIGHT_SCENE = Intent('hermes/intent/{owner}:SetLightsScene')
-	_INTENT_MANAGE_LIGHTS = Intent('hermes/intent/{owner}:ManageLights')
-	_INTENT_DIM_LIGHTS = Intent('hermes/intent/{owner}:DimLights')
-	_INTENT_ANSWER_PERCENT = Intent('hermes/intent/{owner}:AnswerPercent')
-	_INTENT_USER_ANSWER = Intent('hermes/intent/{owner}:UserRandomAnswer')
+	_INTENT_LIGHT_ON = Intent('PowerOnLights')
+	_INTENT_LIGHT_OFF = Intent('PowerOffLights')
+	_INTENT_LIGHT_SCENE = Intent('SetLightsScene')
+	_INTENT_MANAGE_LIGHTS = Intent('ManageLights')
+	_INTENT_DIM_LIGHTS = Intent('DimLights')
+	_INTENT_ANSWER_PERCENT = Intent('AnswerPercent', isProtected=True)
+	_INTENT_USER_ANSWER = Intent('UserRandomAnswer', isProtected=True)
 
 
 	def __init__(self):
@@ -44,9 +44,6 @@ class PhilipsHue(Module):
 		self._stateBackup = {}
 
 		self._house = None
-
-		managers.ProtectedIntentManager.protectIntent(self._INTENT_ANSWER_PERCENT)
-		managers.ProtectedIntentManager.protectIntent(self._INTENT_USER_ANSWER)
 
 		super(PhilipsHue, self).__init__(self._SUPPORTED_INTENTS)
 

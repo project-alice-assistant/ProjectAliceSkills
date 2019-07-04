@@ -10,10 +10,10 @@ from core.dialog.model.DialogSession import DialogSession
 
 class DateDayTimeYear(Module):
 
-	_INTENT_GET_TIME 	= Intent('hermes/intent/{owner}:GetTime')
-	_INTENT_GET_DATE 	= Intent('hermes/intent/{owner}:GetDate')
-	_INTENT_GET_DAY 	= Intent('hermes/intent/{owner}:GetDay')
-	_INTENT_GET_YEAR 	= Intent('hermes/intent/{owner}:GetYear')
+	_INTENT_GET_TIME 	= Intent('GetTime')
+	_INTENT_GET_DATE 	= Intent('GetDate')
+	_INTENT_GET_DAY 	= Intent('GetDay')
+	_INTENT_GET_YEAR 	= Intent('GetYear')
 
 
 	def __init__(self):

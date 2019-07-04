@@ -9,7 +9,7 @@ import requests
 
 class IcanhazdadjokeDotCom(Module):
 
-	_INTENT_TELL_A_JOKE = Intent('hermes/intent/{owner}:TellAJoke')
+	_INTENT_TELL_A_JOKE = Intent('TellAJoke')
 
 	def __init__(self):
 		self._SUPPORTED_INTENTS	= [
