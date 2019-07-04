@@ -215,7 +215,7 @@ first_questions = [
 		'name'    : 'moduleName',
 		'message' : 'Please enter the name of the module you are creating',
 		'validate': NotEmpty,
-		'filter'  : lambda val: str(val).capitalize().replace(' ', '')
+		'filter'  : lambda val: toCamelCase(val)
 	}
 ]
 
