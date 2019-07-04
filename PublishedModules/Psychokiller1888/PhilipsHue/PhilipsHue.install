@@ -1,6 +1,6 @@
 {
 	"name": "PhilipsHue",
-	"version": "0.1",
+	"version": 0.1,
 	"author": "Psychokiller1888",
 	"maintainers": [""],
 	"desc": "Control your Philips Hue lamps",
