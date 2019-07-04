@@ -1,0 +1,221 @@
+{
+    "module": "Calculator",
+    "icon": "calculator",
+    "description": "Skill to help you calculate. Supports addition, subtraction, division, powers, square root, modulo, sine, cosine, tangente",
+    "slotTypes": [
+        {
+            "name": "MathsFunction",
+            "matchingStrictness": null,
+            "automaticallyExtensible": false,
+            "useSynonyms": true,
+            "values": [
+                {
+                    "value": "+",
+                    "synonyms": [
+                        "plus",
+                        "add"
+                    ]
+                },
+                {
+                    "value": "-",
+                    "synonyms": [
+                        "minus",
+                        "remove",
+                        "subtract"
+                    ]
+                },
+                {
+                    "value": "/",
+                    "synonyms": [
+                        "divided by",
+                        "divide by"
+                    ]
+                },
+                {
+                    "value": "*",
+                    "synonyms": [
+                        "power"
+                    ]
+                },
+                {
+                    "value": "square root",
+                    "synonyms": [
+                        "square root of"
+                    ]
+                },
+                {
+                    "value": "modulo",
+                    "synonyms": [
+                        ""
+                    ]
+                },
+                {
+                    "value": "sine",
+                    "synonyms": [
+                        "sin",
+                        "sinus"
+                    ]
+                },
+                {
+                    "value": "cosine",
+                    "synonyms": [
+                        "cos",
+                        "cosinus"
+                    ]
+                },
+                {
+                    "value": "tangent",
+                    "synonyms": [
+                        "tan"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Number",
+            "matchingStrictness": null,
+            "automaticallyExtensible": true,
+            "useSynonyms": true,
+            "values": [
+                {
+                    "value": "1",
+                    "synonyms": [
+                        "one"
+                    ]
+                },
+                {
+                    "value": "5",
+                    "synonyms": [
+                        "five"
+                    ]
+                },
+                {
+                    "value": "201",
+                    "synonyms": [
+                        "two hundred one",
+                        "two hundred and one"
+                    ]
+                },
+                {
+                    "value": "1851",
+                    "synonyms": [
+                        "one thousand eight hundred fifty-one",
+                        "eighteen fifty one"
+                    ]
+                },
+                {
+                    "value": "11",
+                    "synonyms": [
+                        "eleven"
+                    ]
+                },
+                {
+                    "value": "14",
+                    "synonyms": [
+                        "fourteen"
+                    ]
+                },
+                {
+                    "value": "10534",
+                    "synonyms": [
+                        "ten thousand five hundred thirty-four",
+                        "then thousand five hundred and thirty-four"
+                    ]
+                },
+                {
+                    "value": "673",
+                    "synonyms": [
+                        "six hundred seventy-three",
+                        "six hundred and seventy-three"
+                    ]
+                },
+                {
+                    "value": "2563",
+                    "synonyms": [
+                        "two thousand five hundred sixty-three",
+                        "two thousand five hundred and sixty-three",
+                        "twenty five thousand and sixty-three"
+                    ]
+                }
+            ]
+        }
+    ],
+    "intents": [
+        {
+            "name": "Maths",
+            "description": "",
+            "enabledByDefault": true,
+            "utterances": [
+                "how much is {115:=>Left} {+:=>Function} {996:=>Right}",
+                "how much is {115:=>Left} {-:=>Function} {32:=>Right}",
+                "can you calculate {196354:=>Left} { divided by:=>Function}1{10359:=>Right}",
+                "can you calculate {96:=>Left} {+:=>Function} {685:=>Right}",
+                "what is the result of {9999:=>Left} { plus:=>Function}9{9999:=>Right}",
+                "what is the result of {10359:=>Left} {modulo:=>Function} {10359:=>Right}",
+                "what is {10359:=>Left} { divided by:=>Function}1{15:=>Right}",
+                "what is {115:=>Left} { divided by:=>Function}1{1:=>Right}",
+                "calculate {196354:=>Left} {/:=>Function} {10359:=>Right}",
+                "calculate {56830:=>Left} {modulo:=>Function} {56830:=>Right}",
+                "tell me what's {10359:=>Left} {*:=>Function} {96:=>Right}",
+                "tell me what's {196354:=>Left} { divided by:=>Function}1{1:=>Right}",
+                "what's the result of {221:=>Left} {-:=>Function} {196354:=>Right}",
+                "what's the result of {9999:=>Left} {modulo:=>Function} {997:=>Right}",
+                "tell me what is {6634:=>Left} { minus:=>Function}2{221:=>Right}",
+                "tell me what is {997:=>Left} { plus:=>Function}5{5589654:=>Right}",
+                "{ subtract:=>Function} {10359:=>Right}",
+                "{ sinus:=>Function} {685:=>Right}",
+                "{ cos:=>Function} {32:=>Right}",
+                "{ tan:=>Function} {32:=>Right}",
+                "{ sinus:=>Function} {196354:=>Right}",
+                "{*:=>Function} {5589654:=>Right}",
+                "{ plus:=>Function} {56830:=>Right}",
+                "{ add:=>Function} {15:=>Right}",
+                "{ add:=>Function} {196354:=>Right}",
+                "{modulo :=>Function}6{685:=>Right}",
+                "{ cosinus:=>Function} {1:=>Right}",
+                "{ plus:=>Function} {115:=>Right}",
+                "{+:=>Function} {6634:=>Right}",
+                "{ power:=>Function} {685:=>Right}",
+                "how much is {96:=>Left} {+:=>Function} {221:=>Right}",
+                "how much is {685:=>Left} { plus:=>Function}9{997:=>Right}",
+                "can you calculate {196354:=>Left} { power:=>Function}1{15:=>Right}",
+                "can you calculate {6634:=>Left} {+:=>Function} {997:=>Right}",
+                "what is the result of {32:=>Left} {*:=>Function} {196354:=>Right}",
+                "what is the result of {1:=>Left} { minus:=>Function}1{10359:=>Right}",
+                "what is {5589654:=>Left} {*:=>Function} {1:=>Right}",
+                "what is {32:=>Left} {+:=>Function} {196354:=>Right}",
+                "calculate {5589654:=>Left} { divided by:=>Function}5{56830:=>Right}",
+                "calculate {5589654:=>Left} { plus:=>Function}1{10359:=>Right}",
+                "tell me what's {56830:=>Left} { power:=>Function}1{1:=>Right}",
+                "tell me what's {1520:=>Left} {modulo:=>Function} {1520:=>Right}",
+                "what's the result of {6634:=>Left} { plus:=>Function}6{685:=>Right}",
+                "what's the result of {5589654:=>Left} {/:=>Function} {196354:=>Right}",
+                "tell me what is {96:=>Left} { minus:=>Function}1{196354:=>Right}",
+                "tell me what is {32:=>Left} { power:=>Function}2{221:=>Right}"
+            ],
+            "slots": [
+                {
+                    "name": "Function",
+                    "description": null,
+                    "required": false,
+                    "type": "MathsFunction",
+                    "missingQuestion": ""
+                },
+                {
+                    "name": "Right",
+                    "description": null,
+                    "required": false,
+                    "type": "Number",
+                    "missingQuestion": ""
+                },
+                {
+                    "name": "Left",
+                    "description": null,
+                    "required": false,
+                    "type": "Number",
+                    "missingQuestion": ""
+                }
+            ]
+        }
+    ]
+}

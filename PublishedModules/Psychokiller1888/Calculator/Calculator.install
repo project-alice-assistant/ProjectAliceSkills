@@ -1,9 +1,9 @@
 {
-	"name": "PhilipsHue",
-	"version": 0.1,
+	"name": "Calculator",
+	"version": 1.0,
 	"author": "Psychokiller1888",
-	"maintainers": ["Jierka"],
-	"desc": "Control your Philips Hue lamps",
+	"maintainers": [""],
+	"desc": "Do some calculation with alice",
 	"aliceMinVersion": "",
 	"requirements": [],
 	"conditions": {

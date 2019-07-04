@@ -1,0 +1,14 @@
+{
+	"notUnderstood": {
+		"default": [
+			"Sorry? I didn't understand the calculation",
+			"I'm afraid I did not understand the calculation"
+		]
+	},
+	"noPreviousOperation": {
+		"default": [
+			"Sorry, there's no previous operation",
+			"We haven't calculated anything yet"
+		]
+	}
+}
