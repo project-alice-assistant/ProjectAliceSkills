@@ -16,7 +16,7 @@ class Calculator(Module):
 	Description: Do some calculation with alice
 	"""
 
-	_INTENT_MATHS = Intent(Intent('Maths'))
+	_INTENT_MATHS = Intent('Maths')
 
 	def __init__(self):
 		self._SUPPORTED_INTENTS	= [
@@ -31,7 +31,7 @@ class Calculator(Module):
 			return False
 
 		siteId = session.siteId
-		slots = session.slotsAsObjects
+		slots = session.slots
 		sessionId = session.sessionId
 
 		if intent == self._INTENT_MATHS:
@@ -39,17 +39,17 @@ class Calculator(Module):
 				managers.MqttServer.continueDialog(sessionId=sessionId, text=managers.TalkManager.randomTalk(self.name, 'notUnderstood'))
 				return True
 
-			func = slots['Function'][0].value['value']
+			func = slots['Function']
 
 			if 'Left' in slots and 'Right' in slots:
-				result = self.calculate(float(slots['Left'][0].value['value']), float(slots['Right'][0].value['value']), func)
+				result = self.calculate(float(slots['Left']), float(slots['Right']), func)
 
 			elif 'Right' in slots and 'Left' not in slots:
 				if not self._lastNumber:
 					managers.MqttServer.endTalk(sessionId=sessionId, text=managers.TalkManager.randomTalk(self.name, 'noPreviousOperation'), client=siteId)
 					return True
 
-				result = self.calculate(self._lastNumber, float(slots['Right'][0].value['value']), func)
+				result = self.calculate(self._lastNumber, float(slots['Right']), func)
 
 			else:
 				managers.MqttServer.continueDialog(sessionId=sessionId, text=managers.TalkManager.randomTalk(self.name, 'notUnderstood'), client=siteId)
