@@ -1,7 +1,7 @@
 # AliceSatellite
 
 ### Download
-`wget http://bit.ly/AliceSatellite -O ~/ProjectAlice/system/moduleInstallTickets/AliceSatellite.install`
+`wget http://bit.ly/PAAliceSatellite -O ~/ProjectAlice/system/moduleInstallTickets/AliceSatellite.install`
 
 ### Description
 AliceSatellite is the official module to support Project Alice satellites
