@@ -40,7 +40,7 @@ class AliceSatellite(Module):
 	def onBooted(self):
 		confManager = managers.ConfigManager
 		if confManager.configAliceExists('onReboot') and confManager.getAliceConfigByName('onReboot') == 'greetAndRebootModules':
-			self.restartModules()
+			self.restartDevice()
 
 
 	def onSleep(self):
@@ -162,7 +162,7 @@ class AliceSatellite(Module):
 			return 'undefined'
 
 
-	def restartModules(self):
+	def restartDevice(self):
 		uids = managers.DeviceManager.getDeviceUidByType(deviceType=self.name, connectedOnly=True, onlyOne=False)
 		if not uids:
 			return
