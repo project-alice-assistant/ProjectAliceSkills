@@ -70,7 +70,7 @@ class FreeCurrencyConverterDotCom(Module):
 				fromCurrency = slotsObject['FromCurrency'][0].value['value']
 
 			try:
-				url = 'https://free.currconv.com/api/v7/convert?q={}_{}&compact=ultra&apiKey={}'.format(fromCurrency, toCurrency, managers.ConfigManager.getModuleConfigByName(self.name, 'currencyConvertyAPIKey'))
+				url = 'https://free.currconv.com/api/v7/convert?q={}_{}&compact=ultra&apiKey={}'.format(fromCurrency, toCurrency, managers.ConfigManager.getModuleConfigByName(self.name, 'apiKey'))
 				req = requests.get(url = url)
 				data = json.loads(req.content.decode())
 
@@ -78,7 +78,7 @@ class FreeCurrencyConverterDotCom(Module):
 				converted = round(float(amount) * float(conversion), 2)
 
 				managers.MqttServer.endTalk(sessionId,
-											text=managers.TalkManager.randomTalk(module=self.name, talk='randomTalk').format(amount, fromCurrency, converted, toCurrency),
+											text=managers.TalkManager.randomTalk(module=self.name, talk='answer').format(amount, fromCurrency, converted, toCurrency),
 											client=siteId)
 			except Exception as e:
 				self._logger.error(e)

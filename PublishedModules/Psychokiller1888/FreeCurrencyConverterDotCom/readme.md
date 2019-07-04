@@ -6,7 +6,7 @@
 ### Description
 Let's you convert world currencies
 
-- Version: 1.0
+- Version: 1.01
 - Author: Psychokiller1888
 - Maintainers: N/A
 - Alice minimum version: N/A
