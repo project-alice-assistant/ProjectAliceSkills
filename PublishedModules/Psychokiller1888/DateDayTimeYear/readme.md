@@ -3,13 +3,15 @@
 ### Download
 `wget http://bit.ly/DateDayTimeYear -O ~/ProjectAlice/system/moduleInstallTickets/DateDayTimeYear.install`
 
-### Desc
+### Description
 Ask for the time, date, day and year
 
 - Version: 0.1
 - Author: Psycho
-- Maintainers: N/A
+- Maintainers:
+  - Jierka
 - Alice minimum version: N/A
 - Conditions:
-  - EN, FR
+  - EN
+  - FR
 - Requirements: N/A

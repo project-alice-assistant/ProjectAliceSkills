@@ -3,12 +3,13 @@
 ### Download
 `wget http://bit.ly/IcanhazdadjokeDotNet -O ~/ProjectAlice/system/moduleInstallTickets/IcanhazdadjokeDotNet.install`
 
-### Desc
+### Description
 Get a random dad joke on demand
 
-- Version: 1.02
+- Version: 0.1
 - Author: Psycho
-- Maintainers: N/A
+- Maintainers:
+  - Jierka
 - Alice minimum version: N/A
 - Conditions:
   - EN

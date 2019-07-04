@@ -1,0 +1,13 @@
+{
+	"nothing": {
+		"default": [
+			"Désolée, mais je n'ai rien dis",
+			"Je n'ai rien dis, désolée"
+		]
+	},
+	"didntUnderstand": {
+		"default": [
+			"Je ne comprend pas ce que tu veux"
+		]
+	}
+}

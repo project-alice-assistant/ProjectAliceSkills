@@ -1,0 +1,12 @@
+{
+	"name": "ContextSensitive",
+	"version": 0.1,
+	"author": "Psycho",
+	"maintainers": ["Jierka"],
+	"desc": "ContextSensitive is the official context sensitive module. It handle intents like \"Delete this\", \"Forget about that\"",
+	"aliceMinVersion": "",
+	"requirements": [],
+	"conditions": {
+		"lang": ["en", "fr"]
+	}
+}

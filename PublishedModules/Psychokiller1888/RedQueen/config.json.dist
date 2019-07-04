@@ -1,0 +1,5 @@
+{
+    "randomSpeeking": true,
+    "randomTalkMinDelay": 900,
+    "randomTalkMaxDelay": 1800
+}

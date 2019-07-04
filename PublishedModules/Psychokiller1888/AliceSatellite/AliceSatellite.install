@@ -1,0 +1,12 @@
+{
+	"name": "AliceSatellite",
+	"version": 0.1,
+	"author": "Psycho",
+	"maintainers": ["Jierka"],
+	"desc": "AliceSatellite is the official module to support Project Alice satellites",
+	"aliceMinVersion": "",
+	"requirements": [],
+	"conditions": {
+		"lang": ["en", "fr"]
+	}
+}

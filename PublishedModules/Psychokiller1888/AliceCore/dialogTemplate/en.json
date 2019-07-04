@@ -1,0 +1,3674 @@
+{
+	"module": "AliceCore",
+	"icon": "settings",
+	"description": "Contains intents that manage root stuff of Project Alice",
+	"slotTypes": [
+		{
+			"name": "Languages",
+			"matchingStrictness": null,
+			"automaticallyExtensible": true,
+			"useSynonyms": true,
+			"values": [{
+					"value": "fr",
+					"synonyms": [
+						"french"
+					]
+				},
+				{
+					"value": "en",
+					"synonyms": [
+						"english"
+					]
+				},
+				{
+					"value": "sw",
+					"synonyms": [
+						"swedish"
+					]
+				},
+				{
+					"value": "jp",
+					"synonyms": [
+						"japanese"
+					]
+				},
+				{
+					"value": "fi",
+					"synonyms": [
+						"finnish"
+					]
+				},
+				{
+					"value": "es",
+					"synonyms": [
+						"spannish"
+					]
+				},
+				{
+					"value": "ru",
+					"synonyms": [
+						"russian"
+					]
+				},
+				{
+					"value": "de",
+					"synonyms": [
+						"german"
+					]
+				},
+				{
+					"value": "it",
+					"synonyms": [
+						"italian"
+					]
+				}
+			]
+		},
+		{
+			"name": "Letters",
+			"matchingStrictness": null,
+			"automaticallyExtensible": false,
+			"useSynonyms": true,
+			"values": [
+				{
+					"value": "a",
+					"synonyms": [
+						"A"
+					]
+				},
+				{
+					"value": "b",
+					"synonyms": [
+						"B"
+					]
+				},
+				{
+					"value": "c",
+					"synonyms": [
+						"C"
+					]
+				},
+				{
+					"value": "d",
+					"synonyms": [
+						"D"
+					]
+				},
+				{
+					"value": "e",
+					"synonyms": [
+						"E"
+					]
+				},
+				{
+					"value": "f",
+					"synonyms": [
+						"F"
+					]
+				},
+				{
+					"value": "g",
+					"synonyms": [
+						"G"
+					]
+				},
+				{
+					"value": "h",
+					"synonyms": [
+						"H"
+					]
+				},
+				{
+					"value": "i",
+					"synonyms": [
+						"I"
+					]
+				},
+				{
+					"value": "j",
+					"synonyms": [
+						"J"
+					]
+				},
+				{
+					"value": "k",
+					"synonyms": [
+						"K"
+					]
+				},
+				{
+					"value": "l",
+					"synonyms": [
+						"L"
+					]
+				},
+				{
+					"value": "m",
+					"synonyms": [
+						"M"
+					]
+				},
+				{
+					"value": "n",
+					"synonyms": [
+						"N"
+					]
+				},
+				{
+					"value": "o",
+					"synonyms": [
+						"O"
+					]
+				},
+				{
+					"value": "p",
+					"synonyms": [
+						"P"
+					]
+				},
+				{
+					"value": "q",
+					"synonyms": [
+						"Q"
+					]
+				},
+				{
+					"value": "r",
+					"synonyms": [
+						"R"
+					]
+				},
+				{
+					"value": "s",
+					"synonyms": [
+						"S"
+					]
+				},
+				{
+					"value": "t",
+					"synonyms": [
+						"T"
+					]
+				},
+				{
+					"value": "u",
+					"synonyms": [
+						"U"
+					]
+				},
+				{
+					"value": "v",
+					"synonyms": [
+						"V"
+					]
+				},
+				{
+					"value": "w",
+					"synonyms": [
+						"W"
+					]
+				},
+				{
+					"value": "x",
+					"synonyms": [
+						"X"
+					]
+				},
+				{
+					"value": "y",
+					"synonyms": [
+						"Y"
+					]
+				},
+				{
+					"value": "z",
+					"synonyms": [
+						"Z"
+					]
+				}
+			]
+		},
+		{
+			"name": "AliceHardwareTypes",
+			"matchingStrictness": null,
+			"automaticallyExtensible": false,
+			"useSynonyms": true,
+			"values": [{
+					"value": "esp",
+					"synonyms": [
+						"tasmota"
+					]
+				},
+				{
+					"value": "satellite",
+					"synonyms": [
+						"alice"
+					]
+				}
+			]
+		},
+		{
+			"name": "Room",
+			"matchingStrictness": null,
+			"automaticallyExtensible": true,
+			"useSynonyms": false,
+			"values": [{
+					"value": "anteroom"
+				},
+				{
+					"value": "armory"
+				},
+				{
+					"value": "assembly room"
+				},
+				{
+					"value": "attic"
+				},
+				{
+					"value": "backroom"
+				},
+				{
+					"value": "ballroom"
+				},
+				{
+					"value": "basement"
+				},
+				{
+					"value": "bathroom"
+				},
+				{
+					"value": "bedroom"
+				},
+				{
+					"value": "boardroom"
+				},
+				{
+					"value": "boiler room"
+				},
+				{
+					"value": "boudoir"
+				},
+				{
+					"value": "breakfast nook"
+				},
+				{
+					"value": "breakfast room"
+				},
+				{
+					"value": "cabin"
+				},
+				{
+					"value": "cell"
+				},
+				{
+					"value": "cellar"
+				},
+				{
+					"value": "chamber"
+				},
+				{
+					"value": "changing room"
+				},
+				{
+					"value": "chapel"
+				},
+				{
+					"value": "classroom"
+				},
+				{
+					"value": "clean room"
+				},
+				{
+					"value": "cloakroom"
+				},
+				{
+					"value": "cold room"
+				},
+				{
+					"value": "common room"
+				},
+				{
+					"value": "conference room"
+				},
+				{
+					"value": "conservatory"
+				},
+				{
+					"value": "control room"
+				},
+				{
+					"value": "courtroom"
+				},
+				{
+					"value": "cubby"
+				},
+				{
+					"value": "darkroom"
+				},
+				{
+					"value": "den"
+				},
+				{
+					"value": "dining room"
+				},
+				{
+					"value": "dormitory"
+				},
+				{
+					"value": "drawing room"
+				},
+				{
+					"value": "dressing room"
+				},
+				{
+					"value": "dungeon"
+				},
+				{
+					"value": "emergency room"
+				},
+				{
+					"value": "engine room"
+				},
+				{
+					"value": "entry"
+				},
+				{
+					"value": "everywhere"
+				},
+				{
+					"value": "family room"
+				},
+				{
+					"value": "fitting room"
+				},
+				{
+					"value": "formal dining room"
+				},
+				{
+					"value": "foyer"
+				},
+				{
+					"value": "front room"
+				},
+				{
+					"value": "game room"
+				},
+				{
+					"value": "garage"
+				},
+				{
+					"value": "garret"
+				},
+				{
+					"value": "great room"
+				},
+				{
+					"value": "green room"
+				},
+				{
+					"value": "grotto"
+				},
+				{
+					"value": "guest room"
+				},
+				{
+					"value": "gym"
+				},
+				{
+					"value": "hall"
+				},
+				{
+					"value": "hallway"
+				},
+				{
+					"value": "homeroom"
+				},
+				{
+					"value": "hospital room"
+				},
+				{
+					"value": "hotel room"
+				},
+				{
+					"value": "inglenook"
+				},
+				{
+					"value": "inside"
+				},
+				{
+					"value": "jail cell"
+				},
+				{
+					"value": "keep"
+				},
+				{
+					"value": "kitchen"
+				},
+				{
+					"value": "kitchenette"
+				},
+				{
+					"value": "ladies' room"
+				},
+				{
+					"value": "larder"
+				},
+				{
+					"value": "laundry room"
+				},
+				{
+					"value": "library"
+				},
+				{
+					"value": "living room"
+				},
+				{
+					"value": "lobby"
+				},
+				{
+					"value": "locker room"
+				},
+				{
+					"value": "loft"
+				},
+				{
+					"value": "lounge"
+				},
+				{
+					"value": "lunchroom"
+				},
+				{
+					"value": "maid's room"
+				},
+				{
+					"value": "mailroom"
+				},
+				{
+					"value": "men's room"
+				},
+				{
+					"value": "morning room"
+				},
+				{
+					"value": "motel room"
+				},
+				{
+					"value": "mud room"
+				},
+				{
+					"value": "newsroom"
+				},
+				{
+					"value": "nursery"
+				},
+				{
+					"value": "office"
+				},
+				{
+					"value": "operating room"
+				},
+				{
+					"value": "outside"
+				},
+				{
+					"value": "panic room"
+				},
+				{
+					"value": "pantry"
+				},
+				{
+					"value": "parlor"
+				},
+				{
+					"value": "playroom"
+				},
+				{
+					"value": "pool room"
+				},
+				{
+					"value": "powder room"
+				},
+				{
+					"value": "prison cell"
+				},
+				{
+					"value": "rec room"
+				},
+				{
+					"value": "recovery room"
+				},
+				{
+					"value": "restroom room"
+				},
+				{
+					"value": "rumpus room"
+				},
+				{
+					"value": "salesroom"
+				},
+				{
+					"value": "salon"
+				},
+				{
+					"value": "schoolroom"
+				},
+				{
+					"value": "screen porch"
+				},
+				{
+					"value": "scullery"
+				},
+				{
+					"value": "showroom"
+				},
+				{
+					"value": "second room"
+				},
+				{
+					"value": "sick room"
+				},
+				{
+					"value": "sitting room"
+				},
+				{
+					"value": "solarium"
+				},
+				{
+					"value": "staff room"
+				},
+				{
+					"value": "stairs"
+				},
+				{
+					"value": "stateroom"
+				},
+				{
+					"value": "stockroom"
+				},
+				{
+					"value": "storeroom"
+				},
+				{
+					"value": "studio"
+				},
+				{
+					"value": "study"
+				},
+				{
+					"value": "suite"
+				},
+				{
+					"value": "sunroom"
+				},
+				{
+					"value": "tack room"
+				},
+				{
+					"value": "toilet"
+				},
+				{
+					"value": "utility room"
+				},
+				{
+					"value": "vestibule"
+				},
+				{
+					"value": "visitor's room"
+				},
+				{
+					"value": "waiting room"
+				},
+				{
+					"value": "wardroom"
+				},
+				{
+					"value": "washroom"
+				},
+				{
+					"value": "water closet"
+				},
+				{
+					"value": "weight room"
+				},
+				{
+					"value": "wine cellar"
+				},
+				{
+					"value": "women's room"
+				},
+				{
+					"value": "workroom"
+				},
+				{
+					"value": "entrance"
+				},
+				{
+					"value": "corridor"
+				},
+				{
+					"value": "patio"
+				},
+				{
+					"value": "garden"
+				}
+			]
+		},
+		{
+			"name": "EspTypes",
+			"matchingStrictness": null,
+			"automaticallyExtensible": false,
+			"useSynonyms": true,
+			"values": [{
+					"value": "switch"
+				},
+				{
+					"value": "pir",
+					"synonyms": [
+						"pir sensor",
+						"passive infrared sensor",
+						"presence sensor"
+					]
+				}
+			]
+		},
+		{
+			"name": "AnswerYesNo",
+			"matchingStrictness": null,
+			"automaticallyExtensible": false,
+			"useSynonyms": true,
+			"values": [{
+					"value": "yes",
+					"synonyms": [
+						"yes please",
+						"yep",
+						"sure",
+						"yeah"
+					]
+				},
+				{
+					"value": "no",
+					"synonyms": [
+						"no thank you",
+						"no thanks",
+						"nope",
+						"not at all"
+					]
+				}
+			]
+		},
+		{
+			"name": "Name",
+			"matchingStrictness": null,
+			"automaticallyExtensible": true,
+			"useSynonyms": false,
+			"values": [{
+					"value": "James"
+				},
+				{
+					"value": "John"
+				},
+				{
+					"value": "Robert"
+				},
+				{
+					"value": "Michael"
+				},
+				{
+					"value": "William"
+				},
+				{
+					"value": "David"
+				},
+				{
+					"value": "Richard"
+				},
+				{
+					"value": "Charles"
+				},
+				{
+					"value": "Joseph"
+				},
+				{
+					"value": "Thomas"
+				},
+				{
+					"value": "Christopher"
+				},
+				{
+					"value": "Daniel"
+				},
+				{
+					"value": "Paul"
+				},
+				{
+					"value": "Mark"
+				},
+				{
+					"value": "Donald"
+				},
+				{
+					"value": "George"
+				},
+				{
+					"value": "Kenneth"
+				},
+				{
+					"value": "Steven"
+				},
+				{
+					"value": "Edward"
+				},
+				{
+					"value": "Brian"
+				},
+				{
+					"value": "Ronald"
+				},
+				{
+					"value": "Anthony"
+				},
+				{
+					"value": "Kevin"
+				},
+				{
+					"value": "Jason"
+				},
+				{
+					"value": "Matthew"
+				},
+				{
+					"value": "Gary"
+				},
+				{
+					"value": "Timothy"
+				},
+				{
+					"value": "Jose"
+				},
+				{
+					"value": "Larry"
+				},
+				{
+					"value": "Jeffrey"
+				},
+				{
+					"value": "Frank"
+				},
+				{
+					"value": "Scott"
+				},
+				{
+					"value": "Eric"
+				},
+				{
+					"value": "Stephen"
+				},
+				{
+					"value": "Andrew"
+				},
+				{
+					"value": "Raymond"
+				},
+				{
+					"value": "Gregory"
+				},
+				{
+					"value": "Joshua"
+				},
+				{
+					"value": "Jerry"
+				},
+				{
+					"value": "Dennis"
+				},
+				{
+					"value": "Walter"
+				},
+				{
+					"value": "Laurent"
+				},
+				{
+					"value": "Natalija"
+				},
+				{
+					"value": "Patrick"
+				},
+				{
+					"value": "Peter"
+				},
+				{
+					"value": "Harold"
+				},
+				{
+					"value": "Douglas"
+				},
+				{
+					"value": "Henry"
+				},
+				{
+					"value": "Carl"
+				},
+				{
+					"value": "Arthur"
+				},
+				{
+					"value": "Ryan"
+				},
+				{
+					"value": "Roger"
+				},
+				{
+					"value": "Joe"
+				},
+				{
+					"value": "Juan"
+				},
+				{
+					"value": "Jack"
+				},
+				{
+					"value": "Albert"
+				},
+				{
+					"value": "Jonathan"
+				},
+				{
+					"value": "Justin"
+				},
+				{
+					"value": "Terry"
+				},
+				{
+					"value": "Gerald"
+				},
+				{
+					"value": "Keith"
+				},
+				{
+					"value": "Samuel"
+				},
+				{
+					"value": "Willie"
+				},
+				{
+					"value": "Ralph"
+				},
+				{
+					"value": "Lawrence"
+				},
+				{
+					"value": "Nicholas"
+				},
+				{
+					"value": "Roy"
+				},
+				{
+					"value": "Benjamin"
+				},
+				{
+					"value": "Bruce"
+				},
+				{
+					"value": "Brandon"
+				},
+				{
+					"value": "Adam"
+				},
+				{
+					"value": "Harry"
+				},
+				{
+					"value": "Fred"
+				},
+				{
+					"value": "Wayne"
+				},
+				{
+					"value": "Billy"
+				},
+				{
+					"value": "Steve"
+				},
+				{
+					"value": "Louis"
+				},
+				{
+					"value": "Jeremy"
+				},
+				{
+					"value": "Aaron"
+				},
+				{
+					"value": "Randy"
+				},
+				{
+					"value": "Howard"
+				},
+				{
+					"value": "Eugene"
+				},
+				{
+					"value": "Carlos"
+				},
+				{
+					"value": "Russell"
+				},
+				{
+					"value": "Bobby"
+				},
+				{
+					"value": "Victor"
+				},
+				{
+					"value": "Martin"
+				},
+				{
+					"value": "Ernest"
+				},
+				{
+					"value": "Phillip"
+				},
+				{
+					"value": "Todd"
+				},
+				{
+					"value": "Jesse"
+				},
+				{
+					"value": "Craig"
+				},
+				{
+					"value": "Alan"
+				},
+				{
+					"value": "Shawn"
+				},
+				{
+					"value": "Clarence"
+				},
+				{
+					"value": "Sean"
+				},
+				{
+					"value": "Philip"
+				},
+				{
+					"value": "Chris"
+				},
+				{
+					"value": "Johnny"
+				},
+				{
+					"value": "Earl"
+				},
+				{
+					"value": "Jimmy"
+				},
+				{
+					"value": "Antonio"
+				},
+				{
+					"value": "Danny"
+				},
+				{
+					"value": "Bryan"
+				},
+				{
+					"value": "Tony"
+				},
+				{
+					"value": "Luis"
+				},
+				{
+					"value": "Mike"
+				},
+				{
+					"value": "Stanley"
+				},
+				{
+					"value": "Leonard"
+				},
+				{
+					"value": "Nathan"
+				},
+				{
+					"value": "Dale"
+				},
+				{
+					"value": "Manuel"
+				},
+				{
+					"value": "Rodney"
+				},
+				{
+					"value": "Curtis"
+				},
+				{
+					"value": "Norman"
+				},
+				{
+					"value": "Allen"
+				},
+				{
+					"value": "Marvin"
+				},
+				{
+					"value": "Vincent"
+				},
+				{
+					"value": "Glenn"
+				},
+				{
+					"value": "Jeffery"
+				},
+				{
+					"value": "Travis"
+				},
+				{
+					"value": "Jeff"
+				},
+				{
+					"value": "Chad"
+				},
+				{
+					"value": "Jacob"
+				},
+				{
+					"value": "Lee"
+				},
+				{
+					"value": "Melvin"
+				},
+				{
+					"value": "Alfred"
+				},
+				{
+					"value": "Kyle"
+				},
+				{
+					"value": "Francis"
+				},
+				{
+					"value": "Bradley"
+				},
+				{
+					"value": "Jesus"
+				},
+				{
+					"value": "Herbert"
+				},
+				{
+					"value": "Frederick"
+				},
+				{
+					"value": "Ray"
+				},
+				{
+					"value": "Joel"
+				},
+				{
+					"value": "Edwin"
+				},
+				{
+					"value": "Don"
+				},
+				{
+					"value": "Eddie"
+				},
+				{
+					"value": "Ricky"
+				},
+				{
+					"value": "Troy"
+				},
+				{
+					"value": "Randall"
+				},
+				{
+					"value": "Barry"
+				},
+				{
+					"value": "Alexander"
+				},
+				{
+					"value": "Bernard"
+				},
+				{
+					"value": "Mario"
+				},
+				{
+					"value": "Leroy"
+				},
+				{
+					"value": "Francisco"
+				},
+				{
+					"value": "Marcus"
+				},
+				{
+					"value": "Micheal"
+				},
+				{
+					"value": "Theodore"
+				},
+				{
+					"value": "Clifford"
+				},
+				{
+					"value": "Miguel"
+				},
+				{
+					"value": "Oscar"
+				},
+				{
+					"value": "Jay"
+				},
+				{
+					"value": "Jim"
+				},
+				{
+					"value": "Tom"
+				},
+				{
+					"value": "Calvin"
+				},
+				{
+					"value": "Alex"
+				},
+				{
+					"value": "Jon"
+				},
+				{
+					"value": "Ronnie"
+				},
+				{
+					"value": "Bill"
+				},
+				{
+					"value": "Lloyd"
+				},
+				{
+					"value": "Tommy"
+				},
+				{
+					"value": "Leon"
+				},
+				{
+					"value": "Derek"
+				},
+				{
+					"value": "Warren"
+				},
+				{
+					"value": "Darrell"
+				},
+				{
+					"value": "Jerome"
+				},
+				{
+					"value": "Floyd"
+				},
+				{
+					"value": "Leo"
+				},
+				{
+					"value": "Alvin"
+				},
+				{
+					"value": "Tim"
+				},
+				{
+					"value": "Wesley"
+				},
+				{
+					"value": "Gordon"
+				},
+				{
+					"value": "Dean"
+				},
+				{
+					"value": "Greg"
+				},
+				{
+					"value": "Jorge"
+				},
+				{
+					"value": "Dustin"
+				},
+				{
+					"value": "Pedro"
+				},
+				{
+					"value": "Derrick"
+				},
+				{
+					"value": "Dan"
+				},
+				{
+					"value": "Lewis"
+				},
+				{
+					"value": "Zachary"
+				},
+				{
+					"value": "Corey"
+				},
+				{
+					"value": "Herman"
+				},
+				{
+					"value": "Maurice"
+				},
+				{
+					"value": "Vernon"
+				},
+				{
+					"value": "Roberto"
+				},
+				{
+					"value": "Clyde"
+				},
+				{
+					"value": "Glen"
+				},
+				{
+					"value": "Hector"
+				},
+				{
+					"value": "Shane"
+				},
+				{
+					"value": "Ricardo"
+				},
+				{
+					"value": "Sam"
+				},
+				{
+					"value": "Rick"
+				},
+				{
+					"value": "Lester"
+				},
+				{
+					"value": "Brent"
+				},
+				{
+					"value": "Ramon"
+				},
+				{
+					"value": "Charlie"
+				},
+				{
+					"value": "Tyler"
+				},
+				{
+					"value": "Gilbert"
+				},
+				{
+					"value": "Gene"
+				},
+				{
+					"value": "Marc"
+				},
+				{
+					"value": "Reginald"
+				},
+				{
+					"value": "Ruben"
+				},
+				{
+					"value": "Brett"
+				},
+				{
+					"value": "Angel"
+				},
+				{
+					"value": "Nathaniel"
+				},
+				{
+					"value": "Rafael"
+				},
+				{
+					"value": "Leslie"
+				},
+				{
+					"value": "Edgar"
+				},
+				{
+					"value": "Milton"
+				},
+				{
+					"value": "Raul"
+				},
+				{
+					"value": "Ben"
+				},
+				{
+					"value": "Chester"
+				},
+				{
+					"value": "Cecil"
+				},
+				{
+					"value": "Duane"
+				},
+				{
+					"value": "Franklin"
+				},
+				{
+					"value": "Andre"
+				},
+				{
+					"value": "Elmer"
+				},
+				{
+					"value": "Brad"
+				},
+				{
+					"value": "Gabriel"
+				},
+				{
+					"value": "Ron"
+				},
+				{
+					"value": "Mitchell"
+				},
+				{
+					"value": "Roland"
+				},
+				{
+					"value": "Arnold"
+				},
+				{
+					"value": "Harvey"
+				},
+				{
+					"value": "Jared"
+				},
+				{
+					"value": "Adrian"
+				},
+				{
+					"value": "Karl"
+				},
+				{
+					"value": "Cory"
+				},
+				{
+					"value": "Claude"
+				},
+				{
+					"value": "Erik"
+				},
+				{
+					"value": "Darryl"
+				},
+				{
+					"value": "Jamie"
+				},
+				{
+					"value": "Neil"
+				},
+				{
+					"value": "Jessie"
+				},
+				{
+					"value": "Christian"
+				},
+				{
+					"value": "Javier"
+				},
+				{
+					"value": "Fernando"
+				},
+				{
+					"value": "Clinton"
+				},
+				{
+					"value": "Ted"
+				},
+				{
+					"value": "Mathew"
+				},
+				{
+					"value": "Tyrone"
+				},
+				{
+					"value": "Darren"
+				},
+				{
+					"value": "Lonnie"
+				},
+				{
+					"value": "Lance"
+				},
+				{
+					"value": "Cody"
+				},
+				{
+					"value": "Julio"
+				},
+				{
+					"value": "Kelly"
+				},
+				{
+					"value": "Kurt"
+				},
+				{
+					"value": "Allan"
+				},
+				{
+					"value": "Nelson"
+				},
+				{
+					"value": "Guy"
+				},
+				{
+					"value": "Clayton"
+				},
+				{
+					"value": "Hugh"
+				},
+				{
+					"value": "Max"
+				},
+				{
+					"value": "Dwayne"
+				},
+				{
+					"value": "Dwight"
+				},
+				{
+					"value": "Armando"
+				},
+				{
+					"value": "Felix"
+				},
+				{
+					"value": "Jimmie"
+				},
+				{
+					"value": "Everett"
+				},
+				{
+					"value": "Jordan"
+				},
+				{
+					"value": "Ian"
+				},
+				{
+					"value": "Wallace"
+				},
+				{
+					"value": "Ken"
+				},
+				{
+					"value": "Bob"
+				},
+				{
+					"value": "Jaime"
+				},
+				{
+					"value": "Casey"
+				},
+				{
+					"value": "Alfredo"
+				},
+				{
+					"value": "Alberto"
+				},
+				{
+					"value": "Dave"
+				},
+				{
+					"value": "Ivan"
+				},
+				{
+					"value": "Johnnie"
+				},
+				{
+					"value": "Sidney"
+				},
+				{
+					"value": "Byron"
+				},
+				{
+					"value": "Julian"
+				},
+				{
+					"value": "Isaac"
+				},
+				{
+					"value": "Morris"
+				},
+				{
+					"value": "Clifton"
+				},
+				{
+					"value": "Willard"
+				},
+				{
+					"value": "Daryl"
+				},
+				{
+					"value": "Ross"
+				},
+				{
+					"value": "Virgil"
+				},
+				{
+					"value": "Andy"
+				},
+				{
+					"value": "Marshall"
+				},
+				{
+					"value": "Salvador"
+				},
+				{
+					"value": "Perry"
+				},
+				{
+					"value": "Kirk"
+				},
+				{
+					"value": "Sergio"
+				},
+				{
+					"value": "Marion"
+				},
+				{
+					"value": "Tracy"
+				},
+				{
+					"value": "Seth"
+				},
+				{
+					"value": "Kent"
+				},
+				{
+					"value": "Terrance"
+				},
+				{
+					"value": "Rene"
+				},
+				{
+					"value": "Eduardo"
+				},
+				{
+					"value": "Terrence"
+				},
+				{
+					"value": "Enrique"
+				},
+				{
+					"value": "Freddie"
+				},
+				{
+					"value": "Wade"
+				},
+				{
+					"value": "Austin"
+				},
+				{
+					"value": "Stuart"
+				},
+				{
+					"value": "Fredrick"
+				},
+				{
+					"value": "Arturo"
+				},
+				{
+					"value": "Alejandro"
+				},
+				{
+					"value": "Jackie"
+				},
+				{
+					"value": "Joey"
+				},
+				{
+					"value": "Nick"
+				},
+				{
+					"value": "Luther"
+				},
+				{
+					"value": "Wendell"
+				},
+				{
+					"value": "Jeremiah"
+				},
+				{
+					"value": "Evan"
+				},
+				{
+					"value": "Julius"
+				},
+				{
+					"value": "Dana"
+				},
+				{
+					"value": "Donnie"
+				},
+				{
+					"value": "Otis"
+				},
+				{
+					"value": "Shannon"
+				},
+				{
+					"value": "Trevor"
+				},
+				{
+					"value": "Oliver"
+				},
+				{
+					"value": "Luke"
+				},
+				{
+					"value": "Homer"
+				},
+				{
+					"value": "Gerard"
+				},
+				{
+					"value": "Doug"
+				},
+				{
+					"value": "Kenny"
+				},
+				{
+					"value": "Hubert"
+				},
+				{
+					"value": "Angelo"
+				},
+				{
+					"value": "Shaun"
+				},
+				{
+					"value": "Lyle"
+				},
+				{
+					"value": "Matt"
+				},
+				{
+					"value": "Lynn"
+				},
+				{
+					"value": "Alfonso"
+				},
+				{
+					"value": "Orlando"
+				},
+				{
+					"value": "Rex"
+				},
+				{
+					"value": "Carlton"
+				},
+				{
+					"value": "Ernesto"
+				},
+				{
+					"value": "Cameron"
+				},
+				{
+					"value": "Neal"
+				},
+				{
+					"value": "Pablo"
+				},
+				{
+					"value": "Lorenzo"
+				},
+				{
+					"value": "Omar"
+				},
+				{
+					"value": "Wilbur"
+				},
+				{
+					"value": "Blake"
+				},
+				{
+					"value": "Grant"
+				},
+				{
+					"value": "Horace"
+				},
+				{
+					"value": "Roderick"
+				},
+				{
+					"value": "Kerry"
+				},
+				{
+					"value": "Abraham"
+				},
+				{
+					"value": "Willis"
+				},
+				{
+					"value": "Rickey"
+				},
+				{
+					"value": "Jean"
+				},
+				{
+					"value": "Ira"
+				},
+				{
+					"value": "Andres"
+				},
+				{
+					"value": "Cesar"
+				},
+				{
+					"value": "Johnathan"
+				},
+				{
+					"value": "Malcolm"
+				},
+				{
+					"value": "Rudolph"
+				},
+				{
+					"value": "Damon"
+				},
+				{
+					"value": "Kelvin"
+				},
+				{
+					"value": "Rudy"
+				},
+				{
+					"value": "Preston"
+				},
+				{
+					"value": "Alton"
+				},
+				{
+					"value": "Archie"
+				},
+				{
+					"value": "Marco"
+				},
+				{
+					"value": "Wm"
+				},
+				{
+					"value": "Pete"
+				},
+				{
+					"value": "Randolph"
+				},
+				{
+					"value": "Garry"
+				},
+				{
+					"value": "Geoffrey"
+				},
+				{
+					"value": "Jonathon"
+				},
+				{
+					"value": "Felipe"
+				},
+				{
+					"value": "Bennie"
+				},
+				{
+					"value": "Gerardo"
+				},
+				{
+					"value": "Ed"
+				},
+				{
+					"value": "Dominic"
+				},
+				{
+					"value": "Robin"
+				},
+				{
+					"value": "Loren"
+				},
+				{
+					"value": "Delbert"
+				},
+				{
+					"value": "Colin"
+				},
+				{
+					"value": "Guillermo"
+				},
+				{
+					"value": "Earnest"
+				},
+				{
+					"value": "Lucas"
+				},
+				{
+					"value": "Benny"
+				},
+				{
+					"value": "Noel"
+				},
+				{
+					"value": "Spencer"
+				},
+				{
+					"value": "Rodolfo"
+				},
+				{
+					"value": "Myron"
+				},
+				{
+					"value": "Edmund"
+				},
+				{
+					"value": "Garrett"
+				},
+				{
+					"value": "Salvatore"
+				},
+				{
+					"value": "Cedric"
+				},
+				{
+					"value": "Lowell"
+				},
+				{
+					"value": "Gregg"
+				},
+				{
+					"value": "Sherman"
+				},
+				{
+					"value": "Wilson"
+				},
+				{
+					"value": "Devin"
+				},
+				{
+					"value": "Sylvester"
+				},
+				{
+					"value": "Kim"
+				},
+				{
+					"value": "Roosevelt"
+				},
+				{
+					"value": "Israel"
+				},
+				{
+					"value": "Jermaine"
+				},
+				{
+					"value": "Forrest"
+				},
+				{
+					"value": "Wilbert"
+				},
+				{
+					"value": "Leland"
+				},
+				{
+					"value": "Simon"
+				},
+				{
+					"value": "Guadalupe"
+				},
+				{
+					"value": "Clark"
+				},
+				{
+					"value": "Irving"
+				},
+				{
+					"value": "Carroll"
+				},
+				{
+					"value": "Bryant"
+				},
+				{
+					"value": "Owen"
+				},
+				{
+					"value": "Rufus"
+				},
+				{
+					"value": "Woodrow"
+				},
+				{
+					"value": "Sammy"
+				},
+				{
+					"value": "Kristopher"
+				},
+				{
+					"value": "Mack"
+				},
+				{
+					"value": "Levi"
+				},
+				{
+					"value": "Marcos"
+				},
+				{
+					"value": "Gustavo"
+				},
+				{
+					"value": "Jake"
+				},
+				{
+					"value": "Lionel"
+				},
+				{
+					"value": "Marty"
+				},
+				{
+					"value": "Taylor"
+				},
+				{
+					"value": "Ellis"
+				},
+				{
+					"value": "Dallas"
+				},
+				{
+					"value": "Gilberto"
+				},
+				{
+					"value": "Clint"
+				},
+				{
+					"value": "Nicolas"
+				},
+				{
+					"value": "Laurence"
+				},
+				{
+					"value": "Ismael"
+				},
+				{
+					"value": "Orville"
+				},
+				{
+					"value": "Drew"
+				},
+				{
+					"value": "Jody"
+				},
+				{
+					"value": "Ervin"
+				},
+				{
+					"value": "Dewey"
+				},
+				{
+					"value": "Al"
+				},
+				{
+					"value": "Wilfred"
+				},
+				{
+					"value": "Josh"
+				},
+				{
+					"value": "Hugo"
+				},
+				{
+					"value": "Ignacio"
+				},
+				{
+					"value": "Caleb"
+				},
+				{
+					"value": "Tomas"
+				},
+				{
+					"value": "Sheldon"
+				},
+				{
+					"value": "Erick"
+				},
+				{
+					"value": "Frankie"
+				},
+				{
+					"value": "Stewart"
+				},
+				{
+					"value": "Doyle"
+				},
+				{
+					"value": "Darrel"
+				},
+				{
+					"value": "Rogelio"
+				},
+				{
+					"value": "Terence"
+				},
+				{
+					"value": "Santiago"
+				},
+				{
+					"value": "Mary"
+				},
+				{
+					"value": "Patricia"
+				},
+				{
+					"value": "Linda"
+				},
+				{
+					"value": "Barbara"
+				},
+				{
+					"value": "Elizabeth"
+				},
+				{
+					"value": "Jennifer"
+				},
+				{
+					"value": "Maria"
+				},
+				{
+					"value": "Susan"
+				},
+				{
+					"value": "Margaret"
+				},
+				{
+					"value": "Dorothy"
+				},
+				{
+					"value": "Lisa"
+				},
+				{
+					"value": "Nancy"
+				},
+				{
+					"value": "Karen"
+				},
+				{
+					"value": "Betty"
+				},
+				{
+					"value": "Helen"
+				},
+				{
+					"value": "Sandra"
+				},
+				{
+					"value": "Donna"
+				},
+				{
+					"value": "Carol"
+				},
+				{
+					"value": "Ruth"
+				},
+				{
+					"value": "Sharon"
+				},
+				{
+					"value": "Michelle"
+				},
+				{
+					"value": "Laura"
+				},
+				{
+					"value": "Sarah"
+				},
+				{
+					"value": "Kimberly"
+				},
+				{
+					"value": "Deborah"
+				},
+				{
+					"value": "Jessica"
+				},
+				{
+					"value": "Shirley"
+				},
+				{
+					"value": "Cynthia"
+				},
+				{
+					"value": "Angela"
+				},
+				{
+					"value": "Melissa"
+				},
+				{
+					"value": "Brenda"
+				},
+				{
+					"value": "Amy"
+				},
+				{
+					"value": "Anna"
+				},
+				{
+					"value": "Rebecca"
+				},
+				{
+					"value": "Virginia"
+				},
+				{
+					"value": "Kathleen"
+				},
+				{
+					"value": "Pamela"
+				},
+				{
+					"value": "Martha"
+				},
+				{
+					"value": "Debra"
+				},
+				{
+					"value": "Amanda"
+				},
+				{
+					"value": "Stephanie"
+				},
+				{
+					"value": "Carolyn"
+				},
+				{
+					"value": "Christine"
+				},
+				{
+					"value": "Marie"
+				},
+				{
+					"value": "Janet"
+				},
+				{
+					"value": "Catherine"
+				},
+				{
+					"value": "Frances"
+				},
+				{
+					"value": "Ann"
+				},
+				{
+					"value": "Joyce"
+				},
+				{
+					"value": "Diane"
+				},
+				{
+					"value": "Alice"
+				},
+				{
+					"value": "Julie"
+				},
+				{
+					"value": "Heather"
+				},
+				{
+					"value": "Teresa"
+				},
+				{
+					"value": "Doris"
+				},
+				{
+					"value": "Gloria"
+				},
+				{
+					"value": "Evelyn"
+				},
+				{
+					"value": "Jean"
+				},
+				{
+					"value": "Cheryl"
+				},
+				{
+					"value": "Mildred"
+				},
+				{
+					"value": "Katherine"
+				},
+				{
+					"value": "Joan"
+				},
+				{
+					"value": "Ashley"
+				},
+				{
+					"value": "Judith"
+				},
+				{
+					"value": "Rose"
+				},
+				{
+					"value": "Janice"
+				},
+				{
+					"value": "Kelly"
+				},
+				{
+					"value": "Nicole"
+				},
+				{
+					"value": "Judy"
+				},
+				{
+					"value": "Christina"
+				},
+				{
+					"value": "Kathy"
+				},
+				{
+					"value": "Theresa"
+				},
+				{
+					"value": "Beverly"
+				},
+				{
+					"value": "Denise"
+				},
+				{
+					"value": "Tammy"
+				},
+				{
+					"value": "Irene"
+				},
+				{
+					"value": "Jane"
+				},
+				{
+					"value": "Lori"
+				},
+				{
+					"value": "Rachel"
+				},
+				{
+					"value": "Marilyn"
+				},
+				{
+					"value": "Andrea"
+				},
+				{
+					"value": "Kathryn"
+				},
+				{
+					"value": "Louise"
+				},
+				{
+					"value": "Sara"
+				},
+				{
+					"value": "Anne"
+				},
+				{
+					"value": "Jacqueline"
+				},
+				{
+					"value": "Wanda"
+				},
+				{
+					"value": "Bonnie"
+				},
+				{
+					"value": "Julia"
+				},
+				{
+					"value": "Ruby"
+				},
+				{
+					"value": "Lois"
+				},
+				{
+					"value": "Tina"
+				},
+				{
+					"value": "Phyllis"
+				},
+				{
+					"value": "Norma"
+				},
+				{
+					"value": "Paula"
+				},
+				{
+					"value": "Diana"
+				},
+				{
+					"value": "Annie"
+				},
+				{
+					"value": "Lillian"
+				},
+				{
+					"value": "Emily"
+				},
+				{
+					"value": "Robin"
+				},
+				{
+					"value": "Peggy"
+				},
+				{
+					"value": "Crystal"
+				},
+				{
+					"value": "Gladys"
+				},
+				{
+					"value": "Rita"
+				},
+				{
+					"value": "Dawn"
+				},
+				{
+					"value": "Connie"
+				},
+				{
+					"value": "Florence"
+				},
+				{
+					"value": "Tracy"
+				},
+				{
+					"value": "Edna"
+				},
+				{
+					"value": "Tiffany"
+				},
+				{
+					"value": "Carmen"
+				},
+				{
+					"value": "Rosa"
+				},
+				{
+					"value": "Cindy"
+				},
+				{
+					"value": "Grace"
+				},
+				{
+					"value": "Wendy"
+				},
+				{
+					"value": "Victoria"
+				},
+				{
+					"value": "Edith"
+				},
+				{
+					"value": "Kim"
+				},
+				{
+					"value": "Sherry"
+				},
+				{
+					"value": "Sylvia"
+				},
+				{
+					"value": "Josephine"
+				},
+				{
+					"value": "Thelma"
+				},
+				{
+					"value": "Shannon"
+				},
+				{
+					"value": "Sheila"
+				},
+				{
+					"value": "Ethel"
+				},
+				{
+					"value": "Ellen"
+				},
+				{
+					"value": "Elaine"
+				},
+				{
+					"value": "Marjorie"
+				},
+				{
+					"value": "Carrie"
+				},
+				{
+					"value": "Charlotte"
+				},
+				{
+					"value": "Monica"
+				},
+				{
+					"value": "Esther"
+				},
+				{
+					"value": "Pauline"
+				},
+				{
+					"value": "Emma"
+				},
+				{
+					"value": "Juanita"
+				},
+				{
+					"value": "Anita"
+				},
+				{
+					"value": "Rhonda"
+				},
+				{
+					"value": "Hazel"
+				},
+				{
+					"value": "Amber"
+				},
+				{
+					"value": "Eva"
+				},
+				{
+					"value": "Debbie"
+				},
+				{
+					"value": "April"
+				},
+				{
+					"value": "Leslie"
+				},
+				{
+					"value": "Clara"
+				},
+				{
+					"value": "Lucille"
+				},
+				{
+					"value": "Jamie"
+				},
+				{
+					"value": "Joanne"
+				},
+				{
+					"value": "Eleanor"
+				},
+				{
+					"value": "Valerie"
+				},
+				{
+					"value": "Danielle"
+				},
+				{
+					"value": "Megan"
+				},
+				{
+					"value": "Alicia"
+				},
+				{
+					"value": "Suzanne"
+				},
+				{
+					"value": "Michele"
+				},
+				{
+					"value": "Gail"
+				},
+				{
+					"value": "Bertha"
+				},
+				{
+					"value": "Darlene"
+				},
+				{
+					"value": "Veronica"
+				},
+				{
+					"value": "Jill"
+				},
+				{
+					"value": "Erin"
+				},
+				{
+					"value": "Geraldine"
+				},
+				{
+					"value": "Lauren"
+				},
+				{
+					"value": "Cathy"
+				},
+				{
+					"value": "Joann"
+				},
+				{
+					"value": "Lorraine"
+				},
+				{
+					"value": "Lynn"
+				},
+				{
+					"value": "Sally"
+				},
+				{
+					"value": "Regina"
+				},
+				{
+					"value": "Erica"
+				},
+				{
+					"value": "Beatrice"
+				},
+				{
+					"value": "Dolores"
+				},
+				{
+					"value": "Bernice"
+				},
+				{
+					"value": "Audrey"
+				},
+				{
+					"value": "Yvonne"
+				},
+				{
+					"value": "Annette"
+				},
+				{
+					"value": "June"
+				},
+				{
+					"value": "Samantha"
+				},
+				{
+					"value": "Marion"
+				},
+				{
+					"value": "Dana"
+				},
+				{
+					"value": "Stacy"
+				},
+				{
+					"value": "Ana"
+				},
+				{
+					"value": "Renee"
+				},
+				{
+					"value": "Ida"
+				},
+				{
+					"value": "Vivian"
+				},
+				{
+					"value": "Roberta"
+				},
+				{
+					"value": "Holly"
+				},
+				{
+					"value": "Brittany"
+				},
+				{
+					"value": "Melanie"
+				},
+				{
+					"value": "Loretta"
+				},
+				{
+					"value": "Yolanda"
+				},
+				{
+					"value": "Jeanette"
+				},
+				{
+					"value": "Laurie"
+				},
+				{
+					"value": "Katie"
+				},
+				{
+					"value": "Kristen"
+				},
+				{
+					"value": "Vanessa"
+				},
+				{
+					"value": "Alma"
+				},
+				{
+					"value": "Sue"
+				},
+				{
+					"value": "Elsie"
+				},
+				{
+					"value": "Beth"
+				},
+				{
+					"value": "Jeanne"
+				},
+				{
+					"value": "Vicki"
+				},
+				{
+					"value": "Carla"
+				},
+				{
+					"value": "Tara"
+				},
+				{
+					"value": "Rosemary"
+				},
+				{
+					"value": "Eileen"
+				},
+				{
+					"value": "Terri"
+				},
+				{
+					"value": "Gertrude"
+				},
+				{
+					"value": "Lucy"
+				},
+				{
+					"value": "Tonya"
+				},
+				{
+					"value": "Ella"
+				},
+				{
+					"value": "Stacey"
+				},
+				{
+					"value": "Wilma"
+				},
+				{
+					"value": "Gina"
+				},
+				{
+					"value": "Kristin"
+				},
+				{
+					"value": "Jessie"
+				},
+				{
+					"value": "Natalie"
+				},
+				{
+					"value": "Agnes"
+				},
+				{
+					"value": "Vera"
+				},
+				{
+					"value": "Willie"
+				},
+				{
+					"value": "Charlene"
+				},
+				{
+					"value": "Bessie"
+				},
+				{
+					"value": "Delores"
+				},
+				{
+					"value": "Melinda"
+				},
+				{
+					"value": "Pearl"
+				},
+				{
+					"value": "Arlene"
+				},
+				{
+					"value": "Maureen"
+				},
+				{
+					"value": "Colleen"
+				},
+				{
+					"value": "Allison"
+				},
+				{
+					"value": "Tamara"
+				},
+				{
+					"value": "Joy"
+				},
+				{
+					"value": "Georgia"
+				},
+				{
+					"value": "Constance"
+				},
+				{
+					"value": "Lillie"
+				},
+				{
+					"value": "Claudia"
+				},
+				{
+					"value": "Jackie"
+				},
+				{
+					"value": "Marcia"
+				},
+				{
+					"value": "Tanya"
+				},
+				{
+					"value": "Nellie"
+				},
+				{
+					"value": "Minnie"
+				},
+				{
+					"value": "Marlene"
+				},
+				{
+					"value": "Heidi"
+				},
+				{
+					"value": "Glenda"
+				},
+				{
+					"value": "Lydia"
+				},
+				{
+					"value": "Viola"
+				},
+				{
+					"value": "Courtney"
+				},
+				{
+					"value": "Marian"
+				},
+				{
+					"value": "Stella"
+				},
+				{
+					"value": "Caroline"
+				},
+				{
+					"value": "Dora"
+				},
+				{
+					"value": "Jo"
+				},
+				{
+					"value": "Vickie"
+				},
+				{
+					"value": "Mattie"
+				},
+				{
+					"value": "Terry"
+				},
+				{
+					"value": "Maxine"
+				},
+				{
+					"value": "Irma"
+				},
+				{
+					"value": "Mabel"
+				},
+				{
+					"value": "Marsha"
+				},
+				{
+					"value": "Myrtle"
+				},
+				{
+					"value": "Lena"
+				},
+				{
+					"value": "Christy"
+				},
+				{
+					"value": "Deanna"
+				},
+				{
+					"value": "Patsy"
+				},
+				{
+					"value": "Hilda"
+				},
+				{
+					"value": "Gwendolyn"
+				},
+				{
+					"value": "Jennie"
+				},
+				{
+					"value": "Nora"
+				},
+				{
+					"value": "Margie"
+				},
+				{
+					"value": "Nina"
+				},
+				{
+					"value": "Cassandra"
+				},
+				{
+					"value": "Leah"
+				},
+				{
+					"value": "Penny"
+				},
+				{
+					"value": "Kay"
+				},
+				{
+					"value": "Priscilla"
+				},
+				{
+					"value": "Naomi"
+				},
+				{
+					"value": "Carole"
+				},
+				{
+					"value": "Brandy"
+				},
+				{
+					"value": "Olga"
+				},
+				{
+					"value": "Billie"
+				},
+				{
+					"value": "Dianne"
+				},
+				{
+					"value": "Tracey"
+				},
+				{
+					"value": "Leona"
+				},
+				{
+					"value": "Jenny"
+				},
+				{
+					"value": "Felicia"
+				},
+				{
+					"value": "Sonia"
+				},
+				{
+					"value": "Miriam"
+				},
+				{
+					"value": "Velma"
+				},
+				{
+					"value": "Becky"
+				},
+				{
+					"value": "Bobbie"
+				},
+				{
+					"value": "Violet"
+				},
+				{
+					"value": "Kristina"
+				},
+				{
+					"value": "Toni"
+				},
+				{
+					"value": "Misty"
+				},
+				{
+					"value": "Mae"
+				},
+				{
+					"value": "Shelly"
+				},
+				{
+					"value": "Daisy"
+				},
+				{
+					"value": "Ramona"
+				},
+				{
+					"value": "Sherri"
+				},
+				{
+					"value": "Erika"
+				},
+				{
+					"value": "Katrina"
+				},
+				{
+					"value": "Claire"
+				},
+				{
+					"value": "Lindsey"
+				},
+				{
+					"value": "Lindsay"
+				},
+				{
+					"value": "Geneva"
+				},
+				{
+					"value": "Guadalupe"
+				},
+				{
+					"value": "Belinda"
+				},
+				{
+					"value": "Margarita"
+				},
+				{
+					"value": "Sheryl"
+				},
+				{
+					"value": "Cora"
+				},
+				{
+					"value": "Faye"
+				},
+				{
+					"value": "Ada"
+				},
+				{
+					"value": "Natasha"
+				},
+				{
+					"value": "Sabrina"
+				},
+				{
+					"value": "Isabel"
+				},
+				{
+					"value": "Marguerite"
+				},
+				{
+					"value": "Hattie"
+				},
+				{
+					"value": "Harriet"
+				},
+				{
+					"value": "Molly"
+				},
+				{
+					"value": "Cecilia"
+				},
+				{
+					"value": "Kristi"
+				},
+				{
+					"value": "Brandi"
+				},
+				{
+					"value": "Blanche"
+				},
+				{
+					"value": "Sandy"
+				},
+				{
+					"value": "Rosie"
+				},
+				{
+					"value": "Joanna"
+				},
+				{
+					"value": "Iris"
+				},
+				{
+					"value": "Eunice"
+				},
+				{
+					"value": "Angie"
+				},
+				{
+					"value": "Inez"
+				},
+				{
+					"value": "Lynda"
+				},
+				{
+					"value": "Madeline"
+				},
+				{
+					"value": "Amelia"
+				},
+				{
+					"value": "Alberta"
+				},
+				{
+					"value": "Genevieve"
+				},
+				{
+					"value": "Monique"
+				},
+				{
+					"value": "Jodi"
+				},
+				{
+					"value": "Janie"
+				},
+				{
+					"value": "Maggie"
+				},
+				{
+					"value": "Kayla"
+				},
+				{
+					"value": "Sonya"
+				},
+				{
+					"value": "Jan"
+				},
+				{
+					"value": "Lee"
+				},
+				{
+					"value": "Kristine"
+				},
+				{
+					"value": "Candace"
+				},
+				{
+					"value": "Fannie"
+				},
+				{
+					"value": "Maryann"
+				},
+				{
+					"value": "Opal"
+				},
+				{
+					"value": "Alison"
+				},
+				{
+					"value": "Yvette"
+				},
+				{
+					"value": "Melody"
+				},
+				{
+					"value": "Luz"
+				},
+				{
+					"value": "Susie"
+				},
+				{
+					"value": "Olivia"
+				},
+				{
+					"value": "Flora"
+				},
+				{
+					"value": "Shelley"
+				},
+				{
+					"value": "Kristy"
+				},
+				{
+					"value": "Mamie"
+				},
+				{
+					"value": "Lula"
+				},
+				{
+					"value": "Lola"
+				},
+				{
+					"value": "Verna"
+				},
+				{
+					"value": "Beulah"
+				},
+				{
+					"value": "Antoinette"
+				},
+				{
+					"value": "Candice"
+				},
+				{
+					"value": "Juana"
+				},
+				{
+					"value": "Jeannette"
+				},
+				{
+					"value": "Pam"
+				},
+				{
+					"value": "Kelli"
+				},
+				{
+					"value": "Hannah"
+				},
+				{
+					"value": "Whitney"
+				},
+				{
+					"value": "Bridget"
+				},
+				{
+					"value": "Karla"
+				},
+				{
+					"value": "Celia"
+				},
+				{
+					"value": "Latoya"
+				},
+				{
+					"value": "Patty"
+				},
+				{
+					"value": "Shelia"
+				},
+				{
+					"value": "Gayle"
+				},
+				{
+					"value": "Della"
+				},
+				{
+					"value": "Vicky"
+				},
+				{
+					"value": "Lynne"
+				},
+				{
+					"value": "Sheri"
+				},
+				{
+					"value": "Marianne"
+				},
+				{
+					"value": "Kara"
+				},
+				{
+					"value": "Jacquelyn"
+				},
+				{
+					"value": "Erma"
+				},
+				{
+					"value": "Blanca"
+				},
+				{
+					"value": "Myra"
+				},
+				{
+					"value": "Leticia"
+				},
+				{
+					"value": "Pat"
+				},
+				{
+					"value": "Krista"
+				},
+				{
+					"value": "Roxanne"
+				},
+				{
+					"value": "Angelica"
+				},
+				{
+					"value": "Johnnie"
+				},
+				{
+					"value": "Robyn"
+				},
+				{
+					"value": "Francis"
+				},
+				{
+					"value": "Adrienne"
+				},
+				{
+					"value": "Rosalie"
+				},
+				{
+					"value": "Alexandra"
+				},
+				{
+					"value": "Brooke"
+				},
+				{
+					"value": "Bethany"
+				},
+				{
+					"value": "Sadie"
+				},
+				{
+					"value": "Bernadette"
+				},
+				{
+					"value": "Traci"
+				},
+				{
+					"value": "Jody"
+				},
+				{
+					"value": "Kendra"
+				},
+				{
+					"value": "Jasmine"
+				},
+				{
+					"value": "Nichole"
+				},
+				{
+					"value": "Rachael"
+				},
+				{
+					"value": "Chelsea"
+				},
+				{
+					"value": "Mable"
+				},
+				{
+					"value": "Ernestine"
+				},
+				{
+					"value": "Muriel"
+				},
+				{
+					"value": "Marcella"
+				},
+				{
+					"value": "Elena"
+				},
+				{
+					"value": "Krystal"
+				},
+				{
+					"value": "Angelina"
+				},
+				{
+					"value": "Nadine"
+				},
+				{
+					"value": "Kari"
+				},
+				{
+					"value": "Estelle"
+				},
+				{
+					"value": "Dianna"
+				},
+				{
+					"value": "Paulette"
+				},
+				{
+					"value": "Lora"
+				},
+				{
+					"value": "Mona"
+				},
+				{
+					"value": "Doreen"
+				},
+				{
+					"value": "Rosemarie"
+				},
+				{
+					"value": "Angel"
+				},
+				{
+					"value": "Desiree"
+				},
+				{
+					"value": "Antonia"
+				},
+				{
+					"value": "Hope"
+				},
+				{
+					"value": "Ginger"
+				},
+				{
+					"value": "Janis"
+				},
+				{
+					"value": "Betsy"
+				},
+				{
+					"value": "Christie"
+				},
+				{
+					"value": "Freda"
+				},
+				{
+					"value": "Mercedes"
+				},
+				{
+					"value": "Meredith"
+				},
+				{
+					"value": "Lynette"
+				},
+				{
+					"value": "Teri"
+				},
+				{
+					"value": "Cristina"
+				},
+				{
+					"value": "Eula"
+				},
+				{
+					"value": "Leigh"
+				},
+				{
+					"value": "Meghan"
+				},
+				{
+					"value": "Sophia"
+				},
+				{
+					"value": "Eloise"
+				},
+				{
+					"value": "Rochelle"
+				},
+				{
+					"value": "Gretchen"
+				},
+				{
+					"value": "Cecelia"
+				},
+				{
+					"value": "Raquel"
+				},
+				{
+					"value": "Henrietta"
+				},
+				{
+					"value": "Alyssa"
+				},
+				{
+					"value": "Jana"
+				},
+				{
+					"value": "Kelley"
+				}
+			]
+		}
+	],
+	"intents": [{
+			"name": "SwitchLanguage",
+			"description": "Switch Alice's language",
+			"enabledByDefault": true,
+			"utterances": [
+				"could we please speak {swedish:=>ToLang}",
+				"please change your language to {german:=>ToLang}",
+				"please switch to {french:=>ToLang}",
+				"let's speak {french:=>ToLang} together",
+				"can we speak {french:=>ToLang} together",
+				"can we speak {german:=>ToLang} together please",
+				"i want to speak {japanese:=>ToLang} with you",
+				"can we speak {french:=>ToLang} please",
+				"switch to {russian:=>ToLang} please"
+			],
+			"slots": [{
+				"name": "ToLang",
+				"description": "Language to switch to",
+				"required": false,
+				"type": "Languages",
+				"missingQuestion": ""
+			}]
+		},
+		{
+			"name": "RebootSystem",
+			"description": "Reboot Alice",
+			"enabledByDefault": true,
+			"utterances": [
+				"reload yourself please",
+				"please reload yourself",
+				"reboot your system",
+				"reboot your system please",
+				"restart your system please",
+				"restart your system",
+				"please restart you system",
+				"please reboot your system"
+			],
+			"slots": []
+		},
+		{
+			"name": "StopListening",
+			"description": "The user asks Alice to not react anymore for a given time",
+			"enabledByDefault": true,
+			"utterances": [
+				"let us in peace {for an hour:=>Duration}",
+				"don't listen to us {for 20 minutes:=>Duration}",
+				"can you please stop listening",
+				"could you stop listening",
+				"could you please stop listening",
+				"stop listening to us {for 15 minutes:=>Duration}",
+				"can you let us in peace {for 30 minutes:=>Duration}",
+				"stop listening {for 10 minutes:=>Duration}",
+				"don't listen anymore",
+				"stop listening to us",
+				"stop listening to me"
+			],
+			"slots": [{
+				"name": "Duration",
+				"description": "How long to ignore the requests",
+				"required": false,
+				"type": "snips/duration",
+				"missingQuestion": ""
+			}]
+		},
+		{
+			"name": "AddComponent",
+			"description": "The user asks to add a new device for Alice to manage",
+			"enabledByDefault": true,
+			"utterances": [
+				"add a new {tasmota:=>Hardware} {switch:=>EspType} in the {living room:=>Room}",
+				"add a {tasmota:=>Hardware} of type {switch:=>EspType} in the {kitchen:=>Room}",
+				"please add a {switch:=>EspType} {tasmota:=>Hardware} in the {entrance:=>Room}",
+				"i would like to add a {tasmota:=>Hardware} in the {bathroom:=>Room}",
+				"can you add a {switch:=>EspType} {tasmota:=>Hardware} in the {bedroom:=>Room}",
+				"add an {esp:=>Hardware} device in my {office:=>Room}",
+				"i'm adding a new {switch:=>EspType} device",
+				"could you add a new {alice:=>Hardware} device",
+				"can you add an {esp:=>Hardware} device please",
+				"be ready for a new {esp:=>Hardware} device",
+				"can you please add a {switch:=>EspType} based on {esp:=>Hardware}",
+				"add an {esp:=>Hardware} device of type {switch:=>EspType}",
+				"be ready for new hardware",
+				"listen for new hardware please",
+				"please connect a new device",
+				"add a new {esp:=>Hardware} device of type {pir:=>EspType}",
+				"i want to register a new {satellite:=>Hardware}",
+				"adding a new component to your system",
+				"adding a new {satellite:=>Hardware}",
+				"listen for new device connection please",
+				"can your add a new device please",
+				"i wish to add a new device please",
+				"i'm adding a new {satellite:=>Hardware} to your array",
+				"let's add a device to your network",
+				"listen for new devices please",
+				"i want to add a device to your network",
+				"add a new {satellite:=>Hardware}"
+			],
+			"slots": [{
+					"name": "Hardware",
+					"description": "The device hardware type",
+					"required": false,
+					"type": "AliceHardwareTypes",
+					"missingQuestion": ""
+				},
+				{
+					"name": "EspType",
+					"description": "The esp device type",
+					"required": false,
+					"type": "EspTypes",
+					"missingQuestion": ""
+				},
+				{
+					"name": "Room",
+					"description": "The room to add the device to",
+					"required": false,
+					"type": "Room",
+					"missingQuestion": ""
+				}
+			]
+		},
+		{
+			"name": "UpdateAssistantBundle",
+			"description": "Ask Alice to update herself",
+			"enabledByDefault": true,
+			"utterances": [
+				"update your assistant files please",
+				"please update your assistant files",
+				"do a system update please",
+				"please update your system",
+				"update yourself please",
+				"update your core files",
+				"update the assistant bundle",
+				"please update yourself"
+			],
+			"slots": []
+		},
+		{
+			"name": "AnswerYesOrNo",
+			"description": "User answers yes or no",
+			"enabledByDefault": false,
+			"utterances": [
+				"{not at all:=>Answer}",
+				"{sure:=>Answer}",
+				"{nope:=>Answer}",
+				"{no thank you:=>Answer}",
+				"{no thanks:=>Answer}",
+				"{yes please:=>Answer}",
+				"{yeah:=>Answer}",
+				"{yep:=>Answer}",
+				"{no:=>Answer}",
+				"{yes:=>Answer}"
+			],
+			"slots": [{
+				"name": "Answer",
+				"description": null,
+				"required": false,
+				"type": "AnswerYesNo",
+				"missingQuestion": ""
+			}]
+		},
+		{
+			"name": "AnswerEspType",
+			"description": "The user answers the type of ESP device he wants to add",
+			"enabledByDefault": false,
+			"utterances": [
+				"of type {presence sensor:=>EspType}",
+				"type {passive infrared sensor:=>EspType} please",
+				"{pir sensor:=>EspType}",
+				"{pir:=>EspType}",
+				"{switch:=>EspType}"
+			],
+			"slots": [{
+				"name": "EspType",
+				"description": "The kind of sensor",
+				"required": false,
+				"type": "EspTypes",
+				"missingQuestion": ""
+			}]
+		},
+		{
+			"name": "AnswerHardwareType",
+			"description": "The user answers the hardware type to add",
+			"enabledByDefault": false,
+			"utterances": [
+				"{tasmota:=>Hardware} device",
+				"an {esp:=>Hardware} device",
+				"type {alice:=>Hardware} please",
+				"{satellite:=>Hardware}"
+			],
+			"slots": [{
+				"name": "Hardware",
+				"description": "The hardware type",
+				"required": false,
+				"type": "AliceHardwareTypes",
+				"missingQuestion": ""
+			}]
+		},
+		{
+			"name": "AnswerRoom",
+			"description": "User answers with a room name",
+			"enabledByDefault": false,
+			"utterances": [
+				"in {kitchen:=>Room}",
+				"in the {living room:=>Room}",
+				"{entrance:=>Room}",
+				"{office:=>Room}",
+				"{basement:=>Room}",
+				"{attic:=>Room}",
+				"{bathroom:=>Room}",
+				"{bedroom:=>Room}",
+				"{living room:=>Room}",
+				"{kitchen:=>Room}"
+			],
+			"slots": [{
+				"name": "Room",
+				"description": null,
+				"required": true,
+				"type": "Room",
+				"missingQuestion": "What room?"
+			}]
+		},
+		{
+			"name": "AnswerName",
+			"description": "",
+			"enabledByDefault": false,
+			"utterances": [
+				"{john:=>Name}",
+				"{jane:=>Name}",
+				"{doe:=>Name}"
+			],
+			"slots": [{
+				"name": "Name",
+				"description": null,
+				"required": false,
+				"type": "Name",
+				"missingQuestion": ""
+			}]
+		},
+		{
+			"name": "SpellWord",
+			"description": "User spells a word",
+			"enabledByDefault": false,
+			"utterances": [
+				"{l:=>Letters} {a:=>Letters} {u:=>Letters} {r:=>Letters} {e:=>Letters} {n:=>Letters} {t:=>Letters}",
+				"{r:=>Letters} {o:=>Letters} {u:=>Letters} {l:=>Letters} {a:=>Letters} {n:=>Letters} {d:=>Letters}",
+				"{p:=>Letters} {l:=>Letters} {a:=>Letters} {n:=>Letters} {e:=>Letters}",
+				"{b:=>Letters} {o:=>Letters} {a:=>Letters} {t:=>Letters}",
+				"{c:=>Letters} {i:=>Letters} {t:=>Letters} {y:=>Letters}",
+				"{c:=>Letters} {o:=>Letters} {n:=>Letters} {s:=>Letters} {t:=>Letters} {i:=>Letters} {t:=>Letters} {u:=>Letters} {t:=>Letters} {i:=>Letters} {o:=>Letters} {n:=>Letters}",
+				"{t:=>Letters} {r:=>Letters} {i:=>Letters} {c:=>Letters} {k:=>Letters}",
+				"{c:=>Letters} {o:=>Letters} {w:=>Letters}"
+			],
+			"slots": [{
+				"name": "Letters",
+				"description": null,
+				"required": false,
+				"type": "Letters",
+				"missingQuestion": ""
+			}]
+		}
+	]
+}

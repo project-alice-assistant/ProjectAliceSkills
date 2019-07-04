@@ -1,0 +1,10 @@
+{
+	"name": "Customisation",
+	"version": 0.1,
+	"author": "Psycho",
+	"maintainers": ["Jierka"],
+	"desc": "Customisation is the official customisation module. Use it to customize your experience",
+	"aliceMinVersion": "",
+	"requirements": [],
+	"conditions": {}
+}

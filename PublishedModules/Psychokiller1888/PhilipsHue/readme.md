@@ -8,7 +8,8 @@ Control your Philips Hue lamps
 
 - Version: 0.1
 - Author: Psycho
-- Maintainers: N/A
+- Maintainers:
+  - Jierka
 - Alice minimum version: N/A
 - Conditions:
   - EN

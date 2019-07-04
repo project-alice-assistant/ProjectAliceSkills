@@ -166,7 +166,7 @@ README = '''# %moduleName%
 ### Download
 `wget http://bit.ly/????????? -O ~/ProjectAlice/system/moduleInstallTickets/%moduleName%.install`
 
-### Desc
+### Description
 %description%
 
 - Version: 1.0
@@ -177,8 +177,8 @@ README = '''# %moduleName%
 %langs%
 - Requirements: N/A
 
-Configuration
-=============
+### Configuration
+
 
 `foo`:
  - type: `bar`

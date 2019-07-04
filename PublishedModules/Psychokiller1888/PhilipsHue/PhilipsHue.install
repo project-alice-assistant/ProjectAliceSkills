@@ -2,7 +2,7 @@
 	"name": "PhilipsHue",
 	"version": 0.1,
 	"author": "Psychokiller1888",
-	"maintainers": [""],
+	"maintainers": ["Jierka"],
 	"desc": "Control your Philips Hue lamps",
 	"aliceMinVersion": "",
 	"requirements": ["phue"],
