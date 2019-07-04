@@ -1,12 +1,19 @@
 {
-	"dummy": {
+	"fromWhatCurrency": {
 		"default": [
-			"foobar",
-			"barfoo"
-		],
-		"short": [
-			"foo",
-			"bar"
+			"From what currency do you want to convert?",
+			"From what currency?",
+			"Sure, but from what currency?"
 		]
 	},
+	"noServer": {
+		"default": [
+			"Unfortunately I can't reach the latest data, please try again in a while"
+		]
+	},
+	"answer": {
+		"default": [
+			"{} {} is {} {}"
+		]
+	}
 }
