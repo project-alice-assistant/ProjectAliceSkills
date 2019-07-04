@@ -10,7 +10,7 @@ import requests
 import html
 
 
-class Randomuselessfacts(Module):
+class RandomUselessFacts(Module):
 	"""
 	Author: Psychokiller1888
 	Description: Gets you the daily random useless fact or a random one
@@ -23,7 +23,7 @@ class Randomuselessfacts(Module):
 			self._INTENT_GET_USELESS_FACT
 		]
 
-		super(Randomuselessfacts, self).__init__(self._SUPPORTED_INTENTS)
+		super(RandomUselessFacts, self).__init__(self._SUPPORTED_INTENTS)
 
 
 	def onMessage(self, intent: str, session: DialogSession) -> bool:
