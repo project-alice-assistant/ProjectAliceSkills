@@ -1,13 +1,13 @@
 {
-    module: "DateDayTimeYear",
-    icon: "time",
-    description: "L'utilisateur peut demander l'heure, la date, le jour et l'année en cours",
-    slotTypes: [],
-    intents: [{
-            name: "GetDay",
-            description: "Retourne le jour de la semaine",
-            enabledByDefault: true,
-            utterances: [
+    "module": "DateDayTimeYear",
+    "icon": "time",
+    "description": "L'utilisateur peut demander l'heure, la date, le jour et l'année en cours",
+    "slotTypes": [],
+    "intents": [{
+            "name": "GetDay",
+            "description": "Retourne le jour de la semaine",
+            "enabledByDefault": true,
+            "utterances": [
               "sais-tu quel jour est-il",
               "sais-tu quel jour est-on",
               "peux-tu me dire quel jour il est s'il te plaît",
@@ -23,13 +23,13 @@
               "quel jour sommes nous",
               "donnes moi le jour"
             ],
-            slots: []
+            "slots": []
         },
         {
-            name: "GetDate",
-            description: "Retourne la date d'aujourd'hui",
-            enabledByDefault: true,
-            utterances: [
+            "name": "GetDate",
+            "description": "Retourne la date d'aujourd'hui",
+            "enabledByDefault": true,
+            "utterances": [
                 "donne moi la date d'aujourd'hui",
                 "quelle est la date du jour",
                 "quelle est la date",
@@ -42,13 +42,13 @@
                 "quelle est la date du jour s'il te plait",
                 "donne moi la date"
             ],
-            slots: []
+            "slots": []
         },
         {
-            name: "GetTime",
-            description: "Retourne l'heure actuelle",
-            enabledByDefault: true,
-            utterances: [
+            "name": "GetTime",
+            "description": "Retourne l'heure actuelle",
+            "enabledByDefault": true,
+            "utterances": [
                 "quelle heure est-il",
                 "quelle heure est-il s'il te plait",
                 "quelle heure",
@@ -60,13 +60,13 @@
                 "je veux l'heure",
                 "donne moi l'heure"
             ],
-            slots: []
+            "slots": []
         },
         {
-            name: "GetYear",
-            description: "Retourne l'année en cours",
-            enabledByDefault: true,
-            utterances: [
+            "name": "GetYear",
+            "description": "Retourne l'année en cours",
+            "enabledByDefault": true,
+            "utterances": [
                 "en quelle année sommes-nous",
                 "donne moi l'année",
                 "quelle est l'année courante",
@@ -74,7 +74,7 @@
                 "l'année s'il te plait",
                 "l'année"
             ],
-            slots: []
+            "slots": []
         }
     ]
 }
