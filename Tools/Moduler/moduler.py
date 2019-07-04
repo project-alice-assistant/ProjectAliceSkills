@@ -62,6 +62,15 @@ class NotExist(Validator):
 				cursor_position=len(document.text)
 			)
 
+
+def toCamelCase(string):
+	if not ' ' in string:
+		return str(string).capitalize()
+	else:
+		words = str(string).split(' ')
+		return ''.join([x.capitalize() for x in words])
+
+
 PYTHON_CLASS = '''# -*- coding: utf-8 -*-
 
 import json
@@ -360,7 +369,7 @@ if __name__ == '__main__':
 		f.write(README.replace('%moduleName%', answers['moduleName'])
 					  .replace('%description%', answers['description'])
 					  .replace('%username%', answers['username'])
-					  .replace('%langs%', langs[:-2])
+					  .replace('%langs%', langs)
 		)
 
 	print('----------------------------')
