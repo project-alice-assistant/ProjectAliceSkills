@@ -1,0 +1,12 @@
+{
+	"name": "FreeCurrencyConverterDotCom",
+	"version": 1.0,
+	"author": "Psychokiller1888",
+	"maintainers": [""],
+	"desc": "Let's you convert world currencies",
+	"aliceMinVersion": "",
+	"requirements": [],
+	"conditions": {
+		"lang": ["en"]
+	}
+}
