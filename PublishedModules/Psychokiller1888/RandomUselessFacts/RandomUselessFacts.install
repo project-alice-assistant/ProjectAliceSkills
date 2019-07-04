@@ -1,6 +1,6 @@
 {
 	"name": "RandomUselessFacts",
-	"version": 1.0,
+	"version": 1.01,
 	"author": "Psychokiller1888",
 	"maintainers": [""],
 	"desc": "Gets you the daily random useless fact or a random one",
