@@ -102,8 +102,7 @@ class AliceCore(Module):
 
 
 	def onBooted(self):
-		super(AliceCore, self).onBooted()
-		if managers.ThreadManager.getLock('SnipsAssistantDownload').isSet():
+		if not super(AliceCore, self).onBooted():
 			return
 
 		onReboot = managers.ConfigManager.getAliceConfigByName('onReboot')
