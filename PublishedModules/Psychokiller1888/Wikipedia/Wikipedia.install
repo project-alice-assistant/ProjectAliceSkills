@@ -5,7 +5,7 @@
 	"maintainers": [""],
 	"desc": "Allows one to find informations about a topic on wikipedia",
 	"aliceMinVersion": "",
-	"requirements": ["wikipedia"],
+	"requirements": ["wikipedia", "BeautifulSoup4==4.6.3"],
 	"conditions": {
 		"lang": ["en"]
 	}
