@@ -1,7 +1,7 @@
 {
     "module": "Wikipedia",
     "icon": "box",
-    "description": "Let's you search informations online using different services such as wikipedia",
+    "description": "Allows one to find informations about a topic on wikipedia",
     "slotTypes": [
         {
             "name": "SearchEngine",
