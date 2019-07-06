@@ -1,0 +1,39 @@
+{
+    "module": "Tasmota",
+    "icon": "time",
+    "description": "This module allows you to not only connect tasmota esp devices, but listen to them",
+    "slotTypes": [
+        {
+            "name": "DummySlot",
+            "matchingStrictness": null,
+            "automaticallyExtensible": false,
+            "useSynonyms": true,
+            "values": [
+                {
+                    "value": "foo",
+                    "synonyms": ["bar"]
+                }
+            ]
+        }
+    ],
+    "intents": [
+        {
+            "name": "Dummy",
+            "description": "REMOVE this dummy intent!",
+            "enabledByDefault": true,
+            "utterances": [
+                "dummy {foo:=>DummySlotName}",
+                "bar"
+            ],
+            "slots": [
+                {
+                    "name": "DummySlotName",
+                    "description": "dummy",
+                    "required": false,
+                    "type": "DummySlot",
+                    "missingQuestion": ""
+                }
+            ]
+        }
+    ]
+}
