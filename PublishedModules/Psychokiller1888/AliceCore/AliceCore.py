@@ -103,6 +103,9 @@ class AliceCore(Module):
 
 	def onBooted(self):
 		super(AliceCore, self).onBooted()
+		if managers.ThreadManager.getLock('SnipsAssistantDownload').isSet():
+			return
+
 		onReboot = managers.ConfigManager.getAliceConfigByName('onReboot')
 		if onReboot:
 			if onReboot == 'greet':
@@ -384,8 +387,6 @@ class AliceCore(Module):
 					name = ''
 					for slot in slotsObj['Letters']:
 						name += slot.value['value']
-
-				print(name)
 
 				if name in managers.UserManager.getAllUserNames(skipGuests=False):
 					managers.MqttServer.continueDialog(
