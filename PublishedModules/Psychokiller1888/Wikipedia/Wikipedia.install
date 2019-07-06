@@ -1,0 +1,12 @@
+{
+	"name": "Wikipedia",
+	"version": 0.1,
+	"author": "Psychokiller1888",
+	"maintainers": [""],
+	"desc": "Allows one to find informations about a topic on wikipedia",
+	"aliceMinVersion": "",
+	"requirements": ["wikipedia"],
+	"conditions": {
+		"lang": ["en"]
+	}
+}

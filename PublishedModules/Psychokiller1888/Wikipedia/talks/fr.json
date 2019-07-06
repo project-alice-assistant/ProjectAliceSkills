@@ -1,0 +1,19 @@
+{
+	"whatToSearch": {
+		"default": [
+			"Biensûr! Que dois-je rechercher?",
+			"Je peux, biensûr! Qu'aimerais-tu que je recherche?",
+			"Oui, volontier! Que recherche tu?"
+		]
+	},
+	"noMatch": {
+		"default": [
+			"Désolée, je n'ai pas trouvé d'informations au sujet de <say-as interpret-as=\"interjection\">{}</say-as>. Essaie une autre requête s'il te plait"
+		]
+	},
+	"ambiguous": {
+		"default": [
+			"J'ai trouvé plusieurs résultats pour cette recherche. Essaie d'être plus précis ou d'épeller le mot"
+		]
+	}
+}
