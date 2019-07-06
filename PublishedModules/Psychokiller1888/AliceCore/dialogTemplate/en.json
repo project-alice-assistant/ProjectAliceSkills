@@ -65,6 +65,74 @@
 			]
 		},
 		{
+			"name": "Numbers",
+			"matchingStrictness": null,
+			"automaticallyExtensible": false,
+			"useSynonyms": true,
+			"values": [
+				{
+					"value": "0",
+					"synonyms": [
+						"zero"
+					]
+				},
+				{
+					"value": "1",
+					"synonyms": [
+						"one"
+					]
+				},
+				{
+					"value": "2",
+					"synonyms": [
+						"two"
+					]
+				},
+				{
+					"value": "3",
+					"synonyms": [
+						"three"
+					]
+				},
+				{
+					"value": "4",
+					"synonyms": [
+						"four"
+					]
+				},
+				{
+					"value": "5",
+					"synonyms": [
+						"five"
+					]
+				},
+				{
+					"value": "6",
+					"synonyms": [
+						"six"
+					]
+				},
+				{
+					"value": "7",
+					"synonyms": [
+						"seven"
+					]
+				},
+				{
+					"value": "8",
+					"synonyms": [
+						"eight"
+					]
+				},
+				{
+					"value": "9",
+					"synonyms": [
+						"nine"
+					]
+				}
+			]
+		},
+		{
 			"name": "Letters",
 			"matchingStrictness": null,
 			"automaticallyExtensible": false,

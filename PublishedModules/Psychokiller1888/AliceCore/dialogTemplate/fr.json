@@ -65,6 +65,74 @@
 			]
 		},
 		{
+			"name": "Numbers",
+			"matchingStrictness": null,
+			"automaticallyExtensible": false,
+			"useSynonyms": true,
+			"values": [
+				{
+					"value": "0",
+					"synonyms": [
+						"zéro"
+					]
+				},
+				{
+					"value": "1",
+					"synonyms": [
+						"un"
+					]
+				},
+				{
+					"value": "2",
+					"synonyms": [
+						"deux"
+					]
+				},
+				{
+					"value": "3",
+					"synonyms": [
+						"trois"
+					]
+				},
+				{
+					"value": "4",
+					"synonyms": [
+						"quatre"
+					]
+				},
+				{
+					"value": "5",
+					"synonyms": [
+						"cinq"
+					]
+				},
+				{
+					"value": "6",
+					"synonyms": [
+						"six"
+					]
+				},
+				{
+					"value": "7",
+					"synonyms": [
+						"sept"
+					]
+				},
+				{
+					"value": "8",
+					"synonyms": [
+						"huit"
+					]
+				},
+				{
+					"value": "9",
+					"synonyms": [
+						"neuf"
+					]
+				}
+			]
+		},
+		{
 			"name": "Letters",
 			"matchingStrictness": null,
 			"automaticallyExtensible": false,
