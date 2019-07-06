@@ -114,7 +114,7 @@ class AliceCore(Module):
 
 			managers.ConfigManager.updateAliceConfiguration('onReboot', '')
 		else:
-			managers.ThreadManager.doLater(interval=2, func=managers.MqttServer.playSound, args=[self.getResource(self.name, 'sounds/boot.wav'), True, 'all'])
+			managers.ThreadManager.doLater(interval=2, func=managers.MqttServer.playSound, args=[self.getResource(self.name, 'sounds/boot.wav'), 'boot-session-id', True, 'all'])
 
 
 	def onGoingBed(self):

@@ -3448,7 +3448,7 @@
 		{
 			"name": "AnswerHardwareType",
 			"description": "L'utilisateur précise l'appareil à ajouter",
-			"enabledByDefault": true,
+			"enabledByDefault": false,
 			"utterances": [
 				"appareil {tasmota:=>Hardware}",
 				"appareil de type {esp:=>Hardware}",
@@ -3492,7 +3492,7 @@
 		{
 			"name": "AnswerEspType",
 			"description": "L'utilisateur précise l'appareil de type ESP qu'il souhaite ajouter",
-			"enabledByDefault": true,
+			"enabledByDefault": false,
 			"utterances": [
 				"de type {détecteur de présence:=>EspType}",
 				"type {détecteur infrarouge:=>EspType} s'il te plaît",
@@ -3617,7 +3617,7 @@
 		{
 			"name": "AnswerRoom",
 			"description": "L'utilisteur répond avec le nom d'une pièce",
-			"enabledByDefault": true,
+			"enabledByDefault": false,
 			"utterances": [
 				"dans la {cuisine:=>Room}",
 				"dans le {salon:=>Room}",
