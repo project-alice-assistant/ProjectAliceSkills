@@ -53,10 +53,7 @@ class Calculator(Module):
 				managers.MqttServer.continueDialog(sessionId=sessionId, text=managers.TalkManager.randomTalk(self.name, 'notUnderstood'), client=siteId)
 				return True
 
-			if str(result).endswith('.0'):
-				answer = str(result).replace('.0', '')
-			else:
-				answer = str(result)
+			answer = str(result).rstrip('.0')
 
 			managers.MqttServer.endTalk(sessionId=sessionId, text=answer, client=siteId)
 
