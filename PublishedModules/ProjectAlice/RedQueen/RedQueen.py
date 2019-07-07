@@ -38,9 +38,8 @@ class RedQueen(Module):
 	def onStart(self):
 		redQueenIdentityFile = self._getRedQueenIdentityFileName()
 		redQueenIdentityFileTemplate = redQueenIdentityFile + '.dist'
-		redQueenIdentityFileExists = os.path.isfile(redQueenIdentityFile)
 
-		if not redQueenIdentityFileExists:
+		if not os.path.isfile(redQueenIdentityFile):
 			if os.path.isfile(redQueenIdentityFileTemplate):
 				shutil.copyfile(redQueenIdentityFileTemplate, redQueenIdentityFile)
 				self._logger.info('[{}] New Red Queen is born'.format(self.name))
@@ -166,7 +165,8 @@ class RedQueen(Module):
 		else:
 			chance = 2
 
-		if not managers.ProtectedIntentManager.isProtectedIntent(session.message.topic) and random.randint(0, 100) < chance and managers.MultiIntentManager.multiIntent is None:
+
+		if not managers.ProtectedIntentManager.isProtectedIntent(session.message.topic) and random.randint(0, 100) < chance and not managers.MultiIntentManager.multiIntent:
 			managers.MqttServer.endTalk(session.sessionId, managers.TalkManager.randomTalk(self.name, 'noInTheMood'), client=session.siteId)
 			return False
 
