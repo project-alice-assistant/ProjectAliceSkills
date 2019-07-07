@@ -325,9 +325,8 @@ if __name__ == '__main__':
 			langs += '"{}", '.format(lang)
 
 		requirements = ''
-		if reqs:
-			for req in reqs:
-				requirements += '"{}", '.format(req)
+		for req in reqs:
+			requirements += '"{}", '.format(req)
 
 		f.write(INSTALL_JSON.replace('%moduleName%', answers['moduleName'])
 							.replace('%description%', answers['description'])
