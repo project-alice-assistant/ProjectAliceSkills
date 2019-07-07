@@ -8,8 +8,9 @@ Do some calculation with alice
 
 - Version: 1.0
 - Author: Psychokiller1888
-- Maintainers: N/A
+- Maintainers: maxbachmann
 - Alice minimum version: N/A
 - Conditions:
   - en
+  - de
 - Requirements: N/A

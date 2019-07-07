@@ -1,0 +1,14 @@
+{
+	"notUnderstood": {
+		"default": [
+			"Wie bitte? Ich habe die Kalkulation nicht verstanden.",
+			"Ich fürchte, ich habe die Berechnung nicht verstanden."
+		]
+	},
+	"noPreviousOperation": {
+		"default": [
+			"Sorry, es gibt keine vorherige Operation.",
+			"Wir haben noch nichts berechnet."
+		]
+	}
+}

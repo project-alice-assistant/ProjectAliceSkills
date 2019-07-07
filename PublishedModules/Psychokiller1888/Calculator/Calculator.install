@@ -2,7 +2,7 @@
 	"name": "Calculator",
 	"version": 1.0,
 	"author": "Psychokiller1888",
-	"maintainers": [""],
+	"maintainers": ["maxbachmann"],
 	"desc": "Do some calculation with alice",
 	"aliceMinVersion": "",
 	"requirements": [],
