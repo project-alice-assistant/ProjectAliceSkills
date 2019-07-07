@@ -1,6 +1,6 @@
 {
 	"name": "AliceCore",
-	"version": 0.2,
+	"version": 0.3,
 	"author": "Psycho",
 	"maintainers": ["Jierka"],
 	"desc": "AliceCore is the official module that handles all core intents",

@@ -65,74 +65,6 @@
 			]
 		},
 		{
-			"name": "Numbers",
-			"matchingStrictness": null,
-			"automaticallyExtensible": false,
-			"useSynonyms": true,
-			"values": [
-				{
-					"value": "0",
-					"synonyms": [
-						"zéro"
-					]
-				},
-				{
-					"value": "1",
-					"synonyms": [
-						"un"
-					]
-				},
-				{
-					"value": "2",
-					"synonyms": [
-						"deux"
-					]
-				},
-				{
-					"value": "3",
-					"synonyms": [
-						"trois"
-					]
-				},
-				{
-					"value": "4",
-					"synonyms": [
-						"quatre"
-					]
-				},
-				{
-					"value": "5",
-					"synonyms": [
-						"cinq"
-					]
-				},
-				{
-					"value": "6",
-					"synonyms": [
-						"six"
-					]
-				},
-				{
-					"value": "7",
-					"synonyms": [
-						"sept"
-					]
-				},
-				{
-					"value": "8",
-					"synonyms": [
-						"huit"
-					]
-				},
-				{
-					"value": "9",
-					"synonyms": [
-						"neuf"
-					]
-				}
-			]
-		},
-		{
 			"name": "Letters",
 			"matchingStrictness": null,
 			"automaticallyExtensible": false,
@@ -3470,9 +3402,1863 @@
 					"value": "Lou-Anne"
 				}
 			]
+		},
+		{
+			"name": "RandomWords",
+			"matchingStrictness": null,
+			"automaticallyExtensible": true,
+			"useSynonyms": false,
+			"values": [				{
+					"value": "abandonner"
+				},
+				{
+					"value": "accepter"
+				},
+				{
+					"value": "accompagner"
+				},
+				{
+					"value": "accord"
+				},
+				{
+					"value": "acheter"
+				},
+				{
+					"value": "adorer"
+				},
+				{
+					"value": "affaire"
+				},
+				{
+					"value": "agent"
+				},
+				{
+					"value": "agir"
+				},
+				{
+					"value": "aide"
+				},
+				{
+					"value": "aider"
+				},
+				{
+					"value": "aimer"
+				},
+				{
+					"value": "ajouter"
+				},
+				{
+					"value": "aller"
+				},
+				{
+					"value": "amener"
+				},
+				{
+					"value": "amour"
+				},
+				{
+					"value": "amuser"
+				},
+				{
+					"value": "ancien"
+				},
+				{
+					"value": "année"
+				},
+				{
+					"value": "annoncer"
+				},
+				{
+					"value": "apercevoir"
+				},
+				{
+					"value": "apparaître"
+				},
+				{
+					"value": "appel"
+				},
+				{
+					"value": "appeler"
+				},
+				{
+					"value": "apporter"
+				},
+				{
+					"value": "apprendre"
+				},
+				{
+					"value": "approcher"
+				},
+				{
+					"value": "arbre"
+				},
+				{
+					"value": "argent"
+				},
+				{
+					"value": "arme"
+				},
+				{
+					"value": "armée"
+				},
+				{
+					"value": "arranger"
+				},
+				{
+					"value": "arrêter"
+				},
+				{
+					"value": "arriver"
+				},
+				{
+					"value": "asseoir"
+				},
+				{
+					"value": "assurer"
+				},
+				{
+					"value": "attaquer"
+				},
+				{
+					"value": "atteindre"
+				},
+				{
+					"value": "attendre"
+				},
+				{
+					"value": "attention"
+				},
+				{
+					"value": "autre"
+				},
+				{
+					"value": "avancer"
+				},
+				{
+					"value": "avenir"
+				},
+				{
+					"value": "avion"
+				},
+				{
+					"value": "avis"
+				},
+				{
+					"value": "avoir"
+				},
+				{
+					"value": "baisser"
+				},
+				{
+					"value": "balle"
+				},
+				{
+					"value": "bateau"
+				},
+				{
+					"value": "battre"
+				},
+				{
+					"value": "beau"
+				},
+				{
+					"value": "bébé"
+				},
+				{
+					"value": "besoin"
+				},
+				{
+					"value": "bizarre"
+				},
+				{
+					"value": "blanc"
+				},
+				{
+					"value": "bleu"
+				},
+				{
+					"value": "boire"
+				},
+				{
+					"value": "bois"
+				},
+				{
+					"value": "boîte"
+				},
+				{
+					"value": "bonheur"
+				},
+				{
+					"value": "bonjour"
+				},
+				{
+					"value": "bonne"
+				},
+				{
+					"value": "bord"
+				},
+				{
+					"value": "bouche"
+				},
+				{
+					"value": "bouger"
+				},
+				{
+					"value": "boulot"
+				},
+				{
+					"value": "bout"
+				},
+				{
+					"value": "bras"
+				},
+				{
+					"value": "bruit"
+				},
+				{
+					"value": "brûler"
+				},
+				{
+					"value": "bureau"
+				},
+				{
+					"value": "cacher"
+				},
+				{
+					"value": "café"
+				},
+				{
+					"value": "calmer"
+				},
+				{
+					"value": "camp"
+				},
+				{
+					"value": "capitaine"
+				},
+				{
+					"value": "carte"
+				},
+				{
+					"value": "casser"
+				},
+				{
+					"value": "cause"
+				},
+				{
+					"value": "certain"
+				},
+				{
+					"value": "cesser"
+				},
+				{
+					"value": "chambre"
+				},
+				{
+					"value": "chance"
+				},
+				{
+					"value": "changer"
+				},
+				{
+					"value": "chanter"
+				},
+				{
+					"value": "charger"
+				},
+				{
+					"value": "chat"
+				},
+				{
+					"value": "chaud"
+				},
+				{
+					"value": "chef"
+				},
+				{
+					"value": "chemin"
+				},
+				{
+					"value": "cher"
+				},
+				{
+					"value": "chercher"
+				},
+				{
+					"value": "chéri"
+				},
+				{
+					"value": "cheval"
+				},
+				{
+					"value": "cheveu"
+				},
+				{
+					"value": "chien"
+				},
+				{
+					"value": "choisir"
+				},
+				{
+					"value": "choix"
+				},
+				{
+					"value": "chose"
+				},
+				{
+					"value": "ciel"
+				},
+				{
+					"value": "clair"
+				},
+				{
+					"value": "classe"
+				},
+				{
+					"value": "client"
+				},
+				{
+					"value": "cœur"
+				},
+				{
+					"value": "coin"
+				},
+				{
+					"value": "colonel"
+				},
+				{
+					"value": "commencer"
+				},
+				{
+					"value": "comprendre"
+				},
+				{
+					"value": "compte"
+				},
+				{
+					"value": "compter"
+				},
+				{
+					"value": "conduire"
+				},
+				{
+					"value": "confiance"
+				},
+				{
+					"value": "connaître"
+				},
+				{
+					"value": "content"
+				},
+				{
+					"value": "continuer"
+				},
+				{
+					"value": "copain"
+				},
+				{
+					"value": "corps"
+				},
+				{
+					"value": "côté"
+				},
+				{
+					"value": "coucher"
+				},
+				{
+					"value": "couleur"
+				},
+				{
+					"value": "coup"
+				},
+				{
+					"value": "couper"
+				},
+				{
+					"value": "cour"
+				},
+				{
+					"value": "courant"
+				},
+				{
+					"value": "courir"
+				},
+				{
+					"value": "cours"
+				},
+				{
+					"value": "couvrir"
+				},
+				{
+					"value": "craindre"
+				},
+				{
+					"value": "crier"
+				},
+				{
+					"value": "croire"
+				},
+				{
+					"value": "cuisine"
+				},
+				{
+					"value": "dame"
+				},
+				{
+					"value": "danser"
+				},
+				{
+					"value": "début"
+				},
+				{
+					"value": "décider"
+				},
+				{
+					"value": "découvrir"
+				},
+				{
+					"value": "dégager"
+				},
+				{
+					"value": "demander"
+				},
+				{
+					"value": "dent"
+				},
+				{
+					"value": "départ"
+				},
+				{
+					"value": "dernier"
+				},
+				{
+					"value": "descendre"
+				},
+				{
+					"value": "désolé"
+				},
+				{
+					"value": "désoler"
+				},
+				{
+					"value": "détester"
+				},
+				{
+					"value": "détruire"
+				},
+				{
+					"value": "devenir"
+				},
+				{
+					"value": "deviner"
+				},
+				{
+					"value": "devoir"
+				},
+				{
+					"value": "dieu"
+				},
+				{
+					"value": "différent"
+				},
+				{
+					"value": "difficile"
+				},
+				{
+					"value": "dire"
+				},
+				{
+					"value": "disparaître"
+				},
+				{
+					"value": "docteur"
+				},
+				{
+					"value": "doigt"
+				},
+				{
+					"value": "dollar"
+				},
+				{
+					"value": "donner"
+				},
+				{
+					"value": "dormir"
+				},
+				{
+					"value": "doute"
+				},
+				{
+					"value": "doux"
+				},
+				{
+					"value": "droit"
+				},
+				{
+					"value": "droite"
+				},
+				{
+					"value": "drôle"
+				},
+				{
+					"value": "échapper"
+				},
+				{
+					"value": "école"
+				},
+				{
+					"value": "écouter"
+				},
+				{
+					"value": "écrire"
+				},
+				{
+					"value": "effet"
+				},
+				{
+					"value": "église"
+				},
+				{
+					"value": "éloigner"
+				},
+				{
+					"value": "embrasser"
+				},
+				{
+					"value": "emmener"
+				},
+				{
+					"value": "empêcher"
+				},
+				{
+					"value": "emporter"
+				},
+				{
+					"value": "endroit"
+				},
+				{
+					"value": "enfant"
+				},
+				{
+					"value": "enlever"
+				},
+				{
+					"value": "ennemi"
+				},
+				{
+					"value": "entendre"
+				},
+				{
+					"value": "entier"
+				},
+				{
+					"value": "entrer"
+				},
+				{
+					"value": "envie"
+				},
+				{
+					"value": "envoyer"
+				},
+				{
+					"value": "épaule"
+				},
+				{
+					"value": "époque"
+				},
+				{
+					"value": "équipe"
+				},
+				{
+					"value": "erreur"
+				},
+				{
+					"value": "escalier"
+				},
+				{
+					"value": "espèce"
+				},
+				{
+					"value": "espérer"
+				},
+				{
+					"value": "esprit"
+				},
+				{
+					"value": "essayer"
+				},
+				{
+					"value": "état"
+				},
+				{
+					"value": "étrange"
+				},
+				{
+					"value": "être"
+				},
+				{
+					"value": "éviter"
+				},
+				{
+					"value": "excuser"
+				},
+				{
+					"value": "exemple"
+				},
+				{
+					"value": "exister"
+				},
+				{
+					"value": "expliquer"
+				},
+				{
+					"value": "face"
+				},
+				{
+					"value": "facile"
+				},
+				{
+					"value": "façon"
+				},
+				{
+					"value": "faim"
+				},
+				{
+					"value": "faire"
+				},
+				{
+					"value": "fait"
+				},
+				{
+					"value": "falloir"
+				},
+				{
+					"value": "famille"
+				},
+				{
+					"value": "faute"
+				},
+				{
+					"value": "femme"
+				},
+				{
+					"value": "fenêtre"
+				},
+				{
+					"value": "fermer"
+				},
+				{
+					"value": "fête"
+				},
+				{
+					"value": "filer"
+				},
+				{
+					"value": "fille"
+				},
+				{
+					"value": "film"
+				},
+				{
+					"value": "fils"
+				},
+				{
+					"value": "finir"
+				},
+				{
+					"value": "fleur"
+				},
+				{
+					"value": "flic"
+				},
+				{
+					"value": "fois"
+				},
+				{
+					"value": "fond"
+				},
+				{
+					"value": "force"
+				},
+				{
+					"value": "forme"
+				},
+				{
+					"value": "fort"
+				},
+				{
+					"value": "foutre"
+				},
+				{
+					"value": "français"
+				},
+				{
+					"value": "frapper"
+				},
+				{
+					"value": "frère"
+				},
+				{
+					"value": "froid"
+				},
+				{
+					"value": "front"
+				},
+				{
+					"value": "gagner"
+				},
+				{
+					"value": "garçon"
+				},
+				{
+					"value": "garde"
+				},
+				{
+					"value": "garder"
+				},
+				{
+					"value": "gars"
+				},
+				{
+					"value": "gauche"
+				},
+				{
+					"value": "général"
+				},
+				{
+					"value": "genre"
+				},
+				{
+					"value": "gens"
+				},
+				{
+					"value": "gentil"
+				},
+				{
+					"value": "geste"
+				},
+				{
+					"value": "glisser"
+				},
+				{
+					"value": "gosse"
+				},
+				{
+					"value": "goût"
+				},
+				{
+					"value": "gouvernement"
+				},
+				{
+					"value": "grand"
+				},
+				{
+					"value": "grave"
+				},
+				{
+					"value": "gros"
+				},
+				{
+					"value": "groupe"
+				},
+				{
+					"value": "guerre"
+				},
+				{
+					"value": "gueule"
+				},
+				{
+					"value": "habiter"
+				},
+				{
+					"value": "habitude"
+				},
+				{
+					"value": "haut"
+				},
+				{
+					"value": "heure"
+				},
+				{
+					"value": "heureux"
+				},
+				{
+					"value": "histoire"
+				},
+				{
+					"value": "homme"
+				},
+				{
+					"value": "honneur"
+				},
+				{
+					"value": "hôtel"
+				},
+				{
+					"value": "humain"
+				},
+				{
+					"value": "idée"
+				},
+				{
+					"value": "ignorer"
+				},
+				{
+					"value": "image"
+				},
+				{
+					"value": "imaginer"
+				},
+				{
+					"value": "important"
+				},
+				{
+					"value": "importer"
+				},
+				{
+					"value": "impossible"
+				},
+				{
+					"value": "impression"
+				},
+				{
+					"value": "inquiéter"
+				},
+				{
+					"value": "installer"
+				},
+				{
+					"value": "instant"
+				},
+				{
+					"value": "intéresser"
+				},
+				{
+					"value": "intérêt"
+				},
+				{
+					"value": "intérieur"
+				},
+				{
+					"value": "inviter"
+				},
+				{
+					"value": "jambe"
+				},
+				{
+					"value": "jardin"
+				},
+				{
+					"value": "jeter"
+				},
+				{
+					"value": "jeune"
+				},
+				{
+					"value": "joie"
+				},
+				{
+					"value": "joli"
+				},
+				{
+					"value": "jouer"
+				},
+				{
+					"value": "jour"
+				},
+				{
+					"value": "journal"
+				},
+				{
+					"value": "journée"
+				},
+				{
+					"value": "jurer"
+				},
+				{
+					"value": "juste"
+				},
+				{
+					"value": "lâcher"
+				},
+				{
+					"value": "laisser"
+				},
+				{
+					"value": "lancer"
+				},
+				{
+					"value": "langue"
+				},
+				{
+					"value": "léger"
+				},
+				{
+					"value": "lettre"
+				},
+				{
+					"value": "lever"
+				},
+				{
+					"value": "lèvre"
+				},
+				{
+					"value": "libre"
+				},
+				{
+					"value": "lieu"
+				},
+				{
+					"value": "ligne"
+				},
+				{
+					"value": "lire"
+				},
+				{
+					"value": "livre"
+				},
+				{
+					"value": "long"
+				},
+				{
+					"value": "lumière"
+				},
+				{
+					"value": "madame"
+				},
+				{
+					"value": "main"
+				},
+				{
+					"value": "maintenir"
+				},
+				{
+					"value": "maison"
+				},
+				{
+					"value": "maître"
+				},
+				{
+					"value": "malade"
+				},
+				{
+					"value": "maman"
+				},
+				{
+					"value": "manger"
+				},
+				{
+					"value": "manière"
+				},
+				{
+					"value": "manquer"
+				},
+				{
+					"value": "marche"
+				},
+				{
+					"value": "marcher"
+				},
+				{
+					"value": "mari"
+				},
+				{
+					"value": "mariage"
+				},
+				{
+					"value": "marier"
+				},
+				{
+					"value": "matin"
+				},
+				{
+					"value": "mauvais"
+				},
+				{
+					"value": "médecin"
+				},
+				{
+					"value": "meilleur"
+				},
+				{
+					"value": "même"
+				},
+				{
+					"value": "mener"
+				},
+				{
+					"value": "mentir"
+				},
+				{
+					"value": "merci"
+				},
+				{
+					"value": "merde"
+				},
+				{
+					"value": "mère"
+				},
+				{
+					"value": "mètre"
+				},
+				{
+					"value": "mettre"
+				},
+				{
+					"value": "milieu"
+				},
+				{
+					"value": "million"
+				},
+				{
+					"value": "minute"
+				},
+				{
+					"value": "mois"
+				},
+				{
+					"value": "moment"
+				},
+				{
+					"value": "monde"
+				},
+				{
+					"value": "monsieur"
+				},
+				{
+					"value": "monter"
+				},
+				{
+					"value": "montrer"
+				},
+				{
+					"value": "mort"
+				},
+				{
+					"value": "mourir"
+				},
+				{
+					"value": "mouvement"
+				},
+				{
+					"value": "moyen"
+				},
+				{
+					"value": "musique"
+				},
+				{
+					"value": "naître"
+				},
+				{
+					"value": "noir"
+				},
+				{
+					"value": "noms communs"
+				},
+				{
+					"value": "nouveau"
+				},
+				{
+					"value": "nuit"
+				},
+				{
+					"value": "numéro"
+				},
+				{
+					"value": "obliger"
+				},
+				{
+					"value": "occuper"
+				},
+				{
+					"value": "odeur"
+				},
+				{
+					"value": "oeil"
+				},
+				{
+					"value": "offrir"
+				},
+				{
+					"value": "oiseau"
+				},
+				{
+					"value": "ombre"
+				},
+				{
+					"value": "oncle"
+				},
+				{
+					"value": "ordre"
+				},
+				{
+					"value": "oreille"
+				},
+				{
+					"value": "oser"
+				},
+				{
+					"value": "oublier"
+				},
+				{
+					"value": "ouvrir"
+				},
+				{
+					"value": "paix"
+				},
+				{
+					"value": "papa"
+				},
+				{
+					"value": "papier"
+				},
+				{
+					"value": "paraître"
+				},
+				{
+					"value": "pareil"
+				},
+				{
+					"value": "parent"
+				},
+				{
+					"value": "parler"
+				},
+				{
+					"value": "parole"
+				},
+				{
+					"value": "part"
+				},
+				{
+					"value": "partie"
+				},
+				{
+					"value": "partir"
+				},
+				{
+					"value": "passage"
+				},
+				{
+					"value": "passé"
+				},
+				{
+					"value": "passer"
+				},
+				{
+					"value": "patron"
+				},
+				{
+					"value": "pauvre"
+				},
+				{
+					"value": "payer"
+				},
+				{
+					"value": "pays"
+				},
+				{
+					"value": "peau"
+				},
+				{
+					"value": "peine"
+				},
+				{
+					"value": "pensée"
+				},
+				{
+					"value": "penser"
+				},
+				{
+					"value": "perdre"
+				},
+				{
+					"value": "père"
+				},
+				{
+					"value": "permettre"
+				},
+				{
+					"value": "personne"
+				},
+				{
+					"value": "petit"
+				},
+				{
+					"value": "peuple"
+				},
+				{
+					"value": "peur"
+				},
+				{
+					"value": "photo"
+				},
+				{
+					"value": "pièce"
+				},
+				{
+					"value": "pied"
+				},
+				{
+					"value": "pierre"
+				},
+				{
+					"value": "place"
+				},
+				{
+					"value": "plaire"
+				},
+				{
+					"value": "plaisir"
+				},
+				{
+					"value": "plan"
+				},
+				{
+					"value": "plein"
+				},
+				{
+					"value": "pleurer"
+				},
+				{
+					"value": "poche"
+				},
+				{
+					"value": "point"
+				},
+				{
+					"value": "police"
+				},
+				{
+					"value": "porte"
+				},
+				{
+					"value": "porter"
+				},
+				{
+					"value": "poser"
+				},
+				{
+					"value": "possible"
+				},
+				{
+					"value": "pousser"
+				},
+				{
+					"value": "pouvoir"
+				},
+				{
+					"value": "préférer"
+				},
+				{
+					"value": "premier"
+				},
+				{
+					"value": "prendre"
+				},
+				{
+					"value": "préparer"
+				},
+				{
+					"value": "présence"
+				},
+				{
+					"value": "présent"
+				},
+				{
+					"value": "présenter"
+				},
+				{
+					"value": "président"
+				},
+				{
+					"value": "prêt"
+				},
+				{
+					"value": "prévenir"
+				},
+				{
+					"value": "prier"
+				},
+				{
+					"value": "prince"
+				},
+				{
+					"value": "prison"
+				},
+				{
+					"value": "prix"
+				},
+				{
+					"value": "problème"
+				},
+				{
+					"value": "prochain"
+				},
+				{
+					"value": "professeur"
+				},
+				{
+					"value": "promettre"
+				},
+				{
+					"value": "propos"
+				},
+				{
+					"value": "proposer"
+				},
+				{
+					"value": "propre"
+				},
+				{
+					"value": "protéger"
+				},
+				{
+					"value": "putain"
+				},
+				{
+					"value": "quartier"
+				},
+				{
+					"value": "question"
+				},
+				{
+					"value": "quitter"
+				},
+				{
+					"value": "quoi"
+				},
+				{
+					"value": "raconter"
+				},
+				{
+					"value": "raison"
+				},
+				{
+					"value": "ramener"
+				},
+				{
+					"value": "rappeler"
+				},
+				{
+					"value": "rapport"
+				},
+				{
+					"value": "recevoir"
+				},
+				{
+					"value": "reconnaître"
+				},
+				{
+					"value": "réfléchir"
+				},
+				{
+					"value": "refuser"
+				},
+				{
+					"value": "regard"
+				},
+				{
+					"value": "regarder"
+				},
+				{
+					"value": "rejoindre"
+				},
+				{
+					"value": "remarquer"
+				},
+				{
+					"value": "remettre"
+				},
+				{
+					"value": "remonter"
+				},
+				{
+					"value": "rencontrer"
+				},
+				{
+					"value": "rendre"
+				},
+				{
+					"value": "rentrer"
+				},
+				{
+					"value": "répéter"
+				},
+				{
+					"value": "répondre"
+				},
+				{
+					"value": "réponse"
+				},
+				{
+					"value": "reposer"
+				},
+				{
+					"value": "reprendre"
+				},
+				{
+					"value": "ressembler"
+				},
+				{
+					"value": "reste"
+				},
+				{
+					"value": "rester"
+				},
+				{
+					"value": "retard"
+				},
+				{
+					"value": "retenir"
+				},
+				{
+					"value": "retirer"
+				},
+				{
+					"value": "retour"
+				},
+				{
+					"value": "retourner"
+				},
+				{
+					"value": "retrouver"
+				},
+				{
+					"value": "réussir"
+				},
+				{
+					"value": "rêve"
+				},
+				{
+					"value": "réveiller"
+				},
+				{
+					"value": "revenir"
+				},
+				{
+					"value": "rêver"
+				},
+				{
+					"value": "revoir"
+				},
+				{
+					"value": "rire"
+				},
+				{
+					"value": "risquer"
+				},
+				{
+					"value": "robe"
+				},
+				{
+					"value": "rouge"
+				},
+				{
+					"value": "rouler"
+				},
+				{
+					"value": "route"
+				},
+				{
+					"value": "sale"
+				},
+				{
+					"value": "salle"
+				},
+				{
+					"value": "salut"
+				},
+				{
+					"value": "sang"
+				},
+				{
+					"value": "sauter"
+				},
+				{
+					"value": "sauver"
+				},
+				{
+					"value": "savoir"
+				},
+				{
+					"value": "scène"
+				},
+				{
+					"value": "seconde"
+				},
+				{
+					"value": "secret"
+				},
+				{
+					"value": "sécurité"
+				},
+				{
+					"value": "seigneur"
+				},
+				{
+					"value": "semaine"
+				},
+				{
+					"value": "sembler"
+				},
+				{
+					"value": "sens"
+				},
+				{
+					"value": "sentiment"
+				},
+				{
+					"value": "sentir"
+				},
+				{
+					"value": "séparer"
+				},
+				{
+					"value": "sérieux"
+				},
+				{
+					"value": "serrer"
+				},
+				{
+					"value": "service"
+				},
+				{
+					"value": "servir"
+				},
+				{
+					"value": "seul"
+				},
+				{
+					"value": "siècle"
+				},
+				{
+					"value": "signe"
+				},
+				{
+					"value": "silence"
+				},
+				{
+					"value": "simple"
+				},
+				{
+					"value": "situation"
+				},
+				{
+					"value": "soeur"
+				},
+				{
+					"value": "soir"
+				},
+				{
+					"value": "soirée"
+				},
+				{
+					"value": "soldat"
+				},
+				{
+					"value": "soleil"
+				},
+				{
+					"value": "sorte"
+				},
+				{
+					"value": "sortir"
+				},
+				{
+					"value": "souffrir"
+				},
+				{
+					"value": "sourire"
+				},
+				{
+					"value": "souvenir"
+				},
+				{
+					"value": "suffire"
+				},
+				{
+					"value": "suite"
+				},
+				{
+					"value": "suivre"
+				},
+				{
+					"value": "sujet"
+				},
+				{
+					"value": "super"
+				},
+				{
+					"value": "table"
+				},
+				{
+					"value": "taire"
+				},
+				{
+					"value": "téléphone"
+				},
+				{
+					"value": "temps"
+				},
+				{
+					"value": "tendre"
+				},
+				{
+					"value": "tenir"
+				},
+				{
+					"value": "tenter"
+				},
+				{
+					"value": "terminer"
+				},
+				{
+					"value": "terre"
+				},
+				{
+					"value": "tête"
+				},
+				{
+					"value": "tirer"
+				},
+				{
+					"value": "tomber"
+				},
+				{
+					"value": "toucher"
+				},
+				{
+					"value": "tour"
+				},
+				{
+					"value": "tourner"
+				},
+				{
+					"value": "tout"
+				},
+				{
+					"value": "toute"
+				},
+				{
+					"value": "train"
+				},
+				{
+					"value": "traîner"
+				},
+				{
+					"value": "traiter"
+				},
+				{
+					"value": "tranquille"
+				},
+				{
+					"value": "travail"
+				},
+				{
+					"value": "travailler"
+				},
+				{
+					"value": "travers"
+				},
+				{
+					"value": "traverser"
+				},
+				{
+					"value": "triste"
+				},
+				{
+					"value": "tromper"
+				},
+				{
+					"value": "trou"
+				},
+				{
+					"value": "trouver"
+				},
+				{
+					"value": "truc"
+				},
+				{
+					"value": "tuer"
+				},
+				{
+					"value": "type"
+				},
+				{
+					"value": "utiliser"
+				},
+				{
+					"value": "valoir"
+				},
+				{
+					"value": "vendre"
+				},
+				{
+					"value": "venir"
+				},
+				{
+					"value": "vent"
+				},
+				{
+					"value": "ventre"
+				},
+				{
+					"value": "verbes"
+				},
+				{
+					"value": "vérité"
+				},
+				{
+					"value": "verre"
+				},
+				{
+					"value": "vert"
+				},
+				{
+					"value": "vide"
+				},
+				{
+					"value": "vieux"
+				},
+				{
+					"value": "village"
+				},
+				{
+					"value": "ville"
+				},
+				{
+					"value": "visage"
+				},
+				{
+					"value": "vivant"
+				},
+				{
+					"value": "vivre"
+				},
+				{
+					"value": "voir"
+				},
+				{
+					"value": "voiture"
+				},
+				{
+					"value": "voix"
+				},
+				{
+					"value": "voler"
+				},
+				{
+					"value": "vouloir"
+				},
+				{
+					"value": "voyage"
+				},
+				{
+					"value": "faux"
+				},
+				{
+					"value": "vrai"
+				}
+			]
+		},
+		{
+			"name": "Numbers",
+			"matchingStrictness": null,
+			"automaticallyExtensible": false,
+			"useSynonyms": true,
+			"values": [
+				{
+					"value": "0",
+					"synonyms": [
+						"zéro"
+					]
+				},
+				{
+					"value": "1",
+					"synonyms": [
+						"un"
+					]
+				},
+				{
+					"value": "2",
+					"synonyms": [
+						"deux"
+					]
+				},
+				{
+					"value": "3",
+					"synonyms": [
+						"trois"
+					]
+				},
+				{
+					"value": "4",
+					"synonyms": [
+						"quatre"
+					]
+				},
+				{
+					"value": "5",
+					"synonyms": [
+						"cinq"
+					]
+				},
+				{
+					"value": "6",
+					"synonyms": [
+						"six"
+					]
+				},
+				{
+					"value": "7",
+					"synonyms": [
+						"sept"
+					]
+				},
+				{
+					"value": "8",
+					"synonyms": [
+						"huit"
+					]
+				},
+				{
+					"value": "9",
+					"synonyms": [
+						"neuf"
+					]
+				}
+			]
 		}
 	],
-	"intents": [
+	"intents": [{
+			"name": "UserRandomAnswer",
+			"description": "L'utilisateur répond par un mot aléatoire",
+			"enabledByDefault": false,
+			"utterances": [
+				"{voiture:=>RandomWord}",
+				"{maison:=>RandomWord}",
+				"{constitution:=>RandomWord}",
+				"{avion:=>RandomWord}",
+				"{nuit:=>RandomWord}",
+				"{corbeau:=>RandomWord}",
+				"{corps:=>RandomWord}",
+				"{tuerie:=>RandomWord}",
+				"{excellent:=>RandomWord}",
+				"{forêt:=>RandomWord}",
+				"{il était une fois:=>RandomWord}",
+				"{géant:=>RandomWord}",
+				"{obama:=>RandomWord}",
+				"{noir:=>RandomWord}"
+			],
+			"slots": [{
+				"name": "RandomWord",
+				"description": "Le mot utilisé",
+				"required": false,
+				"type": "RandomWords",
+				"missingQuestion": ""
+			}]
+		},
 		{
 			"name": "SwitchLanguage",
 			"description": "Modifie la langue d'Alice",

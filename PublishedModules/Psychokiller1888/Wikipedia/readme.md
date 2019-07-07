@@ -6,7 +6,7 @@
 ### Description
 Allows one to find informations about a topic on wikipedia
 
-- Version: 0.1
+- Version: 0.2
 - Author: Psychokiller1888
 - Maintainers: N/A
 - Alice minimum version: N/A
