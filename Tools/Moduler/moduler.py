@@ -34,12 +34,12 @@ import shutil
 import os
 
 style = style_from_dict({
-    Token.QuestionMark: '#996633 bold',
-    Token.Selected: '#5F819D bold',
-    Token.Instruction: '#99ff33 bold',
+	Token.QuestionMark: '#996633 bold',
+	Token.Selected: '#5F819D bold',
+	Token.Instruction: '#99ff33 bold',
 	Token.Pointer: '#673ab7 bold',
-    Token.Answer: '#0066ff bold',
-    Token.Question: '#99ff33 bold',
+	Token.Answer: '#0066ff bold',
+	Token.Question: '#99ff33 bold',
 	Token.Input: '#99ff33 bold'
 })
 
@@ -61,15 +61,6 @@ class NotExist(Validator):
 				message='This cannot be empty and should not already exist',
 				cursor_position=len(document.text)
 			)
-
-
-def toCamelCase(string):
-	if not ' ' in string:
-		return str(string).capitalize()
-	else:
-		words = str(string).split(' ')
-		return ''.join([x.capitalize() for x in words])
-
 
 PYTHON_CLASS = '''# -*- coding: utf-8 -*-
 
@@ -215,7 +206,7 @@ first_questions = [
 		'name'    : 'moduleName',
 		'message' : 'Please enter the name of the module you are creating',
 		'validate': NotEmpty,
-		'filter'  : lambda val: toCamelCase(val)
+		'filter'  : lambda val: str(val).title().replace(' ', '')
 	}
 ]
 
@@ -278,7 +269,7 @@ if __name__ == '__main__':
 				'name'    : 'moduleName',
 				'message' : 'Ok, so chose another module name please',
 				'validate': NotEmpty,
-				'filter'  : lambda val: str(val).capitalize().replace(' ', ''),
+				'filter'  : lambda val: str(val).title().replace(' ', ''),
 				'when'    : lambda subAnswers: not subAnswers['delete']
 			}
 		]
