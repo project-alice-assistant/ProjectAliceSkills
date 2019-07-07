@@ -1,8 +1,8 @@
 {
 	"name": "AliceCore",
 	"version": 0.3,
-	"author": "Psycho",
-	"maintainers": ["Jierka"],
+	"author": "ProjectAlice",
+	"maintainers": ["Psycho","Jierka"],
 	"desc": "AliceCore is the official module that handles all core intents",
 	"aliceMinVersion": "",
 	"requirements": [],

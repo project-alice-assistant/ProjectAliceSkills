@@ -7,9 +7,9 @@
 ContextSensitive is the official context sensitive module. It handle intents like "Delete this", "Forget about that"
 
 - Version: 0.1
-- Author: Psycho
+- Author: ProjectAlice
 - Maintainers:
-  - Jierka
+  - Psycho, Jierka
 - Alice minimum version: N/A
 - Conditions:
   - EN

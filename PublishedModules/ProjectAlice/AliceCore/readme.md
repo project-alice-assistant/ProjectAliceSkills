@@ -7,9 +7,9 @@
 AliceCore is the official module that handles all core intents
 
 - Version: 0.3
-- Author: Psycho
+- Author: ProjectAlice
 - Maintainers:
-  - Jierka
+  - Psycho, Jierka
 - Alice minimum version: N/A
 - Conditions:
   - EN
