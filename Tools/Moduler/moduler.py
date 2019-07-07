@@ -45,8 +45,7 @@ style = style_from_dict({
 
 class NotEmpty(Validator):
 	def validate(self, document):
-		ok = len(document.text) > 0
-		if not ok:
+		if not document.text:
 			raise ValidationError(
 				message='This cannot be empty',
 				cursor_position=len(document.text)
@@ -55,8 +54,8 @@ class NotEmpty(Validator):
 
 class NotExist(Validator):
 	def validate(self, document):
-		ok = len(document.text) > 0 and not os.path.exists(os.path.join(home, 'ProjectAliceModuler', answers['username'], document.text))
-		if not ok:
+		modulePath = os.path.join(home, 'ProjectAliceModuler', answers['username'], document.text)
+		if not document.text or os.path.exists(modulePath):
 			raise ValidationError(
 				message='This cannot be empty and should not already exist',
 				cursor_position=len(document.text)
