@@ -1,7 +1,7 @@
 # AliceCore
 
 ### Download
-`wget http://bit.ly/AliceCore -O ~/ProjectAlice/system/moduleInstallTickets/AliceCore.install`
+`wget http://modules.projectalice.ch/AliceCore -O ~/ProjectAlice/system/moduleInstallTickets/AliceCore.install`
 
 ### Description
 AliceCore is the official module that handles all core intents
