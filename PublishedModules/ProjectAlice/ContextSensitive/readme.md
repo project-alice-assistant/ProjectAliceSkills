@@ -1,7 +1,7 @@
 # ContextSensitive
 
 ### Download
-`wget http://bit.ly/PAContextSensitive -O ~/ProjectAlice/system/moduleInstallTickets/ContextSensitive.install`
+`wget http://modules.projectalice.ch/ContextSensitive -O ~/ProjectAlice/system/moduleInstallTickets/ContextSensitive.install`
 
 ### Description
 ContextSensitive is the official context sensitive module. It handle intents like "Delete this", "Forget about that"
