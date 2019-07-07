@@ -7,6 +7,6 @@
 	"aliceMinVersion": "",
 	"requirements": [],
 	"conditions": {
-		"lang": ["en"]
+		"lang": ["en", "de"]
 	}
 }
