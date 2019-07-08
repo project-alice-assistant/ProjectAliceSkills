@@ -1,10 +1,7 @@
 {
 	"error": {
-		"en": [
+		"default": [
 			"Sorry, something went wrong fetching a useless fact"
-		],
-		"de": [
-			"Sorry, es gab ein Fehler einen Useless fact zu kriegen"
 		]
 	}
 }
