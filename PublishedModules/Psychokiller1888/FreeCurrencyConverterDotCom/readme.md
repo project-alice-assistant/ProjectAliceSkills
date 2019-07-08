@@ -1,7 +1,7 @@
 # FreeCurrencyConverterDotCom
 
 ### Download
-`wget http://bit.ly/FreeCurrencyConverterDotCom -O ~/ProjectAlice/system/moduleInstallTickets/FreeCurrencyConverterDotCom.install`
+`wget http://modules.projectalice.ch/FreeCurrencyConverterDotCom -O ~/ProjectAlice/system/moduleInstallTickets/FreeCurrencyConverterDotCom.install`
 
 ### Description
 Let's you convert world currencies
