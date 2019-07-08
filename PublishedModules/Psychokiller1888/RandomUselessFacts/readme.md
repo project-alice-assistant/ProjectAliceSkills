@@ -1,7 +1,7 @@
 # RandomUselessFacts
 
 ### Download
-`wget http://bit.ly/RandomUselessFacts -O ~/ProjectAlice/system/moduleInstallTickets/RandomUselessFacts.install`
+`wget http://modules.projectalice.ch/RandomUselessFacts -O ~/ProjectAlice/system/moduleInstallTickets/RandomUselessFacts.install`
 
 ### Description
 Gets you the daily random useless fact or a random one
