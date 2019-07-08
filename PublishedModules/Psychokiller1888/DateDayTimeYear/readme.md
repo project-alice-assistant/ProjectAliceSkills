@@ -1,7 +1,7 @@
 # DateDayTimeYear
 
 ### Download
-`wget http://bit.ly/DateDayTimeYear -O ~/ProjectAlice/system/moduleInstallTickets/DateDayTimeYear.install`
+`wget http://modules.projectalice.ch/DateDayTimeYear -O ~/ProjectAlice/system/moduleInstallTickets/DateDayTimeYear.install`
 
 ### Description
 Ask for the time, date, day and year
