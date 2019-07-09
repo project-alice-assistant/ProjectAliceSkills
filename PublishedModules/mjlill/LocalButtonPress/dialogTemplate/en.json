@@ -1,5 +1,5 @@
 {
-	"module": "Localbuttonpress",
+	"module": "LocalButtonPress",
 	"icon": "lamp",
 	"description": "Press an imaginary button on or off",
 	"slotTypes": [],
