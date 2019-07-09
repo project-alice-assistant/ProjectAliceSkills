@@ -18,7 +18,8 @@
 				"just push the on button",
 				"push the damn button on",
 				"push the damn on button thank you"
-			]
+			],
+			"slots": []
 		},
 		{
 			"name": "DoButtonOff",
