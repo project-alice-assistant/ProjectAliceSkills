@@ -38,13 +38,13 @@ class Localbuttonpress(Module):
 
                         GPIO.output(_LIGHT_PIN, GPIO.HIGH)
 
-                        managers.MqttServer.endTalk(sessionId, managers.TalkManager.randomTalk(self.name, 'DoButtonOn')client=siteId)
+                        managers.MqttServer.endTalk(sessionId, managers.TalkManager.randomTalk(self.name, 'DoButtonOn'), client=siteId)
 
 
                 elif intent == self._INTENT_BUTTON_OFF:
 
                         GPIO.output(_LIGHT_PIN, GPIO.LOW)
 
-                        managers.MqttServer.endTalk(sessionId, managers.TalkManager.randomTalk(self.name,'DoButtonOff') client=siteId)
+                        managers.MqttServer.endTalk(sessionId, managers.TalkManager.randomTalk(self.name,'DoButtonOff'), client=siteId)
 
 		return True
