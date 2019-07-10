@@ -1,11 +1,11 @@
 language: generic
 install:
-  - npm install -g pajv
+  - npm install -g ajv
 
 script:
   - |
     for file in PublishedModules/*/*/dialogTemplate/*.json
     do
-      pajv validate -s linting/dialog-schema.json -d $file 2> >(sed $'s,.*,'"$file"$' \e[31m&\e[m,'>&2)
+      ajv validate -s linting/dialog-schema.json -d $file
     done
         
