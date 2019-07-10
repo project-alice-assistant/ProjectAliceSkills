@@ -8,3 +8,4 @@ The Syntax of the dialogTemplates of all Modules is tested by travis using the d
 npm install -g ajv-cli
 ./linting/dialog-schema.sh 
 ```
+***Be aware, that this only checks the json syntax and not whether the used slots are created in the slotTypes array, or whether the syntax used for the utterances is correct***
