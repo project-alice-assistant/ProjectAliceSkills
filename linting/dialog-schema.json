@@ -1,0 +1,125 @@
+{
+  "type": "object",
+  "required": [
+    "module",
+    "icon",
+    "description",
+    "slotTypes"
+  ],
+  "properties": {
+    "module": { "type": "string" },
+    "icon": { "type": "string" },
+    "description": { "type": ["string", "null"] },
+    "slotTypes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "matchingStrictness",
+          "automaticallyExtensible",
+          "useSynonyms",
+          "values"
+        ],
+        "properties": {
+          "name": { "type": "string" },
+          "matchingStrictness": { "type": "null" },
+          "automaticallyExtensible": { "type": "boolean" },
+          "useSynonyms": { "type": "boolean" },
+          "values": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+              }
+            }
+          }
+        },
+        "additionalProperties": false,
+        "if": {
+          "properties": { "useSynonyms": { "const": true } }
+        },
+        "then": {
+          "properties": {
+            "values": {
+              "items": {
+                "required": [
+                  "value",
+                  "synonyms"
+                ],
+                "properties": {
+                  "value": { "type": "string" },
+                  "synonyms": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "else": {
+          "properties": {
+            "values": {
+              "items": {
+                "required": [
+                  "value"
+                ],
+                "properties": {
+                  "value": { "type": "string" }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "intents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "description",
+          "enabledByDefault",
+          "utterances",
+          "slots"
+        ],
+        "properties": {
+          "name": { "type": "string" },
+          "description": { "type": ["string", "null"] },
+          "enabledByDefault": { "type": "boolean" },
+          "utterances": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "slots": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "name",
+                "description",
+                "required",
+                "type",
+                "missingQuestion"
+              ],
+              "properties": {
+                "name": { "type": "string" },
+                "description": { "type": ["string", "null"] },
+                "required": { "type": "boolean" },
+                "type": { "type": "string" },
+                "missingQuestion": { "type": "string" }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
