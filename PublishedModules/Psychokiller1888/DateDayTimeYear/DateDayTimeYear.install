@@ -2,11 +2,11 @@
 	"name": "DateDayTimeYear",
 	"version": 0.1,
 	"author": "Psychokiller1888",
-	"maintainers": [""],
+	"maintainers": ["Jierka", "maxbachmann"],
 	"desc": "Ask for the time, date, day and year",
 	"aliceMinVersion": "",
 	"requirements": [],
 	"conditions": {
-		"lang": ["en", "fr"]
+		"lang": ["en", "fr", "de"]
 	}
 }

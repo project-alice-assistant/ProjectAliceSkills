@@ -1,10 +1,10 @@
 {
 	"time": {
 		"default": [
-			"It is <say-as interpret-as=\"time\" format=\"hms12\">{}</say-as>"
+			"It is <say-as interpret-as=\"time\" format=\"hms12\">{} {} {}</say-as>"
 		],
 		"short": [
-			"<say-as interpret-as=\"time\" format=\"hms12\">{}</say-as>"
+			"<say-as interpret-as=\"time\" format=\"hms12\">{} {} {}</say-as>"
 		]
 	},
 	"date": {
