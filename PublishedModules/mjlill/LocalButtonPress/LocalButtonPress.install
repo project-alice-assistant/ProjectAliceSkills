@@ -1,6 +1,6 @@
 {
 	"name": "LocalButtonPress",
-	"version": 0.1,
+	"version": 1.0,
 	"author": "mjlill",
 	"maintainers": [""],
 	"desc": "Press an imaginary button on or off",
