@@ -1,7 +1,9 @@
 # Customisation
 
 ### Download
-`wget http://modules.projectalice.ch/Customisation -O ~/ProjectAlice/system/moduleInstallTickets/Customisation.install`
+```bash
+wget http://modules.projectalice.ch/Customisation -O ~/ProjectAlice/system/moduleInstallTickets/Customisation.install
+```
 
 ### Description
 Customisation is the official customisation module. Use it to customize your experience

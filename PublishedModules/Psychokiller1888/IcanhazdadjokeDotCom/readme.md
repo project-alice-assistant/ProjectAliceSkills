@@ -1,7 +1,9 @@
 # IcanhazdadjokeDotNet
 
 ### Download
-`wget http://modules.projectalice.ch/IcanhazdadjokeDotNet -O ~/ProjectAlice/system/moduleInstallTickets/IcanhazdadjokeDotNet.install`
+```bash
+wget http://modules.projectalice.ch/IcanhazdadjokeDotNet -O ~/ProjectAlice/system/moduleInstallTickets/IcanhazdadjokeDotNet.install
+```
 
 ### Description
 Get a random dad joke on demand

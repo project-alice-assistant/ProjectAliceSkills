@@ -1,7 +1,9 @@
 # PhilipsHue
 
 ### Download
-`wget http://modules.projectalice.ch/PhilipsHue -O ~/ProjectAlice/system/moduleInstallTickets/PhilipsHue.install`
+```bash
+wget http://modules.projectalice.ch/PhilipsHue -O ~/ProjectAlice/system/moduleInstallTickets/PhilipsHue.install
+```
 
 ### Desc
 Control your Philips Hue lamps

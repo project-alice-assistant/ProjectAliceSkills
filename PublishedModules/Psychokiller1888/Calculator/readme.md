@@ -1,7 +1,9 @@
 # Calculator
 
 ### Download
-`wget modules.projectalice.ch/Calculator -O ~/ProjectAlice/system/moduleInstallTickets/Calculator.install`
+```bash
+wget modules.projectalice.ch/Calculator -O ~/ProjectAlice/system/moduleInstallTickets/Calculator.install
+```
 
 ### Description
 Do some calculation with alice

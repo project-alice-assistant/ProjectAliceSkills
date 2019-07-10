@@ -1,7 +1,9 @@
 # Tasmota
 
 ### Download
-`wget http://modules.projectalice.ch/Tasmota -O ~/ProjectAlice/system/moduleInstallTickets/Tasmota.install`
+```bash
+wget http://modules.projectalice.ch/Tasmota -O ~/ProjectAlice/system/moduleInstallTickets/Tasmota.install
+```
 
 ### Description
 This module allows you to not only connect tasmota esp devices, but listen to them

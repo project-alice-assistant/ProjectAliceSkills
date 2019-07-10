@@ -1,7 +1,9 @@
 # Wikipedia
 
 ### Download
-`wget http://modules.projectalice.ch/Wikipedia -O ~/ProjectAlice/system/moduleInstallTickets/Wikipedia.install`
+```bash
+wget http://modules.projectalice.ch/Wikipedia -O ~/ProjectAlice/system/moduleInstallTickets/Wikipedia.install
+```
 
 ### Description
 Allows one to find informations about a topic on wikipedia
