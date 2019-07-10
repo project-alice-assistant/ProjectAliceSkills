@@ -8,8 +8,9 @@ Gets you the daily random useless fact or a random one
 
 - Version: 1.01
 - Author: Psychokiller1888
-- Maintainers: N/A
+- Maintainers: maxbachmann
 - Alice minimum version: N/A
 - Conditions:
-  - EN
+  - en
+  - de
 - Requirements: N/A
