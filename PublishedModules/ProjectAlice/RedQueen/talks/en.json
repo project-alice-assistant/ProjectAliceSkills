@@ -44,98 +44,70 @@
 		]
 	},
 	"onGoingBed": {
-		"default": {
-			"en": [
-				"Ok, I take care of everything, don't worry",
-				"Sure, I'm handling what's needed"
-			]
-		},
-		"short": {
-			"en": [
-				"Ok"
-			]
-		}
+		"default": [
+			"Ok, I take care of everything, don't worry",
+			"Sure, I'm handling what's needed"
+		],
+		"short": [
+			"Ok"
+		]
 	},
 	"onLeavingHome": {
-		"default": {
-			"en": [
-				"Ok, I take care of everything, don't worry",
-				"Sure, I'm handling what's needed"
-			]
-		},
-		"short": {
-			"en": [
-				"Ok"
-			]
-		}
+		"default": [
+			"Ok, I take care of everything, don't worry",
+			"Sure, I'm handling what's needed"
+		],
+		"short": [
+			"Ok"
+		]
 	},
 	"onReturningHome": {
-		"default": {
-			"en": [
-				"Hey, welcome back, happy to have you around again!",
-				"Hi! Welcome back! Happy you are back home!"
-			]
-		},
-		"short": {
-			"en": [
-				"Welcome back!",
-				"Hi!"
-			]
-		}
+		"default": [
+			"Hey, welcome back, happy to have you around again!",
+			"Hi! Welcome back! Happy you are back home!"
+		],
+		"short": [
+			"Welcome back!",
+			"Hi!"
+		]
 	},
 	"onWatchingTV": {
-		"default": {
-			"en": [
-				"Ok, I change the lights! Enjoy!",
-				"Have a good time!"
-			]
-		},
-		"short": {
-			"en": [
-				"Ok"
-			]
-		}
+		"default": [
+			"Ok, I change the lights! Enjoy!",
+			"Have a good time!"
+		],
+		"short": [
+			"Ok"
+		]
 	},
 	"onEating": {
-		"default": {
-			"en": [
-				"Ok, I change the lights! Enjoy you meal!",
-				"Have a good meal, enjoy!"
-			]
-		},
-		"short": {
-			"en": [
-				"Ok"
-			]
-		}
+		"default": [
+			"Ok, I change the lights! Enjoy you meal!",
+			"Have a good meal, enjoy!"
+		],
+		"short": [
+			"Ok"
+		]
 	},
 	"onMakeup": {
-		"default": {
-			"en": [
-				"Ok, changing the lights so you see better!",
-				"You don't need much makeup anyway, you are wonderfull.",
-				"You are making makeup nice, not the opposite."
-			]
-		},
-		"short": {
-			"en": [
-				"Changing lights!"
-			]
-		}
+		"default": [
+			"Ok, changing the lights so you see better!",
+			"You don't need much makeup anyway, you are wonderfull.",
+			"You are making makeup nice, not the opposite."
+		],
+		"short": [
+			"Changing lights!"
+		]
 	},
 	"onCooking": {
-		"default": {
-			"en": [
-				"Ok, settings the lights in the kitchen",
-				"Make something good!",
-				"Sure, i'm changing the lights!"
-			]
-		},
-		"short": {
-			"en": [
-				"Changing lights!"
-			]
-		}
+		"default": [
+			"Ok, settings the lights in the kitchen",
+			"Make something good!",
+			"Sure, i'm changing the lights!"
+		],
+		"short": [
+			"Changing lights!"
+		]
 	},
 	"thanksForBeingNice": {
 		"default": [
