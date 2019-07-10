@@ -1,5 +1,5 @@
 # LocalButtonPress
-```wget http://bit.ly/LocalButtonPress -O ~/ProjectAlice/system/moduleInstallTickets/LocalButtonPress.install```
+```bash wget http://bit.ly/LocalButtonPress -O ~/ProjectAlice/system/moduleInstallTickets/LocalButtonPress.install```
 
 ### Description
 Press an imaginary button on or off
