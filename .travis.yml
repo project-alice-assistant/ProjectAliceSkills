@@ -1,0 +1,11 @@
+language: generic
+install:
+  - npm install -g pajv
+
+script:
+  - |
+    for file in PublishedModules/*/*/dialogTemplate/*.json
+    do
+      pajv validate -s schema.json -d $file 2> >(sed $'s,.*,'"$file"$' \e[31m&\e[m,'>&2)
+    done
+        
