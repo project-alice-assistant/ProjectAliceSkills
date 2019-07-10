@@ -1,6 +1,6 @@
 language: generic
 install:
-  - npm install -g pajv
+  - npm install -g ajv-cli
 
 script:
   - linting/dialog-schema.sh   
