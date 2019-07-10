@@ -1,6 +1,6 @@
 language: generic
 install:
-  - npm install -g ajv
+  - npm install -g ajv-cli
 
 script:
   - |
