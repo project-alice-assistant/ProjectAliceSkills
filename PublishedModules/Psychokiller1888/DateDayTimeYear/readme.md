@@ -2,7 +2,8 @@
 
 ### Download
 ```bash
-wget http://bit.ly/DateDayTimeYear -O ~/ProjectAlice/system/moduleInstallTickets/DateDayTimeYear.install
+wget http://bit.ly/DateDayTimeYear \
+-O ~/ProjectAlice/system/moduleInstallTickets/DateDayTimeYear.install
 ```
 
 ### Description

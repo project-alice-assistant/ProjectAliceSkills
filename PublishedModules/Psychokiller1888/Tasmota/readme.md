@@ -2,7 +2,8 @@
 
 ### Download
 ```bash
-wget http://modules.projectalice.ch/Tasmota -O ~/ProjectAlice/system/moduleInstallTickets/Tasmota.install
+wget http://modules.projectalice.ch/Tasmota \
+-O ~/ProjectAlice/system/moduleInstallTickets/Tasmota.install
 ```
 
 ### Description

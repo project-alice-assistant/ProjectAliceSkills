@@ -2,7 +2,8 @@
 
 ### Download
 ```bash
-wget http://modules.projectalice.ch/RandomUselessFacts -O ~/ProjectAlice/system/moduleInstallTickets/RandomUselessFacts.install
+wget http://modules.projectalice.ch/RandomUselessFacts \
+-O ~/ProjectAlice/system/moduleInstallTickets/RandomUselessFacts.install
 ```
 
 ### Description

@@ -2,7 +2,8 @@
 
 ### Download
 ```bash
-wget http://modules.projectalice.ch/RedQueen -O ~/ProjectAlice/system/moduleInstallTickets/RedQueen.install
+wget http://modules.projectalice.ch/RedQueen \
+-O ~/ProjectAlice/system/moduleInstallTickets/RedQueen.install
 ```
 
 ### Desc

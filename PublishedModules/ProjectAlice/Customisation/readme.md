@@ -2,7 +2,8 @@
 
 ### Download
 ```bash
-wget http://modules.projectalice.ch/Customisation -O ~/ProjectAlice/system/moduleInstallTickets/Customisation.install
+wget http://modules.projectalice.ch/Customisation \
+-O ~/ProjectAlice/system/moduleInstallTickets/Customisation.install
 ```
 
 ### Description

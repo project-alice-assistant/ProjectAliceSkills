@@ -2,7 +2,8 @@
 
 ### Download
 ```bash
-wget http://modules.projectalice.ch/ContextSensitive -O ~/ProjectAlice/system/moduleInstallTickets/ContextSensitive.install
+wget http://modules.projectalice.ch/ContextSensitive \
+-O ~/ProjectAlice/system/moduleInstallTickets/ContextSensitive.install
 ```
 
 ### Description

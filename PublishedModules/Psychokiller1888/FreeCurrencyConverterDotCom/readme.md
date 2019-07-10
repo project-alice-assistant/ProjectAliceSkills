@@ -2,7 +2,8 @@
 
 ### Download
 ```bash
-wget http://modules.projectalice.ch/FreeCurrencyConverterDotCom -O ~/ProjectAlice/system/moduleInstallTickets/FreeCurrencyConverterDotCom.install
+wget http://modules.projectalice.ch/FreeCurrencyConverterDotCom \
+-O ~/ProjectAlice/system/moduleInstallTickets/FreeCurrencyConverterDotCom.install
 ```
 
 ### Description

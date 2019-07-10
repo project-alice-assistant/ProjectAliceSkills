@@ -2,7 +2,8 @@
 
 ### Download
 ```bash
-wget http://modules.projectalice.ch/IcanhazdadjokeDotNet -O ~/ProjectAlice/system/moduleInstallTickets/IcanhazdadjokeDotNet.install
+wget http://modules.projectalice.ch/IcanhazdadjokeDotNet \
+-O ~/ProjectAlice/system/moduleInstallTickets/IcanhazdadjokeDotNet.install
 ```
 
 ### Description

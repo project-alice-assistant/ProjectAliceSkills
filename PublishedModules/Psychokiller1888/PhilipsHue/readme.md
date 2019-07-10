@@ -2,7 +2,8 @@
 
 ### Download
 ```bash
-wget http://modules.projectalice.ch/PhilipsHue -O ~/ProjectAlice/system/moduleInstallTickets/PhilipsHue.install
+wget http://modules.projectalice.ch/PhilipsHue \
+-O ~/ProjectAlice/system/moduleInstallTickets/PhilipsHue.install
 ```
 
 ### Desc

@@ -2,7 +2,8 @@
 
 ### Download
 ```bash
-wget http://modules.projectalice.ch/Wikipedia -O ~/ProjectAlice/system/moduleInstallTickets/Wikipedia.install
+wget http://modules.projectalice.ch/Wikipedia \
+-O ~/ProjectAlice/system/moduleInstallTickets/Wikipedia.install
 ```
 
 ### Description

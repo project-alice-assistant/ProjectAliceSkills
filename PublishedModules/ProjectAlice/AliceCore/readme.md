@@ -2,7 +2,8 @@
 
 ### Download
 ```bash
-wget http://modules.projectalice.ch/AliceCore -O ~/ProjectAlice/system/moduleInstallTickets/AliceCore.install
+wget http://modules.projectalice.ch/AliceCore \
+-O ~/ProjectAlice/system/moduleInstallTickets/AliceCore.install
 ```
 
 ### Description

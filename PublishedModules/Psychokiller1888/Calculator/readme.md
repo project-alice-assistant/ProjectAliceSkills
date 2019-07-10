@@ -2,7 +2,8 @@
 
 ### Download
 ```bash
-wget modules.projectalice.ch/Calculator -O ~/ProjectAlice/system/moduleInstallTickets/Calculator.install
+wget modules.projectalice.ch/Calculator \
+-O ~/ProjectAlice/system/moduleInstallTickets/Calculator.install
 ```
 
 ### Description

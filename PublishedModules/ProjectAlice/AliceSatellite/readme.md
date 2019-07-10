@@ -2,7 +2,8 @@
 
 ### Download
 ```bash
-wget http://modules.projectalice.ch/AliceSatellite -O ~/ProjectAlice/system/moduleInstallTickets/AliceSatellite.install
+wget http://modules.projectalice.ch/AliceSatellite \
+-O ~/ProjectAlice/system/moduleInstallTickets/AliceSatellite.install
 ```
 
 ### Description
