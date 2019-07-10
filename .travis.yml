@@ -1,0 +1,6 @@
+language: generic
+install:
+  - npm install -g pajv
+
+script:
+  - pajv -s linting/dialog-schema.json -d PublishedModules/Psychokiller1888/DateDayTimeYear/dialogTemplate/en.json 
