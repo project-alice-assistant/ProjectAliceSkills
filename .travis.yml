@@ -3,4 +3,8 @@ install:
   - npm install -g pajv
 
 script:
-  - pajv -s linting/dialog-schema.json -d PublishedModules/Psychokiller1888/DateDayTimeYear/dialogTemplate/en.json 
+  - |
+    for file in PublishedModules/*/*/dialogTemplate/*.json
+    do
+      pajv validate -s linting/dialog-schema.json -d $file
+    done         
