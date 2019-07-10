@@ -6,5 +6,5 @@ script:
   - |
     for file in PublishedModules/*/*/dialogTemplate/*.json
     do
-      pajv validate -s linting/dialog-schema.json -d $file
+      echo $file":" && pajv validate -s linting/dialog-schema.json -d $file
     done         
