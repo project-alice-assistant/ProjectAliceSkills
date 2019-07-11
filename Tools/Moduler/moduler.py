@@ -163,7 +163,9 @@ TALKS = '''{
 README = '''# %moduleName%
 
 ### Download
-`wget http://bit.ly/????????? -O ~/ProjectAlice/system/moduleInstallTickets/%moduleName%.install`
+```bash
+wget http://bit.ly/????????? -O ~/ProjectAlice/system/moduleInstallTickets/%moduleName%.install`
+```
 
 ### Description
 %description%
@@ -358,7 +360,7 @@ if __name__ == '__main__':
 		f.write(README.replace('%moduleName%', answers['moduleName'])
 					  .replace('%description%', answers['description'])
 					  .replace('%username%', answers['username'])
-					  .replace('%langs%', langs)
+					  .replace('%langs%', langs.strip())
 		)
 
 	print('----------------------------')
