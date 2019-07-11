@@ -16,7 +16,6 @@ Control your Philips Hue lamps
 - Alice minimum version: N/A
 - Conditions:
   - EN
-- Requirements: phue
 
 
 Configuration

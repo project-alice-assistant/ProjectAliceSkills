@@ -16,6 +16,5 @@ Press an imaginary button on or off
 - Alice minimum version: N/A
 - Conditions:
   - en
-
 - Requirements: N/A
 
