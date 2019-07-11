@@ -1,6 +1,6 @@
 {
 	"name": "Tasmota",
-	"version": 1.0,
+	"version": 1.1,
 	"author": "Psychokiller1888",
 	"maintainers": [""],
 	"desc": "This module allows you to not only connect tasmota esp devices, but listen to them",

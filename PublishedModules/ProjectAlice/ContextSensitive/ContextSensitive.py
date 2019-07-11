@@ -26,7 +26,7 @@ class ContextSensitive(Module):
 		self._history 		= []
 		self._sayHistory 	= {}
 
-		super(ContextSensitive, self).__init__(self._SUPPORTED_INTENTS)
+		super().__init__(self._SUPPORTED_INTENTS)
 
 
 	def onMessage(self, intent: str, session: DialogSession) -> bool:

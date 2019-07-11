@@ -26,7 +26,7 @@ class Wikipedia(Module):
 			self._INTENT_SPELL_WORD
 		]
 
-		super(Wikipedia, self).__init__(self._SUPPORTED_INTENTS)
+		super().__init__(self._SUPPORTED_INTENTS)
 
 
 	def onMessage(self, intent: str, session: DialogSession) -> bool:

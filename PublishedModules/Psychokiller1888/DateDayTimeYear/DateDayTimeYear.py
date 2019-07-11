@@ -24,7 +24,7 @@ class DateDayTimeYear(Module):
 			self._INTENT_GET_YEAR
 		]
 
-		super(DateDayTimeYear, self).__init__(self._SUPPORTED_INTENTS)
+		super().__init__(self._SUPPORTED_INTENTS)
 
 
 	def onMessage(self, intent: str, session: DialogSession) -> bool:

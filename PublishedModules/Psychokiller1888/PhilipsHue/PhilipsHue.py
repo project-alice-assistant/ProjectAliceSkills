@@ -45,14 +45,14 @@ class PhilipsHue(Module):
 
 		self._house = None
 
-		super(PhilipsHue, self).__init__(self._SUPPORTED_INTENTS)
+		super().__init__(self._SUPPORTED_INTENTS)
 
 
 	def onStart(self) -> list:
 		if managers.ConfigManager.getModuleConfigByName(self.name, 'phueBridgeIp'):
 			if self._connectBridge():
 				self.delayed = False
-				return super(PhilipsHue, self).onStart()
+				return super().onStart()
 			else:
 				managers.ConfigManager.updateModuleConfigurationFile(self.name, 'phueAutodiscoverFallback', True)
 				managers.ConfigManager.updateModuleConfigurationFile(self.name, 'phueBridgeIp', '')
@@ -145,7 +145,7 @@ class PhilipsHue(Module):
 
 
 	def onBooted(self):
-		super(PhilipsHue, self).onBooted()
+		super().onBooted()
 		if not self.delayed:
 			self.onFullHour()
 

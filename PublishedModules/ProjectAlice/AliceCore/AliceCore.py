@@ -56,7 +56,7 @@ class AliceCore(Module):
 		]
 
 		self._threads = {}
-		super(AliceCore, self).__init__(self._SUPPORTED_INTENTS)
+		super().__init__(self._SUPPORTED_INTENTS)
 
 
 	def onStart(self):
@@ -67,7 +67,7 @@ class AliceCore(Module):
 			else:
 				self._addFirstUser()
 		else:
-			return super(AliceCore, self).onStart()
+			return super().onStart()
 
 
 	def _addFirstUser(self):
@@ -102,7 +102,7 @@ class AliceCore(Module):
 
 
 	def onBooted(self):
-		if not super(AliceCore, self).onBooted():
+		if not super().onBooted():
 			return
 
 		onReboot = managers.ConfigManager.getAliceConfigByName('onReboot')

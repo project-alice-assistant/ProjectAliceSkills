@@ -16,7 +16,7 @@ class IcanhazdadjokeDotCom(Module):
 			self._INTENT_TELL_A_JOKE
 		]
 
-		super(IcanhazdadjokeDotCom, self).__init__(self._SUPPORTED_INTENTS)
+		super().__init__(self._SUPPORTED_INTENTS)
 
 
 	def onMessage(self, intent: str, session: DialogSession) -> bool:

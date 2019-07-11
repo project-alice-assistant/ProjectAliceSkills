@@ -34,7 +34,7 @@ class AliceSatellite(Module):
 		managers.ProtectedIntentManager.protectIntent(self._FEEDBACK_SENSORS)
 		managers.ProtectedIntentManager.protectIntent(self._DEVICE_DISCONNECTION)
 
-		super(AliceSatellite, self).__init__(self._SUPPORTED_INTENTS)
+		super().__init__(self._SUPPORTED_INTENTS)
 
 
 	def onBooted(self):

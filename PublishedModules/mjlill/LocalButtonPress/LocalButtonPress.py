@@ -24,7 +24,7 @@ class Localbuttonpress(Module):
                         self._INTENT_BUTTON_OFF
 		]
 
-		super(Localbuttonpress, self).__init__(self._SUPPORTED_INTENTS)
+		super().__init__(self._SUPPORTED_INTENTS)
 
 
 	def onMessage(self, intent: str, session: DialogSession) -> bool:

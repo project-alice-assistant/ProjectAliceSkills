@@ -32,7 +32,7 @@ class RedQueen(Module):
 
 		self._redQueen = None
 
-		super(RedQueen, self).__init__(self._SUPPORTED_INTENTS)
+		super().__init__(self._SUPPORTED_INTENTS)
 
 
 	def onStart(self):
@@ -57,12 +57,12 @@ class RedQueen(Module):
 			with open(self._getRedQueenIdentityFileName(), 'r') as f:
 				self._redQueen = json.load(f)
 
-		return super(RedQueen, self).onStart()
+		return super().onStart()
 
 
 	def onStop(self):
 		self._saveRedQueenIdentity()
-		super(RedQueen, self).onStop()
+		super().onStop()
 
 
 	def onBooted(self):

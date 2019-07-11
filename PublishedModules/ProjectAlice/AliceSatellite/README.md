@@ -9,7 +9,7 @@ wget http://modules.projectalice.ch/AliceSatellite \
 ### Description
 AliceSatellite is the official module to support Project Alice satellites
 
-- Version: 0.1
+- Version: 0.2
 - Author: ProjectAlice
 - Maintainers:
   - Psycho, Jierka

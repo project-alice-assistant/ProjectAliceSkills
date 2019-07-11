@@ -10,7 +10,7 @@ Press an imaginary button on or off
  edit the python script to assign the gpio pin
 
 
-- Version: 1.0
+- Version: 1.1
 - Author: mjlill
 - Maintainers: N/A
 - Alice minimum version: N/A

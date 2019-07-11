@@ -9,7 +9,7 @@ wget http://modules.projectalice.ch/FreeCurrencyConverterDotCom \
 ### Description
 Let's you convert world currencies
 
-- Version: 1.01
+- Version: 1.1
 - Author: Psychokiller1888
 - Maintainers: N/A
 - Alice minimum version: N/A

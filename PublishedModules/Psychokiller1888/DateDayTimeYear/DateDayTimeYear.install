@@ -1,6 +1,6 @@
 {
 	"name": "DateDayTimeYear",
-	"version": 0.1,
+	"version": 0.2,
 	"author": "Psychokiller1888",
 	"maintainers": ["Jierka", "maxbachmann"],
 	"desc": "Ask for the time, date, day and year",
