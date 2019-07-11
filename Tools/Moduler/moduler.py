@@ -360,7 +360,7 @@ if __name__ == '__main__':
 		f.write(README.replace('%moduleName%', answers['moduleName'])
 					  .replace('%description%', answers['description'])
 					  .replace('%username%', answers['username'])
-					  .replace('%langs%', langs.strip())
+					  .replace('%langs%', langs.rstrip())
 		)
 
 	print('----------------------------')
