@@ -121,7 +121,7 @@ class RedQueen(Module):
 		self.changeRedQueenStat('frustration', -1)
 
 		text = session.payload['input']
-		forms = managers.LanguageManager.getStrings(self.name, 'politness')
+		forms = managers.LanguageManager.getStrings(key = 'politness', module = self.name)
 
 		for form in forms:
 			if form not in text:
