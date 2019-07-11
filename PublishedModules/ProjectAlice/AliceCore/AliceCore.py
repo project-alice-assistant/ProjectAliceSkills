@@ -201,7 +201,7 @@ class AliceCore(Module):
 				)
 				return True
 
-			hardware = slotsObj['hardware'][0].value['value']
+			hardware = slotsObj['Hardware'][0].value['value']
 			if hardware == 'esp':
 				if not managers.ModuleManager.isModuleActive('Tasmota'):
 					managers.MqttServer.endTalk(sessionId=sessionId,
