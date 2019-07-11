@@ -1,0 +1,12 @@
+{
+	"name": "LocalButtonPress",
+	"version": 1.0,
+	"author": "mjlill",
+	"maintainers": [""],
+	"desc": "Press an imaginary button on or off",
+	"aliceMinVersion": "",
+	"requirements": [],
+	"conditions": {
+		"lang": ["en"]
+	}
+}
