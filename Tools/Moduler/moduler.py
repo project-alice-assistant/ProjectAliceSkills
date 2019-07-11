@@ -352,7 +352,7 @@ if __name__ == '__main__':
 			f.write(TALKS.replace('%moduleName%', answers['moduleName']))
 
 	print('Creating readme file')
-	with open(os.path.join(modulePath, 'readme.md'), 'w') as f:
+	with open(os.path.join(modulePath, 'README.md'), 'w') as f:
 		langs = ''
 		for lang in answers['langs']:
 			langs += '  - {}\n'.format(lang)
