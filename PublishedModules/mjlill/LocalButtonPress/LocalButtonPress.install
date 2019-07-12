@@ -1,11 +1,11 @@
 {
 	"name": "LocalButtonPress",
-	"version": 1.0,
+	"version": 1.1,
 	"author": "mjlill",
 	"maintainers": [""],
 	"desc": "Press an imaginary button on or off",
 	"aliceMinVersion": "",
-	"requirements": [],
+	"requirements": [RPI.GPIO],
 	"conditions": {
 		"lang": ["en"]
 	}
