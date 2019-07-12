@@ -306,6 +306,11 @@
 			"Which configuration are you looking for?"
 		]
 	},
+	"noStartWithoutAdmin": {
+		"default": [
+			"Ok, canceling but without user I cannot start, going down"
+		]
+	},
 	"addAdminUser": {
 		"default": [
 			"Welcome to Project Alice! There seems to be no user defined yet, let's do this! Please, tell me your name."

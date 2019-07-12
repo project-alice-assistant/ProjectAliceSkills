@@ -13,7 +13,7 @@ class Customisation(Module):
 	def __init__(self):
 		self._SUPPORTED_INTENTS	= []
 
-		super(Customisation, self).__init__(self._SUPPORTED_INTENTS)
+		super().__init__(self._SUPPORTED_INTENTS)
 
 
 	def onMessage(self, intent: str, session: DialogSession) -> bool:

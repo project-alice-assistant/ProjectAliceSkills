@@ -26,7 +26,7 @@ class Wikipedia(Module):
 			self._INTENT_SPELL_WORD
 		]
 
-		super(Wikipedia, self).__init__(self._SUPPORTED_INTENTS)
+		super().__init__(self._SUPPORTED_INTENTS)
 
 
 	def onMessage(self, intent: str, session: DialogSession) -> bool:
@@ -47,7 +47,7 @@ class Wikipedia(Module):
 
 				managers.MqttServer.continueDialog(
 					sessionId = sessionId,
-					text = managers.TalkManager.randomTalk(self.name, 'whatToSearch'),
+					text = managers.TalkManager.randomTalk('whatToSearch'),
 					intentFilter = [self._INTENT_USER_ANSWER],
 					previousIntent = self._INTENT_SEARCH,
 					customData = json.dumps({
@@ -61,7 +61,7 @@ class Wikipedia(Module):
 				elif 'what' in slots:
 					what = slots['what']
 				else:
-					managers.MqttServer.endTalk(sessionId=sessionId, text=managers.TalkManager.randomTalk('system', 'error'))
+					managers.MqttServer.endTalk(sessionId=sessionId, text=managers.TalkManager.randomTalk('error', module = 'system'))
 					return True
 
 				if intent == self._INTENT_SPELL_WORD:
@@ -85,7 +85,7 @@ class Wikipedia(Module):
 				except wikipedia.DisambiguationError:
 					managers.MqttServer.continueDialog(
 						sessionId = sessionId,
-						text = managers.TalkManager.randomTalk(self.name, 'ambiguous').format(search),
+						text = managers.TalkManager.randomTalk('ambiguous').format(search),
 						intentFilter = [self._INTENT_USER_ANSWER],
 						previousIntent = self._INTENT_SEARCH,
 						customData = json.dumps({
@@ -97,7 +97,7 @@ class Wikipedia(Module):
 				except wikipedia.WikipediaException:
 					managers.MqttServer.continueDialog(
 						sessionId = sessionId,
-						text = managers.TalkManager.randomTalk(self.name, 'noMatch').format(search),
+						text = managers.TalkManager.randomTalk('noMatch').format(search),
 						intentFilter = [self._INTENT_USER_ANSWER],
 						previousIntent = self._INTENT_SEARCH,
 						customData = json.dumps({
@@ -108,13 +108,13 @@ class Wikipedia(Module):
 					return True
 				except Exception as e:
 					self._logger.error('Error: {}'.format(e))
-					managers.MqttServer.endTalk(sessionId=sessionId, text=managers.TalkManager.randomTalk('system', 'error'))
+					managers.MqttServer.endTalk(sessionId=sessionId, text=managers.TalkManager.randomTalk('error', module = 'system'))
 					return True
 
 				if result == '':
 					managers.MqttServer.continueDialog(
 						sessionId = sessionId,
-						text = managers.TalkManager.randomTalk(self.name, 'noMatch').format(search),
+						text = managers.TalkManager.randomTalk('noMatch').format(search),
 						intentFilter = [self._INTENT_USER_ANSWER],
 						previousIntent = self._INTENT_SEARCH,
 						customData = json.dumps({

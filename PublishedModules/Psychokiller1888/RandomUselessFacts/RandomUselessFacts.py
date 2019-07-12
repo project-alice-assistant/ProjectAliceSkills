@@ -23,7 +23,7 @@ class RandomUselessFacts(Module):
 			self._INTENT_GET_USELESS_FACT
 		]
 
-		super(RandomUselessFacts, self).__init__(self._SUPPORTED_INTENTS)
+		super().__init__(self._SUPPORTED_INTENTS)
 
 
 	def onMessage(self, intent: str, session: DialogSession) -> bool:
@@ -46,7 +46,7 @@ class RandomUselessFacts(Module):
 		req = requests.request(method='GET', url='http://randomuselessfact.appspot.com/{}.json?language={}'.format(ttype, managers.LanguageManager.activeLanguage))
 		if req.status_code != 200:
 			# Failed, maybe the server is offline?
-			return managers.TalkManager.randomTalk(self.name, 'error')
+			return managers.TalkManager.randomTalk('error')
 		else:
 			# Let's load the randomTalk and unescape it as uselessfact seems to encode special characters for german
 			return html.unescape(json.loads(req.content)['text'])

@@ -7,6 +7,7 @@ from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
 
+
 class LocalButtonPress(Module):
     """
     Author: mjlill
@@ -16,15 +17,17 @@ class LocalButtonPress(Module):
     _INTENT_BUTTON_ON   = Intent('DoButtonOn')
     _INTENT_BUTTON_OFF      = Intent('DoButtonOff')
     _LIGHT_PIN         = 4
-    GPIO.setmode(GPIO.BCM)
-    GPIO.setup(4, GPIO.OUT)
-    GPIO.output(4, GPIO.LOW)
 
     def __init__(self):
         self._SUPPORTED_INTENTS   = [
             self._INTENT_BUTTON_ON,
             self._INTENT_BUTTON_OFF
         ]
+        
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(self._LIGHT_PIN, GPIO.OUT)
+        GPIO.output(self._LIGHT_PIN, GPIO.LOW)
+
         super().__init__(self._SUPPORTED_INTENTS)
 
 
@@ -36,13 +39,11 @@ class LocalButtonPress(Module):
         siteId = session.siteId
 
         if intent == self._INTENT_BUTTON_ON:
-#            GPIO.output(_LIGHT_PIN, GPIO.HIGH)
-            GPIO.output(4, GPIO.HIGH)
-            managers.MqttServer.endTalk(sessionId, managers.TalkManager.randomTalk(self.name, 'DoButtonOn'), client=siteId)
+            GPIO.output(self._LIGHT_PIN, GPIO.HIGH)
+            managers.MqttServer.endTalk(sessionId, managers.TalkManager.randomTalk('DoButtonOn'), client=siteId)
 
         elif intent == self._INTENT_BUTTON_OFF:
-#            GPIO.output(_LIGHT_PIN, GPIO.LOW)
-            GPIO.output(4, GPIO.LOW)
-            managers.MqttServer.endTalk(sessionId, managers.TalkManager.randomTalk(self.name,'DoButtonOff'), client=siteId)
+            GPIO.output(self._LIGHT_PIN, GPIO.LOW)
+            managers.MqttServer.endTalk(sessionId, managers.TalkManager.randomTalk('DoButtonOff'), client=siteId)
 
         return True

@@ -1,19 +1,21 @@
 # PhilipsHue
 
 ### Download
-`wget http://modules.projectalice.ch/PhilipsHue -O ~/ProjectAlice/system/moduleInstallTickets/PhilipsHue.install`
+```bash
+wget http://modules.projectalice.ch/PhilipsHue \
+-O ~/ProjectAlice/system/moduleInstallTickets/PhilipsHue.install
+```
 
 ### Desc
 Control your Philips Hue lamps
 
-- Version: 0.1
+- Version: 1.1
 - Author: Psycho
 - Maintainers:
   - Jierka
 - Alice minimum version: N/A
 - Conditions:
   - EN
-- Requirements: phue
 
 
 Configuration

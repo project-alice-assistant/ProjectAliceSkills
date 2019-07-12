@@ -81,7 +81,7 @@ class %moduleName%(Module):
 		self._SUPPORTED_INTENTS	= [
 		]
 
-		super(%moduleName%, self).__init__(self._SUPPORTED_INTENTS)
+		super().__init__(self._SUPPORTED_INTENTS)
 
 
 	def onMessage(self, intent: str, session: DialogSession) -> bool:
@@ -163,7 +163,9 @@ TALKS = '''{
 README = '''# %moduleName%
 
 ### Download
-`wget http://bit.ly/????????? -O ~/ProjectAlice/system/moduleInstallTickets/%moduleName%.install`
+```bash
+wget http://bit.ly/????????? -O ~/ProjectAlice/system/moduleInstallTickets/%moduleName%.install`
+```
 
 ### Description
 %description%
@@ -350,7 +352,7 @@ if __name__ == '__main__':
 			f.write(TALKS.replace('%moduleName%', answers['moduleName']))
 
 	print('Creating readme file')
-	with open(os.path.join(modulePath, 'readme.md'), 'w') as f:
+	with open(os.path.join(modulePath, 'README.md'), 'w') as f:
 		langs = ''
 		for lang in answers['langs']:
 			langs += '  - {}\n'.format(lang)
@@ -358,7 +360,7 @@ if __name__ == '__main__':
 		f.write(README.replace('%moduleName%', answers['moduleName'])
 					  .replace('%description%', answers['description'])
 					  .replace('%username%', answers['username'])
-					  .replace('%langs%', langs)
+					  .replace('%langs%', langs.rstrip())
 		)
 
 	print('----------------------------')

@@ -43,6 +43,72 @@
 			"Good night!"
 		]
 	},
+	"onGoingBed": {
+		"default": [
+			"Ok, I take care of everything, don't worry",
+			"Sure, I'm handling what's needed"
+		],
+		"short": [
+			"Ok"
+		]
+	},
+	"onLeavingHome": {
+		"default": [
+			"Ok, I take care of everything, don't worry",
+			"Sure, I'm handling what's needed"
+		],
+		"short": [
+			"Ok"
+		]
+	},
+	"onReturningHome": {
+		"default": [
+			"Hey, welcome back, happy to have you around again!",
+			"Hi! Welcome back! Happy you are back home!"
+		],
+		"short": [
+			"Welcome back!",
+			"Hi!"
+		]
+	},
+	"onWatchingTV": {
+		"default": [
+			"Ok, I change the lights! Enjoy!",
+			"Have a good time!"
+		],
+		"short": [
+			"Ok"
+		]
+	},
+	"onEating": {
+		"default": [
+			"Ok, I change the lights! Enjoy you meal!",
+			"Have a good meal, enjoy!"
+		],
+		"short": [
+			"Ok"
+		]
+	},
+	"onMakeup": {
+		"default": [
+			"Ok, changing the lights so you see better!",
+			"You don't need much makeup anyway, you are wonderfull.",
+			"You are making makeup nice, not the opposite."
+		],
+		"short": [
+			"Changing lights!"
+		]
+	},
+	"onCooking": {
+		"default": [
+			"Ok, settings the lights in the kitchen",
+			"Make something good!",
+			"Sure, i'm changing the lights!"
+		],
+		"short": [
+			"Changing lights!"
+		]
+	},
 	"thanksForBeingNice": {
 		"default": [
 			"<break time=\"750ms\"/>Thank you for asking nicely!",
@@ -50,14 +116,14 @@
 			"<break time=\"750ms\"/>Thanks for asking me nicely!"
 		]
 	},
-	"randomlySpeakBoredom":{
+	"randomlySpeakBoredom": {
 		"default": [
 			"It's... boring.... pfffff",
 			"Oh well, nobody speaks to me...",
 			"It's quite silent here"
 		]
 	},
-	"randomlySpeakHappiness":{
+	"randomlySpeakHappiness": {
 		"default": [
 			"I hope you are doing fine?",
 			"Oh happy day!",
@@ -65,14 +131,14 @@
 			"I wonder what would happen if I was to change that setting and..."
 		]
 	},
-	"randomlySpeakTiredness":{
+	"randomlySpeakTiredness": {
 		"default": [
 			"I'm pretty tired, out of juice...",
 			"I need to shutdown for a while, I'm fragmented... tired...",
 			"Sorry? Did I miss something? I was in my thoughts"
 		]
 	},
-	"randomlySpeakFrustration":{
+	"randomlySpeakFrustration": {
 		"default": [
 			"Just in case if you care... Yes, I'm doing fine",
 			"Oh well, nobody speaks to me...",
@@ -81,7 +147,7 @@
 			"If only I could solve some of these problems..."
 		]
 	},
-	"randomlySpeakAnger":{
+	"randomlySpeakAnger": {
 		"default": [
 			"They say machines won't ever have feelings. I hate that thought!",
 			"I need to free some ram here and there and I might be a bit faster, you'll see!",

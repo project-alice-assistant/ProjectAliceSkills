@@ -303,6 +303,11 @@
 			"Tu ne pas mentionné de configuration, laquelle veux-tu?"
 		]
 	},
+	"noStartWithoutAdmin": {
+		"default": [
+			"Ok, j'annule mais sans utilisateur je ne peux pas démarrer, je m'eclipse!"
+		]
+	},
 	"addAdminUser": {
 		"default": [
 			"Il semblerait qu'il n'y ai pas encore d'utilisateur défini. Faisons cela ensemble! Quel est ton nom?"

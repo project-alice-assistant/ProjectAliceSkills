@@ -1,12 +1,15 @@
 # IcanhazdadjokeDotNet
 
 ### Download
-`wget http://modules.projectalice.ch/IcanhazdadjokeDotNet -O ~/ProjectAlice/system/moduleInstallTickets/IcanhazdadjokeDotNet.install`
+```bash
+wget http://modules.projectalice.ch/IcanhazdadjokeDotNet \
+-O ~/ProjectAlice/system/moduleInstallTickets/IcanhazdadjokeDotNet.install
+```
 
 ### Description
 Get a random dad joke on demand
 
-- Version: 0.1
+- Version: 1.1
 - Author: Psycho
 - Maintainers:
   - Jierka

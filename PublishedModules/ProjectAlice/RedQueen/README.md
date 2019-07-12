@@ -1,12 +1,15 @@
 # RedQueen
 
 ### Download
-`wget http://modules.projectalice.ch/RedQueen -O ~/ProjectAlice/system/moduleInstallTickets/RedQueen.install`
+```bash
+wget http://modules.projectalice.ch/RedQueen \
+-O ~/ProjectAlice/system/moduleInstallTickets/RedQueen.install
+```
 
 ### Desc
 Red Queen is the official Project Alice personality module
 
-- Version: 0.2
+- Version: 0.7
 - Author: ProjectAlice
 - Maintainers:
   - Psycho, Jierka

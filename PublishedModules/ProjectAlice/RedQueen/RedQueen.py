@@ -32,7 +32,7 @@ class RedQueen(Module):
 
 		self._redQueen = None
 
-		super(RedQueen, self).__init__(self._SUPPORTED_INTENTS)
+		super().__init__(self._SUPPORTED_INTENTS)
 
 
 	def onStart(self):
@@ -57,12 +57,12 @@ class RedQueen(Module):
 			with open(self._getRedQueenIdentityFileName(), 'r') as f:
 				self._redQueen = json.load(f)
 
-		return super(RedQueen, self).onStart()
+		return super().onStart()
 
 
 	def onStop(self):
 		self._saveRedQueenIdentity()
-		super(RedQueen, self).onStop()
+		super().onStop()
 
 
 	def onBooted(self):
@@ -121,7 +121,7 @@ class RedQueen(Module):
 		self.changeRedQueenStat('frustration', -1)
 
 		text = session.payload['input']
-		forms = managers.LanguageManager.getStrings(self.name, 'politness')
+		forms = managers.LanguageManager.getStrings(key = 'politness', module = self.name)
 
 		for form in forms:
 			if form not in text:
@@ -143,7 +143,7 @@ class RedQueen(Module):
 				chance = 25
 
 			if randint(0, 100) < chance:
-				managers.MqttServer.say(text=managers.TalkManager.randomTalk(self.name, 'thanksForBeingNice'), client=session.siteId)
+				managers.MqttServer.say(text=managers.TalkManager.randomTalk('thanksForBeingNice'), client=session.siteId)
 				return
 
 			return
@@ -167,7 +167,7 @@ class RedQueen(Module):
 
 
 		if not managers.ProtectedIntentManager.isProtectedIntent(session.message.topic) and random.randint(0, 100) < chance and not managers.MultiIntentManager.multiIntent:
-			managers.MqttServer.endTalk(session.sessionId, managers.TalkManager.randomTalk(self.name, 'noInTheMood'), client=session.siteId)
+			managers.MqttServer.endTalk(session.sessionId, managers.TalkManager.randomTalk('noInTheMood'), client=session.siteId)
 			return False
 
 		return True
@@ -182,7 +182,7 @@ class RedQueen(Module):
 			if 'State' not in slots.keys():
 				self._logger.error('[{}] No state provided for changing user state'.format(self.name))
 				managers.MqttServer.endTalk(sessionId=session.sessionId,
-											text=managers.TalkManager.randomTalk('system', 'error'),
+											text=managers.TalkManager.randomTalk('error', module = 'system'),
 											client=session.siteId)
 				return True
 
@@ -200,7 +200,7 @@ class RedQueen(Module):
 
 		elif intent == self._INTENT_GOOD_NIGHT:
 			managers.MqttServer.endTalk(sessionId=session.sessionId,
-										text=managers.TalkManager.randomTalk(self.name, 'goodNight'),
+										text=managers.TalkManager.randomTalk('goodNight'),
 										client=session.siteId)
 			managers.ModuleManager.broadcast('onSleep')
 
@@ -208,12 +208,12 @@ class RedQueen(Module):
 			managers.ModuleManager.broadcast('onWakeup')
 			time.sleep(0.5)
 			managers.MqttServer.endTalk(sessionId=session.sessionId,
-										text=managers.TalkManager.randomTalk(self.name, 'goodMorning'),
+										text=managers.TalkManager.randomTalk('goodMorning'),
 										client = session.siteId)
 
 		elif intent == self._INTENT_WHO_ARE_YOU:
 			managers.MqttServer.endTalk(sessionId=session.sessionId,
-										text=managers.TalkManager.randomTalk(self.name, 'aliceInfos'),
+										text=managers.TalkManager.randomTalk('aliceInfos'),
 										client=session.siteId)
 
 		return True

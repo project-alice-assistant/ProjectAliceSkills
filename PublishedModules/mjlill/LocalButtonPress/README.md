@@ -10,12 +10,12 @@ Press an imaginary button on or off
  Edit the python script to assign a different gpio pin
 
 
-- Version: 1.1
+- Version: 1.2
 - Author: mjlill
-- Maintainers: N/A
+- Maintainers: ["Psycho"]
 - Alice minimum version: N/A
 - Conditions:
   - en
-
-- Requirements: RPI.GPIO
+- Requirements: 
+  - RPI.GPIO
 

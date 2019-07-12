@@ -657,7 +657,8 @@
 			"automaticallyExtensible": false,
 			"useSynonyms": true,
 			"values": [{
-					"value": "switch"
+					"value": "switch",
+				        "synonyms": []
 				},
 				{
 					"value": "pir",

@@ -1,17 +1,22 @@
 # DateDayTimeYear
 
 ### Download
-`wget http://modules.projectalice.ch/DateDayTimeYear -O ~/ProjectAlice/system/moduleInstallTickets/DateDayTimeYear.install`
+```bash
+wget http://bit.ly/DateDayTimeYear \
+-O ~/ProjectAlice/system/moduleInstallTickets/DateDayTimeYear.install
+```
 
 ### Description
 Ask for the time, date, day and year
 
-- Version: 0.1
+- Version: 0.3
 - Author: Psycho
 - Maintainers:
   - Jierka
+  - maxbachmann
 - Alice minimum version: N/A
 - Conditions:
-  - EN
-  - FR
+  - en
+  - fr
+  - de
 - Requirements: N/A
