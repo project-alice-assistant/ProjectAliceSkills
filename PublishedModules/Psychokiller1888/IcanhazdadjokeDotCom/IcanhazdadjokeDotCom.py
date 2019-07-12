@@ -36,6 +36,6 @@ class IcanhazdadjokeDotCom(Module):
 			if response is not None:
 				managers.MqttServer.endTalk(session.sessionId, text=response.text)
 			else:
-				managers.MqttServer.endTalk(session.sessionId, managers.TalkManager.getRandomTalk(self.name, 'noJoke'))
+				managers.MqttServer.endTalk(session.sessionId, managers.TalkManager.getrandomTalk('noJoke'))
 
 		return True
