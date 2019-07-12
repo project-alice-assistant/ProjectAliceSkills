@@ -7,7 +7,8 @@ from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
 
-class Localbuttonpress(Module):
+
+class LocalButtonPress(Module):
     """
     Author: mjlill
     Description: Press an imaginary button on or off
@@ -22,6 +23,11 @@ class Localbuttonpress(Module):
             self._INTENT_BUTTON_ON,
             self._INTENT_BUTTON_OFF
         ]
+        
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(self._LIGHT_PIN, GPIO.OUT)
+        GPIO.output(self._LIGHT_PIN, GPIO.LOW)
+
         super().__init__(self._SUPPORTED_INTENTS)
 
 
@@ -33,11 +39,11 @@ class Localbuttonpress(Module):
         siteId = session.siteId
 
         if intent == self._INTENT_BUTTON_ON:
-            GPIO.output(_LIGHT_PIN, GPIO.HIGH)
+            GPIO.output(self._LIGHT_PIN, GPIO.HIGH)
             managers.MqttServer.endTalk(sessionId, managers.TalkManager.randomTalk('DoButtonOn'), client=siteId)
 
         elif intent == self._INTENT_BUTTON_OFF:
-            GPIO.output(_LIGHT_PIN, GPIO.LOW)
-            managers.MqttServer.endTalk(sessionId, managers.TalkManager.randomTalk(self.name,'DoButtonOff'), client=siteId)
+            GPIO.output(self._LIGHT_PIN, GPIO.LOW)
+            managers.MqttServer.endTalk(sessionId, managers.TalkManager.randomTalk('DoButtonOff'), client=siteId)
 
         return True
