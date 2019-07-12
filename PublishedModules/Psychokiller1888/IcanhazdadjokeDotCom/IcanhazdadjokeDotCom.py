@@ -9,33 +9,33 @@ import requests
 
 class IcanhazdadjokeDotCom(Module):
 
-	_INTENT_TELL_A_JOKE = Intent('TellAJoke')
+    _INTENT_TELL_A_JOKE = Intent('TellAJoke')
 
-	def __init__(self):
-		self._SUPPORTED_INTENTS	= [
-			self._INTENT_TELL_A_JOKE
-		]
+    def __init__(self):
+        self._SUPPORTED_INTENTS    = [
+            self._INTENT_TELL_A_JOKE
+        ]
 
-		super().__init__(self._SUPPORTED_INTENTS)
+        super().__init__(self._SUPPORTED_INTENTS)
 
 
-	def onMessage(self, intent: str, session: DialogSession) -> bool:
-		if not self.filterIntent(intent, session):
-			return False
+    def onMessage(self, intent: str, session: DialogSession) -> bool:
+        if not self.filterIntent(intent, session):
+            return False
 
-		if intent == self._INTENT_TELL_A_JOKE:
-			url = 'https://icanhazdadjoke.com/'
+        if intent == self._INTENT_TELL_A_JOKE:
+            url = 'https://icanhazdadjoke.com/'
 
-			headers = {
-				'Accept': 'text/plain',
-				'User-Agent': 'Project Alice',
-				'From': 'projectalice@projectalice.ch'
-			}
+            headers = {
+                'Accept': 'text/plain',
+                'User-Agent': 'Project Alice',
+                'From': 'projectalice@projectalice.ch'
+            }
 
-			response = requests.get(url, headers=headers)
-			if response is not None:
-				managers.MqttServer.endTalk(session.sessionId, text=response.text)
-			else:
-				managers.MqttServer.endTalk(session.sessionId, managers.TalkManager.getrandomTalk('noJoke'))
+            response = requests.get(url, headers=headers)
+            if response is not None:
+                managers.MqttServer.endTalk(session.sessionId, text=response.text)
+            else:
+                managers.MqttServer.endTalk(session.sessionId, managers.TalkManager.getrandomTalk('noJoke'))
 
-		return True
+        return True
