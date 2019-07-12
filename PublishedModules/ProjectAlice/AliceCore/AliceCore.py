@@ -60,6 +60,8 @@ class AliceCore(Module):
 
 
 	def onStart(self):
+		self.changeFeedbackSound(inDialog=False)
+
 		if len(managers.UserManager.users) <= 0:
 			if not self.delayed:
 				self._logger.warning('[{}] No user found in database'.format(self.name))
@@ -78,6 +80,17 @@ class AliceCore(Module):
 		)
 
 
+	def onUserCancel(self, session: DialogSession):
+		if self.delayed:
+			managers.MqttServer.say(text=managers.TalkManager.randomTalk(self.name, 'noStartWithoutAdmin'), client=session.siteId)
+			self.delayed = False
+
+			def stop():
+				subprocess.run(['sudo', 'systemctl', 'stop', 'ProjectAlice'])
+
+			managers.ThreadManager.doLater(interval=10, func=stop)
+
+
 	def onSessionTimeout(self, session: DialogSession):
 		if self.delayed:
 			self._addFirstUser()
@@ -88,7 +101,13 @@ class AliceCore(Module):
 			self._addFirstUser()
 
 
-	def onIntentNotRecognized(self, session: DialogSession):
+	def onSessionStarted(self, session: DialogSession):
+		self.changeFeedbackSound(inDialog=True)
+
+
+	def onSessionEnded(self, session: DialogSession):
+		self.changeFeedbackSound(inDialog=False)
+
 		if self.delayed:
 			self._addFirstUser()
 
@@ -116,7 +135,7 @@ class AliceCore(Module):
 
 			managers.ConfigManager.updateAliceConfiguration('onReboot', '')
 		else:
-			managers.ThreadManager.doLater(interval=2, func=managers.MqttServer.playSound, args=[self.getResource(self.name, 'sounds/boot.wav'), 'boot-session-id', True, 'all'])
+			managers.ThreadManager.doLater(interval=3, func=managers.MqttServer.playSound, args=[self.getResource(self.name, 'sounds/boot.wav'), 'boot-session-id', True, 'all'])
 
 
 	def onGoingBed(self):
@@ -441,3 +460,14 @@ class AliceCore(Module):
 	def _confirmLangSwitch(self, siteId: str):
 		managers.MqttServer.publish(topic = 'hermes/leds/onStop', payload = json.dumps({'siteId': siteId}))
 		managers.MqttServer.say(text=managers.TalkManager.randomTalk(self.name, 'langSwitch'), client=siteId)
+
+
+	@staticmethod
+	def changeFeedbackSound(inDialog: bool):
+		if inDialog:
+			state = '_ask'
+		else:
+			state = ''
+
+		subprocess.run(['sudo', 'ln', '-sfn', commons.rootDir() + '/system/sounds/{}/start_of_input{}.wav'.format(managers.LanguageManager.activeLanguage, state), commons.rootDir() + '/assistant/custom_dialogue/sound/start_of_input.wav'])
+		subprocess.run(['sudo', 'ln', '-sfn', commons.rootDir() + '/system/sounds/{}/error{}.wav'.format(managers.LanguageManager.activeLanguage, state), commons.rootDir() + '/assistant/custom_dialogue/sound/error.wav'])
