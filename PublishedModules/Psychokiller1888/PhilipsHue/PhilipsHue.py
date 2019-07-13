@@ -16,6 +16,7 @@ from modules.PhilipsHue.libraries.phue import Bridge, PhueException, PhueRegistr
 
 
 class PhilipsHue(Module):
+
 	_INTENT_LIGHT_ON = Intent('PowerOnLights')
 	_INTENT_LIGHT_OFF = Intent('PowerOffLights')
 	_INTENT_LIGHT_SCENE = Intent('SetLightsScene')
@@ -87,9 +88,14 @@ class PhilipsHue(Module):
 				self._bridge.connect()
 				if not self._bridge.registered:
 					raise PhueRegistrationException
-				else:
-					if not hueConfigFileExists:
-						managers.ThreadManager.doLater(interval=3, func=managers.MqttServer.say, args=[managers.TalkManager.randomTalk('pressBridgeButtonConfirmation')])
+
+				elif not hueConfigFileExists:
+					managers.ThreadManager.doLater(
+						interval=3,
+						func=managers.MqttServer.say,
+						args=[managers.TalkManager.randomTalk('pressBridgeButtonConfirmation')]
+					)
+
 			except PhueRegistrationException:
 				if self.delayed:
 					managers.MqttServer.say(text=managers.TalkManager.randomTalk('pressBridgeButton'))
@@ -170,7 +176,10 @@ class PhilipsHue(Module):
 		customData = session.customData
 
 		if self._bridge is None or not self._bridge.registered:
-			managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk('lightBridgeFailure'))
+			managers.MqttServer.endTalk(
+				sessionId=sessionId,
+				text=managers.TalkManager.randomTalk('lightBridgeFailure')
+			)
 			return True
 
 		previousIntent = session.previousIntent
@@ -182,14 +191,20 @@ class PhilipsHue(Module):
 			for slot in slots['Room']:
 				room = slot.value['value'].lower()
 				if room not in self._groups.keys() and room != 'everywhere':
-					managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk('roomUnknown').format(room))
+					managers.MqttServer.endTalk(
+						sessionId=sessionId,
+						text=managers.TalkManager.randomTalk('roomUnknown').format(room)
+					)
 					return True
 
 		if 'Scene' in slots:
 			for slot in slots['Scene']:
 				scene = slot.value['value'].lower()
 				if scene not in self._scenes.keys():
-					managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk('sceneUnknown').format(scene))
+					managers.MqttServer.endTalk(
+						sessionId=sessionId,
+						text=managers.TalkManager.randomTalk('sceneUnknown').format(scene)
+					)
 					return True
 
 		if intent == self._INTENT_LIGHT_ON:
@@ -200,26 +215,24 @@ class PhilipsHue(Module):
 					if room == 'everywhere':
 						self._bridge.set_group(0, 'on', True)
 						break
-					else:
-						if partOfTheDay not in self._scenes:
-							for light in self._groups[room].lights:
-								light.on = True
-						else:
-							if not self._bridge.run_scene(group_name=self._groups[room].name, scene_name=self._scenes[partOfTheDay].name):
-								for light in self._groups[room].lights:
-									light.on = True
-			else:
-				if place.lower() in self._groups.keys():
-					if partOfTheDay not in self._scenes:
-						for light in self._groups[place.lower()].lights:
+
+					elif (partOfTheDay not in self._scenes or
+						not self._bridge.run_scene(
+							group_name=self._groups[room].name,
+							scene_name=self._scenes[partOfTheDay].name)):
+						for light in self._groups[room].lights:
 							light.on = True
-					else:
-						if not self._bridge.run_scene(group_name=self._groups[place.lower()].name, scene_name=self._scenes[partOfTheDay].name):
-							for light in self._groups[place.lower()].lights:
-								light.on = True
-				else:
-					managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk('roomUnknown').format(siteId))
-					return True
+			elif place.lower() in self._groups.keys():
+				if (partOfTheDay not in self._scenes or 
+						not self._bridge.run_scene(
+							group_name=self._groups[place.lower()].name,
+							scene_name=self._scenes[partOfTheDay].name)):
+					for light in self._groups[place.lower()].lights:
+						light.on = True
+			else:
+				managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk('roomUnknown').format(siteId))
+				return True
+
 
 		elif intent == self._INTENT_LIGHT_OFF:
 			if 'Room' in slots:
@@ -255,12 +268,12 @@ class PhilipsHue(Module):
 			else:
 				if 'scene' in customData:
 					scene = customData['scene']
+
+				elif len(slots['Scene']) > 1:
+					managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk('cantSpecifyMoreThanOneScene'))
+					return True
 				else:
-					if len(slots['Scene']) > 1:
-						managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk('cantSpecifyMoreThanOneScene'))
-						return True
-					else:
-						scene = slots['Scene'][0].value['value'].lower()
+					scene = slots['Scene'][0].value['value'].lower()
 
 				if 'Room' in slots:
 					for slot in slots['Room']:
@@ -268,17 +281,17 @@ class PhilipsHue(Module):
 						if not self._bridge.run_scene(group_name=self._groups[room].name, scene_name=self._scenes[scene].name):
 							managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk('sceneNotInThisRoom'))
 							return True
-				else:
-					if not room and 'room' in customData:
-						place = customData['room']
+				elif not room and 'room' in customData:
+					place = customData['room']
 
-					if place.lower() in self._groups.keys():
-						if not self._bridge.run_scene(group_name=self._groups[place].name, scene_name=self._scenes[scene].name):
-							managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk('sceneNotInThisRoom'))
-							return True
-					else:
-						managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk('roomUnknown').format(place))
+				elif place.lower() in self._groups.keys():
+					if not self._bridge.run_scene(group_name=self._groups[place].name, scene_name=self._scenes[scene].name):
+						managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk('sceneNotInThisRoom'))
 						return True
+				else:
+					managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk('roomUnknown').format(place))
+					return True
+
 
 		elif intent == self._INTENT_MANAGE_LIGHTS:
 			partOfTheDay = commons.partOfTheDay().lower()
@@ -292,14 +305,13 @@ class PhilipsHue(Module):
 				group = self._groups[room]
 				if group.on:
 					group.on = False
-				else:
-					if partOfTheDay not in self._scenes:
-						for light in group.lights:
-							light.on = True
-					else:
-						if not self._bridge.run_scene(group_name=group.name, scene_name=self._scenes[partOfTheDay].name):
-							for light in group.lights:
-								light.on = True
+				elif (partOfTheDay not in self._scenes or 
+					not self._bridge.run_scene(
+						group_name=group.name,
+						scene_name=self._scenes[partOfTheDay].name)):
+					for light in group.lights:
+						light.on = True
+
 			else:
 				for slot in slots['Room']:
 					room = slot.value['value'].lower()
@@ -310,14 +322,12 @@ class PhilipsHue(Module):
 						group = self._groups[room]
 						if group.on:
 							group.on = False
-						else:
-							if partOfTheDay not in self._scenes:
-								for light in group.lights:
-									light.on = True
-							else:
-								if not self._bridge.run_scene(group_name=group.name, scene_name=self._scenes[partOfTheDay].name):
-									for light in group.lights:
-										light.on = True
+						elif (partOfTheDay not in self._scenes or 
+							not self._bridge.run_scene(
+								group_name=group.name,
+								scene_name=self._scenes[partOfTheDay].name)):
+							for light in group.lights:
+								light.on = True
 
 		elif intent == self._INTENT_DIM_LIGHTS or previousIntent == self._INTENT_DIM_LIGHTS:
 			if 'Percent' not in slots:
