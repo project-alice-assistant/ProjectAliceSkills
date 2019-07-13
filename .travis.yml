@@ -1,6 +1,12 @@
-language: generic
+language: python
+python: 3.6
+
 install:
   - npm install -g ajv-cli
+  - pip install pylint
+
 
 script:
-  - linting/dialog-schema.sh   
+  - linting/dialog-schema.sh
+  - cores=$(nproc)
+  - pylint -j $cores PublishedModules/*/*/*.py --exit-zero
