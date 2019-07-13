@@ -67,7 +67,7 @@ class RedQueen(Module):
 	def onBooted(self):
 		self._decideStateOfMind()
 
-		if managers.ConfigManager.getModuleConfigByName(self.name, 'randomSpeeking'):
+		if managers.ConfigManager.getModuleConfigByName(self.name, 'randomSpeaking'):
 			self.randomlySpeak(init=True)
 
 
