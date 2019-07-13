@@ -9,7 +9,7 @@ wget http://modules.projectalice.ch/RedQueen \
 ### Desc
 Red Queen is the official Project Alice personality module
 
-- Version: 0.7
+- Version: 0.75
 - Author: ProjectAlice
 - Maintainers:
   - Psycho, Jierka

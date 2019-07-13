@@ -167,7 +167,7 @@ class RedQueen(Module):
 		else:
 			chance = 2
 
-		if not managers.ProtectedIntentManager.isProtectedIntent(session.message.topic) and randint(0, 100) < chance and not managers.MultiIntentManager.multiIntent:
+		if not managers.ProtectedIntentManager.isProtectedIntent(session.message.topic) and randint(0, 100) < chance and not managers.MultiIntentManager.isProcessing(session.sessionId):
 			managers.MqttServer.endTalk(
 				sessionId=session.sessionId,
 				text=managers.TalkManager.randomTalk('noInTheMood'),
