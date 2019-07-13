@@ -1,0 +1,42 @@
+{
+	"type": "object",
+	"required": [
+		"name",
+		"version",
+		"author",
+		"maintainers",
+		"desc",
+		"aliceMinVersion",
+		"requirements",
+		"conditions"
+	],
+	"properties": {
+		"name": { "type": "string" },
+		"version": { "type": "number" },
+		"author": { "type": "string" },
+		"maintainers": {
+			"type": "array",
+			"items": { "type": "string" }
+		},
+		"desc": { "type": "string" },
+		"aliceMinVersion": { "type": ["string", "null"] },
+		"requirements": {
+			"type": "array",
+			"items": { "type": "string" }
+		},
+		"conditions": {
+			"type": "object",
+			"properties": {
+				"lang": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"minLength": 2,
+						"maxLength": 2,
+						"pattern": "^[a-z]+$"
+					}
+				}
+			}
+		}
+	}
+}

@@ -8,5 +8,6 @@ install:
 
 script:
   - linting/dialog-schema.sh
+  - linting/install-schema.sh
   - cores=$(nproc)
   - pylint -j $cores PublishedModules/*/*/*.py --exit-zero
