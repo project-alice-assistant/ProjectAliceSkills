@@ -1,29 +1,28 @@
 # -*- coding: utf-8 -*-
 
-from random import randint
 import json
-
-from core.commons import commons
-import core.base.Managers    as managers
-from core.base.model.Intent import Intent
-from core.base.model.Module import Module
-from core.dialog.model.DialogSession import DialogSession
-from core.ProjectAliceExceptions import ModuleStartingFailed
 import os
-import random
 import shutil
 import time
+from random import randint
+
+import core.base.Managers    as managers
+from core.ProjectAliceExceptions import ModuleStartingFailed
+from core.base.model.Intent import Intent
+from core.base.model.Module import Module
+from core.commons import commons
+from core.dialog.model.DialogSession import DialogSession
 
 
 class RedQueen(Module):
-
 	_INTENT_WHO_ARE_YOU = Intent('WhoAreYou')
 	_INTENT_GOOD_MORNING = Intent('GoodMorning', isProtected=True)
 	_INTENT_GOOD_NIGHT = Intent('GoodNight', isProtected=True)
 	_INTENT_CHANGE_USER_STATE = Intent('ChangeUserState')
 
+
 	def __init__(self):
-		self._SUPPORTED_INTENTS	= [
+		self._SUPPORTED_INTENTS = [
 			self._INTENT_WHO_ARE_YOU,
 			self._INTENT_GOOD_MORNING,
 			self._INTENT_GOOD_NIGHT,
@@ -51,7 +50,7 @@ class RedQueen(Module):
 				self._saveRedQueenIdentity()
 			else:
 				self._logger.info('[{}] Cannot find Red Queen identity template'.format(self.name))
-				raise ModuleStartingFailed(moduleName = self.name)
+				raise ModuleStartingFailed(moduleName=self.name)
 		else:
 			self._logger.info('[{}] Found existing Red Queen identity'.format(self.name))
 			with open(self._getRedQueenIdentityFileName(), 'r') as f:
@@ -69,7 +68,7 @@ class RedQueen(Module):
 		self._decideStateOfMind()
 
 		if managers.ConfigManager.getModuleConfigByName(self.name, 'randomSpeeking'):
-			self.randomlySpeak(init = True)
+			self.randomlySpeak(init=True)
 
 
 	def onSleep(self):
@@ -92,7 +91,7 @@ class RedQueen(Module):
 
 	def _saveRedQueenIdentity(self):
 		with open(self._getRedQueenIdentityFileName(), 'w') as f:
-			json.dump(self._redQueen, f, indent = 4, sort_keys = False)
+			json.dump(self._redQueen, f, indent=4, sort_keys=False)
 
 
 	def onQuarterHour(self):
@@ -121,7 +120,7 @@ class RedQueen(Module):
 		self.changeRedQueenStat('frustration', -1)
 
 		text = session.payload['input']
-		forms = managers.LanguageManager.getStrings(key = 'politness', module = self.name)
+		forms = managers.LanguageManager.getStrings(key='politness', module=self.name)
 
 		for form in forms:
 			if form not in text:
@@ -143,7 +142,10 @@ class RedQueen(Module):
 				chance = 25
 
 			if randint(0, 100) < chance:
-				managers.MqttServer.say(text=managers.TalkManager.randomTalk('thanksForBeingNice'), client=session.siteId)
+				managers.MqttServer.say(
+					text=managers.TalkManager.randomTalk('thanksForBeingNice'),
+					client=session.siteId
+				)
 				return
 
 			return
@@ -165,9 +167,12 @@ class RedQueen(Module):
 		else:
 			chance = 2
 
-
-		if not managers.ProtectedIntentManager.isProtectedIntent(session.message.topic) and random.randint(0, 100) < chance and not managers.MultiIntentManager.multiIntent:
-			managers.MqttServer.endTalk(session.sessionId, managers.TalkManager.randomTalk('noInTheMood'), client=session.siteId)
+		if not managers.ProtectedIntentManager.isProtectedIntent(session.message.topic) and randint(0, 100) < chance and not managers.MultiIntentManager.multiIntent:
+			managers.MqttServer.endTalk(
+				sessionId=session.sessionId,
+				text=managers.TalkManager.randomTalk('noInTheMood'),
+				client=session.siteId
+			)
 			return False
 
 		return True
@@ -181,9 +186,11 @@ class RedQueen(Module):
 			slots = session.slotsAsObjects
 			if 'State' not in slots.keys():
 				self._logger.error('[{}] No state provided for changing user state'.format(self.name))
-				managers.MqttServer.endTalk(sessionId=session.sessionId,
-											text=managers.TalkManager.randomTalk('error', module = 'system'),
-											client=session.siteId)
+				managers.MqttServer.endTalk(
+					sessionId=session.sessionId,
+					text=managers.TalkManager.randomTalk('error', module='system'),
+					client=session.siteId
+				)
 				return True
 
 			if 'Who' in slots.keys():
@@ -194,27 +201,35 @@ class RedQueen(Module):
 				except:
 					self._logger.warning('[{}] Unsupported user state "{}"'.format(self.name, slots['State'][0].value['value']))
 
-			managers.MqttServer.endTalk(sessionId=session.sessionId,
-										text=managers.TalkManager.randomTalk(self.name, slots['State'][0].value['value']),
-										client=session.siteId)
+			managers.MqttServer.endTalk(
+				sessionId=session.sessionId,
+				text=managers.TalkManager.randomTalk(slots['State'][0].value['value']),
+				client=session.siteId
+			)
 
 		elif intent == self._INTENT_GOOD_NIGHT:
-			managers.MqttServer.endTalk(sessionId=session.sessionId,
-										text=managers.TalkManager.randomTalk('goodNight'),
-										client=session.siteId)
+			managers.MqttServer.endTalk(
+				sessionId=session.sessionId,
+				text=managers.TalkManager.randomTalk('goodNight'),
+				client=session.siteId
+			)
 			managers.ModuleManager.broadcast('onSleep')
 
 		elif intent == self._INTENT_GOOD_MORNING:
 			managers.ModuleManager.broadcast('onWakeup')
 			time.sleep(0.5)
-			managers.MqttServer.endTalk(sessionId=session.sessionId,
-										text=managers.TalkManager.randomTalk('goodMorning'),
-										client = session.siteId)
+			managers.MqttServer.endTalk(
+				sessionId=session.sessionId,
+				text=managers.TalkManager.randomTalk('goodMorning'),
+				client=session.siteId
+			)
 
 		elif intent == self._INTENT_WHO_ARE_YOU:
-			managers.MqttServer.endTalk(sessionId=session.sessionId,
-										text=managers.TalkManager.randomTalk('aliceInfos'),
-										client=session.siteId)
+			managers.MqttServer.endTalk(
+				sessionId=session.sessionId,
+				text=managers.TalkManager.randomTalk('aliceInfos'),
+				client=session.siteId
+			)
 
 		return True
 
@@ -231,12 +246,15 @@ class RedQueen(Module):
 		elif self.mood == 'Frustrated':
 			maxi /= 2
 
-		rnd = random.randint(mini, maxi)
+		rnd = randint(mini, maxi)
 		managers.ThreadManager.doLater(interval=rnd, func=self.randomlySpeak)
 		self._logger.info('[{}] Scheduled next random speaking in {} seconds'.format(self.name, rnd))
 
 		if not init and not managers.UserManager.checkIfAllUser('goingBed') and not managers.UserManager.checkIfAllUser('sleeping'):
-			managers.MqttServer.say(managers.TalkManager.randomTalk(self.name, 'randomlySpeak{}'.format(self.mood)), client='all')
+			managers.MqttServer.say(
+				managers.TalkManager.randomTalk('randomlySpeak{}'.format(self.mood)),
+				client='all'
+			)
 
 
 	def changeRedQueenStat(self, stat: str, amount: int):
@@ -253,11 +271,11 @@ class RedQueen(Module):
 	def _decideStateOfMind(self) -> str:
 		# TODO Algorythm for weighting the 5 stats
 		stats = {
-			'Anger': self._redQueen['stats']['anger'] * 5,
-			'Tiredness': self._redQueen['stats']['tiredness'] * 4,
-			'Happiness': self._redQueen['stats']['happiness'] * 3,
+			'Anger'      : self._redQueen['stats']['anger'] * 5,
+			'Tiredness'  : self._redQueen['stats']['tiredness'] * 4,
+			'Happiness'  : self._redQueen['stats']['happiness'] * 3,
 			'Frustration': self._redQueen['stats']['frustration'] * 2,
-			'Boredom': self._redQueen['stats']['boredom']
+			'Boredom'    : self._redQueen['stats']['boredom']
 		}
 
 		return commons.dictMaxValue(stats)

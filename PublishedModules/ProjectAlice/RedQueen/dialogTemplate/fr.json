@@ -1,8 +1,8 @@
 {
-    "module": "RedQueen",
-    "icon": "drink",
-    "description": "Discussions avec la RedQueen",
-    "slotTypes": [
+	"module": "RedQueen",
+	"icon": "drink",
+	"description": "Discussions avec la RedQueen",
+	"slotTypes": [
 		{
 			"name": "UserState",
 			"matchingStrictness": null,
@@ -95,7 +95,7 @@
 			]
 		}
 	],
-    "intents": [
+	"intents": [
 		{
 			"name": "WhoAreYou",
 			"description": "L'utilisateur veut en savoir plus sur l'assistant",
@@ -112,7 +112,7 @@
 			],
 			"slots": []
 		},
-			{
+		{
 			"name": "GoodMorning",
 			"description": "L'utilisateur souhaite un bonjour à l'assistant",
 			"enabledByDefault": true,

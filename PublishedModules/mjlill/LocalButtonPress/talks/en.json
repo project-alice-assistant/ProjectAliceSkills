@@ -1,21 +1,21 @@
 {
-        "DoButtonOn": {
-                "default": [
-                        "OK, it is on...",
-                        "Now on!",
-                        "It's on."
-                ],
-                "short": [
-                        "Done"
-                ]
-        },
-        "DoButtonOff": {
-                "default": [
-                        "Turned it off!",
-                        "I turned it off"
-                ],
-                "short": [
-                        "Done!"
-                ]
-        }
+	"DoButtonOn": {
+		"default": [
+			"OK, it is on...",
+			"Now on!",
+			"It's on."
+		],
+		"short": [
+			"Done"
+		]
+	},
+	"DoButtonOff": {
+		"default": [
+			"Turned it off!",
+			"I turned it off"
+		],
+		"short": [
+			"Done!"
+		]
+	}
 }

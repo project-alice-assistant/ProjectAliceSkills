@@ -2,11 +2,15 @@
 	"name": "RandomUselessFacts",
 	"version": 1.2,
 	"author": "Psychokiller1888",
-	"maintainers": ["maxbachmann"],
+	"maintainers": [
+		"maxbachmann"
+	],
 	"desc": "Gets you the daily random useless fact or a random one",
 	"aliceMinVersion": "",
 	"requirements": [],
 	"conditions": {
-		"lang": ["en"]
+		"lang": [
+			"en"
+		]
 	}
 }

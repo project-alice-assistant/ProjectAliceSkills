@@ -98,7 +98,7 @@ INSTALL_JSON = '''{
 	"name": "%moduleName%",
 	"version": 1.0,
 	"author": "%username%",
-	"maintainers": [""],
+	"maintainers": [],
 	"desc": "%description%",
 	"aliceMinVersion": "",
 	"requirements": [%requirements%],

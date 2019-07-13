@@ -2,29 +2,28 @@
 
 import json
 
-from core.dialog.model.DialogSession import DialogSession
-
 import core.base.Managers    as managers
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
+from core.dialog.model.DialogSession import DialogSession
 
 
 class ContextSensitive(Module):
-
 	_INTENT_DELETE_THIS = Intent('DeleteThis', isProtected=True)
 	_INTENT_REPEAT_THIS = Intent('RepeatThis', isProtected=True)
-	_INTENT_EDIT_THIS 	= Intent('EditThis', isProtected=True)
+	_INTENT_EDIT_THIS = Intent('EditThis', isProtected=True)
 	_INTENT_ANSWER_YES_OR_NO = Intent('AnswerYesOrNo', isProtected=True)
 
+
 	def __init__(self):
-		self._SUPPORTED_INTENTS	= [
+		self._SUPPORTED_INTENTS = [
 			self._INTENT_DELETE_THIS,
 			self._INTENT_REPEAT_THIS,
 			self._INTENT_EDIT_THIS
 		]
 
-		self._history 		= []
-		self._sayHistory 	= {}
+		self._history = []
+		self._sayHistory = {}
 
 		super().__init__(self._SUPPORTED_INTENTS)
 
@@ -57,10 +56,10 @@ class ContextSensitive(Module):
 					continue
 
 		elif intent == self._INTENT_REPEAT_THIS:
-			managers.MqttServer.endTalk(text=self.getLastChat(siteId=siteId), client=siteId, sessionId=sessionId)
+			managers.MqttServer.endTalk(sessionId, text=self.getLastChat(siteId=siteId))
 			return True
 
-		managers.MqttServer.endTalk(text=managers.TalkManager.randomTalk('didntUnderstand'), sessionId=sessionId)
+		managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk('didntUnderstand'))
 		return True
 
 

@@ -2,11 +2,12 @@
 
 import json
 
+import requests
+
 import core.base.Managers as managers
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
-import requests
 
 
 class FreeCurrencyConverterDotCom(Module):
@@ -15,11 +16,12 @@ class FreeCurrencyConverterDotCom(Module):
 	Description: Let's you convert world currencies
 	"""
 
-	_INTENT_CONVERT_CURRENCY 	= Intent('ConvertCurrency')
-	_INTENT_ANSWER_CURRENCY		= Intent('AnswerCurrency', isProtected=True)
+	_INTENT_CONVERT_CURRENCY = Intent('ConvertCurrency')
+	_INTENT_ANSWER_CURRENCY = Intent('AnswerCurrency', isProtected=True)
+
 
 	def __init__(self):
-		self._SUPPORTED_INTENTS	= [
+		self._SUPPORTED_INTENTS = [
 			self._INTENT_ANSWER_CURRENCY,
 			self._INTENT_CONVERT_CURRENCY
 		]
@@ -55,13 +57,13 @@ class FreeCurrencyConverterDotCom(Module):
 					fromCurrency = slotsObject['Currency'][0].value['value']
 				else:
 					managers.MqttServer.continueDialog(
-						sessionId = sessionId,
-						intentFilter = [self._INTENT_ANSWER_CURRENCY],
-						text = managers.TalkManager.randomTalk(module=self.name, talk='fromWhatCurrency'),
-						previousIntent = self._INTENT_CONVERT_CURRENCY,
-						customData = json.dumps({
-							'module': self.name,
-							'amount': amount,
+						sessionId=sessionId,
+						intentFilter=[self._INTENT_ANSWER_CURRENCY],
+						text=managers.TalkManager.randomTalk(module=self.name, talk='fromWhatCurrency'),
+						previousIntent=self._INTENT_CONVERT_CURRENCY,
+						customData=json.dumps({
+							'module'    : self.name,
+							'amount'    : amount,
 							'toCurrency': toCurrency
 						})
 					)
@@ -71,7 +73,7 @@ class FreeCurrencyConverterDotCom(Module):
 
 			try:
 				url = 'https://free.currconv.com/api/v7/convert?q={}_{}&compact=ultra&apiKey={}'.format(fromCurrency, toCurrency, managers.ConfigManager.getModuleConfigByName(self.name, 'apiKey'))
-				req = requests.get(url = url)
+				req = requests.get(url=url)
 				data = json.loads(req.content.decode())
 
 				conversion = data['{}_{}'.format(fromCurrency, toCurrency)]

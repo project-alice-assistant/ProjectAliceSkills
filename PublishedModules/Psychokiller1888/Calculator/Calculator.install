@@ -2,11 +2,16 @@
 	"name": "Calculator",
 	"version": 1.2,
 	"author": "Psychokiller1888",
-	"maintainers": ["maxbachmann"],
+	"maintainers": [
+		"maxbachmann"
+	],
 	"desc": "Do some calculation with alice",
 	"aliceMinVersion": "",
 	"requirements": [],
 	"conditions": {
-		"lang": ["en", "de"]
+		"lang": [
+			"en",
+			"de"
+		]
 	}
 }

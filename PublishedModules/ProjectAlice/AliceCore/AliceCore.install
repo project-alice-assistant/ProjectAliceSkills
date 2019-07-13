@@ -2,11 +2,17 @@
 	"name": "AliceCore",
 	"version": 0.7,
 	"author": "ProjectAlice",
-	"maintainers": ["Psycho","Jierka"],
+	"maintainers": [
+		"Psycho",
+		"Jierka"
+	],
 	"desc": "AliceCore is the official module that handles all core intents",
 	"aliceMinVersion": "",
 	"requirements": [],
 	"conditions": {
-		"lang": ["en", "fr"]
+		"lang": [
+			"en",
+			"fr"
+		]
 	}
 }

@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 
+import html
 import json
+
+import requests
 
 import core.base.Managers as managers
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
-import requests
-import html
 
 
 class RandomUselessFacts(Module):
@@ -18,8 +19,9 @@ class RandomUselessFacts(Module):
 
 	_INTENT_GET_USELESS_FACT = Intent('GetUselessFact')
 
+
 	def __init__(self):
-		self._SUPPORTED_INTENTS	= [
+		self._SUPPORTED_INTENTS = [
 			self._INTENT_GET_USELESS_FACT
 		]
 
@@ -42,7 +44,7 @@ class RandomUselessFacts(Module):
 
 
 	def getAFact(self, ttype: str) -> str:
-		#Try to fetch a fact
+		# Try to fetch a fact
 		req = requests.request(method='GET', url='http://randomuselessfact.appspot.com/{}.json?language={}'.format(ttype, managers.LanguageManager.activeLanguage))
 		if req.status_code != 200:
 			# Failed, maybe the server is offline?

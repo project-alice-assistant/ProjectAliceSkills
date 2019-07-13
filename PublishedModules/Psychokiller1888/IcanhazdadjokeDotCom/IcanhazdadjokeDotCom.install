@@ -2,11 +2,13 @@
 	"name": "IcanhazdadjokeDotCom",
 	"version": 1.1,
 	"author": "Psychokiller1888",
-	"maintainers": [""],
+	"maintainers": [],
 	"desc": "Get a random dad joke on demand!",
 	"aliceMinVersion": "",
 	"requirements": [],
 	"conditions": {
-		"lang": ["en"]
+		"lang": [
+			"en"
+		]
 	}
 }

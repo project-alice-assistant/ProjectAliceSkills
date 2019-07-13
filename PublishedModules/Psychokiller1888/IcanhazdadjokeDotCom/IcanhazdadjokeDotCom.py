@@ -1,18 +1,19 @@
 # -*- coding: utf-8 -*-
 
+import requests
+
 import core.base.Managers as managers
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
-import requests
 
 
 class IcanhazdadjokeDotCom(Module):
-
 	_INTENT_TELL_A_JOKE = Intent('TellAJoke')
 
+
 	def __init__(self):
-		self._SUPPORTED_INTENTS	= [
+		self._SUPPORTED_INTENTS = [
 			self._INTENT_TELL_A_JOKE
 		]
 
@@ -27,9 +28,9 @@ class IcanhazdadjokeDotCom(Module):
 			url = 'https://icanhazdadjoke.com/'
 
 			headers = {
-				'Accept': 'text/plain',
+				'Accept'    : 'text/plain',
 				'User-Agent': 'Project Alice',
-				'From': 'projectalice@projectalice.ch'
+				'From'      : 'projectalice@projectalice.ch'
 			}
 
 			response = requests.get(url, headers=headers)

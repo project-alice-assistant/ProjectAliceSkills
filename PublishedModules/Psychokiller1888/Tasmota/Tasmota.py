@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
+import re
+
 import core.base.Managers as managers
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
 from modulesDeprecated.Tasmota.TasmotaConfigs import TasmotaConfigs
-import re
 
 
 class Tasmota(Module):
@@ -20,8 +21,9 @@ class Tasmota(Module):
 	_INTENT_ANSWER_YES_OR_NO = Intent('AnswerYesOrNo', isProtected=True)
 	_INTENT_ANSWER_ROOM = Intent('AnswerRoom', isProtected=True)
 
+
 	def __init__(self):
-		self._SUPPORTED_INTENTS	= [
+		self._SUPPORTED_INTENTS = [
 			self._FEEDBACK,
 			self._CONNECTING,
 			self._INTENT_ANSWER_YES_OR_NO,
@@ -50,7 +52,7 @@ class Tasmota(Module):
 			if managers.DeviceManager.getDeviceByUID(identifier):
 				# This device is known
 				self._logger.info('[{}] A device just connected in {}'.format(self.name, siteId))
-				managers.DeviceManager.deviceConnecting(uid = identifier)
+				managers.DeviceManager.deviceConnecting(uid=identifier)
 			else:
 				# We did not ask Alice to add a new device
 				if not managers.DeviceManager.broadcastFlag.isSet():

@@ -3,6 +3,7 @@
 import json
 
 from wikipedia import wikipedia
+
 import core.base.Managers as managers
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
@@ -15,12 +16,13 @@ class Wikipedia(Module):
 	Description: Allows one to find informations about a topic on wikipedia
 	"""
 
-	_INTENT_SEARCH 			= Intent('DoSearch')
-	_INTENT_USER_ANSWER 	= Intent('UserRandomAnswer', isProtected=True)
-	_INTENT_SPELL_WORD 		= Intent('SpellWord', isProtected=True)
+	_INTENT_SEARCH = Intent('DoSearch')
+	_INTENT_USER_ANSWER = Intent('UserRandomAnswer', isProtected=True)
+	_INTENT_SPELL_WORD = Intent('SpellWord', isProtected=True)
+
 
 	def __init__(self):
-		self._SUPPORTED_INTENTS	= [
+		self._SUPPORTED_INTENTS = [
 			self._INTENT_SEARCH,
 			self._INTENT_USER_ANSWER,
 			self._INTENT_SPELL_WORD
@@ -46,11 +48,11 @@ class Wikipedia(Module):
 					engine = slots['engine']
 
 				managers.MqttServer.continueDialog(
-					sessionId = sessionId,
-					text = managers.TalkManager.randomTalk('whatToSearch'),
-					intentFilter = [self._INTENT_USER_ANSWER],
-					previousIntent = self._INTENT_SEARCH,
-					customData = json.dumps({
+					sessionId=sessionId,
+					text=managers.TalkManager.randomTalk('whatToSearch'),
+					intentFilter=[self._INTENT_USER_ANSWER],
+					previousIntent=self._INTENT_SEARCH,
+					customData=json.dumps({
 						'module': self.name,
 						'engine': engine
 					})
@@ -61,7 +63,7 @@ class Wikipedia(Module):
 				elif 'what' in slots:
 					what = slots['what']
 				else:
-					managers.MqttServer.endTalk(sessionId=sessionId, text=managers.TalkManager.randomTalk('error', module = 'system'))
+					managers.MqttServer.endTalk(sessionId=sessionId, text=managers.TalkManager.randomTalk('error', module='system'))
 					return True
 
 				if intent == self._INTENT_SPELL_WORD:
@@ -84,11 +86,11 @@ class Wikipedia(Module):
 						result = wikipedia.summary(search, sentences=3)
 				except wikipedia.DisambiguationError:
 					managers.MqttServer.continueDialog(
-						sessionId = sessionId,
-						text = managers.TalkManager.randomTalk('ambiguous').format(search),
-						intentFilter = [self._INTENT_USER_ANSWER],
-						previousIntent = self._INTENT_SEARCH,
-						customData = json.dumps({
+						sessionId=sessionId,
+						text=managers.TalkManager.randomTalk('ambiguous').format(search),
+						intentFilter=[self._INTENT_USER_ANSWER],
+						previousIntent=self._INTENT_SEARCH,
+						customData=json.dumps({
 							'module': self.name,
 							'engine': engine
 						})
@@ -96,11 +98,11 @@ class Wikipedia(Module):
 					return True
 				except wikipedia.WikipediaException:
 					managers.MqttServer.continueDialog(
-						sessionId = sessionId,
-						text = managers.TalkManager.randomTalk('noMatch').format(search),
-						intentFilter = [self._INTENT_USER_ANSWER],
-						previousIntent = self._INTENT_SEARCH,
-						customData = json.dumps({
+						sessionId=sessionId,
+						text=managers.TalkManager.randomTalk('noMatch').format(search),
+						intentFilter=[self._INTENT_USER_ANSWER],
+						previousIntent=self._INTENT_SEARCH,
+						customData=json.dumps({
 							'module': self.name,
 							'engine': engine
 						})
@@ -108,21 +110,21 @@ class Wikipedia(Module):
 					return True
 				except Exception as e:
 					self._logger.error('Error: {}'.format(e))
-					managers.MqttServer.endTalk(sessionId=sessionId, text=managers.TalkManager.randomTalk('error', module = 'system'))
+					managers.MqttServer.endTalk(sessionId=sessionId, text=managers.TalkManager.randomTalk('error', module='system'))
 					return True
 
 				if result == '':
 					managers.MqttServer.continueDialog(
-						sessionId = sessionId,
-						text = managers.TalkManager.randomTalk('noMatch').format(search),
-						intentFilter = [self._INTENT_USER_ANSWER],
-						previousIntent = self._INTENT_SEARCH,
-						customData = json.dumps({
+						sessionId=sessionId,
+						text=managers.TalkManager.randomTalk('noMatch').format(search),
+						intentFilter=[self._INTENT_USER_ANSWER],
+						previousIntent=self._INTENT_SEARCH,
+						customData=json.dumps({
 							'module': self.name,
 							'engine': engine
 						})
 					)
 				else:
-					managers.MqttServer.endTalk(sessionId = sessionId, text = result, client = siteId)
+					managers.MqttServer.endTalk(sessionId=sessionId, text=result)
 
 		return True
