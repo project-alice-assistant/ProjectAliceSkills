@@ -2,11 +2,13 @@
 	"name": "FreeCurrencyConverterDotCom",
 	"version": 1.2,
 	"author": "Psychokiller1888",
-	"maintainers": [""],
+	"maintainers": [],
 	"desc": "Let's you convert world currencies",
 	"aliceMinVersion": "",
 	"requirements": [],
 	"conditions": {
-		"lang": ["en"]
+		"lang": [
+			"en"
+		]
 	}
 }

@@ -2,11 +2,17 @@
 	"name": "RedQueen",
 	"version": 0.7,
 	"author": "ProjectAlice",
-	"maintainers": ["Psycho","Jierka"],
+	"maintainers": [
+		"Psycho",
+		"Jierka"
+	],
 	"desc": "Red Queen is the official Project Alice personality module",
 	"aliceMinVersion": "",
 	"requirements": [],
 	"conditions": {
-		"lang": ["en", "fr"]
+		"lang": [
+			"en",
+			"fr"
+		]
 	}
 }

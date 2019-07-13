@@ -2,105 +2,104 @@
 
 import json
 
-from core.dialog.model.DialogSession import DialogSession
-
 import core.base.Managers    as managers
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
+from core.dialog.model.DialogSession import DialogSession
 
 
 class ContextSensitive(Module):
-
-    _INTENT_DELETE_THIS = Intent('DeleteThis', isProtected=True)
-    _INTENT_REPEAT_THIS = Intent('RepeatThis', isProtected=True)
-    _INTENT_EDIT_THIS     = Intent('EditThis', isProtected=True)
-    _INTENT_ANSWER_YES_OR_NO = Intent('AnswerYesOrNo', isProtected=True)
-
-    def __init__(self):
-        self._SUPPORTED_INTENTS    = [
-            self._INTENT_DELETE_THIS,
-            self._INTENT_REPEAT_THIS,
-            self._INTENT_EDIT_THIS
-        ]
-
-        self._history         = []
-        self._sayHistory     = {}
-
-        super().__init__(self._SUPPORTED_INTENTS)
+	_INTENT_DELETE_THIS = Intent('DeleteThis', isProtected=True)
+	_INTENT_REPEAT_THIS = Intent('RepeatThis', isProtected=True)
+	_INTENT_EDIT_THIS = Intent('EditThis', isProtected=True)
+	_INTENT_ANSWER_YES_OR_NO = Intent('AnswerYesOrNo', isProtected=True)
 
 
-    def onMessage(self, intent: str, session: DialogSession) -> bool:
-        if not self.filterIntent(intent, session):
-            return False
+	def __init__(self):
+		self._SUPPORTED_INTENTS = [
+			self._INTENT_DELETE_THIS,
+			self._INTENT_REPEAT_THIS,
+			self._INTENT_EDIT_THIS
+		]
 
-        sessionId = session.sessionId
-        siteId = session.siteId
+		self._history = []
+		self._sayHistory = {}
 
-        if intent == self._INTENT_DELETE_THIS:
-            modules = managers.ModuleManager.getModules()
-            for module in modules.values():
-                try:
-                    if module['instance'].onContextSensitiveDelete(sessionId):
-                        managers.MqttServer.endTalk(sessionId=sessionId)
-                        return True
-                except Exception:
-                    continue
-
-        elif intent == self._INTENT_EDIT_THIS:
-            modules = managers.ModuleManager.getModules()
-            for module in modules.values():
-                try:
-                    if module['instance'].onContextSensitiveEdit(sessionId):
-                        managers.MqttServer.endTalk(sessionId=sessionId)
-                        return True
-                except:
-                    continue
-
-        elif intent == self._INTENT_REPEAT_THIS:
-            managers.MqttServer.endTalk(text=self.getLastChat(siteId=siteId), client=siteId, sessionId=sessionId)
-            return True
-
-        managers.MqttServer.endTalk(text=managers.TalkManager.randomTalk('didntUnderstand'), sessionId=sessionId)
-        return True
+		super().__init__(self._SUPPORTED_INTENTS)
 
 
-    def addToMessageHistory(self, session: DialogSession):
-        if session.message.topic in self._SUPPORTED_INTENTS or session.message.topic == self._INTENT_ANSWER_YES_OR_NO or 'intent' not in session.message.topic:
-            return
+	def onMessage(self, intent: str, session: DialogSession) -> bool:
+		if not self.filterIntent(intent, session):
+			return False
 
-        try:
-            customData = session.customData
+		sessionId = session.sessionId
+		siteId = session.siteId
 
-            if 'speaker' not in customData:
-                customData['speaker'] = session.user
-                data = session.payload
-                data['customData'] = customData
-                session.payload = json.dumps(data)
+		if intent == self._INTENT_DELETE_THIS:
+			modules = managers.ModuleManager.getModules()
+			for module in modules.values():
+				try:
+					if module['instance'].onContextSensitiveDelete(sessionId):
+						managers.MqttServer.endTalk(sessionId=sessionId)
+						return True
+				except Exception:
+					continue
 
-            self._history.append(session)
+		elif intent == self._INTENT_EDIT_THIS:
+			modules = managers.ModuleManager.getModules()
+			for module in modules.values():
+				try:
+					if module['instance'].onContextSensitiveEdit(sessionId):
+						managers.MqttServer.endTalk(sessionId=sessionId)
+						return True
+				except:
+					continue
 
-            if len(self._history) > 10:
-                self._history.pop(0)
-        except Exception as e:
-            self._logger.error('Error in {} module: {}'.format(self.name, e))
+		elif intent == self._INTENT_REPEAT_THIS:
+			managers.MqttServer.endTalk(text=self.getLastChat(siteId=siteId), client=siteId, sessionId=sessionId)
+			return True
 
-
-    def lastMessage(self):
-        return self._history[len(self._history) - 1]
-
-
-    def addChat(self, text, siteId):
-        if siteId not in self._sayHistory.keys():
-            self._sayHistory[siteId] = []
-
-        self._sayHistory[siteId].append(text)
-
-        if len(self._sayHistory[siteId]) > 10:
-            self._sayHistory[siteId].pop(0)
+		managers.MqttServer.endTalk(text=managers.TalkManager.randomTalk('didntUnderstand'), sessionId=sessionId)
+		return True
 
 
-    def getLastChat(self, siteId):
-        if siteId not in self._sayHistory or len(self._sayHistory[siteId]) <= 0:
-            return managers.TalkManager.randomTalk('nothing')
+	def addToMessageHistory(self, session: DialogSession):
+		if session.message.topic in self._SUPPORTED_INTENTS or session.message.topic == self._INTENT_ANSWER_YES_OR_NO or 'intent' not in session.message.topic:
+			return
 
-        return self._sayHistory[siteId][len(self._sayHistory[siteId]) - 1]
+		try:
+			customData = session.customData
+
+			if 'speaker' not in customData:
+				customData['speaker'] = session.user
+				data = session.payload
+				data['customData'] = customData
+				session.payload = json.dumps(data)
+
+			self._history.append(session)
+
+			if len(self._history) > 10:
+				self._history.pop(0)
+		except Exception as e:
+			self._logger.error('Error in {} module: {}'.format(self.name, e))
+
+
+	def lastMessage(self):
+		return self._history[len(self._history) - 1]
+
+
+	def addChat(self, text, siteId):
+		if siteId not in self._sayHistory.keys():
+			self._sayHistory[siteId] = []
+
+		self._sayHistory[siteId].append(text)
+
+		if len(self._sayHistory[siteId]) > 10:
+			self._sayHistory[siteId].pop(0)
+
+
+	def getLastChat(self, siteId):
+		if siteId not in self._sayHistory or len(self._sayHistory[siteId]) <= 0:
+			return managers.TalkManager.randomTalk('nothing')
+
+		return self._sayHistory[siteId][len(self._sayHistory[siteId]) - 1]

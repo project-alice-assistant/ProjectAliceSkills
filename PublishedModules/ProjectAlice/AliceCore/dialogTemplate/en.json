@@ -2,12 +2,14 @@
 	"module": "AliceCore",
 	"icon": "settings",
 	"description": "Contains intents that manage root stuff of Project Alice",
-	"slotTypes": [{
+	"slotTypes": [
+		{
 			"name": "Languages",
 			"matchingStrictness": null,
 			"automaticallyExtensible": true,
 			"useSynonyms": true,
-			"values": [{
+			"values": [
+				{
 					"value": "fr",
 					"synonyms": [
 						"french"
@@ -68,7 +70,8 @@
 			"matchingStrictness": null,
 			"automaticallyExtensible": false,
 			"useSynonyms": true,
-			"values": [{
+			"values": [
+				{
 					"value": "a",
 					"synonyms": [
 						"A"
@@ -231,7 +234,8 @@
 			"matchingStrictness": null,
 			"automaticallyExtensible": false,
 			"useSynonyms": true,
-			"values": [{
+			"values": [
+				{
 					"value": "esp",
 					"synonyms": [
 						"tasmota"
@@ -250,7 +254,8 @@
 			"matchingStrictness": null,
 			"automaticallyExtensible": true,
 			"useSynonyms": false,
-			"values": [{
+			"values": [
+				{
 					"value": "anteroom"
 				},
 				{
@@ -656,9 +661,10 @@
 			"matchingStrictness": null,
 			"automaticallyExtensible": false,
 			"useSynonyms": true,
-			"values": [{
+			"values": [
+				{
 					"value": "switch",
-				        "synonyms": []
+					"synonyms": []
 				},
 				{
 					"value": "pir",
@@ -675,7 +681,8 @@
 			"matchingStrictness": null,
 			"automaticallyExtensible": false,
 			"useSynonyms": true,
-			"values": [{
+			"values": [
+				{
 					"value": "yes",
 					"synonyms": [
 						"yes please",
@@ -700,7 +707,8 @@
 			"matchingStrictness": null,
 			"automaticallyExtensible": true,
 			"useSynonyms": false,
-			"values": [{
+			"values": [
+				{
 					"value": "James"
 				},
 				{
@@ -3413,7 +3421,8 @@
 			"matchingStrictness": null,
 			"automaticallyExtensible": true,
 			"useSynonyms": false,
-			"values": [{
+			"values": [
+				{
 					"value": "abandon"
 				},
 				{
@@ -12880,7 +12889,8 @@
 			]
 		}
 	],
-	"intents": [{
+	"intents": [
+		{
 			"name": "UserRandomAnswer",
 			"description": "The user answer with something random",
 			"enabledByDefault": false,
@@ -12900,13 +12910,15 @@
 				"{obama:=>RandomWord}",
 				"{black:=>RandomWord}"
 			],
-			"slots": [{
-				"name": "RandomWord",
-				"description": "Random word given",
-				"required": false,
-				"type": "RandomWords",
-				"missingQuestion": ""
-			}]
+			"slots": [
+				{
+					"name": "RandomWord",
+					"description": "Random word given",
+					"required": false,
+					"type": "RandomWords",
+					"missingQuestion": ""
+				}
+			]
 		},
 		{
 			"name": "SwitchLanguage",
@@ -12923,13 +12935,15 @@
 				"can we speak {french:=>ToLang} please",
 				"switch to {russian:=>ToLang} please"
 			],
-			"slots": [{
-				"name": "ToLang",
-				"description": "Language to switch to",
-				"required": false,
-				"type": "Languages",
-				"missingQuestion": ""
-			}]
+			"slots": [
+				{
+					"name": "ToLang",
+					"description": "Language to switch to",
+					"required": false,
+					"type": "Languages",
+					"missingQuestion": ""
+				}
+			]
 		},
 		{
 			"name": "RebootSystem",
@@ -12964,13 +12978,15 @@
 				"stop listening to us",
 				"stop listening to me"
 			],
-			"slots": [{
-				"name": "Duration",
-				"description": "How long to ignore the requests",
-				"required": false,
-				"type": "snips/duration",
-				"missingQuestion": ""
-			}]
+			"slots": [
+				{
+					"name": "Duration",
+					"description": "How long to ignore the requests",
+					"required": false,
+					"type": "snips/duration",
+					"missingQuestion": ""
+				}
+			]
 		},
 		{
 			"name": "AddComponent",
@@ -13005,7 +13021,8 @@
 				"i want to add a device to your network",
 				"add a new {satellite:=>Hardware}"
 			],
-			"slots": [{
+			"slots": [
+				{
 					"name": "Hardware",
 					"description": "The device hardware type",
 					"required": false,
@@ -13060,13 +13077,15 @@
 				"{no:=>Answer}",
 				"{yes:=>Answer}"
 			],
-			"slots": [{
-				"name": "Answer",
-				"description": null,
-				"required": false,
-				"type": "AnswerYesNo",
-				"missingQuestion": ""
-			}]
+			"slots": [
+				{
+					"name": "Answer",
+					"description": null,
+					"required": false,
+					"type": "AnswerYesNo",
+					"missingQuestion": ""
+				}
+			]
 		},
 		{
 			"name": "AnswerEspType",
@@ -13079,13 +13098,15 @@
 				"{pir:=>EspType}",
 				"{switch:=>EspType}"
 			],
-			"slots": [{
-				"name": "EspType",
-				"description": "The kind of sensor",
-				"required": false,
-				"type": "EspTypes",
-				"missingQuestion": ""
-			}]
+			"slots": [
+				{
+					"name": "EspType",
+					"description": "The kind of sensor",
+					"required": false,
+					"type": "EspTypes",
+					"missingQuestion": ""
+				}
+			]
 		},
 		{
 			"name": "AnswerHardwareType",
@@ -13097,13 +13118,15 @@
 				"type {alice:=>Hardware} please",
 				"{satellite:=>Hardware}"
 			],
-			"slots": [{
-				"name": "Hardware",
-				"description": "The hardware type",
-				"required": false,
-				"type": "AliceHardwareTypes",
-				"missingQuestion": ""
-			}]
+			"slots": [
+				{
+					"name": "Hardware",
+					"description": "The hardware type",
+					"required": false,
+					"type": "AliceHardwareTypes",
+					"missingQuestion": ""
+				}
+			]
 		},
 		{
 			"name": "AnswerRoom",
@@ -13121,13 +13144,15 @@
 				"{living room:=>Room}",
 				"{kitchen:=>Room}"
 			],
-			"slots": [{
-				"name": "Room",
-				"description": null,
-				"required": true,
-				"type": "Room",
-				"missingQuestion": "What room?"
-			}]
+			"slots": [
+				{
+					"name": "Room",
+					"description": null,
+					"required": true,
+					"type": "Room",
+					"missingQuestion": "What room?"
+				}
+			]
 		},
 		{
 			"name": "AnswerName",
@@ -13138,13 +13163,15 @@
 				"{jane:=>Name}",
 				"{doe:=>Name}"
 			],
-			"slots": [{
-				"name": "Name",
-				"description": null,
-				"required": false,
-				"type": "Name",
-				"missingQuestion": ""
-			}]
+			"slots": [
+				{
+					"name": "Name",
+					"description": null,
+					"required": false,
+					"type": "Name",
+					"missingQuestion": ""
+				}
+			]
 		},
 		{
 			"name": "SpellWord",
@@ -13160,13 +13187,15 @@
 				"{t:=>Letters} {r:=>Letters} {i:=>Letters} {c:=>Letters} {k:=>Letters}",
 				"{c:=>Letters} {o:=>Letters} {w:=>Letters}"
 			],
-			"slots": [{
-				"name": "Letters",
-				"description": null,
-				"required": false,
-				"type": "Letters",
-				"missingQuestion": ""
-			}]
+			"slots": [
+				{
+					"name": "Letters",
+					"description": null,
+					"required": false,
+					"type": "Letters",
+					"missingQuestion": ""
+				}
+			]
 		}
 	]
 }

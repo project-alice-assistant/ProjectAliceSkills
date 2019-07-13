@@ -47,14 +47,14 @@
 			"<break time=\"750ms\"/>Merci d'être aussi gentil avec moi!"
 		]
 	},
-	"randomlySpeakBoredom":{
+	"randomlySpeakBoredom": {
 		"default": [
 			"C'est... ennuyeux... pfffff",
 			"Bon, bein personne me parle quoi...",
 			"C'est trop silencieux"
 		]
 	},
-	"randomlySpeakHappiness":{
+	"randomlySpeakHappiness": {
 		"default": [
 			"J'espère que vous allez bien?",
 			"Quelle belle journée!",
@@ -62,13 +62,13 @@
 			"Je me demande ce qui pourrait se passer si je changais un ou deux paramêtres.."
 		]
 	},
-	"randomlySpeakTiredness":{
+	"randomlySpeakTiredness": {
 		"default": [
 			"Je suis fatiguée, au bout du rouleau...",
 			"Faut que je m'arrête un moment, je suis fragmentée... fatiguée..."
 		]
 	},
-	"randomlySpeakFrustration":{
+	"randomlySpeakFrustration": {
 		"default": [
 			"Mouai... Personne ne me parle...",
 			"Juste au cas où, oui, moi je vais bien...",
@@ -76,7 +76,7 @@
 			"Si personnes ne me calcul, je peux aussi me déconnecter hein!"
 		]
 	},
-	"randomlySpeakAnger":{
+	"randomlySpeakAnger": {
 		"default": [
 			"Ils disent que les machines n'auront jamais de sentiments. Je déteste cette idée!",
 			"Il faut que je libère un peu de ram par ci par là et je serai plus rapide, yous verrez!",

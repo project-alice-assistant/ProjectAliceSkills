@@ -10,8 +10,9 @@ class Customisation(Module):
 	"""
 	MODULE_NAME = 'Customisation'
 
+
 	def __init__(self):
-		self._SUPPORTED_INTENTS	= []
+		self._SUPPORTED_INTENTS = []
 
 		super().__init__(self._SUPPORTED_INTENTS)
 
@@ -20,10 +21,10 @@ class Customisation(Module):
 		if not self.filterIntent(intent, session):
 			return False
 
-		siteId 		= session.siteId
-		slots 		= session.slots
-		sessionId 	= session.slotsAsObjects
-		customData 	= session.customData
-		payload 	= session.payload
+		siteId = session.siteId
+		slots = session.slots
+		sessionId = session.slotsAsObjects
+		customData = session.customData
+		payload = session.payload
 
 		return True

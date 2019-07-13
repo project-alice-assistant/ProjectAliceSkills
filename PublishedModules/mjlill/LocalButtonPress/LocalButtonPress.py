@@ -9,39 +9,39 @@ from core.dialog.model.DialogSession import DialogSession
 
 
 class LocalButtonPress(Module):
-    """
-    Author: mjlill
-    Description: Press an imaginary button on or off
-    """
+	"""
+	Author: mjlill
+	Description: Press an imaginary button on or off
+	"""
 
-    _INTENT_BUTTON_ON = Intent('DoButtonOn')
-    _INTENT_BUTTON_OFF = Intent('DoButtonOff')
-    _LIGHT_PIN = 4
-
-
-    def __init__(self):
-        self._SUPPORTED_INTENTS = [
-            self._INTENT_BUTTON_ON,
-            self._INTENT_BUTTON_OFF
-        ]
-
-        GPIO.setmode(GPIO.BCM)
-        GPIO.setup(self._LIGHT_PIN, GPIO.OUT)
-        GPIO.output(self._LIGHT_PIN, GPIO.LOW)
-
-        super().__init__(self._SUPPORTED_INTENTS)
+	_INTENT_BUTTON_ON = Intent('DoButtonOn')
+	_INTENT_BUTTON_OFF = Intent('DoButtonOff')
+	_LIGHT_PIN = 4
 
 
-    def onMessage(self, intent: str, session: DialogSession) -> bool:
-        if not self.filterIntent(intent, session):
-            return False
+	def __init__(self):
+		self._SUPPORTED_INTENTS = [
+			self._INTENT_BUTTON_ON,
+			self._INTENT_BUTTON_OFF
+		]
 
-        if intent == self._INTENT_BUTTON_ON:
-            GPIO.output(self._LIGHT_PIN, GPIO.HIGH)
-            managers.MqttServer.endTalk(session.sessionId, managers.TalkManager.randomTalk('DoButtonOn'))
+		GPIO.setmode(GPIO.BCM)
+		GPIO.setup(self._LIGHT_PIN, GPIO.OUT)
+		GPIO.output(self._LIGHT_PIN, GPIO.LOW)
 
-        elif intent == self._INTENT_BUTTON_OFF:
-            GPIO.output(self._LIGHT_PIN, GPIO.LOW)
-            managers.MqttServer.endTalk(session.sessionId, managers.TalkManager.randomTalk('DoButtonOff'))
+		super().__init__(self._SUPPORTED_INTENTS)
 
-        return True
+
+	def onMessage(self, intent: str, session: DialogSession) -> bool:
+		if not self.filterIntent(intent, session):
+			return False
+
+		if intent == self._INTENT_BUTTON_ON:
+			GPIO.output(self._LIGHT_PIN, GPIO.HIGH)
+			managers.MqttServer.endTalk(session.sessionId, managers.TalkManager.randomTalk('DoButtonOn'))
+
+		elif intent == self._INTENT_BUTTON_OFF:
+			GPIO.output(self._LIGHT_PIN, GPIO.LOW)
+			managers.MqttServer.endTalk(session.sessionId, managers.TalkManager.randomTalk('DoButtonOff'))
+
+		return True

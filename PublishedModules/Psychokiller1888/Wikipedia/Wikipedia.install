@@ -2,11 +2,16 @@
 	"name": "Wikipedia",
 	"version": 1.2,
 	"author": "Psychokiller1888",
-	"maintainers": [""],
+	"maintainers": [],
 	"desc": "Allows one to find informations about a topic on wikipedia",
 	"aliceMinVersion": "",
-	"requirements": ["wikipedia", "BeautifulSoup4==4.6.3"],
+	"requirements": [
+		"wikipedia",
+		"BeautifulSoup4==4.6.3"
+	],
 	"conditions": {
-		"lang": ["en"]
+		"lang": [
+			"en"
+		]
 	}
 }

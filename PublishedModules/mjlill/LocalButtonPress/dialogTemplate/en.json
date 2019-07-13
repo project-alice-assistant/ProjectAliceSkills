@@ -3,7 +3,8 @@
 	"icon": "lamp",
 	"description": "Press an imaginary button on or off",
 	"slotTypes": [],
-	"intents": [{
+	"intents": [
+		{
 			"name": "DoButtonOn",
 			"description": "User is asking for a button press on",
 			"enabledByDefault": true,
@@ -36,7 +37,6 @@
 				"just push the off button",
 				"push the damn button off thank you",
 				"push the damn off button"
-
 			],
 			"slots": []
 		}

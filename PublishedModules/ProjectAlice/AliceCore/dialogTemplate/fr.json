@@ -8,7 +8,8 @@
 			"matchingStrictness": null,
 			"automaticallyExtensible": true,
 			"useSynonyms": true,
-			"values": [{
+			"values": [
+				{
 					"value": "fr",
 					"synonyms": [
 						"français"
@@ -233,7 +234,8 @@
 			"matchingStrictness": null,
 			"automaticallyExtensible": false,
 			"useSynonyms": true,
-			"values": [{
+			"values": [
+				{
 					"value": "esp",
 					"synonyms": [
 						"tasmota",
@@ -254,7 +256,8 @@
 			"matchingStrictness": null,
 			"automaticallyExtensible": true,
 			"useSynonyms": false,
-			"values": [{
+			"values": [
+				{
 					"value": "antichambre"
 				},
 				{
@@ -651,7 +654,8 @@
 			"matchingStrictness": null,
 			"automaticallyExtensible": false,
 			"useSynonyms": true,
-			"values": [{
+			"values": [
+				{
 					"value": "interrupteur",
 					"synonyms": [
 						"souitche"
@@ -673,7 +677,8 @@
 			"matchingStrictness": null,
 			"automaticallyExtensible": false,
 			"useSynonyms": true,
-			"values": [{
+			"values": [
+				{
 					"value": "oui",
 					"synonyms": [
 						"yep",
@@ -701,7 +706,8 @@
 			"matchingStrictness": null,
 			"automaticallyExtensible": true,
 			"useSynonyms": false,
-			"values": [{
+			"values": [
+				{
 					"value": "Marie"
 				},
 				{
@@ -3408,7 +3414,8 @@
 			"matchingStrictness": null,
 			"automaticallyExtensible": true,
 			"useSynonyms": false,
-			"values": [				{
+			"values": [
+				{
 					"value": "abandonner"
 				},
 				{
@@ -5231,7 +5238,8 @@
 			]
 		}
 	],
-	"intents": [{
+	"intents": [
+		{
 			"name": "UserRandomAnswer",
 			"description": "L'utilisateur répond par un mot aléatoire",
 			"enabledByDefault": false,
@@ -5251,13 +5259,15 @@
 				"{obama:=>RandomWord}",
 				"{noir:=>RandomWord}"
 			],
-			"slots": [{
-				"name": "RandomWord",
-				"description": "Le mot utilisé",
-				"required": false,
-				"type": "RandomWords",
-				"missingQuestion": ""
-			}]
+			"slots": [
+				{
+					"name": "RandomWord",
+					"description": "Le mot utilisé",
+					"required": false,
+					"type": "RandomWords",
+					"missingQuestion": ""
+				}
+			]
 		},
 		{
 			"name": "SwitchLanguage",
@@ -5276,13 +5286,15 @@
 				"peut-on parler {français:=>ToLang} s'il te plaît",
 				"passe en {russe:=>ToLang} s'il te plaît"
 			],
-			"slots": [{
-				"name": "ToLang",
-				"description": "La nouvelle langue de discussion avec Alice",
-				"required": false,
-				"type": "Languages",
-				"missingQuestion": ""
-			}]
+			"slots": [
+				{
+					"name": "ToLang",
+					"description": "La nouvelle langue de discussion avec Alice",
+					"required": false,
+					"type": "Languages",
+					"missingQuestion": ""
+				}
+			]
 		},
 		{
 			"name": "RebootSystem",
@@ -5309,13 +5321,15 @@
 				"divaillce {alice:=>Hardware}",
 				"{satellite:=>Hardware}"
 			],
-			"slots": [{
-				"name": "Hardware",
-				"description": "Le type d'appareil",
-				"required": false,
-				"type": "AliceHardwareTypes",
-				"missingQuestion": ""
-			}]
+			"slots": [
+				{
+					"name": "Hardware",
+					"description": "Le type d'appareil",
+					"required": false,
+					"type": "AliceHardwareTypes",
+					"missingQuestion": ""
+				}
+			]
 		},
 		{
 			"name": "StopListening",
@@ -5335,13 +5349,15 @@
 				"arrête de m'écouter {pour 15 minutes:=>Duration}",
 				"n'écoute plus"
 			],
-			"slots": [{
-				"name": "Duration",
-				"description": "Base de temps où Alice n'écoutera plus",
-				"required": false,
-				"type": "snips/duration",
-				"missingQuestion": ""
-			}]
+			"slots": [
+				{
+					"name": "Duration",
+					"description": "Base de temps où Alice n'écoutera plus",
+					"required": false,
+					"type": "snips/duration",
+					"missingQuestion": ""
+				}
+			]
 		},
 		{
 			"name": "AnswerEspType",
@@ -5354,13 +5370,15 @@
 				"{capteur de mouvement:=>EspType}",
 				"{interrupteur:=>EspType}"
 			],
-			"slots": [{
-				"name": "EspType",
-				"description": "Le type de capteur ESP",
-				"required": false,
-				"type": "EspTypes",
-				"missingQuestion": ""
-			}]
+			"slots": [
+				{
+					"name": "EspType",
+					"description": "Le type de capteur ESP",
+					"required": false,
+					"type": "EspTypes",
+					"missingQuestion": ""
+				}
+			]
 		},
 		{
 			"name": "AddComponent",
@@ -5401,7 +5419,8 @@
 				"ajoutons un nouvel appareil au réseau",
 				"ajoute un {satellite:=>Hardware}"
 			],
-			"slots": [{
+			"slots": [
+				{
 					"name": "Hardware",
 					"description": "Le type d'appareil à ajouter",
 					"required": false,
@@ -5460,13 +5479,15 @@
 				"{non:=>Answer}",
 				"{oui:=>Answer}"
 			],
-			"slots": [{
-				"name": "Answer",
-				"description": null,
-				"required": false,
-				"type": "AnswerYesNo",
-				"missingQuestion": ""
-			}]
+			"slots": [
+				{
+					"name": "Answer",
+					"description": null,
+					"required": false,
+					"type": "AnswerYesNo",
+					"missingQuestion": ""
+				}
+			]
 		},
 		{
 			"name": "AnswerRoom",
@@ -5508,13 +5529,15 @@
 				"{p:=>Letters} {l:=>Letters} {a:=>Letters} {n:=>Letters} {e:=>Letters} {r:=>Letters}",
 				"{c:=>Letters} {o:=>Letters} {l:=>Letters}"
 			],
-			"slots": [{
-				"name": "Letters",
-				"description": null,
-				"required": false,
-				"type": "Letters",
-				"missingQuestion": ""
-			}]
+			"slots": [
+				{
+					"name": "Letters",
+					"description": null,
+					"required": false,
+					"type": "Letters",
+					"missingQuestion": ""
+				}
+			]
 		}
 	]
 }
