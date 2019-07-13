@@ -96,7 +96,7 @@ class %moduleName%(Module):
 
 INSTALL_JSON = '''{
 	"name": "%moduleName%",
-	"version": 1.0,
+	"version": 0.1,
 	"author": "%username%",
 	"maintainers": [],
 	"desc": "%description%",
@@ -170,7 +170,7 @@ wget http://bit.ly/????????? -O ~/ProjectAlice/system/moduleInstallTickets/%modu
 ### Description
 %description%
 
-- Version: 1.0
+- Version: 0.1
 - Author: %username%
 - Maintainers: N/A
 - Alice minimum version: N/A
@@ -323,17 +323,21 @@ if __name__ == '__main__':
 	with open(os.path.join(modulePath, answers['moduleName'] + '.install'), 'w') as f:
 		langs = ''
 		for lang in answers['langs']:
-			langs += '"{}", '.format(lang)
+			langs += '\n\t\t\t"{}",'.format(lang)
+		if answers['langs']:
+			langs = langs[:-1] + '\n\t\t'
 
 		requirements = ''
 		for req in reqs:
-			requirements += '"{}", '.format(req)
+			requirements += '\n\t\t"{}",'.format(req)
+		if reqs:
+			requirements = requirements[:-1] + '\n\t'
 
 		f.write(INSTALL_JSON.replace('%moduleName%', answers['moduleName'])
 							.replace('%description%', answers['description'])
 							.replace('%username%', answers['username'])
-							.replace('%langs%', langs[:-2])
-							.replace('%requirements%', requirements[:-2])
+							.replace('%langs%', langs)
+							.replace('%requirements%', requirements)
 		)
 
 	print('Creating dialog template(s)')
