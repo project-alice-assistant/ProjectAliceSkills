@@ -170,7 +170,7 @@ class PhilipsHue(Module):
 		customData = session.customData
 
 		if self._bridge is None or not self._bridge.registered:
-			managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk('lightBridgeFailure'), client=siteId)
+			managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk('lightBridgeFailure'))
 			return True
 
 		previousIntent = session.previousIntent
@@ -182,14 +182,14 @@ class PhilipsHue(Module):
 			for slot in slots['Room']:
 				room = slot.value['value'].lower()
 				if room not in self._groups.keys() and room != 'everywhere':
-					managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk('roomUnknown').format(room), client=siteId)
+					managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk('roomUnknown').format(room))
 					return True
 
 		if 'Scene' in slots:
 			for slot in slots['Scene']:
 				scene = slot.value['value'].lower()
 				if scene not in self._scenes.keys():
-					managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk('sceneUnknown').format(scene), client=siteId)
+					managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk('sceneUnknown').format(scene))
 					return True
 
 		if intent == self._INTENT_LIGHT_ON:
@@ -218,7 +218,7 @@ class PhilipsHue(Module):
 							for light in self._groups[place.lower()].lights:
 								light.on = True
 				else:
-					managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk('roomUnknown').format(siteId), client=siteId)
+					managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk('roomUnknown').format(siteId))
 					return True
 
 		elif intent == self._INTENT_LIGHT_OFF:
@@ -236,7 +236,7 @@ class PhilipsHue(Module):
 					for light in self._groups[place.lower()].lights:
 						light.on = False
 				else:
-					managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk('roomUnknown').format(siteId), client=siteId)
+					managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk('roomUnknown').format(siteId))
 					return True
 
 		elif intent == self._INTENT_LIGHT_SCENE or (previousIntent == self._INTENT_LIGHT_SCENE and intent == self._INTENT_USER_ANSWER):
@@ -257,7 +257,7 @@ class PhilipsHue(Module):
 					scene = customData['scene']
 				else:
 					if len(slots['Scene']) > 1:
-						managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk('cantSpecifyMoreThanOneScene'), client=siteId)
+						managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk('cantSpecifyMoreThanOneScene'))
 						return True
 					else:
 						scene = slots['Scene'][0].value['value'].lower()
@@ -266,7 +266,7 @@ class PhilipsHue(Module):
 					for slot in slots['Room']:
 						room = slot.value['value'].lower()
 						if not self._bridge.run_scene(group_name=self._groups[room].name, scene_name=self._scenes[scene].name):
-							managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk('sceneNotInThisRoom'), client=siteId)
+							managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk('sceneNotInThisRoom'))
 							return True
 				else:
 					if not room and 'room' in customData:
@@ -274,10 +274,10 @@ class PhilipsHue(Module):
 
 					if place.lower() in self._groups.keys():
 						if not self._bridge.run_scene(group_name=self._groups[place].name, scene_name=self._scenes[scene].name):
-							managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk('sceneNotInThisRoom'), client=siteId)
+							managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk('sceneNotInThisRoom'))
 							return True
 					else:
-						managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk('roomUnknown').format(place), client=siteId)
+						managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk('roomUnknown').format(place))
 						return True
 
 		elif intent == self._INTENT_MANAGE_LIGHTS:
@@ -286,7 +286,7 @@ class PhilipsHue(Module):
 				room = place
 
 				if room not in self._groups.keys():
-					managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk('roomUnknown').format(room), client=siteId)
+					managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk('roomUnknown').format(room))
 					return True
 
 				group = self._groups[room]
@@ -346,7 +346,7 @@ class PhilipsHue(Module):
 						room = managers.ConfigManager.getAliceConfigByName('room')
 
 					if room not in self._groups.keys():
-						managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk('roomUnknown').format(room), client=siteId)
+						managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk('roomUnknown').format(room))
 						return True
 
 					for light in self._groups[room].lights:

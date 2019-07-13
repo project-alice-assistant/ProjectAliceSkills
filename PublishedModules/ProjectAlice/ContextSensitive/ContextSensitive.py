@@ -56,10 +56,10 @@ class ContextSensitive(Module):
 					continue
 
 		elif intent == self._INTENT_REPEAT_THIS:
-			managers.MqttServer.endTalk(text=self.getLastChat(siteId=siteId), client=siteId, sessionId=sessionId)
+			managers.MqttServer.endTalk(sessionId, text=self.getLastChat(siteId=siteId))
 			return True
 
-		managers.MqttServer.endTalk(text=managers.TalkManager.randomTalk('didntUnderstand'), sessionId=sessionId)
+		managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk('didntUnderstand'))
 		return True
 
 

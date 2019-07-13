@@ -79,9 +79,9 @@ class AliceSatellite(Module):
 				return False
 
 			if place != siteId:
-				managers.MqttServer.endTalk(sessionId, managers.TalkManager.randomTalk('temperaturePlaceSpecific').format(place, temp.replace('.0', '')), client=siteId)
+				managers.MqttServer.endTalk(sessionId, managers.TalkManager.randomTalk('temperaturePlaceSpecific').format(place, temp.replace('.0', '')))
 			else:
-				managers.MqttServer.endTalk(sessionId, managers.TalkManager.randomTalk('temperature').format(temp.replace('.0', '')), client=siteId)
+				managers.MqttServer.endTalk(sessionId, managers.TalkManager.randomTalk('temperature').format(temp.replace('.0', '')))
 
 			return True
 
@@ -94,9 +94,9 @@ class AliceSatellite(Module):
 				humidity = int(round(float(humidity), 0))
 
 			if place != siteId:
-				managers.MqttServer.endTalk(sessionId, managers.TalkManager.randomTalk('humidityPlaceSpecific').format(place, humidity), client=siteId)
+				managers.MqttServer.endTalk(sessionId, managers.TalkManager.randomTalk('humidityPlaceSpecific').format(place, humidity))
 			else:
-				managers.MqttServer.endTalk(sessionId, managers.TalkManager.randomTalk('humidity').format(humidity), client=siteId)
+				managers.MqttServer.endTalk(sessionId, managers.TalkManager.randomTalk('humidity').format(humidity))
 
 			return True
 
@@ -107,9 +107,9 @@ class AliceSatellite(Module):
 				return False
 
 			if place != siteId:
-				managers.MqttServer.endTalk(sessionId, managers.TalkManager.randomTalk(self.name, 'co2PlaceSpecific').format(place, co2), client=siteId)
+				managers.MqttServer.endTalk(sessionId, managers.TalkManager.randomTalk(self.name, 'co2PlaceSpecific').format(place, co2))
 			else:
-				managers.MqttServer.endTalk(sessionId, managers.TalkManager.randomTalk(self.name, 'co2').format(co2), client=siteId)
+				managers.MqttServer.endTalk(sessionId, managers.TalkManager.randomTalk(self.name, 'co2').format(co2))
 
 			return True
 
@@ -122,9 +122,9 @@ class AliceSatellite(Module):
 				pressure = int(round(float(pressure), 0))
 
 			if place != siteId:
-				managers.MqttServer.endTalk(sessionId, managers.TalkManager.randomTalk('pressurePlaceSpecific').format(place, pressure), client=siteId)
+				managers.MqttServer.endTalk(sessionId, managers.TalkManager.randomTalk('pressurePlaceSpecific').format(place, pressure))
 			else:
-				managers.MqttServer.endTalk(sessionId, managers.TalkManager.randomTalk('pressure').format(pressure), client=siteId)
+				managers.MqttServer.endTalk(sessionId, managers.TalkManager.randomTalk('pressure').format(pressure))
 
 			return True
 

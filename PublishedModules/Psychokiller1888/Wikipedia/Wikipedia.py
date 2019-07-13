@@ -125,6 +125,6 @@ class Wikipedia(Module):
 						})
 					)
 				else:
-					managers.MqttServer.endTalk(sessionId=sessionId, text=result, client=siteId)
+					managers.MqttServer.endTalk(sessionId=sessionId, text=result)
 
 		return True

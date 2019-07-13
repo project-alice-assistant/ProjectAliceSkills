@@ -45,7 +45,7 @@ class Calculator(Module):
 
 			elif 'Right' in slots and 'Left' not in slots:
 				if not self._lastNumber:
-					managers.MqttServer.endTalk(sessionId=sessionId, text=managers.TalkManager.randomTalk('noPreviousOperation'), client=siteId)
+					managers.MqttServer.endTalk(sessionId=sessionId, text=managers.TalkManager.randomTalk('noPreviousOperation'))
 					return True
 
 				result = self.calculate(self._lastNumber, float(slots['Right'][0].value['value']), func)
@@ -56,7 +56,7 @@ class Calculator(Module):
 
 			answer = str(result).rstrip('.0')
 
-			managers.MqttServer.endTalk(sessionId=sessionId, text=answer, client=siteId)
+			managers.MqttServer.endTalk(sessionId=sessionId, text=answer)
 
 		return True
 
