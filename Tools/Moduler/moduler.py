@@ -24,7 +24,7 @@ try:
 except ImportError:
 	import subprocess
 	import time
-	subprocess.run(['sudo', 'pip3', 'install', '-r', 'requirements.txt'])
+	subprocess.run(['pip3', 'install', '-r', 'requirements.txt'])
 	time.sleep(1)
 	from PyInquirer import style_from_dict, Token, prompt
 
