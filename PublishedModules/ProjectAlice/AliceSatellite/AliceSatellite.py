@@ -107,9 +107,9 @@ class AliceSatellite(Module):
 				return False
 
 			if place != siteId:
-				managers.MqttServer.endTalk(sessionId, managers.TalkManager.randomTalk(self.name, 'co2PlaceSpecific').format(place, co2))
+				managers.MqttServer.endTalk(sessionId, managers.TalkManager.randomTalk('co2PlaceSpecific').format(place, co2))
 			else:
-				managers.MqttServer.endTalk(sessionId, managers.TalkManager.randomTalk(self.name, 'co2').format(co2))
+				managers.MqttServer.endTalk(sessionId, managers.TalkManager.randomTalk('co2').format(co2))
 
 			return True
 

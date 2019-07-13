@@ -217,8 +217,7 @@ class AliceCore(Module):
 			if managers.DeviceManager.isBusy():
 				managers.MqttServer.endTalk(
 					sessionId=sessionId,
-					text=managers.TalkManager.randomTalk('busy'),
-					client=siteId
+					text=managers.TalkManager.randomTalk('busy')
 				)
 				return True
 
@@ -254,24 +253,21 @@ class AliceCore(Module):
 				if not managers.ModuleManager.isModuleActive('Tasmota'):
 					managers.MqttServer.endTalk(
 						sessionId=sessionId,
-						text=managers.TalkManager.randomTalk('requireTasmotaModule'),
-						client=siteId
+						text=managers.TalkManager.randomTalk('requireTasmotaModule')
 					)
 					return True
 
 				if managers.DeviceManager.isBusy():
 					managers.MqttServer.endTalk(
 						sessionId=sessionId,
-						text=managers.TalkManager.randomTalk('busy'),
-						client=siteId
+						text=managers.TalkManager.randomTalk('busy')
 					)
 					return True
 
 				if not managers.DeviceManager.startTasmotaFlashingProcess(commons.cleanRoomNameToSiteId(slots['Room']), slotsObj['EspType'][0].value['value'], session):
 					managers.MqttServer.endTalk(
 						sessionId=sessionId,
-						text=managers.TalkManager.randomTalk('espFailed'),
-						client=siteId
+						text=managers.TalkManager.randomTalk('espFailed')
 					)
 
 			elif hardware == 'satellite':
@@ -283,8 +279,7 @@ class AliceCore(Module):
 				else:
 					managers.MqttServer.endTalk(
 						sessionId=sessionId,
-						text=managers.TalkManager.randomTalk('busy'),
-						client=siteId
+						text=managers.TalkManager.randomTalk('busy')
 					)
 			else:
 				managers.MqttServer.continueDialog(
@@ -335,8 +330,7 @@ class AliceCore(Module):
 						else:
 							managers.MqttServer.endTalk(
 								sessionId=sessionId,
-								text=managers.TalkManager.randomTalk('abortReboot'),
-								client=siteId
+								text=managers.TalkManager.randomTalk('abortReboot')
 							)
 					else:
 						value = 'greet'
@@ -346,8 +340,7 @@ class AliceCore(Module):
 						managers.ConfigManager.updateAliceConfiguration('onReboot', value)
 						managers.MqttServer.endTalk(
 							sessionId=sessionId,
-							text=managers.TalkManager.randomTalk('confirmRebooting'),
-							client=siteId
+							text=managers.TalkManager.randomTalk('confirmRebooting')
 						)
 						managers.ThreadManager.doLater(
 							interval=5,
@@ -364,8 +357,7 @@ class AliceCore(Module):
 					managers.UserManager.addNewUser(customData['name'], 'admin')
 					managers.MqttServer.endTalk(
 						sessionId=sessionId,
-						text=managers.TalkManager.randomTalk('confirmNewUser').format(customData['name']),
-						client=siteId
+						text=managers.TalkManager.randomTalk('confirmNewUser').format(customData['name'])
 					)
 					managers.ThreadManager.doLater(interval=2, func=self.onStart)
 				else:
@@ -456,22 +448,19 @@ class AliceCore(Module):
 			if sonosModule is None:
 				managers.MqttServer.endTalk(
 					sessionId=sessionId,
-					text=managers.TalkManager.randomTalk('noActiveModule'),
-					client=siteId
+					text=managers.TalkManager.randomTalk('noActiveModule')
 				)
 				return True
 
 			if not sonosModule.anyModuleHere(room):
 				managers.MqttServer.endTalk(
 					sessionId=sessionId,
-					text=managers.TalkManager.randomTalk('sorryNoSonosHere'),
-					client=siteId
+					text=managers.TalkManager.randomTalk('sorryNoSonosHere')
 				)
 			else:
 				managers.MqttServer.endTalk(
 					sessionId=sessionId,
-					text=managers.TalkManager.randomTalk('takingOverSonos'),
-					client=siteId
+					text=managers.TalkManager.randomTalk('takingOverSonos')
 				)
 				time.sleep(4)
 				managers.ConfigManager.updateAliceConfiguration('outputOnSonos', '1')
@@ -484,8 +473,7 @@ class AliceCore(Module):
 		elif intent == self._INTENT_RETREAT:
 			managers.MqttServer.endTalk(
 				sessionId=sessionId,
-				text=managers.TalkManager.randomTalk('retreatSonos'),
-				client=siteId
+				text=managers.TalkManager.randomTalk('retreatSonos')
 			)
 			time.sleep(2.5)
 			managers.ConfigManager.updateAliceConfiguration('outputOnSonos', '0')
