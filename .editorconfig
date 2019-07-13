@@ -11,6 +11,6 @@ charset = utf-8
 [*.sh]
 end_of_line = lf
 
-[{dialog-schema.json,dialog-schema.sh,package.json,.travis.yml}]
+[{dialog-schema.json,dialog-schema.sh,install-schema.json,install-schema.sh,package.json,.travis.yml}]
 indent_style = space
 indent_size = 2

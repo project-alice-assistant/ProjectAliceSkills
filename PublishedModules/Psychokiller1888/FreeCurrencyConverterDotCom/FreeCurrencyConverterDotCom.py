@@ -72,7 +72,7 @@ class FreeCurrencyConverterDotCom(Module):
 				fromCurrency = slotsObject['FromCurrency'][0].value['value']
 
 			try:
-				url = 'https://free.currconv.com/api/v7/convert?q={}_{}&compact=ultra&apiKey={}'.format(fromCurrency, toCurrency, managers.ConfigManager.getModuleConfigByName(self.name, 'apiKey'))
+				url = 'https://free.currconv.com/api/v7/convert?q={}_{}&compact=ultra&apiKey={}'.format(fromCurrency, toCurrency, self.getConfig('apiKey'))
 				req = requests.get(url=url)
 				data = json.loads(req.content.decode())
 

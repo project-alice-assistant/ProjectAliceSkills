@@ -49,21 +49,21 @@ class PhilipsHue(Module):
 
 
 	def onStart(self) -> list:
-		if managers.ConfigManager.getModuleConfigByName(self.name, 'phueBridgeIp'):
+		if self.getConfig('phueBridgeIp'):
 			if self._connectBridge():
 				self.delayed = False
 				return super().onStart()
 			else:
-				managers.ConfigManager.updateModuleConfigurationFile(self.name, 'phueAutodiscoverFallback', True)
-				managers.ConfigManager.updateModuleConfigurationFile(self.name, 'phueBridgeIp', '')
-		elif managers.ConfigManager.getModuleConfigByName(self.name, 'phueAutodiscoverFallback'):
+				self.updateConfig('phueAutodiscoverFallback', True)
+				self.updateConfig('phueBridgeIp', '')
+		elif self.getConfig('phueAutodiscoverFallback'):
 			try:
 				request = requests.get('https://www.meethue.com/api/nupnp')
 				response = request.json()
 				firstBridge = response[0]
 				self._logger.info("- [{}] Autodiscover found bridge at {}, saving ip to config.json".format(self.name, firstBridge['internalipaddress']))
-				managers.ConfigManager.updateModuleConfigurationFile(self.name, 'phueAutodiscoverFallback', False)
-				managers.ConfigManager.updateModuleConfigurationFile(self.name, 'phueBridgeIp', firstBridge['internalipaddress'])
+				self.updateConfig('phueAutodiscoverFallback', False)
+				self.updateConfig('phueBridgeIp', firstBridge['internalipaddress'])
 				return self.onStart()
 			except IndexError:
 				self._logger.info("- [{}] No bridge found".format(self.name))

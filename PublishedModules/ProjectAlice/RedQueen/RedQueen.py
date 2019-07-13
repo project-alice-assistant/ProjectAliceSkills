@@ -67,7 +67,7 @@ class RedQueen(Module):
 	def onBooted(self):
 		self._decideStateOfMind()
 
-		if managers.ConfigManager.getModuleConfigByName(self.name, 'randomSpeaking'):
+		if self.getConfig('randomSpeaking'):
 			self.randomlySpeak(init=True)
 
 
@@ -235,8 +235,8 @@ class RedQueen(Module):
 
 
 	def randomlySpeak(self, init: bool = False):
-		mini = managers.ConfigManager.getModuleConfigByName(self.name, 'randomTalkMinDelay')
-		maxi = managers.ConfigManager.getModuleConfigByName(self.name, 'randomTalkMaxDelay')
+		mini = self.getConfig('randomTalkMinDelay')
+		maxi = self.getConfig('randomTalkMaxDelay')
 
 		if self.mood == 'Anger':
 			maxi /= 3
