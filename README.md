@@ -20,4 +20,4 @@ npm install -g ajv-cli
 
 
 ## Auto modules creation
-Downloading Tools/Moduler you can have a basic tool to create the basic needed file for a module to work. This saves you the hassle of creating the directory tree, the required files and so on. It also follows the strict conventions we made for modules and will avoid you trouble when submitting your modules for review.
+Downloading Tools/Moduler you can have a basic tool to create the basic needed files for a module to work. This saves you the hassle of creating the directory tree, the required files and so on. It also follows the strict conventions we made for modules and will avoid you trouble when submitting your module for review.
