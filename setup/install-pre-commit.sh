@@ -17,7 +17,7 @@ if [ -f "$GIT_DIR/hooks/pre-commit" ]; then
 fi
 
 git config core.whitespace trailing-space,space-before-tab,indent-with-non-tab
-cp $GIT_DIR/../pre-commit.hook $GIT_DIR/hooks/pre-commit
+cp $GIT_DIR/../setup/pre-commit.hook $GIT_DIR/hooks/pre-commit
 
 echo
 echo "You're all set! Happy hacking!"
