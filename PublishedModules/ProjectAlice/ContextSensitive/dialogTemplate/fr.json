@@ -62,18 +62,7 @@
 			"description": "L'utilisateur répond oui ou non",
 			"enabledByDefault": false,
 			"utterances": [
-				"{pas du tout:=>Answer}",
-				"{bien sûr:=>Answer}",
-				"{nope:=>Answer}",
-				"{non merci:=>Answer}",
-				"{pas vraiment:=>Answer}",
-				"{oui s'il te plait:=>Answer}",
-				"{ouais:=>Answer}",
-				"{affirmatif:=>Answer}",
-				"{négatif:=>Answer}",
-				"{yep:=>Answer}",
-				"{non:=>Answer}",
-				"{oui:=>Answer}"
+				"{non merci:=>Answer}"
 			],
 			"slots": [
 				{
