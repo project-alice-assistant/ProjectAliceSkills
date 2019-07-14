@@ -11,9 +11,11 @@ This module allows you to not only connect tasmota esp devices, but listen to th
 
 - Version: 1.2
 - Author: Psychokiller1888
-- Maintainers: N/A
+- Maintainers:
+  - maxbachmann
 - Alice minimum version: N/A
 - Conditions:
   - en
   - fr
+  - de
 - Requirements: N/A
