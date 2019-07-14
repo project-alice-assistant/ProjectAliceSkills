@@ -15,5 +15,5 @@ Get a random dad joke on demand
   - Jierka
 - Alice minimum version: N/A
 - Conditions:
-  - EN
+  - en
 - Requirements: N/A

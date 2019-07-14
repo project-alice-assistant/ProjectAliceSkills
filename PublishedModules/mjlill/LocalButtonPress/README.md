@@ -12,7 +12,8 @@ Press an imaginary button on or off
 
 - Version: 1.2
 - Author: mjlill
-- Maintainers: ["Psycho"]
+- Maintainers:
+  - Psycho
 - Alice minimum version: N/A
 - Conditions:
   - en

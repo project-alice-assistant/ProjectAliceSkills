@@ -2,7 +2,9 @@
 	"name": "LocalButtonPress",
 	"version": 1.2,
 	"author": "mjlill",
-	"maintainers": [],
+	"maintainers": [
+		"Psycho"
+	],
 	"desc": "Press an imaginary button on or off",
 	"aliceMinVersion": "",
 	"requirements": [

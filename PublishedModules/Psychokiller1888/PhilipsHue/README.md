@@ -15,7 +15,7 @@ Control your Philips Hue lamps
   - Jierka
 - Alice minimum version: N/A
 - Conditions:
-  - EN
+  - en
 
 
 Configuration

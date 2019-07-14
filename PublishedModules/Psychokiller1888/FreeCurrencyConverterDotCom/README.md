@@ -14,7 +14,7 @@ Let's you convert world currencies
 - Maintainers: N/A
 - Alice minimum version: N/A
 - Conditions:
-  - EN
+  - en
 - Requirements: N/A
 
 

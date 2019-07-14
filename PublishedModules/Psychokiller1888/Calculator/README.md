@@ -11,7 +11,8 @@ Do some calculation with alice
 
 - Version: 1.2
 - Author: Psychokiller1888
-- Maintainers: maxbachmann
+- Maintainers:
+  - maxbachmann
 - Alice minimum version: N/A
 - Conditions:
   - en
