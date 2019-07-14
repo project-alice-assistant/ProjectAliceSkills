@@ -12,7 +12,9 @@ Customisation is the official customisation module. Use it to customize your exp
 - Version: 0.2
 - Author: ProjectAlice
 - Maintainers:
-  - Psycho, Jierka
+  - Psycho
+  - Jierka
+  - maxbachmann
 - Alice minimum version: N/A
 - Conditions: N/A
 - Requirements: N/A
