@@ -49,7 +49,7 @@ talk() {
 			[[ -z "${missing// }" ]] && continue
 
 			printf "${GREEN}Missing language keys in %s:${NC}\n" $file
-			printf "  %s\n"  $missing
+			printf "  - %s\n"  $missing
 
 		done
 	done
