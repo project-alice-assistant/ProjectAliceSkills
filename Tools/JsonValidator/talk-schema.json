@@ -27,8 +27,8 @@
 		}
 	},
 	"type": "object",
-	"required": [%required_talks%
-	],
-	"properties": {%talks%
-	}
+	"patternProperties": {
+		"^.*$": { "$ref": "#/definitions/talks" }
+	},
+	"additionalProperties": false
 }

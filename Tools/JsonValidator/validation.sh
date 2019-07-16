@@ -10,8 +10,8 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 talk() {
 	printf "${BLUE}VALIDATING TALK FILES${NC}\n"
 
-	# iterate over modules
-	for module in $DIR/../../PublishedModules/*/*/talks
+	# iterate over modules (remove Tools/JsonValidator instead of ../.. for better styled output)
+	for module in ${DIR/\/Tools\/JsonValidator}/PublishedModules/*/*/talks
 	do
 		# get language keys
 		keys=()
@@ -29,26 +29,28 @@ talk() {
 		done
 		IFS="$OLDIFS"
 
-		required_talks=''
-		for key in "${keys[@]}"; do
-			required_talks="$required_talks\n\t\t\"$key\","
-		done
-
-		talks=''
-		for key in "${keys[@]}"; do
-			talks="$talks\n\t\t\"$key\": { \"\$ref\": \"#/definitions/talks\" },"
-		done
-
-		schema=$(<$DIR/talk-schema.template)
-		# replace placeholders in schema without the trailing ,/talks
-		schema="${schema/\%required_talks\%/${required_talks::-1}}"
-		schema="${schema/\%talks\%/${talks::-1}}"
-
 		# validate the all json files using the previously created json schema
 		for file in $module/*.json
 		do
-			ajv validate -s <(echo -e "$schema") -d $file
-			returnCode=$(($?||returnCode))
+			ajv validate -s $DIR/talk-schema.json -d $file
+
+			status=$?
+			returnCode=$(($status||returnCode))
+
+			# when there is a error, get all missing keys
+			mapfile -t new_keys < <(jq -r 'keys[]' $file)
+			missing="${keys[*]}"
+
+			for key in ${new_keys[@]}; do
+				missing=("${missing[@]/$key}")
+			done
+
+			# no keys missing -> continue with next
+			[[ -z "${missing// }" ]] && continue
+
+			printf "${GREEN}Missing language keys in %s:${NC}\n" $file
+			printf "  %s\n"  $missing
+
 		done
 	done
 
