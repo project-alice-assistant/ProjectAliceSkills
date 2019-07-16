@@ -57,18 +57,14 @@
 		]
 	},
 	"sceneNotInThisRoom": {
-		"default": {
-			"en": [
-				"This scenery doesn't exist in the room",
-				"I can't find this scene in the room",
-				"The requested scenery doesn't exist in the room"
-			]
-		},
-		"short": {
-			"en": [
-				"I don't know this scenery"
-			]
-		}
+		"default": [
+			"This scenery doesn't exist in the room",
+			"I can't find this scene in the room",
+			"The requested scenery doesn't exist in the room"
+		],
+		"short": [
+			"I don't know this scenery"
+		]
 	},
 	"whatPercentage": [
 		"Sure! At what percentage?",
