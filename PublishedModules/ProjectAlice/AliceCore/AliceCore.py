@@ -364,7 +364,8 @@ class AliceCore(Module):
 				else:
 					if update == 3:
 						managers.MqttServer.endTalk(sessionId=sessionId, text=managers.TalkManager.randomTalk('confirmAssistantUpdate'))
-						managers.ThreadManager.doLater(interval=2, func=managers.SamkillaManager.sync)
+
+					managers.ThreadManager.doLater(interval=2, func=managers.SamkillaManager.sync)
 
 
 		elif intent == self._INTENT_REBOOT:
