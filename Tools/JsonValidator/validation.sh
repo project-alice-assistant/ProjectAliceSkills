@@ -50,7 +50,7 @@ talk() {
 
 			printf "${GREEN}Missing language keys in %s:${NC}\n" $file
 			printf "  - %s\n"  $missing
-
+			returnCode=1
 		done
 	done
 
