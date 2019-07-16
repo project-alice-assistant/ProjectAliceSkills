@@ -66,6 +66,39 @@
 			]
 		},
 		{
+			"name": "ComponentToUpdate",
+			"matchingStrictness": null,
+			"automaticallyExtensible": false,
+			"useSynonyms": true,
+			"values": [
+				{
+					"value": "alice",
+					"synonyms": [
+						"yourself",
+						"core",
+						"files"
+					]
+				},
+				{
+					"value": "assistant",
+					"synonyms": [
+						"snips assistant",
+						"bundles",
+						"comprehension"
+					]
+				},
+				{
+					"value": "system",
+					"synonyms": [
+						"raspberry",
+						"OS",
+						"raspbian",
+						"completly"
+					]
+				}
+			]
+		},
+		{
 			"name": "Letters",
 			"matchingStrictness": null,
 			"automaticallyExtensible": false,
@@ -12819,74 +12852,6 @@
 					"value": "zone"
 				}
 			]
-		},
-		{
-			"name": "Numbers",
-			"matchingStrictness": null,
-			"automaticallyExtensible": false,
-			"useSynonyms": true,
-			"values": [
-				{
-					"value": "0",
-					"synonyms": [
-						"zero"
-					]
-				},
-				{
-					"value": "1",
-					"synonyms": [
-						"one"
-					]
-				},
-				{
-					"value": "2",
-					"synonyms": [
-						"two"
-					]
-				},
-				{
-					"value": "3",
-					"synonyms": [
-						"three"
-					]
-				},
-				{
-					"value": "4",
-					"synonyms": [
-						"four"
-					]
-				},
-				{
-					"value": "5",
-					"synonyms": [
-						"five"
-					]
-				},
-				{
-					"value": "6",
-					"synonyms": [
-						"six"
-					]
-				},
-				{
-					"value": "7",
-					"synonyms": [
-						"seven"
-					]
-				},
-				{
-					"value": "8",
-					"synonyms": [
-						"eight"
-					]
-				},
-				{
-					"value": "9",
-					"synonyms": [
-						"nine"
-					]
-				}
-			]
 		}
 	],
 	"intents": [
@@ -13046,20 +13011,30 @@
 			]
 		},
 		{
-			"name": "UpdateAssistantBundle",
+			"name": "DoAliceUpdate",
 			"description": "Ask Alice to update herself",
 			"enabledByDefault": true,
 			"utterances": [
-				"update your assistant files please",
-				"please update your assistant files",
-				"do a system update please",
-				"please update your system",
+				"update your {assistant:=>WhatToUpdate} files please",
+				"please update your {files:=>WhatToUpdate}",
+				"do a {system:=>WhatToUpdate} update please",
+				"please update your {system:=>WhatToUpdate}",
 				"update yourself please",
 				"update your core files",
-				"update the assistant bundle",
-				"please update yourself"
+				"update the assistant {bundles:=>WhatToUpdate}",
+				"please update {yourself:=>WhatToUpdate}",
+				"can you do an {OS:=>WhatToUpdate} update please",
+				"start a {snips assistant:=>WhatToUpdate} update"
 			],
-			"slots": []
+			"slots": [
+				{
+					"name": "WhatToUpdate",
+					"description": "The component to update",
+					"required": false,
+					"type": "ComponentToUpdate",
+					"missingQuestion": ""
+				}
+			]
 		},
 		{
 			"name": "AnswerYesOrNo",

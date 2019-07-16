@@ -66,6 +66,37 @@
 			]
 		},
 		{
+			"name": "ComponentToUpdate",
+			"matchingStrictness": null,
+			"automaticallyExtensible": false,
+			"useSynonyms": true,
+			"values": [
+				{
+					"value": "alice",
+					"synonyms": [
+						"toi",
+						"core",
+						"fichiers"
+					]
+				},
+				{
+					"value": "assistant",
+					"synonyms": [
+						"assistant snips",
+						"bundles"
+					]
+				},
+				{
+					"value": "system",
+					"synonyms": [
+						"raspberry",
+						"OS",
+						"raspbian"
+					]
+				}
+			]
+		},
+		{
 			"name": "Letters",
 			"matchingStrictness": null,
 			"automaticallyExtensible": false,
@@ -5168,74 +5199,6 @@
 					"value": "vrai"
 				}
 			]
-		},
-		{
-			"name": "Numbers",
-			"matchingStrictness": null,
-			"automaticallyExtensible": false,
-			"useSynonyms": true,
-			"values": [
-				{
-					"value": "0",
-					"synonyms": [
-						"zéro"
-					]
-				},
-				{
-					"value": "1",
-					"synonyms": [
-						"un"
-					]
-				},
-				{
-					"value": "2",
-					"synonyms": [
-						"deux"
-					]
-				},
-				{
-					"value": "3",
-					"synonyms": [
-						"trois"
-					]
-				},
-				{
-					"value": "4",
-					"synonyms": [
-						"quatre"
-					]
-				},
-				{
-					"value": "5",
-					"synonyms": [
-						"cinq"
-					]
-				},
-				{
-					"value": "6",
-					"synonyms": [
-						"six"
-					]
-				},
-				{
-					"value": "7",
-					"synonyms": [
-						"sept"
-					]
-				},
-				{
-					"value": "8",
-					"synonyms": [
-						"huit"
-					]
-				},
-				{
-					"value": "9",
-					"synonyms": [
-						"neuf"
-					]
-				}
-			]
 		}
 	],
 	"intents": [
@@ -5444,22 +5407,30 @@
 			]
 		},
 		{
-			"name": "UpdateAssistantBundle",
+			"name": "DoAliceUpdate",
 			"description": "Demander à Alice de se mettre à jour",
 			"enabledByDefault": true,
 			"utterances": [
-				"mettre à jour les fichiers d'assistant s'il te plaît",
-				"mettre à jour les fichiers d'assistant",
-				"mettre à jour l'assistant",
-				"faire une mise à jour du système",
-				"veuillez mettre à jour votre système",
+				"mettre à jour {les fichiers d'assistant:=>WhatToUpdate} s'il te plaît",
+				"mettre à jour les {fichiers d'assistant:=>WhatToUpdate}",
+				"mettre à jour {l'assistant:=>WhatToUpdate}",
+				"faire une mise à jour du {système:=>WhatToUpdate}",
+				"veuillez mettre à jour votre {système:=>WhatToUpdate}",
 				"mets-toi à jour s'il te plaît",
 				"mets-toi à jour",
 				"mettre à jour tes fichiers core",
 				"mettre à jour les fichiers core",
-				"mettre à jour le paquet assistant"
+				"mettre à jour le paquet {assistant:=>WhatToUpdate}"
 			],
-			"slots": []
+			"slots": [
+				{
+					"name": "WhatToUpdate",
+					"description": "Le composant à mettre à jour",
+					"required": false,
+					"type": "ComponentToUpdate",
+					"missingQuestion": ""
+				}
+			]
 		},
 		{
 			"name": "AnswerYesOrNo",

@@ -86,7 +86,7 @@
 	},
 	"noAssistantUpdateOffline": {
 		"default": [
-			"I'm sorry but I can't update my bundles while being offline"
+			"I'm sorry but I can't do any update while being offline"
 		]
 	},
 	"confirmAssistantUpdate": {
