@@ -21,7 +21,7 @@ class AliceCore(Module):
 	_INTENT_ANSWER_YES_OR_NO = Intent('AnswerYesOrNo', isProtected=True)
 	_INTENT_ANSWER_ROOM = Intent('AnswerRoom', isProtected=True)
 	_INTENT_SWITCH_LANGUAGE = Intent('SwitchLanguage')
-	_INTENT_UPDATE_BUNDLE = Intent('UpdateAssistantBundle', isProtected=True)
+	_INTENT_UPDATE_BUNDLE = Intent('DoAliceUpdate', isProtected=True)
 	_INTENT_REBOOT = Intent('RebootSystem')
 	_INTENT_INVADE_SONOS = Intent('InvadeSonos')
 	_INTENT_RETREAT = Intent('RetreatSonos')
@@ -324,17 +324,49 @@ class AliceCore(Module):
 				managers.MqttServer.endTalk(text=managers.TalkManager.randomTalk('langSwitchFailed'))
 
 		elif intent == self._INTENT_UPDATE_BUNDLE:
-			if not managers.LanguageManager.activeSnipsProjectId:
-				managers.MqttServer.endTalk(sessionId=sessionId, text=managers.TalkManager.randomTalk('noProjectIdSet'))
-			elif not managers.SnipsConsoleManager.loginCredentialsAreConfigured():
-				managers.MqttServer.endTalk(sessionId=sessionId, text=managers.TalkManager.randomTalk('bundleUpdateNoCredentials'))
+			if not managers.InternetManager.online:
+				managers.MqttServer.endTalk(sessionId=sessionId, text=managers.TalkManager.randomTalk('noAssistantUpdateOffline'))
+				return True
+
+			if 'WhatToUpdate' not in slots:
+				update = 1
 			else:
-				if managers.InternetManager.online:
-					self._logger.info('[{}] User asked for assistant update'.format(self.name))
-					managers.MqttServer.endTalk(sessionId=sessionId, text=managers.TalkManager.randomTalk('confirmAssistantUpdate'))
-					managers.ThreadManager.doLater(interval=2, func=managers.SnipsConsoleManager.doDownload)
+				if slots['WhatToUpdate'] == 'alice':
+					update = 2
+				elif slots['WhatToUpdate'] == 'assistant':
+					update = 3
 				else:
-					managers.MqttServer.endTalk(sessionId=sessionId, text=managers.TalkManager.randomTalk('noAssistantUpdateOffline'))
+					update = 4
+
+			if update == 1 or update == 4: # All or system
+				self._logger.info('[{}] Updating system'.format(self.name))
+				managers.MqttServer.endTalk(sessionId=sessionId, text=managers.TalkManager.randomTalk('confirmAssistantUpdate'))
+
+				def systemUpdate():
+					subprocess.run(['sudo', 'apt-get', 'update'])
+					subprocess.run(['sudo', 'apt-get', 'dist-upgrade', '-y'])
+
+				managers.ThreadManager.doLater(interval=2, func=systemUpdate)
+
+			if update == 1 or update == 2: # All or Alice
+				self._logger.info('[{}] Updating Alice'.format(self.name))
+				self._logger.info('[{}] Not implemented yet'.format(self.name))
+				if update == 2:
+					managers.MqttServer.endTalk(sessionId=sessionId, text=managers.TalkManager.randomTalk('confirmAssistantUpdate'))
+
+			if update == 1 or update == 3: # All or Assistant
+				self._logger.info('[{}] Updating assistant'.format(self.name))
+
+				if not managers.LanguageManager.activeSnipsProjectId:
+					managers.MqttServer.endTalk(sessionId=sessionId, text=managers.TalkManager.randomTalk('noProjectIdSet'))
+				elif not managers.SnipsConsoleManager.loginCredentialsAreConfigured():
+					managers.MqttServer.endTalk(sessionId=sessionId, text=managers.TalkManager.randomTalk('bundleUpdateNoCredentials'))
+				else:
+					if update == 3:
+						managers.MqttServer.endTalk(sessionId=sessionId, text=managers.TalkManager.randomTalk('confirmAssistantUpdate'))
+
+					managers.ThreadManager.doLater(interval=2, func=managers.SamkillaManager.sync)
+
 
 		elif intent == self._INTENT_REBOOT:
 			managers.MqttServer.continueDialog(
