@@ -1,3 +1,12 @@
+# ANSI color escape codes
+BLUE='\033[0;34m'
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
+
+# get directory this script is placed in
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
 talk() {
 	talk_schema='{
 		"definitions": {
@@ -26,20 +35,13 @@ talk() {
 		}
 	}'
 
-	BLUE='\033[0;34m'
-	RED='\033[0;31m'
-	GREEN='\033[0;32m'
-	NC='\033[0m' # No Color
-	DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 	printf "${BLUE}VALIDATING TALK FILES${NC}\n"
-	returnCode=0
+
 	# iterate over modules
 	for module in $DIR/../../PublishedModules/*/*/talks
 	do
 		# check if types are specified
-		if [ ! -f $module/types.txt ]; then
-			continue
-		fi
+		[ -f $module/types.txt ] || continue
 
 		# create json schema for json files
 		required_talks=''
@@ -59,6 +61,10 @@ talk() {
 				talks="$talks\n\t\t\"$p\": { \"\$ref\": \"#/definitions/talks\" },"
 			fi
 		done <$module/types.txt
+
+		# check if variable is empty
+		[ -z "$required_talks" ] && continue
+		[ -z "$talks" ] && continue
 
 		# replace placeholders without the trailing ,/talks
 		text="${talk_schema/\%required_talks\%/${required_talks::-1}}"
@@ -81,13 +87,8 @@ talk() {
 }
 
 dialog() {
-	BLUE='\033[0;34m'
-	RED='\033[0;31m'
-	GREEN='\033[0;32m'
-	NC='\033[0m' # No Color
-	DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 	printf "${BLUE}VALIDATING DIALOG FILES${NC}\n"
-	returnCode=0
+
 	for file in $DIR/../../PublishedModules/*/*/dialogTemplate/*.json
 	do
 		ajv validate -s $DIR/dialog-schema.json -d $file
@@ -103,13 +104,8 @@ dialog() {
 }
 
 install() {
-	BLUE='\033[0;34m'
-	RED='\033[0;31m'
-	GREEN='\033[0;32m'
-	NC='\033[0m' # No Color
-	DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 	printf "${BLUE}VALIDATING INSTALLERS${NC}\n"
-	# echo 'STARTING JSON VALIDATION'
+
 	for file in $DIR/../../PublishedModules/*/*/*.install
 	do
 		ajv validate -s $DIR/install-schema.json -d $file
@@ -125,8 +121,6 @@ install() {
 }
 
 all() {
-	BLUE='\033[0;34m'
-	NC='\033[0m' # No Color
 	printf "${BLUE}STARTING JSON VALIDATION${NC}\n\n"
 	install
 	returnCode=$(($?||returnCode))

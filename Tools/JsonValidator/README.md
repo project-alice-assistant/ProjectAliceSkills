@@ -37,9 +37,9 @@ It is also useful for modules in which the individual languages are developed by
 a lot easier whether they need to translate further texts.
 
 The syntax of this file is a simple list with one key per line. Empty lines and comments and lines starting with
-a # are ignored and can be used to structure the keys in groups and add comments
+a # are ignored and can be used to structure the keys in groups and add comments.
 
-***Be aware, that when you do not create the `types.txt` file this test will not fail, but it won't run for your module***
+***Be aware, that when you do not create the `types.txt` file this test will not fail, but it won't run for your module (a file without any keys will be ignored aswell)***
 
 ## .install Installer Files
 All installer files have the same JSON Syntax, which is tested using the following JSON Schema [install-schema.json](https://github.com/project-alice-powered-by-snips/ProjectAliceModules/blob/master/linting/install-schema.json).
