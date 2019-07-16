@@ -8,72 +8,46 @@ NC='\033[0m' # No Color
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 talk() {
-	talk_schema='{
-		"definitions": {
-			"talks": {
-				"type": "object",
-				"required": [
-					"default"
-				],
-				"properties": {
-					"default": {
-						"type": "array",
-						"items": { "type": "string" }
-					},
-					"short": {
-						"type": "array",
-						"items": { "type": "string" }
-					}
-				},
-				"additionalProperties": false
-			}
-		},
-		"type": "object",
-		"required": [%required_talks%
-		],
-		"properties": {%talks%
-		}
-	}'
-
 	printf "${BLUE}VALIDATING TALK FILES${NC}\n"
 
 	# iterate over modules
 	for module in $DIR/../../PublishedModules/*/*/talks
 	do
-		# check if types are specified
-		[ -f $module/types.txt ] || continue
+		# get language keys
+		keys=()
+		OLDIFS="$IFS"
+		IFS=$'\n'
+		for file in $module/*.json
+		do
+			# no file found so jump to outer loop
+			[ $file !=  "$module/*.json" ] || continue 2
 
-		# create json schema for json files
+			# get keys of the file
+			mapfile -t new_keys < <(jq -r 'keys[]' $file)
+			# combine current and new keys and remove duplicates
+			keys=(`for R in "${keys[@]}" "${new_keys[@]}" ; do echo "$R" ; done | sort -du`)
+		done
+		IFS="$OLDIFS"
+
 		required_talks=''
-		while read p; do
-			# ignore lines with comments and empty lines
-			if  [[ "$p" != \#* ]] && [[ "$p" != "" ]]
-			then
-				required_talks="$required_talks\n\t\t\"$p\","
-			fi
-		done <$module/types.txt
+		for key in "${keys[@]}"; do
+			required_talks="$required_talks\n\t\t\"$key\","
+		done
 
 		talks=''
-		while read p; do
-			# ignore lines with comments and empty lines
-			if  [[ "$p" != \#* ]] && [[ "$p" != "" ]]
-			then
-				talks="$talks\n\t\t\"$p\": { \"\$ref\": \"#/definitions/talks\" },"
-			fi
-		done <$module/types.txt
+		for key in "${keys[@]}"; do
+			talks="$talks\n\t\t\"$key\": { \"\$ref\": \"#/definitions/talks\" },"
+		done
 
-		# check if variable is empty
-		[ -z "$required_talks" ] && continue
-		[ -z "$talks" ] && continue
-
-		# replace placeholders without the trailing ,/talks
-		text="${talk_schema/\%required_talks\%/${required_talks::-1}}"
-		text="${text/\%talks\%/${talks::-1}}"
+		schema=$(<$DIR/talk-schema.template)
+		# replace placeholders in schema without the trailing ,/talks
+		schema="${schema/\%required_talks\%/${required_talks::-1}}"
+		schema="${schema/\%talks\%/${talks::-1}}"
 
 		# validate the all json files using the previously created json schema
 		for file in $module/*.json
 		do
-			ajv validate -s <(echo -e "$text") -d $file
+			ajv validate -s <(echo -e "$schema") -d $file
 			returnCode=$(($?||returnCode))
 		done
 	done

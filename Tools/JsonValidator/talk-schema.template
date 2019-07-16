@@ -1,0 +1,34 @@
+{
+	"definitions": {
+		"talks": {
+			"oneOf": [
+				{
+					"type": "object",
+					"required": [
+						"default"
+					],
+					"properties": {
+						"default": {
+							"type": "array",
+							"items": { "type": "string" }
+						},
+						"short": {
+							"type": "array",
+							"items": { "type": "string" }
+						}
+					},
+					"additionalProperties": false
+				},
+				{
+					"type": "array",
+					"items": { "type": "string" }
+				}
+			]
+		}
+	},
+	"type": "object",
+	"required": [%required_talks%
+	],
+	"properties": {%talks%
+	}
+}
