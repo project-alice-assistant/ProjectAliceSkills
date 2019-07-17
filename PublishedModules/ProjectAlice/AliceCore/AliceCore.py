@@ -65,8 +65,7 @@ class AliceCore(Module):
 			if not self.delayed:
 				self._logger.warning('[{}] No user found in database'.format(self.name))
 				raise ModuleStartDelayed(self.name)
-			else:
-				self._addFirstUser()
+			self._addFirstUser()
 		else:
 			return super().onStart()
 
@@ -204,7 +203,7 @@ class AliceCore(Module):
 				)
 				return True
 
-			elif slotsObj['Hardware'][0].value['value'] == 'esp' and 'EspType' not in slots:
+			if slotsObj['Hardware'][0].value['value'] == 'esp' and 'EspType' not in slots:
 				managers.MqttServer.continueDialog(
 					sessionId=sessionId,
 					text=managers.TalkManager.randomTalk('whatESP'),
@@ -213,7 +212,7 @@ class AliceCore(Module):
 				)
 				return True
 
-			elif 'Room' not in slots:
+			if 'Room' not in slots:
 				managers.MqttServer.continueDialog(
 					sessionId=sessionId,
 					text=managers.TalkManager.randomTalk('whichRoom'),

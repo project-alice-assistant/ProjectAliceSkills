@@ -85,13 +85,13 @@ class AliceSatellite(Module):
 
 			return True
 
-		elif intent == self._INTENT_HUMIDITY:
+		if intent == self._INTENT_HUMIDITY:
 			humidity = self.getSensorValue(place, 'humidity')
 
 			if humidity == 'undefined':
 				return False
-			else:
-				humidity = int(round(float(humidity), 0))
+
+			humidity = int(round(float(humidity), 0))
 
 			if place != siteId:
 				managers.MqttServer.endTalk(sessionId, managers.TalkManager.randomTalk('humidityPlaceSpecific').format(place, humidity))
@@ -100,7 +100,7 @@ class AliceSatellite(Module):
 
 			return True
 
-		elif intent == self._INTENT_CO2:
+		if intent == self._INTENT_CO2:
 			co2 = self.getSensorValue(place, 'gas')
 
 			if co2 == 'undefined':
@@ -113,13 +113,13 @@ class AliceSatellite(Module):
 
 			return True
 
-		elif intent == self._INTENT_PRESSURE:
+		if intent == self._INTENT_PRESSURE:
 			pressure = self.getSensorValue(place, 'pressure')
 
 			if pressure == 'undefined':
 				return False
-			else:
-				pressure = int(round(float(pressure), 0))
+
+			pressure = int(round(float(pressure), 0))
 
 			if place != siteId:
 				managers.MqttServer.endTalk(sessionId, managers.TalkManager.randomTalk('pressurePlaceSpecific').format(place, pressure))
@@ -128,13 +128,13 @@ class AliceSatellite(Module):
 
 			return True
 
-		elif intent == self._FEEDBACK_SENSORS:
+		if intent == self._FEEDBACK_SENSORS:
 			payload = session.payload
 			if 'data' in payload:
 				self._sensorReadings[siteId] = payload['data']
 			return True
 
-		elif intent == self._DEVICE_DISCONNECTION:
+		if intent == self._DEVICE_DISCONNECTION:
 			payload = session.payload
 			if 'uid' in payload:
 				managers.DeviceManager.deviceDisconnecting(payload['uid'])
@@ -158,8 +158,8 @@ class AliceSatellite(Module):
 		if value in data:
 			ret = data[value]
 			return ret
-		else:
-			return 'undefined'
+
+		return 'undefined'
 
 
 	def restartDevice(self):
