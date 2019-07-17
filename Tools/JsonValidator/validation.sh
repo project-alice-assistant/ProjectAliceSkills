@@ -59,10 +59,14 @@ talk-types() {
 			done
 
 			# no keys missing -> continue with next
-			[[ -z "${missing// }" ]] && continue
+			if [[ -z "${missing// }" ]]; then
+				printf "%s valid\n"  $file
+				continue
+			fi
 
 			printf "${GREEN}Missing language keys in %s:${NC}\n" $file
 			printf "  - %s\n"  $missing
+			printf "\n"
 			returnCode=1
 		done
 	done
