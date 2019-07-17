@@ -7,8 +7,26 @@ NC='\033[0m' # No Color
 # get directory this script is placed in
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
-talk() {
+talk-schema() {
 	printf "${BLUE}VALIDATING TALK FILES${NC}\n"
+
+	# validate the all json files using the previously created json schema
+	for file in ${DIR/\/Tools\/JsonValidator}/PublishedModules/*/*/talks/*.json
+	do
+		ajv validate -s $DIR/talk-schema.json -d $file
+		returnCode=$(($?||returnCode))
+	done
+
+	if [ $returnCode -eq 0 ]; then
+		printf "${GREEN}ALL TALK FILES ARE VALID${NC}\n\n"
+	else
+		printf "${RED}THERE ARE STILL SOME TALK FILES THAT NEEDS SOME LOVE${NC}\n\n"
+	fi
+	return $returnCode
+}
+
+talk-types() {
+	printf "${BLUE}VALIDATING WHETHER TALK FILES HAVE CONSISTENT KEYS${NC}\n"
 
 	# iterate over modules (remove Tools/JsonValidator instead of ../.. for better styled output)
 	for module in ${DIR/\/Tools\/JsonValidator}/PublishedModules/*/*/talks
@@ -32,11 +50,6 @@ talk() {
 		# validate the all json files using the previously created json schema
 		for file in $module/*.json
 		do
-			ajv validate -s $DIR/talk-schema.json -d $file
-
-			status=$?
-			returnCode=$(($status||returnCode))
-
 			# when there is a error, get all missing keys
 			mapfile -t new_keys < <(jq -r 'keys[]' $file)
 			missing="${keys[*]}"
@@ -55,10 +68,20 @@ talk() {
 	done
 
 	if [ $returnCode -eq 0 ]; then
-		printf "${GREEN}ALL TALK FILES ARE VALID${NC}\n\n"
+		printf "${GREEN}ALL TALK FILES HAVE CONSISTENT TYPES ARE VALID${NC}\n\n"
 	else
 		printf "${RED}THERE ARE STILL SOME TALK FILES THAT NEEDS SOME LOVE${NC}\n\n"
 	fi
+	return $returnCode
+}
+
+talk() {
+	talk-schema
+	returnCode=$?
+	
+	talk-types
+	returnCode=$(($?||returnCode))
+	
 	return $returnCode
 }
 
@@ -99,7 +122,7 @@ install() {
 all() {
 	printf "${BLUE}STARTING JSON VALIDATION${NC}\n\n"
 	install
-	returnCode=$(($?||returnCode))
+	returnCode=$?
 
 	dialog
 	returnCode=$(($?||returnCode))
