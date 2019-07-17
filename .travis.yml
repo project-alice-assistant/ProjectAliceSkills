@@ -9,4 +9,4 @@ install:
 script:
   - python3 Tools/JsonValidator/validation.py --all
   - cores=$(nproc)
-  - pylint -j $cores PublishedModules/*/*/*.py --exit-zero
+  #- pylint -j $cores PublishedModules/*/*/*.py --exit-zero
