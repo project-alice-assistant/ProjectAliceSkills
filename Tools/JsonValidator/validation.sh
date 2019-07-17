@@ -65,7 +65,7 @@ talk() {
 dialog() {
 	printf "${BLUE}VALIDATING DIALOG FILES${NC}\n"
 
-	for file in $DIR/../../PublishedModules/*/*/dialogTemplate/*.json
+	for file in ${DIR/\/Tools\/JsonValidator}/PublishedModules/*/*/dialogTemplate/*.json
 	do
 		ajv validate -s $DIR/dialog-schema.json -d $file
 		returnCode=$(($?||returnCode))
@@ -82,7 +82,7 @@ dialog() {
 install() {
 	printf "${BLUE}VALIDATING INSTALLERS${NC}\n"
 
-	for file in $DIR/../../PublishedModules/*/*/*.install
+	for file in ${DIR/\/Tools\/JsonValidator}/PublishedModules/*/*/*.install
 	do
 		ajv validate -s $DIR/install-schema.json -d $file
 		returnCode=$(($?||returnCode))
