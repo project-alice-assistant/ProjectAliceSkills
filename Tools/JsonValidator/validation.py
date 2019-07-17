@@ -17,7 +17,7 @@ def invalidJSON (schemaPath, filePattern) -> bool:
 		schema = json.load(json_file)
 
 	if Draft7Validator.check_schema(schema):
-		print(colored('{:s} JSON SCHEMA INVALID'.format(schemaPath), 'green'))
+		sys.stderr.write(colored('{:s} JSON SCHEMA INVALID\n'.format(schemaPath), 'green'))
 		return 1
 
 	err = 0
@@ -29,9 +29,9 @@ def invalidJSON (schemaPath, filePattern) -> bool:
 				print('{:s} valid'.format(file))
 			except exceptions.ValidationError:
 				err = 1
-				print(colored('{:s} invalid'.format(file), 'green'))
+				sys.stderr.write(colored('{:s} invalid\n'.format(file), 'green'))
 				for error in sorted(Draft7Validator(schema).iter_errors(data), key=str):
-					print('  - {:s}'.format(error.message))
+					sys.stderr.write('  - {:s}\n'.format(error.message))
 				print()
 	return err
 
@@ -82,9 +82,9 @@ def talkTypes() -> bool:
 				print('{:s} valid'.format(file))
 			else:
 				err = 1
-				print(colored('Missing language keys in {:s}:'.format(file), 'green'))
+				sys.stderr.write(colored('Missing language keys in {:s}:\n'.format(file), 'green'))
 				for key in missing.keys():
-					print('  - {:s}'.format(key))
+					sys.stderr.write('  - {:s}\n'.format(key))
 				print()
 
 	if not err:
@@ -105,10 +105,11 @@ def all() -> bool:
 	return err
 
 parser = argparse.ArgumentParser(description='decide which files to validate')
+parser.add_argument('--all', help='run all validation tasks', action='store_true')
 parser.add_argument('--install', help='validate installers', action='store_true')
 parser.add_argument('--dialog', help='validate dialog files', action='store_true')
 parser.add_argument('--talk', help='validate talk files', action='store_true')
-parser.add_argument('--all', help='run all validation tasks', action='store_true')
+
 
 if len(sys.argv)==1:
     parser.print_help(sys.stderr)
