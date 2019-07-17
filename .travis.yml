@@ -2,11 +2,11 @@ language: python
 python: 3.6
 
 install:
-  - npm install -g ajv-cli
+  - pip install -r Tools/JsonValidator/requirements.txt
   - pip install pylint
 
 
 script:
-  - ./Tools/JsonValidator/validation.sh all
+  - python3 Tools/JsonValidator/validation.py --all
   - cores=$(nproc)
   - pylint -j $cores PublishedModules/*/*/*.py --exit-zero
