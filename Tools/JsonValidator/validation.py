@@ -109,6 +109,10 @@ parser.add_argument('--install', help='validate installers', action='store_true'
 parser.add_argument('--dialog', help='validate dialog files', action='store_true')
 parser.add_argument('--talk', help='validate talk files', action='store_true')
 parser.add_argument('--all', help='run all validation tasks', action='store_true')
+
+if len(sys.argv)==1:
+    parser.print_help(sys.stderr)
+    sys.exit(1)
 args = arguments = parser.parse_args()
 
 if args.all:
