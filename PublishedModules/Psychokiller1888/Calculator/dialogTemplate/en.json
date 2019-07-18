@@ -68,74 +68,6 @@
 					]
 				}
 			]
-		},
-		{
-			"name": "Number",
-			"matchingStrictness": null,
-			"automaticallyExtensible": true,
-			"useSynonyms": true,
-			"values": [
-				{
-					"value": "1",
-					"synonyms": [
-						"one"
-					]
-				},
-				{
-					"value": "5",
-					"synonyms": [
-						"five"
-					]
-				},
-				{
-					"value": "201",
-					"synonyms": [
-						"two hundred one",
-						"two hundred and one"
-					]
-				},
-				{
-					"value": "1851",
-					"synonyms": [
-						"one thousand eight hundred fifty-one",
-						"eighteen fifty one"
-					]
-				},
-				{
-					"value": "11",
-					"synonyms": [
-						"eleven"
-					]
-				},
-				{
-					"value": "14",
-					"synonyms": [
-						"fourteen"
-					]
-				},
-				{
-					"value": "10534",
-					"synonyms": [
-						"ten thousand five hundred thirty-four",
-						"then thousand five hundred and thirty-four"
-					]
-				},
-				{
-					"value": "673",
-					"synonyms": [
-						"six hundred seventy-three",
-						"six hundred and seventy-three"
-					]
-				},
-				{
-					"value": "2563",
-					"synonyms": [
-						"two thousand five hundred sixty-three",
-						"two thousand five hundred and sixty-three",
-						"twenty five hundred and sixty-three"
-					]
-				}
-			]
 		}
 	],
 	"intents": [
@@ -181,14 +113,14 @@
 					"name": "Right",
 					"description": null,
 					"required": false,
-					"type": "Number",
+					"type": "snips/number",
 					"missingQuestion": ""
 				},
 				{
 					"name": "Left",
 					"description": null,
 					"required": false,
-					"type": "Number",
+					"type": "snips/number",
 					"missingQuestion": ""
 				}
 			]
