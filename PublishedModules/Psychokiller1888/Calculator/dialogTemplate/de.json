@@ -73,74 +73,6 @@
 					]
 				}
 			]
-		},
-		{
-			"name": "Number",
-			"matchingStrictness": null,
-			"automaticallyExtensible": true,
-			"useSynonyms": true,
-			"values": [
-				{
-					"value": "1",
-					"synonyms": [
-						"eins"
-					]
-				},
-				{
-					"value": "5",
-					"synonyms": [
-						"fünf"
-					]
-				},
-				{
-					"value": "201",
-					"synonyms": [
-						"zwei hundert eins",
-						"zwei hundert und eins"
-					]
-				},
-				{
-					"value": "1851",
-					"synonyms": [
-						"ein tausend acht hundert ein und fünfzig",
-						"achtzehn hundert ein und fünfzig"
-					]
-				},
-				{
-					"value": "11",
-					"synonyms": [
-						"elf"
-					]
-				},
-				{
-					"value": "14",
-					"synonyms": [
-						"vierzehn"
-					]
-				},
-				{
-					"value": "10534",
-					"synonyms": [
-						"zehn tausend fünf hundert vier und dreißig",
-						"zehn tausend fünf hundert und vier und dreißig"
-					]
-				},
-				{
-					"value": "673",
-					"synonyms": [
-						"sechs hundert drei und siebzig",
-						"sechs hundert und drei und siebzig"
-					]
-				},
-				{
-					"value": "2563",
-					"synonyms": [
-						"zwei tausend fünf hundert drei und sechzig",
-						"zwei tausend fünf hundert und drei und sechzig",
-						"fünf und zwanzig hundert drei und sechzig"
-					]
-				}
-			]
 		}
 	],
 	"intents": [
@@ -184,14 +116,14 @@
 					"name": "Right",
 					"description": null,
 					"required": false,
-					"type": "Number",
+					"type": "snips/number",
 					"missingQuestion": ""
 				},
 				{
 					"name": "Left",
 					"description": null,
 					"required": false,
-					"type": "Number",
+					"type": "snips/number",
 					"missingQuestion": ""
 				}
 			]
