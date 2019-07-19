@@ -12,6 +12,7 @@
 	"conditions": {
 		"lang": [
 			"en"
-		]
+		],
+		"online": true
 	}
 }
