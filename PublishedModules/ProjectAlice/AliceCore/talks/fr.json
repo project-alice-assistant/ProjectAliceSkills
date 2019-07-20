@@ -223,12 +223,12 @@
 	},
 	"internetBack": {
 		"default": [
-			"J'ai pu me reconnecter à internet, je change pour l'ASR Google"
+			"J'ai pu me reconnecter à internet, je change pour un A S R en ligne"
 		]
 	},
 	"internetLost": {
 		"default": [
-			"J'ai perdu la connexion à internet. J'ai changé l'ASR sur snips"
+			"J'ai perdu la connexion à internet. J'ai changé l'A S R sur snips"
 		]
 	},
 	"listeningAgain": {

@@ -225,7 +225,7 @@
 	},
 	"internetBack": {
 		"default": [
-			"I could connect back to internet, switching back to Google ASR"
+			"I could connect back to internet, switching back to online ASR"
 		]
 	},
 	"internetLost": {
