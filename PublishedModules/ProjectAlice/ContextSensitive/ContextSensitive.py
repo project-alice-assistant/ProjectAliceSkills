@@ -22,8 +22,8 @@ class ContextSensitive(Module):
 			self._INTENT_EDIT_THIS
 		]
 
-		self._history = []
-		self._sayHistory = {}
+		self._history = list()
+		self._sayHistory = dict()
 
 		super().__init__(self._SUPPORTED_INTENTS)
 
@@ -59,7 +59,7 @@ class ContextSensitive(Module):
 			managers.MqttServer.endTalk(sessionId, text=self.getLastChat(siteId=siteId))
 			return True
 
-		managers.MqttServer.endTalk(sessionId, text=managers.TalkManager.randomTalk('didntUnderstand'))
+		managers.MqttServer.endTalk(sessionId, text=self.randomTalk('didntUnderstand'))
 		return True
 
 
@@ -90,7 +90,7 @@ class ContextSensitive(Module):
 
 	def addChat(self, text, siteId):
 		if siteId not in self._sayHistory.keys():
-			self._sayHistory[siteId] = []
+			self._sayHistory[siteId] = list()
 
 		self._sayHistory[siteId].append(text)
 
@@ -100,6 +100,6 @@ class ContextSensitive(Module):
 
 	def getLastChat(self, siteId):
 		if siteId not in self._sayHistory or len(self._sayHistory[siteId]) <= 0:
-			return managers.TalkManager.randomTalk('nothing')
+			return self.randomTalk('nothing')
 
 		return self._sayHistory[siteId][len(self._sayHistory[siteId]) - 1]

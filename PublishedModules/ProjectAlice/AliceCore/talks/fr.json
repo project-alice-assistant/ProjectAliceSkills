@@ -90,7 +90,7 @@
 		]
 	},
 	"confirmAssistantUpdate": {
-		"default": [
+		"fr": [
 			"Ok, je le fais! ça va prendre un peu de temps!",
 			"D'accord, je met à jours mes paquets! ça prendra un peu de temps!"
 		]

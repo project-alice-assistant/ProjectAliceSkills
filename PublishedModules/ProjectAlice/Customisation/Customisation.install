@@ -1,14 +1,18 @@
 {
 	"name": "Customisation",
-	"version": 0.2,
+	"version": 1.0,
 	"author": "ProjectAlice",
 	"maintainers": [
 		"Psycho",
-		"Jierka",
-		"maxbachmann"
+		"Jierka"
 	],
-	"desc": "Customisation is the official customisation module. Use it to customize your experience",
+	"desc": "A module for anyone to override Project Alice default behavior",
 	"aliceMinVersion": "",
 	"requirements": [],
-	"conditions": {}
+	"conditions": {
+		"lang": [
+			"en",
+			"fr"
+		]
+	}
 }

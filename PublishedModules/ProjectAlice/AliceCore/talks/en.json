@@ -335,5 +335,17 @@
 		"default": [
 			"There seems to be a user named {} already existing. I need another name please"
 		]
-	}
+	},
+	"addUserWakeword": [
+		"Ok {}, I have added you! If you want me to recognize you based on your voice you need to create a personal wakeword. It is not obligatory but recommended. Do you want to do that?"
+	],
+	"addWakewordDenied": [
+		"Ok, I understand, keep in mind I won't be able to define if you are home, sleeping, play games or remember stuff about you"
+	],
+	"addWakewordAccepted": [
+		"<s>Ok! I need three samples of you calling me by saying <break time=\"100ms\"/> \"Hey Alice\" <break time=\"150ms\"/></s><s>Remember to be in a calm environement for this to work, noise or parasites make this impossible</s><s>Let's do this, call me!</s>"
+	],
+	"howWasTheCapture": [
+		"I just played a trimmed version of you speaking the hotword. Was it ok? If not I can trim it more or less, it needs to be cut pretty close to your speaking... Say \"Yes\", \"Too short\" or \"too long\""
+	]
 }
