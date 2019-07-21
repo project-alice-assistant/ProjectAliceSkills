@@ -93,6 +93,14 @@
 						"OS",
 						"raspbian"
 					]
+				},
+				{
+					"value": "modules",
+					"synonyms": [
+						"module",
+						"skills",
+						"skill"
+					]
 				}
 			]
 		},

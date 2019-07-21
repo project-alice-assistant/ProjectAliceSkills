@@ -4,6 +4,40 @@
 	"description": "Contains intents that manage root stuff of Project Alice",
 	"slotTypes": [
 		{
+			"name": "More",
+			"matchingStrictness": null,
+			"automaticallyExtensible": true,
+			"useSynonyms": true,
+			"values": [
+				{
+					"value": "more",
+					"synonyms": [
+						"a bit more",
+						"more",
+						"much more",
+						"longer"
+					]
+				}
+			]
+		},
+		{
+			"name": "Less",
+			"matchingStrictness": null,
+			"automaticallyExtensible": true,
+			"useSynonyms": true,
+			"values": [
+				{
+					"value": "less",
+					"synonyms": [
+						"a bit less",
+						"less",
+						"much less",
+						"shorter"
+					]
+				}
+			]
+		},
+		{
 			"name": "Languages",
 			"matchingStrictness": null,
 			"automaticallyExtensible": true,
@@ -94,6 +128,13 @@
 						"OS",
 						"raspbian",
 						"completly"
+					]
+				},
+				{
+					"value": "modules",
+					"synonyms": [
+						"module",
+						"skills"
 					]
 				}
 			]
@@ -13136,7 +13177,14 @@
 			"utterances": [
 				"{john:=>Name}",
 				"{jane:=>Name}",
-				"{doe:=>Name}"
+				"{doe:=>Name}",
+				"hi i am {Laurent:=>Name}",
+				"hey im {Mike:=>Name}",
+				"hello my name is {Natalija:=>Name}",
+				"i'm {Sven:=>Name}",
+				"you can call me {Arthur:=>Name}",
+				"my name is {Chris:=>Name}",
+				"{Kim:=>Name} is my name"
 			],
 			"slots": [
 				{
@@ -13171,6 +13219,47 @@
 					"missingQuestion": ""
 				}
 			]
+		},
+		{
+			"name": "AnswerWakewordCutting",
+			"description": "User tells Alice to trim the wakeword a bit more or less",
+			"enabledByDefault": false,
+			"utterances": [
+				"{more:=>More}",
+				"trim a little {more:=>More}",
+				"you can make it {shorter:=>Less}",
+				"can you try to trim a little {more:=>More}",
+				"that's {too short:=>Less}",
+				"make it {longer:=>More}",
+				"it needs to be {longer:=>More}",
+				"could you try to make it {shorter:=>Less} please"
+			],
+			"slots": [
+				{
+					"name": "More",
+					"description": null,
+					"required": false,
+					"type": "More",
+					"missingQuestion": ""
+				},
+				{
+					"name": "Less",
+					"description": null,
+					"required": false,
+					"type": "Less",
+					"missingQuestion": ""
+				}
+			]
+		},
+		{
+			"name": "CallWakeword",
+			"description": "User speaks the Hey Alice wakeword",
+			"enabledByDefault": false,
+			"utterances": [
+				"Hey Alice",
+				"hey alice"
+			],
+			"slots": []
 		}
 	]
 }
