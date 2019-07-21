@@ -110,6 +110,7 @@
 			"enabledByDefault": true,
 			"utterances": [
 				"Please lights off {everywhere:=>Room}",
+				"Please turn off the {office:=>Room} light",
 				"Light off {everywhere:=>Room}",
 				"Lights off {everywhere:=>Room}",
 				"Turn off the lights please",
@@ -130,7 +131,7 @@
 					"description": null,
 					"required": false,
 					"type": "Room",
-					"missingQuestion": "Which room?"
+					"missingQuestion": ""
 				}
 			]
 		},
@@ -202,6 +203,7 @@
 			"enabledByDefault": true,
 			"utterances": [
 				"light in the {office:=>Room}",
+				"please turn on the {office:=>Room} light",
 				"lights",
 				"turn on the lights {everywhere:=>Room}",
 				"please turn on the lights {everywhere:=>Room}",
