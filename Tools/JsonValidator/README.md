@@ -27,12 +27,14 @@ pip3 install -r requirements.txt
 
 ## dialog Templates
 
-All dialogTemplates have the same JSON Syntax, which is tested using the following JSON Schema [dialog-schema.json](https://github.com/project-alice-powered-by-snips/ProjectAliceModules/blob/master/Tools/JsonValidator/dialog-schema.json).
-***Be aware, that currently this only validates, whether the syntax work with Alice, but not whether for example a key is missing in a translated file. This functionality will be added at a later point***
+All dialogTemplates have two validation tests:
+1) All dialog Templates have the same JSON Syntax, which is tested using the following JSON Schema [dialog-schema.json](https://github.com/project-alice-powered-by-snips/ProjectAliceModules/blob/master/Tools/JsonValidator/dialog-schema.json).
+2) The different translations should have the same slots (slotnames). The other settings of the slots like values ect. can be different.
+***Currently this does not validate whether the utterances are correct, which will be added at a later point***
 
 ## talk Files
 
-The talk files have to validation tests:
+The talk files have two validation tests:
 1) All talk files have the same JSON Syntax, which is tested using the following JSON Schema [talk-schema.json](https://github.com/project-alice-powered-by-snips/ProjectAliceModules/blob/master/Tools/JsonValidator/talk-schema.json).
 2) The language keys used in the different translations of the talk files are compared to find out whether a language key is missing in one of the files
 
