@@ -99,26 +99,45 @@ def dialogSlots() -> bool:
 	return err
 
 def dialogUtterancesDuplicate() -> bool:
+	def upper_repl(match):
+		return match.group(1).upper()
+
 	print(colored('SEARCHING FOR DUPLICATE UTTERANCES IN DIALOG TEMPLATES', 'blue'))
 	err = 0
 	for file in glob.glob(module_path + '/PublishedModules/*/*/dialogTemplate/*.json'):
 		trainingExamples = getTrainingExamples(file)
+		duplicates = {}
 		for name, utterances in trainingExamples.items():
-			# remove slot value since it makes no difference which value of a slot was selected
-			short_utterances = [re.sub(r'{[^:=>]*:=>([^}]*)}', r'{\1}', i) for i in utterances]
-			# replace all uninteresting characters like ? or !
-			short_utterances = [re.sub(r'[^a-zA-Z1-9 {}]', '', i) for i in utterances]
-			# only keep single whitespace and use lower case
-			short_utterances = [" ".join(i.split()).lower() for i in utterances]
+			utterancesDict = {}
+			short_utterances = []
+			for utterance in utterances:
+				short_utterance = utterance.lower()
+				short_utterance = re.sub(r'{[^:=>]*:=>([^}]*)}', upper_repl, short_utterance)
+				short_utterance = re.sub(r'[^a-zA-Z1-9 ]', '', short_utterance)
+				short_utterance = " ".join(short_utterance.split())
+				if short_utterance in utterancesDict:
+					if name in duplicates:
+						if short_utterance in duplicates[name]:
+							duplicates[name][short_utterance].append(utterance)
+						else:
+							duplicates[name][short_utterance] = [utterancesDict[short_utterance], utterance]
+					else:
+						duplicates[name] = { short_utterance: [utterancesDict[short_utterance], utterance]}
+				else:
+					utterancesDict[short_utterance] = utterance
 
-			if len(short_utterances) == len(set(short_utterances)):
-				print('{:s} valid'.format(file))
-			else:
-				err = 1
-				sys.stderr.write(colored('Duplicate utterances in {:s}:\n'.format(file), 'green'))
-				sys.stderr.write('  - {:s}\n'.format(name))
-				print()
-
+		if not duplicates:
+			print('{:s} valid'.format(file))
+		else:
+			err = 1
+			sys.stderr.write(colored('Duplicate Utterances in {:s}:\n'.format(file), 'green'))
+			for intent, _sentence in duplicates.items():
+				sys.stderr.write('{:s}\n'.format(intent))
+				for _, sentences in _sentence.items():
+					for sentence in sentences:
+						sys.stderr.write('  - {:s}\n'.format(sentence))
+					print()
+			print()
 	if not err:
 		print(colored('NO DUPLICATE UTTERANCES\n\n', 'green'))
 	else:
