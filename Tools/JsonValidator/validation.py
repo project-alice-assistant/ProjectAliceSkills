@@ -95,22 +95,22 @@ def dialogUtterancesDuplicate() -> bool:
 	err = 0
 	for file in glob.glob(module_path + '/PublishedModules/*/*/dialogTemplate/*.json'):
 		trainingExamples = getTrainingExamples(file)
-        for name, utterances in trainingExamples.items():
-            # remove slot value since it makes no difference which value of a slot was selected
-            short_utterances = [re.sub(r'{[^:=>]*:=>([^}]*)}', r'{\1}', i) for i in utterances]
-            # replace all uninteresting characters like ? or !
-            short_utterances = [re.sub(r'[^a-zA-Z1-9 {}]', '', i) for i in utterances]
-            # only keep single whitespace and use lower case
-            short_utterances = [" ".join(i.split()).lower() for i in utterances]
+	for name, utterances in trainingExamples.items():
+		# remove slot value since it makes no difference which value of a slot was selected
+		short_utterances = [re.sub(r'{[^:=>]*:=>([^}]*)}', r'{\1}', i) for i in utterances]
+		# replace all uninteresting characters like ? or !
+		short_utterances = [re.sub(r'[^a-zA-Z1-9 {}]', '', i) for i in utterances]
+		# only keep single whitespace and use lower case
+		short_utterances = [" ".join(i.split()).lower() for i in utterances]
 
-            if len(short_utterances) == len(set(short_utterances)):
-                print('{:s} valid'.format(file))
-            else:
-				err = 1
-				sys.stderr.write(colored('Duplicate utterances in {:s}:\n'.format(file), 'green'))
-				for key in missing:
-					sys.stderr.write('  - {:s}\n'.format(name))
-				print()
+		if len(short_utterances) == len(set(short_utterances)):
+			print('{:s} valid'.format(file))
+		else:
+			err = 1
+			sys.stderr.write(colored('Duplicate utterances in {:s}:\n'.format(file), 'green'))
+			for key in missing:
+				sys.stderr.write('  - {:s}\n'.format(name))
+			print()
 
 	if not err:
 		print(colored('NO DUPLICATE UTTERANCES\n\n', 'green'))
