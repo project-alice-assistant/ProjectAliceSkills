@@ -7,6 +7,7 @@ from jsonschema import Draft7Validator, exceptions
 import json
 from termcolor import colored
 import argparse
+import re
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 module_path = os.path.dirname(os.path.dirname(dir_path))
