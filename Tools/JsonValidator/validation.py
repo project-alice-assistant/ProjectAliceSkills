@@ -61,9 +61,9 @@ def dialogSlots() -> bool:
 		for file in glob.glob(module + '/*.json'):
 			with open(file) as json_file:
 				jsonDict = json.load(json_file)
-                slots = jsonDict['slotTypes']
-                for slot in slots:
-                    all_slots[slots['name']] = slot
+		slots = jsonDict['slotTypes']
+		for slot in slots:
+			all_slots[slots['name']] = slot
 
 		for file in glob.glob(module + '/*.json'):
 			missing = []
