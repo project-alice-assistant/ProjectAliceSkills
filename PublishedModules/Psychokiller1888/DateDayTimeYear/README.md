@@ -9,7 +9,7 @@ wget http://bit.ly/DateDayTimeYear \
 ### Description
 Ask for the time, date, day and year
 
-- Version: 0.3
+- Version: 0.35
 - Author: Psycho
 - Maintainers:
   - Jierka
