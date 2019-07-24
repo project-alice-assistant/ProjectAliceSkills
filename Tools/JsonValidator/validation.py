@@ -72,7 +72,7 @@ def dialogSlots() -> bool:
 		slots = jsonDict['slotTypes']
 		slotDict = {}
 		for slot in slots:
-			slotDict[slots['name']] = slot
+			slotDict[slot['name']] = slot
 			missing = {k: v for k, v in all_keys.items() if k not in slotDict}
 
 			if not missing.keys():
