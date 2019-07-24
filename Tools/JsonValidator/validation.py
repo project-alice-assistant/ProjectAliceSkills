@@ -116,8 +116,7 @@ def dialogUtterancesDuplicate() -> bool:
 			else:
 				err = 1
 				sys.stderr.write(colored('Duplicate utterances in {:s}:\n'.format(file), 'green'))
-				for key in missing:
-					sys.stderr.write('  - {:s}\n'.format(name))
+				sys.stderr.write('  - {:s}\n'.format(name))
 				print()
 
 	if not err:
