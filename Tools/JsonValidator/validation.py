@@ -44,13 +44,56 @@ def install() -> bool:
 		print(colored('THERE ARE STILL SOME INSTALLERS THAT NEEDS SOME LOVE\n\n', 'red'))
 	return err
 
-def dialog() -> bool:
+def dialogSchema() -> bool:
 	print(colored('VALIDATING DIALOG FILES', 'blue'))
 	err = invalidJSON(dir_path + '/dialog-schema.json', module_path + '/PublishedModules/*/*/dialogTemplate/*.json')
 	if not err:
 		print(colored('ALL DIALOG FILES ARE VALID\n\n', 'green'))
 	else:
 		print(colored('THERE ARE STILL SOME DIALOG FILES THAT NEEDS SOME LOVE\n\n', 'red'))
+	return err
+
+def dialogSlots() -> bool:
+	print(colored('SEARCHING FOR MISSING SLOTS IN DIALOG TEMPLATES', 'blue'))
+	err = 0
+	for module in glob.glob(module_path + '/PublishedModules/*/*/dialogTemplate'):
+		all_slots = {}
+		for file in glob.glob(module + '/*.json'):
+			with open(file) as json_file:
+				jsonDict = json.load(json_file)
+                slots = jsonDict['slotTypes']
+                for slot in slots:
+                    all_slots[slots['name']] = slot
+
+		for file in glob.glob(module + '/*.json'):
+			missing = []
+			with open(file) as json_file:
+				jsonDict = json.load(json_file)
+                slots = jsonDict['slotTypes']
+                slotDict = []
+                for slot in slots:
+                    slotDict[slots['name']] = slot
+
+				missing = {k: v for k, v in all_keys.items() if k not in slotDict}
+
+			if not missing.keys():
+				print('{:s} valid'.format(file))
+			else:
+				err = 1
+				sys.stderr.write(colored('Missing slots in {:s}:\n'.format(file), 'green'))
+				for key in missing.keys():
+					sys.stderr.write('  - {:s}\n'.format(key))
+				print()
+
+	if not err:
+		print(colored('NO MISSING SLOTS\n\n', 'green'))
+	else:
+		print(colored('THERE ARE STILL SOME MISSING SLOTS\n\n', 'red'))
+	return err
+
+def dialog() -> bool:
+	err = dialogSchema()
+	err |= dialogSlots()
 	return err
 
 def talkSchema() -> bool:
