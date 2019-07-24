@@ -53,36 +53,43 @@ def dialogSchema() -> bool:
 		print(colored('THERE ARE STILL SOME DIALOG FILES THAT NEEDS SOME LOVE\n\n', 'red'))
 	return err
 
+def getSlots(file) -> dict:
+	slots = {}
+	with open(file) as json_file:
+		jsonDict = json.load(json_file)
+		for slot in jsonDict['slotTypes']:
+			slots[slot['name']] = slot
+	return slots
+    
+def getTrainingExamples(file) -> dict:
+	trainingExamples = {}
+	with open(file) as json_file:
+		jsonDict = json.load(json_file)
+		for intent in jsonDict['intents']:
+			trainingExamples[intent['name']] = intent['utterances']
+	return trainingExamples
+
 def dialogSlots() -> bool:
 	print(colored('SEARCHING FOR MISSING SLOTS IN DIALOG TEMPLATES', 'blue'))
 	err = 0
 	for module in glob.glob(module_path + '/PublishedModules/*/*/dialogTemplate'):
 		all_slots = {}
 		for file in glob.glob(module + '/*.json'):
-			with open(file) as json_file:
-				jsonDict = json.load(json_file)
-				slots = jsonDict['slotTypes']
-				for slot in slots:
-					all_slots[slot['name']] = slot
+			all_slots.update(getSlots(file))
 
 		for file in glob.glob(module + '/*.json'):
 			missing = []
-			with open(file) as json_file:
-				jsonDict = json.load(json_file)
-				slots = jsonDict['slotTypes']
-				slotDict = {}
-				for slot in slots:
-					slotDict[slot['name']] = slot
-				missing = [k for k, v in all_slots.items() if k not in slotDict]
+			slotDict = getSlots(file)
+			missing = [k for k, v in all_slots.items() if k not in slotDict]
 
-				if not missing:
-					print('{:s} valid'.format(file))
-				else:
-					err = 1
-					sys.stderr.write(colored('Missing slots in {:s}:\n'.format(file), 'green'))
-					for key in missing:
-						sys.stderr.write('  - {:s}\n'.format(key))
-					print()
+			if not missing:
+				print('{:s} valid'.format(file))
+			else:
+				err = 1
+				sys.stderr.write(colored('Missing slots in {:s}:\n'.format(file), 'green'))
+				for key in missing:
+					sys.stderr.write('  - {:s}\n'.format(key))
+				print()
 
 	if not err:
 		print(colored('NO MISSING SLOTS\n\n', 'green'))
