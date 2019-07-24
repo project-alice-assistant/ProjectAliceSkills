@@ -61,28 +61,28 @@ def dialogSlots() -> bool:
 		for file in glob.glob(module + '/*.json'):
 			with open(file) as json_file:
 				jsonDict = json.load(json_file)
-		slots = jsonDict['slotTypes']
-		for slot in slots:
-			all_slots[slot['name']] = slot
+				slots = jsonDict['slotTypes']
+				for slot in slots:
+					all_slots[slot['name']] = slot
 
 		for file in glob.glob(module + '/*.json'):
 			missing = []
 			with open(file) as json_file:
 				jsonDict = json.load(json_file)
-		slots = jsonDict['slotTypes']
-		slotDict = {}
-		for slot in slots:
-			slotDict[slot['name']] = slot
-			missing = {k: v for k, v in all_slots.items() if k not in slotDict}
+				slots = jsonDict['slotTypes']
+				slotDict = []
+				for slot in slots:
+					slotDict[slot['name']] = slot
+				missing = [k for k, v in all_slots.items() if k not in slotDict]
 
-			if not missing.keys():
-				print('{:s} valid'.format(file))
-			else:
-				err = 1
-				sys.stderr.write(colored('Missing slots in {:s}:\n'.format(file), 'green'))
-				for key in missing.keys():
-					sys.stderr.write('  - {:s}\n'.format(key))
-				print()
+				if not missing:
+					print('{:s} valid'.format(file))
+				else:
+					err = 1
+					sys.stderr.write(colored('Missing slots in {:s}:\n'.format(file), 'green'))
+					for key in missing:
+						sys.stderr.write('  - {:s}\n'.format(key))
+					print()
 
 	if not err:
 		print(colored('NO MISSING SLOTS\n\n', 'green'))
@@ -118,14 +118,14 @@ def talkTypes() -> bool:
 			missing = []
 			with open(file) as json_file:
 				jsonDict = json.load(json_file)
-				missing = {k: v for k, v in all_keys.items() if k not in jsonDict}
+				missing = [k for k, v in all_keys.items() if k not in jsonDict]
 
-			if not missing.keys():
+			if not missing:
 				print('{:s} valid'.format(file))
 			else:
 				err = 1
 				sys.stderr.write(colored('Missing language keys in {:s}:\n'.format(file), 'green'))
-				for key in missing.keys():
+				for key in missing:
 					sys.stderr.write('  - {:s}\n'.format(key))
 				print()
 
