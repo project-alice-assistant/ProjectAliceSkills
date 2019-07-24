@@ -69,12 +69,11 @@ def dialogSlots() -> bool:
 			missing = []
 			with open(file) as json_file:
 				jsonDict = json.load(json_file)
-                slots = jsonDict['slotTypes']
-                slotDict = []
-                for slot in slots:
-                    slotDict[slots['name']] = slot
-
-				missing = {k: v for k, v in all_keys.items() if k not in slotDict}
+		slots = jsonDict['slotTypes']
+		slotDict = []
+		for slot in slots:
+			slotDict[slots['name']] = slot
+			missing = {k: v for k, v in all_keys.items() if k not in slotDict}
 
 			if not missing.keys():
 				print('{:s} valid'.format(file))
