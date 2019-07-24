@@ -73,7 +73,7 @@ def dialogSlots() -> bool:
 		slotDict = {}
 		for slot in slots:
 			slotDict[slot['name']] = slot
-			missing = {k: v for k, v in all_keys.items() if k not in slotDict}
+			missing = {k: v for k, v in all_slots.items() if k not in slotDict}
 
 			if not missing.keys():
 				print('{:s} valid'.format(file))
