@@ -45,12 +45,7 @@ class RandomUselessFacts(Module):
 
 	def getAFact(self, ttype: str) -> str:
 		# Try to fetch a fact
-		# Do no try to request a random fact with language=en, it bugs and may return german
-		if self.activeLanguage() == 'en':
-			req = requests.request(method='GET', url='http://randomuselessfact.appspot.com/{}.json'.format(ttype))
-		else:
-			req = requests.request(method='GET', url='http://randomuselessfact.appspot.com/{}.json?language={}'.format(ttype, self.activeLanguage))
-
+		req = requests.request(method='GET', url='https://uselessfacts.jsph.pl/{}.json?language={}'.format(ttype, self.activeLanguage()))
 		if req.status_code != 200:
 			# Failed, maybe the server is offline?
 			return self.randomTalk('error')
