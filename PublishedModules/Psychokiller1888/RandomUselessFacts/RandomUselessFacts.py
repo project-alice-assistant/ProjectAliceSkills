@@ -45,10 +45,10 @@ class RandomUselessFacts(Module):
 
 	def getAFact(self, ttype: str) -> str:
 		# Try to fetch a fact
-		req = requests.request(method='GET', url='http://randomuselessfact.appspot.com/{}.json?language={}'.format(ttype, managers.LanguageManager.activeLanguage))
+		req = requests.request(method='GET', url='http://randomuselessfact.appspot.com/{}.json?language={}'.format(ttype, self.activeLanguage))
 		if req.status_code != 200:
 			# Failed, maybe the server is offline?
-			return managers.TalkManager.randomTalk('error')
+			return self.randomTalk('error')
 		else:
 			# Let's load the randomTalk and unescape it as uselessfact seems to encode special characters for german
 			return html.unescape(json.loads(req.content)['text'])
