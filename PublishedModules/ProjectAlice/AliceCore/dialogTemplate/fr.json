@@ -4,6 +4,42 @@
 	"description": "Contient les discussions qui permettent de gérer l'administration globale d'Alice",
 	"slotTypes": [
 		{
+			"name": "More",
+			"matchingStrictness": null,
+			"automaticallyExtensible": true,
+			"useSynonyms": true,
+			"values": [
+				{
+					"value": "plus",
+					"synonyms": [
+						"un peu plus",
+						"augmente",
+						"beaucoup plus",
+						"plus grand",
+						"plus long"
+					]
+				}
+			]
+		},
+		{
+			"name": "Less",
+			"matchingStrictness": null,
+			"automaticallyExtensible": true,
+			"useSynonyms": true,
+			"values": [
+				{
+					"value": "moins",
+					"synonyms": [
+						"un peu moins",
+						"diminue",
+						"beaucoup moins",
+						"plus petit",
+						"plus court"
+					]
+				}
+			]
+		},
+		{
 			"name": "Languages",
 			"matchingStrictness": null,
 			"automaticallyExtensible": true,
@@ -5495,6 +5531,32 @@
 			]
 		},
 		{
+			"name": "AnswerName",
+			"description": "",
+			"enabledByDefault": false,
+			"utterances": [
+				"{john:=>Name}",
+				"{jane:=>Name}",
+				"{doe:=>Name}",
+				"salut je suis {Laurent:=>Name}",
+				"je m'appelle {Mike:=>Name}",
+				"mon nom est {Natalija:=>Name}",
+				"je suis {Sven:=>Name}",
+				"tu peux m'appeler {Arthur:=>Name}",
+				"je me nomme {Chris:=>Name}",
+				"{Kim:=>Name} est mon nom"
+			],
+			"slots": [
+				{
+					"name": "Name",
+					"description": null,
+					"required": false,
+					"type": "Name",
+					"missingQuestion": ""
+				}
+			]
+		},
+		{
 			"name": "SpellWord",
 			"description": "L'utilisateur épelle un mot",
 			"enabledByDefault": false,
@@ -5517,6 +5579,47 @@
 					"missingQuestion": ""
 				}
 			]
+		},
+		{
+			"name": "AnswerWakewordCutting",
+			"description": "L'utilisateur peut demander à Alice de raccourcir/rallonger le wakework",
+			"enabledByDefault": false,
+			"utterances": [
+				"{plus:=>More}",
+				"coupe un peu {plus:=>More}",
+				"plus {petit:=>Less}",
+				"peux-tu le raccourcir un peu {plus:=>More}",
+				"c'est {trop court:=>Less}",
+				"fait le plus {long:=>More}",
+				"ça doit être plus {long:=>More}",
+				"essaye plus {court:=>Less} s'il te plaît"
+			],
+			"slots": [
+				{
+					"name": "More",
+					"description": null,
+					"required": false,
+					"type": "More",
+					"missingQuestion": ""
+				},
+				{
+					"name": "Less",
+					"description": null,
+					"required": false,
+					"type": "Less",
+					"missingQuestion": ""
+				}
+			]
+		},
+		{
+			"name": "CallWakeword",
+			"description": "L'utilisateur énonce le wakeword",
+			"enabledByDefault": false,
+			"utterances": [
+				"Hey Alice",
+				"hey alice"
+			],
+			"slots": []
 		}
 	]
 }
