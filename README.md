@@ -10,7 +10,7 @@ To do so, fork this repository and start adding your modules in a sub directory 
 
 
 ## Testing
-The Syntax of the `dialogTemplates`, the `talk files` and the `.install` file of all Modules is tested by travis using json Schemas. Further information on the tests and how to test the files locally can be found in [Tools/JsonValidator](https://github.com/project-alice-powered-by-snips/ProjectAliceModules/tree/master/Tools/JsonValidator).
+Syntax of `dialogTemplate.json`, `talk.json` and `Module.install` files of all Modules is tested by travis using json Schemas. Further information on the tests and how to test the files locally can be found in [Tools/JsonValidator](https://github.com/project-alice-powered-by-snips/ProjectAliceModules/tree/master/Tools/JsonValidator).
 
 
 ## Auto modules creation
