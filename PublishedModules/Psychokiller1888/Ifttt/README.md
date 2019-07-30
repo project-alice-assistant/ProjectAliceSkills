@@ -2,7 +2,7 @@
 
 ### Download
 ```bash
-wget http://bit.ly/????????? -O ~/ProjectAlice/system/moduleInstallTickets/Ifttt.install`
+wget http://modules.projectalice.ch/ifttt -O ~/ProjectAlice/system/moduleInstallTickets/Ifttt.install
 ```
 
 ### Description
