@@ -1,0 +1,21 @@
+{
+	"name": "Ifttt",
+	"version": 0.1,
+	"author": "Psychokiller1888",
+	"maintainers": [],
+	"desc": "Use ifttt services",
+	"aliceMinVersion": "",
+	"requirements": [],
+	"conditions": {
+		"lang": [
+			"en",
+			"fr",
+			"de",
+			"es",
+			"it",
+			"jp",
+			"kr"
+		],
+		"online": true
+	}
+}
