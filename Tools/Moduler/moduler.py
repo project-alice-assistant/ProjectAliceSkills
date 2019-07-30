@@ -164,7 +164,7 @@ README = '''# %moduleName%
 
 ### Download
 ```bash
-wget http://bit.ly/????????? -O ~/ProjectAlice/system/moduleInstallTickets/%moduleName%.install`
+wget http://bit.ly/????????? -O ~/ProjectAlice/system/moduleInstallTickets/%moduleName%.install
 ```
 
 ### Description
