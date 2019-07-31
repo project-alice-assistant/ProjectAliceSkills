@@ -1,9 +1,16 @@
 # PhilipsHue
 
 ### Download
+
+##### > WGET method
 ```bash
 wget http://modules.projectalice.ch/PhilipsHue \
 -O ~/ProjectAlice/system/moduleInstallTickets/PhilipsHue.install
+```
+
+##### > Alice CLI method
+```bash
+alice module:install Pscyhokiller1888/PhilipsHue
 ```
 
 ### Desc
