@@ -1,9 +1,16 @@
 # Tasmota
 
 ### Download
+
+##### > WGET method
 ```bash
 wget http://modules.projectalice.ch/Tasmota \
 -O ~/ProjectAlice/system/moduleInstallTickets/Tasmota.install
+```
+
+##### > Alice CLI method
+```bash
+alice module:install Pscyhokiller1888/Tasmota
 ```
 
 ### Description
