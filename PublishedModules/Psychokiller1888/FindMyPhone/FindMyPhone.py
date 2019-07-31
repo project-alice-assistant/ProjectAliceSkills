@@ -35,7 +35,7 @@ class FindMyPhone(Module):
 		sessionId = session.sessionId
 		slots = session.slots
 
-		if session.user == 'unknown' and 'who' not in slots.keys() and 'name' not in slots.keys():
+		if session.user == 'unknown' and 'Who' not in slots and 'Name' not in slots:
 			managers.MqttServer.continueDialog(
 				sessionId=sessionId,
 				text=self.randomTalk('whosPhone'),
@@ -43,21 +43,21 @@ class FindMyPhone(Module):
 				previousIntent=self._INTENT_FIND_PHONE
 			)
 		else:
-			if 'who' in slots.keys():
-				who = slots['who']
-			elif 'name' in slots.keys():
-				who = slots['name']
+			if 'Who' in slots:
+				who = slots['Who']
+			elif 'Name' in slots:
+				who = slots['Name']
 			else:
 				who = session.user
 
-				answer = managers.ModuleManager.getModuleInstance('Ifttt').sendRequest(endPoint='locatePhone', user=who)
-				if answer == IftttException.NOT_CONNECTED:
-					managers.MqttServer.endTalk(sessionId=sessionId, text=self.randomTalk('notConnected'))
-				elif answer == IftttException.ERROR or answer == IftttException.BAD_REQUEST:
-					managers.MqttServer.endTalk(sessionId=sessionId, text=self.randomTalk('error'))
-				elif answer == IftttException.NO_USER:
-					managers.MqttServer.endTalk(sessionId=sessionId, text=self.randomTalk('unknown').format(who))
-				else:
-					managers.MqttServer.endTalk(sessionId=sessionId, text=self.randomTalk('aknowledge'))
+			answer = managers.ModuleManager.getModuleInstance('Ifttt').sendRequest(endPoint='locatePhone', user=who)
+			if answer == IftttException.NOT_CONNECTED:
+				managers.MqttServer.endTalk(sessionId=sessionId, text=self.randomTalk('notConnected'))
+			elif answer == IftttException.ERROR or answer == IftttException.BAD_REQUEST:
+				managers.MqttServer.endTalk(sessionId=sessionId, text=self.randomTalk('error'))
+			elif answer == IftttException.NO_USER:
+				managers.MqttServer.endTalk(sessionId=sessionId, text=self.randomTalk('unknown').format(who))
+			else:
+				managers.MqttServer.endTalk(sessionId=sessionId, text=self.randomTalk('aknowledge'))
 
 		return True

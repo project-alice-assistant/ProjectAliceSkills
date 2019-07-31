@@ -42,10 +42,10 @@ class Ifttt(Module):
 			return IftttException.NOT_CONNECTED
 
 		try:
-			result = self.databaseFetch(tableName='ifttt', query='SELECT key FROM :__table__ WHERE user = :user', values={'user': user.lower()})
+			result = self.databaseFetch(tableName='ifttt', query='SELECT * FROM :__table__ WHERE user = :user', values={'user': user.lower()})
 
 			if result:
-				answer = requests.post(url='https://maker.ifttt.com/trigger/{}/with/key/{}'.format(endPoint, result[0]['key']))
+				answer = requests.post(url='https://maker.ifttt.com/trigger/{}/with/key/{}'.format(endPoint, result['key']))
 				return IftttException.OK if answer.status_code == 200 else IftttException.BAD_REQUEST
 
 			return IftttException.NO_USER

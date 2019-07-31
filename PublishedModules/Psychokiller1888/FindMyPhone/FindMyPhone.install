@@ -1,6 +1,6 @@
 {
 	"name": "FindMyPhone",
-	"version": 0.2,
+	"version": 0.3,
 	"author": "Psychokiller1888",
 	"maintainers": [],
 	"desc": "Using ifttt one can ask Alice to find his phone. sets the ring tone at max volume and initiates a call on it.",

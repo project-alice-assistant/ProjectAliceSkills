@@ -15,7 +15,7 @@ alice module:install Pscyhokiller1888/ifttt
 ### Description
 Use ifttt services
 
-- Version: 0.1
+- Version: 0.2
 - Author: Psychokiller1888
 - Maintainers: N/A
 - Alice minimum version: N/A
