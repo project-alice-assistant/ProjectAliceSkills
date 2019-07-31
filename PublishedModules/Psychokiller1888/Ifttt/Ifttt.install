@@ -7,15 +7,6 @@
 	"aliceMinVersion": "",
 	"requirements": [],
 	"conditions": {
-		"lang": [
-			"en",
-			"fr",
-			"de",
-			"es",
-			"it",
-			"jp",
-			"kr"
-		],
 		"online": true
 	}
 }

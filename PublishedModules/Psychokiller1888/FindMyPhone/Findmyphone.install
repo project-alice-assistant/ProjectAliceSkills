@@ -1,0 +1,22 @@
+{
+	"name": "Findmyphone",
+	"version": 0.1,
+	"author": "Psychokiller1888",
+	"maintainers": [],
+	"desc": "Using ifttt one can ask Alice to find his phone. sets the ring tone at max volume and initiates a call on it.",
+	"aliceMinVersion": "",
+	"requirements": [],
+	"conditions": {
+		"lang": [
+			"en",
+			"fr"
+		],
+		"module": [
+			{
+				"name": "Ifttt",
+				"url": "http://modules.projectalice.ch/ifttt"
+			}
+		],
+		"online": true
+	}
+}
