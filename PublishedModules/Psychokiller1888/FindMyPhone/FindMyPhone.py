@@ -35,7 +35,7 @@ class FindMyPhone(Module):
 		sessionId = session.sessionId
 		slots = session.slots
 
-		if session.user == 'unknown' and 'who' not in slots.keys():
+		if session.user == 'unknown' and 'who' not in slots.keys() and 'name' not in slots.keys():
 			managers.MqttServer.continueDialog(
 				sessionId=sessionId,
 				text=self.randomTalk('whosPhone'),
