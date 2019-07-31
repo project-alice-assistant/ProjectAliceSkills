@@ -163,8 +163,15 @@ TALKS = '''{
 README = '''# %moduleName%
 
 ### Download
+
+##### > WGET method
 ```bash
 wget http://bit.ly/????????? -O ~/ProjectAlice/system/moduleInstallTickets/%moduleName%.install
+```
+
+##### > Alice CLI method
+```bash
+alice module:install %username%/%moduleName%
 ```
 
 ### Description
