@@ -1,9 +1,14 @@
 # Customisation
 
-### Download
+##### > WGET method
 ```bash
 wget http://modules.projectalice.ch/Customisation \
 -O ~/ProjectAlice/system/moduleInstallTickets/Customisation.install
+```
+
+##### > Alice CLI method
+```bash
+alice module:install ProjectAlice/Customisation
 ```
 
 ### Description
