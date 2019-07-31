@@ -1,9 +1,16 @@
 # Wikipedia
 
 ### Download
+
+##### > WGET method
 ```bash
 wget http://modules.projectalice.ch/Wikipedia \
 -O ~/ProjectAlice/system/moduleInstallTickets/Wikipedia.install
+```
+
+##### > Alice CLI method
+```bash
+alice module:install Pscyhokiller1888/Wikipedia
 ```
 
 ### Description
