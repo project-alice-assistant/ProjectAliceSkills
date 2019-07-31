@@ -1,9 +1,16 @@
 # Calculator
 
 ### Download
+
+##### > WGET method
 ```bash
 wget modules.projectalice.ch/Calculator \
 -O ~/ProjectAlice/system/moduleInstallTickets/Calculator.install
+```
+
+##### > Alice CLI method
+```bash
+alice module:install Pscyhokiller1888/Calculator
 ```
 
 ### Description
