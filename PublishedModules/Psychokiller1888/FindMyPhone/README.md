@@ -1,4 +1,4 @@
-# Findmyphone
+# FindMyPhone
 
 ### Download
 

@@ -1,6 +1,6 @@
 {
-    "module": "Findmyphone",
-    "icon": "time",
+    "module": "FindMyPhone",
+    "icon": "direction",
     "description": "Using ifttt one can ask alice to find his phone. sets the ring tone at max volume and initiates a call on it.",
     "slotTypes": [
         {
