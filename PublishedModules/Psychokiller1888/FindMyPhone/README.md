@@ -4,7 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget http://modules.projectalice.ch/FindMyPhone -O ~/ProjectAlice/system/moduleInstallTickets/Findmyphone.install
+wget http://modules.projectalice.ch/FindMyPhone -O ~/ProjectAlice/system/moduleInstallTickets/FindMyPhone.install
 ```
 
 ##### > Alice CLI method
