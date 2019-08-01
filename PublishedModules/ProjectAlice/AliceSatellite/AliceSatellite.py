@@ -1,7 +1,4 @@
 # -*- coding: utf-8 -*-
-
-import json
-
 import core.base.Managers as managers
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
@@ -14,8 +11,8 @@ class AliceSatellite(Module):
 	_INTENT_CO2 = Intent('GetCo2Level')
 	_INTENT_PRESSURE = Intent('GetPressure')
 
-	_FEEDBACK_SENSORS = 'projectAlice/devices/alice/sensorsFeedback'
-	_DEVICE_DISCONNECTION = 'projectAlice/devices/alice/disconnection'
+	_FEEDBACK_SENSORS = 'projectalice/devices/alice/sensorsFeedback'
+	_DEVICE_DISCONNECTION = 'projectalice/devices/alice/disconnection'
 
 
 	def __init__(self):
@@ -44,15 +41,15 @@ class AliceSatellite(Module):
 
 
 	def onSleep(self):
-		self.broadcast('projectAlice/devices/sleep')
+		self.broadcast('projectalice/devices/sleep')
 
 
 	def onWakeup(self):
-		self.broadcast('projectAlice/devices/wakeup')
+		self.broadcast('projectalice/devices/wakeup')
 
 
 	def onGoingBed(self):
-		self.broadcast('projectAlice/devices/goingBed')
+		self.broadcast('projectalice/devices/goingBed')
 
 
 	def onFullMinute(self):
@@ -143,7 +140,7 @@ class AliceSatellite(Module):
 
 
 	def getSensorReadings(self):
-		self.broadcast('projectAlice/devices/alice/getSensors')
+		self.broadcast('projectalice/devices/alice/getSensors')
 
 
 	def temperatureAt(self, siteId: str) -> str:
@@ -163,9 +160,9 @@ class AliceSatellite(Module):
 
 
 	def restartDevice(self):
-		uids = managers.DeviceManager.getDeviceUidByType(deviceType=self.name, connectedOnly=True, onlyOne=False)
-		if not uids:
+		devices = managers.DeviceManager.getDevicesByType(deviceType=self.name, connectedOnly=True, onlyOne=False)
+		if not devices:
 			return
 
-		for uid in uids:
-			managers.MqttServer.publish(topic='projectAlice/devices/restart', payload=json.dumps({'uid': uid}))
+		for device in devices:
+			managers.MqttServer.publish(topic='projectalice/devices/restart', payload={'uid': device.uid})
