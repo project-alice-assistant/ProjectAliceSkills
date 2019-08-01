@@ -50,13 +50,18 @@ class FindMyPhone(Module):
 			else:
 				who = session.user
 
-			answer = managers.ModuleManager.getModuleInstance('Ifttt').sendRequest(endPoint='locatePhone', user=who)
+			module = self.getModuleInstance('Ifttt')
+			if not module:
+				managers.MqttServer.endTalk(sessionId=sessionId, text=self.randomTalk('error'))
+				return True
+
+			answer = module.sendRequest(endPoint='locatePhone', user=who)
 			if answer == IftttException.NOT_CONNECTED:
 				managers.MqttServer.endTalk(sessionId=sessionId, text=self.randomTalk('notConnected'))
 			elif answer == IftttException.ERROR or answer == IftttException.BAD_REQUEST:
 				managers.MqttServer.endTalk(sessionId=sessionId, text=self.randomTalk('error'))
 			elif answer == IftttException.NO_USER:
-				managers.MqttServer.endTalk(sessionId=sessionId, text=self.randomTalk('unknown').format(who))
+				managers.MqttServer.endTalk(sessionId=sessionId, text=self.randomTalk('unknown', replace=[who]))
 			else:
 				managers.MqttServer.endTalk(sessionId=sessionId, text=self.randomTalk('aknowledge'))
 
