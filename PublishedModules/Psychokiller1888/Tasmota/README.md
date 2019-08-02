@@ -16,7 +16,7 @@ alice module:install Pscyhokiller1888/Tasmota
 ### Description
 This module allows you to not only connect tasmota esp devices, but listen to them
 
-- Version: 1.2
+- Version: 1.3
 - Author: Psychokiller1888
 - Maintainers:
   - maxbachmann

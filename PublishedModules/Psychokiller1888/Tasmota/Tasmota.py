@@ -6,7 +6,7 @@ import core.base.Managers as managers
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
-from modulesDeprecated.Tasmota.TasmotaConfigs import TasmotaConfigs
+from core.device.model.TasmotaConfigs import TasmotaConfigs
 
 
 class Tasmota(Module):
