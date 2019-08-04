@@ -10,7 +10,7 @@ wget http://modules.projectalice.ch/IcanhazdadjokeDotNet \
 
 ##### > Alice CLI method
 ```bash
-alice module:install Pscyhokiller1888/IcanhazdadjokeDotNet
+alice module:install Psychokiller1888/IcanhazdadjokeDotNet
 ```
 
 ### Description
