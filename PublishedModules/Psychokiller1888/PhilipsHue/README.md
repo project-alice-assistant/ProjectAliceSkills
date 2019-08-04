@@ -10,7 +10,7 @@ wget http://modules.projectalice.ch/PhilipsHue \
 
 ##### > Alice CLI method
 ```bash
-alice module:install Pscyhokiller1888/PhilipsHue
+alice module:install Psychokiller1888/PhilipsHue
 ```
 
 ### Desc
