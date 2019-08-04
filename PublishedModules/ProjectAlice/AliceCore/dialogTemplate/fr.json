@@ -10,7 +10,7 @@
 			"useSynonyms": true,
 			"values": [
 				{
-					"value": "plus",
+					"value": "more",
 					"synonyms": [
 						"un peu plus",
 						"augmente",
@@ -28,7 +28,7 @@
 			"useSynonyms": true,
 			"values": [
 				{
-					"value": "moins",
+					"value": "less",
 					"synonyms": [
 						"un peu moins",
 						"diminue",
@@ -731,7 +731,7 @@
 			"useSynonyms": true,
 			"values": [
 				{
-					"value": "interrupteur",
+					"value": "switch",
 					"synonyms": [
 						"souitche"
 					]
