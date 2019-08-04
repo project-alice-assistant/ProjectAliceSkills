@@ -7,6 +7,9 @@
 	"aliceMinVersion": "",
 	"requirements": [],
 	"conditions": {
-		"online": true
+		"online": true,
+		"lang": [
+			"en"
+		]
 	}
 }
