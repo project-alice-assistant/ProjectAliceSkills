@@ -36,7 +36,16 @@
 				{
 					"value": "*",
 					"synonyms": [
+						"fois",
+						"que multiplie",
+						"multiplié par"
+					]
+				},
+				{
+					"value": "^",
+					"synonyms": [
 						"puissance",
+						"à l'exposant",
 						"exposant"
 					]
 				},
@@ -80,18 +89,18 @@
 			"description": "",
 			"enabledByDefault": true,
 			"utterances": [
-				"combien font { 115:=>Left } { +:=>Function } { 996:=>Right }",
-				"calcule { 196354:=>Left } { divisé par:=>Function } { 10359:=>Right }",
-				"quel est le résultat de { 9999:=>Left } { plus:=>Function } { 9999:=>Right }",
-				"calcule moi { 221:=>Left } { -:=>Function } { 196354:=>Right }",
-				"que fait { 10359:=>Left } { divisé par:=>Function } { 15:=>Right }",
-				"que font { 10359:=>Left } { que divise:=>Function} {15:=>Right}",
-				"combien vaut { 196354:=>Left } { /:=>Function } { 10359:=>Right }",
-				"dis moi combien fait { 10359:=>Left } { *:=>Function } { 96:=>Right }",
-				"{ subtract:=>Function } { 10359:=>Right }",
-				"quel est le résultat de { 115:=>Left } { +:=>Function } { 996:=>Right }",
-				"résultat de { 115:=>Left } { +:=>Function } { 996:=>Right }",
-				"quel est le résultat de { 115:=>Left } { +:=>Function } { 996:=>Right }, s'il te plait"
+				"combien font {115:=>Left} {+:=>Function} {996:=>Right}",
+				"calcule {196354:=>Left} {divisé par:=>Function} {10359:=>Right}",
+				"quel est le résultat de {9999:=>Left} { plus:=>Function} {9999:=>Right}",
+				"calcule moi {221:=>Left} {-:=>Function} {196354:=>Right}",
+				"que fait {10359:=>Left} {divisé par:=>Function} {15:=>Right}",
+				"que font {10359:=>Left} {que divise:=>Function} {15:=>Right}",
+				"combien vaut {196354:=>Left} {/:=>Function} {10359:=>Right}",
+				"dis moi combien fait {10359:=>Left} {*:=>Function} {96:=>Right}",
+				"{ subtract:=>Function} {10359:=>Right}",
+				"quel est le résultat de {115:=>Left} {+:=>Function} {996:=>Right}",
+				"résultat de {115:=>Left} {+:=>Function} {996:=>Right}",
+				"quel est le résultat de {115:=>Left} {+:=>Function} {996:=>Right}, s'il te plait"
 			],
 			"slots": [
 				{
