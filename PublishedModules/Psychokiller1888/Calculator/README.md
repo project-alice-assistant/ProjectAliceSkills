@@ -16,9 +16,10 @@ alice module:install Psychokiller1888/Calculator
 ### Description
 Do some calculation with alice
 
-- Version: 1.4
+- Version: 1.5
 - Author: Psychokiller1888
 - Maintainers:
+  - Jierka
   - maxbachmann
 - Alice minimum version: N/A
 - Conditions:
