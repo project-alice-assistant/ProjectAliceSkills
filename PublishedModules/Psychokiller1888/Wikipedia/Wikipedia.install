@@ -1,8 +1,8 @@
 {
 	"name": "Wikipedia",
-	"version": 1.2,
+	"version": 1.3,
 	"author": "Psychokiller1888",
-	"maintainers": [],
+	"maintainers": ["Jierka"],
 	"desc": "Allows one to find informations about a topic on wikipedia",
 	"aliceMinVersion": "",
 	"requirements": [
@@ -11,7 +11,8 @@
 	],
 	"conditions": {
 		"lang": [
-			"en"
+			"en",
+			"fr"
 		],
 		"online": true
 	}
