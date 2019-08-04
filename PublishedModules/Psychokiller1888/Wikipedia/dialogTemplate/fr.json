@@ -30,7 +30,16 @@
 				"donne moi des infos à sur les {planètes:=>What}",
 				"trouve des informations en ligne sur {mars:=>What}",
 				"j'ai besoin d'infos à propos des {chats:=>What}",
-				"peux-tu me trouver des infos à propos de l'{Amérique:=>What} sur {wikipedia:=>Engine}"				
+				"peux-tu me trouver des infos à propos de l'{Amérique:=>What} sur {wikipedia:=>Engine}",
+				"peux-tu me trouver des infos sur internet",
+				"peux-tu me trouver des infos en ligne",
+				"trouve des infos en ligne",
+				"trouve des infos sur internet",
+				"trouve moi des infos sur internet",
+				"please get some informations online",
+				"j'ai besoin d'une information",
+				"cherche sur internet",
+				"trouve sur le net"		
 			],
 			"slots": [
 				{
