@@ -16,10 +16,11 @@ alice module:install Psychokiller1888/Wikipedia
 ### Description
 Allows one to find informations about a topic on wikipedia
 
-- Version: 1.2
+- Version: 1.3
 - Author: Psychokiller1888
-- Maintainers: N/A
+- Maintainers: Jierka
 - Alice minimum version: N/A
 - Conditions:
   - en
+  - fr
 - Requirements: wikipedia
