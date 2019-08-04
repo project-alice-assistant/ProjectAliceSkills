@@ -5392,8 +5392,8 @@
 			"description": "L'utilisateur demande à Alice de gérer un nouvel appareil",
 			"enabledByDefault": true,
 			"utterances": [
-				"ajouter un nouvel {interrupteur:EspType} {tasmota:=>Hardware} dans {la chambre:=>Room}",
-				"ajouter un nouvel {interrupteur:EspType} de type {tasmota:=>Hardware} dans {la cuisine:=>Room}",
+				"ajouter un nouvel {interrupteur:=>EspType} {tasmota:=>Hardware} dans {la chambre:=>Room}",
+				"ajouter un nouvel {interrupteur:=>EspType} de type {tasmota:=>Hardware} dans {la cuisine:=>Room}",
 				"ajouter un {tasmota:=>Hardware} de type {switch:=>EspType} dans la {salle de bain:=>Room}",
 				"ajouter un {tasmota:=>Hardware} de type {switch:=>EspType} dans la {salle de bain:=>Room} s'il te plaît",
 				"j'aimerais ajouter un {tasmota:=>Hardware} dans la {salle de bain:=>Room}",
