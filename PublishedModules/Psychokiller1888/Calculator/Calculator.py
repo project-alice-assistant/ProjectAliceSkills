@@ -54,7 +54,7 @@ class Calculator(Module):
 				managers.MqttServer.continueDialog(sessionId=sessionId, text=managers.TalkManager.randomTalk('notUnderstood'), client=siteId)
 				return True
 
-			answer = str(result).rstrip('.0')
+			answer = str(int(result)) if result % 1 == 0 else str(result)
 
 			managers.MqttServer.endTalk(sessionId=sessionId, text=answer)
 
