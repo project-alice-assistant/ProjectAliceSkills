@@ -10,7 +10,7 @@ wget http://modules.projectalice.ch/RandomUselessFacts \
 
 ##### > Alice CLI method
 ```bash
-alice module:install Pscyhokiller1888/RandomUselessFacts
+alice module:install Psychokiller1888/RandomUselessFacts
 ```
 
 ### Description
