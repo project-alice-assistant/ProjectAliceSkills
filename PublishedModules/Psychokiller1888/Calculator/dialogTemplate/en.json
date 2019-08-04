@@ -34,7 +34,15 @@
 				{
 					"value": "*",
 					"synonyms": [
-						"power"
+						"times",
+						"mutiply"
+					]
+				},
+				{
+					"value": "^",
+					"synonyms": [
+						"power",
+						"to the power"
 					]
 				},
 				{
