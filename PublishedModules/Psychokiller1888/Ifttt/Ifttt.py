@@ -37,7 +37,7 @@ class Ifttt(Module):
 
 
 	# noinspection SqlResolve
-	def sendRequest(self, endPoint: str, user: str) -> IftttException:
+	def sendRequest(self, endPoint: str, user: str, siteId: str) -> IftttException:
 		if not managers.InternetManager.online:
 			return IftttException.NOT_CONNECTED
 
