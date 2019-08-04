@@ -24,4 +24,5 @@ Do some calculation with alice
 - Conditions:
   - en
   - de
+	- fr
 - Requirements: N/A
