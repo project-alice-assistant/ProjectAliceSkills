@@ -10,7 +10,7 @@ wget http://modules.projectalice.ch/Wikipedia \
 
 ##### > Alice CLI method
 ```bash
-alice module:install Pscyhokiller1888/Wikipedia
+alice module:install Psychokiller1888/Wikipedia
 ```
 
 ### Description
