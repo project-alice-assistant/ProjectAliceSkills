@@ -10,7 +10,7 @@ wget http://bit.ly/DateDayTimeYear \
 
 ##### > Alice CLI method
 ```bash
-alice module:install Pscyhokiller1888/DateDayTimeYear
+alice module:install Psychokiller1888/DateDayTimeYear
 ```
 
 ### Description
