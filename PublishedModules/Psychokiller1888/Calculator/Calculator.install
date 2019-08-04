@@ -3,7 +3,8 @@
 	"version": 1.3,
 	"author": "Psychokiller1888",
 	"maintainers": [
-		"maxbachmann"
+		"maxbachmann",
+		"Jierka"
 	],
 	"desc": "Do some calculation with alice",
 	"aliceMinVersion": "",
