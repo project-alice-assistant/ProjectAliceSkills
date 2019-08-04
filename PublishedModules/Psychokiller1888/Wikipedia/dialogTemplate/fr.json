@@ -30,7 +30,7 @@
 				"donne moi des infos à sur les {planètes:=>What}",
 				"trouve des informations en ligne sur {mars:=>What}",
 				"j'ai besoin d'infos à propos des {chats:=>What}",
-				"peux-tu me trouver des infos à propos de l'{Amérique:=>What} sur {wikipedia:=>Engine}",				
+				"peux-tu me trouver des infos à propos de l'{Amérique:=>What} sur {wikipedia:=>Engine}"				
 			],
 			"slots": [
 				{
