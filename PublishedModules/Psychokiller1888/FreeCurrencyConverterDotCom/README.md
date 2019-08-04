@@ -10,7 +10,7 @@ wget http://modules.projectalice.ch/FreeCurrencyConverterDotCom \
 
 ##### > Alice CLI method
 ```bash
-alice module:install Pscyhokiller1888/FreeCurrencyConverterDotCom
+alice module:install Psychokiller1888/FreeCurrencyConverterDotCom
 ```
 
 ### Description
