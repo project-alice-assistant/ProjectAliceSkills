@@ -52,7 +52,8 @@
 				{
 					"value": "square root",
 					"synonyms": [
-						"racine carré"
+						"racine carré",
+						"racine carrée"
 					]
 				},
 				{
@@ -97,10 +98,12 @@
 				"que font {10359:=>Left} {que divise:=>Function} {15:=>Right}",
 				"combien vaut {196354:=>Left} {/:=>Function} {10359:=>Right}",
 				"dis moi combien fait {10359:=>Left} {*:=>Function} {96:=>Right}",
-				"{ subtract:=>Function} {10359:=>Right}",
+				"{soustrait:=>Function} {10359:=>Right}",
 				"quel est le résultat de {115:=>Left} {+:=>Function} {996:=>Right}",
 				"résultat de {115:=>Left} {+:=>Function} {996:=>Right}",
-				"quel est le résultat de {115:=>Left} {+:=>Function} {996:=>Right}, s'il te plait"
+				"quel est le résultat de {115:=>Left} {+:=>Function} {996:=>Right}, s'il te plait",
+				"{racine carré:=>Function} de {56:=>Left}",
+				"donne moi le {sinus:=>Function} de {22:=>Left}"
 			],
 			"slots": [
 				{

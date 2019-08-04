@@ -74,6 +74,12 @@ class Calculator(Module):
 			result = math.sqrt(left)
 		elif func == 'modulo':
 			result = left % right
+		elif func == 'sine':
+			result = round(math.sin(left), 3)
+		elif func == 'cosine':
+			result = round(math.cos(left), 3)
+		elif func == 'tangent':
+			result = round(math.tan(left), 3)
 		else:
 			result = 'not supported'
 

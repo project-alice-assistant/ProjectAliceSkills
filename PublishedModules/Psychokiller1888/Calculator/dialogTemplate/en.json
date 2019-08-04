@@ -107,7 +107,9 @@
 				"please calculate {196354:=>Left} {/:=>Function} {10359:=>Right}",
 				"please tell me what's {10359:=>Left} {*:=>Function} {96:=>Right}",
 				"please tell me what is {6634:=>Left} {minus:=>Function} {221:=>Right}",
-				"please {subtract:=>Function} {10359:=>Right}"
+				"please {subtract:=>Function} {10359:=>Right}",
+				"{square root:=>Function} of {76:=>Left}",
+				"what's the {sine:=>Function} of {23:=>Left}"
 			],
 			"slots": [
 				{
