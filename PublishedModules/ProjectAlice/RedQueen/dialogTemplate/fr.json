@@ -81,14 +81,16 @@
 			"useSynonyms": true,
 			"values": [
 				{
-					"value": "je",
+					"value": "i",
 					"synonyms": [
+						"je",
 						"moi"
 					]
 				},
 				{
-					"value": "nous",
+					"value": "we",
 					"synonyms": [
+						"nous",
 						"on"
 					]
 				}
