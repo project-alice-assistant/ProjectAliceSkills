@@ -16,7 +16,6 @@ class LocalButtonPress(Module):
 
 	_INTENT_BUTTON_ON = Intent('DoButtonOn')
 	_INTENT_BUTTON_OFF = Intent('DoButtonOff')
-	_LIGHT_PIN = 4
 
 
 	def __init__(self):
@@ -25,11 +24,14 @@ class LocalButtonPress(Module):
 			self._INTENT_BUTTON_OFF
 		]
 
-		GPIO.setmode(GPIO.BCM)
-		GPIO.setup(self._LIGHT_PIN, GPIO.OUT)
-		GPIO.output(self._LIGHT_PIN, GPIO.LOW)
-
 		super().__init__(self._SUPPORTED_INTENTS)
+
+		self._gpioPin = self.getConfig('gpioPin')
+
+		GPIO.setmode(GPIO.BCM)
+		GPIO.setwarnings(False)
+		GPIO.setup(self._gpioPin, GPIO.OUT)
+		GPIO.output(self._gpioPin, GPIO.LOW)
 
 
 	def onMessage(self, intent: str, session: DialogSession) -> bool:
@@ -37,11 +39,11 @@ class LocalButtonPress(Module):
 			return False
 
 		if intent == self._INTENT_BUTTON_ON:
-			GPIO.output(self._LIGHT_PIN, GPIO.HIGH)
+			GPIO.output(self._gpioPin, GPIO.HIGH)
 			managers.MqttServer.endTalk(session.sessionId, managers.TalkManager.randomTalk('DoButtonOn'))
 
 		elif intent == self._INTENT_BUTTON_OFF:
-			GPIO.output(self._LIGHT_PIN, GPIO.LOW)
+			GPIO.output(self._gpioPin, GPIO.LOW)
 			managers.MqttServer.endTalk(session.sessionId, managers.TalkManager.randomTalk('DoButtonOff'))
 
 		return True
