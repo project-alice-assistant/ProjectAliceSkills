@@ -754,8 +754,9 @@
 			"useSynonyms": true,
 			"values": [
 				{
-					"value": "oui",
+					"value": "yes",
 					"synonyms": [
+						"oui",
 						"yep",
 						"affirmatif",
 						"ouais",
