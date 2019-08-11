@@ -253,7 +253,7 @@
 	},
 	"whatESP": {
 		"default": [
-			"Et quel genre d'ESP? Bouton, PIR, etc?"
+			"Et quel genre d'ESP? Bouton, PIR, et cetera?"
 		]
 	},
 	"connectESPForFlashing": {

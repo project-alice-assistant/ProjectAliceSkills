@@ -257,7 +257,7 @@
 	},
 	"whatESP": {
 		"default": [
-			"And what kind of ESP device? Switch, PIR, etc?"
+			"And what kind of ESP device? Switch, PIR, et cetera?"
 		]
 	},
 	"connectESPForFlashing": {
