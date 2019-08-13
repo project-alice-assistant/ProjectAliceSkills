@@ -59,15 +59,14 @@ class InternationalSpaceStation(Module):
 
 	def getAstronauts(self) -> str:
 		data = self.queryApi('http://api.open-notify.org/astros.json')
-	
 		amount = data['number']
+
 		if not amount:
 			return managers.TalkManager.getrandomTalk('noAstronauts')
 		if amount == 1:
 			return managers.TalkManager.randomTalk(module=self.name, talk='oneAstronaut').format(
 				data['people'][0]['name']
 			)
-
 		return managers.TalkManager.randomTalk(module=self.name, talk='multipleAstronauts').format(
 				', '.join(str(x['name']) for x in data['people'][:-1]),
 				data['people'][-1]['name'],
