@@ -42,12 +42,15 @@ class Astronauts(Module):
 				if not amount:
 					text = managers.TalkManager.getrandomTalk('noAstronauts')
 				elif amount == 1:
-					astronauts = data['people'][0]['name']
-					text = managers.TalkManager.randomTalk(module=self.name, talk='oneAstronaut').format(astronauts)
+					text = managers.TalkManager.randomTalk(module=self.name, talk='oneAstronaut').format(
+						data['people'][0]['name']
+					)
 				else:
-					astronauts = ', '.join(str(x['name']) for x in data['people'][:-1]) + ' and ' + data['people'][-1]['name']
-					text = managers.TalkManager.randomTalk(module=self.name, talk='multipleAstronauts').format(amount, astronauts)
-	
+					text = managers.TalkManager.randomTalk(module=self.name, talk='multipleAstronauts').format(
+						', '.join(str(x['name']) for x in data['people'][:-1]),
+						data['people'][-1]['name'],
+						amount
+					)
 				managers.MqttServer.endTalk(sessionId, text=text)
 			except Exception as e:
 				self._logger.error(e)

@@ -2,12 +2,22 @@
 	"noAstronauts": [
 		"There are currently no people in space"
 	],
-	"oneAstronaut": [
-		"Currently only {} is in space"
-	],
-	"multipleAstronauts": [
-		"Currently the {} astronauts {} are in space"
-	],
+	"oneAstronaut": {
+		"default": [
+			"Currently only {} is in space"
+		],
+		"short": [
+			"{}"
+		]
+	},
+	"multipleAstronauts": {
+		"default": [
+			"Currently the {2} astronauts {0} and {1} are in space"
+		],
+		"short": [
+			"{0} and {1}"
+		]
+	},
 	"noServer": [
 		"I can't reach the server, sorry",
 		"There seems to be a server problem"
