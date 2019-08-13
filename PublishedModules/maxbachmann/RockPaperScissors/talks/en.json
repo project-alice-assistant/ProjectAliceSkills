@@ -6,7 +6,7 @@
 	],
 	"answer": {
 		"default": [
-			"I selected {}"
+			"<s>Rock Paper Scissors. <break time=\"1000ms\"/> I selected {} </s>"
 		],
 		"short": [
 			"{}"
