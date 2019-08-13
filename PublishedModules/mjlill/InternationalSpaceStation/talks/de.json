@@ -1,0 +1,33 @@
+{
+	"issPosition": {
+		"default": [
+			"Aktuell ist die internationale Weltraumstation bei Breitengrad {0:.0f} und Längengrad {0:.0f}"
+		],
+		"short": [
+			"Breitengrad {0:.0f}, Längengrad {0:.0f}"
+		]
+	},
+	"noAstronauts": [
+		"Es ist zur Zeit niemand im Weltall"
+	],
+	"oneAstronaut": {
+		"default": [
+			"Aktuell ist nur {} im Weltall"
+		],
+		"short": [
+			"{}"
+		]
+	},
+	"multipleAstronauts": {
+		"default": [
+			"Aktuell sind die {2} Astronauten {0} und {1} im Weltall"
+		],
+		"short": [
+			"{0} und {1}"
+		]
+	},
+	"noServer": [
+		"Es tut mir Leid, aber ich kann den Server nicht erreichen",
+		"Es scheint ein Server Problem zu geben"
+	]
+}

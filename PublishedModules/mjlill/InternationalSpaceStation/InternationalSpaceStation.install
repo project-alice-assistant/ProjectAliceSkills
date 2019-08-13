@@ -1,0 +1,17 @@
+{
+	"name": "InternationalSpaceStation",
+	"version": 0.2,
+	"author": "mjlill",
+	"maintainers": [
+		 "maxbachmann"
+	],
+	"desc": "Inquire information about the international space station",
+	"aliceMinVersion": "",
+	"requirements": [],
+	"conditions": {
+		"lang": [
+			"en",
+			"de"
+		]
+	}
+}
