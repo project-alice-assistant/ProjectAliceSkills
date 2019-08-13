@@ -1,0 +1,26 @@
+{
+    "module": "Astronauts",
+    "icon": "lamp",
+    "description": "To inquire who is on the space station",
+    "slotTypes": [],
+    "intents": [
+            {
+                    "name": "Astronauts",
+                    "description": "User is asking for a list of current astronauts",
+                    "enabledByDefault": true,
+                    "utterances": [
+                            "who is on the space station",
+                            "who are the astronauts",
+                            "please list the astronauts",
+                            "please tell me who are the astronauts",
+                            "would you tell me who are the astronauts",
+                            "I would like the list of astronauts",
+                            "who is in space today",
+                            "please tell me who is in space today",
+                            "who are the space station astronauts",
+                            "who are the astronauts on the space station"
+                    ],
+                    "slots": []
+            }
+    ]
+}

@@ -1,0 +1,17 @@
+{
+	"name": "Astronauts",
+	"version": 0.1,
+	"author": "mjlill",
+	"maintainers": [
+		 "maxbachmann"
+	],
+	"desc": "Inquire a list of names of current astronauts",
+	"aliceMinVersion": "",
+	"requirements": [],
+	"conditions": {
+		"lang": [
+			"en",
+			"de"
+		]
+	}
+}
