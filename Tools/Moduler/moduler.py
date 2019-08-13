@@ -72,10 +72,10 @@ from core.dialog.model.DialogSession import DialogSession
 
 
 class %moduleName%(Module):
-    """
-    Author: %username%
-    Description: %description%
-    """
+	"""
+	Author: %username%
+	Description: %description%
+	"""
 
 	def __init__(self):
 		self._SUPPORTED_INTENTS	= [
