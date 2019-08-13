@@ -1,0 +1,15 @@
+{
+	"name": "RockPaperScissors",
+	"version": 0.1,
+	"author": "maxbachmann",
+	"maintainers": [],
+	"desc": "Play rock paper scissors",
+	"aliceMinVersion": "",
+	"requirements": [],
+	"conditions": {
+		"lang": [
+			"en",
+			"de"
+		]
+	}
+}
