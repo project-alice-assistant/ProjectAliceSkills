@@ -52,24 +52,22 @@ class InternationalSpaceStation(Module):
 	def getIssPosition(self) -> str:
 		data = self.queryApi('http://api.open-notify.org/iss-now.json')
 		location = data['iss_position']
-		return managers.TalkManager.randomTalk(module=self.name, talk='issPosition').format(
-			float(location['latitude']),
-			float(location['longitude'])
-		)
+		return self.randomTalk(text='issPosition', replace=[
+				float(location['latitude']),
+				float(location['longitude'])
+			])
 
 	def getAstronauts(self) -> str:
 		data = self.queryApi('http://api.open-notify.org/astros.json')
 		amount = data['number']
 
 		if not amount:
-			return managers.TalkManager.getrandomTalk('noAstronauts')
+			return self.randomTalk(text='noAstronauts')
 		if amount == 1:
-			return managers.TalkManager.randomTalk(module=self.name, talk='oneAstronaut').format(
-				data['people'][0]['name']
-			)
-		return managers.TalkManager.randomTalk(module=self.name, talk='multipleAstronauts').format(
+			return self.randomTalk(text='oneAstronaut', replace=[data['people'][0]['name']])
+		return self.randomTalk(text='multipleAstronauts', replace=[
 				', '.join(str(x['name']) for x in data['people'][:-1]),
 				data['people'][-1]['name'],
 				amount
-			)
+			])
 		
