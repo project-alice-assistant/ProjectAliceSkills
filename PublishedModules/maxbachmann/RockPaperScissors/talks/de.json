@@ -1,0 +1,15 @@
+{
+	"RockPaperScissors": [
+		"Schere",
+		"Stein",
+		"Papier"
+	],
+	"answer": {
+		"default": [
+			"Ich habe {} ausgewählt"
+		],
+		"short": [
+			"{}"
+		]
+	}
+}

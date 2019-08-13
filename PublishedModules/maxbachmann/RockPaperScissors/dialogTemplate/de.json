@@ -1,0 +1,21 @@
+{
+	"module": "RockPaperScissors",
+	"icon": "lamp",
+	"description": "Spiel Schere, Stein, Papier",
+	"slotTypes": [],
+	"intents": [
+		{
+			"name": "RockPaperScissors",
+			"description": "Nutzer möchte Schere, Stein, Papier spielen",
+			"enabledByDefault": true,
+			"utterances": [
+				"Schere, Stein, Papier",
+				"Schnick, Schnack, Schnuck",
+				"Fli, Fla, Flu",
+				"Ching, Chang, Chong",
+				"Klick, Klack, Kluck"
+			],
+			"slots": []
+		}
+	]
+}
