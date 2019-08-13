@@ -1,0 +1,26 @@
+{
+    "module": "Astronauts",
+    "icon": "lamp",
+    "description": "Erfrage, wer sich aktuell auf der Raumstation befindet.",
+    "slotTypes": [],
+    "intents": [
+            {
+                    "name": "Astronauts",
+                    "description": "Nutzer fragt nach einer Liste der Astronauten im Weltall",
+                    "enabledByDefault": true,
+                    "utterances": [
+                            "Wer ist auf der Weltraumstation",
+                            "Wer sind die Astronauten",
+                            "Bitte liste die Astronauten auf",
+                            "Bitte sag mir wer die Astronauten sind",
+                            "Würdest du mir sagen wer die Astronauten sind",
+                            "Ich hätte gerne die Liste der Astronauten.",
+                            "Wer ist heute im Weltraum",
+                            "Bitte sag mir, wer heute im Weltraum ist.",
+                            "wer sind die Astronauten der Raumstation?",
+                            "wer sind die Astronauten auf der Raumstation?"
+                    ],
+                    "slots": []
+            }
+    ]
+}
