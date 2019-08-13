@@ -1,4 +1,12 @@
 {
+	"issPosition": {
+		"default": [
+			"Currently the international space station is at latitude {0:.0f} and the longitude {0:.0f}"
+		],
+		"short": [
+			"latitude {0:.0f}, longitude {0:.0f}"
+		]
+	},
 	"noAstronauts": [
 		"There are currently no people in space"
 	],

@@ -1,11 +1,11 @@
 {
-	"name": "Astronauts",
-	"version": 0.1,
+	"name": "InternationalSpaceStation",
+	"version": 0.2,
 	"author": "mjlill",
 	"maintainers": [
 		 "maxbachmann"
 	],
-	"desc": "Inquire a list of names of current astronauts",
+	"desc": "Inquire information about the international space station",
 	"aliceMinVersion": "",
 	"requirements": [],
 	"conditions": {
