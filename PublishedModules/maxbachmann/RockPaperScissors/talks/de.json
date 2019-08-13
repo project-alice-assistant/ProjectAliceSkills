@@ -6,7 +6,7 @@
 	],
 	"answer": {
 		"default": [
-			"Ich habe {} ausgewählt"
+			"<s>Schere, Stein, Papier. <break time=\"1000ms\"/> Ich habe {} ausgewählt</s>"
 		],
 		"short": [
 			"{}"
