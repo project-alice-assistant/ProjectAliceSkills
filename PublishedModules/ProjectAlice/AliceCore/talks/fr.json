@@ -25,6 +25,13 @@
 			"D'accord! Dans quelle pièce vas-tu installer cet appareil?"
 		]
 	},
+	"confirmGlobalStop": {
+		"default": [
+			"Ok",
+			"Ok, j'arrête",
+			"Compris"
+		]
+	},
 	"confirmIgnore": {
 		"default": [
 			"Ok, je l'ignore!"
