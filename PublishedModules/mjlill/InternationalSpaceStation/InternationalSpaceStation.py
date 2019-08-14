@@ -34,11 +34,10 @@ class InternationalSpaceStation(Module):
 
 		try:
 			if intent == self._INTENT_ASTRONAUTS:
-				text = self.getAstronauts()
+				managers.MqttServer.endTalk(sessionId, text=self.getAstronauts())
 			elif intent == self._INTENT_ISS_POSITION:
-				text = self.getIssPosition()
-
-			managers.MqttServer.endTalk(sessionId, text=text)
+				managers.MqttServer.endTalk(sessionId, text=self.getIssPosition())
+			
 		except Exception as e:
 			self._logger.error(e)
 			managers.MqttServer.endTalk(sessionId,
@@ -47,7 +46,7 @@ class InternationalSpaceStation(Module):
 		return True
 
 	def queryApi(self, url: str) -> dict:
-		return requests.get(url=url).json
+		return requests.get(url=url).json()
 
 	def getIssPosition(self) -> str:
 		data = self.queryApi('http://api.open-notify.org/iss-now.json')
