@@ -12897,6 +12897,27 @@
 	],
 	"intents": [
 		{
+			"name": "GlobalStop",
+			"description": "Stop the current action",
+			"enabledByDefault": true,
+			"utterances": [
+				"leave me alone",
+				"leave me",
+				"leave",
+				"quit",
+				"stop",
+				"no more talk",
+				"stop that",
+				"stop all",
+				"get out",
+				"shut up",
+				"shut the fuck up",
+				"shut your mouth",
+				"stop talking"
+			],
+			"slots": []
+		},
+		{
 			"name": "UserRandomAnswer",
 			"description": "The user answer with something random",
 			"enabledByDefault": false,
