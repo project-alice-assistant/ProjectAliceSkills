@@ -25,6 +25,13 @@
 			"Sure, in what room are you placing this new device?"
 		]
 	},
+	"confirmGlobalStop": {
+		"default": [
+			"Ok",
+			"Done",
+			"Ok I stop"
+		]
+	},
 	"confirmIgnore": {
 		"default": [
 			"Ok, ignoring this device"
