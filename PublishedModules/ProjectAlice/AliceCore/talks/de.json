@@ -25,6 +25,13 @@
 			"Sicher, in welchem Raum platzierst du dieses neue Gerät?"
 		]
 	},
+	"confirmGlobalStop": {
+		"default": [
+			"Ok",
+			"Ok, ich höre auf",
+			"Einschließlich"
+		]
+	},
 	"confirmIgnore": {
 		"default": [
 			"Ok, Ich werde dieses Gerät ignorieren"
