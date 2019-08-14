@@ -19,6 +19,7 @@ class AliceCore(Module):
 	_DEVING_CMD = 'projectAlice/deving'
 
 	_INTENT_MODULE_GREETING = 'projectAlice/devices/greeting'
+	_INTENT_GLOBAL_STOP = Intent('GlobalStop')
 	_INTENT_ANSWER_YES_OR_NO = Intent('AnswerYesOrNo', isProtected=True)
 	_INTENT_ANSWER_ROOM = Intent('AnswerRoom', isProtected=True)
 	_INTENT_SWITCH_LANGUAGE = Intent('SwitchLanguage')
@@ -42,6 +43,7 @@ class AliceCore(Module):
 
 	def __init__(self):
 		self._SUPPORTED_INTENTS = [
+			self._INTENT_GLOBAL_STOP,
 			self._INTENT_MODULE_GREETING,
 			self._INTENT_ANSWER_YES_OR_NO,
 			self._INTENT_ANSWER_ROOM,
@@ -193,6 +195,10 @@ class AliceCore(Module):
 
 
 	def onMessage(self, intent: str, session: DialogSession) -> bool:
+		if intent == self._INTENT_GLOBAL_STOP:
+			managers.MqttServer.endTalk(sessionId=session.sessionId, text=self.randomTalk('confirmGlobalStop'), client=session.siteId)
+			return True
+		
 		if not self.filterIntent(intent, session):
 			return False
 
