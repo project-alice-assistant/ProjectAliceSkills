@@ -17,10 +17,11 @@ Play rock paper scissors
 
 - Version: 0.1
 - Author: maxbachmann
-- Maintainers: N/A
+- Maintainers: Jierka
 - Alice minimum version: N/A
 - Conditions:
   - en
   - de
+  - fr
 - Requirements: N/A
 
