@@ -1,0 +1,15 @@
+{
+	"RockPaperScissors": [
+		"pierre",
+		"feuille",
+		"ciseaux"
+	],
+	"answer": {
+		"default": [
+			"<s>Pierre Feuille Ciseaux. <break time=\"1000ms\"/> J'ai choisi {} </s>"
+		],
+		"short": [
+			"{}"
+		]
+	}
+}
