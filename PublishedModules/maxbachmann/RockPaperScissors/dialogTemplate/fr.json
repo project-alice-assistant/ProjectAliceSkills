@@ -10,7 +10,7 @@
 			"enabledByDefault": true,
 			"utterances": [
 				"pierre, feuille, ciseaux",
-        "chifoumi"
+				"chifoumi"
 			],
 			"slots": []
 		}
