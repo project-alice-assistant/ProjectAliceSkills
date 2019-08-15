@@ -1,0 +1,33 @@
+{
+	"issPosition": {
+		"default": [
+			"Actuellement, la station spatiale internationale se trouve à latitude {0:.0f} et longitude {1:.0f}"
+		],
+		"short": [
+			"latitude {0:.0f}, longitude {1:.0f}"
+		]
+	},
+	"noAstronauts": [
+		"Il n'y a personne dans l'espace"
+	],
+	"oneAstronaut": {
+		"default": [
+			"Seulement {} astronaute"
+		],
+		"short": [
+			"{}"
+		]
+	},
+	"multipleAstronauts": {
+		"default": [
+			"Actuellement il y a {2} astronautes {0} et {1} qui sont dans l'espace"
+		],
+		"short": [
+			"{0} et {1}"
+		]
+	},
+	"noServer": [
+		"Je n'arrive pas à avoir cette information",
+		"Le serveur semble être injoignable"
+	]
+}
