@@ -2,14 +2,15 @@
 	"name": "RockPaperScissors",
 	"version": 0.1,
 	"author": "maxbachmann",
-	"maintainers": [],
+	"maintainers": ["Jierka"],
 	"desc": "Play rock paper scissors",
 	"aliceMinVersion": "",
 	"requirements": [],
 	"conditions": {
 		"lang": [
 			"en",
-			"de"
+			"de",
+			"fr"
 		]
 	}
 }
