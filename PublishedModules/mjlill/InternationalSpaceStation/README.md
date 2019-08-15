@@ -4,7 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget http://bit.ly/????????? -O ~/ProjectAlice/system/moduleInstallTickets/InternationalSpaceStation.install
+wget http://bit.ly/SpaceStationInfo -O ~/ProjectAlice/system/moduleInstallTickets/InternationalSpaceStation.install
 ```
 
 ##### > Alice CLI method
