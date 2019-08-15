@@ -3,7 +3,8 @@
 	"version": 0.2,
 	"author": "mjlill",
 	"maintainers": [
-		 "maxbachmann"
+		 "maxbachmann",
+		 "Jierka"
 	],
 	"desc": "Inquire information about the international space station",
 	"aliceMinVersion": "",
@@ -11,7 +12,8 @@
 	"conditions": {
 		"lang": [
 			"en",
-			"de"
+			"de",
+			"fr"
 		]
 	}
 }
