@@ -17,10 +17,11 @@ Inquire information about the international space station
 
 - Version: 0.2
 - Author: mjlill
-- Maintainers: maxbachmann
+- Maintainers: maxbachmann, Jierka
 - Alice minimum version: N/A
 - Conditions:
   - en
   - de
+  - fr
 - Requirements: N/A
 
