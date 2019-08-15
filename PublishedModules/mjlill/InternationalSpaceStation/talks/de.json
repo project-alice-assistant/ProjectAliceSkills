@@ -1,10 +1,10 @@
 {
 	"issPosition": {
 		"default": [
-			"Aktuell ist die internationale Weltraumstation bei Breitengrad {0:.0f} und Längengrad {0:.0f}"
+			"Aktuell ist die internationale Weltraumstation bei Breitengrad {0:.0f} und Längengrad {1:.0f}"
 		],
 		"short": [
-			"Breitengrad {0:.0f}, Längengrad {0:.0f}"
+			"Breitengrad {0:.0f}, Längengrad {1:.0f}"
 		]
 	},
 	"noAstronauts": [
