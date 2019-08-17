@@ -4,6 +4,7 @@ from talkValidation import talkValidation
 import json
 import glob
 import os
+import sys
 from collections import defaultdict
 from termcolor import colored
 
@@ -92,19 +93,23 @@ def printTalk(error: dict):
 dir_path = os.path.dirname(os.path.realpath(__file__))
 module_path = os.path.dirname(os.path.dirname(dir_path))
 result = infinidict()
+err = 0
 for module in glob.glob(module_path + '/PublishedModules/*/*'):
 	dialog = dialogValidation(module)
 	installer = installValidation(module)
 	talk = talkValidation(module)
 	if dialog.validate():
+		err = 1
 		result[dialog.moduleAuthor][dialog.moduleName]['dialogValidation'] = dialog.validModules
 	else:
 		result[dialog.moduleAuthor][dialog.moduleName]['dialogValidation'] = True
 	if installer.validate():
+		err = 1
 		result[installer.moduleAuthor][installer.moduleName]['installerValidation'] = installer.validModules
 	else:
 		result[installer.moduleAuthor][installer.moduleName]['installerValidation'] = True
 	if talk.validate():
+		err = 1
 		result[talk.moduleAuthor][talk.moduleName]['talkValidation'] = talk.validModules
 	else:
 		result[talk.moduleAuthor][talk.moduleName]['talkValidation'] = True
@@ -125,4 +130,6 @@ for author, _module in sorted(result.items()):
 		printInstaller(_validate['installerValidation'])
 		printDialog(_validate['dialogValidation'])
 		printTalk(_validate['talkValidation'])
+
+sys.exit(err)
 
