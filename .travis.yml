@@ -3,10 +3,10 @@ python: 3.6
 
 install:
   - pip install -r Tools/JsonValidator/requirements.txt
-  - pip install pylint
+  #- pip install pylint
 
 
 script:
-  - python3 Tools/JsonValidator/validation.py --all
+  - python3 Tools/JsonValidator/validator.py
   #- cores=$(nproc)
   #- pylint -j $cores PublishedModules/*/*/*.py --exit-zero
