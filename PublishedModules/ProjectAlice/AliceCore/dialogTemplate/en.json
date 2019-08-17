@@ -4,6 +4,29 @@
 	"description": "Contains intents that manage root stuff of Project Alice",
 	"slotTypes": [
 		{
+			"name": "UserAccessLevel",
+			"matchingStrictness": null,
+			"automaticallyExtensible": false,
+			"useSynonyms": false,
+			"values": [
+				{
+					"value": "admin"
+				},
+				{
+					"value": "default"
+				},
+				{
+					"value": "kid"
+				},
+				{
+					"value": "worker"
+				},
+				{
+					"value": "guest"
+				}
+			]
+		},
+		{
 			"name": "More",
 			"matchingStrictness": null,
 			"automaticallyExtensible": true,
@@ -15,7 +38,8 @@
 						"a bit more",
 						"more",
 						"much more",
-						"longer"
+						"longer",
+						"too long"
 					]
 				}
 			]
@@ -32,7 +56,8 @@
 						"a bit less",
 						"less",
 						"much less",
-						"shorter"
+						"shorter",
+						"too short"
 					]
 				}
 			]
@@ -76,7 +101,7 @@
 				{
 					"value": "es",
 					"synonyms": [
-						"spanish"
+						"spannish"
 					]
 				},
 				{
@@ -13205,7 +13230,10 @@
 				"i'm {Sven:=>Name}",
 				"you can call me {Arthur:=>Name}",
 				"my name is {Chris:=>Name}",
-				"{Kim:=>Name} is my name"
+				"{Kim:=>Name} is my name",
+				"her name is {Natalija:=>Name}",
+				"his name is {Frank:=>Name}",
+				"he's {Arthur:=>Name}"
 			],
 			"slots": [
 				{
@@ -13213,6 +13241,31 @@
 					"description": null,
 					"required": false,
 					"type": "Name",
+					"missingQuestion": ""
+				}
+			]
+		},
+		{
+			"name": "AnswerNumber",
+			"description": "",
+			"enabledByDefault": false,
+			"utterances": [
+				"{10:=>Number}",
+				"{5:=>Number}",
+				"{103:=>Number}",
+				"{784:=>Number}",
+				"{9567:=>Number}",
+				"{5:=>Number} {1:=>Number} {3:=>Number}",
+				"{50:=>Number} {342:=>Number} {9:=>Number}",
+				"{1:=>Number} {1:=>Number} {0:=>Number} {5:=>Number}",
+				"{102:=>Number} {895:=>Number} {0:=>Number} {75:=>Number}"
+			],
+			"slots": [
+				{
+					"name": "Number",
+					"description": null,
+					"required": false,
+					"type": "snips/number",
 					"missingQuestion": ""
 				}
 			]
@@ -13281,6 +13334,67 @@
 				"hey alice"
 			],
 			"slots": []
+		},
+		{
+			"name": "AddNewUser",
+			"description": "User adds a new user",
+			"enabledByDefault": true,
+			"utterances": [
+				"can you add a new user please",
+				"add a new user as {guest:=>UserAccessLevel}",
+				"please add a new {admin:=>UserAccessLevel}",
+				"i need to add a new {admin:=>UserAccessLevel}",
+				"could you add a new user to your database",
+				"here's someone new I'd like you to know",
+				"i present you {John:=>Name} our {guest:=>UserAccessLevel}",
+				"can you add {Natalija:=>Name} as {admin:=>UserAccessLevel}",
+				"meet our {worker:=>UserAccessLevel} {Richard:=>Name}",
+				"i want you to meet {Roland:=>Name}",
+				"i have someone for you to add as a new user"
+			],
+			"slots": [
+				{
+					"name": "UserAccessLevel",
+					"description": null,
+					"required": false,
+					"type": "UserAccessLevel",
+					"missingQuestion": ""
+				},
+				{
+					"name": "Name",
+					"description": null,
+					"required": false,
+					"type": "Name",
+					"missingQuestion": ""
+				}
+			]
+		},
+		{
+			"name": "AnswerAccessLevel",
+			"description": "User answers with an access level",
+			"enabledByDefault": false,
+			"utterances": [
+				"{admin:=>UserAccessLevel}",
+				"{default:=>UserAccessLevel}",
+				"{kid:=>UserAccessLevel}",
+				"{worker:=>UserAccessLevel}",
+				"{guest:=>UserAccessLevel}",
+				"as {guest:=>UserAccessLevel}",
+				"as {default:=>UserAccessLevel} please",
+				"with {guest:=>UserAccessLevel} permissions",
+				"with {worker:=>UserAccessLevel} access level",
+				"{kid:=>UserAccessLevel} access level please",
+				"give him {worker:=>UserAccessLevel} rights please"
+			],
+			"slots": [
+				{
+					"name": "UserAccessLevel",
+					"description": null,
+					"required": false,
+					"type": "UserAccessLevel",
+					"missingQuestion": ""
+				}
+			]
 		}
 	]
 }
