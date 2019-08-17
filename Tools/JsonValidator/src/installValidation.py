@@ -1,13 +1,13 @@
 import os
 import glob
 import json
-from validation import validation
+from src.validation import validation
 
 class installValidation(validation):
 
 	@property
 	def JsonSchema(self) -> dict:
-		with open(os.path.join(self.dir_path, 'install-schema.json') ) as json_file:
+		with open(os.path.join(self.dir_path, 'schemas/install-schema.json') ) as json_file:
 			return json.load(json_file)
 	
 	@property

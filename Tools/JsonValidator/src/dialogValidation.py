@@ -2,13 +2,13 @@ import os
 import glob
 import json
 import re
-from validation import validation
+from src.validation import validation
 
 class dialogValidation(validation):
 	
 	@property
 	def JsonSchema(self) -> dict:
-		with open(os.path.join(self.dir_path, 'dialog-schema.json') ) as json_file:
+		with open(os.path.join(self.dir_path, 'schemas/dialog-schema.json') ) as json_file:
 			return json.load(json_file)
 	
 	@property
