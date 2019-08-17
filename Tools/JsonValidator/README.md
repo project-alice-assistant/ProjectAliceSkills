@@ -31,6 +31,7 @@ All dialogTemplates have three validation tests:
 1) All dialog Templates have the same JSON Syntax, which is tested using the following JSON Schema [dialog-schema.json](https://github.com/project-alice-powered-by-snips/ProjectAliceModules/blob/master/Tools/JsonValidator/dialog-schema.json).
 2) The different translations should have the same slots (slotnames). The other settings of the slots like values ect. can be different.
 3) There are no duplicates in the utterances. *Duplicates should not improve the performance, but from reports currently still improve it, so this is more of a warning*
+
 ***Currently this does not validate whether the utterances are correct, which will be added at a later point***
 
 ## talk Files

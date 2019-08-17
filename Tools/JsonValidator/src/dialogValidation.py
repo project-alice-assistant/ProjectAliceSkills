@@ -84,7 +84,8 @@ class dialogValidation(validation):
 					# check whether the utterance already appeared and either add it to the list of duplicates
 					# or mark that it appeared the first time
 					if short_utterance in utterancesDict:
-						err = 1
+						# Will be added again when duplicates do not improve the performance anymore
+						#err = 1
 						if jsonPath[intentName][short_utterance]:
 							jsonPath[intentName][short_utterance].append(utterance)
 						else:
