@@ -4,19 +4,19 @@ This Tool allows to test the Syntax of the following Alice related JSON files. A
 repository aswell. You can run the same tests for the templates locally to check your json files using one of the following commands:
 ```bash
 # Output all available commands
-python3 validation.py --help
+python3 JsonValidator.py --help
 
 # run all validation tests
-python3 validation.py --all
+python3 JsonValidator.py --all
 
 # validate dialogTemplates
-python3 validation.py --dialog
+python3 JsonValidator.py --dialog
 
 # validate talk files
-python3 validation.py --talk
+python3 JsonValidator.py --talk
 
 # validate ./install installer files
-python3 validation.py --install
+python3 JsonValidator.py --install
 ```
 
 ## Requirements
@@ -27,9 +27,10 @@ pip3 install -r requirements.txt
 
 ## dialog Templates
 
-All dialogTemplates have two validation tests:
+All dialogTemplates have three validation tests:
 1) All dialog Templates have the same JSON Syntax, which is tested using the following JSON Schema [dialog-schema.json](https://github.com/project-alice-powered-by-snips/ProjectAliceModules/blob/master/Tools/JsonValidator/dialog-schema.json).
 2) The different translations should have the same slots (slotnames). The other settings of the slots like values ect. can be different.
+3) There are no duplicates in the utterances. *Duplicates should not improve the performance, but from reports currently still improve it, so this is more of a warning*
 ***Currently this does not validate whether the utterances are correct, which will be added at a later point***
 
 ## talk Files
@@ -41,14 +42,3 @@ The talk files have two validation tests:
 ## .install Installer Files
 All installer files have the same JSON Syntax, which is tested using the following JSON Schema [install-schema.json](https://github.com/project-alice-powered-by-snips/ProjectAliceModules/blob/master/Tools/JsonValidator/install-schema.json).
 
-
-
-Features:
-  dialogValidation:
-  - get all slots with values or don´t care from
-	- module
-	- core modules
-	- required modules
-  - get all slots from one file -> compare languages
-  - get all utterances stuff
-    - search duplicates
