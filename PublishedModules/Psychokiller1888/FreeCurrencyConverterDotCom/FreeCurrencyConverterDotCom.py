@@ -61,11 +61,11 @@ class FreeCurrencyConverterDotCom(Module):
 						intentFilter=[self._INTENT_ANSWER_CURRENCY],
 						text=managers.TalkManager.randomTalk(module=self.name, talk='fromWhatCurrency'),
 						previousIntent=self._INTENT_CONVERT_CURRENCY,
-						customData=json.dumps({
+						customData={
 							'module'    : self.name,
 							'amount'    : amount,
 							'toCurrency': toCurrency
-						})
+						}
 					)
 					return True
 			else:

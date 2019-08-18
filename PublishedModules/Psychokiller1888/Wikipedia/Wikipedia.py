@@ -52,10 +52,10 @@ class Wikipedia(Module):
 					text=managers.TalkManager.randomTalk('whatToSearch'),
 					intentFilter=[self._INTENT_USER_ANSWER],
 					previousIntent=self._INTENT_SEARCH,
-					customData=json.dumps({
+					customData={
 						'module': self.name,
 						'engine': engine
-					})
+					}
 				)
 			else:
 				if 'userInput' in customData:
@@ -90,10 +90,10 @@ class Wikipedia(Module):
 						text=managers.TalkManager.randomTalk('ambiguous').format(search),
 						intentFilter=[self._INTENT_USER_ANSWER],
 						previousIntent=self._INTENT_SEARCH,
-						customData=json.dumps({
+						customData={
 							'module': self.name,
 							'engine': engine
-						})
+						}
 					)
 					return True
 				except wikipedia.WikipediaException:
@@ -102,10 +102,10 @@ class Wikipedia(Module):
 						text=managers.TalkManager.randomTalk('noMatch').format(search),
 						intentFilter=[self._INTENT_USER_ANSWER],
 						previousIntent=self._INTENT_SEARCH,
-						customData=json.dumps({
+						customData={
 							'module': self.name,
 							'engine': engine
-						})
+						}
 					)
 					return True
 				except Exception as e:
@@ -119,10 +119,10 @@ class Wikipedia(Module):
 						text=managers.TalkManager.randomTalk('noMatch').format(search),
 						intentFilter=[self._INTENT_USER_ANSWER],
 						previousIntent=self._INTENT_SEARCH,
-						customData=json.dumps({
+						customData={
 							'module': self.name,
 							'engine': engine
-						})
+						}
 					)
 				else:
 					managers.MqttServer.endTalk(sessionId=sessionId, text=result)

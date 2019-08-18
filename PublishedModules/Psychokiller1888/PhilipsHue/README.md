@@ -16,7 +16,7 @@ alice module:install Psychokiller1888/PhilipsHue
 ### Desc
 Control your Philips Hue lamps
 
-- Version: 1.21
+- Version: 1.22
 - Author: Psycho
 - Maintainers:
   - Jierka
