@@ -135,15 +135,15 @@ class validator:
 				for validate, _valid in sorted(_validate.items()):
 					if _valid != True:
 						err = False
-					print()
-					if err:
-						self.indentPrint(2, colored('{:s}'.format(module), 'green', attrs=['bold']), 'valid')
-						continue
-					self.indentPrint(2, colored('{:s}'.format(module), 'red', attrs=['bold']), 'invalid')
-					if self.installer:
-						self.printInstaller(_validate['installerValidation'])
-					if self.dialog:
-						self.printDialog(_validate['dialogValidation'])
-					if self.talk:
-						self.printTalk(_validate['talkValidation'])
+				print()
+				if err:
+					self.indentPrint(2, colored('{:s}'.format(module), 'green', attrs=['bold']), 'valid')
+					continue
+				self.indentPrint(2, colored('{:s}'.format(module), 'red', attrs=['bold']), 'invalid')
+				if self.installer:
+					self.printInstaller(_validate['installerValidation'])
+				if self.dialog:
+					self.printDialog(_validate['dialogValidation'])
+				if self.talk:
+					self.printTalk(_validate['talkValidation'])
 
