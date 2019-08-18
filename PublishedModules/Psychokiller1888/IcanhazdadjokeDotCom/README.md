@@ -1,16 +1,16 @@
-# IcanhazdadjokeDotNet
+# IcanhazdadjokeDotCom
 
 ### Download
 
 ##### > WGET method
 ```bash
-wget http://modules.projectalice.ch/IcanhazdadjokeDotNet \
--O ~/ProjectAlice/system/moduleInstallTickets/IcanhazdadjokeDotNet.install
+wget http://modules.projectalice.ch/IcanhazdadjokeDotCom \
+-O ~/ProjectAlice/system/moduleInstallTickets/IcanhazdadjokeDotCom.install
 ```
 
 ##### > Alice CLI method
 ```bash
-alice module:install Psychokiller1888/IcanhazdadjokeDotNet
+alice module:install Psychokiller1888/IcanhazdadjokeDotCom
 ```
 
 ### Description
