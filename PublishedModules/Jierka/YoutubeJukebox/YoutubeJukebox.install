@@ -1,0 +1,20 @@
+{
+	"name": "YoutubeJukebox",
+	"version": 1.0,
+	"author": "Jierka",
+	"maintainers": ["Jierka"],
+	"desc": "Allows to play music from youtube",
+	"aliceMinVersion": "",
+	"requirements": [
+        "youtube_dl",
+        "ffmpeg"
+	],
+	"conditions": {
+		"lang": [
+			"en",
+			"fr"
+		],
+		"online": true
+	}
+}
+

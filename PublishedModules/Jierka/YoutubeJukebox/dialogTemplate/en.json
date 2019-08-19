@@ -1,0 +1,33 @@
+{
+	"module": "YoutubeJukebox",
+	"icon": "music",
+	"description": "Allows to play music from youtube\n",
+	"slotTypes": [
+
+	],
+	"intents": [
+		{
+			"name": "SearchMusic",
+			"description": "",
+			"enabledByDefault": true,
+			"utterances": [
+				"launch music of *",
+				"play music of *",
+				"play the title * of *",
+				"launch song of *",
+				"play song of *",
+				"play the song * of *",
+				"start song of *",
+				"start song of *",
+				"start the song * of *",
+				"start music of *",
+				"start music of *",
+				"start the title * of *"
+			],
+			"slots": [
+
+			]
+		}
+	]
+}
+
