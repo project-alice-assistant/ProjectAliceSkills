@@ -10,6 +10,7 @@ class validation(ABC):
 		self.modulePath = modulePath
 		self.validModule = self.infinidict()
 		self.dir_path = os.path.dirname(os.path.realpath(__file__))
+		self.base_path = os.path.dirname(os.path.dirname(os.path.dirname(self.dir_path)))
 
 	def infinidict(self):
 		return defaultdict(self.infinidict)

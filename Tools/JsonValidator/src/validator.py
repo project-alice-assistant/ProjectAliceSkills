@@ -34,11 +34,20 @@ class validator:
 	def printDuplicates(self, filename: str, duplicates: dict):
 		if duplicates:
 			self.indentPrint(6, 'duplicates in', filename + ':')
-		for _, shortUtterances in sorted(duplicates.items()):
+		for indentName, shortUtterances in sorted(duplicates.items()):
+			self.indentPrint(8, indentName)
 			for _, utterances in sorted(shortUtterances.items()):
 				for utterance in utterances:
 					self.indentPrint(8, '-', utterance)
 				print()
+	
+	def printMissingUtteranceSlots(self, filename: str, errors: dict):
+		if errors:
+			self.indentPrint(6, 'missing slots in', filename + ':')
+		for indentName, missingSlots in sorted(errors.items()):
+			self.indentPrint(8, indentName)
+			self.printErrorList(missingSlots, 8)
+			print()
 	
 	def printMissingTypes(self, filename: str, errorList: list):
 		if errorList:
@@ -86,7 +95,10 @@ class validator:
 				self.printMissingSlots(filename, err)
 	
 			for filename, types in sorted(error['utterances'].items()):
+				self.printMissingUtteranceSlots(filename, types['missingSlots'])
 				self.printDuplicates(filename, types['duplicates'])
+
+
 	
 	def printTalk(self, error: dict):
 		if error == True:
