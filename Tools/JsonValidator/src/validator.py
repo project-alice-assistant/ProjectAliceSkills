@@ -34,8 +34,8 @@ class validator:
 	def printDuplicates(self, filename: str, duplicates: dict):
 		if duplicates:
 			self.indentPrint(6, 'duplicates in', filename + ':')
-		for indentName, shortUtterances in sorted(duplicates.items()):
-			self.indentPrint(8, indentName)
+		for intentName, shortUtterances in sorted(duplicates.items()):
+			self.indentPrint(8, intentName)
 			for _, utterances in sorted(shortUtterances.items()):
 				for utterance in utterances:
 					self.indentPrint(8, '-', utterance)
@@ -44,11 +44,21 @@ class validator:
 	def printMissingUtteranceSlots(self, filename: str, errors: dict):
 		if errors:
 			self.indentPrint(6, 'missing slots in', filename + ':')
-		for indentName, missingSlots in sorted(errors.items()):
-			self.indentPrint(8, indentName)
+		for intentName, missingSlots in sorted(errors.items()):
+			self.indentPrint(8, intentName)
 			self.printErrorList(missingSlots, 8)
 			print()
 	
+	def printMissingSlotValues(self, filename: str, errors: dict):
+		if errors:
+			self.indentPrint(6, 'missing slot values in', filename + ':')
+		for intentName, slots in sorted(errors.items()):
+			#self.indentPrint(8, 'used in intent', intentName)
+			for slot, missingValues in sorted(slots.items()):
+				self.indentPrint(8, 'intent:', intentName + ', slot:', slot)
+				self.printErrorList(missingValues, 8)
+				print()
+
 	def printMissingTypes(self, filename: str, errorList: list):
 		if errorList:
 			self.indentPrint(6, 'missing types in', filename + ':')
@@ -96,6 +106,7 @@ class validator:
 	
 			for filename, types in sorted(error['utterances'].items()):
 				self.printMissingUtteranceSlots(filename, types['missingSlots'])
+				self.printMissingSlotValues(filename, types['missingSlotValue'])
 				if self.warnings:
 					self.printDuplicates(filename, types['duplicates'])
 

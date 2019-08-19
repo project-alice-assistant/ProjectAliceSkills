@@ -67,7 +67,16 @@ class dialogValidation(validation):
 					all_slots.update(dialog.slots)
 		return all_slots
 
-	def validateUtteranceSlots(self) -> bool:
+	def searchMissingSlotValue(self, values: list, allSlots: dict) -> list:
+		found = []
+		for value in values:
+			for v in allSlots['values']:
+				if ( value == v['value'] or allSlots['automaticallyExtensible']
+					 or allSlots['useSynonyms'] and 'synonyms' in v and value in v['synonyms']):
+					found.append(value)
+		return [x for x in values if x not in found]
+
+	def validateIntentSlots(self) -> bool:
 		err = 0
 		all_slots = {}
 		# get slots from all json files of a module
@@ -76,7 +85,7 @@ class dialogValidation(validation):
 
 		# check whether the same slots appear in all files
 		for file in self.JsonFiles:
-			jsonPath = self.validModule['utterances'][self.filename(file)]['missingSlots']
+			jsonPath = self.validModule['utterances'][self.filename(file)]
 			# get data and check whether it is valid
 			valid, data = self.validateSyntax(file)
 			if not valid:
@@ -84,12 +93,19 @@ class dialogValidation(validation):
 				continue
 			dialog = dialogTemplate(data)
 			for intentName, slots in dialog.utteranceSlots.items():
-				for slot in slots:
-					if not slot in all_slots[file] and not self.is_builtin(slot):
-						if intentName in jsonPath:
-							jsonPath[intentName].append(slot)
+				for slot, values in slots.items():
+					if not self.is_builtin(slot):
+						if not slot in all_slots[file]:
+							err = 1
+							if intentName in jsonPath:
+								jsonPath['missingSlots'][intentName].append(slot)
+							else:
+								jsonPath['missingSlots'][intentName] = [slot]
 						else:
-							jsonPath[intentName] = [slot]
+							missingValues = self.searchMissingSlotValue(values, all_slots[file][slot])
+							if missingValues:
+								err = 1
+								jsonPath['missingSlotValue'][intentName][slot] = missingValues					
 		return err
 
 	def validateSlots(self) -> bool:
@@ -140,7 +156,7 @@ class dialogValidation(validation):
 		return err
 
 	def validate(self) -> bool:
-		self.validateUtteranceSlots()
+		self.validateIntentSlots()
 		#print()
 		#self.getRequiredModules()
 		err = self.validateSchema()
