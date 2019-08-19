@@ -92,7 +92,7 @@
 			"utterances": [
 				"combien font {115:=>Left} {+:=>Function} {996:=>Right}",
 				"calcule {196354:=>Left} {divisé par:=>Function} {10359:=>Right}",
-				"quel est le résultat de {9999:=>Left} { plus:=>Function} {9999:=>Right}",
+				"quel est le résultat de {9999:=>Left} {plus:=>Function} {9999:=>Right}",
 				"calcule moi {221:=>Left} {-:=>Function} {196354:=>Right}",
 				"que fait {10359:=>Left} {divisé par:=>Function} {15:=>Right}",
 				"que font {10359:=>Left} {que divise:=>Function} {15:=>Right}",
