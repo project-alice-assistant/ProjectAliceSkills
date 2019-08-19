@@ -17,11 +17,12 @@ Using ifttt one can ask alice to find his phone. sets the ring tone at max volum
 
 - Version: 0.4
 - Author: Psychokiller1888
-- Maintainers: N/A
+- Maintainers: maxbachmann
 - Alice minimum version: N/A
 - Conditions:
   - en
   - fr
+  - de
   - Module: Psychokiller1888/Ifttt
   - Online
 - Requirements: N/A

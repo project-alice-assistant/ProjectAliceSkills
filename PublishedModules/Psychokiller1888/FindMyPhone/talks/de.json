@@ -1,0 +1,26 @@
+{
+	"acknowledge": {
+		"default": [
+			"Sicher, ich rufe es an, hör auf das Klingeln.",
+			"Ich rufe es an, es sollte klingeln"
+		],
+		"short": [
+			"ok"
+		]
+	},
+	"whosPhone": [
+		"Nach wessen Telefon suchst du?",
+		"Ich weiß nicht wer du bist... Sag mir wessen Telefon du suchst"
+	],
+	"unknown": [
+		"Ich habe leider keine Mittel, um das Telefon von {} zu erreichen. Überprüfe meine Konfiguration für das nächste Mal.",
+		"Sorry, ich kann nicht, ich habe leider nicht die notwendigen Informationen"
+	],
+	"notConnected": [
+		"Es tut mir leid, aber dafür muss ich mit dem Internet verbunden sein.",
+		"Ich kann nicht, es scheint, dass ich nicht mit dem Internet verbunden bin."
+	],
+	"error": [
+		"Etwas ist schief gelaufen. Überprüfe meine logs und melde den Fehler bei Bedarf."
+	]
+}

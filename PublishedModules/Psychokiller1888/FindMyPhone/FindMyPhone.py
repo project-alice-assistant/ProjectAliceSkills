@@ -63,6 +63,6 @@ class FindMyPhone(Module):
 			elif answer == IftttException.NO_USER:
 				managers.MqttServer.endTalk(sessionId=sessionId, text=self.randomTalk('unknown', replace=[who]))
 			else:
-				managers.MqttServer.endTalk(sessionId=sessionId, text=self.randomTalk('aknowledge'))
+				managers.MqttServer.endTalk(sessionId=sessionId, text=self.randomTalk('acknowledge'))
 
 		return True

@@ -1,8 +1,8 @@
 {
-	"aknowledge": {
+	"acknowledge": {
 		"default": [
 			"Sure, listen for it, I'm calling it",
-			"I'm calling, it it should ring"
+			"I'm calling it, it should ring"
 		],
 		"short": [
 			"ok"
