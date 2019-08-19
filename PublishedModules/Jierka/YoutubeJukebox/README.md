@@ -25,3 +25,6 @@ Allows to play music from youtube
   - fr
 - Requirements: youtube_dl, ffmpeg
 
+### TODO
+
+- Handle GlobalStop action
