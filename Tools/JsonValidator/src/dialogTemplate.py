@@ -7,15 +7,17 @@ class dialogTemplate():
 	@property
 	def slots(self) -> dict:
 		slots = {}
-		for slot in self.dialogTemplate['slotTypes']:
-			slots[slot['name']] = slot
+		if self.dialogTemplate:
+			for slot in self.dialogTemplate['slotTypes']:
+				slots[slot['name']] = slot
 		return slots
 
 	@property
 	def intents(self) -> dict:
 		intents = {}
-		for intent in self.dialogTemplate['intents']:
-			intents[intent['name']] = intent
+		if self.dialogTemplate:
+			for intent in self.dialogTemplate['intents']:
+				intents[intent['name']] = intent
 		return intents
 
 	@property
@@ -47,8 +49,6 @@ class dialogTemplate():
 		for intentName, intents in self.intents.items():
 			utteranceSlotDict[intentName] = {}
 			for utterance in intents['utterances']:
-				# search slots in utterances
-				#r'{(.*?):=>(.*?)}')
 				slotNames = re.findall(r'{(.*?):=>(.*?)}', utterance)
 				for slot in intents['slots']:
 					for value, slotName in slotNames:

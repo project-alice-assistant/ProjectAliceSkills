@@ -15,5 +15,5 @@ class installValidation(validation):
 		return glob.glob( os.path.join(self.modulePath, '*.install') )
 
 	def validate(self) -> bool:
-		err = self.validateSchema()
-		return err
+		self.validateSchema()
+		return self.error

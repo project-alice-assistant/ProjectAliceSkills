@@ -17,9 +17,8 @@ class validator:
 		self.talk = talk
 		self.warnings = warnings
 
-	def indentPrint(self, indent: int, *args: tuple):
-		text = ' ' * (indent-1) + ' '.join(map(str, args))
-		print(text)
+	def indentPrint(self, indent: int = 0, *args: tuple):
+		print(' ' * (indent-1) + ' '.join(map(str, args)))
 	
 	def infinidict(self):
 		return defaultdict(self.infinidict)
@@ -27,9 +26,7 @@ class validator:
 	def printMissingSlots(self, filename: str, errorList: list):
 		if errorList:
 			self.indentPrint(6, 'missing slot translation in', filename + ':')
-		self.printErrorList(errorList, 8)
-		if errorList:
-			print()
+			self.printErrorList(errorList, 8)
 	
 	def printDuplicates(self, filename: str, duplicates: dict):
 		if duplicates:
@@ -47,33 +44,29 @@ class validator:
 		for intentName, missingSlots in sorted(errors.items()):
 			self.indentPrint(8, intentName)
 			self.printErrorList(missingSlots, 8)
-			print()
 	
 	def printMissingSlotValues(self, filename: str, errors: dict):
 		if errors:
 			self.indentPrint(6, 'missing slot values in', filename + ':')
 		for intentName, slots in sorted(errors.items()):
-			#self.indentPrint(8, 'used in intent', intentName)
 			for slot, missingValues in sorted(slots.items()):
 				self.indentPrint(8, 'intent:', intentName + ', slot:', slot)
 				self.printErrorList(missingValues, 8)
-				print()
 
 	def printMissingTypes(self, filename: str, errorList: list):
 		if errorList:
 			self.indentPrint(6, 'missing types in', filename + ':')
-		self.printErrorList(errorList, 8)
-		if errorList:
-			print()
+			self.printErrorList(errorList, 6)
 	
 	def printErrorList(self, errorList: list, indent: int = 0):
 		for error in errorList:
 			self.indentPrint(indent, '-', error)
+		print()
 	
 	def printSchemaErrors(self, filename: str, errorList: list):
 		if errorList:
 			self.indentPrint(6, 'schema errors in', filename + ':')
-		self.printErrorList(errorList, 8)
+			self.printErrorList(errorList, 8)
 	
 	def printSyntaxError(self, filename: str, error: str):
 		self.indentPrint(6, 'syntax errors in', filename + ':')
@@ -89,6 +82,7 @@ class validator:
 	
 			for filename, err in sorted(error['schema'].items()):
 				self.printSchemaErrors(filename, err)
+		print()
 	
 	def printDialog(self, error: dict):
 		if error == True:
@@ -109,6 +103,7 @@ class validator:
 				self.printMissingSlotValues(filename, types['missingSlotValue'])
 				if self.warnings:
 					self.printDuplicates(filename, types['duplicates'])
+		print()
 
 
 	
@@ -125,6 +120,7 @@ class validator:
 	
 			for filename, err in sorted(error['types'].items()):
 				self.printMissingTypes(filename, err)
+		print()
 	
 
 	def validate(self):
@@ -154,20 +150,16 @@ class validator:
 	def printResult(self):
 		for author, _module in sorted(self.result.items()):
 			print(colored('\n{:s}'.format(author), 'green', attrs=['reverse', 'bold']))
-			for module, _validate in sorted(_module.items()):
-				err = True
-				for validate, _valid in sorted(_validate.items()):
-					if _valid != True:
-						err = False
-				print()
-				if err:
+			for module, validate in sorted(_module.items()):
+
+				if all(valid == True for _, valid in validate.items()):
 					self.indentPrint(2, colored('{:s}'.format(module), 'green', attrs=['bold']), 'valid')
 					continue
 				self.indentPrint(2, colored('{:s}'.format(module), 'red', attrs=['bold']), 'invalid')
 				if self.installer:
-					self.printInstaller(_validate['installerValidation'])
+					self.printInstaller(validate['installerValidation'])
 				if self.dialog:
-					self.printDialog(_validate['dialogValidation'])
+					self.printDialog(validate['dialogValidation'])
 				if self.talk:
-					self.printTalk(_validate['talkValidation'])
+					self.printTalk(validate['talkValidation'])
 
