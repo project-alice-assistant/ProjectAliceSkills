@@ -259,10 +259,10 @@ class PhilipsHue(Module):
 					text=self.randomTalk('whatScenery'),
 					intentFilter=[self._INTENT_USER_ANSWER],
 					previousIntent=self._INTENT_LIGHT_SCENE,
-					customData=json.dumps({
+					customData={
 						'module': self.name,
 						'room'  : room
-					})
+					}
 				)
 				return True
 			else:
@@ -336,9 +336,9 @@ class PhilipsHue(Module):
 					text=self.randomTalk('whatPercentage'),
 					intentFilter=[self._INTENT_ANSWER_PERCENT],
 					previousIntent=self._INTENT_DIM_LIGHTS,
-					customData=json.dumps({
+					customData={
 						'module': self.name
-					})
+					}
 				)
 				return True
 			else:

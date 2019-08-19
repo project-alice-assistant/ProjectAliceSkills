@@ -41,7 +41,7 @@ class Wikipedia(Module):
 		customData = session.customData
 
 		if intent == self._INTENT_SEARCH or session.previousIntent == self._INTENT_SEARCH:
-			if 'userInput' not in customData and 'what' not in slots:
+			if 'userInput' not in customData and 'what' not in slots and 'RandomWord' not in slots:
 				if 'engine' not in slots:
 					engine = 'wikipedia'
 				else:
@@ -49,19 +49,20 @@ class Wikipedia(Module):
 
 				managers.MqttServer.continueDialog(
 					sessionId=sessionId,
-					text=managers.TalkManager.randomTalk('whatToSearch'),
+					text=self.randomTalk('whatToSearch'),
 					intentFilter=[self._INTENT_USER_ANSWER],
 					previousIntent=self._INTENT_SEARCH,
-					customData=json.dumps({
+					customData={
 						'module': self.name,
-						'engine': engine
-					})
+					}
 				)
 			else:
 				if 'userInput' in customData:
 					what = customData['userInput']
 				elif 'what' in slots:
 					what = slots['what']
+				elif 'RandomWord' in slots:
+					what = slots['RandomWord']
 				else:
 					managers.MqttServer.endTalk(sessionId=sessionId, text=managers.TalkManager.randomTalk('error', module='system'))
 					return True
@@ -90,10 +91,10 @@ class Wikipedia(Module):
 						text=managers.TalkManager.randomTalk('ambiguous').format(search),
 						intentFilter=[self._INTENT_USER_ANSWER],
 						previousIntent=self._INTENT_SEARCH,
-						customData=json.dumps({
+						customData={
 							'module': self.name,
 							'engine': engine
-						})
+						}
 					)
 					return True
 				except wikipedia.WikipediaException:
@@ -102,10 +103,10 @@ class Wikipedia(Module):
 						text=managers.TalkManager.randomTalk('noMatch').format(search),
 						intentFilter=[self._INTENT_USER_ANSWER],
 						previousIntent=self._INTENT_SEARCH,
-						customData=json.dumps({
+						customData={
 							'module': self.name,
 							'engine': engine
-						})
+						}
 					)
 					return True
 				except Exception as e:
@@ -119,10 +120,10 @@ class Wikipedia(Module):
 						text=managers.TalkManager.randomTalk('noMatch').format(search),
 						intentFilter=[self._INTENT_USER_ANSWER],
 						previousIntent=self._INTENT_SEARCH,
-						customData=json.dumps({
+						customData={
 							'module': self.name,
 							'engine': engine
-						})
+						}
 					)
 				else:
 					managers.MqttServer.endTalk(sessionId=sessionId, text=result)
