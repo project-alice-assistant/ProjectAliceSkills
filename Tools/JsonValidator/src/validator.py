@@ -8,13 +8,14 @@ from collections import defaultdict
 from termcolor import colored
 
 class validator:
-	def __init__(self, installer: bool = True, dialog: bool = True, talk: bool = True):
+	def __init__(self, installer: bool = True, dialog: bool = True, talk: bool = True, warnings: bool = True):
 		self.result = self.infinidict()
 		self.dir_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 		self.module_path = os.path.dirname(os.path.dirname(self.dir_path))
 		self.installer = installer
 		self.dialog = dialog
 		self.talk = talk
+		self.warnings = warnings
 
 	def indentPrint(self, indent: int, *args: tuple):
 		text = ' ' * (indent-1) + ' '.join(map(str, args))
@@ -95,7 +96,8 @@ class validator:
 	
 			for filename, types in sorted(error['utterances'].items()):
 				self.printMissingUtteranceSlots(filename, types['missingSlots'])
-				self.printDuplicates(filename, types['duplicates'])
+				if self.warnings:
+					self.printDuplicates(filename, types['duplicates'])
 
 
 	

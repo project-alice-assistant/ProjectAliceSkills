@@ -17,7 +17,11 @@ python3 JsonValidator.py --talk
 
 # validate ./install installer files
 python3 JsonValidator.py --install
+
+# validate talk files and dialogTemplates
+python3 JsonValidator.py --talk --dialog
 ```
+to each command a ```--quiet``` can be added to suppress warnings
 
 ## Requirements
 This Tool uses [jsonschema](https://pypi.org/project/jsonschema/) to validate the JSON files using JSON Schemas and [termcolor](https://pypi.org/project/termcolor/) for a colored output. The requirements can be installed with the following command:
