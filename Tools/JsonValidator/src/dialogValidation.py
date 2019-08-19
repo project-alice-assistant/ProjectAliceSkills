@@ -68,14 +68,16 @@ class dialogValidation(validation):
 					all_slots.update(dialog.slots)
 		return all_slots
 
-	def searchMissingSlotValue(self, values: list, allSlots: dict) -> list:
+	def searchMissingSlotValues(self, values: list, allSlots: dict) -> list:
 		found = []
 		for value in values:
-			#uValue = unidecode(value)
-			for v in allSlots['values']:
-				#synonyms = [unidecode(x) for x in v['synonyms']]
-				if ( unidecode(value).lower() == unidecode(v['value']).lower() or allSlots['automaticallyExtensible']
-					 or allSlots['useSynonyms'] and 'synonyms' in v and unidecode(value).lower() in [unidecode(x).lower() for x in v['synonyms']]):
+			uValue = unidecode(value).lower()
+			for slot in allSlots['values']:
+				allValues = [unidecode(slot['value']).lower()]
+				if allSlots['useSynonyms'] and 'synonyms' in slot:
+					allValues.extend([unidecode(x).lower() for x in slot['synonyms']])
+
+				if (uValue in allValues or allSlots['automaticallyExtensible']):
 					found.append(value)
 		return [x for x in values if x not in found]
 
@@ -105,7 +107,7 @@ class dialogValidation(validation):
 							else:
 								jsonPath['missingSlots'][intentName] = [slot]
 						else:
-							missingValues = self.searchMissingSlotValue(values, all_slots[file][slot])
+							missingValues = self.searchMissingSlotValues(values, all_slots[file][slot])
 							if missingValues:
 								err = 1
 								jsonPath['missingSlotValue'][intentName][slot] = missingValues					
@@ -159,10 +161,8 @@ class dialogValidation(validation):
 		return err
 
 	def validate(self) -> bool:
-		self.validateIntentSlots()
-		#print()
-		#self.getRequiredModules()
 		err = self.validateSchema()
 		err |= self.validateSlots()
 		err |= self.searchDuplicateUtterances()
+		err |= self.validateIntentSlots()
 		return err

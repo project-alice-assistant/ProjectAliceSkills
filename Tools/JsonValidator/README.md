@@ -36,8 +36,7 @@ All dialogTemplates have three validation tests:
 2) The different translations should have the same slots (slotnames). The other settings of the slots like values ect. can be different.
 3) There are no duplicates in the utterances. *Duplicates should not improve the performance, but from reports currently still improve it, so this is more of a warning*
 4) Every slot used in the intents is either defined in the same dialogFile, a module that is in the list of required modules of the installer, the core modules, or is a integrated slot of snips like *snips/numbers*
-
-***Currently this does not validate whether the utterances are correct, which will be added at a later point***
+5) Every value used for a slot in the utterances either has to exists as value/synonym in the slot definition, or has to be automatically extensible
 
 ## talk Files
 
