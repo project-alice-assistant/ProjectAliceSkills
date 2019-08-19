@@ -1,5 +1,4 @@
 import re
-import json
 
 class dialogTemplate():
 	def __init__(self, dialogTemplate: dict):

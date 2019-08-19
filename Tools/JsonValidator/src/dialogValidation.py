@@ -5,6 +5,7 @@ import re
 from src.validation import validation
 from src.dialogTemplate import dialogTemplate
 from snips_nlu_parsers import get_all_builtin_entities
+from unidecode import unidecode
 
 class dialogValidation(validation):
 	
@@ -70,9 +71,11 @@ class dialogValidation(validation):
 	def searchMissingSlotValue(self, values: list, allSlots: dict) -> list:
 		found = []
 		for value in values:
+			#uValue = unidecode(value)
 			for v in allSlots['values']:
-				if ( value == v['value'] or allSlots['automaticallyExtensible']
-					 or allSlots['useSynonyms'] and 'synonyms' in v and value in v['synonyms']):
+				#synonyms = [unidecode(x) for x in v['synonyms']]
+				if ( unidecode(value).lower() == unidecode(v['value']).lower() or allSlots['automaticallyExtensible']
+					 or allSlots['useSynonyms'] and 'synonyms' in v and unidecode(value).lower() in [unidecode(x).lower() for x in v['synonyms']]):
 					found.append(value)
 		return [x for x in values if x not in found]
 
