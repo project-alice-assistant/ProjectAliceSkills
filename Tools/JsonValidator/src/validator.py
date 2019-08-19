@@ -25,8 +25,7 @@ class validator:
 	
 	def printMissingSlots(self, filename: str, errorList: list):
 		if errorList:
-			self.indentPrint(6, 'missing slots in', filename + ':')
-		
+			self.indentPrint(6, 'missing slot translation in', filename + ':')
 		self.printErrorList(errorList, 8)
 		if errorList:
 			print()
