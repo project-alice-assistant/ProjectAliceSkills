@@ -4,7 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget http://bit.ly/????????? -O ~/ProjectAlice/system/moduleInstallTickets/Speller.install
+wget http://modules.projectalice.ch/Speller -O ~/ProjectAlice/system/moduleInstallTickets/Speller.install
 ```
 
 ##### > Alice CLI method
