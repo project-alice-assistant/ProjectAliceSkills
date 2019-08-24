@@ -6,7 +6,8 @@
 	"desc": "Allows to play music from youtube",
 	"aliceMinVersion": "",
 	"systemRequirements": []
-	"pipRequirements": [        "youtube_dl",
+	"pipRequirements": [
+		"youtube_dl",
         "ffmpeg"
 	],
 	"conditions": {
