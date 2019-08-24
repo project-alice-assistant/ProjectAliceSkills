@@ -1,0 +1,14 @@
+{
+	"notUnderstood": {
+		"default": [
+			"Sorry? What's the word you want me to spell?",
+			"I'm sorry but I didn't understand the word to spell"
+		],
+		"short": [
+			"What word?"
+		]
+	},
+	"isSpelled": [
+		"<say-as interpret-as=\"interjection\">{}</say-as> is spelled <break time=\"160ms\"/> {}"
+	]
+}

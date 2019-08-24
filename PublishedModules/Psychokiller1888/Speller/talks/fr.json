@@ -1,0 +1,14 @@
+{
+	"notUnderstood": {
+		"default": [
+			"Pardon? Quel mot veux-tu que j'épelle?",
+			"Je suis désolée, je n'ai pas compris le mot à épeller"
+		],
+		"short": [
+			"Quel mot?"
+		]
+	},
+	"isSpelled": [
+		"<say-as interpret-as=\"interjection\">{}</say-as> s'écrit <break time=\"160ms\"/> {}"
+	]
+}
