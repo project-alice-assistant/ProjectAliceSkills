@@ -5,7 +5,8 @@
 	"maintainers": ["Jierka"],
 	"desc": "Allows one to find informations about a topic on wikipedia",
 	"aliceMinVersion": "",
-	"requirements": [
+	"systemRequirements": [],
+	"pipRequirements": [
 		"wikipedia",
 		"BeautifulSoup4==4.6.3"
 	],

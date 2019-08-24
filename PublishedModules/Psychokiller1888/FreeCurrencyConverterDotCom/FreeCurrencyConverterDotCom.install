@@ -5,7 +5,8 @@
 	"maintainers": [],
 	"desc": "Let's you convert world currencies",
 	"aliceMinVersion": "",
-	"requirements": [],
+	"systemRequirements": [],
+	"pipRequirements": [],
 	"conditions": {
 		"lang": [
 			"en"

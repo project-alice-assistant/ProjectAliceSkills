@@ -24,6 +24,7 @@ try:
 except ImportError:
 	import subprocess
 	import time
+
 	subprocess.run(['pip3', 'install', '-r', 'requirements.txt'])
 	time.sleep(1)
 	from PyInquirer import style_from_dict, Token, prompt
@@ -35,13 +36,14 @@ import os
 
 style = style_from_dict({
 	Token.QuestionMark: '#996633 bold',
-	Token.Selected: '#5F819D bold',
-	Token.Instruction: '#99ff33 bold',
-	Token.Pointer: '#673ab7 bold',
-	Token.Answer: '#0066ff bold',
-	Token.Question: '#99ff33 bold',
-	Token.Input: '#99ff33 bold'
+	Token.Selected    : '#5F819D bold',
+	Token.Instruction : '#99ff33 bold',
+	Token.Pointer     : '#673ab7 bold',
+	Token.Answer      : '#0066ff bold',
+	Token.Question    : '#99ff33 bold',
+	Token.Input       : '#99ff33 bold'
 })
+
 
 class NotEmpty(Validator):
 	def validate(self, document):
@@ -60,6 +62,7 @@ class NotExist(Validator):
 				message='This cannot be empty and should not already exist',
 				cursor_position=len(document.text)
 			)
+
 
 PYTHON_CLASS = '''# -*- coding: utf-8 -*-
 
@@ -101,7 +104,8 @@ INSTALL_JSON = '''{
 	"maintainers": [],
 	"desc": "%description%",
 	"aliceMinVersion": "",
-	"requirements": [%requirements%],
+	"pipRequirements": [%pipRequirements%],
+	"systemRequirements": [%systemRequirements%],
 	"conditions": {
 		"lang": [%langs%]
 	}
@@ -183,7 +187,8 @@ alice module:install %username%/%moduleName%
 - Alice minimum version: N/A
 - Conditions:
 %langs%
-- Requirements: N/A
+- Pip requirements: N/A
+- System requirements: N/A
 
 ### Configuration
 
@@ -191,7 +196,7 @@ alice module:install %username%/%moduleName%
 `foo`:
  - type: `bar`
  - desc: `baz`
- 
+
 `bar`:
  - type: `baz`
  - desc: `bar`
@@ -231,9 +236,9 @@ next_questions = [
 		'name'    : 'langs',
 		'message' : 'Choose the language for this module. Note that to share\nyour module on the official repo english is mendatory',
 		'validate': NotEmpty,
-		'choices': [
+		'choices' : [
 			{
-				'name': 'en',
+				'name'   : 'en',
 				'checked': True
 			},
 			{
@@ -267,10 +272,10 @@ if __name__ == '__main__':
 	while os.path.exists(modulePath):
 		questions = [
 			{
-				'type'    : 'confirm',
-				'name'    : 'delete',
-				'message' : 'Seems like this module name already exists.\nDo you want to delete it locally?',
-				'default' : False
+				'type'   : 'confirm',
+				'name'   : 'delete',
+				'message': 'Seems like this module name already exists.\nDo you want to delete it locally?',
+				'default': False
 			},
 			{
 				'type'    : 'input',
@@ -283,12 +288,12 @@ if __name__ == '__main__':
 		]
 		subAnswers = prompt(questions, style=style)
 		if subAnswers['delete']:
-			shutil.rmtree(path = modulePath)
+			shutil.rmtree(path=modulePath)
 		else:
 			modulePath = os.path.join(home, 'ProjectAliceModuler', answers['username'], subAnswers['moduleName'])
 			answers['moduleName'] = subAnswers['moduleName']
 
-	subAnswers = prompt(next_questions, style = style)
+	subAnswers = prompt(next_questions, style=style)
 	answers = {**answers, **subAnswers}
 
 	reqs = []
@@ -297,7 +302,7 @@ if __name__ == '__main__':
 			{
 				'type'   : 'confirm',
 				'name'   : 'requirements',
-				'message': 'Do you want to add python requirements?',
+				'message': 'Do you want to add python pip requirements?',
 				'default': False
 			},
 			{
@@ -311,6 +316,29 @@ if __name__ == '__main__':
 		subAnswers = prompt(questions, style=style)
 		if subAnswers['requirements'] and subAnswers['req'] != 'stop':
 			reqs.append(subAnswers['req'])
+		else:
+			break
+
+	sysreqs = []
+	while True:
+		questions = [
+			{
+				'type'   : 'confirm',
+				'name'   : 'sysrequirements',
+				'message': 'Do you want to add system requirements?',
+				'default': False
+			},
+			{
+				'type'    : 'input',
+				'name'    : 'sysreq',
+				'message' : 'Enter the requirement name or `stop` to cancel',
+				'validate': NotEmpty,
+				'when'    : lambda subAnswers: subAnswers['sysrequirements']
+			}
+		]
+		subAnswers = prompt(questions, style=style)
+		if subAnswers['sysrequirements'] and subAnswers['sysreq'] != 'stop':
+			sysreqs.append(subAnswers['sysreq'])
 		else:
 			break
 
@@ -334,26 +362,33 @@ if __name__ == '__main__':
 		if answers['langs']:
 			langs = langs[:-1] + '\n\t\t'
 
-		requirements = ''
+		pipRequirements = ''
 		for req in reqs:
-			requirements += '\n\t\t"{}",'.format(req)
+			pipRequirements += '\n\t\t"{}",'.format(req)
 		if reqs:
-			requirements = requirements[:-1] + '\n\t'
+			pipRequirements = pipRequirements[:-1] + '\n\t'
+
+		systemRequirements = ''
+		for req in sysreqs:
+			systemRequirements += '\n\t\t"{}",'.format(req)
+		if sysreqs:
+			systemRequirements = systemRequirements[:-1] + '\n\t'
 
 		f.write(INSTALL_JSON.replace('%moduleName%', answers['moduleName'])
-							.replace('%description%', answers['description'])
-							.replace('%username%', answers['username'])
-							.replace('%langs%', langs)
-							.replace('%requirements%', requirements)
-		)
+				.replace('%description%', answers['description'])
+				.replace('%username%', answers['username'])
+				.replace('%langs%', langs)
+				.replace('%pipRequirements%', pipRequirements)
+				.replace('%systemRequirements%', systemRequirements)
+				)
 
 	print('Creating dialog template(s)')
 	for lang in answers['langs']:
 		print('- {}'.format(lang))
 		with open(os.path.join(modulePath, 'dialogTemplate', lang + '.json'), 'w') as f:
 			f.write(DIALOG_TEMPLATE.replace('%moduleName%', answers['moduleName'])
-								   .replace('%description%', answers['description'])
-								   .replace('%username%', answers['username'])
+					.replace('%description%', answers['description'])
+					.replace('%username%', answers['username'])
 					)
 
 	print('Creating talks')
@@ -369,10 +404,10 @@ if __name__ == '__main__':
 			langs += '  - {}\n'.format(lang)
 
 		f.write(README.replace('%moduleName%', answers['moduleName'])
-					  .replace('%description%', answers['description'])
-					  .replace('%username%', answers['username'])
-					  .replace('%langs%', langs.rstrip())
-		)
+				.replace('%description%', answers['description'])
+				.replace('%username%', answers['username'])
+				.replace('%langs%', langs.rstrip())
+				)
 
 	print('----------------------------')
 	print()

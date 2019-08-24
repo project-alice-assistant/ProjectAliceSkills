@@ -7,7 +7,8 @@
 	],
 	"desc": "Gets you the daily random useless fact or a random one",
 	"aliceMinVersion": "",
-	"requirements": [],
+	"systemRequirements": [],
+	"pipRequirements": [],
 	"conditions": {
 		"lang": [
 			"en"

@@ -5,7 +5,8 @@
 	"maintainers": ["Jierka"],
 	"desc": "Play rock paper scissors",
 	"aliceMinVersion": "",
-	"requirements": [],
+	"systemRequirements": [],
+	"pipRequirements": [],
 	"conditions": {
 		"lang": [
 			"en",

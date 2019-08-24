@@ -5,7 +5,8 @@
 	"maintainers": [],
 	"desc": "This module allows you to not only connect tasmota esp devices, but listen to them",
 	"aliceMinVersion": "",
-	"requirements": [],
+	"systemRequirements": [],
+	"pipRequirements": [],
 	"conditions": {
 		"lang": [
 			"en",

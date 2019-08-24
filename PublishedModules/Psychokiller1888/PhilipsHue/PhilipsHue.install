@@ -7,7 +7,8 @@
 	],
 	"desc": "Control your Philips Hue lamps",
 	"aliceMinVersion": "",
-	"requirements": [],
+	"systemRequirements": [],
+	"pipRequirements": [],
 	"conditions": {
 		"lang": [
 			"en"

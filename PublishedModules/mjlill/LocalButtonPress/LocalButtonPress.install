@@ -7,7 +7,8 @@
 	],
 	"desc": "Press an imaginary button on or off",
 	"aliceMinVersion": "",
-	"requirements": [
+	"systemRequirements": [],
+	"pipRequirements": [
 		"RPI.GPIO"
 	],
 	"conditions": {

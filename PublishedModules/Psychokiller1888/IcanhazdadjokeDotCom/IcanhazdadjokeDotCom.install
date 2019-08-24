@@ -5,7 +5,8 @@
 	"maintainers": [],
 	"desc": "Get a random dad joke on demand!",
 	"aliceMinVersion": "",
-	"requirements": [],
+	"systemRequirements": [],
+	"pipRequirements": [],
 	"conditions": {
 		"lang": [
 			"en"

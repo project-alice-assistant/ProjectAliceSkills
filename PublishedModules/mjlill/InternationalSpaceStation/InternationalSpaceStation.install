@@ -8,7 +8,8 @@
 	],
 	"desc": "Inquire information about the international space station",
 	"aliceMinVersion": "",
-	"requirements": [],
+	"systemRequirements": [],
+	"pipRequirements": [],
 	"conditions": {
 		"lang": [
 			"en",
