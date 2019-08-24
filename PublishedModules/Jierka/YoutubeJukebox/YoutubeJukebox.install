@@ -5,9 +5,8 @@
 	"maintainers": ["Jierka"],
 	"desc": "Allows to play music from youtube",
 	"aliceMinVersion": "",
-	"systemRequirements": [],
-	"pipRequirements": [
-        "youtube_dl",
+	"systemRequirements": []
+	"pipRequirements": [        "youtube_dl",
         "ffmpeg"
 	],
 	"conditions": {
