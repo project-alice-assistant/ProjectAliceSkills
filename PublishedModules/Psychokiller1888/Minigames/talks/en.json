@@ -28,5 +28,10 @@
 		"<say-as interpret-as=\"interjection\">{}</say-as>! You lost! <break time=\"500ms\"/> Dare to play again?",
 		"<say-as interpret-as=\"interjection\">{}</say-as>! Gotcha! <break time=\"500ms\"/> You want to try again?",
 		"<say-as interpret-as=\"interjection\">{}</say-as>! And the winner is... <say-as interpret-as=\"interjection\">me</say-as>! <break time=\"500ms\"/> Try your luck again?"
+	],
+	"rollADiceResult": [
+		"<say-as interpret-as=\"interjection\">{}</say-as>!",
+		"and it's a... ,<say-as interpret-as=\"interjection\">{}</say-as>!",
+		"you got a... ,<say-as interpret-as=\"interjection\">{}</say-as>!"
 	]
 }

@@ -16,8 +16,17 @@
 						"heads or tail",
 						"coin flipping"
 					]
+                },
+				{
+                    "value": "RollADice",
+                    "synonyms": [
+						"roll a dice",
+						"rolling dice",
+						"roll the dice",
+						"throw a dice"
+					]
                 }
-            ]
+			]
         },
 		{
 			"name": "HeadsOrTails",
@@ -62,7 +71,8 @@
 				"can we play together",
 				"play with me please",
 				"can you please {flip a coin:=>WhichGame}",
-				"can you {flip a coin:=>WhichGame}"
+				"can you {flip a coin:=>WhichGame}",
+				"can you {roll a dice:=>WhichGame}"
 			],
 			"slots": [
 				{
