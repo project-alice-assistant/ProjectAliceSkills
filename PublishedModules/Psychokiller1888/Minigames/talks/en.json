@@ -1,0 +1,32 @@
+{
+	"unknownGame": [
+		"I'm sorry but I don't know that game. Any other game you want to play?",
+		"I have no idea what that game is, sorry! Is there any other game you'd like to play?",
+		"I'm so sorry but I don't know that game... Can we play another one?"
+	],
+	"whichGame": [
+		"Sure we can play! What game do you want to play?",
+		"Of course! What mini game shall we play?",
+		"Let's play! What do you want to play?"
+	],
+	"endPlaying": [
+		"Ok, feel free to ask again for another game anytime!",
+		"Ok, we'll certainly play together again!",
+		"Ok, just let me know if you want to play with me again!"
+	],
+	"flipACoinStart": [
+		"All right, let's do this! Heads or tails?",
+		"Ok, I'll flip it! Heads or tails?",
+		"No problemo! Heads or tails?"
+	],
+	"flipACoinUserWins": [
+		"<say-as interpret-as=\"interjection\">{}</say-as>! You win! <break time=\"500ms\"/> Want to play again?",
+		"<say-as interpret-as=\"interjection\">{}</say-as>! You're the winner! <break time=\"500ms\"/> Shall I throw another one?",
+		"Ok, I loose... <say-as interpret-as=\"interjection\">{}</say-as>...  <break time=\"500ms\"/> Again?"
+	],
+	"flipACoinUserLooses": [
+		"<say-as interpret-as=\"interjection\">{}</say-as>! You lost! <break time=\"500ms\"/> Dare to play again?",
+		"<say-as interpret-as=\"interjection\">{}</say-as>! Gotcha! <break time=\"500ms\"/> You want to try again?",
+		"<say-as interpret-as=\"interjection\">{}</say-as>! And the winner is... <say-as interpret-as=\"interjection\">me</say-as>! <break time=\"500ms\"/> Try your luck again?"
+	]
+}

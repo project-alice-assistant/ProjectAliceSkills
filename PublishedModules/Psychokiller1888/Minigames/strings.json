@@ -1,0 +1,18 @@
+{
+	"heads": {
+		"en": [
+			"heads"
+		],
+		"fr": [
+			"face"
+		]
+	},
+	"tails": {
+		"en": [
+			"tails"
+		],
+		"fr": [
+			"pile"
+		]
+	}
+}
