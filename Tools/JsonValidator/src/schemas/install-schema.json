@@ -7,7 +7,8 @@
 		"maintainers",
 		"desc",
 		"aliceMinVersion",
-		"requirements",
+		"systemRequirements",
+    "pipRequirements",
 		"conditions"
 	],
 	"properties": {
@@ -20,7 +21,11 @@
 		},
 		"desc": { "type": "string" },
 		"aliceMinVersion": { "type": ["string", "null"] },
-		"requirements": {
+		"systemRequirements": {
+			"type": "array",
+			"items": { "type": "string" }
+		},
+    "pipRequirements": {
 			"type": "array",
 			"items": { "type": "string" }
 		},
