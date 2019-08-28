@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import time
+
 import os
 
 import random
@@ -53,14 +55,15 @@ class FlipACoin(MiniGame):
 				absolutePath=True
 			)
 
-			self._started = False
-
 			if session.slotValue('HeadsOrTails') == coin:
 				managers.MqttServer.continueDialog(
 					sessionId=session.sessionId,
 					text=managers.TalkManager.randomTalk(talk='flipACoinUserWins', module='Minigames').format(session.slots['HeadsOrTails']),
 					intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
-					previousIntent=self._INTENT_PLAY_GAME
+					previousIntent=self._INTENT_PLAY_GAME,
+					customData={
+						'askRetry': True
+					}
 				)
 			else:
 				managers.MqttServer.continueDialog(

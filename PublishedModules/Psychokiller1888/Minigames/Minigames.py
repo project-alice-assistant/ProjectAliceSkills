@@ -94,20 +94,16 @@ class Minigames(Module):
 					)
 
 		elif self._minigame is not None:
-			if self._minigame.started:
-				if intent == self._INTENT_ANSWER_YES_OR_NO and session.customData and 'askRetry' in session.customData:
-					if commons.isYes(session.message):
-						self._minigame.start(session)
-					else:
-						self._minigame = None
-						managers.MqttServer.endTalk(
-							sessionId=sessionId,
-							text=self.randomTalk('endPlaying')
-						)
-
+			if intent == self._INTENT_ANSWER_YES_OR_NO and session.customData and 'askRetry' in session.customData.keys():
+				if commons.isYes(session.message):
+					self._minigame.start(session)
 				else:
-					self._minigame.onMessage(intent, session)
+					self._minigame = None
+					managers.MqttServer.endTalk(
+						sessionId=sessionId,
+						text=self.randomTalk('endPlaying')
+					)
 			else:
-				self._logger.error('[{}] Unsupported minigame state, that\'s weird.'.format(self.name))
+				self._minigame.onMessage(intent, session)
 
 		return True
