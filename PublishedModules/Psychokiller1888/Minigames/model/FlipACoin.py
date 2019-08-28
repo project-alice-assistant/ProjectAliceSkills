@@ -42,11 +42,7 @@ class FlipACoin(MiniGame):
 
 	def onMessage(self, intent: str, session: DialogSession):
 		if intent == self._INTENT_ANSWER_HEADS_OR_TAIL:
-			rnd = random.randint(1, 100)
-
-			coin = 'heads'
-			if rnd % 2 == 0:
-				coin = 'tails'
+			coin = random.choice(['heads', 'tails'])
 
 			managers.MqttServer.playSound(
 				soundFile=os.path.join(commons.rootDir(), 'modules', 'Minigames', 'sounds', 'coinflip'),
