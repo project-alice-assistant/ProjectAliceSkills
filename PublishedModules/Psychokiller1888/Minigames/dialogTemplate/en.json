@@ -25,6 +25,15 @@
 						"roll the dice",
 						"throw a dice"
 					]
+                },
+				{
+                    "value": "RockPaperScissors",
+                    "synonyms": [
+						"scissors rock paper",
+						"rock paper scissors",
+						"roshambo",
+						"stone paper scissors"
+					]
                 }
 			]
         },
@@ -53,6 +62,32 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "RockPaperOrScissors",
+			"matchingStrictness": null,
+			"automaticallyExtensible": true,
+			"useSynonyms": true,
+			"values": [
+				{
+					"value": "rock",
+					"synonyms": [
+						"stone"
+					]
+				},
+				{
+					"value": "paper",
+					"synonyms": [
+						"sheet"
+					]
+				},
+				{
+					"value": "scissors",
+					"synonyms": [
+						"knife"
+					]
+				}
+			]
 		}
     ],
     "intents": [
@@ -66,13 +101,14 @@
 				"{flip a coin:=>WhichGame} please",
 				"let's play a game",
 				"shall we play a game",
-				"can we play {coin flipping:=>WhichGame}",
+				"can we play {rock paper scissors:=>WhichGame}",
 				"i wanna play with you",
 				"can we play together",
 				"play with me please",
 				"can you please {flip a coin:=>WhichGame}",
 				"can you {flip a coin:=>WhichGame}",
-				"can you {roll a dice:=>WhichGame}"
+				"can you {roll a dice:=>WhichGame}",
+				"let's play {scissors rock paper:=>WhichGame}"
 			],
 			"slots": [
 				{
@@ -117,6 +153,26 @@
 					"description": null,
 					"required": false,
 					"type": "HeadsOrTails",
+					"missingQuestion": ""
+				}
+			]
+		},
+		{
+			"name": "AnswerRockPaperOrScissors",
+			"description": "User answers heads or tail",
+			"enabledByDefault": false,
+			"utterances": [
+				"{rock:=>RockPaperOrScissors}",
+				"i have {paper:=>RockPaperOrScissors}",
+				"i chose {scissors:=>RockPaperOrScissors}",
+				"i take {stone:=>RockPaperOrScissors}"
+			],
+			"slots": [
+				{
+					"name": "RockPaperOrScissors",
+					"description": null,
+					"required": false,
+					"type": "RockPaperOrScissors",
 					"missingQuestion": ""
 				}
 			]

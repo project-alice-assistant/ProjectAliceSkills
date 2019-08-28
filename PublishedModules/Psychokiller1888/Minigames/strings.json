@@ -1,18 +1,22 @@
 {
 	"heads": {
-		"en": [
-			"heads"
-		],
-		"fr": [
-			"face"
-		]
+		"en": ["heads"],
+		"fr": ["face"]
 	},
 	"tails": {
-		"en": [
-			"tails"
-		],
-		"fr": [
-			"pile"
-		]
+		"en": ["tails"],
+		"fr": ["pile"]
+	},
+	"rock": {
+		"en": ["rock"],
+		"fr": ["caillou"]
+	},
+	"paper": {
+		"en": ["paper"],
+		"fr": ["feuille"]
+	},
+	"scissors": {
+		"en": ["scissors"],
+		"fr": ["ciseaux"]
 	}
 }

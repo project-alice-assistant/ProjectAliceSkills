@@ -33,5 +33,24 @@
 		"<say-as interpret-as=\"interjection\">{}</say-as>!",
 		"and it's a... ,<say-as interpret-as=\"interjection\">{}</say-as>!",
 		"you got a... ,<say-as interpret-as=\"interjection\">{}</say-as>!"
+	],
+	"rockPaperScissorsStart": [
+		"<say-as interpret-as=\"interjection\">rock</say-as> <say-as interpret-as=\"interjection\">paper</say-as> <say-as interpret-as=\"interjection\">scissors</say-as>! What do you have?",
+		"<say-as interpret-as=\"interjection\">rock</say-as> <say-as interpret-as=\"interjection\">paper</say-as> <say-as interpret-as=\"interjection\">scissors</say-as>! What's yours?"
+	],
+	"rockPaperScissorsLooses": [
+		"And I have <say-as interpret-as=\"interjection\">{}</say-as>! You lost! <break time=\"500ms\"/> Dare to play again?",
+		"I have <say-as interpret-as=\"interjection\">{}</say-as>! Gotcha! <break time=\"500ms\"/> You want to try again?",
+		"Yes! I have <say-as interpret-as=\"interjection\">{}</say-as>! I win! <break time=\"500ms\"/> Try your luck again?"
+	],
+	"rockPaperScissorsWins": [
+		"I have <say-as interpret-as=\"interjection\">{}</say-as>... You win... <break time=\"500ms\"/> Shall we play again?",
+		"<say-as interpret-as=\"interjection\">{}</say-as>... You got me... <break time=\"500ms\"/> You want to try again?",
+		"Oh no! I have <say-as interpret-as=\"interjection\">{}</say-as>. I loose! <break time=\"500ms\"/> Can we play again?"
+	],
+	"rockPaperScissorsTie": [
+		"<say-as interpret-as=\"interjection\">{}</say-as>, same! <break time=\"500ms\"/> Dare to play again?",
+		"I have <say-as interpret-as=\"interjection\">{}</say-as> too! <break time=\"500ms\"/> You want to try again?",
+		"I chose <say-as interpret-as=\"interjection\">{}</say-as> as well! It's a tie... <break time=\"500ms\"/> Try your luck again?"
 	]
 }
