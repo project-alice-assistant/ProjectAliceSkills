@@ -56,25 +56,18 @@ class FlipACoin(MiniGame):
 			)
 
 			if session.slotValue('HeadsOrTails') == coin:
-				managers.MqttServer.continueDialog(
-					sessionId=session.sessionId,
-					text=managers.TalkManager.randomTalk(talk='flipACoinUserWins', module='Minigames').format(session.slots['HeadsOrTails']),
-					intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
-					previousIntent=self._INTENT_PLAY_GAME,
-					customData={
-						'askRetry': True
-					}
-				)
+				result = 'flipACoinUserWins'
 			else:
-				managers.MqttServer.continueDialog(
-					sessionId=session.sessionId,
-					text=managers.TalkManager.randomTalk(
-						talk='flipACoinUserLooses',
-						module='Minigames'
-					).format(managers.LanguageManager.getTranslations(module='Minigames', key=coin, toLang=managers.LanguageManager.activeLanguage)[0]),
-					intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
-					previousIntent=self._INTENT_PLAY_GAME,
-					customData={
-						'askRetry': True
-					}
-				)
+				result = 'flipACoinUserLooses'
+			managers.MqttServer.continueDialog(
+				sessionId=session.sessionId,
+				text=managers.TalkManager.randomTalk(
+					talk=result,
+					module='Minigames'
+				).format(managers.LanguageManager.getTranslations(module='Minigames', key=coin, toLang=managers.LanguageManager.activeLanguage)[0]),
+				intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
+				previousIntent=self._INTENT_PLAY_GAME,
+				customData={
+					'askRetry': True
+				}
+			)
