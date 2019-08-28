@@ -42,14 +42,7 @@ class FlipACoin(MiniGame):
 
 	def onMessage(self, intent: str, session: DialogSession):
 		if intent == self._INTENT_ANSWER_ROCK_PAPER_OR_SCISSORS:
-			rnd = random.randint(1, 100)
-
-			if rnd < 33:
-				me = 'rock'
-			elif 33 <= rnd < 66:
-				me = 'paper'
-			else:
-				me = 'scissors'
+			me = random.choice(['rock', 'paper', 'scissors'])
 
 			managers.MqttServer.playSound(
 				soundFile=os.path.join(commons.rootDir(), 'modules', 'Minigames', 'sounds', 'drum_suspens'),
@@ -58,44 +51,25 @@ class FlipACoin(MiniGame):
 				absolutePath=True
 			)
 
-
-			if session.slotValue('RockPaperOrScissors') == me:
-				managers.MqttServer.continueDialog(
-					sessionId=session.sessionId,
-					text=managers.TalkManager.randomTalk(talk='rockPaperScissorsTie', module='Minigames').format(session.slotValue('RockPaperOrScissors')),
-					intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
-					previousIntent=self._INTENT_PLAY_GAME,
-					customData={
-						'askRetry': True
-					}
-				)
+			player = session.slotValue('RockPaperOrScissors')
+			# tie
+			if player == me:
+				result = 'rockPaperScissorsTie'
+			# player wins
+			elif player == 'rock' and me == 'scissors' or player == 'paper' and me == 'rock' or player == 'scissors' and me == 'paper':
+				result = 'rockPaperScissorsWins'
+			# alice wins
 			else:
-				player = session.slotValue('RockPaperOrScissors')
-
-				# Player wins
-				if player == 'rock' and me == 'scissors' or player == 'paper' and me == 'rock' or player == 'scissors' and me == 'paper':
-					managers.MqttServer.continueDialog(
-						sessionId=session.sessionId,
-						text=managers.TalkManager.randomTalk(
-							talk='rockPaperScissorsWins',
-							module='Minigames'
-						).format(managers.LanguageManager.getTranslations(module='Minigames', key=me, toLang=managers.LanguageManager.activeLanguage)[0]),
-						intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
-						previousIntent=self._INTENT_PLAY_GAME,
-						customData={
-							'askRetry': True
-						}
-					)
-				else:
-					managers.MqttServer.continueDialog(
-						sessionId=session.sessionId,
-						text=managers.TalkManager.randomTalk(
-							talk='rockPaperScissorsLooses',
-							module='Minigames'
-						).format(managers.LanguageManager.getTranslations(module='Minigames', key=me, toLang=managers.LanguageManager.activeLanguage)[0]),
-						intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
-						previousIntent=self._INTENT_PLAY_GAME,
-						customData={
-							'askRetry': True
-						}
-					)
+				result = 'rockPaperScissorsLooses'
+			managers.MqttServer.continueDialog(
+				sessionId=session.sessionId,
+				text=managers.TalkManager.randomTalk(
+					talk=result,
+					module='Minigames'
+				).format(managers.LanguageManager.getTranslations(module='Minigames', key=me, toLang=managers.LanguageManager.activeLanguage)[0]),
+				intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
+				previousIntent=self._INTENT_PLAY_GAME,
+				customData={
+					'askRetry': True
+				}
+			)
