@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-import time
-
 import os
 
 import random
@@ -61,6 +59,7 @@ class FlipACoin(MiniGame):
 			# alice wins
 			else:
 				result = 'rockPaperScissorsLooses'
+
 			managers.MqttServer.continueDialog(
 				sessionId=session.sessionId,
 				text=managers.TalkManager.randomTalk(
