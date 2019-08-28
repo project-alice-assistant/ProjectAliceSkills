@@ -1,22 +1,27 @@
 {
 	"heads": {
 		"en": ["heads"],
-		"fr": ["face"]
+		"fr": ["face"],
+		"de": ["Kopf"]
 	},
 	"tails": {
 		"en": ["tails"],
-		"fr": ["pile"]
+		"fr": ["pile"],
+		"de": ["Zahl"]
 	},
 	"rock": {
 		"en": ["rock"],
-		"fr": ["caillou"]
+		"fr": ["caillou"],
+		"de": ["Stein"]
 	},
 	"paper": {
 		"en": ["paper"],
-		"fr": ["feuille"]
+		"fr": ["feuille"],
+		"de": ["Papier"]
 	},
 	"scissors": {
 		"en": ["scissors"],
-		"fr": ["ciseaux"]
+		"fr": ["ciseaux"],
+		"de": ["Schere"]
 	}
 }

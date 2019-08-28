@@ -2,14 +2,15 @@
 	"name": "Minigames",
 	"version": 0.2,
 	"author": "Psychokiller1888",
-	"maintainers": [],
+	"maintainers": ["maxbachmann"],
 	"desc": "Play a collection of many little games with alice",
 	"aliceMinVersion": "",
 	"pipRequirements": [],
 	"systemRequirements": [],
 	"conditions": {
 		"lang": [
-			"en"
+			"en",
+			"de"
 		]
 	}
 }

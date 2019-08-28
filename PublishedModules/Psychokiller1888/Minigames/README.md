@@ -17,10 +17,11 @@ Play a collection of many little games with alice
 
 - Version: 0.2
 - Author: Psychokiller1888
-- Maintainers: N/A
+- Maintainers: maxbachmann
 - Alice minimum version: N/A
 - Conditions:
   - en
+  - de
 - Pip requirements: N/A
 - System requirements: N/A
 

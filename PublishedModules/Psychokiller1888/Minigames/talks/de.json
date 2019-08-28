@@ -1,0 +1,56 @@
+{
+	"unknownGame": [
+		"Es tut mir leid, aber ich kenne das Spiel nicht. Gibt es noch ein anderes Spiel, das du spielen möchtest?",
+		"Sorry, ich habe keine Ahnung, was das für ein Spiel ist! Gibt es noch ein anderes Spiel, das du spielen möchtest?",
+		"Es tut mir so leid, aber ich kenne das Spiel nicht..... Können wir noch ein Anderes spielen?"
+	],
+	"whichGame": [
+		"Sicher können wir spielen! Welches Spiel möchtest du spielen?",
+		"Natürlich! Welches Minispiel sollen wir spielen?",
+		"Lass uns spielen! Was willst du spielen?"
+	],
+	"endPlaying": [
+		"Ok, zögere nicht, jederzeit wieder nach einem anderen Spiel zu fragen.!",
+		"Ok, wir werden sicherlich wieder zusammen spielen.!",
+		"Ok, lass es mich einfach wissen, wenn du wieder mit mir spielen willst.!"
+	],
+	"flipACoinStart": [
+		"Alles klar, los geht's! Kopf oder Zahl?",
+		"Ok ich werfe sie! Kopf oder Zahl?",
+		"Kein Problem! Kopf oder Zahl?"
+	],
+	"flipACoinUserWins": [
+		"<say-as interpret-as=\"interjection\">{}</say-as>! Du gewinnst! <break time=\"500ms\"/> Willst du nochmal spielen?",
+		"<say-as interpret-as=\"interjection\">{}</say-as>! Du bist der Gewinner! <break time=\"500ms\"/> Soll ich noch einen werfen?",
+		"Ok, Ich verliere... <say-as interpret-as=\"interjection\">{}</say-as>...  <break time=\"500ms\"/> Nochmal?"
+	],
+	"flipACoinUserLooses": [
+		"<say-as interpret-as=\"interjection\">{}</say-as>! Du hast verloren! <break time=\"500ms\"/> Traust du dich nochmal zu spielen?",
+		"<say-as interpret-as=\"interjection\">{}</say-as>! hab dich! <break time=\"500ms\"/> Willst du es nochmal versuchen?",
+		"<say-as interpret-as=\"interjection\">{}</say-as>! Und der Gewinner bin... <say-as interpret-as=\"interjection\">ich</say-as>! <break time=\"500ms\"/> Versuchst du dein Glück nochmal?"
+	],
+	"rollADiceResult": [
+		"<say-as interpret-as=\"interjection\">{}</say-as>!",
+		"Und es ist eine... ,<say-as interpret-as=\"interjection\">{}</say-as>!",
+		"Du hast eine... ,<say-as interpret-as=\"interjection\">{}</say-as>!"
+	],
+	"rockPaperScissorsStart": [
+		"<say-as interpret-as=\"interjection\">Schere</say-as> <say-as interpret-as=\"interjection\">Stein</say-as> <say-as interpret-as=\"interjection\">Papier</say-as>! Was hast du gewählt?",
+		"<say-as interpret-as=\"interjection\">Schere</say-as> <say-as interpret-as=\"interjection\">Stein</say-as> <say-as interpret-as=\"interjection\">Papier</say-as>! Was hast du?"
+	],
+	"rockPaperScissorsLooses": [
+		"Ich habe <say-as interpret-as=\"interjection\">{}</say-as>! Du verlierst! <break time=\"500ms\"/> Traust du dich nochmal zu spielen?",
+		"Ich habe <say-as interpret-as=\"interjection\">{}</say-as>! Hab dich! <break time=\"500ms\"/> Willst du es nochmal versuchen?",
+		"Ja! Ich habe <say-as interpret-as=\"interjection\">{}</say-as>! Ich gewinne! <break time=\"500ms\"/> Versuchst du dein Glück nochmal?"
+	],
+	"rockPaperScissorsWins": [
+		"Ich habe <say-as interpret-as=\"interjection\">{}</say-as>... Du gewinnst... <break time=\"500ms\"/> Sollen wir nochmal spielen?",
+		"<say-as interpret-as=\"interjection\">{}</say-as>... Du hast mich... <break time=\"500ms\"/> Willst du es nochmal probieren?",
+		"Oh nein! Ich habe <say-as interpret-as=\"interjection\">{}</say-as>. Ich verliere! <break time=\"500ms\"/> Können wir nochmal spielen?"
+	],
+	"rockPaperScissorsTie": [
+		"<say-as interpret-as=\"interjection\">{}</say-as>, same! <break time=\"500ms\"/> Dare to play again?",
+		"I have <say-as interpret-as=\"interjection\">{}</say-as> too! <break time=\"500ms\"/> You want to try again?",
+		"I chose <say-as interpret-as=\"interjection\">{}</say-as> as well! It's a tie... <break time=\"500ms\"/> Try your luck again?"
+	]
+}
