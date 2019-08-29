@@ -45,7 +45,9 @@ class YoutubeJukebox(Module):
 
 		for utterance in utterances:
 			for word in utterance.split(" "):
-				input = input.replace(str(word.strip()), "")
+				input = input.replace(str(word.strip()) + " ", "")
+				input = input.replace(" " + str(word.strip()) + " ", "")
+				input = input.replace(" " + str(word.strip()), "")
 
 		input = input.strip()
 
@@ -75,13 +77,15 @@ class YoutubeJukebox(Module):
 
 			r = requests.get(self.BASE_URL + wildcardQuery)
 			page = r.text
+			page = page[page.find('item-section'):]
 			matches = re.finditer(self.REGEX, page, re.MULTILINE)
 			videolist = []
 
 			for matchNum, match in enumerate(matches, start=1):
 				if "list" not in match.group(1):
 					tmp = 'https://www.youtube.com' + match.group(1)
-					videolist.append(tmp)
+					if len(tmp) <= 70:
+						videolist.append(tmp)
 
 			if len(videolist) == 0:
 				managers.MqttServer.say(text=self.randomTalk(text='noMatch', replace=[
@@ -89,7 +93,7 @@ class YoutubeJukebox(Module):
 				]), client=siteId)
 				return True
 
-			item = videolist[0]
+			item = videolist[1]
 			videoKey = item.split('=')[1]
 			print("[{}] Music video found {}".format(self.__class__.__name__, item))
 
