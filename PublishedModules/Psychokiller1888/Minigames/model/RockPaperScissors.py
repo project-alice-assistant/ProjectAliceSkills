@@ -10,7 +10,7 @@ from core.dialog.model.DialogSession import DialogSession
 from .MiniGame import MiniGame
 
 
-class FlipACoin(MiniGame):
+class RockPaperScissors(MiniGame):
 
 	_INTENT_PLAY_GAME = Intent('PlayGame')
 	_INTENT_ANSWER_YES_OR_NO = Intent('AnswerYesOrNo', isProtected=True)
@@ -44,11 +44,12 @@ class FlipACoin(MiniGame):
 
 			managers.MqttServer.playSound(
 				soundFile=os.path.join(commons.rootDir(), 'modules', 'Minigames', 'sounds', 'drum_suspens'),
-				sessionId='rockpaperscissors',
 				siteId=session.siteId,
 				absolutePath=True
 			)
 
+			redQueen = managers.ModuleManager.getModuleInstance('RedQueen')
+			redQueen.changeRedQueenStat('happiness', 5)
 			player = session.slotValue('RockPaperOrScissors')
 			# tie
 			if player == me:
@@ -56,9 +57,12 @@ class FlipACoin(MiniGame):
 			# player wins
 			elif player == 'rock' and me == 'scissors' or player == 'paper' and me == 'rock' or player == 'scissors' and me == 'paper':
 				result = 'rockPaperScissorsWins'
+				redQueen.changeRedQueenStat('frustration', 2)
 			# alice wins
 			else:
 				result = 'rockPaperScissorsLooses'
+				redQueen.changeRedQueenStat('frustration', -5)
+				redQueen.changeRedQueenStat('happiness', 5)
 
 			managers.MqttServer.continueDialog(
 				sessionId=session.sessionId,

@@ -51,10 +51,17 @@ class FlipACoin(MiniGame):
 				absolutePath=True
 			)
 
+			redQueen = managers.ModuleManager.getModuleInstance('RedQueen')
+			redQueen.changeRedQueenStat('happiness', 5)
+
 			if session.slotValue('HeadsOrTails') == coin:
 				result = 'flipACoinUserWins'
+				redQueen.changeRedQueenStat('frustration', 1)
 			else:
 				result = 'flipACoinUserLooses'
+				redQueen.changeRedQueenStat('frustration', -5)
+				redQueen.changeRedQueenStat('hapiness', 5)
+
 			managers.MqttServer.continueDialog(
 				sessionId=session.sessionId,
 				text=managers.TalkManager.randomTalk(

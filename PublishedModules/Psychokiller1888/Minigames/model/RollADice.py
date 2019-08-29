@@ -34,6 +34,9 @@ class RollADice(MiniGame):
 			absolutePath=True
 		)
 
+		redQueen = managers.ModuleManager.getModuleInstance('RedQueen')
+		redQueen.changeRedQueenStat('happiness', 5)
+
 		managers.MqttServer.endTalk(
 			sessionId=session.sessionId,
 			text=managers.TalkManager.randomTalk(

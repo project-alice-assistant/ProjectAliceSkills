@@ -21,7 +21,9 @@ class Minigames(Module):
 	_INTENT_ANSWER_MINI_GAME 	= Intent('AnswerMiniGame', isProtected=True)
 
 	_SUPPORTED_GAMES 			= [
-		'FlipACoin'
+		'FlipACoin',
+		'RockPaperScissors',
+		'RollADice'
 	]
 
 	DATABASE = {
@@ -91,6 +93,13 @@ class Minigames(Module):
 					managers.MqttServer.endTalk(
 						sessionId=sessionId,
 						text=self.randomTalk('endPlaying')
+					)
+				else:
+					managers.MqttServer.continueDialog(
+						sessionId=sessionId,
+						intentFilter=[self._INTENT_ANSWER_MINI_GAME],
+						text=managers.TalkManager.randomTalk('whichGame'),
+						previousIntent=self._INTENT_PLAY_GAME
 					)
 
 		elif self._minigame is not None:
