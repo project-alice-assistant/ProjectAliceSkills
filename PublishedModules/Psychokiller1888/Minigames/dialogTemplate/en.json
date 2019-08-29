@@ -34,7 +34,15 @@
 						"roshambo",
 						"stone paper scissors"
 					]
-                }
+                },
+				{
+					"value": "GuessTheNumber",
+                    "synonyms": [
+						"guess the number",
+						"guess a number",
+						"guess my number"
+					]
+				}
 			]
         },
 		{

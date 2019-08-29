@@ -23,5 +23,10 @@
 		"en": ["scissors"],
 		"fr": ["ciseaux"],
 		"de": ["Schere"]
+	},
+	"minutesAndSeconds": {
+		"en": ["{} minutes and {} seconds"],
+		"fr": ["{} minutes et {} seconde"],
+		"de": ["{} minuten und {} sekunden"]
 	}
 }

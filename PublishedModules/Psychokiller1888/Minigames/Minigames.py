@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import importlib
+import time
 
 import core.base.Managers as managers
 from core.commons import commons
@@ -23,12 +24,13 @@ class Minigames(Module):
 	_SUPPORTED_GAMES 			= [
 		'FlipACoin',
 		'RockPaperScissors',
-		'RollADice'
+		'RollADice',
+		'GuessTheNumber'
 	]
 
 	DATABASE = {
 		'highscores': [
-			'username UNIQUE TEXT NOT NULL',
+			'username TEXT NOT NULL',
 			'score INTEGER NOT NULL',
 			'timestamp INTEGER NOT NULL'
 		]
@@ -41,7 +43,7 @@ class Minigames(Module):
 			self._INTENT_ANSWER_YES_OR_NO
 		]
 
-		super().__init__(self._SUPPORTED_INTENTS)
+		super().__init__(self._SUPPORTED_INTENTS, databaseSchema=self.DATABASE)
 
 		self._minigames = dict()
 		self._minigame: MiniGame = None
@@ -55,6 +57,16 @@ class Minigames(Module):
 				self._SUPPORTED_INTENTS += minigame.intents
 			except Exception as e:
 				self._logger.error('[{}] Something went wrong loading the minigame "{}": {}'.format(self.name, game, e))
+
+
+	def onSessionTimeout(self, session: DialogSession):
+		if self._minigame:
+			self._minigame.started = False
+
+
+	def onUserCancel(self, session: DialogSession):
+		if self._minigame:
+			self._minigame.started = False
 
 
 	def onMessage(self, intent: str, session: DialogSession) -> bool:
@@ -116,3 +128,23 @@ class Minigames(Module):
 				self._minigame.onMessage(intent, session)
 
 		return True
+
+
+	def checkAndStoreScore(self, user: str, score: int, biggerIsBetter: bool = True) -> bool:
+		lastScore = self.databaseFetch(tableName='highscores', query='SELECT * FROM :__table__ WHERE username = :username ORDER BY score DESC LIMIT 1', values={'username': user})
+		self.databaseInsert(
+			tableName='highscores',
+			query='INSERT INTO :__table__ (username, score, timestamp) VALUES (:username, :score, :timestamp)',
+			values={'username': user, 'score': score, 'timestamp': round(time.time())}
+		)
+
+		if lastScore:
+			if biggerIsBetter and score > int(lastScore['score']):
+				return True
+			elif not biggerIsBetter and score < int(lastScore['score']):
+				return True
+			else:
+				return False
+
+		else:
+			return True

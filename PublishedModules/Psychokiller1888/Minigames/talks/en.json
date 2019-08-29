@@ -14,6 +14,11 @@
 		"Ok, we'll certainly play together again!",
 		"Ok, just let me know if you want to play with me again!"
 	],
+	"playAgain": [
+		"Do you want to play again?",
+		"Want to try again?",
+		"Shall we play another round?"
+	],
 	"flipACoinStart": [
 		"All right, let's do this! Heads or tails?",
 		"Ok, I'll flip it! Heads or tails?",
@@ -52,5 +57,28 @@
 		"<say-as interpret-as=\"interjection\">{}</say-as>, same! <break time=\"500ms\"/> Dare to play again?",
 		"I have <say-as interpret-as=\"interjection\">{}</say-as> too! <break time=\"500ms\"/> You want to try again?",
 		"I chose <say-as interpret-as=\"interjection\">{}</say-as> as well! It's a tie... <break time=\"500ms\"/> Try your luck again?"
+	],
+	"guessTheNumberStart": [
+		"Sure! I'm thinking about a number between 1 and 10000, try to find it as fast as possible!",
+		"Ok, let's play! Try to guess the number I'm having in my mind as fast as possible. It's between 1 and 10000",
+		"Ok, try to guess my number as fast as possible! It is between 1 and 10000"
+	],
+	"guessTheNumberMore": [
+		"More!"
+	],
+	"guessTheNumberLess": [
+		"Less!"
+	],
+	"guessTheNumberCorrect": [
+		"{}? Did you say {}? You found it, that correct!",
+		"Wait, what? Did you just say {}? Awesome, you found it!"
+	],
+	"guessTheNumberNewHighscore": [
+		"{}! That's a new record! Congrats!",
+		"That's a new record! You've made it in {}, congratulations!"
+	],
+	"guessTheNumberScore": [
+		"You made it in {}!",
+		"You've finished the game in {}!"
 	]
 }
