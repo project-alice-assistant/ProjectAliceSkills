@@ -16,7 +16,7 @@ alice module:install ProjectAlice/RedQueen
 ### Desc
 Red Queen is the official Project Alice personality module
 
-- Version: 0.7
+- Version: 0.8
 - Author: ProjectAlice
 - Maintainers:
   - Psycho, Jierka
@@ -36,6 +36,9 @@ Red Queen is the official Project Alice personality module
  - type: `int`
 
 `randomTalkMaxDelay`:
+ - type: `int`
+ 
+ `disableMoodTraits`:
  - type: `int`
 
 
