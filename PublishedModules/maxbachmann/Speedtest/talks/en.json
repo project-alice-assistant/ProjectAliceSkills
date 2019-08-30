@@ -1,7 +1,7 @@
 {
-  "running": [
-    "Starting speedtest now, i will be back with the results in a moment."
-  ],
+	"running": [
+		"Starting speedtest now, i will be back with the results in a moment."
+	],
 	"result": {
 		"default": [
 			"Your download speed is {} Megabit per second and your upload speed is {} Megabit per second."
@@ -10,7 +10,7 @@
 			"Download: {} Megabit per second, Upload: {} Megabit per second"
 		]
 	},
-  "failed": [
-    "There was an error, i could not run a speedtest... sorry."
-  ]
+	"failed": [
+		"There was an error, i could not run a speedtest... sorry."
+	]
 }
