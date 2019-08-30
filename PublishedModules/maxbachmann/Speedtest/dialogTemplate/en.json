@@ -17,7 +17,16 @@
 				"run internet speedtest",
 				"please run a internet speedtest",
 				"run a internet speedtest please",
-				"can you run a internet speed test"
+				"can you run a internet speed test",
+				"do speedtest",
+				"do speed test",
+				"please do a speedtest",
+				"do a speedtest please",
+				"can you do a speed test",
+				"do internet speedtest",
+				"please do a internet speedtest",
+				"do a internet speedtest please",
+				"can you do a internet speed test"
 			],
 			"slots": []
 		}
