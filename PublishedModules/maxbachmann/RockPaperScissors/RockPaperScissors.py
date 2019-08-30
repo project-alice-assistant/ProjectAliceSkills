@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import core.base.Managers as managers
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession

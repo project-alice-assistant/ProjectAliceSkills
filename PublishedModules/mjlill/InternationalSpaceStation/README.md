@@ -15,13 +15,14 @@ alice module:install mjlill/InternationalSpaceStation
 ### Description
 Inquire information about the international space station
 
-- Version: 0.2
+- Version: 1.0
 - Author: mjlill
-- Maintainers: maxbachmann, Jierka
+- Maintainers: maxbachmann, Jierka, Psycho
 - Alice minimum version: N/A
 - Conditions:
   - en
   - de
   - fr
+  - online
 - Requirements: N/A
 

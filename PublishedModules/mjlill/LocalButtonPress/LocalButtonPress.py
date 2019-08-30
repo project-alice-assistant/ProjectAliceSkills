@@ -40,10 +40,10 @@ class LocalButtonPress(Module):
 
 		if intent == self._INTENT_BUTTON_ON:
 			GPIO.output(self._gpioPin, GPIO.HIGH)
-			managers.MqttServer.endTalk(session.sessionId, managers.TalkManager.randomTalk('DoButtonOn'))
+			self.endDialog(session.sessionId, managers.TalkManager.randomTalk('DoButtonOn'))
 
 		elif intent == self._INTENT_BUTTON_OFF:
 			GPIO.output(self._gpioPin, GPIO.LOW)
-			managers.MqttServer.endTalk(session.sessionId, managers.TalkManager.randomTalk('DoButtonOff'))
+			self.endDialog(session.sessionId, managers.TalkManager.randomTalk('DoButtonOff'))
 
 		return True

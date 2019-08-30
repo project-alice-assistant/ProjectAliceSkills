@@ -15,9 +15,9 @@ alice module:install maxbachmann/RockPaperScissors
 ### Description
 Play rock paper scissors
 
-- Version: 0.1
+- Version: 0.2
 - Author: maxbachmann
-- Maintainers: Jierka
+- Maintainers: Jierka, Psycho
 - Alice minimum version: N/A
 - Conditions:
   - en

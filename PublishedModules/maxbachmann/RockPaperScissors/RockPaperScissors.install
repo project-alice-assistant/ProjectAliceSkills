@@ -2,7 +2,7 @@
 	"name": "RockPaperScissors",
 	"version": 0.1,
 	"author": "maxbachmann",
-	"maintainers": ["Jierka"],
+	"maintainers": ["Jierka", "Psycho"],
 	"desc": "Play rock paper scissors",
 	"aliceMinVersion": "",
 	"systemRequirements": [],

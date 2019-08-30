@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import json
 import requests
 
-import core.base.Managers as managers
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
@@ -34,19 +32,21 @@ class InternationalSpaceStation(Module):
 
 		try:
 			if intent == self._INTENT_ASTRONAUTS:
-				managers.MqttServer.endTalk(sessionId, text=self.getAstronauts())
+				self.endDialog(sessionId, text=self.getAstronauts())
 			elif intent == self._INTENT_ISS_POSITION:
-				managers.MqttServer.endTalk(sessionId, text=self.getIssPosition())
+				self.endDialog(sessionId, text=self.getIssPosition())
 			
 		except Exception as e:
 			self._logger.error(e)
-			managers.MqttServer.endTalk(sessionId,
-										text=managers.TalkManager.randomTalk(module=self.name, talk='noServer'))
+			self.endDialog(sessionId, text=self.randomTalk('noServer'))
 
 		return True
 
-	def queryApi(self, url: str) -> dict:
+
+	@staticmethod
+	def queryApi(url: str) -> dict:
 		return requests.get(url=url).json()
+
 
 	def getIssPosition(self) -> str:
 		data = self.queryApi('http://api.open-notify.org/iss-now.json')
@@ -56,14 +56,17 @@ class InternationalSpaceStation(Module):
 				float(location['longitude'])
 			])
 
+
 	def getAstronauts(self) -> str:
 		data = self.queryApi('http://api.open-notify.org/astros.json')
 		amount = data['number']
 
 		if not amount:
 			return self.randomTalk(text='noAstronauts')
+
 		if amount == 1:
 			return self.randomTalk(text='oneAstronaut', replace=[data['people'][0]['name']])
+
 		return self.randomTalk(text='multipleAstronauts', replace=[
 				', '.join(str(x['name']) for x in data['people'][:-1]),
 				data['people'][-1]['name'],
