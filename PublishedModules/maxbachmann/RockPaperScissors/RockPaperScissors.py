@@ -26,6 +26,6 @@ class RockPaperScissors(Module):
 
 		if intent == self._INTENT_ROCK_PAPER_SCISSORS:
 			randomItem = self.randomTalk(text='RockPaperScissors')
-			managers.MqttServer.endTalk(session.sessionId, self.randomTalk(text='answer', replace=[randomItem]))
+			self.endDialog(session.sessionId, self.randomTalk(text='answer', replace=[randomItem]))
 
 		return True
