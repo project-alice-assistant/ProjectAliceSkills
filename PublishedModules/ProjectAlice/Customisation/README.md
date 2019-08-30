@@ -16,7 +16,7 @@ alice module:install ProjectAlice/Customisation
 ### Description
 Customisation is the official customisation module. Use it to customize your experience
 
-- Version: 0.2
+- Version: 1.01
 - Author: ProjectAlice
 - Maintainers:
   - Psycho

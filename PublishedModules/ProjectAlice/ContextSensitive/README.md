@@ -16,7 +16,7 @@ alice module:install ProjectAlice/ContextSensitive
 ### Description
 ContextSensitive is the official context sensitive module. It handle intents like "Delete this", "Forget about that"
 
-- Version: 0.3
+- Version: 0.4
 - Author: ProjectAlice
 - Maintainers:
   - Psycho, Jierka

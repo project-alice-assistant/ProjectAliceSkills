@@ -16,7 +16,7 @@ alice module:install ProjectAlice/RedQueen
 ### Desc
 Red Queen is the official Project Alice personality module
 
-- Version: 0.8
+- Version: 1.0
 - Author: ProjectAlice
 - Maintainers:
   - Psycho, Jierka
