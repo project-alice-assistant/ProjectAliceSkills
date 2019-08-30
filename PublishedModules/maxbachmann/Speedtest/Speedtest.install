@@ -1,6 +1,6 @@
 {
 	"name": "Speedtest",
-	"version": 0.2,
+	"version": 0.3,
 	"author": "maxbachmann",
 	"maintainers": ["Psychokiller1888"],
 	"desc": "run internet speed test",
