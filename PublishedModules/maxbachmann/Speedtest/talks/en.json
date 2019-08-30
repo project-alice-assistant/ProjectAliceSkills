@@ -7,7 +7,7 @@
 			"Your download speed is {} Megabit per second and your upload speed is {} Megabit per second."
 		],
 		"short": [
-			"Download: {} Megabit per second, Upload: {} Megabit per second"
+			"Download speed: {} Megabit per second, Upload speed: {} Megabit per second"
 		]
 	},
 	"failed": [
