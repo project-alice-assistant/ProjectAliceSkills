@@ -16,13 +16,14 @@ alice module:install Jierka/YoutubeJukebox
 ### Description
 Allows to play music from youtube
 
-- Version: 1.0
+- Version: 1.01
 - Author: Jierka
-- Maintainers: Jierka
+- Maintainers: Psycho
 - Alice minimum version: N/A
 - Conditions:
   - en
   - fr
+  - online
 - Requirements: youtube_dl, ffmpeg
 
 ### TODO

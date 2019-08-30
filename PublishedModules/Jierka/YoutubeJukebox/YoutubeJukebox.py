@@ -1,17 +1,16 @@
 # -*- coding: utf-8 -*-
 
 import json
+import subprocess
 
+import os
+import re
+import requests
+import youtube_dl
 
-import core.base.Managers as managers
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
-import requests
-import os
-import re
-import youtube_dl
-import subprocess
 
 
 class YoutubeJukebox(Module):
@@ -22,7 +21,7 @@ class YoutubeJukebox(Module):
 
 	_INTENT_SEARCH_MUSIC = Intent('SearchMusic')
 
-	BASE_URL = "https://www.youtube.com/results?search_query="
+	BASE_URL = 'https://www.youtube.com/results?search_query='
 	REGEX = r"<a\b(?=[^>]* class=\"[^\"]*(?<=[\" ])yt-uix-tile-link[\" ])(?=[^>]* href=\"([^\"]*))"
 
 	def __init__(self):
@@ -32,48 +31,46 @@ class YoutubeJukebox(Module):
 
 		super().__init__(self._SUPPORTED_INTENTS)
 
-	def getWildcard(self, session):
-		input = ''
 
+	def getWildcard(self, session):
 		if type(session.payload) is str:
-			input = json.loads(session.payload)['input']
+			inputt = json.loads(session.payload)['input']
 		else:
-			input = session.payload['input']
+			inputt = session.payload['input']
 
 		utterances = self.getUtterancesByIntent(self._INTENT_SEARCH_MUSIC)
-		print("[{}] Raw input {}".format(self.__class__.__name__, input))
+		self._logger.info('[{}] Raw input {}'.format(self.name, inputt))
 
 		for utterance in utterances:
-			for word in utterance.split(" "):
-				input = input.replace(str(word.strip()) + " ", "")
-				input = input.replace(" " + str(word.strip()) + " ", "")
-				input = input.replace(" " + str(word.strip()), "")
+			for word in utterance.split(' '):
+				inputt = inputt.replace(str(word.strip()) + ' ', '')
+				inputt = inputt.replace(' ' + str(word.strip()) + ' ', '')
+				inputt = inputt.replace(' ' + str(word.strip()), '')
 
-		input = input.strip()
+		inputt = inputt.strip()
 
 		clearInput = ''
 
-		for word in input.split(" "):
+		for word in inputt.split(' '):
 			if len(word) > 1:
-				clearInput = clearInput + str(word) + " "
+				clearInput = clearInput + str(word) + ' '
 
-		print("[{}] Cleaned input {}".format(self.__class__.__name__, clearInput))
+		self._logger.info('[{}] Cleaned input {}'.format(self.name, clearInput))
 
 		return clearInput
+
 
 	def onMessage(self, intent: str, session: DialogSession) -> bool:
 		if not self.filterIntent(intent, session):
 			return False
 
 		siteId = session.siteId
-		slots = session.slots
 		sessionId = session.sessionId
-		customData = session.customData
 
 		wildcardQuery = self.getWildcard(session)
 
 		if intent == self._INTENT_SEARCH_MUSIC:
-			managers.MqttServer.endTalk(sessionId=sessionId, text="")
+			self.endSession(sessionId=sessionId)
 
 			r = requests.get(self.BASE_URL + wildcardQuery)
 			page = r.text
@@ -82,20 +79,20 @@ class YoutubeJukebox(Module):
 			videolist = []
 
 			for matchNum, match in enumerate(matches, start=1):
-				if "list" not in match.group(1):
+				if 'list' not in match.group(1):
 					tmp = 'https://www.youtube.com' + match.group(1)
 					if len(tmp) <= 70:
 						videolist.append(tmp)
 
 			if len(videolist) == 0:
-				managers.MqttServer.say(text=self.randomTalk(text='noMatch', replace=[
+				self.say(text=self.randomTalk(text='noMatch', replace=[
 					wildcardQuery
-				]), client=siteId)
+				]), siteId=siteId)
 				return True
 
 			item = videolist[1]
 			videoKey = item.split('=')[1]
-			print("[{}] Music video found {}".format(self.__class__.__name__, item))
+			self._logger.info('[{}] Music video found {}'.format(self.name, item))
 
 			youtubeDlOptions = {
 				'outtmpl': '%(id)s.%(ext)s',
@@ -107,8 +104,8 @@ class YoutubeJukebox(Module):
 				}]
 			}
 
-			resourceDir = os.path.dirname(os.path.realpath(__file__)) + '/audio'
-			outputFile = resourceDir + '/' + videoKey + '.mp3'
+			resourceDir = self.getResource(resourcePathFile='audio')
+			outputFile = os.path.join(resourceDir, '{}.mp3'.format(videoKey))
 
 			if not os.path.isfile(outputFile):
 				with youtube_dl.YoutubeDL(youtubeDlOptions) as ydl:
@@ -118,4 +115,3 @@ class YoutubeJukebox(Module):
 			subprocess.run(['sudo', 'mpg123', outputFile])
 
 		return True
-

@@ -2,7 +2,7 @@
 	"name": "YoutubeJukebox",
 	"version": 1.0,
 	"author": "Jierka",
-	"maintainers": ["Jierka"],
+	"maintainers": ["Psycho"],
 	"desc": "Allows to play music from youtube",
 	"aliceMinVersion": "",
 	"systemRequirements": [],
