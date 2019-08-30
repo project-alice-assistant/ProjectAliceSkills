@@ -10,14 +10,14 @@
 			"enabledByDefault": true,
 			"utterances": [
 				"run speedtest",
-        "run speed test",
-        "please run a speedtest",
-        "run a speedtest please",
-        "can you run a speed test",
-        "run internet speedtest",
-        "please run a internet speedtest",
-        "run a internet speedtest please",
-        "can you run a internet speed test"
+				"run speed test",
+				"please run a speedtest",
+				"run a speedtest please",
+				"can you run a speed test",
+				"run internet speedtest",
+				"please run a internet speedtest",
+				"run a internet speedtest please",
+				"can you run a internet speed test"
 			],
 			"slots": []
 		}
