@@ -1,0 +1,16 @@
+{
+	"running": [
+		"Speedtest wird gestartet, ich melde mich gleich mit dem Ergebnis."
+	],
+	"result": {
+		"default": [
+			"Deine Download Geschwindigkeit beträgt {} Megabit pro Sekunde und deine Upload Geschwindigkeit beträgt {} Megabit pro Sekunde."
+		],
+		"short": [
+			"Download Geschwindigkeit: {} Megabit pro Sekunde, Upload Geschwindigkeit: {} Megabit pro Sekunde"
+		]
+	},
+	"failed": [
+		"Es ist ein Fehler aufgetreten, ich kann leider keinen Speedtest machen... Entschuldigung."
+	]
+}
