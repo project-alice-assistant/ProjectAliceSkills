@@ -1,0 +1,16 @@
+{
+	"name": "Speedtest",
+	"version": 0.1,
+	"author": "maxbachmann",
+	"maintainers": [],
+	"desc": "run internet speed test",
+	"aliceMinVersion": "",
+	"systemRequirements": [],
+	"pipRequirements": ["speedtest-cli"],
+	"conditions": {
+		"lang": [
+			"en",
+			"de"
+		]
+	}
+}
