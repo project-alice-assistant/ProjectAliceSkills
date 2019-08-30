@@ -1,0 +1,17 @@
+{
+	"running": [
+		"Je fais le test maintenant, je te donnerai les résultats dans un moment."
+		"Ok, c'est partis! Je te donne les résultats dès que c'est terminé!"
+	],
+	"result": {
+		"default": [
+			"Ta vitesse de téléchargement est de {} Megabit par seconde et ta vitesse d'envoi {} Megabit par seconde."
+		],
+		"short": [
+			"Téléchargement: {} Mega, Envoi: {} Mega"
+		]
+	},
+	"failed": [
+		"Désolée, il y a un problème, je n'ai pas pu faire le test"
+	]
+}
