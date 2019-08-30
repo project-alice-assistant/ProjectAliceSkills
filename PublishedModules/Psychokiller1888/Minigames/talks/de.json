@@ -52,5 +52,28 @@
 		"<say-as interpret-as=\"interjection\">{}</say-as>, same! <break time=\"500ms\"/> Dare to play again?",
 		"I have <say-as interpret-as=\"interjection\">{}</say-as> too! <break time=\"500ms\"/> You want to try again?",
 		"I chose <say-as interpret-as=\"interjection\">{}</say-as> as well! It's a tie... <break time=\"500ms\"/> Try your luck again?"
-	]
+	],
+	"guessTheNumberStart": [
+		"Sicher! Ich denke an eine Zahl zwischen 1 und 10000, versuche diese so schnell wie möglich zu erraten!",
+		"Ok, lass uns spielen! Versuche die Zahl, die ich im Kopf habe, so schnell wie möglich zu erraten. Die Zahl liegt zwischen 1 und 10000.",
+		"Ok, versuch meine Nummer so schnell wie möglich zu erraten! Sie liegt zwischen 1 und 10000."
+	],
+	"guessTheNumberMore": [
+		"Mehr!"
+	],
+	"guessTheNumberLess": [
+		"Weniger!"
+	],
+	"guessTheNumberCorrect": [
+		"{}? Hast du {} gesagt? Das ist korrekt. Du hast die Zahl gefunden!",
+		"Warte, was? Hast du gerade {} gesagt? Hervorragend, du hast die Zahl gefunden!"
+	],
+	"guessTheNumberNewHighscore": [
+		"{}! Das ist ein neuer Rekord! Glückwunsch!",
+		"Das ist ein neuer Rekord! Du hast es in {} geschafft. Meine Glückwünsche!"
+	],
+	"guessTheNumberScore": [
+		"Du hast es in {} geschafft!",
+		"Du hast das Spiel in {} beendet!"
+]
 }
