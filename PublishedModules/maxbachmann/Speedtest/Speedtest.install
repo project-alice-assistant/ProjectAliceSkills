@@ -2,7 +2,7 @@
 	"name": "Speedtest",
 	"version": 0.2,
 	"author": "maxbachmann",
-	"maintainers": [Psycho],
+	"maintainers": ["Psychokiller1888"],
 	"desc": "run internet speed test",
 	"aliceMinVersion": "",
 	"systemRequirements": [],
