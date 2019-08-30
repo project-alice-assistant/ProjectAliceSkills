@@ -1,45 +1,54 @@
 {
-    "module": "Minigames",
-    "icon": "time",
-    "description": "Play a collection of many little games with alice",
-    "slotTypes": [
-        {
-            "name": "MiniGame",
-            "matchingStrictness": null,
-            "automaticallyExtensible": false,
-            "useSynonyms": true,
-            "values": [
-                {
-                    "value": "FlipACoin",
-                    "synonyms": [
+	"module": "Minigames",
+	"icon": "time",
+	"description": "Play a collection of many little games with alice",
+	"slotTypes": [
+		{
+			"name": "MiniGame",
+			"matchingStrictness": null,
+			"automaticallyExtensible": false,
+			"useSynonyms": true,
+			"values": [
+				{
+					"value": "FlipACoin",
+					"synonyms": [
 						"wirf eine Münze",
 						"Kopf oder Zahl",
 						"Münzwurf",
 						"eine Münze werfen"
 					]
-                },
+				},
 				{
-                    "value": "RollADice",
-                    "synonyms": [
+					"value": "RollADice",
+					"synonyms": [
 						"einen Würfel würfeln",
 						"Würfelspiel",
 						"den Würfel würfeln",
 						"würfel",
 						"wirf einen Würfel"
 					]
-                },
+				},
 				{
-                    "value": "RockPaperScissors",
-                    "synonyms": [
+					"value": "RockPaperScissors",
+   					"synonyms": [
 						"Schere, Stein, Papier",
 						"Schnick, Schnack, Schnuck",
 						"Fli, Fla, Flu",
 						"Ching, Chang, Chong",
 						"Klick, Klack, Kluck"
 					]
-                }
+				},
+				{
+					"value": "GuessTheNumber",
+					"synonyms": [
+						"Zahlenraten"
+						"Zahl Ratespiel",
+						"Rate die Zahl",
+						"Zahl erraten"
+					]
+				}
 			]
-        },
+		},
 		{
 			"name": "HeadsOrTails",
 			"matchingStrictness": null,
@@ -86,8 +95,8 @@
 				}
 			]
 		}
-    ],
-    "intents": [
+	],
+	"intents": [
 		{
 			"name": "PlayGame",
 			"description": "User asks to play a minigame",
@@ -173,5 +182,5 @@
 				}
 			]
 		}
-    ]
+	]
 }
