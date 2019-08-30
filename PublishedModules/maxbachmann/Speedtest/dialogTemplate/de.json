@@ -10,16 +10,16 @@
 			"enabledByDefault": true,
 			"utterances": [
 				"starte speedtest",
-        "starte speed test",
-        "Bitte starte einen speedtest",
-        "Kannst du einen speed test starten",
+				"starte speed test",
+				"Bitte starte einen speedtest",
+				"Kannst du einen speed test starten",
 				"starte internet speedtest",
-        "starte internet speed test",
-        "Bitte starte einen internet speedtest",
-        "Kannst du einen internet speed test starten",
-        "Kannst du bitte einen internet speed test starten",
-        "führe einen internet speedtest durch",
-        "mache einen speed test"
+				"starte internet speed test",
+				"Bitte starte einen internet speedtest",
+				"Kannst du einen internet speed test starten",
+				"Kannst du bitte einen internet speed test starten",
+				"führe einen internet speedtest durch",
+				"mache einen speed test"
 			],
 			"slots": []
 		}
