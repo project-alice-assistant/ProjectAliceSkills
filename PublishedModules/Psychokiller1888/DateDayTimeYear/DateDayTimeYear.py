@@ -30,7 +30,6 @@ class DateDayTimeYear(Module):
 		if not self.filterIntent(intent, session):
 			return False
 
-		siteId = session.siteId
 		sessionId = session.sessionId
 
 		if intent == self._INTENT_GET_TIME:
@@ -45,17 +44,17 @@ class DateDayTimeYear(Module):
 			else:
 				hours = datetime.now().strftime('%H').lstrip('0')
 
-			managers.MqttServer.endTalk(sessionId, managers.TalkManager.randomTalk('time').format(hours, minutes, part))
+			self.endDialog(sessionId, managers.TalkManager.randomTalk('time').format(hours, minutes, part))
 		elif intent == self._INTENT_GET_DATE:
 			date = datetime.now().strftime('%d %B %Y')
 			date = managers.LanguageManager.localize(date)
-			managers.MqttServer.endTalk(sessionId, managers.TalkManager.randomTalk('date').format(date))
+			self.endDialog(sessionId, managers.TalkManager.randomTalk('date').format(date))
 		elif intent == self._INTENT_GET_DAY:
 			day = datetime.now().strftime('%A')
 			day = managers.LanguageManager.localize(day)
-			managers.MqttServer.endTalk(sessionId, managers.TalkManager.randomTalk('day').format(day))
+			self.endDialog(sessionId, managers.TalkManager.randomTalk('day').format(day))
 		elif intent == self._INTENT_GET_YEAR:
 			year = datetime.now().strftime('%Y')
-			managers.MqttServer.endTalk(sessionId, managers.TalkManager.randomTalk('day').format(year))
+			self.endDialog(sessionId, managers.TalkManager.randomTalk('day').format(year))
 
 		return True

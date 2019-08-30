@@ -15,7 +15,7 @@ alice module:install Psychokiller1888/Speller
 ### Description
 Ask alice how to spell any word!
 
-- Version: 0.1
+- Version: 1.0
 - Author: Psychokiller1888
 - Maintainers: N/A
 - Alice minimum version: N/A

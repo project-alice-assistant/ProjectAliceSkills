@@ -29,13 +29,12 @@ class Calculator(Module):
 		if not self.filterIntent(intent, session):
 			return False
 
-		siteId = session.siteId
 		slots = session.slotsAsObjects
 		sessionId = session.sessionId
 
 		if intent == self._INTENT_MATHS:
 			if ('Left' not in slots and 'Right' not in slots) or 'Function' not in slots:
-				managers.MqttServer.continueDialog(sessionId=sessionId, text=managers.TalkManager.randomTalk('notUnderstood'))
+				self.continueDialog(sessionId=sessionId, text=managers.TalkManager.randomTalk('notUnderstood'))
 				return True
 
 			func = slots['Function'][0].value['value']
@@ -45,18 +44,18 @@ class Calculator(Module):
 
 			elif 'Right' in slots and 'Left' not in slots:
 				if not self._lastNumber:
-					managers.MqttServer.endTalk(sessionId=sessionId, text=managers.TalkManager.randomTalk('noPreviousOperation'))
+					self.endDialog(sessionId=sessionId, text=managers.TalkManager.randomTalk('noPreviousOperation'))
 					return True
 
 				result = self.calculate(self._lastNumber, float(slots['Right'][0].value['value']), func)
 
 			else:
-				managers.MqttServer.continueDialog(sessionId=sessionId, text=managers.TalkManager.randomTalk('notUnderstood'), client=siteId)
+				self.continueDialog(sessionId=sessionId, text=managers.TalkManager.randomTalk('notUnderstood'))
 				return True
 
 			answer = str(int(result)) if result % 1 == 0 else str(result)
 
-			managers.MqttServer.endTalk(sessionId=sessionId, text=answer)
+			self.endDialog(sessionId=sessionId, text=answer)
 
 		return True
 

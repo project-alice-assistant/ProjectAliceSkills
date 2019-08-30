@@ -4,11 +4,11 @@ import importlib
 import time
 
 import core.base.Managers as managers
-from core.commons import commons
-from .model import MiniGame
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
+from core.commons import commons
 from core.dialog.model.DialogSession import DialogSession
+from .model import MiniGame
 
 
 class Minigames(Module):
@@ -79,7 +79,7 @@ class Minigames(Module):
 		if not self._minigame or not self._minigame.started:
 			if intent == self._INTENT_PLAY_GAME or (intent == self._INTENT_ANSWER_MINI_GAME and session.previousIntent == self._INTENT_PLAY_GAME):
 				if 'WhichGame' not in slots.keys():
-					managers.MqttServer.continueDialog(
+					self.continueDialog(
 						sessionId=sessionId,
 						intentFilter=[self._INTENT_ANSWER_MINI_GAME],
 						text=managers.TalkManager.randomTalk('whichGame'),
@@ -87,7 +87,7 @@ class Minigames(Module):
 					)
 
 				elif session.slotValue('WhichGame') not in self._SUPPORTED_GAMES:
-					managers.MqttServer.continueDialog(
+					self.continueDialog(
 						sessionId=sessionId,
 						intentFilter=[self._INTENT_ANSWER_MINI_GAME, self._INTENT_ANSWER_YES_OR_NO],
 						text=managers.TalkManager.randomTalk('unknownGame'),
@@ -102,12 +102,12 @@ class Minigames(Module):
 
 			elif intent == self._INTENT_ANSWER_YES_OR_NO:
 				if not commons.isYes(session.message):
-					managers.MqttServer.endTalk(
+					self.endDialog(
 						sessionId=sessionId,
 						text=self.randomTalk('endPlaying')
 					)
 				else:
-					managers.MqttServer.continueDialog(
+					self.continueDialog(
 						sessionId=sessionId,
 						intentFilter=[self._INTENT_ANSWER_MINI_GAME],
 						text=managers.TalkManager.randomTalk('whichGame'),
@@ -120,7 +120,7 @@ class Minigames(Module):
 					self._minigame.start(session)
 				else:
 					self._minigame = None
-					managers.MqttServer.endTalk(
+					self.endDialog(
 						sessionId=sessionId,
 						text=self.randomTalk('endPlaying')
 					)

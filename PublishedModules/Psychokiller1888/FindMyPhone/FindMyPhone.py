@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import core.base.Managers as managers
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
@@ -36,7 +35,7 @@ class FindMyPhone(Module):
 		slots = session.slots
 
 		if session.user == 'unknown' and 'Who' not in slots and 'Name' not in slots:
-			managers.MqttServer.continueDialog(
+			self.continueDialog(
 				sessionId=sessionId,
 				text=self.randomTalk('whosPhone'),
 				intentFilter=[self._INTENT_ANSWER_NAME],
@@ -52,17 +51,17 @@ class FindMyPhone(Module):
 
 			module = self.getModuleInstance('Ifttt')
 			if not module:
-				managers.MqttServer.endTalk(sessionId=sessionId, text=self.randomTalk('error'))
+				self.endDialog(sessionId=sessionId, text=self.randomTalk('error'))
 				return True
 
 			answer = module.sendRequest(endPoint='locatePhone', user=who)
 			if answer == IftttException.NOT_CONNECTED:
-				managers.MqttServer.endTalk(sessionId=sessionId, text=self.randomTalk('notConnected'))
+				self.endDialog(sessionId=sessionId, text=self.randomTalk('notConnected'))
 			elif answer == IftttException.ERROR or answer == IftttException.BAD_REQUEST:
-				managers.MqttServer.endTalk(sessionId=sessionId, text=self.randomTalk('error'))
+				self.endDialog(sessionId=sessionId, text=self.randomTalk('error'))
 			elif answer == IftttException.NO_USER:
-				managers.MqttServer.endTalk(sessionId=sessionId, text=self.randomTalk('unknown', replace=[who]))
+				self.endDialog(sessionId=sessionId, text=self.randomTalk('unknown', replace=[who]))
 			else:
-				managers.MqttServer.endTalk(sessionId=sessionId, text=self.randomTalk('acknowledge'))
+				self.endDialog(sessionId=sessionId, text=self.randomTalk('acknowledge'))
 
 		return True

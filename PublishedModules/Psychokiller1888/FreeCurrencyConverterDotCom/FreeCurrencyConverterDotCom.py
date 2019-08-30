@@ -56,7 +56,7 @@ class FreeCurrencyConverterDotCom(Module):
 				if 'Currency' in slots:
 					fromCurrency = slotsObject['Currency'][0].value['value']
 				else:
-					managers.MqttServer.continueDialog(
+					self.continueDialog(
 						sessionId=sessionId,
 						intentFilter=[self._INTENT_ANSWER_CURRENCY],
 						text=managers.TalkManager.randomTalk(module=self.name, talk='fromWhatCurrency'),
@@ -79,13 +79,10 @@ class FreeCurrencyConverterDotCom(Module):
 				conversion = data['{}_{}'.format(fromCurrency, toCurrency)]
 				converted = round(float(amount) * float(conversion), 2)
 
-				managers.MqttServer.endTalk(sessionId,
-											text=managers.TalkManager.randomTalk(module=self.name, talk='answer').format(amount, fromCurrency, converted, toCurrency),
-											client=siteId)
+				self.endDialog(sessionId, text=self.randomTalk('answer').format(amount, fromCurrency, converted, toCurrency),
+											siteId=siteId)
 			except Exception as e:
 				self._logger.error(e)
-				managers.MqttServer.endTalk(sessionId,
-											text=managers.TalkManager.randomTalk(module=self.name, talk='noServer'),
-											client=siteId)
+				self.endDialog(sessionId, text=self.randomTalk('noServer'), siteId=siteId)
 
 		return True

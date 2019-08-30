@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import json
-
-import core.base.Managers as managers
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
@@ -38,7 +35,7 @@ class Speller(Module):
 				word = slots['RandomWord']
 				string = '<break time="160ms"/>'.join(list(word))
 
-				managers.MqttServer.endTalk(
+				self.endDialog(
 					sessionId=sessionId,
 					text=self.randomTalk(
 						text='isSpelled',
@@ -46,7 +43,7 @@ class Speller(Module):
 					)
 				)
 			else:
-				managers.MqttServer.continueDialog(
+				self.continueDialog(
 					sessionId=sessionId,
 					text=self.randomTalk('notUnderstood'),
 					intentFilter=[self._INTENT_ANSWER_WORD],

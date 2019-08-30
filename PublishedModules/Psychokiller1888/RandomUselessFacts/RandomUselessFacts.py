@@ -5,7 +5,6 @@ import json
 
 import requests
 
-import core.base.Managers as managers
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
@@ -38,7 +37,7 @@ class RandomUselessFacts(Module):
 			else:
 				ttype = session.slotsAsObjects['type'][0].value['value']
 
-			managers.MqttServer.endTalk(sessionId=session.sessionId, text=self.getAFact(ttype=ttype))
+			self.endDialog(sessionId=session.sessionId, text=self.getAFact(ttype=ttype))
 
 		return True
 

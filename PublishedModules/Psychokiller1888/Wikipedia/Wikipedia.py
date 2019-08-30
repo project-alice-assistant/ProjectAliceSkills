@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import json
-
 from wikipedia import wikipedia
 
 import core.base.Managers as managers
@@ -35,19 +33,13 @@ class Wikipedia(Module):
 		if not self.filterIntent(intent, session):
 			return False
 
-		siteId = session.siteId
 		slots = session.slots
 		sessionId = session.sessionId
 		customData = session.customData
 
 		if intent == self._INTENT_SEARCH or session.previousIntent == self._INTENT_SEARCH:
 			if 'userInput' not in customData and 'what' not in slots and 'RandomWord' not in slots:
-				if 'engine' not in slots:
-					engine = 'wikipedia'
-				else:
-					engine = slots['engine']
-
-				managers.MqttServer.continueDialog(
+				self.continueDialog(
 					sessionId=sessionId,
 					text=self.randomTalk('whatToSearch'),
 					intentFilter=[self._INTENT_USER_ANSWER],
@@ -64,7 +56,7 @@ class Wikipedia(Module):
 				elif 'RandomWord' in slots:
 					what = slots['RandomWord']
 				else:
-					managers.MqttServer.endTalk(sessionId=sessionId, text=managers.TalkManager.randomTalk('error', module='system'))
+					self.endDialog(sessionId=sessionId, text=managers.TalkManager.randomTalk('error', module='system'))
 					return True
 
 				if intent == self._INTENT_SPELL_WORD:
@@ -86,7 +78,7 @@ class Wikipedia(Module):
 					else:
 						result = wikipedia.summary(search, sentences=3)
 				except wikipedia.DisambiguationError:
-					managers.MqttServer.continueDialog(
+					self.continueDialog(
 						sessionId=sessionId,
 						text=managers.TalkManager.randomTalk('ambiguous').format(search),
 						intentFilter=[self._INTENT_USER_ANSWER],
@@ -98,7 +90,7 @@ class Wikipedia(Module):
 					)
 					return True
 				except wikipedia.WikipediaException:
-					managers.MqttServer.continueDialog(
+					self.continueDialog(
 						sessionId=sessionId,
 						text=managers.TalkManager.randomTalk('noMatch').format(search),
 						intentFilter=[self._INTENT_USER_ANSWER],
@@ -111,11 +103,11 @@ class Wikipedia(Module):
 					return True
 				except Exception as e:
 					self._logger.error('Error: {}'.format(e))
-					managers.MqttServer.endTalk(sessionId=sessionId, text=managers.TalkManager.randomTalk('error', module='system'))
+					self.endDialog(sessionId=sessionId, text=managers.TalkManager.randomTalk('error', module='system'))
 					return True
 
 				if result == '':
-					managers.MqttServer.continueDialog(
+					self.continueDialog(
 						sessionId=sessionId,
 						text=managers.TalkManager.randomTalk('noMatch').format(search),
 						intentFilter=[self._INTENT_USER_ANSWER],
@@ -126,6 +118,6 @@ class Wikipedia(Module):
 						}
 					)
 				else:
-					managers.MqttServer.endTalk(sessionId=sessionId, text=result)
+					self.endDialog(sessionId=sessionId, text=result)
 
 		return True

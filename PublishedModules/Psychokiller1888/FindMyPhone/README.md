@@ -15,7 +15,7 @@ alice module:install Psychokiller1888/FindMyPhone
 ### Description
 Using ifttt one can ask alice to find his phone. sets the ring tone at max volume and initiates a call on it.
 
-- Version: 0.4
+- Version: 1.0
 - Author: Psychokiller1888
 - Maintainers: maxbachmann
 - Alice minimum version: N/A

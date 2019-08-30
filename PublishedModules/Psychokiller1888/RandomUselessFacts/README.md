@@ -16,7 +16,7 @@ alice module:install Psychokiller1888/RandomUselessFacts
 ### Description
 Gets you the daily random useless fact or a random one
 
-- Version: 1.4
+- Version: 1.41
 - Author: Psychokiller1888
 - Maintainers:
   - maxbachmann

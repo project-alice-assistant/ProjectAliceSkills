@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 
-import json
-import os
 import time
 
+import os
 import requests
 
 import core.base.Managers as managers
@@ -92,13 +91,13 @@ class PhilipsHue(Module):
 				elif not hueConfigFileExists:
 					managers.ThreadManager.doLater(
 						interval=3,
-						func=managers.MqttServer.say,
+						func=self.say,
 						args=[self.randomTalk('pressBridgeButtonConfirmation')]
 					)
 
 			except PhueRegistrationException:
 				if self.delayed:
-					managers.MqttServer.say(text=self.randomTalk('pressBridgeButton'))
+					self.say(text=self.randomTalk('pressBridgeButton'))
 					self._bridgeConnectTries += 1
 					self._logger.warning("- [{}] Bridge not registered, please press the bridge button, retry in 20 seconds".format(self.name))
 					time.sleep(20)
@@ -111,7 +110,7 @@ class PhilipsHue(Module):
 				return False
 		else:
 			self._logger.error("- [{}] Couldn't reach bridge".format(self.name))
-			managers.ThreadManager.doLater(interval=3, func=managers.MqttServer.say, args=[self.randomTalk('pressBridgeButtonTimeout')])
+			managers.ThreadManager.doLater(interval=3, func=self.say, args=[self.randomTalk('pressBridgeButtonTimeout')])
 			return False
 
 		self._bridgeConnectTries = 0
@@ -176,7 +175,7 @@ class PhilipsHue(Module):
 		customData = session.customData
 
 		if self._bridge is None or not self._bridge.registered:
-			managers.MqttServer.endTalk(
+			self.endDialog(
 				sessionId=sessionId,
 				text=self.randomTalk('lightBridgeFailure')
 			)
@@ -191,7 +190,7 @@ class PhilipsHue(Module):
 			for slot in slots['Room']:
 				room = slot.value['value'].lower()
 				if room not in self._groups.keys() and room != 'everywhere':
-					managers.MqttServer.endTalk(
+					self.endDialog(
 						sessionId=sessionId,
 						text=self.randomTalk(text='roomUnknown', replace=[room])
 					)
@@ -201,7 +200,7 @@ class PhilipsHue(Module):
 			for slot in slots['Scene']:
 				scene = slot.value['value'].lower()
 				if scene not in self._scenes.keys():
-					managers.MqttServer.endTalk(
+					self.endDialog(
 						sessionId=sessionId,
 						text=self.randomTalk(text='sceneUnknown', replace=[scene])
 					)
@@ -230,7 +229,7 @@ class PhilipsHue(Module):
 					for light in self._groups[place.lower()].lights:
 						light.on = True
 			else:
-				managers.MqttServer.endTalk(sessionId, text=self.randomTalk(text='roomUnknown', replace=[siteId]))
+				self.endDialog(sessionId, text=self.randomTalk(text='roomUnknown', replace=[siteId]))
 				return True
 
 
@@ -249,12 +248,12 @@ class PhilipsHue(Module):
 					for light in self._groups[place.lower()].lights:
 						light.on = False
 				else:
-					managers.MqttServer.endTalk(sessionId, text=self.randomTalk(text='roomUnknown', replace=[siteId]))
+					self.endDialog(sessionId, text=self.randomTalk(text='roomUnknown', replace=[siteId]))
 					return True
 
 		elif intent == self._INTENT_LIGHT_SCENE or (previousIntent == self._INTENT_LIGHT_SCENE and intent == self._INTENT_USER_ANSWER):
 			if 'Scene' not in slots and 'Scene' not in customData:
-				managers.MqttServer.continueDialog(
+				self.continueDialog(
 					sessionId=sessionId,
 					text=self.randomTalk('whatScenery'),
 					intentFilter=[self._INTENT_USER_ANSWER],
@@ -270,7 +269,7 @@ class PhilipsHue(Module):
 					scene = customData['scene']
 
 				elif len(slots['Scene']) > 1:
-					managers.MqttServer.endTalk(sessionId, text=self.randomTalk('cantSpecifyMoreThanOneScene'))
+					self.endDialog(sessionId, text=self.randomTalk('cantSpecifyMoreThanOneScene'))
 					return True
 				else:
 					scene = slots['Scene'][0].value['value'].lower()
@@ -279,17 +278,17 @@ class PhilipsHue(Module):
 					for slot in slots['Room']:
 						room = slot.value['value'].lower()
 						if not self._bridge.run_scene(group_name=self._groups[room].name, scene_name=self._scenes[scene].name):
-							managers.MqttServer.endTalk(sessionId, text=self.randomTalk('sceneNotInThisRoom'))
+							self.endDialog(sessionId, text=self.randomTalk('sceneNotInThisRoom'))
 							return True
 				elif not room and 'room' in customData:
 					place = customData['room']
 
-				elif place.lower() in self._groups.keys():
+				if place.lower() in self._groups.keys():
 					if not self._bridge.run_scene(group_name=self._groups[place].name, scene_name=self._scenes[scene].name):
-						managers.MqttServer.endTalk(sessionId, text=self.randomTalk('sceneNotInThisRoom'))
+						self.endDialog(sessionId, text=self.randomTalk('sceneNotInThisRoom'))
 						return True
 				else:
-					managers.MqttServer.endTalk(sessionId, text=self.randomTalk(text='roomUnknown', replace=[place]))
+					self.endDialog(sessionId, text=self.randomTalk(text='roomUnknown', replace=[place]))
 					return True
 
 
@@ -299,7 +298,7 @@ class PhilipsHue(Module):
 				room = place
 
 				if room not in self._groups.keys():
-					managers.MqttServer.endTalk(sessionId, text=self.randomTalk(text='roomUnknown', replace=[room]))
+					self.endDialog(sessionId, text=self.randomTalk(text='roomUnknown', replace=[room]))
 					return True
 
 				group = self._groups[room]
@@ -331,7 +330,7 @@ class PhilipsHue(Module):
 
 		elif intent == self._INTENT_DIM_LIGHTS or previousIntent == self._INTENT_DIM_LIGHTS:
 			if 'Percent' not in slots:
-				managers.MqttServer.ask(
+				self.continueDialog(
 					sessionId=sessionId,
 					text=self.randomTalk('whatPercentage'),
 					intentFilter=[self._INTENT_ANSWER_PERCENT],
@@ -356,7 +355,7 @@ class PhilipsHue(Module):
 						room = managers.ConfigManager.getAliceConfigByName('room')
 
 					if room not in self._groups.keys():
-						managers.MqttServer.endTalk(sessionId, text=self.randomTalk(text='roomUnknown', replace=[room]))
+						self.endDialog(sessionId, text=self.randomTalk(text='roomUnknown', replace=[room]))
 						return True
 
 					for light in self._groups[room].lights:
@@ -371,7 +370,7 @@ class PhilipsHue(Module):
 							for light in self._groups[room].lights:
 								light.brightness = brightness
 
-		managers.MqttServer.endTalk(sessionId, text=self.randomTalk('confirm'))
+		self.endDialog(sessionId, text=self.randomTalk('confirm'))
 		return True
 
 

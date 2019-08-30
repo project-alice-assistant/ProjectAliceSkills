@@ -35,8 +35,8 @@ class IcanhazdadjokeDotCom(Module):
 
 			response = requests.get(url, headers=headers)
 			if response is not None:
-				managers.MqttServer.endTalk(session.sessionId, text=response.text)
+				self.endDialog(session.sessionId, text=response.text)
 			else:
-				managers.MqttServer.endTalk(session.sessionId, managers.TalkManager.getrandomTalk('noJoke'))
+				self.endDialog(session.sessionId, managers.TalkManager.getrandomTalk('noJoke'))
 
 		return True

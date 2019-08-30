@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
-from enum import Enum
-
 import requests
+from enum import Enum
 
 import core.base.Managers as managers
 from core.base.model.Module import Module
