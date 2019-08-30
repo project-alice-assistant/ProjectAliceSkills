@@ -1,50 +1,50 @@
 {
-    "module": "Minigames",
-    "icon": "time",
-    "description": "Play a collection of many little games with alice",
-    "slotTypes": [
-        {
-            "name": "MiniGame",
-            "matchingStrictness": null,
-            "automaticallyExtensible": false,
-            "useSynonyms": true,
-            "values": [
-                {
-                    "value": "FlipACoin",
-                    "synonyms": [
+	"module": "Minigames",
+	"icon": "time",
+	"description": "Play a collection of many little games with alice",
+	"slotTypes": [
+		{
+			"name": "MiniGame",
+			"matchingStrictness": null,
+			"automaticallyExtensible": false,
+			"useSynonyms": true,
+			"values": [
+				{
+					"value": "FlipACoin",
+					"synonyms": [
 						"flip a coin",
 						"heads or tail",
 						"coin flipping"
 					]
-                },
+				},
 				{
-                    "value": "RollADice",
-                    "synonyms": [
+					"value": "RollADice",
+					"synonyms": [
 						"roll a dice",
 						"rolling dice",
 						"roll the dice",
 						"throw a dice"
 					]
-                },
+				},
 				{
-                    "value": "RockPaperScissors",
-                    "synonyms": [
+					"value": "RockPaperScissors",
+					"synonyms": [
 						"scissors rock paper",
 						"rock paper scissors",
 						"roshambo",
 						"stone paper scissors"
 					]
-                },
+				},
 				{
 					"value": "GuessTheNumber",
-                    "synonyms": [
+					"synonyms": [
 						"guess the number",
 						"guess a number",
 						"guess my number"
 					]
 				}
 			]
-        },
+		},
 		{
 			"name": "HeadsOrTails",
 			"matchingStrictness": null,
@@ -97,8 +97,8 @@
 				}
 			]
 		}
-    ],
-    "intents": [
+	],
+	"intents": [
 		{
 			"name": "PlayGame",
 			"description": "User asks to play a minigame",
@@ -185,5 +185,5 @@
 				}
 			]
 		}
-    ]
+	]
 }
