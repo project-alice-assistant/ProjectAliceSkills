@@ -11,13 +11,13 @@
 			"utterances": [
 				"lance un test de vitesse internet",
 				"lance un speed test",
-				"fait un test de ma connection s'il te plait",
+				"fait un test de ma connexion s'il te plait",
 				"fait un speedtest s'il te plait",
 				"peux tu faire un speed test s'il te plait",
-				"j'ai besoin de connaitre la vitesse de ma connection",
-				"quelle est la vitesse de ma connection internet",
-				"donne moi la vitesse de ma connection internet s'il te plait",
-				"lance un test de ma connection s'il te plait"
+				"j'ai besoin de connaitre la vitesse de ma connexion",
+				"quelle est la vitesse de ma connexion internet",
+				"donne moi la vitesse de ma connexion internet s'il te plait",
+				"lance un test de ma connexion s'il te plait"
 			],
 			"slots": []
 		}
