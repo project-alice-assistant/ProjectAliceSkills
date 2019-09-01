@@ -2,16 +2,15 @@ from src.dialogValidation import dialogValidation
 from src.installValidation import installValidation
 from src.talkValidation import talkValidation
 import json
-import glob
-import os
+from pathlib import Path
 from collections import defaultdict
 from termcolor import colored
 
 class validator:
 	def __init__(self, installer: bool = True, dialog: bool = True, talk: bool = True, warnings: bool = True):
 		self.result = self.infinidict()
-		self.dir_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
-		self.module_path = os.path.dirname(os.path.dirname(self.dir_path))
+		self.dir_path = Path(__file__).resolve().parent.parent
+		self.module_path = self.dir_path.parent.parent
 		self.installer = installer
 		self.dialog = dialog
 		self.talk = talk
@@ -125,7 +124,7 @@ class validator:
 
 	def validate(self):
 		err = 0
-		for module in glob.glob(self.module_path + '/PublishedModules/*/*'):
+		for module in self.module_path.glob('PublishedModules/*/*'):
 			dialog = dialogValidation(module)
 			installer = installValidation(module)
 			talk = talkValidation(module)

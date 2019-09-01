@@ -1,5 +1,4 @@
-import os
-import glob
+from pathlib import Path
 import json
 from src.validation import validation
 
@@ -7,12 +6,12 @@ class installValidation(validation):
 
 	@property
 	def JsonSchema(self) -> dict:
-		with open(os.path.join(self.dir_path, 'schemas/install-schema.json') ) as json_file:
-			return json.load(json_file)
+		schema = self.dir_path / 'schemas/install-schema.json'
+		return json.loads(schema.read_text())
 	
 	@property
 	def JsonFiles(self) -> list:
-		return glob.glob( os.path.join(self.modulePath, '*.install') )
+		return self.modulePath.glob('*.install')
 
 	def validate(self) -> bool:
 		self.validateSchema()

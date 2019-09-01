@@ -1,16 +1,15 @@
-import os
-import glob
+from pathlib import Path
 from jsonschema import Draft7Validator, exceptions
 import json
 from collections import defaultdict
 from abc import ABC, abstractmethod
 
 class validation(ABC):
-	def __init__(self, modulePath: str):
+	def __init__(self, modulePath: Path):
 		self.modulePath = modulePath
 		self.validModule = self.infinidict()
-		self.dir_path = os.path.dirname(os.path.realpath(__file__))
-		self.base_path = os.path.dirname(os.path.dirname(os.path.dirname(self.dir_path)))
+		self.dir_path = Path(__file__).resolve().parent
+		self.base_path = self.dir_path.parent.parent.parent
 		self.error = 0
 
 	def infinidict(self):
@@ -32,30 +31,26 @@ class validation(ABC):
 
 	@property
 	def moduleName(self) -> str:
-		return os.path.basename(self.modulePath)
+		return self.modulePath.name
 
 	@property
 	def moduleAuthor(self) -> str:
-		return os.path.split(os.path.split(self.modulePath)[0])[1]
+		return self.modulePath.parent.name
 
-	def filename(self, file: str) -> str:
-		return os.path.basename(file)
-
-	def validateSyntax(self, file: str) -> dict:
-		data = {}
+	def validateSyntax(self, file: Path) -> dict:
+		data = dict()
 		try:
-			with open(file) as json_file:
-				data = json.load(json_file)
+			data = json.loads(file.read_text())
 		except ValueError as e:
-			self.validModule['syntax'][self.filename(file)] = str(e)
+			self.validModule['syntax'][file.name] = str(e)
 			self.error = 1
 		return data
 
 	def validateSchema(self) -> None:
 		schema = self.JsonSchema
 		for file in self.JsonFiles:
-			self.validModule['schema'][self.filename(file)] = []
-			jsonPath = self.validModule['schema'][self.filename(file)]
+			self.validModule['schema'][file.name] = list()
+			jsonPath = self.validModule['schema'][file.name]
 			# try to load json from file and return error when the format is invalid
 			data = self.validateSyntax(file)
 			

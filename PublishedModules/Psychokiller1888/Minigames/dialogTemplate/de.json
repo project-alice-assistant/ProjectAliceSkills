@@ -41,7 +41,7 @@
 				{
 					"value": "GuessTheNumber",
 					"synonyms": [
-						"Zahlenraten"
+						"Zahlenraten",
 						"Zahl Ratespiel",
 						"Rate die Zahl",
 						"Zahl erraten"
@@ -107,13 +107,13 @@
 				"{wirf eine Münze:=>WhichGame} bitte",
 				"Lass uns ein Spiel spielen.",
 				"Sollen wir ein Spiel spielen?",
-				"Können wir {Schere Stein Papier:=>WhichGame} spielen",
+				"Können wir {Schere, Stein, Papier:=>WhichGame} spielen",
 				"Ich will mit dir spielen.",
 				"Können wir zusammen spielen?",
 				"Bitte spiel mit mir",
 				"Kannst du bitte {eine Münze werfen:=>WhichGame}",
 				"Kannst du {eine Münze werfen:=>WhichGame}",
-				"Lass uns {Schere Stein Papier:=>WhichGame} spielen"
+				"Lass uns {Schere, Stein, Papier:=>WhichGame} spielen"
 			],
 			"slots": [
 				{
