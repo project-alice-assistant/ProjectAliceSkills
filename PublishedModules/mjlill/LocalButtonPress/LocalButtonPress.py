@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import RPi.GPIO as GPIO
 
 import core.base.Managers as managers

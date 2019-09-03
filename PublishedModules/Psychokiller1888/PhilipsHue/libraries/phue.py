@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 phue by Nathanaël Lécaudé - A Philips Hue Python library
 Contributions by Marshall Perrin, Justin Lintz

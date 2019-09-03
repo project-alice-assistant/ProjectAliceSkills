@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from wikipedia import wikipedia
 
 import core.base.Managers as managers

@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -64,9 +62,7 @@ class NotExist(Validator):
 			)
 
 
-PYTHON_CLASS = '''# -*- coding: utf-8 -*-
-
-import json
+PYTHON_CLASS = '''import json
 
 import core.base.Managers as managers
 from core.base.model.Intent import Intent
