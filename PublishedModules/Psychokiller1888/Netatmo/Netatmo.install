@@ -1,0 +1,17 @@
+{
+	"name": "Netatmo",
+	"version": 0.1,
+	"author": "Psychokiller1888",
+	"maintainers": [],
+	"desc": "Get readings from your netatmo hardware",
+	"aliceMinVersion": "",
+	"pipRequirements": [
+		"lnetatmo"
+	],
+	"systemRequirements": [],
+	"conditions": {
+		"lang": [
+			"en"
+		]
+	}
+}
