@@ -1,7 +1,10 @@
 import getpass
 import subprocess
 import time
+from pathlib import Path
 from zipfile import ZipFile
+
+import tempfile
 
 import core.base.Managers as managers
 from core.ProjectAliceExceptions import ConfigurationUpdateFailed, LanguageManagerLangNotSupported, ModuleStartDelayed
@@ -62,7 +65,8 @@ class AliceCore(Module):
 			self._INTENT_ANSWER_WAKEWORD_CUTTING,
 			self._INTENT_DUMMY_WAKEWORD_OK,
 			self._INTENT_WAKEWORD,
-			self._INTENT_ADD_USER
+			self._INTENT_ADD_USER,
+			self._INTENT_ANSWER_ACCESSLEVEL
 		]
 
 		self._AUTH_ONLY_INTENTS = {
@@ -189,11 +193,12 @@ class AliceCore(Module):
 
 	def onSnipsAssistantDownloaded(self, *args):
 		try:
-			with ZipFile('/tmp/assistant.zip') as zipfile:
-				zipfile.extractall('/tmp')
+			filepath = Path(tempfile.gettempdir(),'assistant').with_suffix('.zip')
+			with ZipFile(str(filepath)) as zipfile:
+				zipfile.extractall(tempfile.gettempdir())
 
 			subprocess.run(['sudo', 'rm', '-rf', commons.rootDir() + '/trained/assistants/assistant_{}'.format(managers.LanguageManager.activeLanguage)])
-			subprocess.run(['sudo', 'cp', '-R', '/tmp/assistant', commons.rootDir() + '/trained/assistants/assistant_{}'.format(managers.LanguageManager.activeLanguage)])
+			subprocess.run(['sudo', 'cp', '-R', str(filepath.stem), commons.rootDir() + '/trained/assistants/assistant_{}'.format(managers.LanguageManager.activeLanguage)])
 			subprocess.run(['sudo', 'chown', '-R', getpass.getuser(), commons.rootDir() + '/trained/assistants/assistant_{}'.format(managers.LanguageManager.activeLanguage)])
 
 			subprocess.run(['sudo', 'ln', '-sfn', commons.rootDir() + '/trained/assistants/assistant_{}'.format(managers.LanguageManager.activeLanguage), commons.rootDir() + '/assistant'])
@@ -425,8 +430,9 @@ class AliceCore(Module):
 					break
 				time.sleep(0.5)
 
+			filepath = Path(tempfile.gettempdir(), managers.WakewordManager.getLastSampleNumber()).with_suffix('.wav')
 			self.playSound(
-				soundFile='/tmp/{}.wav'.format(managers.WakewordManager.getLastSampleNumber()),
+				soundFile=str(filepath),
 				sessionId='checking-wakeword',
 				siteId=session.siteId,
 				absolutePath=True
@@ -454,8 +460,9 @@ class AliceCore(Module):
 					break
 				time.sleep(0.5)
 
+			filepath = Path(tempfile.gettempdir(), managers.WakewordManager.getLastSampleNumber()).with_suffix('.wav')
 			self.playSound(
-				soundFile='/tmp/{}.wav'.format(managers.WakewordManager.getLastSampleNumber()),
+				soundFile=str(filepath),
 				sessionId='checking-wakeword',
 				siteId=session.siteId,
 				absolutePath=True
@@ -590,7 +597,7 @@ class AliceCore(Module):
 			else:
 				self.endDialog(sessionId)
 
-		elif intent == self._INTENT_ADD_USER or session.previousIntent == self._INTENT_ADD_USER:
+		elif intent == self._INTENT_ADD_USER or session.previousIntent == self._INTENT_ADD_USER or intent == self._INTENT_ANSWER_ACCESSLEVEL and not intent == self._INTENT_SPELL_WORD:
 			if 'Name' not in slots:
 				self.continueDialog(
 					sessionId=sessionId,
@@ -598,6 +605,15 @@ class AliceCore(Module):
 					intentFilter=[self._INTENT_ANSWER_NAME],
 					previousIntent=self._INTENT_ADD_USER,
 					slot='Name'
+				)
+				return True
+
+			if session.slotRawValue('Name') == 'unknownword':
+				self.continueDialog(
+					sessionId=sessionId,
+					text=managers.TalkManager.randomTalk('notUnderstood', module='system'),
+					intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
+					previousIntent=self._INTENT_DUMMY_ADD_USER
 				)
 				return True
 
