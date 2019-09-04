@@ -232,7 +232,7 @@ class AliceCore(Module):
 		customData = session.customData
 		payload = session.payload
 
-		if self._INTENT_ADD_DEVICE in [intent, session.previousIntent]:
+		if self._INTENT_ADD_DEVICE in {intent, session.previousIntent}:
 			if managers.DeviceManager.isBusy():
 				self.endDialog(
 					sessionId=sessionId,
@@ -509,7 +509,7 @@ class AliceCore(Module):
 			else:
 				update = 5
 
-			if update in [1, 5]: # All or system
+			if update in {1, 5}: # All or system
 				self._logger.info('[{}] Updating system'.format(self.name))
 				self.endDialog(sessionId=sessionId, text=self.randomTalk('confirmAssistantUpdate'))
 
@@ -519,18 +519,18 @@ class AliceCore(Module):
 
 				managers.ThreadManager.doLater(interval=2, func=systemUpdate)
 
-			if update in [1, 4]: # All or modules
+			if update in {1, 4}: # All or modules
 				self._logger.info('[{}] Updating modules'.format(self.name))
 				self.endDialog(sessionId=sessionId, text=self.randomTalk('confirmAssistantUpdate'))
 				managers.ModuleManager.checkForModuleUpdates()
 
-			if update in [1, 2]: # All or Alice
+			if update in {1, 2}: # All or Alice
 				self._logger.info('[{}] Updating Alice'.format(self.name))
 				self._logger.info('[{}] Not implemented yet'.format(self.name))
 				if update == 2:
 					self.endDialog(sessionId=sessionId, text=self.randomTalk('confirmAssistantUpdate'))
 
-			if update in [1, 3]: # All or Assistant
+			if update in {1, 3}: # All or Assistant
 				self._logger.info('[{}] Updating assistant'.format(self.name))
 
 				if not managers.LanguageManager.activeSnipsProjectId:
@@ -567,7 +567,7 @@ class AliceCore(Module):
 
 			self.endDialog(sessionId=sessionId)
 
-		elif session.previousIntent == self._INTENT_DUMMY_ADD_USER and intent in [self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD]:
+		elif session.previousIntent == self._INTENT_DUMMY_ADD_USER and intent in {self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD}:
 			if not managers.UserManager.users:
 				if intent == self._INTENT_ANSWER_NAME:
 					name: str = str(slots['Name']).lower()
@@ -596,7 +596,7 @@ class AliceCore(Module):
 			else:
 				self.endDialog(sessionId)
 
-		elif intent in [self._INTENT_ADD_USER, self._INTENT_ANSWER_ACCESSLEVEL]  or session.previousIntent == self._INTENT_ADD_USER and not intent == self._INTENT_SPELL_WORD:
+		elif intent in {self._INTENT_ADD_USER, self._INTENT_ANSWER_ACCESSLEVEL}  or session.previousIntent == self._INTENT_ADD_USER and not intent == self._INTENT_SPELL_WORD:
 			if 'Name' not in slots:
 				self.continueDialog(
 					sessionId=sessionId,
