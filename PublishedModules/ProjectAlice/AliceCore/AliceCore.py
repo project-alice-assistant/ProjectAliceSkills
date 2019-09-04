@@ -194,7 +194,7 @@ class AliceCore(Module):
 	def onSnipsAssistantDownloaded(self, *args):
 		try:
 			filepath = Path(tempfile.gettempdir(),'assistant.zip')
-			with ZipFile(str(filepath)) as zipfile:
+			with ZipFile(filepath) as zipfile:
 				zipfile.extractall(tempfile.gettempdir())
 
 			subprocess.run(['sudo', 'rm', '-rf', commons.rootDir() + '/trained/assistants/assistant_{}'.format(managers.LanguageManager.activeLanguage)])
