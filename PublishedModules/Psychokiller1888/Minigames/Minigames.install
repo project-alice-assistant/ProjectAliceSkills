@@ -1,6 +1,6 @@
 {
 	"name": "Minigames",
-	"version": 1.0,
+	"version": 1.01,
 	"author": "Psychokiller1888",
 	"maintainers": ["maxbachmann"],
 	"desc": "Play a collection of many little games with alice",
@@ -11,6 +11,9 @@
 		"lang": [
 			"en",
 			"de"
+		],
+		"notModule": [
+		    "maxbachmann/RockPaperScissors"
 		]
 	}
 }
