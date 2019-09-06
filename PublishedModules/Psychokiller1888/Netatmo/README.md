@@ -4,7 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget http://bit.ly/????????? -O ~/ProjectAlice/system/moduleInstallTickets/Netatmo.install
+wget http://modules.projectalice.ch/Netatmo -O ~/ProjectAlice/system/moduleInstallTickets/Netatmo.install
 ```
 
 ##### > Alice CLI method
