@@ -1,0 +1,15 @@
+{
+	"name": "Telemetry",
+	"version": 0.1,
+	"author": "ProjectAlice",
+	"maintainers": ["Psychokiller1888"],
+	"desc": "Access your stored telemetry data",
+	"aliceMinVersion": "",
+	"pipRequirements": [],
+	"systemRequirements": [],
+	"conditions": {
+		"lang": [
+			"en"
+		]
+	}
+}
