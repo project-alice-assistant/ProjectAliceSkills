@@ -10,6 +10,7 @@
 	"conditions": {
 		"lang": [
 			"en"
-		]
+		],
+		"activeManager": ["TelemetryManager"]
 	}
 }
