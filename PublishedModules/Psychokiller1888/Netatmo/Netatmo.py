@@ -1,12 +1,12 @@
-import json
 import time
 
 import core.base.Managers as managers
 from core.ProjectAliceExceptions import ModuleStartingFailed
-from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
 import lnetatmo
+
+from core.util.model.TelemetryType import TelemetryType
 
 
 class Netatmo(Module):
@@ -15,24 +15,8 @@ class Netatmo(Module):
 	Description: Get readings from your netatmo hardware
 	"""
 
-	_INTENT_TEMPERATURE 				= Intent('GetTemperature')
-	_INTENT_HUMIDITY 					= Intent('GetHumidity')
-	_INTENT_CO2 						= Intent('GetCo2Level')
-	_INTENT_NOISE_LEVEL 				= Intent('GetNoiseLevel')
-	_INTENT_PRESSURE 					= Intent('GetPressure')
-	_INTENT_WIND 						= Intent('GetWind')
-	_INTENT_RAIN 						= Intent('GetRain')
-
 	def __init__(self):
-		self._SUPPORTED_INTENTS	= [
-			self._INTENT_TEMPERATURE,
-			self._INTENT_HUMIDITY,
-			self._INTENT_CO2,
-			self._INTENT_NOISE_LEVEL,
-			self._INTENT_PRESSURE,
-			self._INTENT_WIND,
-			self._INTENT_RAIN
-		]
+		self._SUPPORTED_INTENTS	= []
 
 		super().__init__(self._SUPPORTED_INTENTS)
 
@@ -79,16 +63,46 @@ class Netatmo(Module):
 
 
 	def onFullMinute(self):
-		if self._weatherData:
-			self._weatherData.getMeasure()
+		self._weatherData = lnetatmo.WeatherStationData(self._netatmoAuth)
+
+		now = time.time()
+		for siteId, value in self._weatherData.lastData().items():
+			if 'Temperature' in value:
+				managers.TelemetryManager.storeData(ttype=TelemetryType.TEMPERATURE, value=value['Temperature'], service=self.name, siteId=siteId, timestamp=now)
+
+			if 'CO2' in value:
+				managers.TelemetryManager.storeData(ttype=TelemetryType.CO2, value=value['CO2'], service=self.name, siteId=siteId, timestamp=now)
+
+			if 'Humidity' in value:
+				managers.TelemetryManager.storeData(ttype=TelemetryType.HUMIDITY, value=value['Humidity'], service=self.name, siteId=siteId, timestamp=now)
+
+			if 'Noise' in value:
+				managers.TelemetryManager.storeData(ttype=TelemetryType.NOISE, value=value['Noise'], service=self.name, siteId=siteId, timestamp=now)
+
+			if 'Pressure' in value:
+				managers.TelemetryManager.storeData(ttype=TelemetryType.PRESSURE, value=value['Pressure'], service=self.name, siteId=siteId, timestamp=now)
+
+			if 'Rain' in value:
+				managers.TelemetryManager.storeData(ttype=TelemetryType.RAIN, value=value['Rain'], service=self.name, siteId=siteId, timestamp=now)
+
+			if 'sum_rain_1' in value:
+				managers.TelemetryManager.storeData(ttype=TelemetryType.SUM_RAIN_1, value=value['sum_rain_1'], service=self.name, siteId=siteId, timestamp=now)
+
+			if 'sum_rain_24' in value:
+				managers.TelemetryManager.storeData(ttype=TelemetryType.SUM_RAIN_24, value=value['sum_rain_24'], service=self.name, siteId=siteId, timestamp=now)
+
+			if 'WindStrength' in value:
+				managers.TelemetryManager.storeData(ttype=TelemetryType.WIND_STRENGTH, value=value['WindStrength'], service=self.name, siteId=siteId, timestamp=now)
+
+			if 'WindAngle' in value:
+				managers.TelemetryManager.storeData(ttype=TelemetryType.WIND_ANGLE, value=value['WindAngle'], service=self.name, siteId=siteId, timestamp=now)
+
+			if 'GustStrength' in value:
+				managers.TelemetryManager.storeData(ttype=TelemetryType.GUST_STRENGTH, value=value['GustStrength'], service=self.name, siteId=siteId, timestamp=now)
+
+			if 'GustAngle' in value:
+				managers.TelemetryManager.storeData(ttype=TelemetryType.GUST_ANGLE, value=value['GustAngle'], service=self.name, siteId=siteId, timestamp=now)
 
 
 	def onMessage(self, intent: str, session: DialogSession) -> bool:
-		if not self.filterIntent(intent, session):
-			return False
-
-		sessionId = session.sessionId
-		siteId = session.siteId
-		slots = session.slots
-
-		return True
+		return False

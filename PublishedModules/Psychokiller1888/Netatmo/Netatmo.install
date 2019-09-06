@@ -1,6 +1,6 @@
 {
 	"name": "Netatmo",
-	"version": 0.1,
+	"version": 1.0,
 	"author": "Psychokiller1888",
 	"maintainers": [],
 	"desc": "Get readings from your netatmo hardware",
@@ -11,7 +11,13 @@
 	"systemRequirements": [],
 	"conditions": {
 		"lang": [
-			"en"
+			"en",
+			"fr",
+			"de"
+		],
+		"online": true,
+		"activeManager": [
+		    "TelemetryManager"
 		]
 	}
 }

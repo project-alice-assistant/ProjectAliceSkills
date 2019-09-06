@@ -3,7 +3,7 @@
     "clientSecret": "",
     "username": "",
     "password": "",
-    "windAlertFromKmh": 5,
+    "WindAlertFromKmh": 5,
     "TemperatureAlertHigh": 35,
     "TemperatureAlertLow": 5,
     "CO2AlertHigh": 1000,
