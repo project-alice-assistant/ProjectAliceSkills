@@ -6,6 +6,7 @@ import requests
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
+from core.commons.commons import online
 
 
 class RandomUselessFacts(Module):
@@ -39,7 +40,7 @@ class RandomUselessFacts(Module):
 
 		return True
 
-
+	@online
 	def getAFact(self, ttype: str) -> str:
 		# Try to fetch a fact
 		req = requests.request(method='GET', url='https://uselessfacts.jsph.pl/{}.json?language={}'.format(ttype, self.activeLanguage()))
