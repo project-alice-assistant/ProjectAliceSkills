@@ -1,5 +1,6 @@
 import logging
-from abc import abstractmethod, ABCMeta
+
+from abc import ABCMeta, abstractmethod
 
 from core.dialog.model import DialogSession
 from core.snips.samkilla.Intent import Intent

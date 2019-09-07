@@ -1,8 +1,10 @@
-from pathlib import Path
-from jsonschema import Draft7Validator, exceptions
 import json
 from collections import defaultdict
+from pathlib import Path
+
 from abc import ABC, abstractmethod
+from jsonschema import Draft7Validator, exceptions
+
 
 class validation(ABC):
 	def __init__(self, modulePath: Path):

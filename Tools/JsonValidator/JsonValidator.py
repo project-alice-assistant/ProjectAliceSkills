@@ -1,6 +1,7 @@
-from src.validator import validator
-import sys
 import argparse
+import sys
+
+from src.validator import validator
 
 parser = argparse.ArgumentParser(description='decide which files to validate')	
 parser.add_argument('--all', help='run all validation tasks', action='store_true')	

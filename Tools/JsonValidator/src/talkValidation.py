@@ -1,6 +1,9 @@
-from pathlib import Path
 import json
 from src.validation import validation
+import json
+
+from src.validation import validation
+
 
 class talkValidation(validation):
 

@@ -1,10 +1,11 @@
-from pathlib import Path
 import json
-import re
-from src.validation import validation
-from src.dialogTemplate import dialogTemplate
+from pathlib import Path
+
 from snips_nlu_parsers import get_all_builtin_entities
+from src.dialogTemplate import dialogTemplate
+from src.validation import validation
 from unidecode import unidecode
+
 
 class dialogValidation(validation):
 	

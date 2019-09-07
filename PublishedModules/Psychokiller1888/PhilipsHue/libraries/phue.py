@@ -13,10 +13,11 @@ I am in no way affiliated with the Philips organization.
 
 import json
 import logging
-import os
 import platform
 import socket
 import sys
+
+import os
 
 if sys.version_info[0] > 2:
 	PY3K = True

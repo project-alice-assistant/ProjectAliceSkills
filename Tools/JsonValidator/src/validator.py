@@ -1,10 +1,11 @@
+from collections import defaultdict
+from pathlib import Path
+
 from src.dialogValidation import dialogValidation
 from src.installValidation import installValidation
 from src.talkValidation import talkValidation
-import json
-from pathlib import Path
-from collections import defaultdict
 from termcolor import colored
+
 
 class validator:
 	def __init__(self, installer: bool = True, dialog: bool = True, talk: bool = True, warnings: bool = True):

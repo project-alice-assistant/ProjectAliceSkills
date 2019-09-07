@@ -1,10 +1,10 @@
 import time
 
+import lnetatmo
+
 from core.ProjectAliceExceptions import ModuleStartingFailed
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
-import lnetatmo
-
 from core.util.model.TelemetryType import TelemetryType
 
 

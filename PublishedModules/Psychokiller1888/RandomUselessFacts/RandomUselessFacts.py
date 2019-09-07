@@ -5,8 +5,8 @@ import requests
 
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
-from core.dialog.model.DialogSession import DialogSession
 from core.commons.commons import online
+from core.dialog.model.DialogSession import DialogSession
 
 
 class RandomUselessFacts(Module):
