@@ -1,7 +1,7 @@
 import requests
 from enum import Enum
 
-import core.base.Managers as managers
+from core.base.SuperManager import SuperManager
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
 
@@ -36,7 +36,7 @@ class Ifttt(Module):
 
 	# noinspection SqlResolve
 	def sendRequest(self, endPoint: str, user: str, siteId: str) -> IftttException:
-		if not managers.InternetManager.online:
+		if not SuperManager.getInstance().internetManager.online:
 			return IftttException.NOT_CONNECTED
 
 		try:

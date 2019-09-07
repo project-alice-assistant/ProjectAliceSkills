@@ -16,7 +16,7 @@ alice module:install Psychokiller1888/IcanhazdadjokeDotCom
 ### Description
 Get a random dad joke on demand
 
-- Version: 1.11
+- Version: 1.12
 - Author: Psycho
 - Maintainers:
   - Jierka

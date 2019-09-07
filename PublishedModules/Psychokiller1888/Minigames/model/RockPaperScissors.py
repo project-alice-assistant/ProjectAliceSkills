@@ -2,7 +2,7 @@ import os
 
 import random
 
-import core.base.Managers as managers
+from core.base.SuperManager import SuperManager
 from core.base.model.Intent import Intent
 from core.commons import commons
 from core.dialog.model.DialogSession import DialogSession
@@ -29,9 +29,9 @@ class RockPaperScissors(MiniGame):
 	def start(self, session: DialogSession):
 		super().start(session)
 
-		managers.MqttServer.continueDialog(
+		SuperManager.getInstance().mqttManager.continueDialog(
 			sessionId=session.sessionId,
-			text=managers.TalkManager.randomTalk(talk='rockPaperScissorsStart', module='Minigames'),
+			text=SuperManager.getInstance().talkManager.randomTalk(talk='rockPaperScissorsStart', module='Minigames'),
 			intentFilter=[self._INTENT_ANSWER_ROCK_PAPER_OR_SCISSORS],
 			previousIntent=self._INTENT_PLAY_GAME
 		)
@@ -41,13 +41,13 @@ class RockPaperScissors(MiniGame):
 		if intent == self._INTENT_ANSWER_ROCK_PAPER_OR_SCISSORS:
 			me = random.choice(['rock', 'paper', 'scissors'])
 
-			managers.MqttServer.playSound(
+			SuperManager.getInstance().mqttManager.playSound(
 				soundFile=os.path.join(commons.rootDir(), 'modules', 'Minigames', 'sounds', 'drum_suspens'),
 				siteId=session.siteId,
 				absolutePath=True
 			)
 
-			redQueen = managers.ModuleManager.getModuleInstance('RedQueen')
+			redQueen = SuperManager.getInstance().moduleManager.getModuleInstance('RedQueen')
 			redQueen.changeRedQueenStat('happiness', 5)
 			player = session.slotValue('RockPaperOrScissors')
 			# tie
@@ -63,12 +63,12 @@ class RockPaperScissors(MiniGame):
 				redQueen.changeRedQueenStat('frustration', -5)
 				redQueen.changeRedQueenStat('happiness', 5)
 
-			managers.MqttServer.continueDialog(
+			SuperManager.getInstance().mqttManager.continueDialog(
 				sessionId=session.sessionId,
-				text=managers.TalkManager.randomTalk(
+				text=SuperManager.getInstance().talkManager.randomTalk(
 					talk=result,
 					module='Minigames'
-				).format(managers.LanguageManager.getTranslations(module='Minigames', key=me, toLang=managers.LanguageManager.activeLanguage)[0]),
+				).format(SuperManager.getInstance().languageManager.getTranslations(module='Minigames', key=me, toLang=SuperManager.getInstance().languageManager.activeLanguage)[0]),
 				intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
 				previousIntent=self._INTENT_PLAY_GAME,
 				customData={

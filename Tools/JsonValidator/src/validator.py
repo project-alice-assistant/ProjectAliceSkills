@@ -72,7 +72,7 @@ class validator:
 		self.indentPrint(8, '-', error)
 	
 	def printInstaller(self, error: dict):
-		if error == True:
+		if error:
 			self.indentPrint(4, colored('Installer', 'white', attrs=['bold']), 'valid')
 		else:
 			self.indentPrint(4, colored('Installer:', 'white', attrs=['bold']))
@@ -84,7 +84,7 @@ class validator:
 		print()
 	
 	def printDialog(self, error: dict):
-		if error == True:
+		if error:
 			self.indentPrint(4, colored('Dialog files', 'white', attrs=['bold']), 'valid')
 		else:
 			self.indentPrint(4, colored('Dialog files:', 'white', attrs=['bold']))
@@ -107,7 +107,7 @@ class validator:
 
 	
 	def printTalk(self, error: dict):
-		if error == True:
+		if error:
 			self.indentPrint(4, colored('Talk files', 'white', attrs=['bold']), 'valid')
 		else:
 			self.indentPrint(4, colored('Talk files:', 'white', attrs=['bold']))

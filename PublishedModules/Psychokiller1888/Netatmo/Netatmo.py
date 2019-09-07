@@ -1,7 +1,7 @@
 import time
 
-import core.base.Managers as managers
 from core.ProjectAliceExceptions import ModuleStartingFailed
+from core.base.SuperManager import SuperManager
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
 import lnetatmo
@@ -68,40 +68,40 @@ class Netatmo(Module):
 		now = time.time()
 		for siteId, value in self._weatherData.lastData().items():
 			if 'Temperature' in value:
-				managers.TelemetryManager.storeData(ttype=TelemetryType.TEMPERATURE, value=value['Temperature'], service=self.name, siteId=siteId, timestamp=now)
+				SuperManager.getInstance().telemetryManager.storeData(ttype=TelemetryType.TEMPERATURE, value=value['Temperature'], service=self.name, siteId=siteId, timestamp=now)
 
 			if 'CO2' in value:
-				managers.TelemetryManager.storeData(ttype=TelemetryType.CO2, value=value['CO2'], service=self.name, siteId=siteId, timestamp=now)
+				SuperManager.getInstance().telemetryManager.storeData(ttype=TelemetryType.CO2, value=value['CO2'], service=self.name, siteId=siteId, timestamp=now)
 
 			if 'Humidity' in value:
-				managers.TelemetryManager.storeData(ttype=TelemetryType.HUMIDITY, value=value['Humidity'], service=self.name, siteId=siteId, timestamp=now)
+				SuperManager.getInstance().telemetryManager.storeData(ttype=TelemetryType.HUMIDITY, value=value['Humidity'], service=self.name, siteId=siteId, timestamp=now)
 
 			if 'Noise' in value:
-				managers.TelemetryManager.storeData(ttype=TelemetryType.NOISE, value=value['Noise'], service=self.name, siteId=siteId, timestamp=now)
+				SuperManager.getInstance().telemetryManager.storeData(ttype=TelemetryType.NOISE, value=value['Noise'], service=self.name, siteId=siteId, timestamp=now)
 
 			if 'Pressure' in value:
-				managers.TelemetryManager.storeData(ttype=TelemetryType.PRESSURE, value=value['Pressure'], service=self.name, siteId=siteId, timestamp=now)
+				SuperManager.getInstance().telemetryManager.storeData(ttype=TelemetryType.PRESSURE, value=value['Pressure'], service=self.name, siteId=siteId, timestamp=now)
 
 			if 'Rain' in value:
-				managers.TelemetryManager.storeData(ttype=TelemetryType.RAIN, value=value['Rain'], service=self.name, siteId=siteId, timestamp=now)
+				SuperManager.getInstance().telemetryManager.storeData(ttype=TelemetryType.RAIN, value=value['Rain'], service=self.name, siteId=siteId, timestamp=now)
 
 			if 'sum_rain_1' in value:
-				managers.TelemetryManager.storeData(ttype=TelemetryType.SUM_RAIN_1, value=value['sum_rain_1'], service=self.name, siteId=siteId, timestamp=now)
+				SuperManager.getInstance().telemetryManager.storeData(ttype=TelemetryType.SUM_RAIN_1, value=value['sum_rain_1'], service=self.name, siteId=siteId, timestamp=now)
 
 			if 'sum_rain_24' in value:
-				managers.TelemetryManager.storeData(ttype=TelemetryType.SUM_RAIN_24, value=value['sum_rain_24'], service=self.name, siteId=siteId, timestamp=now)
+				SuperManager.getInstance().telemetryManager.storeData(ttype=TelemetryType.SUM_RAIN_24, value=value['sum_rain_24'], service=self.name, siteId=siteId, timestamp=now)
 
 			if 'WindStrength' in value:
-				managers.TelemetryManager.storeData(ttype=TelemetryType.WIND_STRENGTH, value=value['WindStrength'], service=self.name, siteId=siteId, timestamp=now)
+				SuperManager.getInstance().telemetryManager.storeData(ttype=TelemetryType.WIND_STRENGTH, value=value['WindStrength'], service=self.name, siteId=siteId, timestamp=now)
 
 			if 'WindAngle' in value:
-				managers.TelemetryManager.storeData(ttype=TelemetryType.WIND_ANGLE, value=value['WindAngle'], service=self.name, siteId=siteId, timestamp=now)
+				SuperManager.getInstance().telemetryManager.storeData(ttype=TelemetryType.WIND_ANGLE, value=value['WindAngle'], service=self.name, siteId=siteId, timestamp=now)
 
 			if 'GustStrength' in value:
-				managers.TelemetryManager.storeData(ttype=TelemetryType.GUST_STRENGTH, value=value['GustStrength'], service=self.name, siteId=siteId, timestamp=now)
+				SuperManager.getInstance().telemetryManager.storeData(ttype=TelemetryType.GUST_STRENGTH, value=value['GustStrength'], service=self.name, siteId=siteId, timestamp=now)
 
 			if 'GustAngle' in value:
-				managers.TelemetryManager.storeData(ttype=TelemetryType.GUST_ANGLE, value=value['GustAngle'], service=self.name, siteId=siteId, timestamp=now)
+				SuperManager.getInstance().telemetryManager.storeData(ttype=TelemetryType.GUST_ANGLE, value=value['GustAngle'], service=self.name, siteId=siteId, timestamp=now)
 
 
 	def onMessage(self, intent: str, session: DialogSession) -> bool:

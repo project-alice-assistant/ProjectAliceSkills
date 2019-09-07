@@ -4,7 +4,7 @@ import os
 
 import random
 
-import core.base.Managers as managers
+from core.base.SuperManager import SuperManager
 from core.base.model.Intent import Intent
 from core.commons import commons
 from core.dialog.model.DialogSession import DialogSession
@@ -33,16 +33,16 @@ class GuessTheNumber(MiniGame):
 	def start(self, session: DialogSession):
 		super().start(session)
 
-		redQueen = managers.ModuleManager.getModuleInstance('RedQueen')
+		redQueen = SuperManager.getInstance().moduleManager.getModuleInstance('RedQueen')
 		redQueen.changeRedQueenStat('happiness', 10)
 
 		self._number = random.randint(1, 10000)
 
 		self._start = time.time() - 4
 
-		managers.MqttServer.continueDialog(
+		SuperManager.getInstance().mqttManager.continueDialog(
 			sessionId=session.sessionId,
-			text=managers.TalkManager.randomTalk(talk='guessTheNumberStart', module='Minigames'),
+			text=SuperManager.getInstance().talkManager.randomTalk(talk='guessTheNumberStart', module='Minigames'),
 			intentFilter=[self._INTENT_ANSWER_NUMBER],
 			previousIntent=self._INTENT_PLAY_GAME
 		)
@@ -54,34 +54,34 @@ class GuessTheNumber(MiniGame):
 
 				score = round(time.time() - self._start)
 				m, s = divmod(score, 60)
-				scoreFormatted = managers.LanguageManager.getTranslations(module='Minigames', key='minutesAndSeconds')[0].format(round(m), round(s))
+				scoreFormatted = SuperManager.getInstance().languageManager.getTranslations(module='Minigames', key='minutesAndSeconds')[0].format(round(m), round(s))
 
-				managers.MqttServer.playSound(
+				SuperManager.getInstance().mqttManager.playSound(
 					soundFile=os.path.join(commons.rootDir(), 'modules', 'Minigames', 'sounds', 'applause'),
 					siteId=session.siteId,
 					absolutePath=True
 				)
 
-				managers.MqttServer.endTalk(
+				SuperManager.getInstance().mqttManager.endTalk(
 					sessionId=session.sessionId,
-					text=managers.TalkManager.randomTalk('guessTheNumberCorrect', 'Minigames').format(self._number, self._number)
+					text=SuperManager.getInstance().talkManager.randomTalk('guessTheNumberCorrect', 'Minigames').format(self._number, self._number)
 				)
 
-				if session.user != 'unknown' and managers.ModuleManager.getModuleInstance('Minigames').checkAndStoreScore(user=session.user, score=score, biggerIsBetter=False):
-					managers.MqttServer.say(
+				if session.user != 'unknown' and SuperManager.getInstance().moduleManager.getModuleInstance('Minigames').checkAndStoreScore(user=session.user, score=score, biggerIsBetter=False):
+					SuperManager.getInstance().mqttManager.say(
 						client=session.siteId,
-						text=managers.TalkManager.randomTalk('guessTheNumberNewHighscore', 'Minigames').format(scoreFormatted),
+						text=SuperManager.getInstance().talkManager.randomTalk('guessTheNumberNewHighscore', 'Minigames').format(scoreFormatted),
 						canBeEnqueued=True
 					)
 				else:
-					managers.MqttServer.say(
+					SuperManager.getInstance().mqttManager.say(
 						client=session.siteId,
-						text=managers.TalkManager.randomTalk('guessTheNumberScore', 'Minigames').format(scoreFormatted),
+						text=SuperManager.getInstance().talkManager.randomTalk('guessTheNumberScore', 'Minigames').format(scoreFormatted),
 						canBeEnqueued=True
 					)
 
-				managers.MqttServer.ask(
-					text=managers.TalkManager.randomTalk('playAgain', 'Minigames'),
+				SuperManager.getInstance().mqttManager.ask(
+					text=SuperManager.getInstance().talkManager.randomTalk('playAgain', 'Minigames'),
 					intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
 					previousIntent=self._INTENT_PLAY_GAME,
 					customData={
@@ -91,17 +91,17 @@ class GuessTheNumber(MiniGame):
 				)
 
 			elif int(session.slotValue('Number')) < self._number:
-				managers.MqttServer.continueDialog(
+				SuperManager.getInstance().mqttManager.continueDialog(
 					sessionId=session.sessionId,
-					text=managers.TalkManager.randomTalk('guessTheNumberMore', 'Minigames'),
+					text=SuperManager.getInstance().talkManager.randomTalk('guessTheNumberMore', 'Minigames'),
 					intentFilter=[self._INTENT_ANSWER_NUMBER],
 					previousIntent=self._INTENT_PLAY_GAME
 				)
 
 			else:
-				managers.MqttServer.continueDialog(
+				SuperManager.getInstance().mqttManager.continueDialog(
 					sessionId=session.sessionId,
-					text=managers.TalkManager.randomTalk('guessTheNumberLess', 'Minigames'),
+					text=SuperManager.getInstance().talkManager.randomTalk('guessTheNumberLess', 'Minigames'),
 					intentFilter=[self._INTENT_ANSWER_NUMBER],
 					previousIntent=self._INTENT_PLAY_GAME
 				)

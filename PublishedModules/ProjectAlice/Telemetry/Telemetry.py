@@ -1,6 +1,4 @@
-import json
-
-import core.base.Managers as managers
+from core.base.SuperManager import SuperManager
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
@@ -37,7 +35,7 @@ class Telemetry(Module):
 			if 'TelemetryType' in slots:
 				ttype = session.slotValue('TelemetryType')
 
-			data = managers.TelemetryManager.getData(siteId=siteId, ttype=ttype)
+			data = SuperManager.getInstance().telemetryManager.getData(siteId=siteId, ttype=ttype)
 			print(data)
 
 		return True

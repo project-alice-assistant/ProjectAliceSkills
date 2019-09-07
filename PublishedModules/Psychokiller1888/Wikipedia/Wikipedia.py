@@ -1,6 +1,6 @@
 from wikipedia import wikipedia
 
-import core.base.Managers as managers
+from core.base.SuperManager import SuperManager
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
@@ -54,7 +54,7 @@ class Wikipedia(Module):
 				elif 'RandomWord' in slots:
 					what = slots['RandomWord']
 				else:
-					self.endDialog(sessionId=sessionId, text=managers.TalkManager.randomTalk('error', module='system'))
+					self.endDialog(sessionId=sessionId, text=SuperManager.getInstance().talkManager.randomTalk('error', module='system'))
 					return True
 
 				if intent == self._INTENT_SPELL_WORD:
@@ -64,7 +64,7 @@ class Wikipedia(Module):
 				else:
 					search = what
 
-				wikipedia.set_lang(managers.LanguageManager.activeLanguage)
+				wikipedia.set_lang(SuperManager.getInstance().languageManager.activeLanguage)
 				if 'engine' in customData:
 					engine = customData['engine']
 				else:
@@ -78,7 +78,7 @@ class Wikipedia(Module):
 				except wikipedia.DisambiguationError:
 					self.continueDialog(
 						sessionId=sessionId,
-						text=managers.TalkManager.randomTalk('ambiguous').format(search),
+						text=SuperManager.getInstance().talkManager.randomTalk('ambiguous').format(search),
 						intentFilter=[self._INTENT_USER_ANSWER],
 						previousIntent=self._INTENT_SEARCH,
 						customData={
@@ -90,7 +90,7 @@ class Wikipedia(Module):
 				except wikipedia.WikipediaException:
 					self.continueDialog(
 						sessionId=sessionId,
-						text=managers.TalkManager.randomTalk('noMatch').format(search),
+						text=SuperManager.getInstance().talkManager.randomTalk('noMatch').format(search),
 						intentFilter=[self._INTENT_USER_ANSWER],
 						previousIntent=self._INTENT_SEARCH,
 						customData={
@@ -101,13 +101,13 @@ class Wikipedia(Module):
 					return True
 				except Exception as e:
 					self._logger.error('Error: {}'.format(e))
-					self.endDialog(sessionId=sessionId, text=managers.TalkManager.randomTalk('error', module='system'))
+					self.endDialog(sessionId=sessionId, text=SuperManager.getInstance().talkManager.randomTalk('error', module='system'))
 					return True
 
 				if result == '':
 					self.continueDialog(
 						sessionId=sessionId,
-						text=managers.TalkManager.randomTalk('noMatch').format(search),
+						text=SuperManager.getInstance().talkManager.randomTalk('noMatch').format(search),
 						intentFilter=[self._INTENT_USER_ANSWER],
 						previousIntent=self._INTENT_SEARCH,
 						customData={

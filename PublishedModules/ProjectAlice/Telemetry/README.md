@@ -15,7 +15,7 @@ alice module:install Psychokiller1888/Telemetry
 ### Description
 Access your stored telemetry data
 
-- Version: 0.1
+- Version: 0.11
 - Author: ProjectAlice
 - Maintainers: Psychokiller1888
 - Alice minimum version: N/A

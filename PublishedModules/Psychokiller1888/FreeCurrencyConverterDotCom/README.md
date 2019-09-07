@@ -16,7 +16,7 @@ alice module:install Psychokiller1888/FreeCurrencyConverterDotCom
 ### Description
 Let's you convert world currencies
 
-- Version: 1.22
+- Version: 1.23
 - Author: Psychokiller1888
 - Maintainers: N/A
 - Alice minimum version: N/A

@@ -15,7 +15,7 @@ alice module:install Psychokiller1888/Minigames
 ### Description
 Play a collection of many little games with alice
 
-- Version: 1.0
+- Version: 1.02
 - Author: Psychokiller1888
 - Maintainers: maxbachmann
 - Alice minimum version: N/A

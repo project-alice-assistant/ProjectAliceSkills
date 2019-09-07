@@ -3,13 +3,13 @@ import time
 import os
 import requests
 
-import core.base.Managers as managers
 from core.ProjectAliceExceptions import ModuleStartDelayed, ModuleStartingFailed
+from core.base.SuperManager import SuperManager
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.commons import commons
 from core.dialog.model.DialogSession import DialogSession
-from modules.PhilipsHue.libraries.phue import Bridge, PhueException, PhueRegistrationException
+from .libraries.phue import Bridge, PhueException, PhueRegistrationException
 
 
 class PhilipsHue(Module):
@@ -77,7 +77,7 @@ class PhilipsHue(Module):
 				if not hueConfigFileExists:
 					self._logger.info('- [{}] No philipsHueConf.conf file in PhilipsHue module directory'.format(self.name))
 
-				self._bridge = Bridge(ip=managers.ConfigManager.getModuleConfigByName(self.name, 'phueBridgeIp'), config_file_path=hueConfigFile)
+				self._bridge = Bridge(ip=SuperManager.getInstance().configManager.getModuleConfigByName(self.name, 'phueBridgeIp'), config_file_path=hueConfigFile)
 
 				if not self._bridge:
 					raise PhueException
@@ -87,7 +87,7 @@ class PhilipsHue(Module):
 					raise PhueRegistrationException
 
 				elif not hueConfigFileExists:
-					managers.ThreadManager.doLater(
+					SuperManager.getInstance().threadManager.doLater(
 						interval=3,
 						func=self.say,
 						args=[self.randomTalk('pressBridgeButtonConfirmation')]
@@ -108,7 +108,7 @@ class PhilipsHue(Module):
 				return False
 		else:
 			self._logger.error("- [{}] Couldn't reach bridge".format(self.name))
-			managers.ThreadManager.doLater(interval=3, func=self.say, args=[self.randomTalk('pressBridgeButtonTimeout')])
+			SuperManager.getInstance().threadManager.doLater(interval=3, func=self.say, args=[self.randomTalk('pressBridgeButtonTimeout')])
 			return False
 
 		self._bridgeConnectTries = 0
@@ -350,7 +350,7 @@ class PhilipsHue(Module):
 				if 'Room' not in slots:
 					room = siteId.lower()
 					if room == 'default':
-						room = managers.ConfigManager.getAliceConfigByName('room')
+						room = SuperManager.getInstance().configManager.getAliceConfigByName('room')
 
 					if room not in self._groups.keys():
 						self.endDialog(sessionId, text=self.randomTalk(text='roomUnknown', replace=[room]))

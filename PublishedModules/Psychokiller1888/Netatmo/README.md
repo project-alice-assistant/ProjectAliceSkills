@@ -15,7 +15,7 @@ alice module:install Psychokiller1888/Netatmo
 ### Description
 Get readings from your netatmo hardware
 
-- Version: 1.0
+- Version: 1.01
 - Author: Psychokiller1888
 - Maintainers: N/A
 - Alice minimum version: N/A

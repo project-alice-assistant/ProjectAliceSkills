@@ -1,6 +1,6 @@
 import math
 
-import core.base.Managers as managers
+from core.base.SuperManager import SuperManager
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
@@ -32,7 +32,7 @@ class Calculator(Module):
 
 		if intent == self._INTENT_MATHS:
 			if ('Left' not in slots and 'Right' not in slots) or 'Function' not in slots:
-				self.continueDialog(sessionId=sessionId, text=managers.TalkManager.randomTalk('notUnderstood'))
+				self.continueDialog(sessionId=sessionId, text=SuperManager.getInstance().talkManager.randomTalk('notUnderstood'))
 				return True
 
 			func = slots['Function'][0].value['value']
@@ -42,13 +42,13 @@ class Calculator(Module):
 
 			elif 'Right' in slots and 'Left' not in slots:
 				if not self._lastNumber:
-					self.endDialog(sessionId=sessionId, text=managers.TalkManager.randomTalk('noPreviousOperation'))
+					self.endDialog(sessionId=sessionId, text=SuperManager.getInstance().talkManager.randomTalk('noPreviousOperation'))
 					return True
 
 				result = self.calculate(self._lastNumber, float(slots['Right'][0].value['value']), func)
 
 			else:
-				self.continueDialog(sessionId=sessionId, text=managers.TalkManager.randomTalk('notUnderstood'))
+				self.continueDialog(sessionId=sessionId, text=SuperManager.getInstance().talkManager.randomTalk('notUnderstood'))
 				return True
 
 			answer = str(int(result)) if result % 1 == 0 else str(result)

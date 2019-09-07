@@ -2,7 +2,7 @@ import os
 
 import random
 
-import core.base.Managers as managers
+from core.base.SuperManager import SuperManager
 from core.base.model.Intent import Intent
 from core.commons import commons
 from core.dialog.model.DialogSession import DialogSession
@@ -26,19 +26,19 @@ class RollADice(MiniGame):
 	def start(self, session: DialogSession):
 		super().start(session)
 
-		managers.MqttServer.playSound(
+		SuperManager.getInstance().mqttManager.playSound(
 			soundFile=os.path.join(commons.rootDir(), 'modules', 'Minigames', 'sounds', 'rollADice'),
 			sessionId='rollADice',
 			siteId=session.siteId,
 			absolutePath=True
 		)
 
-		redQueen = managers.ModuleManager.getModuleInstance('RedQueen')
+		redQueen = SuperManager.getInstance().moduleManager.getModuleInstance('RedQueen')
 		redQueen.changeRedQueenStat('happiness', 5)
 
-		managers.MqttServer.endTalk(
+		SuperManager.getInstance().mqttManager.endTalk(
 			sessionId=session.sessionId,
-			text=managers.TalkManager.randomTalk(
+			text=SuperManager.getInstance().talkManager.randomTalk(
 				talk='rollADiceResult',
 				module='Minigames'
 			).format(random.randint(1, 6))

@@ -1,6 +1,6 @@
 import re
 
-import core.base.Managers as managers
+from core.base.SuperManager import SuperManager
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.device.model.TasmotaConfigs import TasmotaConfigs
@@ -47,31 +47,31 @@ class Tasmota(Module):
 
 		if self._connectingRegex.match(intent):
 			identifier = self._connectingRegex.match(intent).group(1)
-			if managers.DeviceManager.getDeviceByUID(identifier):
+			if SuperManager.getInstance().deviceManager.getDeviceByUID(identifier):
 				# This device is known
 				self._logger.info('[{}] A device just connected in {}'.format(self.name, siteId))
-				managers.DeviceManager.deviceConnecting(uid=identifier)
+				SuperManager.getInstance().deviceManager.deviceConnecting(uid=identifier)
 			else:
 				# We did not ask Alice to add a new device
-				if not managers.DeviceManager.broadcastFlag.isSet():
+				if not SuperManager.getInstance().deviceManager.broadcastFlag.isSet():
 					self._logger.warning('[{}] A device is trying to connect to Alice but is unknown'.format(self.name))
 
 		elif self._feedbackRegex.match(intent):
 			if 'feedback' in payload:
 				if payload['deviceType'] == 'switch':
 					if payload['feedback'] > 0:
-						managers.ModuleManager.broadcast('onButtonPressed', args=[siteId])
+						SuperManager.getInstance().moduleManager.broadcast('onButtonPressed', args=[siteId])
 					else:
-						managers.ModuleManager.broadcast('onButtonReleased', args=[siteId])
+						SuperManager.getInstance().moduleManager.broadcast('onButtonReleased', args=[siteId])
 				elif payload['deviceType'] == 'pir':
 					if payload['feedback'] > 0:
-						managers.ModuleManager.broadcast('onMotionDetected', args=[siteId])
+						SuperManager.getInstance().moduleManager.broadcast('onMotionDetected', args=[siteId])
 					else:
-						managers.ModuleManager.broadcast('onMotionStopped', args=[siteId])
+						SuperManager.getInstance().moduleManager.broadcast('onMotionStopped', args=[siteId])
 
 		return True
 
 
 	def _initConf(self, identifier: str, deviceBrand: str, deviceType: str):
 		self._tasmotaConfigs = TasmotaConfigs(deviceType, identifier)
-		self._confArray = self._tasmotaConfigs.getConfigs(deviceBrand, managers.DeviceManager.broadcastRoom)
+		self._confArray = self._tasmotaConfigs.getConfigs(deviceBrand, SuperManager.getInstance().deviceManager.broadcastRoom)

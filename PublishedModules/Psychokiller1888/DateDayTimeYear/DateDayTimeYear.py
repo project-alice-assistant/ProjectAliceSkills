@@ -1,6 +1,6 @@
 from datetime import datetime
 
-import core.base.Managers    as managers
+from core.base.SuperManager import SuperManager
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
@@ -35,24 +35,24 @@ class DateDayTimeYear(Module):
 			part = datetime.now().strftime('%p')
 
 			# english has a 12 hour clock and adds oh below 10 min
-			if managers.LanguageManager.activeLanguage == 'en':
+			if SuperManager.getInstance().languageManager.activeLanguage == 'en':
 				hours = datetime.now().strftime('%I').lstrip('0')
 				if minutes != '' and int(minutes) < 10:
 					minutes = 'oh {}'.format(minutes)
 			else:
 				hours = datetime.now().strftime('%H').lstrip('0')
 
-			self.endDialog(sessionId, managers.TalkManager.randomTalk('time').format(hours, minutes, part))
+			self.endDialog(sessionId, SuperManager.getInstance().talkManager.randomTalk('time').format(hours, minutes, part))
 		elif intent == self._INTENT_GET_DATE:
 			date = datetime.now().strftime('%d %B %Y')
-			date = managers.LanguageManager.localize(date)
-			self.endDialog(sessionId, managers.TalkManager.randomTalk('date').format(date))
+			date = SuperManager.getInstance().languageManager.localize(date)
+			self.endDialog(sessionId, SuperManager.getInstance().talkManager.randomTalk('date').format(date))
 		elif intent == self._INTENT_GET_DAY:
 			day = datetime.now().strftime('%A')
-			day = managers.LanguageManager.localize(day)
-			self.endDialog(sessionId, managers.TalkManager.randomTalk('day').format(day))
+			day = SuperManager.getInstance().languageManager.localize(day)
+			self.endDialog(sessionId, SuperManager.getInstance().talkManager.randomTalk('day').format(day))
 		elif intent == self._INTENT_GET_YEAR:
 			year = datetime.now().strftime('%Y')
-			self.endDialog(sessionId, managers.TalkManager.randomTalk('day').format(year))
+			self.endDialog(sessionId, SuperManager.getInstance().talkManager.randomTalk('day').format(year))
 
 		return True

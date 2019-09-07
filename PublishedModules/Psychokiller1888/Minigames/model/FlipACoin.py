@@ -1,10 +1,8 @@
-import time
-
 import os
 
 import random
 
-import core.base.Managers as managers
+from core.base.SuperManager import SuperManager
 from core.base.model.Intent import Intent
 from core.commons import commons
 from core.dialog.model.DialogSession import DialogSession
@@ -31,9 +29,9 @@ class FlipACoin(MiniGame):
 	def start(self, session: DialogSession):
 		super().start(session)
 
-		managers.MqttServer.continueDialog(
+		SuperManager.getInstance().mqttManager.continueDialog(
 			sessionId=session.sessionId,
-			text=managers.TalkManager.randomTalk(talk='flipACoinStart', module='Minigames'),
+			text=SuperManager.getInstance().talkManager.randomTalk(talk='flipACoinStart', module='Minigames'),
 			intentFilter=[self._INTENT_ANSWER_HEADS_OR_TAIL],
 			previousIntent=self._INTENT_PLAY_GAME
 		)
@@ -43,14 +41,14 @@ class FlipACoin(MiniGame):
 		if intent == self._INTENT_ANSWER_HEADS_OR_TAIL:
 			coin = random.choice(['heads', 'tails'])
 
-			managers.MqttServer.playSound(
+			SuperManager.getInstance().mqttManager.playSound(
 				soundFile=os.path.join(commons.rootDir(), 'modules', 'Minigames', 'sounds', 'coinflip'),
 				sessionId='coinflip',
 				siteId=session.siteId,
 				absolutePath=True
 			)
 
-			redQueen = managers.ModuleManager.getModuleInstance('RedQueen')
+			redQueen = SuperManager.getInstance().moduleManager.getModuleInstance('RedQueen')
 			redQueen.changeRedQueenStat('happiness', 5)
 
 			if session.slotValue('HeadsOrTails') == coin:
@@ -61,12 +59,12 @@ class FlipACoin(MiniGame):
 				redQueen.changeRedQueenStat('frustration', -5)
 				redQueen.changeRedQueenStat('hapiness', 5)
 
-			managers.MqttServer.continueDialog(
+			SuperManager.getInstance().mqttManager.continueDialog(
 				sessionId=session.sessionId,
-				text=managers.TalkManager.randomTalk(
+				text=SuperManager.getInstance().talkManager.randomTalk(
 					talk=result,
 					module='Minigames'
-				).format(managers.LanguageManager.getTranslations(module='Minigames', key=coin, toLang=managers.LanguageManager.activeLanguage)[0]),
+				).format(SuperManager.getInstance().languageManager.getTranslations(module='Minigames', key=coin, toLang=SuperManager.getInstance().languageManager.activeLanguage)[0]),
 				intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
 				previousIntent=self._INTENT_PLAY_GAME,
 				customData={

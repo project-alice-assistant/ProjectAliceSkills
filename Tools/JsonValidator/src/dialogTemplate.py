@@ -1,6 +1,6 @@
 import re
 
-class dialogTemplate():
+class dialogTemplate:
 	def __init__(self, dialogTemplate: dict):
 		self.dialogTemplate = dialogTemplate
 

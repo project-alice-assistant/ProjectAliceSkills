@@ -66,7 +66,7 @@ class dialogValidation(validation):
 				if allSlots['useSynonyms'] and 'synonyms' in slot:
 					allValues.extend([unidecode(x).lower() for x in slot['synonyms']])
 
-				if (uValue in allValues or allSlots['automaticallyExtensible']):
+				if uValue in allValues or allSlots['automaticallyExtensible']:
 					found.append(value)
 		return [x for x in values if x not in found]
 
