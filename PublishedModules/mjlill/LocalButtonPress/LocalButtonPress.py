@@ -1,6 +1,5 @@
 import RPi.GPIO as GPIO
 
-from core.base.SuperManager import SuperManager
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
@@ -38,10 +37,10 @@ class LocalButtonPress(Module):
 
 		if intent == self._INTENT_BUTTON_ON:
 			GPIO.output(self._gpioPin, GPIO.HIGH)
-			self.endDialog(session.sessionId, SuperManager.getInstance().talkManager.randomTalk('DoButtonOn'))
+			self.endDialog(session.sessionId, self.TalkManager.randomTalk('DoButtonOn'))
 
 		elif intent == self._INTENT_BUTTON_OFF:
 			GPIO.output(self._gpioPin, GPIO.LOW)
-			self.endDialog(session.sessionId, SuperManager.getInstance().talkManager.randomTalk('DoButtonOff'))
+			self.endDialog(session.sessionId, self.TalkManager.randomTalk('DoButtonOff'))
 
 		return True

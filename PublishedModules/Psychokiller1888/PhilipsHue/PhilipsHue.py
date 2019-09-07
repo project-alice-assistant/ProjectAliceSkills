@@ -4,7 +4,6 @@ import os
 import requests
 
 from core.ProjectAliceExceptions import ModuleStartDelayed, ModuleStartingFailed
-from core.base.SuperManager import SuperManager
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.commons import commons
@@ -77,7 +76,7 @@ class PhilipsHue(Module):
 				if not hueConfigFileExists:
 					self._logger.info('- [{}] No philipsHueConf.conf file in PhilipsHue module directory'.format(self.name))
 
-				self._bridge = Bridge(ip=SuperManager.getInstance().configManager.getModuleConfigByName(self.name, 'phueBridgeIp'), config_file_path=hueConfigFile)
+				self._bridge = Bridge(ip=self.ConfigManager.getModuleConfigByName(self.name, 'phueBridgeIp'), config_file_path=hueConfigFile)
 
 				if not self._bridge:
 					raise PhueException
@@ -87,7 +86,7 @@ class PhilipsHue(Module):
 					raise PhueRegistrationException
 
 				elif not hueConfigFileExists:
-					SuperManager.getInstance().threadManager.doLater(
+					self.ThreadManager.doLater(
 						interval=3,
 						func=self.say,
 						args=[self.randomTalk('pressBridgeButtonConfirmation')]
@@ -108,7 +107,7 @@ class PhilipsHue(Module):
 				return False
 		else:
 			self._logger.error("- [{}] Couldn't reach bridge".format(self.name))
-			SuperManager.getInstance().threadManager.doLater(interval=3, func=self.say, args=[self.randomTalk('pressBridgeButtonTimeout')])
+			self.ThreadManager.doLater(interval=3, func=self.say, args=[self.randomTalk('pressBridgeButtonTimeout')])
 			return False
 
 		self._bridgeConnectTries = 0
@@ -350,7 +349,7 @@ class PhilipsHue(Module):
 				if 'Room' not in slots:
 					room = siteId.lower()
 					if room == 'default':
-						room = SuperManager.getInstance().configManager.getAliceConfigByName('room')
+						room = self.ConfigManager.getAliceConfigByName('room')
 
 					if room not in self._groups.keys():
 						self.endDialog(sessionId, text=self.randomTalk(text='roomUnknown', replace=[room]))

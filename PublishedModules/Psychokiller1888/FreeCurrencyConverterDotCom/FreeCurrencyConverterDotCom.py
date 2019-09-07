@@ -2,7 +2,6 @@ import json
 
 import requests
 
-from core.base.SuperManager import SuperManager
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
@@ -44,7 +43,7 @@ class FreeCurrencyConverterDotCom(Module):
 			elif 'amount' in customData:
 				amount = customData['Amount']
 
-			toCurrency = SuperManager.getInstance().configManager.getAliceConfigByName('baseCurrency', self.name)
+			toCurrency = self.ConfigManager.getAliceConfigByName('baseCurrency', self.name)
 			if 'ToCurrency' in slotsObject:
 				toCurrency = slotsObject['ToCurrency'][0].value['value']
 			elif 'toCurrency' in customData:
@@ -57,7 +56,7 @@ class FreeCurrencyConverterDotCom(Module):
 					self.continueDialog(
 						sessionId=sessionId,
 						intentFilter=[self._INTENT_ANSWER_CURRENCY],
-						text=SuperManager.getInstance().talkManager.randomTalk(module=self.name, talk='fromWhatCurrency'),
+						text=self.TalkManager.randomTalk(module=self.name, talk='fromWhatCurrency'),
 						previousIntent=self._INTENT_CONVERT_CURRENCY,
 						customData={
 							'module'    : self.name,

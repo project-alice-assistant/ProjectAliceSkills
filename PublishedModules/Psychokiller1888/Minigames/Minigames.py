@@ -1,7 +1,6 @@
 import importlib
 import time
 
-from core.base.SuperManager import SuperManager
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.commons import commons
@@ -80,7 +79,7 @@ class Minigames(Module):
 					self.continueDialog(
 						sessionId=sessionId,
 						intentFilter=[self._INTENT_ANSWER_MINI_GAME],
-						text=SuperManager.getInstance().talkManager.randomTalk('whichGame'),
+						text=self.TalkManager.randomTalk('whichGame'),
 						previousIntent=self._INTENT_PLAY_GAME
 					)
 
@@ -88,7 +87,7 @@ class Minigames(Module):
 					self.continueDialog(
 						sessionId=sessionId,
 						intentFilter=[self._INTENT_ANSWER_MINI_GAME, self._INTENT_ANSWER_YES_OR_NO],
-						text=SuperManager.getInstance().talkManager.randomTalk('unknownGame'),
+						text=self.TalkManager.randomTalk('unknownGame'),
 						previousIntent=self._INTENT_PLAY_GAME
 					)
 
@@ -108,7 +107,7 @@ class Minigames(Module):
 					self.continueDialog(
 						sessionId=sessionId,
 						intentFilter=[self._INTENT_ANSWER_MINI_GAME],
-						text=SuperManager.getInstance().talkManager.randomTalk('whichGame'),
+						text=self.TalkManager.randomTalk('whichGame'),
 						previousIntent=self._INTENT_PLAY_GAME
 					)
 

@@ -1,6 +1,5 @@
 import requests
 
-from core.base.SuperManager import SuperManager
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
@@ -35,6 +34,6 @@ class IcanhazdadjokeDotCom(Module):
 			if response is not None:
 				self.endDialog(session.sessionId, text=response.text)
 			else:
-				self.endDialog(session.sessionId, SuperManager.getInstance().talkManager.getrandomTalk('noJoke'))
+				self.endDialog(session.sessionId, self.TalkManager.getrandomTalk('noJoke'))
 
 		return True
