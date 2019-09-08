@@ -10,25 +10,33 @@
 					"properties": {
 						"default": {
 							"type": "array",
-							"items": { "type": "string" }
+							"items": {
+								"type": "string"
+							}
 						},
 						"short": {
 							"type": "array",
-							"items": { "type": "string" }
+							"items": {
+								"type": "string"
+							}
 						}
 					},
 					"additionalProperties": false
 				},
 				{
 					"type": "array",
-					"items": { "type": "string" }
+					"items": {
+						"type": "string"
+					}
 				}
 			]
 		}
 	},
 	"type": "object",
 	"patternProperties": {
-		"^.*$": { "$ref": "#/definitions/talks" }
+		"^.*$": {
+			"$ref": "#/definitions/talks"
+		}
 	},
 	"additionalProperties": false
 }

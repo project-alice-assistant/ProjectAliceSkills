@@ -8,26 +8,45 @@
 		"desc",
 		"aliceMinVersion",
 		"systemRequirements",
-    "pipRequirements",
+		"pipRequirements",
 		"conditions"
 	],
 	"properties": {
-		"name": { "type": "string" },
-		"version": { "type": "number" },
-		"author": { "type": "string" },
+		"name": {
+			"type": "string"
+		},
+		"version": {
+			"type": "number"
+		},
+		"author": {
+			"type": "string"
+		},
 		"maintainers": {
 			"type": "array",
-			"items": { "type": "string" }
+			"items": {
+				"type": "string"
+			}
 		},
-		"desc": { "type": "string" },
-		"aliceMinVersion": { "type": ["string", "null"] },
+		"desc": {
+			"type": "string"
+		},
+		"aliceMinVersion": {
+			"type": [
+				"string",
+				"null"
+			]
+		},
 		"systemRequirements": {
 			"type": "array",
-			"items": { "type": "string" }
+			"items": {
+				"type": "string"
+			}
 		},
-    "pipRequirements": {
+		"pipRequirements": {
 			"type": "array",
-			"items": { "type": "string" }
+			"items": {
+				"type": "string"
+			}
 		},
 		"conditions": {
 			"type": "object",

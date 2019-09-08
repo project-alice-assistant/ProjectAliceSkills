@@ -7,9 +7,18 @@
 		"slotTypes"
 	],
 	"properties": {
-		"module": { "type": "string" },
-		"icon": { "type": "string" },
-		"description": { "type": ["string", "null"] },
+		"module": {
+			"type": "string"
+		},
+		"icon": {
+			"type": "string"
+		},
+		"description": {
+			"type": [
+				"string",
+				"null"
+			]
+		},
 		"slotTypes": {
 			"type": "array",
 			"items": {
@@ -24,12 +33,20 @@
 							"values"
 						],
 						"properties": {
-							"name": { "type": "string" },
-							"matchingStrictness": { "type": "null" },
-							"automaticallyExtensible": { "type": "boolean" },
+							"name": {
+								"type": "string"
+							},
+							"matchingStrictness": {
+								"type": "null"
+							},
+							"automaticallyExtensible": {
+								"type": "boolean"
+							},
 							"useSynonyms": {
 								"type": "boolean",
-								"enum": [true]
+								"enum": [
+									true
+								]
 							},
 							"values": {
 								"type": "array",
@@ -40,10 +57,14 @@
 										"synonyms"
 									],
 									"properties": {
-										"value": { "type": "string" },
+										"value": {
+											"type": "string"
+										},
 										"synonyms": {
 											"type": "array",
-											"items": { "type": "string" }
+											"items": {
+												"type": "string"
+											}
 										}
 									},
 									"additionalProperties": false
@@ -61,12 +82,20 @@
 							"values"
 						],
 						"properties": {
-							"name": { "type": "string" },
-							"matchingStrictness": { "type": "null" },
-							"automaticallyExtensible": { "type": "boolean" },
+							"name": {
+								"type": "string"
+							},
+							"matchingStrictness": {
+								"type": "null"
+							},
+							"automaticallyExtensible": {
+								"type": "boolean"
+							},
 							"useSynonyms": {
 								"type": "boolean",
-								"enum": [false]
+								"enum": [
+									false
+								]
 							},
 							"values": {
 								"type": "array",
@@ -76,7 +105,9 @@
 										"value"
 									],
 									"properties": {
-										"value": { "type": "string" }
+										"value": {
+											"type": "string"
+										}
 									},
 									"additionalProperties": false
 								}
@@ -98,12 +129,23 @@
 					"slots"
 				],
 				"properties": {
-					"name": { "type": "string" },
-					"description": { "type": ["string", "null"] },
-					"enabledByDefault": { "type": "boolean" },
+					"name": {
+						"type": "string"
+					},
+					"description": {
+						"type": [
+							"string",
+							"null"
+						]
+					},
+					"enabledByDefault": {
+						"type": "boolean"
+					},
 					"utterances": {
 						"type": "array",
-						"items": { "type": "string" }
+						"items": {
+							"type": "string"
+						}
 					},
 					"slots": {
 						"type": "array",
@@ -117,11 +159,24 @@
 								"missingQuestion"
 							],
 							"properties": {
-								"name": { "type": "string" },
-								"description": { "type": ["string", "null"] },
-								"required": { "type": "boolean" },
-								"type": { "type": "string" },
-								"missingQuestion": { "type": "string" }
+								"name": {
+									"type": "string"
+								},
+								"description": {
+									"type": [
+										"string",
+										"null"
+									]
+								},
+								"required": {
+									"type": "boolean"
+								},
+								"type": {
+									"type": "string"
+								},
+								"missingQuestion": {
+									"type": "string"
+								}
 							},
 							"additionalProperties": false
 						}

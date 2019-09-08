@@ -1,30 +1,36 @@
 import re
 
-class dialogTemplate:
+
+class DialogTemplate:
+
 	def __init__(self, dialogTemplate: dict):
-		self.dialogTemplate = dialogTemplate
+		self._dialogTemplate = dialogTemplate
+
 
 	@property
 	def slots(self) -> dict:
 		slots = {}
-		if self.dialogTemplate:
-			for slot in self.dialogTemplate['slotTypes']:
+		if self._dialogTemplate:
+			for slot in self._dialogTemplate['slotTypes']:
 				slots[slot['name']] = slot
 		return slots
+
 
 	@property
 	def intents(self) -> dict:
 		intents = {}
-		if self.dialogTemplate:
-			for intent in self.dialogTemplate['intents']:
+		if self._dialogTemplate:
+			for intent in self._dialogTemplate['intents']:
 				intents[intent['name']] = intent
 		return intents
+
 
 	@property
 	def shortUtterances(self) -> dict:
 		def upper_repl(match):
 			return match.group(1).upper()
-		
+
+
 		utterancesDict = {}
 		for intentName, intents in self.intents.items():
 			utterancesDict[intentName] = {}
@@ -42,7 +48,8 @@ class dialogTemplate:
 				else:
 					utterancesDict[intentName][short_utterance] = [utterance]
 		return utterancesDict
-	
+
+
 	@property
 	def utteranceSlots(self) -> dict:
 		utteranceSlotDict = {}
