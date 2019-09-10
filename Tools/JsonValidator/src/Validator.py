@@ -5,6 +5,7 @@ from src.DialogValidation import DialogValidation
 from src.InstallValidation import InstallValidation
 from src.TalkValidation import TalkValidation
 from termcolor import colored
+from typing import Union
 
 
 class Validator:
@@ -85,8 +86,8 @@ class Validator:
 		self.indentPrint(8, '-', error)
 
 
-	def printInstaller(self, error: dict):
-		if error:
+	def printInstaller(self, error: Union[dict, bool]):
+		if error is True:
 			self.indentPrint(4, colored('Installer', 'white', attrs=['bold']), 'valid')
 		else:
 			self.indentPrint(4, colored('Installer:', 'white', attrs=['bold']))
@@ -98,8 +99,8 @@ class Validator:
 		print()
 
 
-	def printDialog(self, error: dict):
-		if error:
+	def printDialog(self, error: Union[dict, bool]):
+		if error is True:
 			self.indentPrint(4, colored('Dialog files', 'white', attrs=['bold']), 'valid')
 		else:
 			self.indentPrint(4, colored('Dialog files:', 'white', attrs=['bold']))
@@ -120,8 +121,8 @@ class Validator:
 		print()
 
 
-	def printTalk(self, error: dict):
-		if error:
+	def printTalk(self, error: Union[dict, bool]):
+		if error is True:
 			self.indentPrint(4, colored('Talk files', 'white', attrs=['bold']), 'valid')
 		else:
 			self.indentPrint(4, colored('Talk files:', 'white', attrs=['bold']))
