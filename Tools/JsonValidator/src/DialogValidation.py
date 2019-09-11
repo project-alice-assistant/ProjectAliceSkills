@@ -53,7 +53,7 @@ class DialogValidation(Validation):
 
 
 	def getCoreModules(self) -> list:
-		return self._modulePath.glob('PublishedModules/ProjectAlice/*')
+		return (self._basePath/'PublishedModules/ProjectAlice').glob('*')
 
 
 	def getAllSlots(self, language: str) -> dict:
