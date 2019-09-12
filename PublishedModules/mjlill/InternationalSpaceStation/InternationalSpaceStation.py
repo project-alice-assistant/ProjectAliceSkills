@@ -4,7 +4,6 @@ from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
 from core.commons.commons import online
-from core.base.SuperManager import SuperManager
 
 
 class InternationalSpaceStation(Module):
@@ -62,10 +61,10 @@ class InternationalSpaceStation(Module):
 		if place:
 			# add correct article to ocean name since it has to say "is is over Germany" but "it is over the Atlantic Ocean"
 			place = "{} {}".format(
-				SuperManager.getInstance().languageManager.getTranslations(
+				self.LanguageManager.getTranslations(
 					module='InternationalSpaceStation',
 					key='oceanArticle',
-					toLang=SuperManager.getInstance().languageManager.activeLanguage
+					toLang=self.LanguageManager.activeLanguage
 				)[0],
 				place
 			)
