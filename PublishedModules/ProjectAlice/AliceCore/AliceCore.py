@@ -32,9 +32,10 @@ class AliceCore(Module):
 	_INTENT_ANSWER_NAME = Intent('AnswerName', isProtected=True)
 	_INTENT_SPELL_WORD = Intent('SpellWord', isProtected=True)
 	_INTENT_ANSWER_WAKEWORD_CUTTING = Intent('AnswerWakewordCutting', isProtected=True)
-	_INTENT_DUMMY_ADD_USER = Intent('DummyUser', isProtected=True)
-	_INTENT_DUMMY_ADD_WAKEWORD = Intent('DummyWakeword', isProtected=True),
-	_INTENT_DUMMY_WAKEWORD_INSTRUCTION = Intent('DummyInstruction', isProtected=True)
+	_INTENT_DUMMY_ADD_USER = Intent('DummyAddUser', isProtected=True)
+	_INTENT_DUMMY_ADD_WAKEWORD = Intent('DummyAddWakeword', isProtected=True)
+	_INTENT_DUMMY_WAKEWORD_INSTRUCTION = Intent('DummyWakewordInstruction', isProtected=True)
+	_INTENT_DUMMY_WAKEWORD_FAILED = Intent('DummyWakewordFAILED', isProtected=True)
 	_INTENT_DUMMY_WAKEWORD_OK = Intent('DummyWakewordOk', isProtected=True)
 	_INTENT_DUMMY_ADD_USER_WAKEWORD = Intent('DummyAddUserWakeword', isProtected=True)
 	_INTENT_WAKEWORD = Intent('CallWakeword', isProtected=True)
@@ -61,6 +62,7 @@ class AliceCore(Module):
 			self._INTENT_DUMMY_ADD_USER,
 			self._INTENT_DUMMY_ADD_WAKEWORD,
 			self._INTENT_DUMMY_WAKEWORD_INSTRUCTION,
+			self._INTENT_DUMMY_WAKEWORD_FAILED,
 			self._INTENT_ANSWER_WAKEWORD_CUTTING,
 			self._INTENT_DUMMY_WAKEWORD_OK,
 			self._INTENT_WAKEWORD,
@@ -88,8 +90,8 @@ class AliceCore(Module):
 				raise ModuleStartDelayed(self.name)
 			else:
 				self._addFirstUser()
-		else:
-			return super().onStart()
+
+		return super().onStart()
 
 
 	def _addFirstUser(self):
@@ -187,7 +189,7 @@ class AliceCore(Module):
 
 	def onSayFinished(self, session: DialogSession):
 		if self.ThreadManager.getLock('AddingWakeword').isSet() and self.WakewordManager.state == WakewordManagerState.IDLE:
-			self.ThreadManager.doLater(interval=1, func=self.WakewordManager.addASample)
+			self.ThreadManager.doLater(interval=0.5, func=self.WakewordManager.addASample)
 
 
 	def onSnipsAssistantDownloaded(self, *args):
@@ -197,13 +199,18 @@ class AliceCore(Module):
 				zipfile.extractall(tempfile.gettempdir())
 
 			subprocess.run(['sudo', 'rm', '-rf', commons.rootDir() + '/trained/assistants/assistant_{}'.format(self.LanguageManager.activeLanguage)])
-			subprocess.run(['sudo', 'cp', '-R', str(filepath.stem), commons.rootDir() + '/trained/assistants/assistant_{}'.format(self.LanguageManager.activeLanguage)])
-			subprocess.run(['sudo', 'chown', '-R', getpass.getuser(), commons.rootDir() + '/trained/assistants/assistant_{}'.format(self.LanguageManager.activeLanguage)])
+			subprocess.run(['sudo', 'rm', '-rf', commons.rootDir() + '/assistant'])
+			subprocess.run(['sudo', 'cp', '-R', str(filepath).replace('.zip', ''), commons.rootDir() + '/trained/assistants/assistant_{}'.format(self.LanguageManager.activeLanguage)])
 
+			time.sleep(0.5)
+
+			subprocess.run(['sudo', 'chown', '-R', getpass.getuser(), commons.rootDir() + '/trained/assistants/assistant_{}'.format(self.LanguageManager.activeLanguage)])
 			subprocess.run(['sudo', 'ln', '-sfn', commons.rootDir() + '/trained/assistants/assistant_{}'.format(self.LanguageManager.activeLanguage), commons.rootDir() + '/assistant'])
 			subprocess.run(['sudo', 'ln', '-sfn', commons.rootDir() + '/system/sounds/{}/start_of_input.wav'.format(self.LanguageManager.activeLanguage), commons.rootDir() + '/assistant/custom_dialogue/sound/start_of_input.wav'])
 			subprocess.run(['sudo', 'ln', '-sfn', commons.rootDir() + '/system/sounds/{}/end_of_input.wav'.format(self.LanguageManager.activeLanguage), commons.rootDir() + '/assistant/custom_dialogue/sound/end_of_input.wav'])
 			subprocess.run(['sudo', 'ln', '-sfn', commons.rootDir() + '/system/sounds/{}/error.wav'.format(self.LanguageManager.activeLanguage), commons.rootDir() + '/assistant/custom_dialogue/sound/error.wav'])
+
+			time.sleep(0.5)
 
 			self.SnipsServicesManager.runCmd('restart')
 
@@ -422,6 +429,23 @@ class AliceCore(Module):
 				else:
 					self.endSession(sessionId=sessionId)
 
+			elif session.previousIntent == self._INTENT_DUMMY_WAKEWORD_FAILED:
+				if commons.isYes(session):
+					self.WakewordManager.tryCaptureFix()
+					self.continueDialog(
+						sessionId=sessionId,
+						text=self.randomTalk('addWakewordAccepted'),
+						intentFilter=[self._INTENT_WAKEWORD],
+						previousIntent=self._INTENT_DUMMY_WAKEWORD_INSTRUCTION
+					)
+				else:
+					if self.delayed:
+						self.delayed = False
+						self.ThreadManager.getLock('AddingWakeword').clear()
+						self.ThreadManager.doLater(interval=2, func=self.onStart)
+
+					self.endDialog(sessionId=sessionId, text=self.randomTalk('cancellingWakewordCapture'))
+
 			else:
 				return False
 
@@ -433,22 +457,31 @@ class AliceCore(Module):
 					break
 				time.sleep(0.5)
 
-			filepath = Path(tempfile.gettempdir(), self.WakewordManager.getLastSampleNumber()).with_suffix('.wav')
-			self.playSound(
-				soundFile=str(filepath),
-				sessionId='checking-wakeword',
-				siteId=session.siteId,
-				absolutePath=True
-			)
+			filepath = Path(tempfile.gettempdir(), str(self.WakewordManager.getLastSampleNumber())).with_suffix('.wav')
 
-			text = 'howWasTheCapture' if self.WakewordManager.getLastSampleNumber() == 1 else 'howWasThisCapture'
+			if not filepath.exists():
+				self.continueDialog(
+					sessionId=sessionId,
+					text=self.randomTalk('wakewordCaptureFailed'),
+					intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
+					previousIntent=self._INTENT_DUMMY_WAKEWORD_FAILED
+				)
+			else:
+				self.playSound(
+					soundFile=str(filepath),
+					sessionId='checking-wakeword',
+					siteId=session.siteId,
+					absolutePath=True
+				)
 
-			self.continueDialog(
-				sessionId=sessionId,
-				text=self.randomTalk(text),
-				intentFilter=[self._INTENT_ANSWER_WAKEWORD_CUTTING, self._INTENT_ANSWER_YES_OR_NO],
-				previousIntent=self._INTENT_WAKEWORD
-			)
+				text = 'howWasTheCapture' if self.WakewordManager.getLastSampleNumber() == 1 else 'howWasThisCapture'
+
+				self.continueDialog(
+					sessionId=sessionId,
+					text=self.randomTalk(text),
+					intentFilter=[self._INTENT_ANSWER_WAKEWORD_CUTTING, self._INTENT_ANSWER_YES_OR_NO],
+					previousIntent=self._INTENT_WAKEWORD
+				)
 
 		elif intent == self._INTENT_ANSWER_WAKEWORD_CUTTING:
 			if 'More' in slots:
@@ -463,7 +496,7 @@ class AliceCore(Module):
 					break
 				time.sleep(0.5)
 
-			filepath = Path(tempfile.gettempdir(), self.WakewordManager.getLastSampleNumber()).with_suffix('.wav')
+			filepath = Path(tempfile.gettempdir(), str(self.WakewordManager.getLastSampleNumber())).with_suffix('.wav')
 			self.playSound(
 				soundFile=str(filepath),
 				sessionId='checking-wakeword',
@@ -679,7 +712,7 @@ class AliceCore(Module):
 
 	@staticmethod
 	def reboot():
-		subprocess.run(['sudo', 'reboot'])
+		subprocess.run(['sudo', 'shutdown', '-r', 'now'])
 
 
 	@staticmethod
@@ -713,10 +746,8 @@ class AliceCore(Module):
 		# Unfortunately we can't yet get rid of the feedback sound because Alice hears herself finishing the sentence and capturing part of it
 		if inDialog:
 			state = '_ask'
-			#self.SnipsServicesManager.toggleFeedbackSound('off', siteId='default')
 		else:
 			state = ''
-			#self.SnipsServicesManager.toggleFeedbackSound('on', siteId='default')
 
 		subprocess.run(['sudo', 'ln', '-sfn', commons.rootDir() + '/system/sounds/{}/start_of_input{}.wav'.format(self.LanguageManager.activeLanguage, state), commons.rootDir() + '/assistant/custom_dialogue/sound/start_of_input.wav'])
 		subprocess.run(['sudo', 'ln', '-sfn', commons.rootDir() + '/system/sounds/{}/error{}.wav'.format(self.LanguageManager.activeLanguage, state), commons.rootDir() + '/assistant/custom_dialogue/sound/error.wav'])
