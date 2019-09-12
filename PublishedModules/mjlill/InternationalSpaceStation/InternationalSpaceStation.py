@@ -3,6 +3,8 @@ import requests
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
+from core.commons.commons import online
+from core.base.SuperManager import SuperManager
 
 
 class InternationalSpaceStation(Module):
@@ -42,19 +44,49 @@ class InternationalSpaceStation(Module):
 
 
 	@staticmethod
-	def queryApi(url: str) -> dict:
-		return requests.get(url=url).json()
+	def queryApi(url: str, *args, **kargs) -> dict:
+		return requests.get(url=url.format(*args, **kargs)).json()
 
-
+	@online
 	def getIssPosition(self) -> str:
 		data = self.queryApi('http://api.open-notify.org/iss-now.json')
-		location = data['iss_position']
-		return self.randomTalk(text='issPosition', replace=[
-				float(location['latitude']),
-				float(location['longitude'])
-			])
+		latitude = data['iss_position']['latitude']
+		longitude = data['iss_position']['longitude']
+
+		oceanData = self.queryApi('http://api.geonames.org/oceanJSON?lat={latitude}&lng={longitude}&lang={language}&username=projectalice',
+			latitude=latitude,
+			longitude=longitude,
+			language=self.activeLanguage()
+		)
+		place = oceanData.get('ocean', dict()).get('name')
+		if place:
+			# add correct article to ocean name since it has to say "is is over Germany" but "it is over the Atlantic Ocean"
+			place = "{} {}".format(
+				SuperManager.getInstance().languageManager.getTranslations(
+					module='InternationalSpaceStation',
+					key='oceanArticle',
+					toLang=SuperManager.getInstance().languageManager.activeLanguage
+				)[0],
+				place
+			)
+		else:
+			countryData = self.queryApi('http://api.geonames.org/countryCodeJSON?formatted=true?lat={latitude}&lng={longitude}&lang={language}&username=projectalice&style=full',
+				latitude=latitude,
+				longitude=longitude,
+				language=self.activeLanguage()
+			)
+			place = countryData.get('countryName')
+		
+		textType = 'issPlacePosition' if place else 'issPosition'
 
 
+		return self.randomTalk(text=textType, replace=[
+			"<say-as interpret-as=\"ordinal\">{.0f}</say-as>".format(float(location['latitude'])),
+			"<say-as interpret-as=\"ordinal\">{.0f}</say-as>".format(float(location['longitude'])),
+			place
+		])
+
+	@online
 	def getAstronauts(self) -> str:
 		data = self.queryApi('http://api.open-notify.org/astros.json')
 		amount = data['number']

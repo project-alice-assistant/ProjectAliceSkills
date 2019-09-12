@@ -1,10 +1,22 @@
 {
 	"issPosition": {
 		"default": [
-			"Currently the international space station is at latitude {0:.0f} and the longitude {1:.0f}"
+			"Currently the international space station is at {0} latitude {1} longitude"
 		],
 		"short": [
-			"latitude {0:.0f}, longitude {1:.0f}"
+			"At {0} latitude, {1} longitude"
+		]
+	},
+	"issPlacePosition": {
+		"default": [
+			"The I S S is over {0} latitude {1} longitude which corresponds to {2}",
+			"The space station is at {0} latitude {1} longitude over {2}",
+			"It's at {0} latitude {1} longitude, over {2}",
+			"The international space station is now over {2} at {0} latitude {1} longitude",
+			"Over {2} at {0} latitude and {1} longitude"
+		],
+		"short": [
+			"It's over {2}"
 		]
 	},
 	"noAstronauts": [

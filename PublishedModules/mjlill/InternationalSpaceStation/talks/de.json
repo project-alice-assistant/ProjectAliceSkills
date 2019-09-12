@@ -1,10 +1,22 @@
 {
 	"issPosition": {
 		"default": [
-			"Aktuell ist die internationale Weltraumstation bei Breitengrad {0:.0f} und Längengrad {1:.0f}"
+			"Aktuell ist die internationale Weltraumstation über dem {0} Breiten- und {1} Längengrad"
 		],
 		"short": [
-			"Breitengrad {0:.0f}, Längengrad {1:.0f}"
+			"Über dem {0} Breiten- und {1} Längengrad"
+		]
+	},
+	"issPlacePosition": {
+		"default": [
+			"Die I S S befindet sich derzeit über dem {0} Breiten- und {1} Längengrad, dies entspricht {2}",
+			"Die Raumstation ist über dem {0} Breiten- und {1} Längengrad über {2}",
+			"Sie ist über dem {0} Breiten- und {1} Längengrad, über {2}",
+			"Die internationale Raumstation befindet sich jetzt über {2} dem {0} Breiten- und {1} Längengrad",
+			"Über {2} dem {0} Breiten- und {1} Längengrad"
+		],
+		"short": [
+			"Die I S S befindet sich über {2}"
 		]
 	},
 	"noAstronauts": [
