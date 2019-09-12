@@ -49,8 +49,8 @@ class InternationalSpaceStation(Module):
 	@online
 	def getIssPosition(self) -> str:
 		data = self.queryApi('http://api.open-notify.org/iss-now.json')
-		latitude = data['iss_position']['latitude']
-		longitude = data['iss_position']['longitude']
+		latitude = float(data['iss_position']['latitude'])
+		longitude = float(data['iss_position']['longitude'])
 
 		oceanData = self.queryApi('http://api.geonames.org/oceanJSON?lat={latitude}&lng={longitude}&lang={language}&username=projectalice',
 			latitude=latitude,
@@ -80,8 +80,8 @@ class InternationalSpaceStation(Module):
 
 
 		return self.randomTalk(text=textType, replace=[
-			"<say-as interpret-as=\"ordinal\">{.0f}</say-as>".format(float(location['latitude'])),
-			"<say-as interpret-as=\"ordinal\">{.0f}</say-as>".format(float(location['longitude'])),
+			"<say-as interpret-as=\"ordinal\">{.0f}</say-as>".format(latitude),
+			"<say-as interpret-as=\"ordinal\">{.0f}</say-as>".format(longitude),
 			place
 		])
 
