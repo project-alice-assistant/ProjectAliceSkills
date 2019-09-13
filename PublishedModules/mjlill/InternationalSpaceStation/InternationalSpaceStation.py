@@ -80,8 +80,8 @@ class InternationalSpaceStation(Module):
 
 
 		return self.randomTalk(text=textType, replace=[
-			"<say-as interpret-as=\"ordinal\">{.0f}</say-as>".format(latitude),
-			"<say-as interpret-as=\"ordinal\">{.0f}</say-as>".format(longitude),
+			"<say-as interpret-as=\"ordinal\">{:.0f}</say-as>".format(latitude),
+			"<say-as interpret-as=\"ordinal\">{:.0f}</say-as>".format(longitude),
 			place
 		])
 
