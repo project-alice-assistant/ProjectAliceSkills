@@ -14,15 +14,12 @@ alice module:install Psychokiller1888/Zigbee2Mqtt
 
 ### Description
 
-WIP - Do not use yet
+Have your zigbee devices communicate with alice directly over mqtt
 
-Have you zigbee devices communicate with alice directly over mqtt
-
-- Version: 0.1
+- Version: 1.0
 - Author: Psychokiller1888
 - Maintainers: N/A
 - Alice minimum version: N/A
-- Conditions:
-  - any
+- Conditions: N/A
 - Pip requirements: N/A
 - System requirements: nodejs make g++ gcc

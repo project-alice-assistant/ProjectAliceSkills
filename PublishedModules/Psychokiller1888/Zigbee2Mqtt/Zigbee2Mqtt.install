@@ -3,7 +3,7 @@
 	"version": 0.1,
 	"author": "Psychokiller1888",
 	"maintainers": [],
-	"desc": "Have you zigbee devices communicate with alice directly over mqtt",
+	"desc": "Have your zigbee devices communicate with alice directly over mqtt",
 	"aliceMinVersion": "",
 	"pipRequirements": [],
 	"systemRequirements": [
@@ -12,9 +12,6 @@
 		"g++",
 		"gcc"
 	],
-	"conditions": {
-		"script": [
-			"zigbee2mqtt.sh"
-		]
-	}
+	"script": "zigbee2mqtt.sh",
+	"conditions": {}
 }
