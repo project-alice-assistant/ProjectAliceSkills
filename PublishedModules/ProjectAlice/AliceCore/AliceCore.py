@@ -36,7 +36,7 @@ class AliceCore(Module):
 	_INTENT_DUMMY_ADD_USER = Intent('DummyAddUser', isProtected=True)
 	_INTENT_DUMMY_ADD_WAKEWORD = Intent('DummyAddWakeword', isProtected=True)
 	_INTENT_DUMMY_WAKEWORD_INSTRUCTION = Intent('DummyWakewordInstruction', isProtected=True)
-	_INTENT_DUMMY_WAKEWORD_FAILED = Intent('DummyWakewordFAILED', isProtected=True)
+	_INTENT_DUMMY_WAKEWORD_FAILED = Intent('DummyWakewordFailed', isProtected=True)
 	_INTENT_DUMMY_WAKEWORD_OK = Intent('DummyWakewordOk', isProtected=True)
 	_INTENT_DUMMY_ADD_USER_WAKEWORD = Intent('DummyAddUserWakeword', isProtected=True)
 	_INTENT_WAKEWORD = Intent('CallWakeword', isProtected=True)
@@ -486,15 +486,18 @@ class AliceCore(Module):
 				self.continueDialog(
 					sessionId=sessionId,
 					text=self.randomTalk(text),
-					intentFilter=[self._INTENT_ANSWER_WAKEWORD_CUTTING, self._INTENT_ANSWER_YES_OR_NO],
+					intentFilter=[self._INTENT_ANSWER_WAKEWORD_CUTTING],
+					slot='WakewordCaptureResult',
 					previousIntent=self._INTENT_WAKEWORD
 				)
 
 		elif intent == self._INTENT_ANSWER_WAKEWORD_CUTTING:
-			if 'More' in slots:
+			if session.slotValue('WakewordCaptureResult') == 'more':
 				self.WakewordManager.trimMore()
-			else:
+			elif session.slotValue('WakewordCaptureResult') == 'less':
 				self.WakewordManager.trimLess()
+			elif session.slotValue('WakewordCaptureResult') == 'restart':
+				pass
 
 			i = 0 # Failsafe
 			while self.WakewordManager.state != WakewordManagerState.CONFIRMING:
@@ -514,7 +517,8 @@ class AliceCore(Module):
 			self.continueDialog(
 				sessionId=sessionId,
 				text=self.randomTalk('howWasTheCaptureNow'),
-				intentFilter=[self._INTENT_ANSWER_WAKEWORD_CUTTING, self._INTENT_ANSWER_YES_OR_NO],
+				intentFilter=[self._INTENT_ANSWER_WAKEWORD_CUTTING],
+				slot='WakewordCaptureResult',
 				previousIntent=self._INTENT_WAKEWORD
 			)
 
