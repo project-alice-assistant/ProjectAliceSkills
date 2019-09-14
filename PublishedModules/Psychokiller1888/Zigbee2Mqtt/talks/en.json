@@ -1,1 +1,12 @@
-{}
+{
+	"dummy": {
+		"default": [
+			"foobar",
+			"barfoo"
+		],
+		"short": [
+			"foo",
+			"bar"
+		]
+	}
+}

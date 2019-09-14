@@ -379,33 +379,6 @@ class AliceCore(Module):
 
 					self.endDialog(sessionId=sessionId, text=self.randomTalk('addWakewordDenied'))
 
-			elif session.previousIntent == self._INTENT_WAKEWORD:
-				if commons.isYes(session):
-					if self.WakewordManager.getLastSampleNumber() < 3:
-						self.WakewordManager.state = WakewordManagerState.IDLE
-						self.continueDialog(
-							sessionId=sessionId,
-							text=self.randomTalk('sampleOk', replace=[3 - self.WakewordManager.getLastSampleNumber()]),
-							intentFilter=[self._INTENT_WAKEWORD],
-							previousIntent=self._INTENT_DUMMY_WAKEWORD_INSTRUCTION
-						)
-					else:
-						self.ThreadManager.getLock('AddingWakeword').clear()
-						if self.delayed:
-							self.delayed = False
-							self.ThreadManager.doLater(interval=2, func=self.onStart)
-
-						self.WakewordManager.finalizeWakeword()
-						self.endDialog(sessionId=sessionId, text=self.randomTalk('wakewordCaptureDone'))
-
-				else:
-					self.continueDialog(
-						sessionId=sessionId,
-						text=self.randomTalk('sampleUserSaidNo'),
-						intentFilter=[self._INTENT_WAKEWORD],
-						previousIntent=self._INTENT_DUMMY_WAKEWORD_INSTRUCTION
-					)
-
 			elif session.previousIntent == self._INTENT_ADD_USER:
 				if commons.isYes(session):
 					self.UserManager.addNewUser(customData['username'], slots['UserAccessLevel'])
@@ -497,13 +470,45 @@ class AliceCore(Module):
 			elif session.slotValue('WakewordCaptureResult') == 'less':
 				self.WakewordManager.trimLess()
 			elif session.slotValue('WakewordCaptureResult') == 'restart':
-				pass
+				self.WakewordManager.state = WakewordManagerState.IDLE
+				self.WakewordManager.removeSample()
+				self.continueDialog(
+					sessionId=sessionId,
+					text=self.randomTalk('restartSample', replace=[3 - self.WakewordManager.getLastSampleNumber()]),
+					intentFilter=[self._INTENT_WAKEWORD],
+					previousIntent=self._INTENT_DUMMY_WAKEWORD_INSTRUCTION
+				)
+			elif session.slotValue('WakewordCaptureResult') == 'ok':
+				if self.WakewordManager.getLastSampleNumber() < 3:
+					self.WakewordManager.state = WakewordManagerState.IDLE
+					self.continueDialog(
+						sessionId=sessionId,
+						text=self.randomTalk('sampleOk', replace=[3 - self.WakewordManager.getLastSampleNumber()]),
+						intentFilter=[self._INTENT_WAKEWORD],
+						previousIntent=self._INTENT_DUMMY_WAKEWORD_INSTRUCTION
+					)
+				else:
+					self.ThreadManager.getLock('AddingWakeword').clear()
+					if self.delayed:
+						self.delayed = False
+						self.ThreadManager.doLater(interval=2, func=self.onStart)
+
+					self.WakewordManager.finalizeWakeword()
+					self.endDialog(sessionId=sessionId, text=self.randomTalk('wakewordCaptureDone'))
+
+				return True
 
 			i = 0 # Failsafe
 			while self.WakewordManager.state != WakewordManagerState.CONFIRMING:
 				i += 1
 				if i > 15:
-					break
+					self.continueDialog(
+						sessionId=sessionId,
+						text=self.randomTalk('wakewordCaptureTooNoisy'),
+						intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
+						previousIntent=self._INTENT_DUMMY_WAKEWORD_FAILED
+					)
+					return True
 				time.sleep(0.5)
 
 			filepath = Path(tempfile.gettempdir(), str(self.WakewordManager.getLastSampleNumber())).with_suffix('.wav')
