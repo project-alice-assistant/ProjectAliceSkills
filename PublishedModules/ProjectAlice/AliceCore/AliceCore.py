@@ -7,6 +7,7 @@ from zipfile import ZipFile
 import tempfile
 
 from core.ProjectAliceExceptions import ConfigurationUpdateFailed, LanguageManagerLangNotSupported, ModuleStartDelayed
+from core.base.SuperManager import SuperManager
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.commons import commons, constants
@@ -454,7 +455,13 @@ class AliceCore(Module):
 			while self.WakewordManager.state != WakewordManagerState.CONFIRMING:
 				i += 1
 				if i > 15:
-					break
+					self.continueDialog(
+						sessionId=sessionId,
+						text=self.randomTalk('wakewordCaptureTooNoisy'),
+						intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
+						previousIntent=self._INTENT_DUMMY_WAKEWORD_FAILED
+					)
+					return True
 				time.sleep(0.5)
 
 			filepath = Path(tempfile.gettempdir(), str(self.WakewordManager.getLastSampleNumber())).with_suffix('.wav')
@@ -550,6 +557,10 @@ class AliceCore(Module):
 				def systemUpdate():
 					subprocess.run(['sudo', 'apt-get', 'update'])
 					subprocess.run(['sudo', 'apt-get', 'dist-upgrade', '-y'])
+					subprocess.run(['git', 'stash'])
+					subprocess.run(['git', 'pull'])
+					subprocess.run(['git', 'stash', 'clear'])
+					SuperManager.getInstance().threadManager.doLater(interval=2, func=subprocess.run, args=['sudo', 'systemctl', 'restart', 'ProjectAlice'])
 
 				self.ThreadManager.doLater(interval=2, func=systemUpdate)
 
@@ -560,7 +571,6 @@ class AliceCore(Module):
 
 			if update in {1, 2}: # All or Alice
 				self._logger.info('[{}] Updating Alice'.format(self.name))
-				self._logger.info('[{}] Not implemented yet'.format(self.name))
 				if update == 2:
 					self.endDialog(sessionId=sessionId, text=self.randomTalk('confirmAssistantUpdate'))
 
@@ -729,7 +739,7 @@ class AliceCore(Module):
 
 	def langSwitch(self, newLang: str, siteId: str):
 		self.publish(topic='hermes/asr/textCaptured', payload={'siteId': siteId})
-		subprocess.call([commons.rootDir() + '/system/scripts/langSwitch.sh', newLang])
+		subprocess.run([commons.rootDir() + '/system/scripts/langSwitch.sh', newLang])
 		self.ThreadManager.doLater(interval=3, func=self._confirmLangSwitch, args=[newLang, siteId])
 
 
