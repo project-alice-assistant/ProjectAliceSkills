@@ -1,12 +1,12 @@
 {
-	"dummy": {
+	"noType": {
 		"default": [
-			"foobar",
-			"barfoo"
+			"What data do you want me to check?",
+			"What type of telemetry data?",
+			"What do you want to check?"
 		],
 		"short": [
-			"foo",
-			"bar"
+			"What data?"
 		]
 	}
 }

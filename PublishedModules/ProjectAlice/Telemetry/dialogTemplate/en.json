@@ -136,6 +136,26 @@
                     "missingQuestion": ""
                 }
             ]
+        },
+        {
+        	"name": "AnswerTelemetryType",
+        	"description": "User answers what telemetry type he wants",
+        	"enabledByDefault": false,
+        	"utterances": [
+        		"{temperature:=>TelemetryType}",
+        		"{humidity:=>TelemetryType} please",
+        		"tell me the {noise:=>TelemetryType}",
+        		"tell me the {uv index:=>TelemetryType} please"
+        	],
+        	"slots": [
+                {
+                    "name": "TelemetryType",
+                    "description": "The type of data the user wants",
+                    "required": false,
+                    "type": "TelemetryType",
+                    "missingQuestion": ""
+                }
+        	]
         }
     ]
 }

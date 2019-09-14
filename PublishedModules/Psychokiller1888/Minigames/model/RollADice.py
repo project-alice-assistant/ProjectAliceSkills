@@ -35,7 +35,7 @@ class RollADice(MiniGame):
 		redQueen = SuperManager.getInstance().moduleManager.getModuleInstance('RedQueen')
 		redQueen.changeRedQueenStat('happiness', 5)
 
-		SuperManager.getInstance().mqttManager.endTalk(
+		SuperManager.getInstance().mqttManager.endDialog(
 			sessionId=session.sessionId,
 			text=SuperManager.getInstance().talkManager.randomTalk(
 				talk='rollADiceResult',
