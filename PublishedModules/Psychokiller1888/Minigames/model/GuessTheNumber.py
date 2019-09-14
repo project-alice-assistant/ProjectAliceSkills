@@ -61,7 +61,7 @@ class GuessTheNumber(MiniGame):
 					absolutePath=True
 				)
 
-				SuperManager.getInstance().mqttManager.endTalk(
+				SuperManager.getInstance().mqttManager.endDialog(
 					sessionId=session.sessionId,
 					text=SuperManager.getInstance().talkManager.randomTalk('guessTheNumberCorrect', 'Minigames').format(self._number, self._number)
 				)
