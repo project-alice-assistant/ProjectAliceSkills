@@ -8,5 +8,18 @@
 		"short": [
 			"What data?"
 		]
-	}
+	},
+	"noData": {
+		"default": [
+			"Sorry, I don't seem to have this data",
+			"I'm so sorry, but I can't tell",
+			"I don't have data to answer you with"
+		],
+		"short": [
+			"don't know"
+		]
+	},
+	"answerInstant": [
+		"{}"
+	]
 }

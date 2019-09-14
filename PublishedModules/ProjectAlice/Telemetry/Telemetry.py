@@ -43,6 +43,27 @@ class Telemetry(Module):
 			telemetryType = session.slotValue('TelemetryType')
 
 			data = self.TelemetryManager.getData(siteId=siteId, ttype=telemetryType)
-			print(data)
+			if data and 'value' in data:
+				answer = data['value']
+				if telemetryType == 'temperature':
+					answer += '°C'
+				elif telemetryType == 'pressure':
+					answer += 'mb'
+				elif telemetryType == 'humidity' or telemetryType == 'airQuality':
+					answer += '%'
+				elif telemetryType == 'light':
+					answer += 'lux'
+				elif telemetryType == 'gas' or telemetryType == 'co2':
+					answer += 'ppm'
+				elif telemetryType == 'rain':
+					answer += 'mm'
+				elif telemetryType == 'wind_strength' or telemetryType == 'gust_strength':
+					answer += 'km/h'
+				elif telemetryType == 'wind_angle' or telemetryType == 'gust_angle':
+					answer += '°'
+
+				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('answerInstant').format(answer))
+			else:
+				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('noData'))
 
 		return True
