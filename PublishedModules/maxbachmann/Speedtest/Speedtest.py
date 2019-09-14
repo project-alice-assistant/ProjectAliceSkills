@@ -26,7 +26,8 @@ class Speedtest(Module):
 
 		if intent == self._INTENT_SPEEDTEST:
 			try:
-				self.say(self.randomTalk(text='running'))
+				# breaks module right now
+				#self.say(self.randomTalk(text='running'))
 				servers = []
 				speed = speedtest.Speedtest()
 				speed.get_servers(servers)
