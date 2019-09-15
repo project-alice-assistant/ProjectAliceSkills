@@ -19,8 +19,9 @@ class Zigbee2Mqtt(Module):
 
 
 	def onStart(self) -> list:
+		super().onStart()
 		subprocess.run(['sudo', 'systemctl', 'start', 'zigbee2mqtt'])
-		return super().onStart()
+		return self._SUPPORTED_INTENTS
 
 
 	def onStop(self):

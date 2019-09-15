@@ -25,6 +25,7 @@ class Netatmo(Module):
 
 
 	def onStart(self) -> list:
+		super().onStart()
 		if not self.getConfig('password'):
 			raise ModuleStartingFailed(moduleName=self.name, error='[{}] No credentials provided'.format(self.name))
 
@@ -34,7 +35,7 @@ class Netatmo(Module):
 			except lnetatmo.NoDevice:
 				raise ModuleStartingFailed(moduleName=self.name, error='[{}] No Netatmo device found'.format(self.name))
 			else:
-				return super().onStart()
+				return self._SUPPORTED_INTENTS
 		else:
 			raise ModuleStartingFailed(moduleName=self.name, error='[{}] Authentication failed'.format(self.name))
 
