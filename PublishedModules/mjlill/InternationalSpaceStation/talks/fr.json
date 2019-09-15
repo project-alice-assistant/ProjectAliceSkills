@@ -9,11 +9,11 @@
 	},
 	"issPlacePosition": {
 		"default": [
-			"La station I SS est au dessus {0} latitude {1} longitude ce qui correspond à {2}",
+			"La station I S S est au dessus {0} latitude {1} longitude ce qui correspond à {2}",
 			"La station spaciale est à {0} latitude et {1} longitude au dessus {2}",
 			"Elle est à {0} latitude et {1}, au dessus {2}",
 			"La station spaciale internationale est maintenant au dessus de {2}, à {0} latitude et {1} longitude",
-			"Au dessus {2} à latitude et {1} longitude"
+			"Au dessus {2} à {0} latitude et {1} longitude"
 		],
 		"short": [
 			"Elle est au dessus {2}"
