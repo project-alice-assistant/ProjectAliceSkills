@@ -4,7 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget http://bit.ly/RockPaperGame -O ~/ProjectAlice/system/moduleInstallTickets/RockPaperScissors.install
+wget http://modules.projectalice.ch/RockPaperScissors -O ~/ProjectAlice/system/moduleInstallTickets/RockPaperScissors.install
 ```
 
 ##### > Alice CLI method
