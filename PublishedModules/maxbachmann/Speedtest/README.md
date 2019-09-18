@@ -4,7 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget http://bit.ly/alice-speedtest -O ~/ProjectAlice/system/moduleInstallTickets/Speedtest.install
+wget http://modules.projectalice.ch/Speedtest -O ~/ProjectAlice/system/moduleInstallTickets/Speedtest.install
 ```
 
 ##### > Alice CLI method
