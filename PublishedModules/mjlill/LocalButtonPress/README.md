@@ -4,7 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget http://bit.ly/LocalButtonPress -O ~/ProjectAlice/system/moduleInstallTickets/LocalButtonPress.install
+wget http://modules.projectalice.ch/LocalButtonPress -O ~/ProjectAlice/system/moduleInstallTickets/LocalButtonPress.install
 ```
 
 ##### > Alice CLI method
