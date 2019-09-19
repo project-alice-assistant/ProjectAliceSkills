@@ -19,7 +19,7 @@ Allows to play music from youtube
 - Version: 1.01
 - Author: Jierka
 - Maintainers: Psycho
-- Alice minimum version: N/A
+- Alice minimum version: 0.10
 - Conditions:
   - en
   - fr

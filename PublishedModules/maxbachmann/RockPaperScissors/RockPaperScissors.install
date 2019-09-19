@@ -4,7 +4,7 @@
 	"author": "maxbachmann",
 	"maintainers": ["Jierka", "Psycho"],
 	"desc": "Play rock paper scissors",
-	"aliceMinVersion": "",
+	"aliceMinVersion": 0.10,
 	"systemRequirements": [],
 	"pipRequirements": [],
 	"conditions": {

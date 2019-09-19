@@ -4,7 +4,7 @@
 	"author": "ProjectAlice",
 	"maintainers": ["Psychokiller1888"],
 	"desc": "Access your stored telemetry data",
-	"aliceMinVersion": "",
+	"aliceMinVersion": 0.10,
 	"pipRequirements": [],
 	"systemRequirements": [],
 	"conditions": {

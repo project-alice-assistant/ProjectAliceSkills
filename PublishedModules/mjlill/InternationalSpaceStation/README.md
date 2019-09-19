@@ -18,7 +18,7 @@ Inquire information about the international space station
 - Version: 1.1
 - Author: mjlill
 - Maintainers: maxbachmann, Jierka, Psycho
-- Alice minimum version: N/A
+- Alice minimum version: 0.10
 - Conditions:
   - en
   - de

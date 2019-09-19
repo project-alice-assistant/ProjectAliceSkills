@@ -8,7 +8,7 @@
 		 "Psycho"
 	],
 	"desc": "Inquire information about the international space station",
-	"aliceMinVersion": "",
+	"aliceMinVersion": 0.10,
 	"systemRequirements": [],
 	"pipRequirements": [],
 	"conditions": {

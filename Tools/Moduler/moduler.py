@@ -99,7 +99,7 @@ INSTALL_JSON = '''{
 	"author": "%username%",
 	"maintainers": [],
 	"desc": "%description%",
-	"aliceMinVersion": "",
+	"aliceMinVersion": 0.10,
 	"pipRequirements": [%pipRequirements%],
 	"systemRequirements": [%systemRequirements%],
 	"conditions": {
@@ -180,7 +180,7 @@ alice module:install %username%/%moduleName%
 - Version: 0.1
 - Author: %username%
 - Maintainers: N/A
-- Alice minimum version: N/A
+- Alice minimum version: 0.10
 - Conditions:
 %langs%
 - Pip requirements: N/A

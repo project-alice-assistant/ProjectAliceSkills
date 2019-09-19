@@ -6,7 +6,7 @@
 		"maxbachmann"
 	],
 	"desc": "Gets you the daily random useless fact or a random one",
-	"aliceMinVersion": "",
+	"aliceMinVersion": 0.10,
 	"systemRequirements": [],
 	"pipRequirements": [],
 	"conditions": {

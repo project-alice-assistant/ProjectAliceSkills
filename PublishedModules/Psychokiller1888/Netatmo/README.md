@@ -18,7 +18,7 @@ Get readings from your netatmo hardware
 - Version: 1.01
 - Author: Psychokiller1888
 - Maintainers: N/A
-- Alice minimum version: N/A
+- Alice minimum version: 0.10
 - Conditions:
   - en
   - fr

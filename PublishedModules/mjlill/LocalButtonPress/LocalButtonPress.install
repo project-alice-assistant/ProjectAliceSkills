@@ -6,7 +6,7 @@
 		"Psycho"
 	],
 	"desc": "Press an imaginary button on or off",
-	"aliceMinVersion": "",
+	"aliceMinVersion": 0.10,
 	"systemRequirements": [],
 	"pipRequirements": [
 		"RPI.GPIO"

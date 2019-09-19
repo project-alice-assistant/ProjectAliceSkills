@@ -21,7 +21,7 @@ Do some calculation with alice
 - Maintainers:
   - Jierka
   - maxbachmann
-- Alice minimum version: N/A
+- Alice minimum version: 0.10
 - Conditions:
   - en
   - de

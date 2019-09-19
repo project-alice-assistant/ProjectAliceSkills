@@ -4,7 +4,7 @@
 	"author": "Psychokiller1888",
 	"maintainers": [],
 	"desc": "Let's you convert world currencies",
-	"aliceMinVersion": "",
+	"aliceMinVersion": 0.10,
 	"systemRequirements": [],
 	"pipRequirements": [],
 	"conditions": {

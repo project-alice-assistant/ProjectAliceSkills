@@ -20,7 +20,7 @@ Gets you the daily random useless fact or a random one
 - Author: Psychokiller1888
 - Maintainers:
   - maxbachmann
-- Alice minimum version: N/A
+- Alice minimum version: 0.10
 - Conditions:
   - en
   - de

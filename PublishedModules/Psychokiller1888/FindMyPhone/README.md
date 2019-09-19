@@ -18,7 +18,7 @@ Using ifttt one can ask alice to find his phone. sets the ring tone at max volum
 - Version: 1.0
 - Author: Psychokiller1888
 - Maintainers: maxbachmann
-- Alice minimum version: N/A
+- Alice minimum version: 0.10
 - Conditions:
   - en
   - fr

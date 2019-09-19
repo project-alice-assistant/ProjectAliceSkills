@@ -4,7 +4,7 @@
 	"author": "Psychokiller1888",
 	"maintainers": [],
 	"desc": "Use ifttt services",
-	"aliceMinVersion": "",
+	"aliceMinVersion": 0.10,
 	"systemRequirements": [],
 	"pipRequirements": [],
 	"conditions": {

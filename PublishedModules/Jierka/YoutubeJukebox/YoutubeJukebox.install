@@ -4,7 +4,7 @@
 	"author": "Jierka",
 	"maintainers": ["Psycho"],
 	"desc": "Allows to play music from youtube",
-	"aliceMinVersion": "",
+	"aliceMinVersion": 0.10,
 	"systemRequirements": [],
 	"pipRequirements": [
 		"youtube_dl",

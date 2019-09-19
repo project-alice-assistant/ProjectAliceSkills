@@ -20,7 +20,7 @@ Control your Philips Hue lamps
 - Author: Psycho
 - Maintainers:
   - Jierka
-- Alice minimum version: N/A
+- Alice minimum version: 0.10
 - Conditions:
   - en
 

@@ -22,6 +22,6 @@ Customisation is the official customisation module. Use it to customize your exp
   - Psycho
   - Jierka
   - maxbachmann
-- Alice minimum version: N/A
+- Alice minimum version: 0.10
 - Conditions: N/A
 - Requirements: N/A

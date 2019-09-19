@@ -4,7 +4,7 @@
 	"author": "Psychokiller1888",
 	"maintainers": [],
 	"desc": "Get a random dad joke on demand!",
-	"aliceMinVersion": "",
+	"aliceMinVersion": 0.10,
 	"systemRequirements": [],
 	"pipRequirements": [],
 	"conditions": {

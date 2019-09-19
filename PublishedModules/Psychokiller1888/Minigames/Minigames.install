@@ -4,7 +4,7 @@
 	"author": "Psychokiller1888",
 	"maintainers": ["maxbachmann"],
 	"desc": "Play a collection of many little games with alice",
-	"aliceMinVersion": "",
+	"aliceMinVersion": 0.10,
 	"pipRequirements": [],
 	"systemRequirements": [],
 	"conditions": {

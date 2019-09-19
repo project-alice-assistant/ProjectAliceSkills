@@ -6,7 +6,7 @@
 		"Jierka"
 	],
 	"desc": "Control your Philips Hue lamps",
-	"aliceMinVersion": "",
+	"aliceMinVersion": 0.10,
 	"systemRequirements": [],
 	"pipRequirements": [],
 	"conditions": {

@@ -18,7 +18,7 @@ Play a collection of many little games with alice
 - Version: 1.02
 - Author: Psychokiller1888
 - Maintainers: maxbachmann
-- Alice minimum version: N/A
+- Alice minimum version: 0.10
 - Conditions:
   - en
   - de

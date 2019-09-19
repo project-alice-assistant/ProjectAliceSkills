@@ -18,7 +18,7 @@ Play rock paper scissors
 - Version: 0.2
 - Author: maxbachmann
 - Maintainers: Jierka, Psycho
-- Alice minimum version: N/A
+- Alice minimum version: 0.10
 - Conditions:
   - en
   - de

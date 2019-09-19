@@ -4,7 +4,7 @@
 	"author": "Psychokiller1888",
 	"maintainers": ["Jierka"],
 	"desc": "Allows one to find informations about a topic on wikipedia",
-	"aliceMinVersion": "",
+	"aliceMinVersion": 0.10,
 	"systemRequirements": [],
 	"pipRequirements": [
 		"wikipedia",

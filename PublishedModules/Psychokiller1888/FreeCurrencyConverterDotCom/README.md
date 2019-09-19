@@ -19,7 +19,7 @@ Let's you convert world currencies
 - Version: 1.23
 - Author: Psychokiller1888
 - Maintainers: N/A
-- Alice minimum version: N/A
+- Alice minimum version: 0.10
 - Conditions:
   - en
 - Requirements: N/A

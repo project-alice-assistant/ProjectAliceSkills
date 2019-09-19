@@ -20,7 +20,7 @@ This module allows you to not only connect tasmota esp devices, but listen to th
 - Author: Psychokiller1888
 - Maintainers:
   - maxbachmann
-- Alice minimum version: N/A
+- Alice minimum version: 0.10
 - Conditions:
   - en
   - fr

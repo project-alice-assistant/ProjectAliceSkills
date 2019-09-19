@@ -28,7 +28,7 @@ If a Raspberry Pi 3 B - connected to WiFi - runs Alice you won't get more than 4
 - Version: 0.6
 - Author: maxbachmann
 - Maintainers: Psycho
-- Alice minimum version: N/A
+- Alice minimum version: 0.10
 - Conditions:
   - en
   - de

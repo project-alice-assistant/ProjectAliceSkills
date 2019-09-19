@@ -18,7 +18,7 @@ Access your stored telemetry data
 - Version: 0.11
 - Author: ProjectAlice
 - Maintainers: Psychokiller1888
-- Alice minimum version: N/A
+- Alice minimum version: 0.10
 - Conditions:
   - en
 - Pip requirements: N/A
