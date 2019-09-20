@@ -396,7 +396,7 @@
 		"Ok, j'ai ajouté {} en tant que {}. Si tu veux qu'il soit reconnu par sa voix, on peux ajouter un wakeword personnel. Ce n'est pas obligoire mais recommandé. On le fait?"
 	],
 	"addUserAddWakewordAccepted": [
-		"<s>Ok {}! J'ai besoin de trois specimens de toi qui m'appelle en disant <break time=\"100ms\"/> \"Hey Alice\" <break time=\"150ms\"/></s><s>Sois dans un environement calme pour que ça fonctionne, les bruits parasites rende l'opération impossible</s><s>On y va, appelle moi!</s>",
+		"<s>Ok {}! J'ai besoin de trois specimens de toi qui m'appelle en disant <break time=\"100ms\"/> \"Hey Alice\" <break time=\"150ms\"/></s><s>Sois dans un environement calme pour que ça fonctionne, les bruits parasites rende l'opération impossible</s><s>On y va, appelle moi!</s>"
 	],
 	"addUserAddWakewordDenied": [
 		"Ok, je comprend, mais n'oublie pas que je ne serai pas capable de savoir si {} est à la maison, dors ou me rappeller de chose à son sujet."
