@@ -399,10 +399,20 @@ class AliceCore(Module):
 
 			elif session.previousIntent == self._INTENT_DUMMY_ADD_USER_WAKEWORD:
 				if commons.isYes(session):
-					# TODO
+					self.WakewordManager.newWakeword(username=customData['username'])
+					self.ThreadManager.newLock('AddingWakeword').set()
+					self.continueDialog(
+						sessionId=sessionId,
+						text=self.randomTalk(text='addUserAddWakewordAccepted', replace=[customData['username']]),
+						intentFilter=[self._INTENT_WAKEWORD],
+						previousIntent=self._INTENT_DUMMY_WAKEWORD_INSTRUCTION
+					)
 					return True
 				else:
-					self.endSession(sessionId=sessionId)
+					self.endDialog(
+						sessionId=sessionId,
+						text=self.randomTalk(text='addUserAddWakewordDenied', replace=[customData['username'], customData['username']])
+					)
 
 			elif session.previousIntent == self._INTENT_DUMMY_WAKEWORD_FAILED:
 				if commons.isYes(session):
@@ -475,12 +485,10 @@ class AliceCore(Module):
 				self.WakewordManager.removeSample()
 				self.continueDialog(
 					sessionId=sessionId,
-					text=self.randomTalk('restartSample'),
+					text=self.randomTalk('restartSample', replace=[3 - self.WakewordManager.getLastSampleNumber()]),
 					intentFilter=[self._INTENT_WAKEWORD],
 					previousIntent=self._INTENT_DUMMY_WAKEWORD_INSTRUCTION
 				)
-
-				return True
 			elif session.slotValue('WakewordCaptureResult') == 'ok':
 				if self.WakewordManager.getLastSampleNumber() < 3:
 					self.WakewordManager.state = WakewordManagerState.IDLE
@@ -491,13 +499,13 @@ class AliceCore(Module):
 						previousIntent=self._INTENT_DUMMY_WAKEWORD_INSTRUCTION
 					)
 				else:
-					self.endDialog(sessionId=sessionId, text=self.randomTalk('wakewordCaptureDone'))
-					self.WakewordManager.finalizeWakeword()
-
 					self.ThreadManager.getLock('AddingWakeword').clear()
 					if self.delayed:
 						self.delayed = False
 						self.ThreadManager.doLater(interval=2, func=self.onStart)
+
+					self.WakewordManager.finalizeWakeword()
+					self.endDialog(sessionId=sessionId, text=self.randomTalk('wakewordCaptureDone'))
 
 				return True
 
