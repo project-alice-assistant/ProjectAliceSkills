@@ -10,9 +10,14 @@
 		"Lass uns spielen! Was willst du spielen?"
 	],
 	"endPlaying": [
-		"Ok, zögere nicht, jederzeit wieder nach einem anderen Spiel zu fragen.!",
-		"Ok, wir werden sicherlich wieder zusammen spielen.!",
-		"Ok, lass es mich einfach wissen, wenn du wieder mit mir spielen willst.!"
+		"Ok, zögere nicht, jederzeit wieder nach einem anderen Spiel zu fragen!",
+		"Ok, wir werden sicherlich wieder zusammen spielen!",
+		"Ok, lass es mich einfach wissen, wenn du wieder mit mir spielen willst!"
+	],
+	"playAgain": [
+		"Willst du nochmal spielen?",
+		"Spielen wir noch ein mal?",
+		"Sollen wir noch eine Runde spielen?"
 	],
 	"flipACoinStart": [
 		"Alles klar, los geht's! Kopf oder Zahl?",
@@ -75,5 +80,5 @@
 	"guessTheNumberScore": [
 		"Du hast es in {} geschafft!",
 		"Du hast das Spiel in {} beendet!"
-]
+	]
 }
