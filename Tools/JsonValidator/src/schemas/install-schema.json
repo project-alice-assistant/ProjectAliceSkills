@@ -32,8 +32,7 @@
 		},
 		"aliceMinVersion": {
 			"type": [
-				"string",
-				"null"
+				"number"
 			]
 		},
 		"systemRequirements": {
