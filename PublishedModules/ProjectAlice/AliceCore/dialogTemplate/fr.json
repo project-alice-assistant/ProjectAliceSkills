@@ -77,42 +77,6 @@
 			]
 		},
 		{
-			"name": "More",
-			"matchingStrictness": null,
-			"automaticallyExtensible": true,
-			"useSynonyms": true,
-			"values": [
-				{
-					"value": "more",
-					"synonyms": [
-						"un peu plus",
-						"augmente",
-						"beaucoup plus",
-						"plus grand",
-						"plus long"
-					]
-				}
-			]
-		},
-		{
-			"name": "Less",
-			"matchingStrictness": null,
-			"automaticallyExtensible": true,
-			"useSynonyms": true,
-			"values": [
-				{
-					"value": "less",
-					"synonyms": [
-						"un peu moins",
-						"diminue",
-						"beaucoup moins",
-						"plus petit",
-						"plus court"
-					]
-				}
-			]
-		},
-		{
 			"name": "Languages",
 			"matchingStrictness": null,
 			"automaticallyExtensible": true,
