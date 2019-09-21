@@ -28,6 +28,7 @@
                 {
                     "value": "humidity",
                     "synonyms": [
+                        "Luftfeuchtigkeit",
 						"Feuchtigkeit",
                         "feucht"
                     ]
@@ -119,7 +120,7 @@
             "utterances": [
                 "Was ist die {Temperatur:=>TelemetrieTyp}",
                 "Was ist die {Feuchtigkeit:=>TelemetrieTyp} {draußen:=>Room}",
-                "Nenne mir die {Lautsärke:=>TelemetryType} im {Wohnzimmer:=>Room}",
+                "Nenne mir die {Lautstärke:=>TelemetryType} im {Wohnzimmer:=>Room}",
                 "Wie viel {regnet:=>TelemetrieTyp} es",
                 "Kannst du mir bitte die {Windstärke:=>TelemetrieTyp} nennen",
                 "Überprüfe bitte den {uv index:=>TelemetryType} für mich",
