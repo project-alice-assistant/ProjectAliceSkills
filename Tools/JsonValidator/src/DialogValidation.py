@@ -122,7 +122,8 @@ class DialogValidation(Validation):
 		for file in self.JsonFiles:
 			# get data and check whether it is valid
 			data = self.validateSyntax(file)
-			missingSlots = [k for k, v in all_slots.items() if k not in DialogTemplate(data).slots]
+			missingSlots = [k for k in all_slots if k not in DialogTemplate(data).slots]
+			self._validModule['slots'][file.name] = missingSlots
 			if missingSlots:
 				self._error = True
 
@@ -136,7 +137,7 @@ class DialogValidation(Validation):
 				for shortUtterance, utterances in shortUtterances.items():
 					if len(utterances) > 1:
 						# Will be added again when duplicates do not improve the performance anymore
-						# self.error = 1
+						# self._error = 1
 						jsonPath[intentName][shortUtterance] = utterances
 
 

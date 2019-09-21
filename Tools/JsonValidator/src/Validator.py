@@ -6,6 +6,7 @@ from src.InstallValidation import InstallValidation
 from src.TalkValidation import TalkValidation
 from termcolor import colored
 from typing import Union
+import json
 
 
 class Validator:
@@ -109,7 +110,6 @@ class Validator:
 
 			for filename, err in sorted(error['schema'].items()):
 				self.printSchemaErrors(filename, err)
-
 			for filename, err in sorted(error['slots'].items()):
 				self.printMissingSlots(filename, err)
 
@@ -158,7 +158,6 @@ class Validator:
 				self._result[talk.moduleAuthor][talk.moduleName]['talkValidation'] = talk.validModules
 			else:
 				self._result[talk.moduleAuthor][talk.moduleName]['talkValidation'] = True
-
 		return err
 
 
@@ -166,8 +165,7 @@ class Validator:
 		for author, _module in sorted(self._result.items()):
 			print(colored('\n{:s}'.format(author), 'green', attrs=['reverse', 'bold']))
 			for module, validate in sorted(_module.items()):
-
-				if all(valid == True for _, valid in validate.items()):
+				if all(valid == True for valid in validate.values()):
 					self.indentPrint(2, colored('{:s}'.format(module), 'green', attrs=['bold']), 'valid')
 					continue
 				self.indentPrint(2, colored('{:s}'.format(module), 'red', attrs=['bold']), 'invalid')
