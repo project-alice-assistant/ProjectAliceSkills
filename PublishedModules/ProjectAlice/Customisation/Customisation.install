@@ -4,7 +4,8 @@
 	"author": "ProjectAlice",
 	"maintainers": [
 		"Psycho",
-		"Jierka"
+		"Jierka",
+		"maxbachmann"
 	],
 	"desc": "A module for anyone to override Project Alice default behavior",
 	"aliceMinVersion": 0.10,
@@ -13,7 +14,8 @@
 	"conditions": {
 		"lang": [
 			"en",
-			"fr"
+			"fr",
+			"de"
 		]
 	}
 }

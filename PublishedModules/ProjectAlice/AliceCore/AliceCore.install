@@ -4,7 +4,8 @@
 	"author": "ProjectAlice",
 	"maintainers": [
 		"Psycho",
-		"Jierka"
+		"Jierka",
+		"maxbachmann"
 	],
 	"desc": "AliceCore is the official module that handles all core intents",
 	"aliceMinVersion": 0.10,
