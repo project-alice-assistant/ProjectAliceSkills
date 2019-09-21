@@ -9,7 +9,7 @@ wget http://modules.projectalice.ch/LocalButtonPress -O ~/ProjectAlice/system/mo
 
 ##### > Alice CLI method
 ```bash
-alice module:install mjlill/LocalButtonPress
+./alice add module mjlill LocalButtonPress
 ```
 
 ### Description

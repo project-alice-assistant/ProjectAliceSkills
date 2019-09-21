@@ -9,7 +9,7 @@ wget http://modules.projectalice.ch/RockPaperScissors -O ~/ProjectAlice/system/m
 
 ##### > Alice CLI method
 ```bash
-alice module:install maxbachmann/RockPaperScissors
+./alice add module maxbachmann RockPaperScissors
 ```
 
 ### Description

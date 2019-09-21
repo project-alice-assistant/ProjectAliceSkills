@@ -10,7 +10,7 @@ wget http://modules.projectalice.ch/Customisation \
 
 ##### > Alice CLI method
 ```bash
-alice module:install ProjectAlice/Customisation
+./alice add module ProjectAlice Customisation
 ```
 
 ### Description

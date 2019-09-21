@@ -9,7 +9,7 @@ wget http://bit.ly/????????? -O ~/ProjectAlice/system/moduleInstallTickets/Zigbe
 
 ##### > Alice CLI method
 ```bash
-alice module:install Psychokiller1888/Zigbee2Mqtt
+./alice add module Psychokiller1888 Zigbee2Mqtt
 ```
 
 ### Description

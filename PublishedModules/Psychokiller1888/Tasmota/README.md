@@ -10,7 +10,7 @@ wget http://modules.projectalice.ch/Tasmota \
 
 ##### > Alice CLI method
 ```bash
-alice module:install Psychokiller1888/Tasmota
+./alice add module Psychokiller1888 Tasmota
 ```
 
 ### Description

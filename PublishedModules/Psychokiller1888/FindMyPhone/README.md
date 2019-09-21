@@ -9,7 +9,7 @@ wget http://modules.projectalice.ch/FindMyPhone -O ~/ProjectAlice/system/moduleI
 
 ##### > Alice CLI method
 ```bash
-alice module:install Psychokiller1888/FindMyPhone
+./alice add module Psychokiller1888 FindMyPhone
 ```
 
 ### Description

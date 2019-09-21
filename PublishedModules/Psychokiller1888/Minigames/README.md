@@ -9,7 +9,7 @@ wget http://modules.projectalice.ch/Minigames -O ~/ProjectAlice/system/moduleIns
 
 ##### > Alice CLI method
 ```bash
-alice module:install Psychokiller1888/Minigames
+./alice add module Psychokiller1888 Minigames
 ```
 
 ### Description

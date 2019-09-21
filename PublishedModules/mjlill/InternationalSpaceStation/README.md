@@ -9,7 +9,7 @@ wget http://modules.projectalice.ch/InternationalSpaceStation -O ~/ProjectAlice/
 
 ##### > Alice CLI method
 ```bash
-alice module:install mjlill/InternationalSpaceStation
+./alice add module mjlill InternationalSpaceStation
 ```
 
 ### Description

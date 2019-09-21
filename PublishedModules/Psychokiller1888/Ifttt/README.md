@@ -9,7 +9,7 @@ wget http://modules.projectalice.ch/ifttt -O ~/ProjectAlice/system/moduleInstall
 
 ##### > Alice CLI method
 ```bash
-alice module:install Psychokiller1888/ifttt
+./alice add module Psychokiller1888 ifttt
 ```
 
 ### Description

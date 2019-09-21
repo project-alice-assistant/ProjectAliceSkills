@@ -10,7 +10,7 @@ wget http://modules.projectalice.ch/YoutubeJukebox \
 
 ##### > Alice CLI method
 ```bash
-alice module:install Jierka/YoutubeJukebox
+./alice add module Jierka YoutubeJukebox
 ```
 
 ### Description

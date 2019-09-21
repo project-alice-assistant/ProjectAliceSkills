@@ -10,7 +10,7 @@ wget http://modules.projectalice.ch/AliceSatellite \
 
 ##### > Alice CLI method
 ```bash
-alice module:install ProjectAlice/AliceSatellite
+./alice add module ProjectAlice AliceSatellite
 ```
 
 ### Description

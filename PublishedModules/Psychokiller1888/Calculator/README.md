@@ -10,7 +10,7 @@ wget modules.projectalice.ch/Calculator \
 
 ##### > Alice CLI method
 ```bash
-alice module:install Psychokiller1888/Calculator
+./alice add module Psychokiller1888 Calculator
 ```
 
 ### Description

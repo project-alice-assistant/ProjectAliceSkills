@@ -10,7 +10,7 @@ wget http://modules.projectalice.ch/ContextSensitive \
 
 ##### > Alice CLI method
 ```bash
-alice module:install ProjectAlice/ContextSensitive
+./alice add module ProjectAlice ContextSensitive
 ```
 
 ### Description

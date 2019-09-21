@@ -10,7 +10,7 @@ wget http://modules.projectalice.ch/RedQueen \
 
 ##### > Alice CLI method
 ```bash
-alice module:install ProjectAlice/RedQueen
+./alice add module ProjectAlice RedQueen
 ```
 
 ### Desc

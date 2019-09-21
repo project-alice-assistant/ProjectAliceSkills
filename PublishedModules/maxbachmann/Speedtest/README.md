@@ -9,7 +9,7 @@ wget http://modules.projectalice.ch/Speedtest -O ~/ProjectAlice/system/moduleIns
 
 ##### > Alice CLI method
 ```bash
-alice module:install maxbachmann/Speedtest
+./alice add module maxbachmann Speedtest
 ```
 
 ### Description
@@ -32,5 +32,6 @@ If a Raspberry Pi 3 B - connected to WiFi - runs Alice you won't get more than 4
 - Conditions:
   - en
   - de
+  - fr
   - online
 - Requirements: N/A

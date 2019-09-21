@@ -9,7 +9,7 @@ wget http://bit.ly/????????? -O ~/ProjectAlice/system/moduleInstallTickets/Telem
 
 ##### > Alice CLI method
 ```bash
-alice module:install Psychokiller1888/Telemetry
+./alice add module Psychokiller1888 Telemetry
 ```
 
 ### Description

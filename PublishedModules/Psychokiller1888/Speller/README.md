@@ -9,7 +9,7 @@ wget http://modules.projectalice.ch/Speller -O ~/ProjectAlice/system/moduleInsta
 
 ##### > Alice CLI method
 ```bash
-alice module:install Psychokiller1888/Speller
+./alice add module Psychokiller1888 Speller
 ```
 
 ### Description
