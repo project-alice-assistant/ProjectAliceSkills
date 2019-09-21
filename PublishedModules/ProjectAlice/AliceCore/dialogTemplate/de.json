@@ -11672,9 +11672,7 @@
 				"Bitte starte dein System neu",
 				"Bitte reboote dein System",
 				"Führe einen Neustart aus",
-				"Bitte starte dich neu",
-				"Bitte starte dein System neu",
-				"Starte dein System neu"
+				"Bitte starte dich neu"
 			],
 			"slots": []
 		},
@@ -11735,8 +11733,7 @@
 				"Ich füge einen neue {satelliten:=>Hardware} zu deinem Array hinzu",
 				"Lass uns ein Gerät zu deinem Netzwerk hinzufügen",
 				"Bitte auf neue Geräte achten",
-				"Ich möchte ein Gerät zu deinem Netzwerk hinzufügen",
-				"Einen neuen {satelliten:=>Hardware} hinzufügen"
+				"Ich möchte ein Gerät zu deinem Netzwerk hinzufügen"
 			],
 			"slots": [
 				{
@@ -11991,8 +11988,7 @@
 			"description": "User speaks the Hey Alice wakeword",
 			"enabledByDefault": false,
 			"utterances": [
-				"Hey Alice",
-				"hey alice"
+				"Hey Alice"
 			],
 			"slots": []
 		},
