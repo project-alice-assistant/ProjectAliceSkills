@@ -1,0 +1,25 @@
+{
+	"noType": {
+		"default": [
+			"Welche Daten soll ich überprüfen?",
+			"Welche Art von Telemetriedaten?",
+			"Was willst du überprüfen?"
+		],
+		"short": [
+			"Welche Daten?"
+		]
+	},
+	"noData": {
+		"default": [
+			"Tut mir leid, ich habe diese Daten offenbar nicht",
+			"Es tut mir so leid, aber ich kann es nicht sagen",
+			"Ich habe keine Daten, mit denen ich dir antworten könnte"
+		],
+		"short": [
+			"ich weiß nicht"
+		]
+	},
+	"answerInstant": [
+		"{}"
+	]
+}
