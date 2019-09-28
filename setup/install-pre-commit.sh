@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 # This script installs a pre-commit hook to enforce the correct use of spaces and tabs for this project
 
 GIT_DIR=$(git rev-parse --git-common-dir 2> /dev/null)
