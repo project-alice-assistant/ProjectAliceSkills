@@ -147,7 +147,7 @@ class AliceCore(Module):
 			self.changeFeedbackSound(inDialog=False, siteId=session.siteId)
 
 			if self.delayed:
-				if len(self.UserManager.users) <= 0:
+				if not self.UserManager.users:
 					self._addFirstUser()
 				else:
 					self.delayed = False

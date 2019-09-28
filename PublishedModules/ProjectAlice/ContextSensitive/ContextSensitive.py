@@ -81,7 +81,7 @@ class ContextSensitive(Module):
 
 
 	def lastMessage(self):
-		return self._history[len(self._history) - 1]
+		return self._history[-1]
 
 
 	def addChat(self, text, siteId):
@@ -95,7 +95,7 @@ class ContextSensitive(Module):
 
 
 	def getLastChat(self, siteId):
-		if siteId not in self._sayHistory or len(self._sayHistory[siteId]) <= 0:
+		if siteId not in self._sayHistory or not self._sayHistory[siteId]:
 			return self.randomTalk('nothing')
 
-		return self._sayHistory[siteId][len(self._sayHistory[siteId]) - 1]
+		return self._sayHistory[siteId][-1]
