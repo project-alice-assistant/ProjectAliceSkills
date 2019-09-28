@@ -27,7 +27,7 @@ class DialogTemplate:
 
 	@property
 	def shortUtterances(self) -> dict:
-		def upper_repl(match):
+		def upperRepl(match):
 			return match.group(1).upper()
 
 
@@ -37,16 +37,16 @@ class DialogTemplate:
 			for utterance in intents['utterances']:
 				# make utterance lower case, slot name upper case, remove everything but characters and numbers
 				# and make sure there is only one whitespace between two words
-				short_utterance = utterance.lower()
-				short_utterance = re.sub(r'{.*?:=>(.*?)}', upper_repl, short_utterance)
-				short_utterance = re.sub(r'[^a-zA-Z1-9 ]', '', short_utterance)
-				short_utterance = " ".join(short_utterance.split())
+				shortUtterance = utterance.lower()
+				shortUtterance = re.sub(r'{.*?:=>(.*?)}', upperRepl, shortUtterance)
+				shortUtterance = re.sub(r'[^a-zA-Z1-9 ]', '', shortUtterance)
+				shortUtterance = " ".join(shortUtterance.split())
 				# check whether the utterance already appeared and either add it to the list of duplicates
 				# or mark that it appeared the first time
-				if short_utterance in utterancesDict[intentName]:
-					utterancesDict[intentName][short_utterance].append(utterance)
+				if shortUtterance in utterancesDict[intentName]:
+					utterancesDict[intentName][shortUtterance].append(utterance)
 				else:
-					utterancesDict[intentName][short_utterance] = [utterance]
+					utterancesDict[intentName][shortUtterance] = [utterance]
 		return utterancesDict
 
 

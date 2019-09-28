@@ -27,13 +27,13 @@ class Validation(ABC):
 
 	@property
 	@abstractmethod
-	def JsonSchema(self) -> dict:
+	def jsonSchema(self) -> dict:
 		pass
 
 
 	@property
 	@abstractmethod
-	def JsonFiles(self) -> list:
+	def jsonFiles(self) -> list:
 		pass
 
 
@@ -58,8 +58,8 @@ class Validation(ABC):
 
 
 	def validateSchema(self) -> None:
-		schema = self.JsonSchema
-		for file in self.JsonFiles:
+		schema = self.jsonSchema
+		for file in self.jsonFiles:
 			self._validModule['schema'][file.name] = list()
 			jsonPath = self._validModule['schema'][file.name]
 			# try to load json from file and return error when the format is invalid

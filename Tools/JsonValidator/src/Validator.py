@@ -1,12 +1,12 @@
 from collections import defaultdict
 from pathlib import Path
+from typing import Union
+
+from termcolor import colored
 
 from src.DialogValidation import DialogValidation
 from src.InstallValidation import InstallValidation
 from src.TalkValidation import TalkValidation
-from termcolor import colored
-from typing import Union
-import json
 
 
 class Validator:
@@ -22,7 +22,7 @@ class Validator:
 
 
 	@staticmethod
-	def indentPrint(indent: int = 0, *args):
+	def indentPrint(indent: int, *args):
 		print(' ' * (indent - 1) + ' '.join(map(str, args)))
 
 
@@ -88,7 +88,7 @@ class Validator:
 
 
 	def printInstaller(self, error: Union[dict, bool]):
-		if error is True:
+		if not error:
 			self.indentPrint(4, colored('Installer', 'white', attrs=['bold']), 'valid')
 		else:
 			self.indentPrint(4, colored('Installer:', 'white', attrs=['bold']))
@@ -101,7 +101,7 @@ class Validator:
 
 
 	def printDialog(self, error: Union[dict, bool]):
-		if error is True:
+		if not error:
 			self.indentPrint(4, colored('Dialog files', 'white', attrs=['bold']), 'valid')
 		else:
 			self.indentPrint(4, colored('Dialog files:', 'white', attrs=['bold']))
@@ -122,7 +122,7 @@ class Validator:
 
 
 	def printTalk(self, error: Union[dict, bool]):
-		if error is True:
+		if not error:
 			self.indentPrint(4, colored('Talk files', 'white', attrs=['bold']), 'valid')
 		else:
 			self.indentPrint(4, colored('Talk files:', 'white', attrs=['bold']))
@@ -147,17 +147,17 @@ class Validator:
 				err = 1
 				self._result[dialog.moduleAuthor][dialog.moduleName]['dialogValidation'] = dialog.validModules
 			else:
-				self._result[dialog.moduleAuthor][dialog.moduleName]['dialogValidation'] = True
+				self._result[dialog.moduleAuthor][dialog.moduleName]['dialogValidation'] = None
 			if self._installer and installer.validate():
 				err = 1
 				self._result[installer.moduleAuthor][installer.moduleName]['installerValidation'] = installer.validModules
 			else:
-				self._result[installer.moduleAuthor][installer.moduleName]['installerValidation'] = True
+				self._result[installer.moduleAuthor][installer.moduleName]['installerValidation'] = None
 			if self._talk and talk.validate():
 				err = 1
 				self._result[talk.moduleAuthor][talk.moduleName]['talkValidation'] = talk.validModules
 			else:
-				self._result[talk.moduleAuthor][talk.moduleName]['talkValidation'] = True
+				self._result[talk.moduleAuthor][talk.moduleName]['talkValidation'] = None
 		return err
 
 
@@ -165,7 +165,7 @@ class Validator:
 		for author, _module in sorted(self._result.items()):
 			print(colored('\n{:s}'.format(author), 'green', attrs=['reverse', 'bold']))
 			for module, validate in sorted(_module.items()):
-				if all(valid == True for valid in validate.values()):
+				if all(not valid for valid in validate.values()):
 					self.indentPrint(2, colored('{:s}'.format(module), 'green', attrs=['bold']), 'valid')
 					continue
 				self.indentPrint(2, colored('{:s}'.format(module), 'red', attrs=['bold']), 'invalid')

@@ -1,23 +1,23 @@
 import json
 from pathlib import Path
 from typing import Generator
+from unidecode import unidecode
 
 from snips_nlu_parsers import get_all_builtin_entities
 from src.DialogTemplate import DialogTemplate
 from src.Validation import Validation
-from unidecode import unidecode
 
 
 class DialogValidation(Validation):
 
 	@property
-	def JsonSchema(self) -> dict:
+	def jsonSchema(self) -> dict:
 		schema = self._dirPath / 'schemas/dialog-schema.json'
 		return json.loads(schema.read_text())
 
 
 	@property
-	def JsonFiles(self) -> list:
+	def jsonFiles(self) -> list:
 		return self._modulePath.glob('dialogTemplate/*.json')
 
 
@@ -58,14 +58,14 @@ class DialogValidation(Validation):
 
 	def getAllSlots(self, language: str) -> dict:
 		modules = self.getRequiredModules().union(set(self.getCoreModules()))
-		all_slots = {}
+		allSlots = dict()
 		for module in modules:
 			# get data and check whether it is valid
 			path = module / 'dialogTemplate' / language
 			if path.is_file():
 				data = self.validateSyntax(path)
-				all_slots.update(DialogTemplate(data).slots)
-		return all_slots
+				allSlots.update(DialogTemplate(data).slots)
+		return allSlots
 
 
 	@staticmethod
@@ -84,52 +84,52 @@ class DialogValidation(Validation):
 
 
 	def validateIntentSlots(self) -> None:
-		all_slots = {}
+		allSlots = dict()
 		# get slots from all json files of a module
-		for file in self.JsonFiles:
-			all_slots[file] = self.getAllSlots(file.name)
+		for file in self.jsonFiles:
+			allSlots[file] = self.getAllSlots(file.name)
 
 		# check whether the same slots appear in all files
-		for file in self.JsonFiles:
+		for file in self.jsonFiles:
 			jsonPath = self._validModule['utterances'][file.name]
 			# get data and check whether it is valid
 			data = self.validateSyntax(file)
 			for intentName, slots in DialogTemplate(data).utteranceSlots.items():
 				for slot, values in slots.items():
 					if not self.isBuiltin(slot):
-						if not slot in all_slots[file]:
+						if not slot in allSlots[file]:
 							self._error = True
 							if intentName in jsonPath:
 								jsonPath['missingSlots'][intentName].append(slot)
 							else:
 								jsonPath['missingSlots'][intentName] = [slot]
 						else:
-							missingValues = self.searchMissingSlotValues(values, all_slots[file][slot])
+							missingValues = self.searchMissingSlotValues(values, allSlots[file][slot])
 							if missingValues:
 								self._error = True
 								jsonPath['missingSlotValue'][intentName][slot] = missingValues
 
 
 	def validateSlots(self) -> None:
-		all_slots = {}
+		allSlots = dict()
 		# get slots from all json files of a module
-		for file in self.JsonFiles:
+		for file in self.jsonFiles:
 			# get data and check whether it is valid
 			data = self.validateSyntax(file)
-			all_slots.update(DialogTemplate(data).slots)
+			allSlots.update(DialogTemplate(data).slots)
 
 		# check whether the same slots appear in all files
-		for file in self.JsonFiles:
+		for file in self.jsonFiles:
 			# get data and check whether it is valid
 			data = self.validateSyntax(file)
-			missingSlots = [k for k in all_slots if k not in DialogTemplate(data).slots]
+			missingSlots = [k for k in allSlots if k not in DialogTemplate(data).slots]
 			self._validModule['slots'][file.name] = missingSlots
 			if missingSlots:
 				self._error = True
 
 
 	def searchDuplicateUtterances(self) -> None:
-		for file in self.JsonFiles:
+		for file in self.jsonFiles:
 			jsonPath = self._validModule['utterances'][file.name]['duplicates']
 			# get data and check whether it is valid
 			data = self.validateSyntax(file)
