@@ -70,7 +70,7 @@ class ContextSensitive(Module):
 				customData['speaker'] = session.user
 				data = session.payload
 				data['customData'] = customData
-				session.payload = json.dumps(data)
+				session.payload = data
 
 			self._history.append(session)
 
