@@ -196,7 +196,7 @@ class AliceCore(Module):
 
 	def onSnipsAssistantDownloaded(self, *args):
 		try:
-			filepath = Path(tempfile.gettempdir(),'assistant.zip')
+			filepath = Path(tempfile.gettempdir(), 'assistant.zip')
 			with ZipFile(filepath) as zipfile:
 				zipfile.extractall(tempfile.gettempdir())
 
