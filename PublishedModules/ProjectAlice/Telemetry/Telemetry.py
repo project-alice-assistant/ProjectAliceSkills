@@ -28,7 +28,7 @@ class Telemetry(Module):
 		siteId = session.siteId
 		slots = session.slots
 
-		if intent == self._INTENT_GET_TELEMETRY_DATA or intent == self._INTENT_ANSWER_TELEMETRY_TYPE:
+		if intent in (self._INTENT_GET_TELEMETRY_DATA, self._INTENT_ANSWER_TELEMETRY_TYPE):
 			if 'siteId' in slots:
 				siteId = session.slotValue('Room')
 
@@ -49,17 +49,17 @@ class Telemetry(Module):
 					answer += '°C'
 				elif telemetryType == 'pressure':
 					answer += 'mb'
-				elif telemetryType == 'humidity' or telemetryType == 'airQuality':
+				elif telemetryType in ('humidity', 'airQuality'):
 					answer += '%'
 				elif telemetryType == 'light':
 					answer += 'lux'
-				elif telemetryType == 'gas' or telemetryType == 'co2':
+				elif telemetryType in ('gas', 'co2'):
 					answer += 'ppm'
 				elif telemetryType == 'rain':
 					answer += 'mm'
-				elif telemetryType == 'wind_strength' or telemetryType == 'gust_strength':
+				elif telemetryType in ('wind_strength', 'gust_strength'):
 					answer += 'km/h'
-				elif telemetryType == 'wind_angle' or telemetryType == 'gust_angle':
+				elif telemetryType in ('wind_angle', 'gust_angle'):
 					answer += '°'
 
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('answerInstant').format(answer))

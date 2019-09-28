@@ -36,6 +36,7 @@ class DialogValidation(Validation):
 		for module in self._basePath.glob('PublishedModules/*/*'):
 			if module.name == moduleName:
 				return module
+		return None
 
 
 	def getRequiredModules(self, modulePath: Path = None) -> set:

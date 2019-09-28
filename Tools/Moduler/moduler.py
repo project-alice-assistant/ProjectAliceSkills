@@ -16,6 +16,8 @@
 """
 
 from __future__ import print_function, unicode_literals
+import shutil
+import os
 
 try:
 	from PyInquirer import style_from_dict, Token, prompt
@@ -29,8 +31,6 @@ except ImportError:
 
 from PyInquirer import Validator, ValidationError
 
-import shutil
-import os
 
 style = style_from_dict({
 	Token.QuestionMark: '#996633 bold',
@@ -202,7 +202,7 @@ alice module:install %username%/%moduleName%
 print()
 print('Hey welcome in this basic module creation tool!')
 
-first_questions = [
+FIRST_QUESTION = [
 	{
 		'type'    : 'input',
 		'name'    : 'username',
@@ -219,7 +219,7 @@ first_questions = [
 	}
 ]
 
-next_questions = [
+NEXT_QUESTION = [
 	{
 		'type'    : 'input',
 		'name'    : 'description',
@@ -261,7 +261,7 @@ next_questions = [
 
 if __name__ == '__main__':
 	home = os.path.expanduser('~')
-	answers = prompt(first_questions, style=style)
+	answers = prompt(FIRST_QUESTION, style=style)
 
 	modulePath = os.path.join(home, 'ProjectAliceModuler', answers['username'], answers['moduleName'])
 
@@ -289,7 +289,7 @@ if __name__ == '__main__':
 			modulePath = os.path.join(home, 'ProjectAliceModuler', answers['username'], subAnswers['moduleName'])
 			answers['moduleName'] = subAnswers['moduleName']
 
-	subAnswers = prompt(next_questions, style=style)
+	subAnswers = prompt(NEXT_QUESTION, style=style)
 	answers = {**answers, **subAnswers}
 
 	reqs = []
