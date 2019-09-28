@@ -2,6 +2,7 @@ from core.base.SuperManager import SuperManager
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
+import spacy
 
 
 class AliceSatellite(Module):
@@ -31,6 +32,7 @@ class AliceSatellite(Module):
 		self.ProtectedIntentManager.protectIntent(self._DEVICE_DISCONNECTION)
 
 		super().__init__(self._SUPPORTED_INTENTS)
+		self._nlp = spacy.load(self.LanguageManager.activeLanguage)
 
 
 	def onBooted(self):
@@ -65,6 +67,7 @@ class AliceSatellite(Module):
 
 		if 'Place' in slots:
 			place = slots['Place']
+			placeAnswer = self.roomAnswer(session.payload['input'], noun=place)
 		else:
 			place = siteId
 
@@ -75,7 +78,7 @@ class AliceSatellite(Module):
 				return False
 
 			if place != siteId:
-				self.endDialog(sessionId, self.randomTalk('temperaturePlaceSpecific').format(place, temp.replace('.0', '')))
+				self.endDialog(sessionId, self.randomTalk('temperaturePlaceSpecific').format(placeAnswer, temp.replace('.0', '')))
 			else:
 				self.endDialog(sessionId, self.randomTalk('temperature').format(temp.replace('.0', '')))
 
@@ -90,7 +93,7 @@ class AliceSatellite(Module):
 				humidity = int(round(float(humidity), 0))
 
 			if place != siteId:
-				self.endDialog(sessionId, self.randomTalk(text='humidityPlaceSpecific', replace=[place, humidity]))
+				self.endDialog(sessionId, self.randomTalk(text='humidityPlaceSpecific', replace=[placeAnswer, humidity]))
 			else:
 				self.endDialog(sessionId, self.randomTalk(text='humidity', replace=[humidity]))
 
@@ -103,7 +106,7 @@ class AliceSatellite(Module):
 				return False
 
 			if place != siteId:
-				self.endDialog(sessionId, self.TalkManager.randomTalk('co2PlaceSpecific').format(place, co2))
+				self.endDialog(sessionId, self.TalkManager.randomTalk('co2PlaceSpecific').format(placeAnswer, co2))
 			else:
 				self.endDialog(sessionId, self.TalkManager.randomTalk('co2').format(co2))
 
@@ -118,7 +121,7 @@ class AliceSatellite(Module):
 				pressure = int(round(float(pressure), 0))
 
 			if place != siteId:
-				self.endDialog(sessionId, self.randomTalk(text='pressurePlaceSpecific', replace=[place, pressure]))
+				self.endDialog(sessionId, self.randomTalk(text='pressurePlaceSpecific', replace=[placeAnswer, pressure]))
 			else:
 				self.endDialog(sessionId, self.randomTalk(text='pressure', replace=[pressure]))
 
@@ -165,3 +168,51 @@ class AliceSatellite(Module):
 
 		for device in devices:
 			self.publish(topic='projectalice/devices/restart', payload={'uid': device.uid})
+
+	def roomAnswer(self, rawtext: str, noun: str) -> str:
+    	# will be placed in a onLanguageChanged event since it takes about 0.4 seconds to load a new language
+    	# -> would be good not to let the user wait longer than required
+		lang = self.LanguageManager.activeLanguage
+    	if lang != nlp.lang:
+    	    nlp = spacy.load(lang)
+
+    	nouns = allNouns = noun.lower().split()
+
+    	for nounChunk in nlp(rawtext).noun_chunks:
+    	    # search for room in noun chunk (can be mutliple parts e.g. 'living room') -> search them all
+    	    for chunk in nounChunk:
+    	        if chunk.pos_ == 'NOUN' and chunk.text.lower() in nouns:
+    	            nouns.remove(chunk.text.lower())
+
+    	    # when not all nouns found reset them
+    	    if nouns:
+    	        nouns = allNouns
+    	        continue
+			
+    	    # depending on the language there are different grammatical structures to parse
+    	    if(lang == 'de'):
+    	        # preposition with article e.g. 'in dem' -> 'im'
+    	        if nounChunk.root.head.tag_ == 'APPRART':
+    	            return '{} {}'.format(nounChunk.root.head.text, noun)
+    	        # only preposition e.g. 'im'
+    	        elif nounChunk.root.head.tag_ == 'APPR':
+    	            for chunk in nounChunk:
+    	                if chunk.pos_ == 'DET':
+    	                    det = '{} {}'.format(nounChunk.root.head.text, chunk.text)
+    	                    # there are some preposition + article combinations, that get combined in german
+    	                    combined = { 'an dem': 'am', 'in dem': 'im', 'zu dem': 'zum', 'zu der': 'zur'}
+    	                    return '{} {}'.format(combined.get(det, det), noun)
+    	            # fallback that works without knowing article and preposition
+    	            return 'am Modul {}'.format(noun)
+    	    elif(lang == 'en'):
+    	        # preposition e.g. 'in' or 'on'
+    	        if nounChunk.root.head.tag_ == 'IN':
+    	            return '{} the {}'.format(nounChunk.root.head.text, noun)
+    	        # fallback that works without knowing the preposition
+    	        return 'at the module {}'.format(noun)
+			elif (lang == 'fr'):
+				#TODO implement french grammar (right now still just returns noun -> still old sentences)
+				return noun
+	
+    	# when the 'room' is no noun but a adverb it can be directly used
+    	return noun

@@ -10,8 +10,8 @@
 	},
 	"temperaturePlaceSpecific": {
 		"default": [
-			"Es hat aktuell {1} Grad am Modul {0}",
-			"Es hat {1} Grad am Modul {0}"
+			"Es hat aktuell {1} Grad {0}",
+			"Es hat {1} Grad {0}"
 		],
 		"short": [
 			"{1}"
@@ -28,8 +28,8 @@
 	},
 	"humidityPlaceSpecific": {
 		"default": [
-			"Die Luftfeuchtigkeit am Modul {0} beträgt aktuell {1} Prozent",
-			"Es gibt {1} Luftfeuchtigkeit am Modul {0}"
+			"Die Luftfeuchtigkeit {0} beträgt aktuell {1} Prozent",
+			"Es gibt {1} Luftfeuchtigkeit {0}"
 		],
 		"short": [
 			"{} Prozent"
@@ -46,8 +46,8 @@
 	},
 	"co2PlaceSpecific": {
 		"default": [
-			"Das co2 Level am Modul {0} beträgt aktuell {1} ppm",
-			"Es hat {1} ppm co2 am Modul {0}"
+			"Das co2 Level {0} beträgt aktuell {1} ppm",
+			"Es hat {1} ppm co2 {0}"
 		],
 		"short": [
 			"{1} p p m"
@@ -64,7 +64,7 @@
 	},
 	"pressurePlaceSpecific": {
 		"default": [
-			"Der Luftdruck beträgt aktuell {1} millibar am Modul {0}"
+			"Der Luftdruck beträgt aktuell {1} millibar {0}"
 		],
 		"short": [
 			"{} millibar"
