@@ -459,7 +459,7 @@ class AliceCore(Module):
 				)
 			else:
 				self.playSound(
-					soundFile=str(filepath),
+					soundFile=filepath,
 					sessionId='checking-wakeword',
 					siteId=session.siteId,
 					absolutePath=True
@@ -526,7 +526,7 @@ class AliceCore(Module):
 
 			filepath = Path(tempfile.gettempdir(), str(self.WakewordManager.getLastSampleNumber())).with_suffix('.wav')
 			self.playSound(
-				soundFile=str(filepath),
+				soundFile=filepath,
 				sessionId='checking-wakeword',
 				siteId=session.siteId,
 				absolutePath=True
