@@ -185,6 +185,38 @@ wget http://bit.ly/????????? -O ~/ProjectAlice/system/moduleInstallTickets/{modu
 
 '''
 
+WIDGET_CSS = '''.{widgetName} {
+	width: 100%;
+	height: 100%;
+	background-color: white;
+	padding: 5px;
+	box-sizing: border-box;
+}
+
+.{widgetName} .icon {
+	width: 100%;
+	font-size: 1.5em;
+}'''
+
+WIDGET_TEMPLATE = '''<div class="{widget}" id="{widget}">
+	<div class="icon">
+		<i class="fas fa-cross"></i>
+	</div>
+</div>'''
+
+WIDGET_CLASS = '''import sqlite3
+
+from core.base.model.Widget import Widget
+
+
+class {widget}(Widget):
+
+	SIZE = 'w_small'
+	OPTIONS = dict()
+
+	def __init__(self, data: sqlite3.Row):
+		super().__init__(data)'''
+
 FIRST_QUESTION = [
 	{
 		'type'    : 'input',
@@ -324,6 +356,7 @@ def createInstallFile(modulePath, answers):
 	if sysreqs:
 		systemRequirements = systemRequirements[:-1] + '\n\t'
 
+
 	Path(modulePath, answers['moduleName']).with_suffix('.install').write_text(
 		INSTALL_JSON.format(
 			moduleName=answers['moduleName'],
@@ -368,6 +401,54 @@ def createReadme(modulePath, answers):
 		)
 	)
 
+def createWidgets(modulePath, answers):
+	moduleWidgets = []
+	while True:
+		questions = [
+			{
+				'type'   : 'confirm',
+				'name'   : 'widgets',
+				'message': 'Are you planning on creating widgets for you module? Widgets are used on the\ninterface to display quick informations that your module can return',
+				'default': False
+			},
+			{
+				'type'    : 'input',
+				'name'    : 'widget',
+				'message' : 'Enter the name of the widget',
+				'validate': NotEmpty,
+				'when'    : lambda subAnswers: subAnswers['widgets']
+			}
+		]
+		subAnswers = prompt(questions, style=STYLE)
+		if subAnswers['widgets'] and subAnswers['widget'] != 'stop':
+			moduleWidgets.append(subAnswers['widget'])
+		else:
+			break
+
+	if moduleWidgets:
+		print('Creating widgets base directories')
+		(modulePath / 'widgets' / 'css').mkdir(parents=True, exist_ok=True)
+		(modulePath / 'widgets' / 'fonts').mkdir(parents=True, exist_ok=True)
+		(modulePath / 'widgets' / 'img').mkdir(parents=True, exist_ok=True)
+		(modulePath / 'widgets' / 'js').mkdir(parents=True, exist_ok=True)
+		(modulePath / 'widgets' / 'lang').mkdir(parents=True, exist_ok=True)
+		(modulePath / 'widgets' / 'templates').mkdir(parents=True, exist_ok=True)
+
+		(modulePath / 'widgets' / '__init__.py').touch(exist_ok=True)
+		(modulePath / 'widgets' / 'css' / 'common.css').touch(exist_ok=True)
+		(modulePath / 'widgets' / 'img' / '.gitkeep').touch(exist_ok=True)
+		(modulePath / 'widgets' / 'fonts' / '.gitkeep').touch(exist_ok=True)
+
+		for widget in moduleWidgets:
+			widget = str(widget).title().replace(' ', '')
+			(modulePath / 'widgets' / 'css' / '{}.css'.format(widget)).write_text(WIDGET_CSS.format(widgetName=widget))
+
+			(modulePath / 'widgets' / 'js' / '{}.js'.format(widget)).touch(exist_ok=True)
+			(modulePath / 'widgets' / 'lang' / '{}.lang.json').write_text('{}')
+			(modulePath / 'widgets' / 'templates' / '{}.html'.format(widget)).write_text(WIDGET_TEMPLATE.format(widgetName=widget))
+			(modulePath / 'widgets' / '{}.py'.format(widget)).write_text(WIDGET_CLASS.format(widgetName=widget))
+
+
 def cli():
 	print('\nHey welcome in this basic module creation tool!')
 	answers = prompt(FIRST_QUESTION, style=STYLE)
@@ -406,6 +487,7 @@ def cli():
 	createDialogTemplates(modulePath, answers)
 	createTalks(modulePath, answers)
 	createReadme(modulePath, answers)
+	createWidgets(modulePath, answers)
 
 	print('----------------------------\n')
 	print('All done!')
