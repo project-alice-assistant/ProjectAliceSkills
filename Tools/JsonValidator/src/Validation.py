@@ -75,5 +75,5 @@ class Validation(ABC):
 
 
 	@abstractmethod
-	def validate(self) -> bool:
+	def validate(self, verbosity: int = 0) -> bool:
 		pass

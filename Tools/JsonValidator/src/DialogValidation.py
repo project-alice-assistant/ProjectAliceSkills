@@ -10,10 +10,6 @@ from src.Validation import Validation
 
 class DialogValidation(Validation):
 
-	def __init__(self, modulePath: Path, verbosity: int):
-		super().__init__(modulePath)
-		self._verbosity = verbosity
-
 	@property
 	def jsonSchema(self) -> dict:
 		schema = self._dirPath / 'schemas/dialog-schema.json'
@@ -145,10 +141,10 @@ class DialogValidation(Validation):
 						jsonPath[intentName][shortUtterance] = utterances
 
 
-	def validate(self) -> bool:
+	def validate(self, verbosity: int = 0) -> bool:
 		self.validateSchema()
 		self.validateSlots()
-		if self._verbosity:
+		if verbosity:
 			self.searchDuplicateUtterances()
 		self.validateIntentSlots()
 		return self._error

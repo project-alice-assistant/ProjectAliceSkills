@@ -33,7 +33,7 @@ class TalkValidation(Validation):
 		return self._error
 
 
-	def validate(self) -> bool:
+	def validate(self, verbosity: int = 0) -> bool:
 		self.validateSchema()
 		self.validateTypes()
 		return self._error

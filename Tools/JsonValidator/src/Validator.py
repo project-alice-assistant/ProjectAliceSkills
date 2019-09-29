@@ -140,10 +140,10 @@ class Validator:
 	def validate(self):
 		err = 0
 		for module in self._modulePath.glob('PublishedModules/*/*'):
-			dialog = DialogValidation(module, self._verbosity)
+			dialog = DialogValidation(module)
 			installer = InstallValidation(module)
 			talk = TalkValidation(module)
-			if self._dialog and dialog.validate():
+			if self._dialog and dialog.validate(self._verbosity):
 				err = 1
 				self._result[dialog.moduleAuthor][dialog.moduleName]['dialogValidation'] = dialog.validModules
 			else:

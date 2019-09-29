@@ -16,6 +16,6 @@ class InstallValidation(Validation):
 		return self._modulePath.glob('*.install')
 
 
-	def validate(self) -> bool:
+	def validate(self, verbosity: int = 0) -> bool:
 		self.validateSchema()
 		return self._error
