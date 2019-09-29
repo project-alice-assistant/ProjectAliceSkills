@@ -3,10 +3,12 @@ python: 3.7.4
 
 install:
   - pip install -r Tools/JsonValidator/requirements.txt
+  - pip install mypy
   #- pip install pylint
 
 
 script:
   - python3 Tools/JsonValidator/JsonValidator.py --all
+  - find . -name '*.py' | xargs mypy
   #- cores=$(nproc)
   #- pylint -j $cores PublishedModules/*/*/*.py --exit-zero

@@ -33,7 +33,7 @@ class PhilipsHue(Module):
 			self._INTENT_USER_ANSWER
 		]
 
-		self._bridge = None
+		self._bridge: Bridge = None
 		self._groups = dict()
 		self._scenes = dict()
 		self._bridgeConnectTries = 0
