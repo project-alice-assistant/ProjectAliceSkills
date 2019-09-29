@@ -10,20 +10,21 @@ from src.Validator import Validator
 @click.option('--talk', '-t', is_flag=True, help='validate files')
 @click.option('-v', '--verbose', count=True, help='verbosity to print')
 def validate(all: bool, install: bool, dialog: bool, talk: bool, verbose: int):
-		"""
-		This is the Command Line Interface of the JsonValidator for all Modules
-		of Project Alice. Currently the following commands are supported.
-		"""
-		if all:
-			install = dialog = talk = True
-		if True in (install, dialog, talk):
-			valid = Validator(installer=install, dialog=dialog, talk=talk, verbosity=verbose)
-			error = valid.validate()
-			valid.printResult()
-			sys.exit(error)
-		else:
-			click.echo(click.get_current_context().get_help())
+	"""
+	This is the Command Line Interface of the JsonValidator for all Modules
+	of Project Alice. Currently the following commands are supported.
+	"""
+	if all:
+		install = dialog = talk = True
+	if True in (install, dialog, talk):
+		valid = Validator(installer=install, dialog=dialog, talk=talk, verbosity=verbose)
+		error = valid.validate()
+		valid.printResult()
+		sys.exit(error)
+	else:
+		click.echo(click.get_current_context().get_help())
 		
 
 if __name__ == '__main__':
-		validate()
+	# pylint: disable=no-value-for-parameter
+	validate()
