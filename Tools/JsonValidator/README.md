@@ -24,7 +24,7 @@ python3 JsonValidator.py --talk --dialog
 to each command a ```-v``` can be added to show warnings aswell
 
 ## Requirements
-This Tool uses [jsonschema](https://pypi.org/project/jsonschema/) to validate the JSON files using JSON Schemas and [click](https://click.palletsprojects.com/en/7.x/) for a colored output. The requirements can be installed with the following command:
+This Tool uses [jsonschema](https://pypi.org/project/jsonschema/) to validate the JSON files using JSON Schemas and [click](https://click.palletsprojects.com/en/7.x/) for the command line interface. The requirements can be installed with the following command:
 ```bash
 pip3 install -r requirements.txt
 ```
