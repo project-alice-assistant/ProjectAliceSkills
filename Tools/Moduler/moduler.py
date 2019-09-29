@@ -17,22 +17,20 @@
 
 from __future__ import print_function, unicode_literals
 import shutil
-import os
+from pathlib import Path
 
 try:
-	from PyInquirer import style_from_dict, Token, prompt
+	from PyInquirer import style_from_dict, Token, prompt, Validator, ValidationError
 except ImportError:
 	import subprocess
 	import time
 
 	subprocess.run(['pip3', 'install', '-r', 'requirements.txt'])
 	time.sleep(1)
-	from PyInquirer import style_from_dict, Token, prompt
-
-from PyInquirer import Validator, ValidationError
+	from PyInquirer import style_from_dict, Token, prompt, Validator, ValidationError
 
 
-style = style_from_dict({
+STYLE = style_from_dict({
 	Token.QuestionMark: '#996633 bold',
 	Token.Selected    : '#5F819D bold',
 	Token.Instruction : '#99ff33 bold',
@@ -42,7 +40,6 @@ style = style_from_dict({
 	Token.Input       : '#99ff33 bold'
 })
 
-
 class NotEmpty(Validator):
 	def validate(self, document):
 		if not document.text:
@@ -50,17 +47,6 @@ class NotEmpty(Validator):
 				message='This cannot be empty',
 				cursor_position=len(document.text)
 			)
-
-
-class NotExist(Validator):
-	def validate(self, document):
-		modulePath = os.path.join(home, 'ProjectAliceModuler', answers['username'], document.text)
-		if not document.text or os.path.exists(modulePath):
-			raise ValidationError(
-				message='This cannot be empty and should not already exist',
-				cursor_position=len(document.text)
-			)
-
 
 PYTHON_CLASS = '''import json
 
@@ -70,10 +56,10 @@ from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
 
 
-class %moduleName%(Module):
+class {moduleName}(Module):
 	"""
-	Author: %username%
-	Description: %description%
+	Author: {username}
+	Description: {description}
 	"""
 
 	def __init__(self):
@@ -93,59 +79,59 @@ class %moduleName%(Module):
 
 		return True'''
 
-INSTALL_JSON = '''{
-	"name": "%moduleName%",
+INSTALL_JSON = '''{{
+	"name": "{moduleName}",
 	"version": 0.1,
-	"author": "%username%",
+	"author": "{username}",
 	"maintainers": [],
-	"desc": "%description%",
+	"desc": "{description}",
 	"aliceMinVersion": 0.10,
-	"pipRequirements": [%pipRequirements%],
-	"systemRequirements": [%systemRequirements%],
-	"conditions": {
-		"lang": [%langs%]
-	}
-}'''
+	"pipRequirements": [{pipRequirements}],
+	"systemRequirements": [{systemRequirements}],
+	"conditions": {{
+		"lang": [{langs}]
+	}}
+}}'''
 
-DIALOG_TEMPLATE = '''{
-    "module": "%moduleName%",
+DIALOG_TEMPLATE = '''{{
+    "module": "{moduleName}",
     "icon": "time",
-    "description": "%description%",
+    "description": "{description}",
     "slotTypes": [
-        {
+        {{
             "name": "DummySlot",
             "matchingStrictness": null,
             "automaticallyExtensible": false,
             "useSynonyms": true,
             "values": [
-                {
+                {{
                     "value": "foo",
                     "synonyms": ["bar"]
-                }
+                }}
             ]
-        }
+        }}
     ],
     "intents": [
-        {
+        {{
             "name": "Dummy",
             "description": "REMOVE this dummy intent!",
             "enabledByDefault": true,
             "utterances": [
-                "dummy {foo:=>DummySlotName}",
+                "dummy {{foo:=>DummySlotName}}",
                 "bar"
             ],
             "slots": [
-                {
+                {{
                     "name": "DummySlotName",
                     "description": "dummy",
                     "required": false,
                     "type": "DummySlot",
                     "missingQuestion": ""
-                }
+                }}
             ]
-        }
+        }}
     ]
-}'''
+}}'''
 
 TALKS = '''{
 	"dummy": {
@@ -160,29 +146,29 @@ TALKS = '''{
 	},
 }'''
 
-README = '''# %moduleName%
+README = '''# {moduleName}
 
 ### Download
 
 ##### > WGET method
 ```bash
-wget http://bit.ly/????????? -O ~/ProjectAlice/system/moduleInstallTickets/%moduleName%.install
+wget http://bit.ly/????????? -O ~/ProjectAlice/system/moduleInstallTickets/{moduleName}.install
 ```
 
 ##### > Alice CLI method
 ```bash
-alice module:install %username%/%moduleName%
+./alice add module {username} {moduleName}
 ```
 
 ### Description
-%description%
+{description}
 
 - Version: 0.1
-- Author: %username%
+- Author: {username}
 - Maintainers: N/A
 - Alice minimum version: 0.10
 - Conditions:
-%langs%
+{langs}
 - Pip requirements: N/A
 - System requirements: N/A
 
@@ -198,9 +184,6 @@ alice module:install %username%/%moduleName%
  - desc: `bar`
 
 '''
-
-print()
-print('Hey welcome in this basic module creation tool!')
 
 FIRST_QUESTION = [
 	{
@@ -230,7 +213,7 @@ NEXT_QUESTION = [
 	{
 		'type'    : 'checkbox',
 		'name'    : 'langs',
-		'message' : 'Choose the language for this module. Note that to share\nyour module on the official repo english is mendatory',
+		'message' : 'Choose the language for this module. Note that to share\nyour module on the official repo english is mandatory',
 		'validate': NotEmpty,
 		'choices' : [
 			{
@@ -259,39 +242,23 @@ NEXT_QUESTION = [
 	}
 ]
 
-if __name__ == '__main__':
-	home = os.path.expanduser('~')
-	answers = prompt(FIRST_QUESTION, style=style)
+def createDestinationFolder(modulePath, answers):
+	print('\n----------------------------')
+	print('Creating destination folders')
 
-	modulePath = os.path.join(home, 'ProjectAliceModuler', answers['username'], answers['moduleName'])
+	(modulePath / 'dialogTemplate').mkdir(parents=True)
+	(modulePath / 'talks').mkdir(parents=True)
 
-	while os.path.exists(modulePath):
-		questions = [
-			{
-				'type'   : 'confirm',
-				'name'   : 'delete',
-				'message': 'Seems like this module name already exists.\nDo you want to delete it locally?',
-				'default': False
-			},
-			{
-				'type'    : 'input',
-				'name'    : 'moduleName',
-				'message' : 'Ok, so chose another module name please',
-				'validate': NotEmpty,
-				'filter'  : lambda val: str(val).title().replace(' ', ''),
-				'when'    : lambda subAnswers: not subAnswers['delete']
-			}
-		]
-		subAnswers = prompt(questions, style=style)
-		if subAnswers['delete']:
-			shutil.rmtree(path=modulePath)
-		else:
-			modulePath = os.path.join(home, 'ProjectAliceModuler', answers['username'], subAnswers['moduleName'])
-			answers['moduleName'] = subAnswers['moduleName']
+	print('Creating python class')
+	Path(modulePath, answers['moduleName']).with_suffix('.py').write_text(
+		PYTHON_CLASS.format(
+			moduleName=answers['moduleName'],
+			description=answers['description'],
+			username=answers['username']
+		)
+	)
 
-	subAnswers = prompt(NEXT_QUESTION, style=style)
-	answers = {**answers, **subAnswers}
-
+def createInstallFile(modulePath, answers):
 	reqs = []
 	while True:
 		questions = [
@@ -309,7 +276,7 @@ if __name__ == '__main__':
 				'when'    : lambda subAnswers: subAnswers['requirements']
 			}
 		]
-		subAnswers = prompt(questions, style=style)
+		subAnswers = prompt(questions, style=STYLE)
 		if subAnswers['requirements'] and subAnswers['req'] != 'stop':
 			reqs.append(subAnswers['req'])
 		else:
@@ -332,84 +299,120 @@ if __name__ == '__main__':
 				'when'    : lambda subAnswers: subAnswers['sysrequirements']
 			}
 		]
-		subAnswers = prompt(questions, style=style)
+		subAnswers = prompt(questions, style=STYLE)
 		if subAnswers['sysrequirements'] and subAnswers['sysreq'] != 'stop':
 			sysreqs.append(subAnswers['sysreq'])
 		else:
 			break
 
-	print()
-	print('----------------------------')
-	print('Creating destination folders')
-
-	os.makedirs(modulePath)
-	os.mkdir(os.path.join(modulePath, 'dialogTemplate'))
-	os.mkdir(os.path.join(modulePath, 'talks'))
-
-	print('Creating python class')
-	with open(os.path.join(modulePath, answers['moduleName'] + '.py'), 'w') as f:
-		f.write(PYTHON_CLASS.replace('%moduleName%', answers['moduleName']).replace('%description%', answers['description']).replace('%username%', answers['username']))
-
 	print('Creating install file')
-	with open(os.path.join(modulePath, answers['moduleName'] + '.install'), 'w') as f:
-		langs = ''
-		for lang in answers['langs']:
-			langs += '\n\t\t\t"{}",'.format(lang)
-		if answers['langs']:
-			langs = langs[:-1] + '\n\t\t'
+	langs = ''
+	for lang in answers['langs']:
+		langs += '\n\t\t\t"{}",'.format(lang)
+	if answers['langs']:
+		langs = langs[:-1] + '\n\t\t'
 
-		pipRequirements = ''
-		for req in reqs:
-			pipRequirements += '\n\t\t"{}",'.format(req)
-		if reqs:
-			pipRequirements = pipRequirements[:-1] + '\n\t'
+	pipRequirements = ''
+	for req in reqs:
+		pipRequirements += '\n\t\t"{}",'.format(req)
+	if reqs:
+		pipRequirements = pipRequirements[:-1] + '\n\t'
 
-		systemRequirements = ''
-		for req in sysreqs:
-			systemRequirements += '\n\t\t"{}",'.format(req)
-		if sysreqs:
-			systemRequirements = systemRequirements[:-1] + '\n\t'
+	systemRequirements = ''
+	for req in sysreqs:
+		systemRequirements += '\n\t\t"{}",'.format(req)
+	if sysreqs:
+		systemRequirements = systemRequirements[:-1] + '\n\t'
 
-		f.write(INSTALL_JSON.replace('%moduleName%', answers['moduleName'])
-				.replace('%description%', answers['description'])
-				.replace('%username%', answers['username'])
-				.replace('%langs%', langs)
-				.replace('%pipRequirements%', pipRequirements)
-				.replace('%systemRequirements%', systemRequirements)
-				)
+	Path(modulePath, answers['moduleName']).with_suffix('.install').write_text(
+		INSTALL_JSON.format(
+			moduleName=answers['moduleName'],
+			description=answers['description'],
+			username=answers['username'],
+			langs=langs,
+			pipRequirements=pipRequirements,
+			systemRequirements=systemRequirements
+		)
+	)
 
+def createDialogTemplates(modulePath, answers):
 	print('Creating dialog template(s)')
 	for lang in answers['langs']:
 		print('- {}'.format(lang))
-		with open(os.path.join(modulePath, 'dialogTemplate', lang + '.json'), 'w') as f:
-			f.write(DIALOG_TEMPLATE.replace('%moduleName%', answers['moduleName'])
-					.replace('%description%', answers['description'])
-					.replace('%username%', answers['username'])
-					)
+		Path(modulePath, 'dialogTemplate', lang).with_suffix('.json').write_text(
+			DIALOG_TEMPLATE.format(
+				moduleName=answers['moduleName'],
+				description=answers['description'],
+				username=answers['username']
+			)
+		)
 
+def createTalks(modulePath, answers):
 	print('Creating talks')
 	for lang in answers['langs']:
 		print('- {}'.format(lang))
-		with open(os.path.join(modulePath, 'talks', lang + '.json'), 'w') as f:
-			f.write(TALKS.replace('%moduleName%', answers['moduleName']))
+		Path(modulePath, 'talks', lang).with_suffix('.json').write_text(TALKS)
 
+def createReadme(modulePath, answers):
 	print('Creating readme file')
-	with open(os.path.join(modulePath, 'README.md'), 'w') as f:
-		langs = ''
-		for lang in answers['langs']:
-			langs += '  - {}\n'.format(lang)
+	langs = ''
+	for lang in answers['langs']:
+		langs += '  - {}\n'.format(lang)
 
-		f.write(README.replace('%moduleName%', answers['moduleName'])
-				.replace('%description%', answers['description'])
-				.replace('%username%', answers['username'])
-				.replace('%langs%', langs.rstrip())
-				)
+	Path(modulePath, 'README.md').write_text(
+		README.format(
+			moduleName=answers['moduleName'],
+			description=answers['description'],
+			username=answers['username'],
+			langs=langs.rstrip()
+		)
+	)
 
-	print('----------------------------')
-	print()
+def cli():
+	print('\nHey welcome in this basic module creation tool!')
+	answers = prompt(FIRST_QUESTION, style=STYLE)
+
+	modulePath = Path.home() / 'ProjectAliceModuler' / answers['username'] / answers['moduleName']
+
+	while modulePath.exists():
+		questions = [
+			{
+				'type'   : 'confirm',
+				'name'   : 'delete',
+				'message': 'Seems like this module name already exists.\nDo you want to delete it locally?',
+				'default': False
+			},
+			{
+				'type'    : 'input',
+				'name'    : 'moduleName',
+				'message' : 'Ok, so chose another module name please',
+				'validate': NotEmpty,
+				'filter'  : lambda val: str(val).title().replace(' ', ''),
+				'when'    : lambda subAnswers: not subAnswers['delete']
+			}
+		]
+		subAnswers = prompt(questions, style=STYLE)
+		if subAnswers['delete']:
+			shutil.rmtree(path=modulePath)
+		else:
+			modulePath = Path.home() / 'ProjectAliceModuler' / answers['username'] / subAnswers['moduleName']
+			answers['moduleName'] = subAnswers['moduleName']
+
+	subAnswers = prompt(NEXT_QUESTION, style=STYLE)
+	answers = {**answers, **subAnswers}
+
+	createDestinationFolder(modulePath, answers)
+	createInstallFile(modulePath, answers)
+	createDialogTemplates(modulePath, answers)
+	createTalks(modulePath, answers)
+	createReadme(modulePath, answers)
+
+	print('----------------------------\n')
 	print('All done!')
 	print('You can now start creating your module. You will find the main class in {}/{}.py'.format(modulePath, answers['moduleName']))
-	print()
-	print('Remember to edit the dialogTemplate/XYZ.json and remove the dummy data!!')
-	print()
+	print('\nRemember to edit the dialogTemplate/XYZ.json and remove the dummy data!!\n')
 	print('Thank you for creating for Project Alice')
+
+
+if __name__ == '__main__':
+	cli()
