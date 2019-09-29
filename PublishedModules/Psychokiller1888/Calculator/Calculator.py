@@ -1,4 +1,6 @@
 import math
+import numbers
+from typing import Optional
 
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
@@ -18,7 +20,7 @@ class Calculator(Module):
 		self._SUPPORTED_INTENTS = [
 			self._INTENT_MATHS
 		]
-		self._lastNumber = None
+		self._lastNumber: Optional[float] = None
 		super().__init__(self._SUPPORTED_INTENTS)
 
 
@@ -40,24 +42,30 @@ class Calculator(Module):
 				result = self.calculate(float(slots['Left'][0].value['value']), float(slots['Right'][0].value['value']), func)
 
 			elif 'Right' in slots and 'Left' not in slots:
-				if not self._lastNumber:
+				if not isinstance(self._lastNumber, numbers.Number):
 					self.endDialog(sessionId=sessionId, text=self.TalkManager.randomTalk('noPreviousOperation'))
 					return True
 
-				result = self.calculate(self._lastNumber, float(slots['Right'][0].value['value']), func)
+				result = self.calculate(float(self._lastNumber), float(slots['Right'][0].value['value']), func)
 
 			else:
 				self.continueDialog(sessionId=sessionId, text=self.TalkManager.randomTalk('notUnderstood'))
 				return True
 
-			answer = str(int(result)) if result % 1 == 0 else str(result)
+			if not isinstance(result, numbers.Number):
+				answer = 'not supported'
+			elif result % 1 == 0:
+				answer = str(int(result))
+			else:
+				answer = str(result)
 
 			self.endDialog(sessionId=sessionId, text=answer)
 
 		return True
 
 
-	def calculate(self, left: float, right: float, func: str) -> float:
+	def calculate(self, left: float, right: float, func: str) -> Optional[float]:
+		result: Optional[float] = None
 		if func == '+':
 			result = left + right
 		elif func == '-':
@@ -76,8 +84,6 @@ class Calculator(Module):
 			result = round(math.cos(left), 3)
 		elif func == 'tangent':
 			result = round(math.tan(left), 3)
-		else:
-			result = 'not supported'
 
 		self._lastNumber = result
 		return result
