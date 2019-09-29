@@ -1,3 +1,5 @@
+from typing import Callable
+
 from core.base.SuperManager import SuperManager
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
@@ -59,84 +61,71 @@ class AliceSatellite(Module):
 		if not self.filterIntent(intent, session):
 			return False
 
-		sessionId = session.sessionId
-		siteId = session.siteId
-		slots = session.slots
-
-		if 'Place' in slots:
-			place = slots['Place']
-		else:
-			place = siteId
-
+		accepted = False
 		if intent == self._INTENT_TEMPERATURE:
-			temp = self.getSensorValue(place, 'temperature')
-
-			if temp == 'undefined':
-				return False
-
-			if place != siteId:
-				self.endDialog(sessionId, self.randomTalk('temperaturePlaceSpecific').format(place, temp.replace('.0', '')))
-			else:
-				self.endDialog(sessionId, self.randomTalk('temperature').format(temp.replace('.0', '')))
-
-			return True
+			accepted = self.sensorIntent(
+				session=session,
+				sensorType='temperature',
+				placeAnswer='temperaturePlaceSpecific',
+				answer='temperature',
+				valueConvert=lambda value: value.replace('.0', '')
+			)
 
 		elif intent == self._INTENT_HUMIDITY:
-			humidity = self.getSensorValue(place, 'humidity')
-
-			if humidity == 'undefined':
-				return False
-			else:
-				humidity = int(round(float(humidity), 0))
-
-			if place != siteId:
-				self.endDialog(sessionId, self.randomTalk(text='humidityPlaceSpecific', replace=[place, humidity]))
-			else:
-				self.endDialog(sessionId, self.randomTalk(text='humidity', replace=[humidity]))
-
-			return True
+			accepted = self.sensorIntent(
+				session=session,
+				sensorType='humidity',
+				placeAnswer='humidityPlaceSpecific',
+				answer='humidity',
+				valueConvert=lambda value: round(float(value))
+			)
 
 		elif intent == self._INTENT_CO2:
-			co2 = self.getSensorValue(place, 'gas')
-
-			if co2 == 'undefined':
-				return False
-
-			if place != siteId:
-				self.endDialog(sessionId, self.TalkManager.randomTalk('co2PlaceSpecific').format(place, co2))
-			else:
-				self.endDialog(sessionId, self.TalkManager.randomTalk('co2').format(co2))
-
-			return True
+			accepted = self.sensorIntent(
+				session=session,
+				sensorType='gas',
+				placeAnswer='c02PlaceSpecific',
+				answer='co2'
+			)
 
 		elif intent == self._INTENT_PRESSURE:
-			pressure = self.getSensorValue(place, 'pressure')
-
-			if pressure == 'undefined':
-				return False
-			else:
-				pressure = int(round(float(pressure), 0))
-
-			if place != siteId:
-				self.endDialog(sessionId, self.randomTalk(text='pressurePlaceSpecific', replace=[place, pressure]))
-			else:
-				self.endDialog(sessionId, self.randomTalk(text='pressure', replace=[pressure]))
-
-			return True
+			accepted = self.sensorIntent(
+				session=session,
+				sensorType='pressure',
+				placeAnswer='pressurePlaceSpecific',
+				answer='pressure',
+				valueConvert=lambda value: round(float(value))
+			)
 
 		elif intent == self._FEEDBACK_SENSORS:
 			payload = session.payload
 			if 'data' in payload:
-				self._sensorReadings[siteId] = payload['data']
-			return True
+				self._sensorReadings[session.siteId] = payload['data']
+			accepted = True
 
 		elif intent == self._DEVICE_DISCONNECTION:
 			payload = session.payload
 			if 'uid' in payload:
 				self.DeviceManager.deviceDisconnecting(payload['uid'])
+			accepted = True
 
-		return False
+		return accepted
 
+	# pylint: disable=too-many-arguments
+	def sensorIntent(self, session: DialogSession, sensorType: str, placeAnswer: str, answer: str, valueConvert: Callable = None) -> bool:
+		place = session.slots.get('Place', session.siteId)
+		value = self.getSensorValue(place, sensorType)
+
+		if value == 'undefined':
+			return False
+		if valueConvert:
+			value = valueConvert(value)
+
+		if place != session.siteId:
+			self.endDialog(session.sessionId, self.randomTalk(text=placeAnswer, replace=[place, value]))
+		else:
+			self.endDialog(session.sessionId, self.randomTalk(text=answer, replace=[value]))
+		return True
 
 	def getSensorReadings(self):
 		self.broadcast('projectalice/devices/alice/getSensors')
@@ -147,15 +136,7 @@ class AliceSatellite(Module):
 
 
 	def getSensorValue(self, siteId: str, value: str) -> str:
-		if siteId not in self._sensorReadings.keys():
-			return 'undefined'
-
-		data = self._sensorReadings[siteId]
-		if value in data:
-			ret = data[value]
-			return ret
-		else:
-			return 'undefined'
+		return self._sensorReadings.get(siteId, dict()).get(value, 'undefined')
 
 
 	def restartDevice(self):
