@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 from typing import Generator
 from unidecode import unidecode
+#from collections import defaultdict
 
 from snips_nlu_parsers import get_all_builtin_entities
 from src.DialogTemplate import DialogTemplate
@@ -97,18 +98,20 @@ class DialogValidation(Validation):
 			data = self.validateSyntax(file)
 			for intentName, slots in DialogTemplate(data).utteranceSlots.items():
 				for slot, values in slots.items():
-					if not self.isBuiltin(slot):
-						if not slot in allSlots[file]:
-							self._error = True
-							if intentName in jsonPath:
-								jsonPath['missingSlots'][intentName].append(slot)
-							else:
-								jsonPath['missingSlots'][intentName] = [slot]
+					if self.isBuiltin(slot):
+						continue
+
+					if not slot in allSlots[file]:
+						self._error = True
+						if intentName in jsonPath['missingSlots']:
+							jsonPath['missingSlots'][intentName].append(slot)
 						else:
-							missingValues = self.searchMissingSlotValues(values, allSlots[file][slot])
-							if missingValues:
-								self._error = True
-								jsonPath['missingSlotValue'][intentName][slot] = missingValues
+							jsonPath['missingSlots'][intentName] = [slot]
+					else:
+						missingValues = self.searchMissingSlotValues(values, allSlots[file][slot])
+						if missingValues:
+							self._error = True
+							jsonPath['missingSlotValue'][intentName][slot] = missingValues
 
 
 	def validateSlots(self) -> None:
