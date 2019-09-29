@@ -82,7 +82,7 @@ class YoutubeJukebox(Module):
 					if len(tmp) <= 70:
 						videolist.append(tmp)
 
-			if len(videolist) == 0:
+			if not videolist:
 				self.say(text=self.randomTalk(text='noMatch', replace=[
 					wildcardQuery
 				]), siteId=siteId)

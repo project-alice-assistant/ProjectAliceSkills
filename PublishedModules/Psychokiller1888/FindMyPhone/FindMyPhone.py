@@ -55,7 +55,7 @@ class FindMyPhone(Module):
 			answer = module.sendRequest(endPoint='locatePhone', user=who)
 			if answer == IftttException.NOT_CONNECTED:
 				self.endDialog(sessionId=sessionId, text=self.randomTalk('notConnected'))
-			elif answer == IftttException.ERROR or answer == IftttException.BAD_REQUEST:
+			elif answer in (IftttException.ERROR, IftttException.BAD_REQUEST):
 				self.endDialog(sessionId=sessionId, text=self.randomTalk('error'))
 			elif answer == IftttException.NO_USER:
 				self.endDialog(sessionId=sessionId, text=self.randomTalk('unknown', replace=[who]))

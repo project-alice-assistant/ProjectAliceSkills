@@ -1,5 +1,5 @@
 import re
-
+from collections import defaultdict
 
 class DialogTemplate:
 
@@ -9,7 +9,7 @@ class DialogTemplate:
 
 	@property
 	def slots(self) -> dict:
-		slots = {}
+		slots = dict()
 		if self._dialogTemplate:
 			for slot in self._dialogTemplate['slotTypes']:
 				slots[slot['name']] = slot
@@ -18,7 +18,7 @@ class DialogTemplate:
 
 	@property
 	def intents(self) -> dict:
-		intents = {}
+		intents = dict()
 		if self._dialogTemplate:
 			for intent in self._dialogTemplate['intents']:
 				intents[intent['name']] = intent
@@ -31,38 +31,29 @@ class DialogTemplate:
 			return match.group(1).upper()
 
 
-		utterancesDict = {}
+		utterancesDict = dict()
 		for intentName, intents in self.intents.items():
-			utterancesDict[intentName] = {}
+			utterancesDict[intentName] = defaultdict(list)
 			for utterance in intents['utterances']:
 				# make utterance lower case, slot name upper case, remove everything but characters and numbers
 				# and make sure there is only one whitespace between two words
 				shortUtterance = utterance.lower()
 				shortUtterance = re.sub(r'{.*?:=>(.*?)}', upperRepl, shortUtterance)
 				shortUtterance = re.sub(r'[^a-zA-Z1-9 ]', '', shortUtterance)
-				shortUtterance = " ".join(shortUtterance.split())
-				# check whether the utterance already appeared and either add it to the list of duplicates
-				# or mark that it appeared the first time
-				if shortUtterance in utterancesDict[intentName]:
-					utterancesDict[intentName][shortUtterance].append(utterance)
-				else:
-					utterancesDict[intentName][shortUtterance] = [utterance]
+				shortUtterance = ' '.join(shortUtterance.split())
+				utterancesDict[intentName][shortUtterance].append(utterance)
 		return utterancesDict
 
 
 	@property
 	def utteranceSlots(self) -> dict:
-		utteranceSlotDict = {}
+		utteranceSlotDict = dict()
 		for intentName, intents in self.intents.items():
-			utteranceSlotDict[intentName] = {}
+			utteranceSlotDict[intentName] = defaultdict(list)
 			for utterance in intents['utterances']:
 				slotNames = re.findall(r'{(.*?):=>(.*?)}', utterance)
 				for slot in intents['slots']:
 					for value, slotName in slotNames:
 						if slot['name'] == slotName:
-							if slot['type'] in utteranceSlotDict[intentName]:
-								if value not in utteranceSlotDict[intentName][slot['type']]:
-									utteranceSlotDict[intentName][slot['type']].append(value)
-							else:
-								utteranceSlotDict[intentName][slot['type']] = [value]
+							utteranceSlotDict[intentName][slot['type']].append(value)
 		return utteranceSlotDict

@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 from typing import Generator
 from unidecode import unidecode
+#from collections import defaultdict
 
 from snips_nlu_parsers import get_all_builtin_entities
 from src.DialogTemplate import DialogTemplate
@@ -36,6 +37,7 @@ class DialogValidation(Validation):
 		for module in self._basePath.glob('PublishedModules/*/*'):
 			if module.name == moduleName:
 				return module
+		return None
 
 
 	def getRequiredModules(self, modulePath: Path = None) -> set:
@@ -96,18 +98,20 @@ class DialogValidation(Validation):
 			data = self.validateSyntax(file)
 			for intentName, slots in DialogTemplate(data).utteranceSlots.items():
 				for slot, values in slots.items():
-					if not self.isBuiltin(slot):
-						if not slot in allSlots[file]:
-							self._error = True
-							if intentName in jsonPath:
-								jsonPath['missingSlots'][intentName].append(slot)
-							else:
-								jsonPath['missingSlots'][intentName] = [slot]
+					if self.isBuiltin(slot):
+						continue
+
+					if not slot in allSlots[file]:
+						self._error = True
+						if intentName in jsonPath['missingSlots']:
+							jsonPath['missingSlots'][intentName].append(slot)
 						else:
-							missingValues = self.searchMissingSlotValues(values, allSlots[file][slot])
-							if missingValues:
-								self._error = True
-								jsonPath['missingSlotValue'][intentName][slot] = missingValues
+							jsonPath['missingSlots'][intentName] = [slot]
+					else:
+						missingValues = self.searchMissingSlotValues(values, allSlots[file][slot])
+						if missingValues:
+							self._error = True
+							jsonPath['missingSlotValue'][intentName][slot] = missingValues
 
 
 	def validateSlots(self) -> None:
@@ -136,14 +140,14 @@ class DialogValidation(Validation):
 			for intentName, shortUtterances in DialogTemplate(data).shortUtterances.items():
 				for shortUtterance, utterances in shortUtterances.items():
 					if len(utterances) > 1:
-						# Will be added again when duplicates do not improve the performance anymore
-						# self._error = 1
+						self._error = 1
 						jsonPath[intentName][shortUtterance] = utterances
 
 
-	def validate(self) -> bool:
+	def validate(self, verbosity: int = 0) -> bool:
 		self.validateSchema()
 		self.validateSlots()
-		self.searchDuplicateUtterances()
+		if verbosity:
+			self.searchDuplicateUtterances()
 		self.validateIntentSlots()
 		return self._error

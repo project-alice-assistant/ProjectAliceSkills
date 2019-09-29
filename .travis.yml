@@ -7,6 +7,6 @@ install:
 
 
 script:
-  - python3 Tools/JsonValidator/JsonValidator.py --all --quiet
+  - python3 Tools/JsonValidator/JsonValidator.py --all
   #- cores=$(nproc)
   #- pylint -j $cores PublishedModules/*/*/*.py --exit-zero

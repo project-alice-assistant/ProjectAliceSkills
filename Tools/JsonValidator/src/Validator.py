@@ -2,7 +2,7 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Union
 
-from termcolor import colored
+import click
 
 from src.DialogValidation import DialogValidation
 from src.InstallValidation import InstallValidation
@@ -11,19 +11,19 @@ from src.TalkValidation import TalkValidation
 
 class Validator:
 
-	def __init__(self, installer: bool = True, dialog: bool = True, talk: bool = True, warnings: bool = True):
+	def __init__(self, installer: bool = True, dialog: bool = True, talk: bool = True, verbosity: int = 0):
 		self._result = self.infinidict()
 		self._dirPath = Path(__file__).resolve().parent.parent
 		self._modulePath = self._dirPath.parent.parent
 		self._installer = installer
 		self._dialog = dialog
 		self._talk = talk
-		self._warnings = warnings
+		self._verbosity = verbosity
 
 
 	@staticmethod
 	def indentPrint(indent: int, *args):
-		print(' ' * (indent - 1) + ' '.join(map(str, args)))
+		click.echo(' ' * (indent - 1) + ' '.join(map(str, args)))
 
 
 	def infinidict(self):
@@ -44,7 +44,7 @@ class Validator:
 			for _, utterances in sorted(shortUtterances.items()):
 				for utterance in utterances:
 					self.indentPrint(8, '-', utterance)
-				print()
+				click.echo()
 
 
 	def printMissingUtteranceSlots(self, filename: str, errors: dict):
@@ -73,7 +73,7 @@ class Validator:
 	def printErrorList(self, errorList: list, indent: int = 0):
 		for error in errorList:
 			self.indentPrint(indent, '-', error)
-		print()
+		click.echo()
 
 
 	def printSchemaErrors(self, filename: str, errorList: list):
@@ -89,22 +89,22 @@ class Validator:
 
 	def printInstaller(self, error: Union[dict, bool]):
 		if not error:
-			self.indentPrint(4, colored('Installer', 'white', attrs=['bold']), 'valid')
+			self.indentPrint(4, click.style('Installer', bold=True), 'valid')
 		else:
-			self.indentPrint(4, colored('Installer:', 'white', attrs=['bold']))
+			self.indentPrint(4, click.style('Installer:', bold=True))
 			for filename, err in sorted(error['syntax'].items()):
 				self.printSyntaxError(filename, err)
 
 			for filename, err in sorted(error['schema'].items()):
 				self.printSchemaErrors(filename, err)
-		print()
+		click.echo()
 
 
 	def printDialog(self, error: Union[dict, bool]):
 		if not error:
-			self.indentPrint(4, colored('Dialog files', 'white', attrs=['bold']), 'valid')
+			self.indentPrint(4, click.style('Dialog files', bold=True), 'valid')
 		else:
-			self.indentPrint(4, colored('Dialog files:', 'white', attrs=['bold']))
+			self.indentPrint(4, click.style('Dialog files:', bold=True))
 			for filename, err in sorted(error['syntax'].items()):
 				self.printSyntaxError(filename, err)
 
@@ -116,16 +116,16 @@ class Validator:
 			for filename, types in sorted(error['utterances'].items()):
 				self.printMissingUtteranceSlots(filename, types['missingSlots'])
 				self.printMissingSlotValues(filename, types['missingSlotValue'])
-				if self._warnings:
+				if self._verbosity:
 					self.printDuplicates(filename, types['duplicates'])
-		print()
+		click.echo()
 
 
 	def printTalk(self, error: Union[dict, bool]):
 		if not error:
-			self.indentPrint(4, colored('Talk files', 'white', attrs=['bold']), 'valid')
+			self.indentPrint(4, click.style('Talk files', bold=True), 'valid')
 		else:
-			self.indentPrint(4, colored('Talk files:', 'white', attrs=['bold']))
+			self.indentPrint(4, click.style('Talk files:', bold=True))
 			for filename, err in sorted(error['syntax'].items()):
 				self.indentPrint(6, 'syntax errors in', filename + ':')
 				self.indentPrint(8, '-', err)
@@ -134,7 +134,7 @@ class Validator:
 
 			for filename, err in sorted(error['types'].items()):
 				self.printMissingTypes(filename, err)
-		print()
+		click.echo()
 
 
 	def validate(self):
@@ -143,7 +143,7 @@ class Validator:
 			dialog = DialogValidation(module)
 			installer = InstallValidation(module)
 			talk = TalkValidation(module)
-			if self._dialog and dialog.validate():
+			if self._dialog and dialog.validate(self._verbosity):
 				err = 1
 				self._result[dialog.moduleAuthor][dialog.moduleName]['dialogValidation'] = dialog.validModules
 			else:
@@ -163,12 +163,12 @@ class Validator:
 
 	def printResult(self):
 		for author, _module in sorted(self._result.items()):
-			print(colored('\n{:s}'.format(author), 'green', attrs=['reverse', 'bold']))
+			click.secho('\n{}'.format(author), fg='green', reverse=True, bold=True)
 			for module, validate in sorted(_module.items()):
 				if all(not valid for valid in validate.values()):
-					self.indentPrint(2, colored('{:s}'.format(module), 'green', attrs=['bold']), 'valid')
+					self.indentPrint(2, click.style('{}'.format(module), fg='green', bold=True), 'valid')
 					continue
-				self.indentPrint(2, colored('{:s}'.format(module), 'red', attrs=['bold']), 'invalid')
+				self.indentPrint(2, click.style('{}'.format(module), fg='red', bold=True), 'invalid')
 				if self._installer:
 					self.printInstaller(validate['installerValidation'])
 				if self._dialog:

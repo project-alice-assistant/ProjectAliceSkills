@@ -1,40 +1,30 @@
-import argparse
 import sys
+import click
 
 from src.Validator import Validator
 
-parser = argparse.ArgumentParser(description='decide which files to validate')
-parser.add_argument('--all', help='run all validation tasks', action='store_true')
-parser.add_argument('--install', help='validate installers', action='store_true')
-parser.add_argument('--dialog', help='validate dialog files', action='store_true')
-parser.add_argument('--talk', help='validate talk files', action='store_true')
-parser.add_argument('--quiet', help='validate talk files', action='store_true')
+@click.command(context_settings={'help_option_names':['--help', '-h']})
+@click.option('--all', '-a', 'allOpt', is_flag=True, help='run all validation tasks')
+@click.option('--install', '-i', is_flag=True, help='validate installers')
+@click.option('--dialog', '-d', is_flag=True, help='validate dialog files')
+@click.option('--talk', '-t', is_flag=True, help='validate files')
+@click.option('-v', '--verbose', count=True, help='verbosity to print')
+def validate(allOpt: bool, install: bool, dialog: bool, talk: bool, verbose: int):
+	"""
+	This is the Command Line Interface of the JsonValidator for all Modules
+	of Project Alice. Currently the following commands are supported.
+	"""
+	if allOpt:
+		install = dialog = talk = True
+	if True in (install, dialog, talk):
+		valid = Validator(installer=install, dialog=dialog, talk=talk, verbosity=verbose)
+		error = valid.validate()
+		valid.printResult()
+		sys.exit(error)
+	else:
+		click.echo(click.get_current_context().get_help())
 
-if len(sys.argv) == 1:
-	parser.print_help(sys.stderr)
-	sys.exit(1)
-args = parser.parse_args()
 
-installer = False
-dialog = False
-talk = False
-warnings = True
-
-if args.all:
-	installer = True
-	dialog = True
-	talk = True
-
-if args.install:
-	installer = True
-if args.dialog:
-	dialog = True
-if args.talk:
-	talk = True
-if args.quiet:
-	warnings = False
-
-valid = Validator(installer=installer, dialog=dialog, talk=talk, warnings=warnings)
-error = valid.validate()
-valid.printResult()
-sys.exit(error)
+if __name__ == '__main__':
+	# pylint: disable=no-value-for-parameter
+	validate()
