@@ -106,7 +106,7 @@ class AliceCore(Module):
 
 
 	def onUserCancel(self, session: DialogSession):
-		if self.delayed:
+		if self.delayed: # type: ignore
 			self.delayed = False
 
 			if not self.ThreadManager.getLock('AddingWakeword').isSet():
