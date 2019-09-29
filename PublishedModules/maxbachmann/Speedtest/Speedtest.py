@@ -36,7 +36,7 @@ class Speedtest(Module):
 
 	def executeSpeedtest(self):
 		try:
-			servers = []
+			servers: list = list()
 			speed = speedtest.Speedtest()
 			speed.get_servers(servers)
 			speed.get_best_server()
