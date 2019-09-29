@@ -1,4 +1,5 @@
 import json
+from collections import deque
 
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
@@ -19,7 +20,7 @@ class ContextSensitive(Module):
 			self._INTENT_EDIT_THIS
 		]
 
-		self._history = list()
+		self._history = deque(list(), 10)
 		self._sayHistory = dict()
 
 		super().__init__(self._SUPPORTED_INTENTS)
@@ -72,30 +73,21 @@ class ContextSensitive(Module):
 				data['customData'] = customData
 				session.payload = json.dumps(data)
 
-			self._history.append(session)
-
-			if len(self._history) > 10:
-				self._history.pop(0)
+			self._history.appendleft(session)
 		except Exception as e:
 			self._logger.error('Error in {} module: {}'.format(self.name, e))
 
 
 	def lastMessage(self):
-		return self._history[-1]
+		return self._history[-1] if self._history else None
 
 
 	def addChat(self, text, siteId):
 		if siteId not in self._sayHistory.keys():
-			self._sayHistory[siteId] = list()
+			self._sayHistory[siteId] = deque(list(), 10)
 
-		self._sayHistory[siteId].append(text)
-
-		if len(self._sayHistory[siteId]) > 10:
-			self._sayHistory[siteId].pop(0)
+		self._sayHistory[siteId].appendleft(text)
 
 
 	def getLastChat(self, siteId):
-		if siteId not in self._sayHistory or not self._sayHistory[siteId]:
-			return self.randomTalk('nothing')
-
-		return self._sayHistory[siteId][-1]
+		return self._sayHistory[siteId][-1] if self._sayHistory.get(siteId) else self.randomTalk('nothing')
