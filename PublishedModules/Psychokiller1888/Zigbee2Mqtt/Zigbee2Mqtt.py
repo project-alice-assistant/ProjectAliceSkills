@@ -47,10 +47,9 @@ WantedBy=multi-user.target""".format(getpass.getuser())
 
 		filepath = Path(commons.rootDir(), 'zigbee2mqtt.service')
 		filepath.write_text(service)
-		subprocess.run(['sudo', 'mv', Path(filepath), '/etc/systemd/system/zigbee2mqtt.service'])
+		subprocess.run(['sudo', 'mv', str(filepath), '/etc/systemd/system/zigbee2mqtt.service'])
 		subprocess.run(['sudo', 'systemctl', 'daemon-reload'])
 
 
 	def onMessage(self, intent: str, session: DialogSession) -> bool:
-		if not self.filterIntent(intent, session):
-			return False
+		return False
