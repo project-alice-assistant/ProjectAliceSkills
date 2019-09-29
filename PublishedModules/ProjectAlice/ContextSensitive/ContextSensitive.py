@@ -1,4 +1,5 @@
 import json
+from typing import Dict, Deque
 from collections import deque
 
 from core.base.model.Intent import Intent
@@ -20,8 +21,8 @@ class ContextSensitive(Module):
 			self._INTENT_EDIT_THIS
 		]
 
-		self._history = deque(list(), 10)
-		self._sayHistory = dict()
+		self._history: Deque = deque(list(), 10)
+		self._sayHistory: Dict[str, Deque] = dict()
 
 		super().__init__(self._SUPPORTED_INTENTS)
 
@@ -82,12 +83,12 @@ class ContextSensitive(Module):
 		return self._history[-1] if self._history else None
 
 
-	def addChat(self, text, siteId):
-		if siteId not in self._sayHistory.keys():
+	def addChat(self, text: str, siteId: str):
+		if siteId not in self._sayHistory:
 			self._sayHistory[siteId] = deque(list(), 10)
 
 		self._sayHistory[siteId].appendleft(text)
 
 
-	def getLastChat(self, siteId):
+	def getLastChat(self, siteId: str):
 		return self._sayHistory[siteId][-1] if self._sayHistory.get(siteId) else self.randomTalk('nothing')

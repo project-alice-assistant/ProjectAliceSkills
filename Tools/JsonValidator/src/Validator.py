@@ -1,6 +1,6 @@
 from collections import defaultdict
 from pathlib import Path
-from typing import Union
+from typing import Optional
 
 import click
 
@@ -87,7 +87,7 @@ class Validator:
 		self.indentPrint(8, '-', error)
 
 
-	def printInstaller(self, error: Union[dict, bool]):
+	def printInstaller(self, error: Optional[dict]):
 		if not error:
 			self.indentPrint(4, click.style('Installer', bold=True), 'valid')
 		else:
@@ -100,7 +100,7 @@ class Validator:
 		click.echo()
 
 
-	def printDialog(self, error: Union[dict, bool]):
+	def printDialog(self, error: Optional[dict]):
 		if not error:
 			self.indentPrint(4, click.style('Dialog files', bold=True), 'valid')
 		else:
@@ -121,7 +121,7 @@ class Validator:
 		click.echo()
 
 
-	def printTalk(self, error: Union[dict, bool]):
+	def printTalk(self, error: Optional[dict]):
 		if not error:
 			self.indentPrint(4, click.style('Talk files', bold=True), 'valid')
 		else:

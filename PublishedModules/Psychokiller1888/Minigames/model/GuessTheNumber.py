@@ -19,7 +19,7 @@ class GuessTheNumber(MiniGame):
 	def __init__(self):
 		super().__init__()
 		self._number = 0
-		self._start = 0
+		self._start: float = 0
 
 
 	@property

@@ -1,4 +1,5 @@
 # pylint: skip-file
+# mypy: ignore-errors
 """
 phue by Nathanaël Lécaudé - A Philips Hue Python library
 Contributions by Marshall Perrin, Justin Lintz
