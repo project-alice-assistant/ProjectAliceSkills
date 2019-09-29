@@ -1,4 +1,6 @@
 import json
+from pathlib import Path
+from typing import Generator
 
 from src.Validation import Validation
 
@@ -12,7 +14,7 @@ class TalkValidation(Validation):
 
 
 	@property
-	def jsonFiles(self) -> list:
+	def jsonFiles(self) -> Generator[Path, None, None]:
 		return self._modulePath.glob('talks/*.json')
 
 

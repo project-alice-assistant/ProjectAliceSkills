@@ -1,4 +1,5 @@
 import re
+from typing import Match
 from collections import defaultdict
 
 class DialogTemplate:
@@ -27,11 +28,10 @@ class DialogTemplate:
 
 	@property
 	def shortUtterances(self) -> dict:
-		def upperRepl(match):
+		def upperRepl(match: Match) -> str:
 			return match.group(1).upper()
 
-
-		utterancesDict = dict()
+		utterancesDict: dict = dict()
 		for intentName, intents in self.intents.items():
 			utterancesDict[intentName] = defaultdict(list)
 			for utterance in intents['utterances']:
@@ -47,7 +47,7 @@ class DialogTemplate:
 
 	@property
 	def utteranceSlots(self) -> dict:
-		utteranceSlotDict = dict()
+		utteranceSlotDict: dict = dict()
 		for intentName, intents in self.intents.items():
 			utteranceSlotDict[intentName] = defaultdict(list)
 			for utterance in intents['utterances']:

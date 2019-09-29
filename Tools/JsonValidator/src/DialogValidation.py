@@ -1,8 +1,7 @@
 import json
 from pathlib import Path
-from typing import Generator
+from typing import Generator, Optional
 from unidecode import unidecode
-#from collections import defaultdict
 
 from snips_nlu_parsers import get_all_builtin_entities
 from src.DialogTemplate import DialogTemplate
@@ -18,7 +17,7 @@ class DialogValidation(Validation):
 
 
 	@property
-	def jsonFiles(self) -> list:
+	def jsonFiles(self) -> Generator[Path, None, None]:
 		return self._modulePath.glob('dialogTemplate/*.json')
 
 
@@ -29,11 +28,11 @@ class DialogValidation(Validation):
 
 
 	@staticmethod
-	def installerJsonFiles(modulePath: str) -> Generator[Path, None, None]:
-		return Path(modulePath).glob('*.install')
+	def installerJsonFiles(modulePath: Path) -> Generator[Path, None, None]:
+		return modulePath.glob('*.install')
 
 
-	def searchModule(self, moduleName: str) -> Path:
+	def searchModule(self, moduleName: str) -> Optional[Path]:
 		for module in self._basePath.glob('PublishedModules/*/*'):
 			if module.name == moduleName:
 				return module
@@ -54,7 +53,7 @@ class DialogValidation(Validation):
 		return modules
 
 
-	def getCoreModules(self) -> list:
+	def getCoreModules(self) -> Generator[Path, None, None]:
 		return (self._basePath/'PublishedModules/ProjectAlice').glob('*')
 
 
@@ -140,7 +139,7 @@ class DialogValidation(Validation):
 			for intentName, shortUtterances in DialogTemplate(data).shortUtterances.items():
 				for shortUtterance, utterances in shortUtterances.items():
 					if len(utterances) > 1:
-						self._error = 1
+						self._error = True
 						jsonPath[intentName][shortUtterance] = utterances
 
 

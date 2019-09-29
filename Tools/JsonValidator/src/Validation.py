@@ -1,6 +1,7 @@
 import json
 from collections import defaultdict
 from pathlib import Path
+from typing import Generator
 
 from abc import ABC, abstractmethod
 from jsonschema import Draft7Validator, exceptions
@@ -13,7 +14,7 @@ class Validation(ABC):
 		self._validModule = self.infinidict()
 		self._dirPath = Path(__file__).resolve().parent
 		self._basePath = self._dirPath.parent.parent.parent
-		self._error = 0
+		self._error = False
 
 
 	def infinidict(self):
@@ -33,7 +34,7 @@ class Validation(ABC):
 
 	@property
 	@abstractmethod
-	def jsonFiles(self) -> list:
+	def jsonFiles(self) -> Generator[Path, None, None]:
 		pass
 
 
@@ -48,12 +49,12 @@ class Validation(ABC):
 
 
 	def validateSyntax(self, file: Path) -> dict:
-		data = dict()
+		data: dict = dict()
 		try:
 			data = json.loads(file.read_text())
 		except ValueError as e:
 			self._validModule['syntax'][file.name] = str(e)
-			self._error = 1
+			self._error = True
 		return data
 
 
@@ -69,7 +70,7 @@ class Validation(ABC):
 			try:
 				Draft7Validator(schema).validate(data)
 			except exceptions.ValidationError:
-				self._error = 1
+				self._error = True
 				for error in sorted(Draft7Validator(schema).iter_errors(data), key=str):
 					jsonPath.append(error.message)
 
