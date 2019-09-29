@@ -20,6 +20,21 @@ class Telemetry(Module):
 
 		super().__init__(self._SUPPORTED_INTENTS)
 
+		self._telemetryUnits = {
+			'airQuality': '%',
+			'co2': 'ppm',
+			'gas': 'ppm',
+			'gust_angle': '°',
+			'gust_strength': 'km/h',
+			'humidity': '%',
+			'light': 'lux',
+			'pressure': 'mb',
+			'rain': 'mm',
+			'temperature': '°C',
+			'wind_angle': '°',
+			'wind_strength': 'km/h'
+		}
+
 
 	def onMessage(self, intent: str, session: DialogSession) -> bool:
 		if not self.filterIntent(intent, session):
@@ -44,24 +59,7 @@ class Telemetry(Module):
 
 			data = self.TelemetryManager.getData(siteId=siteId, ttype=telemetryType)
 			if data and 'value' in data:
-				answer = data['value']
-				if telemetryType == 'temperature':
-					answer += '°C'
-				elif telemetryType == 'pressure':
-					answer += 'mb'
-				elif telemetryType in ('humidity', 'airQuality'):
-					answer += '%'
-				elif telemetryType == 'light':
-					answer += 'lux'
-				elif telemetryType in ('gas', 'co2'):
-					answer += 'ppm'
-				elif telemetryType == 'rain':
-					answer += 'mm'
-				elif telemetryType in ('wind_strength', 'gust_strength'):
-					answer += 'km/h'
-				elif telemetryType in ('wind_angle', 'gust_angle'):
-					answer += '°'
-
+				answer = data['value'] + self._telemetryUnits.get(telemetryType, '')
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('answerInstant').format(answer))
 			else:
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('noData'))
