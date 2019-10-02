@@ -17,8 +17,8 @@
 	],
 	"confirmGlobalStop": [
 		"Ok",
-		"Ok, ich höre auf",
-		"Einschließlich"
+		"Fertig",
+		"Ok, ich höre auf"
 	],
 	"confirmIgnore": [
 		"Ok, Ich werde dieses Gerät ignorieren"
