@@ -749,7 +749,7 @@ class AliceCore(Module):
 
 	@staticmethod
 	def restart():
-		subprocess.run(['sudo', 'restart', 'ProjectAlice'])
+		subprocess.run(['sudo', 'systemctl', 'restart', 'ProjectAlice'])
 
 
 	def cancelUnregister(self):
