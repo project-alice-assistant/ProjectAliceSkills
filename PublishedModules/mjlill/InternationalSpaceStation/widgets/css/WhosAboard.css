@@ -1,0 +1,10 @@
+.WhosAboard_astronaut_list {
+	margin-top: 10px;
+	list-style-type: none;
+}
+
+.WhosAboard_astonaut_list_item {
+	color: #d1d1d1;
+	font-size: 1em;
+	margin-top: 8px;
+}
