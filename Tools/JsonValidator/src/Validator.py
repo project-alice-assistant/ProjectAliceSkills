@@ -34,6 +34,12 @@ class Validator:
 		if errorList:
 			self.indentPrint(6, 'missing slot translation in', filename + ':')
 			self.printErrorList(errorList, 8)
+	
+
+	def printMissingIntents(self, filename: str, errorList: list):
+		if errorList:
+			self.indentPrint(6, 'missing intent translation in', filename + ':')
+			self.printErrorList(errorList, 8)
 
 
 	def printDuplicates(self, filename: str, duplicates: dict):
@@ -112,6 +118,8 @@ class Validator:
 				self.printSchemaErrors(filename, err)
 			for filename, err in sorted(error['slots'].items()):
 				self.printMissingSlots(filename, err)
+			for filename, err in sorted(error['intents'].items()):
+				self.printMissingIntents(filename, err)
 
 			for filename, types in sorted(error['utterances'].items()):
 				self.printMissingUtteranceSlots(filename, types['missingSlots'])

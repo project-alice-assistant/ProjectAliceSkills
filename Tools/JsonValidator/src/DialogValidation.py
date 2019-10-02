@@ -111,6 +111,24 @@ class DialogValidation(Validation):
 						if missingValues:
 							self._error = True
 							jsonPath['missingSlotValue'][intentName][slot] = missingValues
+		
+	
+	def validateIntents(self) -> None:
+		allIntents = dict()
+		# get intents from all json files of a module
+		for file in self.jsonFiles:
+			# get data and check whether it is valid
+			data = self.validateSyntax(file)
+			allIntents.update(DialogTemplate(data).intents)
+
+		# check whether the same intents appear in all files
+		for file in self.jsonFiles:
+			# get data and check whether it is valid
+			data = self.validateSyntax(file)
+			missingIntents = [k for k in allIntents if k not in DialogTemplate(data).intents]
+			self._validModule['intents'][file.name] = missingIntents
+			if missingIntents:
+				self._error = True
 
 
 	def validateSlots(self) -> None:
@@ -146,6 +164,7 @@ class DialogValidation(Validation):
 	def validate(self, verbosity: int = 0) -> bool:
 		self.validateSchema()
 		self.validateSlots()
+		self.validateIntents()
 		if verbosity:
 			self.searchDuplicateUtterances()
 		self.validateIntentSlots()
