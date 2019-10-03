@@ -157,7 +157,7 @@ class BringShoppingList(Module):
 		items = self._getShopItems(session, intent)
 		if items:
 			added, exist = self._addItemInt(items)
-			self.endDialog(session.sessionId, self._combineLists('add', 'state_con', 'end', 'add_f', added, exist))
+			self.endDialog(session.sessionId, self._combineLists('add', 'add_f', added, exist))
 		else:
 			self.continueDialog(
 				sessionId=session.sessionId,
@@ -171,7 +171,7 @@ class BringShoppingList(Module):
 		items = self._getShopItems(session, intent)
 		if items:
 			removed, failed = self._deleteItemInt(items)
-			self.endDialog(session.sessionId, self._combineLists('rem', 'state_con', 'end', 'rem_f', removed, failed))
+			self.endDialog(session.sessionId, self._combineLists('rem', 'rem_f', removed, failed))
 		else:
 			self.continueDialog(
 				sessionId=session.sessionId,
@@ -185,7 +185,7 @@ class BringShoppingList(Module):
 		items = self._getShopItems(session, intent)
 		if items:
 			found, missing = self._checkListInt(items)
-			self.endDialog(session.sessionId, text=self._combineLists('chk', 'state_con', 'end', 'chk_f', found, missing))
+			self.endDialog(session.sessionId, text=self._combineLists('chk', 'chk_f', found, missing))
 		else:
 			self.continueDialog(
 				sessionId=session.sessionId,
@@ -202,8 +202,7 @@ class BringShoppingList(Module):
 
 
 	#### List/Text operations
-	# noinspection PyUnusedLocal
-	def _combineLists(self, strFirst: str, strConn: str, strEnd: str, strSecond: str, first: list, second: list) -> str:
+	def _combineLists(self, strFirst: str, strSecond: str, first: list, second: list) -> str:
 		"""
 		Combines two lists(if filled)
 		first+CONN+second
