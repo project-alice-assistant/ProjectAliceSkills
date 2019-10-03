@@ -198,9 +198,14 @@ WIDGET_CSS = '''.{widgetName} {
 	font-size: 1.5em;
 }'''
 
+WIDGET_JS = '''$(function(){});'''
+
 WIDGET_TEMPLATE = '''<div class="{widget}" id="{widget}">
 	<div class="icon">
 		<i class="fas fa-cross"></i>
+	</div>
+	<div>
+		
 	</div>
 </div>'''
 
@@ -340,19 +345,19 @@ def createInstallFile(modulePath, answers):
 	print('Creating install file')
 	langs = ''
 	for lang in answers['langs']:
-		langs += '\n\t\t\t"{}",'.format(lang)
+		langs += f'\n\t\t\t"{lang}",'
 	if answers['langs']:
 		langs = langs[:-1] + '\n\t\t'
 
 	pipRequirements = ''
 	for req in reqs:
-		pipRequirements += '\n\t\t"{}",'.format(req)
+		pipRequirements += f'\n\t\t"{req}",'
 	if reqs:
 		pipRequirements = pipRequirements[:-1] + '\n\t'
 
 	systemRequirements = ''
 	for req in sysreqs:
-		systemRequirements += '\n\t\t"{}",'.format(req)
+		systemRequirements += f'\n\t\t"{req}",'
 	if sysreqs:
 		systemRequirements = systemRequirements[:-1] + '\n\t'
 
@@ -371,7 +376,7 @@ def createInstallFile(modulePath, answers):
 def createDialogTemplates(modulePath, answers):
 	print('Creating dialog template(s)')
 	for lang in answers['langs']:
-		print('- {}'.format(lang))
+		print(f'- {lang}')
 		Path(modulePath, 'dialogTemplate', lang).with_suffix('.json').write_text(
 			DIALOG_TEMPLATE.format(
 				moduleName=answers['moduleName'],
@@ -383,14 +388,14 @@ def createDialogTemplates(modulePath, answers):
 def createTalks(modulePath, answers):
 	print('Creating talks')
 	for lang in answers['langs']:
-		print('- {}'.format(lang))
+		print(f'- {lang}')
 		Path(modulePath, 'talks', lang).with_suffix('.json').write_text(TALKS)
 
 def createReadme(modulePath, answers):
 	print('Creating readme file')
 	langs = ''
 	for lang in answers['langs']:
-		langs += '  - {}\n'.format(lang)
+		langs += f'  - {lang}\n'
 
 	Path(modulePath, 'README.md').write_text(
 		README.format(
@@ -408,7 +413,7 @@ def createWidgets(modulePath, answers):
 			{
 				'type'   : 'confirm',
 				'name'   : 'widgets',
-				'message': 'Are you planning on creating widgets for you module? Widgets are used on the\ninterface to display quick informations that your module can return',
+				'message': 'Are you planning on creating widgets for you module? Widgets are used on the\ninterface to display quick informations that your module can return' if not moduleWidgets else 'Any other widgets?',
 				'default': False
 			},
 			{
@@ -441,12 +446,11 @@ def createWidgets(modulePath, answers):
 
 		for widget in moduleWidgets:
 			widget = str(widget).title().replace(' ', '')
-			(modulePath / 'widgets' / 'css' / '{}.css'.format(widget)).write_text(WIDGET_CSS.format(widgetName=widget))
-
-			(modulePath / 'widgets' / 'js' / '{}.js'.format(widget)).touch(exist_ok=True)
-			(modulePath / 'widgets' / 'lang' / '{}.lang.json').write_text('{}')
-			(modulePath / 'widgets' / 'templates' / '{}.html'.format(widget)).write_text(WIDGET_TEMPLATE.format(widgetName=widget))
-			(modulePath / 'widgets' / '{}.py'.format(widget)).write_text(WIDGET_CLASS.format(widgetName=widget))
+			(modulePath / 'widgets' / 'css' / f'{widget}.css').write_text(WIDGET_CSS.replace('{widgetName}', widget))
+			(modulePath / 'widgets' / 'js' / f'{widget}.js').write_text(WIDGET_JS)
+			(modulePath / 'widgets' / 'lang' / f'{widget}.lang.json').write_text('{}')
+			(modulePath / 'widgets' / 'templates' / f'{widget}.html').write_text(WIDGET_TEMPLATE.format(widget=widget))
+			(modulePath / 'widgets' / f'{widget}.py').write_text(WIDGET_CLASS.format(widget=widget))
 
 
 def cli():
