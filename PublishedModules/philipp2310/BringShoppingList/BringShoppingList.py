@@ -115,9 +115,11 @@ class BringShoppingList(Module):
 		removed = list()
 		exist = list()
 		for item in items:
-			if any(entr['name'].lower() == item.lower() for entr in bringItems):
-				self._getBring().recent_item(item)
-				removed.append(item)
+			for entr in bringItems:
+				if entr['name'].lower() == item.lower():
+					self._getBring().recent_item(entr['name'])
+					removed.append(item)
+					break	
 			else:
 				exist.append(item)
 		return removed, exist
