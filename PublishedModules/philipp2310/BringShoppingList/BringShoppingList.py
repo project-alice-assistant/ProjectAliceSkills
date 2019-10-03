@@ -199,16 +199,20 @@ class BringShoppingList(Module):
 	# first+CONN+second
 	# first
 	# second
+	# noinspection PyUnusedLocal
 	def _combineLists(self, str_first: str, str_conn: str, str_end: str, str_second: str, first: list, second: list) -> str:
-		strout = ""
+		backup = ''
+		strout = ''
 		if first:
 			strout = self._getTextForList(str_first, first)
+
 		if second:
 			backup = strout  # don't overwrite added list... even if empty!
 			strout = self._getTextForList(str_second, second)
 
 		if first and second:
 			strout = self.randomTalk('state_con', [backup, strout])
+
 		return strout
 
 
