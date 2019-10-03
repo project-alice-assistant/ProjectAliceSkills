@@ -225,7 +225,7 @@ class BringShoppingList(Module):
 	### Return if MULTI or ONE entry and creates list for multi ( XXX, XXX and XXX )
 	def _getDefaultList(self, items: list) -> Tuple[str, str]:
 		if len(items) > 1:
-			return 'multi', self.randomTalk('gen_list', ['", ".'join(items[:-1]), items[-1]])
+			return 'multi', self.randomTalk('gen_list', ['", "'.join(items[:-1]), items[-1]])
 		elif len(items) == 1:
 			return 'one', items[0]
 		else:
