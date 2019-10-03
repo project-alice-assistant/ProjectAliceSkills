@@ -150,7 +150,7 @@ class BringShoppingList(Module):
 
 
 	### INTENTS ###
-	def addItem(self, session: DialogSession, intent: str) -> bool:
+	def addItem(self, session: DialogSession, intent: str):
 		"""Add item to list"""
 		items = self._getShopItems(session, intent)
 		if items:
@@ -162,10 +162,9 @@ class BringShoppingList(Module):
 				text=self.randomTalk('add_what'),
 				intentFilter=[self._INTENT_ANSWER_SHOP, self._INTENT_SPELL_WORD],
 				previousIntent=self._INTENT_ADD_ITEM)
-		return True
 
 
-	def deleteItem(self, session: DialogSession, intent: str) -> bool:
+	def deleteItem(self, session: DialogSession, intent: str):
 		"""Delete items from list"""
 		items = self._getShopItems(session, intent)
 		if items:
@@ -177,10 +176,9 @@ class BringShoppingList(Module):
 				text=self.randomTalk('del_what'),
 				intentFilter=[self._INTENT_ANSWER_SHOP, self._INTENT_SPELL_WORD],
 				previousIntent=self._INTENT_DEL_ITEM)
-		return True
 
 
-	def checkList(self, session: DialogSession, intent: str) -> bool:
+	def checkList(self, session: DialogSession, intent: str):
 		"""check if item is in list"""
 		items = self._getShopItems(session, intent)
 		if items:
@@ -192,15 +190,13 @@ class BringShoppingList(Module):
 				text=self.randomTalk('chk_what'),
 				intentFilter=[self._INTENT_ANSWER_SHOP, self._INTENT_SPELL_WORD],
 				previousIntent=self._INTENT_CHECK_LIST)
-		return True
 
 
-	def readList(self, session: DialogSession) -> bool:
+	def readList(self, session: DialogSession):
 		"""read the content of the list"""
 		items = self._getBring().get_items().json()['purchase']
 		itemlist = [l['name'] for l in items]
 		self.endDialog(session.sessionId, self._getTextForList('read', itemlist))
-		return True
 
 
 	#### List/Text operations
