@@ -25,14 +25,14 @@ class BringShoppingList(Module):
 
 
 	def __init__(self):
-		self._SUPPORTED_INTENTS = [self._INTENT_ADD_ITEM,
-		                           self._INTENT_DEL_ITEM,
-		                           self._INTENT_READ_LIST,
-		                           self._INTENT_CHECK_LIST,
-		                           self._INTENT_DEL_LIST,
-		                           self._INTENT_CONF_DEL,
-		                           self._INTENT_ANSWER_SHOP,
-		                           self._INTENT_SPELL_WORD]
+		self._SUPPORTED_INTENTS = [ self._INTENT_ADD_ITEM,
+									self._INTENT_DEL_ITEM,
+									self._INTENT_READ_LIST,
+									self._INTENT_CHECK_LIST,
+									self._INTENT_DEL_LIST,
+									self._INTENT_CONF_DEL,
+									self._INTENT_ANSWER_SHOP,
+									self._INTENT_SPELL_WORD]
 
 		super().__init__(self._SUPPORTED_INTENTS)
 
@@ -41,8 +41,8 @@ class BringShoppingList(Module):
 		self._uuidlist = self.getConfig('bringListUUID')
 
 
-	# handle all incoming messages
 	def onMessage(self, intent: str, session: DialogSession) -> bool:
+		"""handle all incoming messages"""
 		if not self.filterIntent(intent, session):
 			return False
 
@@ -56,9 +56,9 @@ class BringShoppingList(Module):
 			self.checkList(session, intent)
 		elif intent == self._INTENT_DEL_LIST:
 			self.continueDialog(sessionId=session.sessionId,
-			                    text=self.randomTalk('chk_del_all'),
-			                    intentFilter=[self._INTENT_CONF_DEL],
-			                    previousIntent=self._INTENT_DEL_LIST)
+								text=self.randomTalk('chk_del_all'),
+								intentFilter=[self._INTENT_CONF_DEL],
+								previousIntent=self._INTENT_DEL_LIST)
 		elif session.previousIntent == self._INTENT_DEL_LIST and intent == self._INTENT_CONF_DEL:
 			if commons.isYes(session):
 				self.endDialog(session.sessionId, self._deleteCompleteList())
@@ -68,23 +68,28 @@ class BringShoppingList(Module):
 		return True
 
 
-	# get an instance of the BringApi
 	def _getBring(self) -> BringApi:
+		"""get an instance of the BringApi"""
 		return BringApi(self._uuid, self._uuidlist)
 
 
-	# perform the deletion of the complete list
-	# -> load all and delete item by item
 	def _deleteCompleteList(self) -> str:
+		"""
+		perform the deletion of the complete list
+		-> load all and delete item by item
+		"""
+		
 		items = self._getBring().get_items().json()['purchase']
 		for item in items:
 			self._getBring().recent_item(item['name'])
 		return self.randomTalk('del_all')
 
 
-	# internal method to add a list of items to the shopping list
-	# returns two splitted lists of successfull adds and items that already existed.
 	def _addItemInt(self, items) -> Tuple[list, list]:
+		"""
+		internal method to add a list of items to the shopping list
+		:returns: two splitted lists of successfull adds and items that already existed.
+		"""
 		bringItems = self._getBring().get_items().json()['purchase']
 		added = list()
 		exist = list()
@@ -97,9 +102,12 @@ class BringShoppingList(Module):
 		return added, exist
 
 
-	# internal method to delete a list of items from the shopping list
-	# returns two splitted lists of successfull deletions and items that were not on the list
+
 	def _deleteItemInt(self, items) -> Tuple[list, list]:
+		"""
+		internal method to delete a list of items from the shopping list
+		:returns: two splitted lists of successfull deletions and items that were not on the list
+		"""
 		bringItems = self._getBring().get_items().json()['purchase']
 		removed = list()
 		exist = list()
@@ -112,9 +120,11 @@ class BringShoppingList(Module):
 		return removed, exist
 
 
-	# internal method to check if a list of items is on the shopping list
-	# returns two splitted lists, one with the items on the list, one with the missing ones
 	def _checkListInt(self, check) -> Tuple[list, list]:
+		"""
+		internal method to check if a list of items is on the shopping list
+		:returns: two splitted lists, one with the items on the list, one with the missing ones
+		"""
 		bringItems = self._getBring().get_items().json()['purchase']
 		found = list()
 		missing = list()
@@ -141,10 +151,10 @@ class BringShoppingList(Module):
 
 
 	### INTENTS ###
-	## Add item to list
 	def addItem(self, session, intent) -> bool:
+		"""Add item to list"""
 		items = self._getShopItems(session, intent)
-		if len(items) > 0:
+		if items:
 			added, exist = self._addItemInt(items)
 			self.endDialog(session.sessionId, self._combineLists('add', 'state_con', 'end', 'add_f', added, exist))
 		else:
@@ -156,10 +166,10 @@ class BringShoppingList(Module):
 		return True
 
 
-	## Delete items from list
 	def deleteItem(self, session, intent) -> bool:
+		"""Delete items from list"""
 		items = self._getShopItems(session, intent)
-		if len(items) > 0:
+		if items:
 			removed, failed = self._deleteItemInt(items)
 			self.endDialog(session.sessionId, self._combineLists('rem', 'state_con', 'end', 'rem_f', removed, failed))
 		else:
@@ -171,10 +181,10 @@ class BringShoppingList(Module):
 		return True
 
 
-	## check if item is in list
 	def checkList(self, session, intent) -> bool:
+		"""check if item is in list"""
 		items = self._getShopItems(session, intent)
-		if len(items) > 0:
+		if items:
 			found, missing = self._checkListInt(items)
 			self.endDialog(session.sessionId, self._combineLists('chk', 'state_con', 'end', 'chk_f', found, missing))
 		else:
@@ -186,8 +196,8 @@ class BringShoppingList(Module):
 		return True
 
 
-	## read the content of the list
 	def readList(self, session) -> bool:
+		"""read the content of the list"""
 		items = self._getBring().get_items().json()['purchase']
 		itemlist = [l['name'] for l in items]
 		self.endDialog(session.sessionId, self._getTextForList('read', itemlist))
