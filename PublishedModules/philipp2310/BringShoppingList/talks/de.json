@@ -74,7 +74,7 @@
 				    "short":["{} nicht gefunden"]
 				  },
 				  
-	"rem_what":{ "default":["Was soll ich von der Einkaufsliste nehmen?"
+	"rem_what":{ "default":["Was soll ich von der Einkaufsliste nehmen?",
             				"Was soll ich vom Einkaufszettel streichen?"],
             	 "short":["Was soll ich löschen?"]
                },
