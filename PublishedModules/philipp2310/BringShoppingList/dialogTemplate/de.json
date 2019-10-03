@@ -6761,7 +6761,7 @@
 		{
 			"name": "confDelList_bringshop",
 			"description": "Bestätige das Löschen der Einkaufsliste",
-			"enabledByDefault": true,
+			"enabledByDefault": false,
 			"utterances": [
 				"{yes:=>Answer}"
 			],
