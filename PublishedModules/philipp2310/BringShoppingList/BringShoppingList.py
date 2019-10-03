@@ -1,5 +1,5 @@
-from BringApi.BringApi import BringApi
 from typing import Tuple
+from BringApi.BringApi import BringApi
 
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
@@ -25,14 +25,15 @@ class BringShoppingList(Module):
 
 
 	def __init__(self):
-		self._SUPPORTED_INTENTS = [ self._INTENT_ADD_ITEM,
-									self._INTENT_DEL_ITEM,
-									self._INTENT_READ_LIST,
-									self._INTENT_CHECK_LIST,
-									self._INTENT_DEL_LIST,
-									self._INTENT_CONF_DEL,
-									self._INTENT_ANSWER_SHOP,
-									self._INTENT_SPELL_WORD]
+		self._SUPPORTED_INTENTS = [
+			self._INTENT_ADD_ITEM,
+			self._INTENT_DEL_ITEM,
+			self._INTENT_READ_LIST,
+			self._INTENT_CHECK_LIST,
+			self._INTENT_DEL_LIST,
+			self._INTENT_CONF_DEL,
+			self._INTENT_ANSWER_SHOP,
+			self._INTENT_SPELL_WORD]
 
 		super().__init__(self._SUPPORTED_INTENTS)
 
@@ -55,10 +56,11 @@ class BringShoppingList(Module):
 		elif intent == self._INTENT_CHECK_LIST or (intent in (self._INTENT_ANSWER_SHOP, self._INTENT_SPELL_WORD) and session.previousIntent == self._INTENT_CHECK_LIST):
 			self.checkList(session, intent)
 		elif intent == self._INTENT_DEL_LIST:
-			self.continueDialog(sessionId=session.sessionId,
-								text=self.randomTalk('chk_del_all'),
-								intentFilter=[self._INTENT_CONF_DEL],
-								previousIntent=self._INTENT_DEL_LIST)
+			self.continueDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk('chk_del_all'),
+				intentFilter=[self._INTENT_CONF_DEL],
+				previousIntent=self._INTENT_DEL_LIST)
 		elif session.previousIntent == self._INTENT_DEL_LIST and intent == self._INTENT_CONF_DEL:
 			if commons.isYes(session):
 				self.endDialog(session.sessionId, text=self._deleteCompleteList())
@@ -201,7 +203,7 @@ class BringShoppingList(Module):
 
 	#### List/Text operations
 	# noinspection PyUnusedLocal
-	def _combineLists(self, str_first: str, str_conn: str, str_end: str, str_second: str, first: list, second: list) -> str:
+	def _combineLists(self, strFirst: str, strConn: str, strEnd: str, strSecond: str, first: list, second: list) -> str:
 		"""
 		Combines two lists(if filled)
 		first+CONN+second
@@ -211,11 +213,11 @@ class BringShoppingList(Module):
 		backup = ''
 		strout = ''
 		if first:
-			strout = self._getTextForList(str_first, first)
+			strout = self._getTextForList(strFirst, first)
 
 		if second:
 			backup = strout  # don't overwrite added list... even if empty!
-			strout = self._getTextForList(str_second, second)
+			strout = self._getTextForList(strSecond, second)
 
 		if first and second:
 			strout = self.randomTalk('state_con', [backup, strout])
