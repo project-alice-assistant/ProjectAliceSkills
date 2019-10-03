@@ -19,7 +19,7 @@ class BringShoppingList(Module):
 	_INTENT_READ_LIST = Intent('readList_bringshop')
 	_INTENT_CHECK_LIST = Intent('checkList_bringshop', isProtected=True)
 	_INTENT_DEL_LIST = Intent('deleteList_bringshop')
-	_INTENT_CONF_DEL = Intent('confDelList_bringshop', isProtected=True)
+	_INTENT_CONF_DEL = Intent('AnswerYesOrNo', isProtected=True)
 	_INTENT_ANSWER_SHOP = Intent('whatItem_bringshop', isProtected=True)
 	_INTENT_SPELL_WORD = Intent('SpellWord', isProtected=True)
 

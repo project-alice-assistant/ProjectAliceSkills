@@ -9196,21 +9196,6 @@
 				"Please delete the complete shopping list."
 			],
 			"slots": []
-		},
-		{
-			"name": "confDelList_bringshop",
-			"description": "Confirm the deletion of the shopping list",
-			"enabledByDefault": false,
-			"utterances": [
-				"{yes:=>Answer}"
-			],
-			"slots": [{
-				"name": "Answer",
-				"description": null,
-				"required": false,
-				"type": "AnswerYesNo",
-				"missingQuestion": ""
-			}]
 		}
 	]
 }
