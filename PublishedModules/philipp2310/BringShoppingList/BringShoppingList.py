@@ -175,7 +175,7 @@ class BringShoppingList(Module):
 		else:
 			self.continueDialog(
 				sessionId=session.sessionId,
-				text=self.randomTalk('del_what'),
+				text=self.randomTalk('rem_what'),
 				intentFilter=[self._INTENT_ANSWER_SHOP, self._INTENT_SPELL_WORD],
 				previousIntent=self._INTENT_DEL_ITEM)
 
