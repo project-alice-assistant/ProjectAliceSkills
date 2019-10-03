@@ -61,7 +61,7 @@ class BringShoppingList(Module):
 								previousIntent=self._INTENT_DEL_LIST)
 		elif session.previousIntent == self._INTENT_DEL_LIST and intent == self._INTENT_CONF_DEL:
 			if commons.isYes(session):
-				self.endDialog(session.sessionId, self._deleteCompleteList())
+				self.endDialog(session.sessionId, text=self._deleteCompleteList())
 			else:
 				self.endDialog(session.sessionId, text=self.randomTalk('nodel_all'))
 
@@ -78,7 +78,6 @@ class BringShoppingList(Module):
 		perform the deletion of the complete list
 		-> load all and delete item by item
 		"""
-		
 		items = self._getBring().get_items().json()['purchase']
 		for item in items:
 			self._getBring().recent_item(item['name'])
@@ -103,7 +102,7 @@ class BringShoppingList(Module):
 
 
 
-	def _deleteItemInt(self, items) -> Tuple[list, list]:
+	def _deleteItemInt(self, items: list) -> Tuple[list, list]:
 		"""
 		internal method to delete a list of items from the shopping list
 		:returns: two splitted lists of successfull deletions and items that were not on the list
@@ -120,7 +119,7 @@ class BringShoppingList(Module):
 		return removed, exist
 
 
-	def _checkListInt(self, check) -> Tuple[list, list]:
+	def _checkListInt(self, check: list) -> Tuple[list, list]:
 		"""
 		internal method to check if a list of items is on the shopping list
 		:returns: two splitted lists, one with the items on the list, one with the missing ones
@@ -136,8 +135,8 @@ class BringShoppingList(Module):
 		return found, missing
 
 
-	# get the values of shopItem as a list of strings
-	def _getShopItems(self, session, intent) -> list:
+	def _getShopItems(self, session: DialogSession, intent: str) -> list:
+		"""get the values of shopItem as a list of strings"""
 		items = list()
 		if intent == self._INTENT_SPELL_WORD:
 			item = ''.join([slot.value['value'] for slot in session.slotsAsObjects['Letters']])
@@ -151,7 +150,7 @@ class BringShoppingList(Module):
 
 
 	### INTENTS ###
-	def addItem(self, session, intent) -> bool:
+	def addItem(self, session: DialogSession, intent: str) -> bool:
 		"""Add item to list"""
 		items = self._getShopItems(session, intent)
 		if items:
@@ -166,7 +165,7 @@ class BringShoppingList(Module):
 		return True
 
 
-	def deleteItem(self, session, intent) -> bool:
+	def deleteItem(self, session: DialogSession, intent: str) -> bool:
 		"""Delete items from list"""
 		items = self._getShopItems(session, intent)
 		if items:
@@ -181,12 +180,12 @@ class BringShoppingList(Module):
 		return True
 
 
-	def checkList(self, session, intent) -> bool:
+	def checkList(self, session: DialogSession, intent: str) -> bool:
 		"""check if item is in list"""
 		items = self._getShopItems(session, intent)
 		if items:
 			found, missing = self._checkListInt(items)
-			self.endDialog(session.sessionId, self._combineLists('chk', 'state_con', 'end', 'chk_f', found, missing))
+			self.endDialog(session.sessionId, text=self._combineLists('chk', 'state_con', 'end', 'chk_f', found, missing))
 		else:
 			self.continueDialog(
 				sessionId=session.sessionId,
@@ -196,7 +195,7 @@ class BringShoppingList(Module):
 		return True
 
 
-	def readList(self, session) -> bool:
+	def readList(self, session: DialogSession) -> bool:
 		"""read the content of the list"""
 		items = self._getBring().get_items().json()['purchase']
 		itemlist = [l['name'] for l in items]
@@ -205,12 +204,14 @@ class BringShoppingList(Module):
 
 
 	#### List/Text operations
-	### Combines two lists(if filled)
-	# first+CONN+second
-	# first
-	# second
 	# noinspection PyUnusedLocal
 	def _combineLists(self, str_first: str, str_conn: str, str_end: str, str_second: str, first: list, second: list) -> str:
+		"""
+		Combines two lists(if filled)
+		first+CONN+second
+		first
+		second
+		"""
 		backup = ''
 		strout = ''
 		if first:
@@ -226,14 +227,14 @@ class BringShoppingList(Module):
 		return strout
 
 
-	### Combine entries of list into wrapper sentence
 	def _getTextForList(self, pref: str, l1: list) -> str:
+		"""Combine entries of list into wrapper sentence"""
 		category, strout = self._getDefaultList(l1)
 		return self.randomTalk(pref + '_' + category, [strout])
 
 
-	### Return if MULTI or ONE entry and creates list for multi ( XXX, XXX and XXX )
 	def _getDefaultList(self, items: list) -> Tuple[str, str]:
+		"""Return if MULTI or ONE entry and creates list for multi ( XXX, XXX and XXX )"""
 		if len(items) > 1:
 			return 'multi', self.randomTalk('gen_list', ['", "'.join(items[:-1]), items[-1]])
 		elif len(items) == 1:
