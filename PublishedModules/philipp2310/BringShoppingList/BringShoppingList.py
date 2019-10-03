@@ -1,4 +1,4 @@
-from typing import Tuple
+from typing import Tuple, Callable
 from BringApi.BringApi import BringApi
 
 from core.base.model.Intent import Intent
@@ -48,13 +48,16 @@ class BringShoppingList(Module):
 			return False
 
 		if intent == self._INTENT_ADD_ITEM or (intent in (self._INTENT_ANSWER_SHOP, self._INTENT_SPELL_WORD) and session.previousIntent == self._INTENT_ADD_ITEM):
-			self.addItem(session, intent)
+			#Add item to list
+			self.editList(session, intent, 'add', self._addItemInt)
 		elif intent == self._INTENT_DEL_ITEM or (intent in (self._INTENT_ANSWER_SHOP, self._INTENT_SPELL_WORD) and session.previousIntent == self._INTENT_DEL_ITEM):
-			self.deleteItem(session, intent)
+			#Delete items from list
+			self.editList(session, intent, 'rem', self._deleteItemInt)
 		elif intent == self._INTENT_READ_LIST:
 			self.readList(session)
 		elif intent == self._INTENT_CHECK_LIST or (intent in (self._INTENT_ANSWER_SHOP, self._INTENT_SPELL_WORD) and session.previousIntent == self._INTENT_CHECK_LIST):
-			self.checkList(session, intent)
+			#check if item is in list
+			self.editList(session, intent, 'chk', self._checkListInt)
 		elif intent == self._INTENT_DEL_LIST:
 			self.continueDialog(
 				sessionId=session.sessionId,
@@ -95,13 +98,12 @@ class BringShoppingList(Module):
 		added = list()
 		exist = list()
 		for item in items:
-			if not any(entr['name'] == item for entr in bringItems):
+			if not any(entr['name'].lower() == item.lower() for entr in bringItems):
 				self._getBring().purchase_item(item, "")
 				added.append(item)
 			else:
 				exist.append(item)
 		return added, exist
-
 
 
 	def _deleteItemInt(self, items: list) -> Tuple[list, list]:
@@ -121,7 +123,7 @@ class BringShoppingList(Module):
 		return removed, exist
 
 
-	def _checkListInt(self, check: list) -> Tuple[list, list]:
+	def _checkListInt(self, items: list) -> Tuple[list, list]:
 		"""
 		internal method to check if a list of items is on the shopping list
 		:returns: two splitted lists, one with the items on the list, one with the missing ones
@@ -129,11 +131,11 @@ class BringShoppingList(Module):
 		bringItems = self._getBring().get_items().json()['purchase']
 		found = list()
 		missing = list()
-		for c in check:
-			if any(c == entr['name'] for entr in bringItems):
-				found.append(c)
+		for item in items:
+			if any(entr['name'].lower() == item.lower() for entr in bringItems):
+				found.append(item)
 			else:
-				missing.append(c)
+				missing.append(item)
 		return found, missing
 
 
@@ -152,71 +154,41 @@ class BringShoppingList(Module):
 
 
 	### INTENTS ###
-	def addItem(self, session: DialogSession, intent: str):
-		"""Add item to list"""
+	def editList(self, session: DialogSession, intent: str, answer: str, action: Callable[[list], Tuple[list, list]]):
 		items = self._getShopItems(session, intent)
 		if items:
-			added, exist = self._addItemInt(items)
-			self.endDialog(session.sessionId, self._combineLists('add', 'add_f', added, exist))
+			successfull, failed = action(items)
+			self.endDialog(session.sessionId, text=self._combineLists(answer, successfull, failed))
 		else:
 			self.continueDialog(
 				sessionId=session.sessionId,
-				text=self.randomTalk('add_what'),
+				text=self.randomTalk(f'{answer}_what'),
 				intentFilter=[self._INTENT_ANSWER_SHOP, self._INTENT_SPELL_WORD],
-				previousIntent=self._INTENT_ADD_ITEM)
-
-
-	def deleteItem(self, session: DialogSession, intent: str):
-		"""Delete items from list"""
-		items = self._getShopItems(session, intent)
-		if items:
-			removed, failed = self._deleteItemInt(items)
-			self.endDialog(session.sessionId, self._combineLists('rem', 'rem_f', removed, failed))
-		else:
-			self.continueDialog(
-				sessionId=session.sessionId,
-				text=self.randomTalk('del_what'),
-				intentFilter=[self._INTENT_ANSWER_SHOP, self._INTENT_SPELL_WORD],
-				previousIntent=self._INTENT_DEL_ITEM)
-
-
-	def checkList(self, session: DialogSession, intent: str):
-		"""check if item is in list"""
-		items = self._getShopItems(session, intent)
-		if items:
-			found, missing = self._checkListInt(items)
-			self.endDialog(session.sessionId, text=self._combineLists('chk', 'chk_f', found, missing))
-		else:
-			self.continueDialog(
-				sessionId=session.sessionId,
-				text=self.randomTalk('chk_what'),
-				intentFilter=[self._INTENT_ANSWER_SHOP, self._INTENT_SPELL_WORD],
-				previousIntent=self._INTENT_CHECK_LIST)
+				previousIntent=intent)
 
 
 	def readList(self, session: DialogSession):
 		"""read the content of the list"""
 		items = self._getBring().get_items().json()['purchase']
-		itemlist = [l['name'] for l in items]
-		self.endDialog(session.sessionId, self._getTextForList('read', itemlist))
+		itemlist = [item['name'] for item in items]
+		self.endDialog(session.sessionId, text=self._getTextForList('read', itemlist))
 
 
 	#### List/Text operations
-	def _combineLists(self, strFirst: str, strSecond: str, first: list, second: list) -> str:
+	def _combineLists(self, answer: str, first: list, second: list) -> str:
 		"""
 		Combines two lists(if filled)
 		first+CONN+second
 		first
 		second
 		"""
-		backup = ''
 		strout = ''
 		if first:
-			strout = self._getTextForList(strFirst, first)
+			strout = self._getTextForList(answer, first)
 
 		if second:
 			backup = strout  # don't overwrite added list... even if empty!
-			strout = self._getTextForList(strSecond, second)
+			strout = self._getTextForList(f'{answer}_f', second)
 
 		if first and second:
 			strout = self.randomTalk('state_con', [backup, strout])
@@ -224,17 +196,12 @@ class BringShoppingList(Module):
 		return strout
 
 
-	def _getTextForList(self, pref: str, l1: list) -> str:
+	def _getTextForList(self, pref: str, items: list) -> str:
 		"""Combine entries of list into wrapper sentence"""
-		category, strout = self._getDefaultList(l1)
-		return self.randomTalk(pref + '_' + category, [strout])
+		if not items:
+			return self.randomTalk(f'{pref}_none')
+		if len(items) == 1:
+			return self.randomTalk(f'{pref}_one', [items[0]])
 
-
-	def _getDefaultList(self, items: list) -> Tuple[str, str]:
-		"""Return if MULTI or ONE entry and creates list for multi ( XXX, XXX and XXX )"""
-		if len(items) > 1:
-			return 'multi', self.randomTalk('gen_list', ['", "'.join(items[:-1]), items[-1]])
-		elif len(items) == 1:
-			return 'one', items[0]
-		else:
-			return 'none', ''
+		value = self.randomTalk('gen_list', ['", "'.join(items[:-1]), items[-1]])
+		return self.randomTalk(f'{pref}_multi', [value])
