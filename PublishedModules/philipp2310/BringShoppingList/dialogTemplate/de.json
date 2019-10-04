@@ -26,9 +26,6 @@
 				"value": "Torx"
 			},
 			{
-				"value": "MondelÄ“z International"
-			},
-			{
 				"value": "Roundup"
 			},
 			{
@@ -38,19 +35,10 @@
 				"value": "IKEA"
 			},
 			{
-				"value": "Magirus-Deutz"
-			},
-			{
 				"value": "Vaseline"
 			},
 			{
 				"value": "Milka"
-			},
-			{
-				"value": "BSH Hausgeräte"
-			},
-			{
-				"value": "Händlermarke"
 			},
 			{
 				"value": "AMD Radeon"
@@ -62,13 +50,7 @@
 				"value": "GoPro"
 			},
 			{
-				"value": "Kaufhof"
-			},
-			{
 				"value": "Fritz-kola"
-			},
-			{
-				"value": "Pimmâ€™s"
 			},
 			{
 				"value": "Xetra"
@@ -323,9 +305,6 @@
 				"value": "Pringles"
 			},
 			{
-				"value": "Marc Oâ€™Polo"
-			},
-			{
 				"value": "RC Cola"
 			},
 			{
@@ -347,7 +326,8 @@
 				"value": "Baileys"
 			},
 			{
-				"value": "M&Mâ€™s"
+				"value": "M&M's",
+				"synonyms": ["M und M", "M und Ms"]
 			},
 			{
 				"value": "Gretsch"
@@ -386,10 +366,12 @@
 				"value": "Pernod"
 			},
 			{
-				"value": "Gordonâ€™s Gin"
+				"value": "Gordon's Gin",
+				"synonyms": ["Gordons","Gordons Gin"]
 			},
 			{
-				"value": "Rauch Fruchtsäfte"
+				"value": "Rauch Fruchtsäfte",
+				"synonyms": ["Rauch Fruchtsaft"]
 			},
 			{
 				"value": "Einweckglas"
@@ -416,13 +398,15 @@
 				"value": "Maraschino"
 			},
 			{
-				"value": "Hasseröder"
+				"value": "Hasseröder",
+				"synonyms": ["Hasseröder Bier"]
 			},
 			{
 				"value": "Cinzano Vermouth"
 			},
 			{
-				"value": "Spreewälder Gurken"
+				"value": "Spreewälder Gurken",
+				"synonyms": ["Spreewälder"]
 			},
 			{
 				"value": "Eskimo"
@@ -440,7 +424,8 @@
 				"value": "JVC"
 			},
 			{
-				"value": "Tucher Bräu"
+				"value": "Tucher Bräu",
+				"synonyms": ["Tucher Bier"]
 			},
 			{
 				"value": "HP Sauce"
@@ -449,10 +434,12 @@
 				"value": "Magnetophon"
 			},
 			{
-				"value": "Bitburger Braugruppe"
+				"value": "Bitburger",
+				"synonyms": ["Bitburger Bier"]
 			},
 			{
-				"value": "Tanqueray"
+				"value": "Tanqueray",
+				"synonyms": ["Tanqueray Gin"]
 			},
 			{
 				"value": "Natel"
@@ -473,7 +460,8 @@
 				"value": "Citizen Watch"
 			},
 			{
-				"value": "Ficken"
+				"value": "Ficken",
+				"synonyms": ["Ficken Liquer", "Ficken Lickör"]
 			},
 			{
 				"value": "Cohiba"
@@ -524,13 +512,16 @@
 				"value": "Hipp Holding"
 			},
 			{
-				"value": "Köstritzer Schwarzbierbrauerei"
+				"value": "Köstritzer Schwarzbier",
+				"synonyms": ["Köstritzer", "Köstritzer Bier"]
 			},
 			{
-				"value": "UHU"
+				"value": "UHU",
+				"synonyms": ["UHU Kleber"]
 			},
 			{
-				"value": "Kinder Happy Hippo"
+				"value": "Kinder Happy Hippo",
+				"synonyms": ["Happy Hippo", "Happy Hippos"]
 			},
 			{
 				"value": "Staropramen"
@@ -548,7 +539,7 @@
 				"value": "Red Bull Cola"
 			},
 			{
-				"value": "Mon ChÃ©ri"
+				"value": "Mon Cheri"
 			},
 			{
 				"value": "Crisco"
@@ -596,13 +587,10 @@
 				"value": "Perrier"
 			},
 			{
-				"value": "CÃ®roc"
-			},
-			{
 				"value": "Infinity"
 			},
 			{
-				"value": "NescafÃ©"
+				"value": "Nescafe"
 			},
 			{
 				"value": "Centrino"
@@ -638,7 +626,7 @@
 				"value": "Leffe"
 			},
 			{
-				"value": "Dom PÃ©rignon"
+				"value": "Dom Perignon"
 			},
 			{
 				"value": "Spatenbräu"
@@ -677,7 +665,8 @@
 				"value": "Bulthaup"
 			},
 			{
-				"value": "Privatbrauerei Eichbaum"
+				"value": "Eichbaum",
+				"synonyms": ["Eichbaum Bier"]
 			},
 			{
 				"value": "Jupiler"
@@ -719,7 +708,8 @@
 				"value": "Cenovis"
 			},
 			{
-				"value": "Neapolitaner-Waffeln"
+				"value": "Neapolitaner",
+				"synonyms": ["Neapolitaner-Waffeln"]
 			},
 			{
 				"value": "Storch Heinar"
@@ -737,10 +727,10 @@
 				"value": "Würzburger Hofbräu"
 			},
 			{
-				"value": "Uncle Benâ€™s"
+				"value": "Uncle Ben's"
 			},
 			{
-				"value": "BÃ©nÃ©dictine"
+				"value": "Benedictine"
 			},
 			{
 				"value": "Sonnar"
@@ -758,10 +748,8 @@
 				"value": "Newcastle Brown Ale"
 			},
 			{
-				"value": "Flug- und Fahrzeugwerke Altenrhein"
-			},
-			{
-				"value": "Lipton"
+				"value": "Lipton Eistee",
+				"synonyms": ["Lipton"]
 			},
 			{
 				"value": "PEZ"
@@ -776,9 +764,6 @@
 				"value": "Crodino"
 			},
 			{
-				"value": "Kaiserliche Porzellanmanufaktur St. Petersburg"
-			},
-			{
 				"value": "AMD FirePro"
 			},
 			{
@@ -791,7 +776,8 @@
 				"value": "Dinkelacker"
 			},
 			{
-				"value": "Auchentoshan"
+				"value": "Auchentoshan",
+				"synonyms": ["Auchentoshan Whiskey"]
 			},
 			{
 				"value": "Fromms"
@@ -827,16 +813,14 @@
 				"value": "Hubba Bubba"
 			},
 			{
-				"value": "Glashütter Uhrenbetrieb"
-			},
-			{
 				"value": "Zanussi"
 			},
 			{
 				"value": "Titanal"
 			},
 			{
-				"value": "Wasa"
+				"value": "Wasa",
+				"synonyms": ["Wasa Knäckebrot"]
 			},
 			{
 				"value": "Music Man"
@@ -845,7 +829,7 @@
 				"value": "Kuemmerling"
 			},
 			{
-				"value": "Ballantineâ€™s"
+				"value": "Ballantine's"
 			},
 			{
 				"value": "Panasonic"
@@ -854,16 +838,19 @@
 				"value": "S3 Savage"
 			},
 			{
-				"value": "Duracell"
+				"value": "Duracell",
+				"synonyms": ["Duracell Batterien"]
 			},
 			{
 				"value": "Bremach"
 			},
 			{
-				"value": "Vittel"
+				"value": "Vittel",
+				"synonyms": ["Vittel Wasser"]
 			},
 			{
-				"value": "Agfa Agfacolor"
+				"value": "Agfacolor",
+				"synonyms": ["Agfa Agfacolor", "Agfa"]
 			},
 			{
 				"value": "Steinhäger"
@@ -890,7 +877,8 @@
 				"value": "Pit Bull"
 			},
 			{
-				"value": "Freiberger Brauhaus"
+				"value": "Freiberger",
+				"synonyms": ["Freiberger Bier"]
 			},
 			{
 				"value": "Squier"
@@ -912,9 +900,6 @@
 			},
 			{
 				"value": "Kitkat"
-			},
-			{
-				"value": "VelkopopovickÃ½ Kozel"
 			},
 			{
 				"value": "Dreher"
@@ -959,25 +944,19 @@
 				"value": "Triple P"
 			},
 			{
-				"value": "Kleincomputer robotron KC 87"
-			},
-			{
 				"value": "Adidas Superstar"
 			},
 			{
 				"value": "After Eight"
 			},
 			{
-				"value": "Fishermanâ€™s Friend"
+				"value": "Fisherman's Friend"
 			},
 			{
 				"value": "Poljot"
 			},
 			{
 				"value": "Stolichnaya"
-			},
-			{
-				"value": "Hemisphärensynchronisation"
 			},
 			{
 				"value": "Tecnomatix"
@@ -989,7 +968,8 @@
 				"value": "Nappo"
 			},
 			{
-				"value": "The Macallan"
+				"value": "The Macallan",
+				"synonyms": ["Macallan","Macallan Whiskey"]
 			},
 			{
 				"value": "Montecristo"
@@ -1007,10 +987,11 @@
 				"value": "Nürnberger Lebkuchen"
 			},
 			{
-				"value": "O.b."
+				"value": "O.b.",
+				"synonyms": ["O B"]
 			},
 			{
-				"value": "NestlÃ© Purina PetCare"
+				"value": "Nestle Purina PetCare"
 			},
 			{
 				"value": "Kinder Joy"
@@ -1019,7 +1000,7 @@
 				"value": "Sechsämtertropfen"
 			},
 			{
-				"value": "RÃ©my Martin"
+				"value": "Remy Martin"
 			},
 			{
 				"value": "Radio Schleswig-Holstein"
@@ -1031,7 +1012,8 @@
 				"value": "George Dickel"
 			},
 			{
-				"value": "Granini"
+				"value": "Granini",
+				"synonyms": ["Granini Saft","Granini Frutchtsaft"]
 			},
 			{
 				"value": "Tessar"
@@ -1073,9 +1055,6 @@
 				"value": "UrDinkel"
 			},
 			{
-				"value": "Brezelbäckerei Ditsch"
-			},
-			{
 				"value": "Mobylette"
 			},
 			{
@@ -1086,9 +1065,6 @@
 			},
 			{
 				"value": "H. & J. Brüggen"
-			},
-			{
-				"value": "EnsaÃ¯mada de Mallorca"
 			},
 			{
 				"value": "Winston"
@@ -1125,9 +1101,6 @@
 			},
 			{
 				"value": "A1 Steak Sauce"
-			},
-			{
-				"value": "XXXX"
 			},
 			{
 				"value": "Birra Moretti"
@@ -1193,9 +1166,6 @@
 				"value": "Vogue"
 			},
 			{
-				"value": "ZacuscÄƒ"
-			},
-			{
 				"value": "Weetabix"
 			},
 			{
@@ -1217,13 +1187,14 @@
 				"value": "Aquascutum"
 			},
 			{
-				"value": "Südtiroler Apfel g.g.A."
+				"value": "Südtiroler Apfel"
 			},
 			{
 				"value": "Lotec"
 			},
 			{
-				"value": "Braumanufaktur Härke"
+				"value": "Härke",
+				"synonyms": ["Härke Bier"]
 			},
 			{
 				"value": "Jumpman"
@@ -1245,9 +1216,6 @@
 			},
 			{
 				"value": "Lurex"
-			},
-			{
-				"value": "8Ã—4"
 			},
 			{
 				"value": "Casali"
@@ -1298,13 +1266,15 @@
 				"value": "Sandeman"
 			},
 			{
-				"value": "Privatbrauerei Ernst Barre"
+				"value": "Ernst Barre",
+				"synonyms": ["Ernst Barre Bier"]
 			},
 			{
 				"value": "Skol"
 			},
 			{
-				"value": "Kitzmann-Bräu"
+				"value": "Kitzmann-Bräu",
+				"synonyms": ["Kitzmann","Kitzmann Bier"]
 			},
 			{
 				"value": "Mapa"
@@ -1314,9 +1284,6 @@
 			},
 			{
 				"value": "Kiton"
-			},
-			{
-				"value": "CÃ´te dâ€™Or"
 			},
 			{
 				"value": "Capri-Sonne"
@@ -1346,13 +1313,7 @@
 				"value": "Classic Malts"
 			},
 			{
-				"value": "PartagÃ¡s"
-			},
-			{
 				"value": "Sandberg Guitars"
-			},
-			{
-				"value": "KarlovaÄ�ko"
 			},
 			{
 				"value": "Pocky"
@@ -1361,7 +1322,8 @@
 				"value": "Knockando"
 			},
 			{
-				"value": "Klosterbrauerei Andechs"
+				"value": "Andechser",
+				"synonyms": ["Andechs","Andechser Bier"]
 			},
 			{
 				"value": "Dubonnet"
@@ -1380,9 +1342,6 @@
 			},
 			{
 				"value": "PowerBar"
-			},
-			{
-				"value": "C. Jul. Herbertz"
 			},
 			{
 				"value": "Butterfinger"
@@ -1412,7 +1371,7 @@
 				"value": "SKYY Vodka"
 			},
 			{
-				"value": "Fosterâ€™s Lager"
+				"value": "Foster's Lager"
 			},
 			{
 				"value": "Glen Elgin"
@@ -1437,9 +1396,6 @@
 			},
 			{
 				"value": "Bullyland"
-			},
-			{
-				"value": "LefÃ¨vre-Utile"
 			},
 			{
 				"value": "TABAC Original"
@@ -1490,7 +1446,8 @@
 				"value": "Harbin-Bier"
 			},
 			{
-				"value": "Privatbrauerei Herrenhausen"
+				"value": "Herrenhausen",
+				"synonyms": ["Herrenhausen Bier"]
 			},
 			{
 				"value": "Vimto"
@@ -1502,10 +1459,8 @@
 				"value": "MegaFon"
 			},
 			{
-				"value": "Brauerei Pinkus Müller"
-			},
-			{
-				"value": "Wikimedia-Bewegung"
+				"value": "Pinkus Müller Bier",
+				"synonyms": ["Pinkus Bier"]
 			},
 			{
 				"value": "Mr. Tom"
@@ -1520,7 +1475,8 @@
 				"value": "Dippels Tieröl"
 			},
 			{
-				"value": "Darmstädter Privatbrauerei"
+				"value": "Darmstädter Bier",
+				"synonyms": ["Darmstädter"]
 			},
 			{
 				"value": "Nemiroff Wodka"
@@ -1547,13 +1503,8 @@
 				"value": "MAHA"
 			},
 			{
-				"value": "Games for Windows"
-			},
-			{
-				"value": "Winterthur Group"
-			},
-			{
-				"value": "Privatbrauerei Waldhaus"
+				"value": "Waldhaus Bier",
+				"synonyms": ["Waldhaus"]
 			},
 			{
 				"value": "Charvel"
@@ -1619,9 +1570,6 @@
 				"value": "Thomas Pink"
 			},
 			{
-				"value": "áº¼fini"
-			},
-			{
 				"value": "Bruder"
 			},
 			{
@@ -1643,7 +1591,7 @@
 				"value": "ATI Mobility Radeon"
 			},
 			{
-				"value": "Rowntreeâ€™s"
+				"value": "Rowntree's"
 			},
 			{
 				"value": "Lätta"
@@ -1727,7 +1675,8 @@
 				"value": "Watchman"
 			},
 			{
-				"value": "Privatbrauerei Hofmühl"
+				"value": "Hofmühl Bier",
+				"synonyms": ["Hofmühl"]
 			},
 			{
 				"value": "Slawa"
@@ -1766,7 +1715,8 @@
 				"value": "Skilandis"
 			},
 			{
-				"value": "Pringle of Scotland"
+				"value": "Pringles",
+				"synonyms": ["Pringle"]
 			},
 			{
 				"value": "Sadowsky"
@@ -1790,31 +1740,24 @@
 				"value": "Heidegeist"
 			},
 			{
-				"value": "ErÅ‘s Pista"
-			},
-			{
 				"value": "Macduff"
 			},
 			{
 				"value": "Carling"
 			},
 			{
-				"value": "C.P. Company"
-			},
-			{
-				"value": "PrÃ©sident"
+				"value": "President",
+				"synonyms": ["President Käse"]
 			},
 			{
 				"value": "Mobil 1"
 			},
 			{
-				"value": "Brauerei Aying"
+				"value": "Aying Bier",
+				"synonyms": ["Aying"]
 			},
 			{
 				"value": "Kvint"
-			},
-			{
-				"value": "MahÃ³n-Menorca"
 			},
 			{
 				"value": "Raketa"
@@ -1829,10 +1772,7 @@
 				"value": "TREND"
 			},
 			{
-				"value": "BolÃ­var"
-			},
-			{
-				"value": "Taiwan Beer"
+				"value": "Taiwan Bier"
 			},
 			{
 				"value": "Adams-Farwell"
@@ -1850,7 +1790,8 @@
 				"value": "Tecnica"
 			},
 			{
-				"value": "Privatbrauerei Wittingen"
+				"value": "Wittinger Bier",
+				"synonyms": ["Wittinger"]
 			},
 			{
 				"value": "Cubatabaco"
@@ -1859,10 +1800,7 @@
 				"value": "Contraves"
 			},
 			{
-				"value": "Casciotta dâ€™Urbino"
-			},
-			{
-				"value": "C. G. Conn"
+				"value": "Casciotta d'Urbino"
 			},
 			{
 				"value": "Libella"
@@ -1898,9 +1836,6 @@
 				"value": "SARAR"
 			},
 			{
-				"value": "KMC Music Inc."
-			},
-			{
 				"value": "Country-of-Origin-Effekt"
 			},
 			{
@@ -1908,9 +1843,6 @@
 			},
 			{
 				"value": "Hoyo de Monterrey"
-			},
-			{
-				"value": "Eilenburger Motoren-Werk"
 			},
 			{
 				"value": "Vinea"
@@ -1928,7 +1860,8 @@
 				"value": "Justicialista"
 			},
 			{
-				"value": "Schlossbrauerei Ellingen"
+				"value": "Ellinger Bier",
+				"synonyms": ["Ellinger"]
 			},
 			{
 				"value": "Radegast"
@@ -1967,16 +1900,14 @@
 				"value": "Danzka"
 			},
 			{
-				"value": "Distelhäuser Brauerei"
+				"value": "Distelhäuser Bier",
+				"synonyms": ["Distelhäuser"]
 			},
 			{
 				"value": "Iceberg"
 			},
 			{
 				"value": "Kusmi Tea"
-			},
-			{
-				"value": "H+H International"
 			},
 			{
 				"value": "Warka"
@@ -2063,7 +1994,7 @@
 				"value": "Teaninich"
 			},
 			{
-				"value": "Reeseâ€™s Peanut Butter Cups"
+				"value": "Reese's Peanut Butter Cups"
 			},
 			{
 				"value": "Martin Committee"
@@ -2078,16 +2009,7 @@
 				"value": "Tyrconnell"
 			},
 			{
-				"value": "Moi-mÃªme-MoitiÃ©"
-			},
-			{
-				"value": "Brauerei Ustersbach"
-			},
-			{
-				"value": "Lemon & Paeroa"
-			},
-			{
-				"value": "H. Upmann"
+				"value": "Ustersbach"
 			},
 			{
 				"value": "ATI FireMV"
@@ -2097,9 +2019,6 @@
 			},
 			{
 				"value": "Zuiko"
-			},
-			{
-				"value": "GuaranÃ¡ Jesus"
 			},
 			{
 				"value": "Larrivee Guitars"
@@ -2135,13 +2054,7 @@
 				"value": "Kutaisski Awtomobilny Sawod"
 			},
 			{
-				"value": "Adler-Brauerei Coswig"
-			},
-			{
 				"value": "Touch! Generations"
-			},
-			{
-				"value": "SokÃ³Å‚"
 			},
 			{
 				"value": "Elopak"
@@ -2174,7 +2087,7 @@
 				"value": "S3 ViRGE"
 			},
 			{
-				"value": "CableDSL"
+				"value": "Cable DSL"
 			},
 			{
 				"value": "Raschera"
@@ -2192,9 +2105,6 @@
 				"value": "Electrotren"
 			},
 			{
-				"value": "SÅ�kenbicha"
-			},
-			{
 				"value": "Trojan"
 			},
 			{
@@ -2210,7 +2120,8 @@
 				"value": "Hydrolastic"
 			},
 			{
-				"value": "Brauerei Kesselsdorf"
+				"value": "Kesselsdorf Bier",
+				"synonyms": ["Kesseldorfer"]
 			},
 			{
 				"value": "Cruzan Rum"
@@ -2234,7 +2145,7 @@
 				"value": "Pobeda"
 			},
 			{
-				"value": "Limone di Siracusa g.g.A."
+				"value": "Limone di Siracusa"
 			},
 			{
 				"value": "Strathmill"
@@ -2246,10 +2157,12 @@
 				"value": "Phat Farm"
 			},
 			{
-				"value": "SchloÃŸbrauerei Rheder"
+				"value": "Rheder Bier",
+				"synonyms": ["Rheder"]
 			},
 			{
-				"value": "Lindener Aktien-Brauerei"
+				"value": "Lindener Bier",
+				"synonyms": ["Lindener"]
 			},
 			{
 				"value": "ATI Radeon Xpress"
@@ -2403,7 +2316,7 @@
 				"value": "Essenerbrot"
 			},
 			{
-				"value": "WeiÃŸbrot"
+				"value": "Weißbrot"
 			},
 			{
 				"value": "Kipferl"
@@ -2415,7 +2328,7 @@
 				"value": "Challa"
 			},
 			{
-				"value": "CroÃ»ton"
+				"value": "Crouton"
 			},
 			{
 				"value": "Maisbrot"
@@ -2428,9 +2341,6 @@
 			},
 			{
 				"value": "Panettone"
-			},
-			{
-				"value": "BÃ¡nh mÃ¬"
 			},
 			{
 				"value": "Stockbrot"
@@ -2454,9 +2364,6 @@
 				"value": "Mutschel"
 			},
 			{
-				"value": "PÃ£o de queijo"
-			},
-			{
 				"value": "Mlinci"
 			},
 			{
@@ -2464,9 +2371,6 @@
 			},
 			{
 				"value": "Zopf"
-			},
-			{
-				"value": "LaufabrauÃ°"
 			},
 			{
 				"value": "Anpan"
@@ -2488,9 +2392,6 @@
 			},
 			{
 				"value": "Roti Canai"
-			},
-			{
-				"value": "Ã–lbrot"
 			},
 			{
 				"value": "Kozunak"
@@ -2724,7 +2625,7 @@
 				"value": "Catjangbohne"
 			},
 			{
-				"value": "SpieÃŸ-Melde"
+				"value": "Spieß-Melde"
 			},
 			{
 				"value": "Schwertbohne"
@@ -2784,10 +2685,10 @@
 				"value": "Absinth"
 			},
 			{
-				"value": "CachaÃ§a"
+				"value": "Cachaca"
 			},
 			{
-				"value": "RakÄ±"
+				"value": "Raki"
 			},
 			{
 				"value": "Aquavit"
@@ -2839,9 +2740,6 @@
 			},
 			{
 				"value": "Potcheen"
-			},
-			{
-				"value": "ÈšuicÄƒ"
 			},
 			{
 				"value": "Queimada"
@@ -2968,7 +2866,8 @@
 				"value": "Zigarrenbrand"
 			},
 			{
-				"value": "Braeburn"
+				"value": "Braeburn",
+				"synonyms": ["Breaburn Äpfel"]
 			},
 			{
 				"value": "Golden Delicious"
@@ -3093,19 +2992,21 @@
 				"value": "Teigtasche"
 			},
 			{
-				"value": "Spiegelei"
+				"value": "Spiegelei",
+				"synonyms": ["Spiegeleier"]
 			},
 			{
 				"value": "Kohlroulade"
 			},
 			{
-				"value": "SoufflÃ©"
+				"value": "Souffle"
 			},
 			{
 				"value": "Balut"
 			},
 			{
-				"value": "gekochtes Ei"
+				"value": "gekochtes Ei",
+				"synonyms": ["gekochte Eier", "vorgekochtes Ei"]
 			},
 			{
 				"value": "Eiklar"
@@ -3148,7 +3049,7 @@
 				"value": "Dotter"
 			},
 			{
-				"value": "SpieÃŸbraten"
+				"value": "Spießbraten"
 			},
 			{
 				"value": "Magenbrot"
@@ -3158,9 +3059,6 @@
 			},
 			{
 				"value": "Eisriegel"
-			},
-			{
-				"value": "BÃªtises de Cambrai"
 			},
 			{
 				"value": "Pastelles"
@@ -3216,7 +3114,7 @@
 				"value": "Schinken"
 			},
 			{
-				"value": "Ã„pfel",
+				"value": "Äpfel",
 				"synonyms": ["Apfel"]
 			},
 			{
@@ -3352,7 +3250,7 @@
 			},
 			{
 				"value": "Pommes",
-				"synonyms": ["Pommes Frites", "Pom Frit"]
+				"synonyms": ["Pommes Frites", "Pom Frit", "Fritten", "Pom Fritz"]
 			},
 			{
 				"value": "Pizza"
@@ -3446,7 +3344,7 @@
 				"value": "Schokosauce"
 			},
 			{
-				"value": "WeiÃŸe Schokolade"
+				"value": "Weiße Schokolade"
 			},
 			{
 				"value": "Zartbitter Schokolade"
@@ -3536,7 +3434,7 @@
 				"value": "Grünkohl"
 			},
 			{
-				"value": "Grüner Paprika",
+				"value": "Grüne Paprika",
 				"synonyms": ["Paprika grün"]
 			},
 			{
@@ -3604,7 +3502,7 @@
 				"synonyms": ["Oliven schwarz"]
 			},
 			{
-				"value": "WeiÃŸkohl"
+				"value": "Weißkohl"
 			},
 			{
 				"value": "Kohlrübe"
@@ -3796,7 +3694,7 @@
 				"value": "Physalis"
 			},
 			{
-				"value": "SüÃŸkirschen"
+				"value": "Süßkirschen"
 			},
 			{
 				"value": "Weintrauben"
@@ -3824,7 +3722,7 @@
 				"value": "Maiskolben"
 			},
 			{
-				"value": "WeiÃŸe Bohnen"
+				"value": "Weiße Bohnen"
 			},
 			{
 				"value": "Hagebutten"
@@ -3855,7 +3753,7 @@
 				"value": "Gerstengras Pulver"
 			},
 			{
-				"value": "SüÃŸkartoffeln"
+				"value": "Süßkartoffeln"
 			},
 			{
 				"value": "Knoblauch"
@@ -3993,7 +3891,7 @@
 				"value": "Sojaflocken"
 			},
 			{
-				"value": "EiweiÃŸpulver"
+				"value": "Eiweißpulver"
 			},
 			{
 				"value": "Kürbiskernmehl"
@@ -4003,7 +3901,7 @@
 				"synonyms": ["Weizenkleber"]
 			},
 			{
-				"value": "EiweiÃŸbrötchen"
+				"value": "Eiweißbrötchen"
 			},
 			{
 				"value": "Mandelmehl"
@@ -4015,7 +3913,7 @@
 				"value": "Hefeflocken"
 			},
 			{
-				"value": "SüÃŸlupinenmehl"
+				"value": "Süßlupinenmehl"
 			},
 			{
 				"value": "Kakao"
@@ -4030,7 +3928,7 @@
 				"value": "Chia Brot"
 			},
 			{
-				"value": "EiweiÃŸbrot"
+				"value": "Eiweißbrot"
 			},
 			{
 				"value": "Gelatine"
@@ -4297,7 +4195,7 @@
 				"value": "Panko"
 			},
 			{
-				"value": "WeizengrieÃŸ"
+				"value": "Weizengrieß"
 			},
 			{
 				"value": "Roggenknäckebrot"
@@ -4882,8 +4780,8 @@
 				"value": "Sardinen"
 			},
 			{
-				"value": "Stelze",
-				"synonyms": ["Eisbein"]
+				"value": "Eisbein",
+				"synonyms": ["Stelze"]
 			},
 			{
 				"value": "Rumpsteak"
@@ -4932,7 +4830,7 @@
 				"value": "Aal"
 			},
 			{
-				"value": "WeiÃŸwurst"
+				"value": "Weißwurst"
 			},
 			{
 				"value": "Gänseleberpastete"
@@ -4979,7 +4877,7 @@
 				"value": "Eigelb"
 			},
 			{
-				"value": "PfefferbeiÃŸer"
+				"value": "Pfefferbeißer"
 			},
 			{
 				"value": "Landjäger"
@@ -5249,7 +5147,7 @@
 				"value": "Schwarzer Johannisbeersaft"
 			},
 			{
-				"value": "Reismilch ungesüÃŸt"
+				"value": "Reismilch ungesüßt"
 			},
 			{
 				"value": "Rosewein"
@@ -5264,7 +5162,7 @@
 				"value": "Apfelwein"
 			},
 			{
-				"value": "WeiÃŸwein"
+				"value": "Weißwein"
 			},
 			{
 				"value": "Alkoholfreies Bier",
@@ -5277,7 +5175,7 @@
 				"value": "Radler"
 			},
 			{
-				"value": "WeiÃŸbier",
+				"value": "Weißbier",
 				"synonyms": ["Weizenbier"]
 			},
 			{
@@ -5291,7 +5189,7 @@
 				"value": "Altbier"
 			},
 			{
-				"value": "HeiÃŸe Schokolade"
+				"value": "Heiße Schokolade"
 			},
 			{
 				"value": "Holundersaft"
@@ -5332,7 +5230,7 @@
 				"value": "Grapefruitsaft"
 			},
 			{
-				"value": "FederweiÃŸer"
+				"value": "Federweißer"
 			},
 			{
 				"value": "Kümmerling",
@@ -5618,7 +5516,7 @@
 				"value": "Seitan"
 			},
 			{
-				"value": "GrieÃŸbrei"
+				"value": "Grießbrei"
 			},
 			{
 				"value": "Kartoffelspalten"
@@ -5662,7 +5560,7 @@
 			},
 			{
 				"value": "Knödel",
-				"synonyms": ["KlöÃŸe"]
+				"synonyms": ["Klöße"]
 			},
 			{
 				"value": "Lahmacun"
@@ -5705,9 +5603,6 @@
 				"value": "Essig"
 			},
 			{
-				"value": "Essig Ã–l Dressing"
-			},
-			{
 				"value": "Koriander"
 			},
 			{
@@ -5717,7 +5612,7 @@
 				"value": "Apfelessig"
 			},
 			{
-				"value": "WeiÃŸweinessig"
+				"value": "Weißweinessig"
 			},
 			{
 				"value": "Schnittlauch"
@@ -5741,7 +5636,7 @@
 				"value": "Liebstöckel"
 			},
 			{
-				"value": "BeifuÃŸ"
+				"value": "Beifuß"
 			},
 			{
 				"value": "Rosmarin"
@@ -5816,7 +5711,7 @@
 			},
 			{
 				"value": "Paprikapulver",
-				"synonyms": ["Paprikapulver edelsüÃŸ"]
+				"synonyms": ["Paprikapulver edelsüß"]
 			},
 			{
 				"value": "Paprikapulver Rosenscharf"
@@ -5935,9 +5830,6 @@
 			},
 			{
 				"value": "Gewürze"
-			},
-			{
-				"value": "Ã–l"
 			},
 			{
 				"value": "Gelee"
@@ -6270,7 +6162,7 @@
 				"value": "Wurst"
 			},
 			{
-				"value": "GrieÃŸ"
+				"value": "Grieß"
 			},
 			{
 				"value": "Mandarinen"
@@ -6399,7 +6291,7 @@
 			},
 			{
 				"value": "Süssigkeiten",
-				"synonyms": ["SüÃŸigkeiten"]
+				"synonyms": ["Süßigkeiten"]
 			},
 			{
 				"value": "Putengeschnetzeltes"
