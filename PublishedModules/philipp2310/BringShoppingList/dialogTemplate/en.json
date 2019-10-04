@@ -9176,7 +9176,7 @@
 				       "please add {Bread:=>shopItem} to the shopping list",
 				       "add {Bread:=>shopItem} to our shopping list",
 				       "please add {Bread:=>shopItem} to my shopping list",
-				       "add {Bread:=>shopItem} to my shopping list",
+				       "add {Bread:=>shopItem} to my shopping list"
 		      	],
 			"slots": [{
 				"name": "shopItem",
