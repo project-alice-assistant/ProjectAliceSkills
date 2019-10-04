@@ -6757,21 +6757,6 @@
 				"Du kannst die komplette Einkaufsliste löschen"
 			],
 			"slots": []
-		},
-		{
-			"name": "confDelList_bringshop",
-			"description": "Bestätige das Löschen der Einkaufsliste",
-			"enabledByDefault": true,
-			"utterances": [
-				"{yes:=>Answer}"
-			],
-			"slots": [{
-				"name": "Answer",
-				"description": null,
-				"required": false,
-				"type": "AnswerYesNo",
-				"missingQuestion": ""
-			}]
 		}
 	]
 }
