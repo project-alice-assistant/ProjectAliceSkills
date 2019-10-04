@@ -5753,7 +5753,7 @@
 				"{employé:=>UserAccessLevel}",
 				"{invité:=>UserAccessLevel}",
 				"en tant que {invité:=>UserAccessLevel}",
-				"comme {default:=>UserAccessLevel} s'il te plait",
+				"comme {défaut:=>UserAccessLevel} s'il te plait",
 				"avec les permissions {invité:=>UserAccessLevel}",
 				"avec un accès {employé:=>UserAccessLevel}",
 				"un {enfant:=>UserAccessLevel}",
