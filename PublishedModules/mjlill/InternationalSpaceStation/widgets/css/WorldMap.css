@@ -23,6 +23,7 @@
 }
 
 .WorldMap_satellite {
+	display: none;
 	position: absolute;
 	top: -15px;
 	left: -10px;

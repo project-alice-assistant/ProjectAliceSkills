@@ -12,6 +12,7 @@
 
                 $('.WorldMap_satellite').css('top', y - 10);
                 $('.WorldMap_satellite').css('left', x - 15);
+                $('.WorldMap_satellite').show();
             }
         });
 
