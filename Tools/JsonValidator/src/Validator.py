@@ -124,8 +124,7 @@ class Validator:
 			for filename, types in sorted(error['utterances'].items()):
 				self.printMissingUtteranceSlots(filename, types['missingSlots'])
 				self.printMissingSlotValues(filename, types['missingSlotValue'])
-				if self._verbosity:
-					self.printDuplicates(filename, types['duplicates'])
+				self.printDuplicates(filename, types['duplicates'])
 		click.echo()
 
 

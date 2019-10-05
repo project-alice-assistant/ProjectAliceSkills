@@ -149,12 +149,12 @@ class DialogValidation(Validation):
 				self._error = True
 
 
-	def searchDuplicateUtterances(self) -> None:
+	def searchDuplicateUtterances(self, verbosity: int) -> None:
 		for file in self.jsonFiles:
 			jsonPath = self._validModule['utterances'][file.name]['duplicates']
 			# get data and check whether it is valid
 			data = self.validateSyntax(file)
-			for intentName, shortUtterances in DialogTemplate(data).shortUtterances.items():
+			for intentName, shortUtterances in DialogTemplate(data, verbosity).shortUtterances.items():
 				for shortUtterance, utterances in shortUtterances.items():
 					if len(utterances) > 1:
 						self._error = True
@@ -165,7 +165,6 @@ class DialogValidation(Validation):
 		self.validateSchema()
 		self.validateSlots()
 		self.validateIntents()
-		if verbosity:
-			self.searchDuplicateUtterances()
+		self.searchDuplicateUtterances(verbosity)
 		self.validateIntentSlots()
 		return self._error

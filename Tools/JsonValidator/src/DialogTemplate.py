@@ -4,8 +4,9 @@ from collections import defaultdict
 
 class DialogTemplate:
 
-	def __init__(self, dialogTemplate: dict):
+	def __init__(self, dialogTemplate: dict, verbosity: int = 0):
 		self._dialogTemplate = dialogTemplate
+		self._verbosity = verbosity
 
 
 	@property
@@ -38,7 +39,8 @@ class DialogTemplate:
 				# make utterance lower case, slot name upper case, remove everything but characters and numbers
 				# and make sure there is only one whitespace between two words
 				shortUtterance = utterance.lower()
-				shortUtterance = re.sub(r'{.*?:=>(.*?)}', upperRepl, shortUtterance)
+				if self._verbosity:
+					shortUtterance = re.sub(r'{.*?:=>(.*?)}', upperRepl, shortUtterance)
 				shortUtterance = re.sub(r'[^a-zA-Z1-9 ]', '', shortUtterance)
 				shortUtterance = ' '.join(shortUtterance.split())
 				utterancesDict[intentName][shortUtterance].append(utterance)

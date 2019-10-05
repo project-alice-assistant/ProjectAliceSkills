@@ -43,7 +43,6 @@
 				"Was ist der Luftdruck {draußen:=>Room}",
 				"Wie hoch ist der Luftdruck {draußen:=>Room}",
 				"Luftdruck in der {Küche:=>Room}",
-				"Was ist der Luftdruck {draußen:=>Room}",
 				"Aktueller Luftdruck im {Wohnzimmer:=>Room}",
 				"Luftdruck im {Schlafzimmer:=>Room}"
 			],
