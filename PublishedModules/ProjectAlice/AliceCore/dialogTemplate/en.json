@@ -13329,8 +13329,7 @@
 			"description": "User speaks the Hey Alice wakeword",
 			"enabledByDefault": false,
 			"utterances": [
-				"Hey Alice",
-				"hey alice"
+				"Hey Alice"
 			],
 			"slots": []
 		},
