@@ -1,0 +1,660 @@
+{
+	"module": "News",
+	"icon": "lamp",
+	"description": "Inquire the latest news",
+	"slotTypes": [
+		{
+			"name": "NewsCategory",
+			"matchingStrictness": null,
+			"automaticallyExtensible": false,
+			"useSynonyms": true,
+			"values": [
+				{
+					"value": "business",
+					"synonyms": [
+						"Wirtschaft",
+						"Wirtschafts",
+						"Finanz",
+						"Finanzen"
+					]
+				},
+				{
+					"value": "entertainment",
+					"synonyms": [
+						"Unterhaltung",
+						"Unterhaltungs"
+					]
+				},
+				{
+					"value": "general",
+   					"synonyms": [
+						"Allgemein",
+						"allgemeinen"
+					]
+				},
+				{
+					"value": "health",
+					"synonyms": [
+						"Gesundheit",
+						"Gesundheits"
+					]
+				},
+				{
+					"value": "science",
+					"synonyms": [
+						"Wissenschaft",
+						"Wissenschafts"
+					]
+				},
+				{
+					"value": "sports",
+					"synonyms": [
+						"Sport"
+					]
+				},
+				{
+					"value": "technology",
+					"synonyms": [
+						"Technologie",
+						"Technik",
+						"Tech",
+						"Computer"
+					]
+				}
+			]
+		},
+		{
+			"name": "NewsCountry",
+			"matchingStrictness": null,
+			"automaticallyExtensible": false,
+			"useSynonyms": true,
+			"values": [
+				{
+					"value": "ae",
+					"synonyms": [
+						"Vereinigte Arabische Emirate"
+					]
+				},
+				{
+					"value": "ar",
+					"synonyms": [
+						"Argentinien",
+						"argentinische",
+						"argentinischen"
+					]
+				},
+				{
+					"value": "at",
+					"synonyms": [
+						"Österreich",
+						"österreichische",
+						"österreichischen"
+					]
+				},
+				{
+					"value": "au",
+					"synonyms": [
+						"Australien",
+						"australische",
+						"australischen"
+					]
+				},
+				{
+					"value": "be",
+					"synonyms": [
+						"Belgien",
+						"belgische",
+						"belgischen"
+					]
+				},
+				{
+					"value": "bg",
+					"synonyms": [
+						"Bulgarien",
+						"bulgarische",
+						"bulgarischen"
+					]
+				},
+				{
+					"value": "br",
+					"synonyms": [
+						"Brasilien",
+						"brasilianische",
+						"brasilianischen"
+					]
+				},
+				{
+					"value": "ca",
+					"synonyms": [
+						"Kanada",
+						"kanadische",
+						"kanadischen"
+					]
+				},
+				{
+					"value": "ch",
+					"synonyms": [
+						"Schweiz",
+						"schweizer"
+					]
+				},
+				{
+					"value": "cn",
+					"synonyms": [
+						"China",
+						"chinesische Volksrepublik",
+						"chinesische",
+						"chinesischen"
+					]
+				},
+				{
+					"value": "co",
+					"synonyms": [
+						"Kolumbien",
+						"kolumbianische",
+						"kolumbianischen"
+					]
+				},
+				{
+					"value": "cu",
+					"synonyms": [
+						"Kuba",
+						"kubanische",
+						"kubanischen"
+					]
+				},
+				{
+					"value": "cz",
+					"synonyms": [
+						"Tschechien",
+						"tschechische",
+						"tschechischen"
+					]
+				},
+				{
+					"value": "de",
+					"synonyms": [
+						"Deutschland",
+						"deutsche",
+						"deutschen"
+					]
+				},
+				{
+					"value": "eg",
+					"synonyms": [
+						"Ägypten",
+						"ägyptische",
+						"ägyptischen"
+					]
+				},
+				{
+					"value": "fr",
+					"synonyms": [
+						"Frankreich",
+						"französische",
+						"französischen"
+					]
+				},
+				{
+					"value": "gb",
+					"synonyms": [
+						"Vereinigtes Königreich",
+						"Großbritannien",
+						"England",
+						"brittische",
+						"brittischen",
+						"englische",
+						"englischen"
+					]
+				},
+				{
+					"value": "gr",
+					"synonyms": [
+						"Griechenland",
+						"griechische",
+						"griechischen"
+					]
+				},
+				{
+					"value": "hk",
+					"synonyms": [
+						"Hongkong"
+					]
+				},
+				{
+					"value": "hu",
+					"synonyms": [
+						"Ungarn",
+						"ungarische",
+						"ungarischen"
+					]
+				},
+				{
+					"value": "id",
+					"synonyms": [
+						"Indonesien",
+						"indonesische",
+						"indonesischen"
+					]
+				},
+				{
+					"value": "ie",
+					"synonyms": [
+						"Irland",
+						"irische",
+						"irischen"
+					]
+				},
+				{
+					"value": "il",
+					"synonyms": [
+						"Israel",
+						"israelische",
+						"israelischen"
+					]
+				},
+				{
+					"value": "in",
+					"synonyms": [
+						"Indien",
+						"indische",
+						"indischen"
+					]
+				},
+				{
+					"value": "it",
+					"synonyms": [
+						"Italien",
+						"italienische",
+						"italienischen"
+					]
+				},
+				{
+					"value": "jp",
+					"synonyms": [
+						"Japan",
+						"japanische",
+						"japanischen"
+					]
+				},
+				{
+					"value": "kr",
+					"synonyms": [
+						"Korea",
+						"Südkorea",
+						"koreanische",
+						"koreanischen",
+						"südkoreanische",
+						"südkoreanischen"
+					]
+				},
+				{
+					"value": "lt",
+					"synonyms": [
+						"Litauen",
+						"litauische",
+						"litauischen"
+					]
+				},
+				{
+					"value": "lv",
+					"synonyms": [
+						"Lettland",
+						"lettische",
+						"lettischen"
+					]
+				},
+				{
+					"value": "ma",
+					"synonyms": [
+						"Marokko",
+						"marokkanische",
+						"marokkanischen"
+					]
+				},
+				{
+					"value": "mx",
+					"synonyms": [
+						"Mexiko",
+						"mexikanische",
+						"mexikanischen"
+					]
+				},
+				{
+					"value": "my",
+					"synonyms": [
+						"Malaysia",
+						"malaysische",
+						"malaysischen"
+					]
+				},
+				{
+					"value": "ng",
+					"synonyms": [
+						"Nigeria",
+						"nigerianische",
+						"nigerianischen"
+					]
+				},
+				{
+					"value": "nl",
+					"synonyms": [
+						"Niederlande",
+						"Holland",
+						"niederländische",
+						"niederländischen",
+						"holländische",
+						"holländischen"
+					]
+				},
+				{
+					"value": "no",
+					"synonyms": [
+						"Norwegen",
+						"norwegische",
+						"norwegischen"
+					]
+				},
+				{
+					"value": "nz",
+					"synonyms": [
+						"Neuseeland",
+						"neuseeländische",
+						"neuseeländischen"
+					]
+				},
+				{
+					"value": "ph",
+					"synonyms": [
+						"Philippinen",
+						"philippinische",
+						"philippinischen"
+					]
+				},
+				{
+					"value": "pl",
+					"synonyms": [
+						"Polen",
+						"polnische",
+						"polnischen"
+					]
+				},
+				{
+					"value": "pt",
+					"synonyms": [
+						"Portugal",
+						"protugiesische",
+						"protugiesischen"
+					]
+				},
+				{
+					"value": "ro",
+					"synonyms": [
+						"Rumänien",
+						"rumänische",
+						"rumänischen"
+					]
+				},
+				{
+					"value": "rs",
+					"synonyms": [
+						"Serbien",
+						"serbische",
+						"serbischen"
+					]
+				},
+				{
+					"value": "ru",
+					"synonyms": [
+						"Russland",
+						"Russische Föderation",
+						"russische",
+						"russischen"
+					]
+				},
+				{
+					"value": "sa",
+					"synonyms": [
+						"Saudi Arabien"
+					]
+				},
+				{
+					"value": "se",
+					"synonyms": [
+						"Schweden",
+						"schwedische",
+						"schwedischen"
+					]
+				},
+				{
+					"value": "sg",
+					"synonyms": [
+						"Singapur",
+						"singapurische",
+						"singapurischen"
+					]
+				},
+				{
+					"value": "si",
+					"synonyms": [
+						"Slowenien",
+						"slowenische",
+						"slowenischen"
+					]
+				},
+				{
+					"value": "sk",
+					"synonyms": [
+						"Slowakei",
+						"slowakische",
+						"slowakischen"
+					]
+				},
+				{
+					"value": "th",
+					"synonyms": [
+						"Thailand",
+						"thailändische",
+						"thailändischen"
+					]
+				},
+				{
+					"value": "tr",
+					"synonyms": [
+						"Türkei",
+						"türkische",
+						"türkischen"
+					]
+				},
+				{
+					"value": "tw",
+					"synonyms": [
+						"Taiwan",
+						"taiwanesische",
+						"taiwanesischen"
+					]
+				},
+				{
+					"value": "ua",
+					"synonyms": [
+						"Ukraine",
+						"ukrainische",
+						"ukrainischen"
+					]
+				},
+				{
+					"value": "us",
+					"synonyms": [
+						"Vereinigte Staaten von Amerika",
+						"U S A",
+						"USA",
+						"amerikanische",
+						"amerikanischen"
+					]
+				},
+				{
+					"value": "ve",
+					"synonyms": [
+						"Venezuela",
+						"venezolanische",
+						"venezolanischen"
+					]
+				},
+				{
+					"value": "za",
+					"synonyms": [
+						"Südafrika",
+						"südafrikanische",
+						"südafrikanischen"
+					]
+				}
+			]
+		}
+	],
+	"intents": [
+		{
+			"name": "News",
+			"description": "Nutzer fragt nach den neusten Nachrichten",
+			"enabledByDefault": true,
+			"utterances": [
+				"Spiel mir die Nachrichten vor",
+				"Was sind die Schlagzeilen",
+				"Was sind die Nachrichten",
+				"Lies mir die Nachrichten vor",
+				
+				"Sag mir die Nachrichten von {heute:=>date}",
+				"Lies mir die Schlagzeilen von {gestern:=>date} vor",
+				"Spiel mir die Nachrichten von {Samstag:=>date} vor",
+				"Was sind die Nachrichten {gestern:=>date}",
+				"Was sind die Nachrichten vom {Dienstag:=>date}",
+				"Spiel mir die Nachrichten vom {Freitag:=>date} vor",
+				"Was sind die Nachrichten von {vorgestern:=>date}",
+				"Sag mir die Nachrichten vom {12. August:=>date}",
+				"Lies mir die Schlagzeilen vom {16. Februar:=>date} vor",
+				"Spiel mir die Breaking News vom {16. Jänner:=>date} vor",
+				"Was sind die Nachrichten für {Deutschland:=>region}",
+				"Lies mir die Schlagzeilen für {Deutschland:=>region} vor",
+				"Was sind die Breaking News für {Deutschland:=>region}",
+				"Lies mir die {deutschen:=>region} Schlagzeilen vor",
+				"Was sind die {deutschen:=>region} Breaking News",
+				"Lies mir {sechs:=>number} Nachrichten vor",
+				"Lies mir die top {neun:=>number} Nachrichten vor",
+				"Was sind die top {7:=>number} Schlagzeilen",
+				"Spiel mir die Top {8:=>number} Nachrichten vor",
+				"Lies mir die {Technologie:=>category} Nachrichten vor",
+				"Spiel mir die {Finanz:=>category} Nachrichten vor",
+				"Was sind die {Unterhaltungs:=>category} Schlagzeilen",
+
+				"Sag mir die Nachrichten von {Donnerstag:=>date} in {Deutschland:=>region}",
+				"Was ist {heute:=>date} in {Deutschland:=>region} passiert",
+				"Zeig mir die Nachrichten für {Deutschland:=>region} vom {29. Juni:=>date}",
+				"Zeig mir die Nachrichten für {Deutschland:=>region} von {heute:=>date}",
+				"Spiel mir die Nachrichten vom {15. Februar:=>date} für {Deutschland:=>region} vor",
+				"Sag mir die Nachrichten vom {Freitag:=>date} in {Deutschland:=>region}",
+				"Sag mir die {deutschen:=>region} Nachrichten von {Donnerstag:=>date}",
+				"Zeig mir die {deutschen:=>region} Nachrichten vom {29. Juni:=>date}",
+				"Spiel mir die {deutschen:=>region} Nachrichten vom {15. Februar:=>date} vor",
+				"Sag mir die {deutschen:=>region} Nachrichten vom {Freitag:=>date}",
+				"Was sind die {Unterhaltungs:=>category} Nachrichten für {Deutschland:=>region}",
+				"Was sind die {deutschen:=>region} {Unterhaltungs:=>category} Nachrichten",
+				"Lies mir die {Gesundheits:=>category} Schlagzeilen für {Deutschland:=>region} vor",
+				"Lies mir die {deutschen:=>region} {Gesundheits:=>category} Schlagzeilen vor",
+				"Was sind die {Sport:=>category} Nachrichten {10. August:=>date}",
+				"Spiel mir die {Sport:=>category} Nachrichten vom {Sonntag:=>date} vor",
+				"Spiel mir die Nachrichten von {vorgestern:=>date} für {Deutschland:=>region} vor",
+				"Spiel mir die {deutschen:=>region} Nachrichten von {vorgestern:=>date} vor",
+				"Sag mir die {Wirtschafts:=>category} Nachrichten vom {23. September:=>date}",
+				"Lies mir die {Gesundheits:=>category} Schlagzeilen vom {23. September:=>date} vor",
+				"Was ist am {30. November:=>date} in {Deutschland:=>region} passiert",
+				"Spiel mir die {Wissenschafts:=>category} Nachrichten von {heute:=>date} vor",
+				"Sag mir die {Technologie:=>category} Nachrichten von {gestern:=>date}",
+				"Lies mir die {Finanz:=>category} Schlagzeilen von {Donnerstag:=>date} vor",
+				"Lies mir {sieben:=>number} Schlagzeilen von {Sonntag:=>date} vor",
+				"Zeig mir die Nachrichten für die {Deutschland:=>region} von {vorgestern:=>date}",
+				"Zeig mir die {deutschen:=>region} Nachrichten von {vorgestern:=>date}",
+				"Sag mir {vier:=>number} Nachrichten vom {2. September:=>date}",
+				"Was sind die Top {vier:=>number} Nachrichten {Donnerstag:=>date}",
+				"Was sind die Top {drei:=>number} {Sport:=>category} Schlagzeilen",
+				"Lies mir {acht:=>number} Schlagzeilen für {Deutschland:=>region} vor",
+				"Lies mir {acht:=>number} {deutsche:=>region} Schlagzeilen vor",
+				"Lies mir {sechs:=>number} Schlagzeilen vom {21. Februar:=>date} vor",
+				"Lies mir die Top {3:=>number} {Finanz:=>category} Nachrichten vor",
+				
+				"Spiel mir die {Technologie:=>category} Nachrichten von {Donnerstag:=>date} für {Deutschland:=>region} vor",
+				"Spiel mir die {deutschen:=>region} {Technologie:=>category} Nachrichten von {Donnerstag:=>date} vor",
+				"Sag mir die {Wirtschafts:=>category} Nachrichten von {vorgestern:=>date} in {Deutschland:=>region}",
+				"Sag mir die {deutschen:=>region} {Wirtschafts:=>category} Nachrichten von {vorgestern:=>date}",
+				"Zeig mir die {Unterhaltungs:=>category} Nachrichten für {Deutschland:=>region} von {vorgestern:=>date}",
+				"Zeig mir die {deutschen:=>region} {Unterhaltungs:=>category} Nachrichten von {vorgestern:=>date}",
+				"Sag mir die {deutschen:=>region} {Unterhaltungs:=>category} Nachrichten vom {5. Juli:=>date}",
+				"Zeig mir die {Gesundheits:=>category} Nachrichten für die {Deutschland:=>region} von {gestern:=>date}",
+				"Spiel mir die {Finanz:=>category} Nachrichten vom {9. Januar:=>date} für {Deutschland:=>region} vor",
+				"Spiel mir die {deutschen:=>region} {Finanz:=>category} Nachrichten vom {9. Januar:=>date} vor",
+				"Zeig mir die Top {2:=>number} Nachrichten für die {Deutschland:=>region} von {vorgestern:=>date}",
+				"Zeig mir die Top {2:=>number} {deutschen:=>region} Nachrichten von {vorgestern:=>date}",
+				"Zeig mir {9:=>number} Nachrichten für {Deutschland:=>region} vom {9. Mai:=>date}",
+				"Zeig mir {9:=>number} {deutsche:=>region} Nachrichten vom {9. Mai:=>date}",
+				"Sag mir {13:=>number} Nachrichten vom {23. März:=>date} in {Deutschland:=>region}",
+				"Spiel mir {5:=>number} Nachrichten von {Sonntag:=>date} für {Deutschland:=>region} vor",
+				"Spiel mir die Top {6:=>number} Nachrichten von {gestern:=>date} für {Deutschland:=>region} vor",
+				"Sag mir {13:=>number} {deutsche:=>region} Nachrichten vom {23. März:=>date}",
+				"Spiel mir {5:=>number} {deutsche:=>region} Nachrichten von {Sonntag:=>date} vor",
+				"Spiel mir die Top {6:=>number} {deutschen:=>region} Nachrichten von {gestern:=>date} für vor",
+				"Lies mir die Top {fünf:=>number} {Wissenschafts:=>category} Schlagzeilen für die {Deutschland:=>region} vor",
+				"Lies mir die Top {fünf:=>number} {deutschen:=>region} {Wissenschafts:=>category} Schlagzeilen vor",
+				"Zeig mir die Top {2:=>number} Nachrichten für {Deutschland:=>region} vom {Dienstag:=>date}",
+				"Zeig mir die Top {2:=>number} {deutschen:=>region} Nachrichten vom {Dienstag:=>date}",
+				"Spiel mir {eine:=>number} Nachricht vom {3. August:=>date} für {Deutschland:=>region} vor",
+				"Spiel mir {1:=>number} Nachricht von {Sonntag:=>date} für {Deutschland:=>region} vor",
+				"Spiel mir {eine:=>number} {deutsche:=>region} Nachricht vom {3. August:=>date} vor",
+				"Spiel mir {1:=>number} {deutsche:=>region} Nachricht von {Sonntag:=>date} vor",
+				"Sag mir die {sieben:=>number} {ersten:=>date} Nachrichten von {vorgestern:=>date}",
+				"Zeig mir die Top {2:=>number} Nachrichten für {Deutschland:=>region} von {heute:=>date}",
+				"Sag mir die ersten {7:=>number} Nachrichten von {heute:=>date} in {Deutschland:=>region}",
+				"Sag mir die ersten {4:=>number} Nachrichten vom {Donnerstag:=>date} in {Deutschland:=>region}",
+				"Sag mir die ersten {7:=>number} {deutschen:=>region} Nachrichten von {heute:=>date}",
+				"Sag mir die ersten {4:=>number} {deutschen:=>region} Nachrichten vom {Donnerstag:=>date}",
+				"Lies mir die Top {fünf:=>number} {Sport:=>category} Schlagzeilen für {Deutschland:=>region} vor",
+				"Spiel mir {vier:=>number} Nachrichten vom {Samstag:=>date} für {Deutschland:=>region} vor",
+				"Spiel mir {vier:=>number} {deutsche:=>region} Nachrichten vom {Samstag:=>date} vor",
+
+				"Zeig mir {elf:=>number} {Unterhaltungs:=>category} Nachrichten für die {Deutschland:=>region} von {vorgestern:=>date}",
+				"Spiel mir die Top {8:=>number} {Technologie:=>category} Nachrichten von {Donnerstag:=>date} für {Deutschland:=>region} vor",
+				"Zeig mir {elf:=>number} {Tech:=>category} Nachrichten für {Deutschland:=>region} von {vorgestern:=>date}",
+				"Spiel mir die Top {8:=>number} {Unterhaltungs:=>category} Nachrichten von {Samstag:=>date} für die {Deutschland:=>region} vor",
+				"Zeig mir {elf:=>number} {deutsche:=>region} {Unterhaltungs:=>category} Nachrichten von {vorgestern:=>date}",
+				"Spiel mir die Top {8:=>number} {deutschen:=>region} {Technologie:=>category} Nachrichten von {Donnerstag:=>date} vor"
+			],
+			"slots": [
+				{
+					"name": "date",
+					"description": null,
+					"required": false,
+					"type": "snips/datetime",
+					"missingQuestion": ""
+				},
+				{
+					"name": "number",
+					"description": null,
+					"required": false,
+					"type": "snips/number",
+					"missingQuestion": ""
+				},
+				{
+					"name": "region",
+					"description": null,
+					"required": false,
+					"type": "NewsCountry",
+					"missingQuestion": ""
+				},
+				{
+					"name": "category",
+					"description": null,
+					"required": false,
+					"type": "NewsCategory",
+					"missingQuestion": ""
+				}
+			]
+		}
+	]
+}
