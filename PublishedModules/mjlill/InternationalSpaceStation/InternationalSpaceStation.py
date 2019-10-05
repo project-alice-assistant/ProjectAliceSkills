@@ -69,7 +69,7 @@ class InternationalSpaceStation(Module):
 				place
 			)
 		else:
-			countryData = self.queryApi('http://api.geonames.org/countryCodeJSON?formatted=true?lat={latitude}&lng={longitude}&lang={language}&username=projectalice&style=full',
+			countryData = self.queryApi('http://api.geonames.org/countryCodeJSON?lat={latitude}&lng={longitude}&lang={language}&username=projectalice',
 				latitude=latitude,
 				longitude=longitude,
 				language=self.activeLanguage()
