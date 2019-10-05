@@ -250,7 +250,7 @@
 		"Es scheint bereits ein Benutzer namens {} vorhanden zu sein. Ich brauche einen anderen Namen, bitte."
 	],
 	"addUserWakeword": [
-		"Ok {}, ich habe dich hinzugefügt! Wenn du willst, dass ich dich anhand deiner Stimme erkenne, musst du ein persönliches Wakeword erstellen. Das ist nicht obligatorisch, aber empfehlenswert. Willst du das machen?"
+		"Ok {}, ich habe dich hinzugefügt! Wenn du willst, dass ich dich anhand deiner Stimme erkenne, musst du ein persönliches Wake Word erstellen. Das ist nicht obligatorisch, aber empfehlenswert. Willst du das machen?"
 	],
 	"addWakewordDenied": [
 		"Ok, ich verstehe, denk daran, dass ich nicht in der Lage sein werde zu bestimmen, ob du zu Hause bist, schläfst, Spiele spielst oder mir Dinge über dich zu merken."
@@ -259,7 +259,7 @@
 		"<s>Ok! Ich brauche drei Aufnahmen von dir, die mich aufrufen sollen, indem du <break time=\"100ms\"/> \"Hey Alice\" <break time=\"150ms\"/> sagst</s><s><s>Die Aufnahmen sollten in einer ruhigen Umgebung erstellt werden, damit diese später funktionieren</s><s><s>Lass es uns erledigen, ruf mich auf!</s>"
 	],
 	"wakewordCaptureFailed": [
-		"Bei der Aufnahme des Wakeword ist etwas schiefgelaufen. Soll ich versuchen, das Problem zu lösen und es danach noch einmal probieren?"
+		"Bei der Aufnahme des Wake Word ist etwas schiefgelaufen. Soll ich versuchen, das Problem zu lösen und es danach noch einmal probieren?"
 	],
 	"howWasTheCapture": [
 		"Ich habe gerade eine getrimmte Version deiner Hotword Aufnahme abgespielt. War diese in Ordnung? Wenn nicht, kann ich dies mehr oder weniger trimmen, die Augnahme sollte so nah wie möchlig and deinem Sprechen geschnitten werden..... Sag \"Ja\", \"Zu kurz\" oder \"Zu lang\"."
@@ -283,8 +283,8 @@
 		"Du hast es geschafft, ich habe die drei Muster, du solltest mich jetzt bei meinem Namen nennen können und ich sollte dich erkennen können! Viel Spaß mit meinen Diensten!"
 	],
 	"wakewordCaptureTooNoisy": [
-		"Es scheint zu viel Rauschen zu geben oder dein Mikrofon ist zu empfindlich eingestellt. Ich konnte daher das Wakeword nicht erfassen. Möchtest du es noch einmal versuchen?",
-		"Ich denke, es gibt entweder zu viel Rauschen oder die Einstellungen deines Mikrofons sind zu empfindlich. Ich konnte daher das Wakeword leider nicht erfassen. Sollen wir es noch einmal versuchen?"
+		"Es scheint zu viel Rauschen zu geben oder dein Mikrofon ist zu empfindlich eingestellt. Ich konnte daher das Wake Word nicht erfassen. Möchtest du es noch einmal versuchen?",
+		"Ich denke, es gibt entweder zu viel Rauschen oder die Einstellungen deines Mikrofons sind zu empfindlich. Ich konnte daher das Wake Word leider nicht erfassen. Sollen wir es noch einmal versuchen?"
 	],
 	"cancellingWakewordCapture": [
 		"Ok, vergessen wir das erst mal. Du kannst es erneut versuchen, wenn die Umgebung ruhiger ist. Im Moment kannst du mich aufrufen, indem du <Break Time=\"100ms\"/> \"Hey Snips\" sagst, aber ich werde dich leider nicht erkennen können."
@@ -305,7 +305,7 @@
 		"Habe ich Recht? Der Name ist {}?"
 	],
 	"addUserConfirmed": [
-		"Ok, ich habe {} als {} hinzugefügt! Wenn du willst, dass ich diesen Benutzer anhand seiner Stimme erkenne, muss er ein persönliches Wakeword erstellen. Dies ist nicht obligatorisch, aber empfehlenswert. Willst du das machen?"
+		"Ok, ich habe {} als {} hinzugefügt! Wenn du willst, dass ich diesen Benutzer anhand seiner Stimme erkenne, muss er ein persönliches Wake Word erstellen. Dies ist nicht obligatorisch, aber empfehlenswert. Willst du das machen?"
 	],
 	"addUserAddWakewordAccepted": [
 		"<s>Ok {}! Ich brauche drei Aufnahmen von dir, die mich aufrufen sollen, indem du <break time=\"100ms\"/> \"Hey Alice\" <break time=\"150ms\"/> sagst</s><s><s>Die Aufnahmen sollten in einer ruhigen Umgebung erstellt werden, damit diese später funktionieren</s><s><s>Lass es uns erledigen, ruf mich auf!</s>"

@@ -340,7 +340,7 @@
 	},
 	"addUserWakeword": {
 		"default": [
-			"Ok {},Je t'ai ajouté! Si tu veux que je te reconnaisse par ta voix nous devons te créer un wakeword personnel. Ce n'est pas obligatoire mais conseillé. Veux-tu le faire?"
+			"Ok {},Je t'ai ajouté! Si tu veux que je te reconnaisse par ta voix nous devons te créer un wake word personnel. Ce n'est pas obligatoire mais conseillé. Veux-tu le faire?"
 		]
 	},
 	"addWakewordDenied": {
@@ -393,7 +393,7 @@
 		"Ok, ai-je bien compris, le nom est {}?"
 	],
 	"addUserConfirmed": [
-		"Ok, j'ai ajouté {} en tant que {}. Si tu veux qu'il soit reconnu par sa voix, on peux ajouter un wakeword personnel. Ce n'est pas obligoire mais recommandé. On le fait?"
+		"Ok, j'ai ajouté {} en tant que {}. Si tu veux qu'il soit reconnu par sa voix, on peux ajouter un wake word personnel. Ce n'est pas obligoire mais recommandé. On le fait?"
 	],
 	"addUserAddWakewordAccepted": [
 		"<s>Ok {}! J'ai besoin de trois specimens de toi qui m'appelle en disant <break time=\"100ms\"/> \"Hey Alice\" <break time=\"150ms\"/></s><s>Sois dans un environement calme pour que ça fonctionne, les bruits parasites rende l'opération impossible</s><s>On y va, appelle moi!</s>"
