@@ -1,0 +1,17 @@
+{
+	"name": "News",
+	"version": 1.10,
+	"author": "maxbachmann",
+	"maintainers": [],
+	"desc": "Inquire the latest news",
+	"aliceMinVersion": 0.11,
+	"systemRequirements": [],
+	"pipRequirements": [],
+	"conditions": {
+		"lang": [
+			"en",
+			"de"
+		],
+		"online": true
+	}
+}
