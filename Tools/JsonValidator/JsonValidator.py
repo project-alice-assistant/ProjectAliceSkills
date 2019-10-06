@@ -16,7 +16,7 @@ def validate(allOpt: bool, install: bool, dialog: bool, talk: bool, verbose: int
 	"""
 	if allOpt:
 		install = dialog = talk = True
-	if True in (install, dialog, talk):
+	if True in {install, dialog, talk}:
 		valid = Validator(installer=install, dialog=dialog, talk=talk, verbosity=verbose)
 		error = valid.validate()
 		valid.printResult()

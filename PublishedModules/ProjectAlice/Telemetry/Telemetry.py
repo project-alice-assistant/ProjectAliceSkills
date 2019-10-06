@@ -43,7 +43,7 @@ class Telemetry(Module):
 		siteId = session.siteId
 		slots = session.slots
 
-		if intent in (self._INTENT_GET_TELEMETRY_DATA, self._INTENT_ANSWER_TELEMETRY_TYPE):
+		if intent in {self._INTENT_GET_TELEMETRY_DATA, self._INTENT_ANSWER_TELEMETRY_TYPE}:
 			if 'siteId' in slots:
 				siteId = session.slotValue('Room')
 

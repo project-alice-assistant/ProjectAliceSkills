@@ -47,15 +47,15 @@ class BringShoppingList(Module):
 		if not self.filterIntent(intent, session):
 			return False
 
-		if intent == self._INTENT_ADD_ITEM or (intent in (self._INTENT_ANSWER_SHOP, self._INTENT_SPELL_WORD) and session.previousIntent == self._INTENT_ADD_ITEM):
+		if intent == self._INTENT_ADD_ITEM or (intent in {self._INTENT_ANSWER_SHOP, self._INTENT_SPELL_WORD} and session.previousIntent == self._INTENT_ADD_ITEM):
 			#Add item to list
 			self.editList(session, intent, 'add', self._addItemInt)
-		elif intent == self._INTENT_DEL_ITEM or (intent in (self._INTENT_ANSWER_SHOP, self._INTENT_SPELL_WORD) and session.previousIntent == self._INTENT_DEL_ITEM):
+		elif intent == self._INTENT_DEL_ITEM or (intent in {self._INTENT_ANSWER_SHOP, self._INTENT_SPELL_WORD} and session.previousIntent == self._INTENT_DEL_ITEM):
 			#Delete items from list
 			self.editList(session, intent, 'rem', self._deleteItemInt)
 		elif intent == self._INTENT_READ_LIST:
 			self.readList(session)
-		elif intent == self._INTENT_CHECK_LIST or (intent in (self._INTENT_ANSWER_SHOP, self._INTENT_SPELL_WORD) and session.previousIntent == self._INTENT_CHECK_LIST):
+		elif intent == self._INTENT_CHECK_LIST or (intent in {self._INTENT_ANSWER_SHOP, self._INTENT_SPELL_WORD} and session.previousIntent == self._INTENT_CHECK_LIST):
 			#check if item is in list
 			self.editList(session, intent, 'chk', self._checkListInt)
 		elif intent == self._INTENT_DEL_LIST:

@@ -88,7 +88,7 @@ class AliceCore(Module):
 
 		if not self.UserManager.users:
 			if not self.delayed:
-				self._logger.warning('[{}] No user found in database'.format(self.name))
+				self._logger.warning(f'[{self.name}] No user found in database')
 				raise ModuleStartDelayed(self.name)
 			else:
 				self._addFirstUser()
@@ -172,7 +172,7 @@ class AliceCore(Module):
 			elif onReboot == 'greetAndRebootModules':
 				self.ThreadManager.doLater(interval=3, func=self.say, args=[self.randomTalk('confirmRebootingModules'), 'all'])
 			else:
-				self._logger.warning('[{}] onReboot config has an unknown value'.format(self.name))
+				self._logger.warning(f'[{self.name}] onReboot config has an unknown value')
 
 			self.ConfigManager.updateAliceConfiguration('onReboot', '')
 
@@ -200,17 +200,17 @@ class AliceCore(Module):
 			with ZipFile(filepath) as zipfile:
 				zipfile.extractall(tempfile.gettempdir())
 
-			subprocess.run(['sudo', 'rm', '-rf', commons.rootDir() + '/trained/assistants/assistant_{}'.format(self.LanguageManager.activeLanguage)])
-			subprocess.run(['sudo', 'rm', '-rf', commons.rootDir() + '/assistant'])
-			subprocess.run(['sudo', 'cp', '-R', str(filepath).replace('.zip', ''), commons.rootDir() + '/trained/assistants/assistant_{}'.format(self.LanguageManager.activeLanguage)])
+			subprocess.run(['sudo', 'rm', '-rf', f'{commons.rootDir()}/trained/assistants/assistant_{self.LanguageManager.activeLanguage}'])
+			subprocess.run(['sudo', 'rm', '-rf', f'{commons.rootDir()}/assistant'])
+			subprocess.run(['sudo', 'cp', '-R', str(filepath).replace('.zip', ''), f'{commons.rootDir()}/trained/assistants/assistant_{self.LanguageManager.activeLanguage}'])
 
 			time.sleep(0.5)
 
-			subprocess.run(['sudo', 'chown', '-R', getpass.getuser(), commons.rootDir() + '/trained/assistants/assistant_{}'.format(self.LanguageManager.activeLanguage)])
-			subprocess.run(['sudo', 'ln', '-sfn', commons.rootDir() + '/trained/assistants/assistant_{}'.format(self.LanguageManager.activeLanguage), commons.rootDir() + '/assistant'])
-			subprocess.run(['sudo', 'ln', '-sfn', commons.rootDir() + '/system/sounds/{}/start_of_input.wav'.format(self.LanguageManager.activeLanguage), commons.rootDir() + '/assistant/custom_dialogue/sound/start_of_input.wav'])
-			subprocess.run(['sudo', 'ln', '-sfn', commons.rootDir() + '/system/sounds/{}/end_of_input.wav'.format(self.LanguageManager.activeLanguage), commons.rootDir() + '/assistant/custom_dialogue/sound/end_of_input.wav'])
-			subprocess.run(['sudo', 'ln', '-sfn', commons.rootDir() + '/system/sounds/{}/error.wav'.format(self.LanguageManager.activeLanguage), commons.rootDir() + '/assistant/custom_dialogue/sound/error.wav'])
+			subprocess.run(['sudo', 'chown', '-R', getpass.getuser(), f'{commons.rootDir()}/trained/assistants/assistant_{self.LanguageManager.activeLanguage}'])
+			subprocess.run(['sudo', 'ln', '-sfn', f'{commons.rootDir()}/trained/assistants/assistant_{self.LanguageManager.activeLanguage}', f'{commons.rootDir()}/assistant'])
+			subprocess.run(['sudo', 'ln', '-sfn', f'{commons.rootDir()}/system/sounds/{self.LanguageManager.activeLanguage}/start_of_input.wav', f'{commons.rootDir()}/assistant/custom_dialogue/sound/start_of_input.wav'])
+			subprocess.run(['sudo', 'ln', '-sfn', f'{commons.rootDir()}/system/sounds/{self.LanguageManager.activeLanguage}/end_of_input.wav', f'{commons.rootDir()}/assistant/custom_dialogue/sound/end_of_input.wav'])
+			subprocess.run(['sudo', 'ln', '-sfn', f'{commons.rootDir()}/system/sounds/{self.LanguageManager.activeLanguage}/error.wav', f'{commons.rootDir()}/assistant/custom_dialogue/sound/error.wav'])
 
 			time.sleep(0.5)
 
@@ -311,7 +311,7 @@ class AliceCore(Module):
 
 			device = self.DeviceManager.deviceConnecting(uid=payload['uid'])
 			if device:
-				self._logger.info('Device with uid {} of type {} in room {} connected'.format(device.uid, device.deviceType, device.room))
+				self._logger.info(f'Device with uid {device.uid} of type {device.deviceType} in room {device.room} connected')
 				self.publish(topic='projectalice/devices/connectionAccepted', payload={'siteId': payload['siteId'], 'uid': payload['uid']})
 			else:
 				self.publish(topic='projectalice/devices/connectionRefused', payload={'siteId': payload['siteId'], 'uid': payload['uid']})
@@ -344,7 +344,7 @@ class AliceCore(Module):
 						self.ThreadManager.doLater(interval=5, func=self.restart)
 				else:
 					self.endDialog(sessionId)
-					self._logger.warn('[{}] Asked to reboot, but missing params'.format(self.name))
+					self._logger.warn(f'[{self.name}] Asked to reboot, but missing params')
 
 			elif session.previousIntent == self._INTENT_DUMMY_ADD_USER:
 				if commons.isYes(session):
@@ -573,7 +573,7 @@ class AliceCore(Module):
 				update = 5
 
 			if update in {1, 5}: # All or system
-				self._logger.info('[{}] Updating system'.format(self.name))
+				self._logger.info(f'[{self.name}] Updating system')
 				self.endDialog(sessionId=sessionId, text=self.randomTalk('confirmAssistantUpdate'))
 
 				def systemUpdate():
@@ -587,26 +587,25 @@ class AliceCore(Module):
 				self.ThreadManager.doLater(interval=2, func=systemUpdate)
 
 			if update in {1, 4}: # All or modules
-				self._logger.info('[{}] Updating modules'.format(self.name))
+				self._logger.info(f'[{self.name}] Updating modules')
 				self.endDialog(sessionId=sessionId, text=self.randomTalk('confirmAssistantUpdate'))
 				self.ModuleManager.checkForModuleUpdates()
 
 			if update in {1, 2}: # All or Alice
-				self._logger.info('[{}] Updating Alice'.format(self.name))
+				self._logger.info(f'[{self.name}] Updating Alice')
 				if update == 2:
 					self.endDialog(sessionId=sessionId, text=self.randomTalk('confirmAssistantUpdate'))
 
 			if update in {1, 3}: # All or Assistant
-				self._logger.info('[{}] Updating assistant'.format(self.name))
+				self._logger.info(f'[{self.name}] Updating assistant')
 
 				if not self.LanguageManager.activeSnipsProjectId:
 					self.endDialog(sessionId=sessionId, text=self.randomTalk('noProjectIdSet'))
 				elif not self.SnipsConsoleManager.loginCredentialsAreConfigured():
 					self.endDialog(sessionId=sessionId, text=self.randomTalk('bundleUpdateNoCredentials'))
+				elif update == 3:
+					self.endDialog(sessionId=sessionId, text=self.randomTalk('confirmAssistantUpdate'))
 				else:
-					if update == 3:
-						self.endDialog(sessionId=sessionId, text=self.randomTalk('confirmAssistantUpdate'))
-
 					self.ThreadManager.doLater(interval=2, func=self.SamkillaManager.sync)
 
 		elif intent == self._INTENT_REBOOT:
@@ -761,7 +760,7 @@ class AliceCore(Module):
 
 	def langSwitch(self, newLang: str, siteId: str):
 		self.publish(topic='hermes/asr/textCaptured', payload={'siteId': siteId})
-		subprocess.run([commons.rootDir() + '/system/scripts/langSwitch.sh', newLang])
+		subprocess.run([f'{commons.rootDir()}/system/scripts/langSwitch.sh', newLang])
 		self.ThreadManager.doLater(interval=3, func=self._confirmLangSwitch, args=[newLang, siteId])
 
 
@@ -772,7 +771,7 @@ class AliceCore(Module):
 
 	# noinspection PyUnusedLocal
 	def changeFeedbackSound(self, inDialog: bool, siteId: str = 'all'):
-		if not Path(commons.rootDir() + '/assistant').exists():
+		if not Path(commons.rootDir(), 'assistant').exists():
 			return
 
 		# Unfortunately we can't yet get rid of the feedback sound because Alice hears herself finishing the sentence and capturing part of it
@@ -781,5 +780,5 @@ class AliceCore(Module):
 		else:
 			state = ''
 
-		subprocess.run(['sudo', 'ln', '-sfn', commons.rootDir() + '/system/sounds/{}/start_of_input{}.wav'.format(self.LanguageManager.activeLanguage, state), commons.rootDir() + '/assistant/custom_dialogue/sound/start_of_input.wav'])
-		subprocess.run(['sudo', 'ln', '-sfn', commons.rootDir() + '/system/sounds/{}/error{}.wav'.format(self.LanguageManager.activeLanguage, state), commons.rootDir() + '/assistant/custom_dialogue/sound/error.wav'])
+		subprocess.run(['sudo', 'ln', '-sfn', f'{commons.rootDir()}/system/sounds/{self.LanguageManager.activeLanguage}/start_of_input{state}.wav', f'{commons.rootDir()}/assistant/custom_dialogue/sound/start_of_input.wav'])
+		subprocess.run(['sudo', 'ln', '-sfn', f'{commons.rootDir()}/system/sounds/{self.LanguageManager.activeLanguage}/error{state}.wav', f'{commons.rootDir()}/assistant/custom_dialogue/sound/error.wav'])
