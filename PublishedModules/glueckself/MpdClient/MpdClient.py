@@ -40,6 +40,8 @@ class MpdClient(Module):
 		
 		self._mpdConnected = False
 		self._mpd = mpdhelper.MPDClient()
+
+		self._oldPlaybackStatus = None
 		
 		if not self._host:
 			self._logger.warn(f'[{self.name}] MPD host not configured, not doing anything.')
@@ -49,18 +51,26 @@ class MpdClient(Module):
 	
 	def _mpdPollStatus(self):
 		status = self._mpd.status()
+		self._mpdProcessStatus(status)
+		self.ThreadManager.doLater(interval=1, func=self._mpdPollStatus)
+
+	def _mpdProcessStatus(self, status: dict):
 		if not status:
 			self._mpdConnected = False
 			self._mpd.disconnect()
 			self._connect()
-			self.ThreadManager.doLater(interval=1, func=self._mpdPollStatus)
 			return
 
 		self._mpdConnected = True
 		playbackStatus = False
 		if status['state'] == 'play':
 			playbackStatus = True
-		
+
+		if self._oldPlaybackStatus == playbackStatus:
+			return
+
+		self._logger.info(f'[{self.name}] Music playing is now {playbackStatus}')
+		self._oldPlaybackStatus = playbackStatus		
 		try:
 			intents = list()
 			# when playing: stop, next, prev. when stopped: play
@@ -73,8 +83,6 @@ class MpdClient(Module):
 			self.MqttManager.configureIntents(intents)
 		except Exception as e:
 			self._logger.warning(f'[{self.name}] Failed to update intents to match the mpd state: {e}')
-			
-		self.ThreadManager.doLater(interval=1, func=self._mpdPollStatus)
 	
 	def _connect(self):
 		self._mpd.connect(self._host, self._port)
