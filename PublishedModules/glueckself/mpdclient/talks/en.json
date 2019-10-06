@@ -2,7 +2,7 @@
 	"notConnected": {
 		"default": [
 			"I am not connected to the server.",
-			"I cannot control the server."
+			"I cannot control the server.",
 			"I am not connected."
 		],
 		"short": [
