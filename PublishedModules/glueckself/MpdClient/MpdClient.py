@@ -9,6 +9,10 @@ from core.commons.commons import online
 #>>> mpd.status()
 #{'volume': '44', 'repeat': '0', 'random': '0', 'single': '0', 'consume': '0', 'playlist': '2', 'playlistlength': '13', 'mixrampdb': '0.000000', 'state': 'play', 'song': '3', 'songid': '4', 'time': '1:178', 'elapsed': '0.789', 'bitrate': '128', 'audio': '44100:24:2', 'nextsong': '4', 'nextsongid': '5'}
 
+# TODO have all intents enabled and answer if new state is not possible
+# e.g. "play some music" when already playing -> "music is already playing"
+# false matches?
+
 class MpdClient(Module):
 	"""
 	Author: glueckself
@@ -30,10 +34,9 @@ class MpdClient(Module):
 
 		super().__init__(self._SUPPORTED_INTENTS)
 		
-		config = self.getConfig('mpdClient')
-		self._host = config.get('mpdHost')
-		self._port = config.get('mpdPort')
-		self._password = config.get('mpdPassword')
+		self._host = self.getConfig('mpdHost')
+		self._port = self.getConfig('mpdPort')
+		self._password = self.getConfig('mpdPassword')
 		
 		self._mpdConnected = False
 		self._mpd = mpdhelper.MPDClient()
