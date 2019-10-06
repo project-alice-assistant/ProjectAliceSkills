@@ -4,7 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget http://bit.ly/????????? -O ~/ProjectAlice/system/moduleInstallTickets/Telemetry.install
+wget http://modules.projectalice.ch/Telemetry -O ~/ProjectAlice/system/moduleInstallTickets/Telemetry.install
 ```
 
 ##### > Alice CLI method
@@ -26,13 +26,3 @@ Access your stored telemetry data
 - System requirements: N/A
 
 ### Configuration
-
-
-`foo`:
- - type: `bar`
- - desc: `baz`
-
-`bar`:
- - type: `baz`
- - desc: `bar`
-
