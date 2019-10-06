@@ -26,7 +26,7 @@ class mpdclient(Module):
 
 		super().__init__(self._SUPPORTED_INTENTS)
 		
-		config = self.getConfig('mpdclient')
+		config = self.getConfig('mpdClient')
 		self._host = config.get('mpdHost')
 		self._port = config.get('mpdPort')
 		self._password = config.get('mpdPassword')
