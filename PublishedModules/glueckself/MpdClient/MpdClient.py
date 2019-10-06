@@ -50,11 +50,13 @@ class MpdClient(Module):
 	def _mpd_poll_status(self):
 		status = self._mpd.status()
 		if not status:
-			self._mpd.disconnect()
 			self._mpdConnected = False
+			self._mpd.disconnect()
 			self._connect()
+			self.ThreadManager.doLater(interval=1, func=self._mpd_poll_status)
 			return
-		
+
+		self._mpdConnected = True
 		playbackStatus = False
 		if status['state'] == 'play':
 			playbackStatus = True
@@ -75,20 +77,10 @@ class MpdClient(Module):
 		self.ThreadManager.doLater(interval=1, func=self._mpd_poll_status)
 	
 	def _connect(self):
-		if not self._mpd.connect(self._host, self._port):
-			self._logger.warn(f'[{self.name}] Failed to connect to mpd host {self._host}:{self._port}, retrying in 10s.')
-			self.ThreadManager.doLater(interval=10, func=self._mpd_poll_status)
-			return
-		
+		self._mpd.connect(self._host, self._port)
 		if self._password:
-			if not self._mpd.password(self._password):
-				# handle invalid password
-				pass
-			
-		self._logger.info(f'[{self.name}] Connected to mpd host {self._host}:{self._port}')
-		self._mpdConnected = True
-		self.ThreadManager.doLater(interval=1, func=self._mpd_poll_status)
-		
+			self._mpd.password(self._password)
+	
 	def onMessage(self, intent: str, session: DialogSession) -> bool:
 		if not self.filterIntent(intent, session):
 			return False
