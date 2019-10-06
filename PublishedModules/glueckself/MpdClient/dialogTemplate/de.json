@@ -1,5 +1,5 @@
 {
-	"module": "mpdclient",
+	"module": "MpdClient",
 	"icon": "music",
 	"description": "Control an MPD server",
 	"slotTypes": [],

@@ -9,7 +9,7 @@ from core.commons.commons import online
 #>>> mpd.status()
 #{'volume': '44', 'repeat': '0', 'random': '0', 'single': '0', 'consume': '0', 'playlist': '2', 'playlistlength': '13', 'mixrampdb': '0.000000', 'state': 'play', 'song': '3', 'songid': '4', 'time': '1:178', 'elapsed': '0.789', 'bitrate': '128', 'audio': '44100:24:2', 'nextsong': '4', 'nextsongid': '5'}
 
-class mpdclient(Module):
+class MpdClient(Module):
 	"""
 	Author: glueckself
 	Description: Control an MPD server
