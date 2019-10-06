@@ -51,7 +51,7 @@ class mpdclient(Module):
 			self._mpd.password(self._password)
 			
 		self._logger.info(f'[{self.name}] Connected to mpd host {self._host}:{self._port}')
-		self._mpdConnected=True
+		self._mpdConnected = True
 		
 	def onMessage(self, intent: str, session: DialogSession) -> bool:
 		if not self.filterIntent(intent, session):
