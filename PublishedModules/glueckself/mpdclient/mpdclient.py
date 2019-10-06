@@ -45,6 +45,7 @@ class mpdclient(Module):
 		except:
 			self._logger.warn(f'[{self.name}] Failed to connect to mpd host {self._host}:{self._port}, retrying in 10s.')
 			self.ThreadManager.doLater(interval=10, func=self._connect)
+			return
 		
 		if self._password:
 			self._mpd.password(self._password)
