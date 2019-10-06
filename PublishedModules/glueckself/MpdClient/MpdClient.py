@@ -1,4 +1,4 @@
-import mpdhelper
+from modules.MpdClient import mpdhelper
 
 from core.ProjectAliceExceptions import ModuleStartDelayed, ModuleStartingFailed
 from core.base.model.Intent import Intent
