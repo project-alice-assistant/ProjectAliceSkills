@@ -24,5 +24,3 @@ Access your stored telemetry data
   - de
 - Pip requirements: N/A
 - System requirements: N/A
-
-### Configuration
