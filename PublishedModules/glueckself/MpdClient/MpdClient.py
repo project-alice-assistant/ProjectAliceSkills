@@ -45,15 +45,15 @@ class MpdClient(Module):
 			self._logger.warn(f'[{self.name}] MPD host not configured, not doing anything.')
 			return
 		
-		self.ThreadManager.doLater(interval=1, func=self._mpd_poll_status)
+		self.ThreadManager.doLater(interval=1, func=self._mpdPollStatus)
 	
-	def _mpd_poll_status(self):
+	def _mpdPollStatus(self):
 		status = self._mpd.status()
 		if not status:
 			self._mpdConnected = False
 			self._mpd.disconnect()
 			self._connect()
-			self.ThreadManager.doLater(interval=1, func=self._mpd_poll_status)
+			self.ThreadManager.doLater(interval=1, func=self._mpdPollStatus)
 			return
 
 		self._mpdConnected = True
@@ -74,7 +74,7 @@ class MpdClient(Module):
 		except Exception as e:
 			self._logger.warning(f'[{self.name}] Failed to update intents to match the mpd state: {e}')
 			
-		self.ThreadManager.doLater(interval=1, func=self._mpd_poll_status)
+		self.ThreadManager.doLater(interval=1, func=self._mpdPollStatus)
 	
 	def _connect(self):
 		self._mpd.connect(self._host, self._port)
