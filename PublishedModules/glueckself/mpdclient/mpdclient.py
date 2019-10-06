@@ -47,7 +47,7 @@ class mpdclient(Module):
 			self.ThreadManager.doLater(interval=10, func=self._connect)
 		
 		if self._password:
-			self._mpd.passwod(self._password)
+			self._mpd.password(self._password)
 			
 		self._logger.info(f'[{self.name}] Connected to mpd host {self._host}:{self._port}')
 		self._mpdConnected=True
