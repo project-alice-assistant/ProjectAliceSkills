@@ -45,14 +45,10 @@ class MpdClient(Module):
 			self._logger.warn(f'[{self.name}] MPD host not configured, not doing anything.')
 			return
 		
-		self._refreshTimer = self.ThreadManager.newTimer(interval=1, func=self._mpd_poll_status, args=self, autoStart=True)
+		self.ThreadManager.doLater(interval=1, func=self._mpd_poll_status)
 	
 	def _mpd_poll_status(self):
 		status = self._mpd.status()
-		self._mpd_process_status(status)
-		self._refreshTimer.start()
-		
-	def _mpd_process_status(self, status: dict):
 		if not status:
 			self._mpd.disconnect()
 			self._mpdConnected = False
@@ -75,10 +71,13 @@ class MpdClient(Module):
 			self.MqttManager.configureIntents(intents)
 		except Exception as e:
 			self._logger.warning(f'[{self.name}] Failed to update intents to match the mpd state: {e}')
+			
+		self.ThreadManager.doLater(interval=1, func=self._mpd_poll_status)
 	
 	def _connect(self):
 		if not self._mpd.connect(self._host, self._port):
 			self._logger.warn(f'[{self.name}] Failed to connect to mpd host {self._host}:{self._port}, retrying in 10s.')
+			self.ThreadManager.doLater(interval=10, func=self._mpd_poll_status)
 			return
 		
 		if self._password:
@@ -88,6 +87,7 @@ class MpdClient(Module):
 			
 		self._logger.info(f'[{self.name}] Connected to mpd host {self._host}:{self._port}')
 		self._mpdConnected = True
+		self.ThreadManager.doLater(interval=1, func=self._mpd_poll_status)
 		
 	def onMessage(self, intent: str, session: DialogSession) -> bool:
 		if not self.filterIntent(intent, session):
