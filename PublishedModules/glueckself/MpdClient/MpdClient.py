@@ -72,7 +72,6 @@ class MpdClient(Module):
 		self._logger.info(f'[{self.name}] Music playing is now {playbackStatus}')
 		self._oldPlaybackStatus = playbackStatus		
 		try:
-			intents = list()
 			# when playing: stop, next, prev. when stopped: play
 			intents = [
 				{'intentId': 'mpdPlay', 'enable': not playbackStatus },
