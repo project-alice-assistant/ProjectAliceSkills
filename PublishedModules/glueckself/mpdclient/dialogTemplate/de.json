@@ -1,0 +1,58 @@
+{
+	"module": "mpdclient",
+	"icon": "music",
+	"description": "Control an MPD server",
+	"slotTypes": [],
+	"intents": [
+		{
+			"name": "Play",
+			"description": "User wants to start the current playlist.",
+			"enabledByDefault": false,
+			"utterances": [
+				"Musik bitte",
+				"Bitte spiele mir Musik",
+				"Bitte spiele mir etwas Musik",
+				"Schalte die Musik an",
+				"Musik an",
+				"Musik wieder an bitte"
+			],
+			"slots": []
+		},
+		{
+			"name": "Stop",
+			"description": "User wants to stop the current playback.",
+			"enabledByDefault": false,
+			"utterances": [
+				"Schalte die Musik aus.",
+				"Schalte bitte die Musik aus.",
+				"Musik aus bitte.",
+				"Genug Musik, danke.",
+			],
+			"slots": []
+		},
+		{
+			"name": "Next",
+			"description": "User wants to skip to the next track.",
+			"enabledByDefault": false,
+			"utterances": [
+				"Nächstes Lied bitte"
+				"Nächsten Song bitte",
+				"Bitte spiel weiter",
+				"Überspringe das Lied bitte",
+				"Überspringe den Song bitte",
+			],
+			"slots": []
+		},
+		{
+			"name": "Prev",
+			"description": "User wants to return to the previous track.",
+			"enabledByDefault": false,
+			"utterances": [
+				"Vorheriges Lied bitte"
+				"Vorherigen Song bitte",
+				"Geh zurück zum vorherigen Song",
+			],
+			"slots": []
+		},
+	]
+}
