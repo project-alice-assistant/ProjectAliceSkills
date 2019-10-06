@@ -74,9 +74,7 @@ class mpdclient(Module):
 			self._logger.warning(f'[{self.name}] Failed to update intents to match the mpd state: {e}')
 	
 	def _connect(self):
-		try:
-			self._mpd.connect(self._host, self._port, 5)
-		except:
+		if not self._mpd.connect(self._host, self._port):
 			self._logger.warn(f'[{self.name}] Failed to connect to mpd host {self._host}:{self._port}, retrying in 10s.')
 			return
 		
