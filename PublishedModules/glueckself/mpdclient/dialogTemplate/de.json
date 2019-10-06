@@ -5,7 +5,7 @@
 	"slotTypes": [],
 	"intents": [
 		{
-			"name": "Play",
+			"name": "mpdPlay",
 			"description": "User wants to start the current playlist.",
 			"enabledByDefault": false,
 			"utterances": [
@@ -19,7 +19,7 @@
 			"slots": []
 		},
 		{
-			"name": "Stop",
+			"name": "mpdStop",
 			"description": "User wants to stop the current playback.",
 			"enabledByDefault": false,
 			"utterances": [
@@ -31,7 +31,7 @@
 			"slots": []
 		},
 		{
-			"name": "Next",
+			"name": "mpdNext",
 			"description": "User wants to skip to the next track.",
 			"enabledByDefault": false,
 			"utterances": [
@@ -44,7 +44,7 @@
 			"slots": []
 		},
 		{
-			"name": "Prev",
+			"name": "mpdPrev",
 			"description": "User wants to return to the previous track.",
 			"enabledByDefault": false,
 			"utterances": [

@@ -11,10 +11,10 @@ class mpdclient(Module):
 	Description: Control an MPD server
 	"""
 
-	_INTENT_PLAY = Intent('Play')
-	_INTENT_STOP = Intent('Stop')
-	_INTENT_NEXT = Intent('Next')
-	_INTENT_PREV = Intent('Prev')
+	_INTENT_PLAY = Intent('mpdPlay')
+	_INTENT_STOP = Intent('mpdStop')
+	_INTENT_NEXT = Intent('mpdNext')
+	_INTENT_PREV = Intent('mpdPrev')
 
 	def __init__(self):
 		self._SUPPORTED_INTENTS = [
