@@ -88,7 +88,7 @@ class AliceCore(Module):
 
 		if not self.UserManager.users:
 			if not self.delayed:
-				self._logger.warning(f'[{self.name}] No user found in database')
+				self._logger.warning('[{}] No user found in database'.format(self.name))
 				raise ModuleStartDelayed(self.name)
 			else:
 				self._addFirstUser()
@@ -109,7 +109,7 @@ class AliceCore(Module):
 		if self.delayed: # type: ignore
 			self.delayed = False
 
-			if not self.ThreadManager.getLock('AddingWakeword').isSet():
+			if not self.ThreadManager.getEvent('AddingWakeword').isSet():
 				self.say(text=self.randomTalk('noStartWithoutAdmin'), siteId=session.siteId)
 
 				def stop():
@@ -117,7 +117,7 @@ class AliceCore(Module):
 
 				self.ThreadManager.doLater(interval=10, func=stop)
 			else:
-				self.ThreadManager.getLock('AddingWakeword').clear()
+				self.ThreadManager.getEvent('AddingWakeword').clear()
 				self.say(text=self.randomTalk('cancellingWakewordCapture'), siteId=session.siteId)
 				self.ThreadManager.doLater(interval=2, func=self.onStart)
 
@@ -143,7 +143,7 @@ class AliceCore(Module):
 
 
 	def onSessionEnded(self, session: DialogSession):
-		if not self.ThreadManager.getLock('AddingWakeword').isSet():
+		if not self.ThreadManager.getEvent('AddingWakeword').isSet():
 			self.changeFeedbackSound(inDialog=False, siteId=session.siteId)
 
 			if self.delayed:
@@ -172,7 +172,7 @@ class AliceCore(Module):
 			elif onReboot == 'greetAndRebootModules':
 				self.ThreadManager.doLater(interval=3, func=self.say, args=[self.randomTalk('confirmRebootingModules'), 'all'])
 			else:
-				self._logger.warning(f'[{self.name}] onReboot config has an unknown value')
+				self._logger.warning('[{}] onReboot config has an unknown value'.format(self.name))
 
 			self.ConfigManager.updateAliceConfiguration('onReboot', '')
 
@@ -189,28 +189,28 @@ class AliceCore(Module):
 		self.UserManager.home()
 
 
-	def onSayFinished(self, session: DialogSession):
-		if self.ThreadManager.getLock('AddingWakeword').isSet() and self.WakewordManager.state == WakewordManagerState.IDLE:
+	def onSayFinished(self, session: DialogSession, *args, **kwargs):
+		if self.ThreadManager.getEvent('AddingWakeword').isSet() and self.WakewordManager.state == WakewordManagerState.IDLE:
 			self.ThreadManager.doLater(interval=0.5, func=self.WakewordManager.addASample)
 
 
-	def onSnipsAssistantDownloaded(self, *args):
+	def onSnipsAssistantDownloaded(self, *args, **kwargs):
 		try:
 			filepath = Path(tempfile.gettempdir(), 'assistant.zip')
 			with ZipFile(filepath) as zipfile:
 				zipfile.extractall(tempfile.gettempdir())
 
-			subprocess.run(['sudo', 'rm', '-rf', f'{commons.rootDir()}/trained/assistants/assistant_{self.LanguageManager.activeLanguage}'])
-			subprocess.run(['sudo', 'rm', '-rf', f'{commons.rootDir()}/assistant'])
-			subprocess.run(['sudo', 'cp', '-R', str(filepath).replace('.zip', ''), f'{commons.rootDir()}/trained/assistants/assistant_{self.LanguageManager.activeLanguage}'])
+			subprocess.run(['sudo', 'rm', '-rf', commons.rootDir() + '/trained/assistants/assistant_{}'.format(self.LanguageManager.activeLanguage)])
+			subprocess.run(['sudo', 'rm', '-rf', commons.rootDir() + '/assistant'])
+			subprocess.run(['sudo', 'cp', '-R', str(filepath).replace('.zip', ''), commons.rootDir() + '/trained/assistants/assistant_{}'.format(self.LanguageManager.activeLanguage)])
 
 			time.sleep(0.5)
 
-			subprocess.run(['sudo', 'chown', '-R', getpass.getuser(), f'{commons.rootDir()}/trained/assistants/assistant_{self.LanguageManager.activeLanguage}'])
-			subprocess.run(['sudo', 'ln', '-sfn', f'{commons.rootDir()}/trained/assistants/assistant_{self.LanguageManager.activeLanguage}', f'{commons.rootDir()}/assistant'])
-			subprocess.run(['sudo', 'ln', '-sfn', f'{commons.rootDir()}/system/sounds/{self.LanguageManager.activeLanguage}/start_of_input.wav', f'{commons.rootDir()}/assistant/custom_dialogue/sound/start_of_input.wav'])
-			subprocess.run(['sudo', 'ln', '-sfn', f'{commons.rootDir()}/system/sounds/{self.LanguageManager.activeLanguage}/end_of_input.wav', f'{commons.rootDir()}/assistant/custom_dialogue/sound/end_of_input.wav'])
-			subprocess.run(['sudo', 'ln', '-sfn', f'{commons.rootDir()}/system/sounds/{self.LanguageManager.activeLanguage}/error.wav', f'{commons.rootDir()}/assistant/custom_dialogue/sound/error.wav'])
+			subprocess.run(['sudo', 'chown', '-R', getpass.getuser(), commons.rootDir() + '/trained/assistants/assistant_{}'.format(self.LanguageManager.activeLanguage)])
+			subprocess.run(['sudo', 'ln', '-sfn', commons.rootDir() + '/trained/assistants/assistant_{}'.format(self.LanguageManager.activeLanguage), commons.rootDir() + '/assistant'])
+			subprocess.run(['sudo', 'ln', '-sfn', commons.rootDir() + '/system/sounds/{}/start_of_input.wav'.format(self.LanguageManager.activeLanguage), commons.rootDir() + '/assistant/custom_dialogue/sound/start_of_input.wav'])
+			subprocess.run(['sudo', 'ln', '-sfn', commons.rootDir() + '/system/sounds/{}/end_of_input.wav'.format(self.LanguageManager.activeLanguage), commons.rootDir() + '/assistant/custom_dialogue/sound/end_of_input.wav'])
+			subprocess.run(['sudo', 'ln', '-sfn', commons.rootDir() + '/system/sounds/{}/error.wav'.format(self.LanguageManager.activeLanguage), commons.rootDir() + '/assistant/custom_dialogue/sound/error.wav'])
 
 			time.sleep(0.5)
 
@@ -311,7 +311,7 @@ class AliceCore(Module):
 
 			device = self.DeviceManager.deviceConnecting(uid=payload['uid'])
 			if device:
-				self._logger.info(f'Device with uid {device.uid} of type {device.deviceType} in room {device.room} connected')
+				self._logger.info('Device with uid {} of type {} in room {} connected'.format(device.uid, device.deviceType, device.room))
 				self.publish(topic='projectalice/devices/connectionAccepted', payload={'siteId': payload['siteId'], 'uid': payload['uid']})
 			else:
 				self.publish(topic='projectalice/devices/connectionRefused', payload={'siteId': payload['siteId'], 'uid': payload['uid']})
@@ -344,7 +344,7 @@ class AliceCore(Module):
 						self.ThreadManager.doLater(interval=5, func=self.restart)
 				else:
 					self.endDialog(sessionId)
-					self._logger.warn(f'[{self.name}] Asked to reboot, but missing params')
+					self._logger.warn('[{}] Asked to reboot, but missing params'.format(self.name))
 
 			elif session.previousIntent == self._INTENT_DUMMY_ADD_USER:
 				if commons.isYes(session):
@@ -366,7 +366,7 @@ class AliceCore(Module):
 			elif session.previousIntent == self._INTENT_DUMMY_ADD_WAKEWORD:
 				if commons.isYes(session):
 					self.WakewordManager.newWakeword(username=customData['name'])
-					self.ThreadManager.newLock('AddingWakeword').set()
+					self.ThreadManager.newEvent('AddingWakeword').set()
 					self.continueDialog(
 						sessionId=sessionId,
 						text=self.randomTalk('addWakewordAccepted'),
@@ -400,7 +400,7 @@ class AliceCore(Module):
 			elif session.previousIntent == self._INTENT_DUMMY_ADD_USER_WAKEWORD:
 				if commons.isYes(session):
 					self.WakewordManager.newWakeword(username=customData['username'])
-					self.ThreadManager.newLock('AddingWakeword').set()
+					self.ThreadManager.newEvent('AddingWakeword').set()
 					self.continueDialog(
 						sessionId=sessionId,
 						text=self.randomTalk(text='addUserAddWakewordAccepted', replace=[customData['username']]),
@@ -426,7 +426,7 @@ class AliceCore(Module):
 				else:
 					if self.delayed:
 						self.delayed = False
-						self.ThreadManager.getLock('AddingWakeword').clear()
+						self.ThreadManager.getEvent('AddingWakeword').clear()
 						self.ThreadManager.doLater(interval=2, func=self.onStart)
 
 					self.endDialog(sessionId=sessionId, text=self.randomTalk('cancellingWakewordCapture'))
@@ -459,10 +459,10 @@ class AliceCore(Module):
 				)
 			else:
 				self.playSound(
-					soundFile=filepath,
+					soundFilename=str(self.WakewordManager.getLastSampleNumber()),
+					location=Path(tempfile.gettempdir()),
 					sessionId='checking-wakeword',
-					siteId=session.siteId,
-					absolutePath=True
+					siteId=session.siteId
 				)
 
 				text = 'howWasTheCapture' if self.WakewordManager.getLastSampleNumber() == 1 else 'howWasThisCapture'
@@ -504,7 +504,7 @@ class AliceCore(Module):
 					self.endDialog(sessionId=sessionId, text=self.randomTalk('wakewordCaptureDone'))
 					self.WakewordManager.finalizeWakeword()
 
-					self.ThreadManager.getLock('AddingWakeword').clear()
+					self.ThreadManager.getEvent('AddingWakeword').clear()
 					if self.delayed:
 						self.delayed = False
 						self.ThreadManager.doLater(interval=2, func=self.onStart)
@@ -524,12 +524,11 @@ class AliceCore(Module):
 					return True
 				time.sleep(0.5)
 
-			filepath = Path(tempfile.gettempdir(), str(self.WakewordManager.getLastSampleNumber())).with_suffix('.wav')
 			self.playSound(
-				soundFile=filepath,
+				soundFilename=str(self.WakewordManager.getLastSampleNumber()),
+				location=Path(tempfile.gettempdir()),
 				sessionId='checking-wakeword',
-				siteId=session.siteId,
-				absolutePath=True
+				siteId=session.siteId
 			)
 
 			self.continueDialog(
@@ -548,7 +547,7 @@ class AliceCore(Module):
 
 			try:
 				self.LanguageManager.changeActiveLanguage(slots['ToLang'])
-				self.ThreadManager.doLater(interval=3, func=self.langSwitch, args=[slots['ToLang'], siteId, False])
+				self.ThreadManager.doLater(interval=3, func=self.langSwitch, args=[slots['ToLang'], siteId])
 			except LanguageManagerLangNotSupported:
 				self.endDialog(text=self.randomTalk(text='langNotSupported', replace=[slots['ToLang']]))
 			except ConfigurationUpdateFailed:
@@ -573,7 +572,7 @@ class AliceCore(Module):
 				update = 5
 
 			if update in {1, 5}: # All or system
-				self._logger.info(f'[{self.name}] Updating system')
+				self._logger.info('[{}] Updating system'.format(self.name))
 				self.endDialog(sessionId=sessionId, text=self.randomTalk('confirmAssistantUpdate'))
 
 				def systemUpdate():
@@ -587,25 +586,26 @@ class AliceCore(Module):
 				self.ThreadManager.doLater(interval=2, func=systemUpdate)
 
 			if update in {1, 4}: # All or modules
-				self._logger.info(f'[{self.name}] Updating modules')
+				self._logger.info('[{}] Updating modules'.format(self.name))
 				self.endDialog(sessionId=sessionId, text=self.randomTalk('confirmAssistantUpdate'))
 				self.ModuleManager.checkForModuleUpdates()
 
 			if update in {1, 2}: # All or Alice
-				self._logger.info(f'[{self.name}] Updating Alice')
+				self._logger.info('[{}] Updating Alice'.format(self.name))
 				if update == 2:
 					self.endDialog(sessionId=sessionId, text=self.randomTalk('confirmAssistantUpdate'))
 
 			if update in {1, 3}: # All or Assistant
-				self._logger.info(f'[{self.name}] Updating assistant')
+				self._logger.info('[{}] Updating assistant'.format(self.name))
 
 				if not self.LanguageManager.activeSnipsProjectId:
 					self.endDialog(sessionId=sessionId, text=self.randomTalk('noProjectIdSet'))
 				elif not self.SnipsConsoleManager.loginCredentialsAreConfigured():
 					self.endDialog(sessionId=sessionId, text=self.randomTalk('bundleUpdateNoCredentials'))
-				elif update == 3:
-					self.endDialog(sessionId=sessionId, text=self.randomTalk('confirmAssistantUpdate'))
 				else:
+					if update == 3:
+						self.endDialog(sessionId=sessionId, text=self.randomTalk('confirmAssistantUpdate'))
+
 					self.ThreadManager.doLater(interval=2, func=self.SamkillaManager.sync)
 
 		elif intent == self._INTENT_REBOOT:
@@ -760,8 +760,8 @@ class AliceCore(Module):
 
 	def langSwitch(self, newLang: str, siteId: str):
 		self.publish(topic='hermes/asr/textCaptured', payload={'siteId': siteId})
-		subprocess.run([f'{commons.rootDir()}/system/scripts/langSwitch.sh', newLang])
-		self.ThreadManager.doLater(interval=3, func=self._confirmLangSwitch, args=[newLang, siteId])
+		subprocess.run([commons.rootDir() + '/system/scripts/langSwitch.sh', newLang])
+		self.ThreadManager.doLater(interval=3, func=self._confirmLangSwitch, args=[siteId])
 
 
 	def _confirmLangSwitch(self, siteId: str):
@@ -771,7 +771,7 @@ class AliceCore(Module):
 
 	# noinspection PyUnusedLocal
 	def changeFeedbackSound(self, inDialog: bool, siteId: str = 'all'):
-		if not Path(commons.rootDir(), 'assistant').exists():
+		if not Path(commons.rootDir() + '/assistant').exists():
 			return
 
 		# Unfortunately we can't yet get rid of the feedback sound because Alice hears herself finishing the sentence and capturing part of it
@@ -780,5 +780,5 @@ class AliceCore(Module):
 		else:
 			state = ''
 
-		subprocess.run(['sudo', 'ln', '-sfn', f'{commons.rootDir()}/system/sounds/{self.LanguageManager.activeLanguage}/start_of_input{state}.wav', f'{commons.rootDir()}/assistant/custom_dialogue/sound/start_of_input.wav'])
-		subprocess.run(['sudo', 'ln', '-sfn', f'{commons.rootDir()}/system/sounds/{self.LanguageManager.activeLanguage}/error{state}.wav', f'{commons.rootDir()}/assistant/custom_dialogue/sound/error.wav'])
+		subprocess.run(['sudo', 'ln', '-sfn', commons.rootDir() + '/system/sounds/{}/start_of_input{}.wav'.format(self.LanguageManager.activeLanguage, state), commons.rootDir() + '/assistant/custom_dialogue/sound/start_of_input.wav'])
+		subprocess.run(['sudo', 'ln', '-sfn', commons.rootDir() + '/system/sounds/{}/error{}.wav'.format(self.LanguageManager.activeLanguage, state), commons.rootDir() + '/assistant/custom_dialogue/sound/error.wav'])

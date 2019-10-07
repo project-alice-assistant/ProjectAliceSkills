@@ -5704,7 +5704,8 @@
 			"description": "L'utilisateur énonce le wakeword",
 			"enabledByDefault": false,
 			"utterances": [
-				"Hey Alice"
+				"Hey Alice",
+				"hey alice"
 			],
 			"slots": []
 		},

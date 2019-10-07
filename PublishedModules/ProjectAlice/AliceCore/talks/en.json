@@ -346,7 +346,7 @@
 	},
 	"addUserWakeword": {
 		"default": [
-			"Ok {}, I have added you! If you want me to recognize you based on your voice you need to create a personal wake word. It is not obligatory but recommended. Do you want to do that?"
+			"Ok {}, I have added you! If you want me to recognize you based on your voice you need to create a personal wakeword. It is not obligatory but recommended. Do you want to do that?"
 		]
 	},
 	"addWakewordDenied": {
@@ -360,7 +360,7 @@
 		]
 	},
 	"wakewordCaptureFailed": [
-		"Something went wrong capturing the wake word. Do you want me to try to fix the problem and retry?"
+		"Something went wrong capturing the wakeword. Do you want me to try to fix the problem and retry?"
 	],
 	"howWasTheCapture": [
 		"I just played a trimmed version of you speaking the hotword. Was it ok? If not I can trim it more or less, it needs to be cut pretty close to your speaking... Say \"Ok\", \"Trim more\", \"Trim less\" or \"Restart\""
@@ -384,8 +384,8 @@
 		"You did it, I have the three samples and you should be now able to call me by my name and I should be able to recognize you! Enjoy my services!"
 	],
 	"wakewordCaptureTooNoisy": [
-		"There seems to be too much noise or your microphone is too sensitive, I couldn't capture the wake word. Do you want to try again?",
-		"I think there's either too much noise or your microphone's settings are too sensitive, I can't capture the wake word. Shall we try again?"
+		"There seems to be too much noise or your microphone is too sensitive, I couldn't capture the wakeword. Do you want to try again?",
+		"I think there's either too much noise or your microphone's settings are too sensitive, I can't capture the wakeword. Shall we try again?"
 	],
 	"cancellingWakewordCapture": [
 		"Ok, let's forget about it for now. You can retry when the environment is calmer. For now you can call me by saying <break time=\"100ms\"/> \"Hey Snips\", but I won't be able to recognize you though."
@@ -406,7 +406,7 @@
 		"Am I correct? The name is {}"
 	],
 	"addUserConfirmed": [
-		"Ok, I have added {} as {}! If you want me to recognize this user based on his voice he needs to create a personal wake word. It is not obligatory but recommended. Do you want to do that?"
+		"Ok, I have added {} as {}! If you want me to recognize this user based on his voice he needs to create a personal wakeword. It is not obligatory but recommended. Do you want to do that?"
 	],
 	"addUserAddWakewordAccepted": [
 		"<s>Ok {}! I need three samples of you calling me by saying <break time=\"100ms\"/> \"Hey Alice\" <break time=\"150ms\"/></s><s>Remember to be in a calm environment for this to work, noise or parasites make this impossible</s><s>Let's do this, call me!</s>"

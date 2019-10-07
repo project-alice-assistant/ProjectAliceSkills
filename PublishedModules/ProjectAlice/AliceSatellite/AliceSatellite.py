@@ -14,7 +14,6 @@ class AliceSatellite(Module):
 			self._DEVICE_DISCONNECTION
 		]
 
-		self._temperatures = dict()
 		self._sensorReadings = dict()
 
 		self.ProtectedIntentManager.protectIntent(self._FEEDBACK_SENSORS)
