@@ -42,36 +42,52 @@
 			]
 		},
 		{
-			"name": "More",
+			"name": "WakewordCaptureResult",
 			"matchingStrictness": null,
 			"automaticallyExtensible": true,
 			"useSynonyms": true,
 			"values": [
 				{
-					"value": "mehr",
+					"value": "more",
 					"synonyms": [
+						"trim mehr",
 						"ein wenig mehr",
+						"ein bisschen mehr",
+						"etwas mehr",
+						"mehr",
 						"viel mehr",
-						"länger",
-						"zu kurz"
+						"kürzer",
+						"zu lang"
 					]
-				}
-			]
-		},
-		{
-			"name": "Less",
-			"matchingStrictness": null,
-			"automaticallyExtensible": true,
-			"useSynonyms": true,
-			"values": [
+				},
 				{
-					"value": "weniger",
+					"value": "less",
 					"synonyms": [
+						"trim weniger",
 						"ein wenig weniger",
 						"ein bisschen weniger",
 						"etwas weniger",
+						"weniger",
 						"viel weniger",
-						"kürzer"
+						"länger",
+						"zu kurz"
+					]
+				},
+				{
+					"value": "restart",
+					"synonyms": [
+						"starte neu",
+						"versuch es nochmal",
+						"nochmal"
+					]
+				},
+				{
+					"value": "ok",
+					"synonyms": [
+						"okay",
+						"perfekt",
+						"ja",
+						"Volltreffer"
 					]
 				}
 			]
@@ -134,28 +150,6 @@
 					"value": "it",
 					"synonyms": [
 						"italienisch"
-					]
-				}
-			]
-		},
-		{
-			"name": "AliceHardwareTypes",
-			"matchingStrictness": null,
-			"automaticallyExtensible": false,
-			"useSynonyms": true,
-			"values": [
-				{
-					"value": "esp",
-					"synonyms": [
-						"tasmota"
-					]
-				},
-				{
-					"value": "satellite",
-					"synonyms": [
-						"alice",
-						"satellit",
-						"satelliten"
 					]
 				}
 			]
@@ -364,6 +358,28 @@
 					"value": "z",
 					"synonyms": [
 						"Z"
+					]
+				}
+			]
+		},
+		{
+			"name": "AliceHardwareTypes",
+			"matchingStrictness": null,
+			"automaticallyExtensible": false,
+			"useSynonyms": true,
+			"values": [
+				{
+					"value": "esp",
+					"synonyms": [
+						"tasmota"
+					]
+				},
+				{
+					"value": "satellite",
+					"synonyms": [
+						"alice",
+						"satellit",
+						"satelliten"
 					]
 				}
 			]
@@ -10654,9 +10670,6 @@
 					"value": "upload"
 				},
 				{
-					"value": "upskirt"
-				},
-				{
 					"value": "urlaubsregion"
 				},
 				{
@@ -11659,9 +11672,7 @@
 				"Bitte starte dein System neu",
 				"Bitte reboote dein System",
 				"Führe einen Neustart aus",
-				"Bitte starte dich neu",
-				"Bitte starte dein System neu",
-				"Starte dein System neu"
+				"Bitte starte dich neu"
 			],
 			"slots": []
 		},
@@ -11722,8 +11733,7 @@
 				"Ich füge einen neue {satelliten:=>Hardware} zu deinem Array hinzu",
 				"Lass uns ein Gerät zu deinem Netzwerk hinzufügen",
 				"Bitte auf neue Geräte achten",
-				"Ich möchte ein Gerät zu deinem Netzwerk hinzufügen",
-				"Einen neuen {satelliten:=>Hardware} hinzufügen"
+				"Ich möchte ein Gerät zu deinem Netzwerk hinzufügen"
 			],
 			"slots": [
 				{
@@ -11952,30 +11962,23 @@
 			"description": "User tells Alice to trim the wakeword a bit more or less",
 			"enabledByDefault": false,
 			"utterances": [
-				"{mehr:=>More}",
-				"Trimm ein wenig {mehr:=>More}",
-				"Trimm etwas {mehr:=>More}",
-				"Du kannst es {kürzer:=>Less} machen",
-				"Kannst du ein wenig {mehr:=>More} trimmen",
-				"Kannst du ein wenig {mehr:=>More} kürzen",
-				"Das ist {zu kurz:=>Less}",
-				"Mach es {länger:=>More}",
-				"Es muss {länger:=>More} sein",
-				"Kannst du bitte versuchen es {kürzer:=>Less} zu machen"
+				"{mehr:=>WakewordCaptureResult}",
+				"Trimm ein wenig {mehr:=>WakewordCaptureResult}",
+				"Trimm etwas {mehr:=>WakewordCaptureResult}",
+				"Du kannst es {kürzer:=>WakewordCaptureResult} machen",
+				"Kannst du ein wenig {mehr:=>WakewordCaptureResult} trimmen",
+				"Kannst du ein wenig {mehr:=>WakewordCaptureResult} kürzen",
+				"Das ist {zu kurz:=>WakewordCaptureResult}",
+				"Mach es {länger:=>WakewordCaptureResult}",
+				"Es muss {länger:=>WakewordCaptureResult} sein",
+				"Kannst du bitte versuchen es {kürzer:=>WakewordCaptureResult} zu machen"
 			],
 			"slots": [
 				{
-					"name": "More",
+					"name": "WakewordCaptureResult",
 					"description": null,
 					"required": false,
-					"type": "More",
-					"missingQuestion": ""
-				},
-				{
-					"name": "Less",
-					"description": null,
-					"required": false,
-					"type": "Less",
+					"type": "WakewordCaptureResult",
 					"missingQuestion": ""
 				}
 			]
@@ -11985,8 +11988,7 @@
 			"description": "User speaks the Hey Alice wakeword",
 			"enabledByDefault": false,
 			"utterances": [
-				"Hey Alice",
-				"hey alice"
+				"Hey Alice"
 			],
 			"slots": []
 		},
