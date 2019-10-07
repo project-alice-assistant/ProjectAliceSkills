@@ -88,7 +88,7 @@ class AliceCore(Module):
 
 		if not self.UserManager.users:
 			if not self.delayed:
-				self._logger.warning('[{}] No user found in database'.format(self.name))
+				self._logger.warning(f'[{self.name}] No user found in database')
 				raise ModuleStartDelayed(self.name)
 			else:
 				self._addFirstUser()
@@ -172,7 +172,7 @@ class AliceCore(Module):
 			elif onReboot == 'greetAndRebootModules':
 				self.ThreadManager.doLater(interval=3, func=self.say, args=[self.randomTalk('confirmRebootingModules'), 'all'])
 			else:
-				self._logger.warning('[{}] onReboot config has an unknown value'.format(self.name))
+				self._logger.warning(f'[{self.name}] onReboot config has an unknown value')
 
 			self.ConfigManager.updateAliceConfiguration('onReboot', '')
 
@@ -200,7 +200,7 @@ class AliceCore(Module):
 			with ZipFile(filepath) as zipfile:
 				zipfile.extractall(tempfile.gettempdir())
 
-			subprocess.run(['sudo', 'rm', '-rf', commons.rootDir() + '/trained/assistants/assistant_{}'.format(self.LanguageManager.activeLanguage)])
+			subprocess.run(['sudo', 'rm', '-rf', commons.rootDir() + f'/trained/assistants/assistant_{self.LanguageManager.activeLanguage}'])
 			subprocess.run(['sudo', 'rm', '-rf', commons.rootDir() + '/assistant'])
 			subprocess.run(['sudo', 'cp', '-R', str(filepath).replace('.zip', ''), commons.rootDir() + '/trained/assistants/assistant_{}'.format(self.LanguageManager.activeLanguage)])
 
