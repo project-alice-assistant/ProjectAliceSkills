@@ -19,7 +19,8 @@
                         "geh ins bett",
                         "schlafen gehen",
                         "gehen ins bett",
-                        "schlafen"
+                        "schlafen",
+						"ins bett"
                     ]
                 },
                 {
@@ -31,7 +32,8 @@
                         "am aufbrechen",
                         "gehen weg",
                         "haus verlassen",
-                        "zum gehen"
+                        "zum gehen",
+						"weggehen"
                     ]
                 },
                 {
@@ -74,7 +76,8 @@
                         "beim schminken",
                         "hübsch machen",
                         "schminken",
-                        "makeup auftragen"
+                        "makeup auftragen",
+						"mache mich hübsch"
                     ]
                 },
                 {
@@ -183,12 +186,12 @@
             "description": "",
             "enabledByDefault": true,
             "utterances": [
-                "{Wir:=>Who} {gehen schlafen:=>State}",
-                "Lass {ins bett gehen:=>State}",
+                "{Wir:=>Who} gehen {schlafen:=>State}",
+                "lass {ins bett gehen:=>State}",
                 "zeit zum {schlafen:=>State}",
                 "{wir:=>Who} sind am {kochen:=>State}",
                 "{ich:=>Who} bin am {schminken:=>State}",
-                "{ich:=>Who} mache mich {hübsch:=>State}",
+                "{ich:=>Who} {mache mich hübsch:=>State}",
                 "{ich:=>Who} gehe {schlafen:=>State}",
                 "{ich:=>Who} bin {müde:=>State}",
                 "{wir:=>Who} ghen {ins bett:=>State}",
