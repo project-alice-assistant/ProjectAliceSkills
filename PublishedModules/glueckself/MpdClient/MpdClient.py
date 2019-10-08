@@ -46,7 +46,7 @@ class MpdClient(Module):
 			return
 		
 		self.ThreadManager.doLater(interval=1, func=self._mpdPollStatus)
-	
+
 	def _mpdPollStatus(self):
 		status = self._mpd.status()
 		self._mpdProcessStatus(status)
