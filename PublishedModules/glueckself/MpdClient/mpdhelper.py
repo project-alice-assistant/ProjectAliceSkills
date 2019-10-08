@@ -21,7 +21,6 @@
 
 import functools
 import logging
-import operator
 import os
 import socket
 

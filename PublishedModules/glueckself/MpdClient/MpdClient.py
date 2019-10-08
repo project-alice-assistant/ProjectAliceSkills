@@ -1,10 +1,8 @@
 from modules.MpdClient import mpdhelper
 
-from core.ProjectAliceExceptions import ModuleStartDelayed, ModuleStartingFailed
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
-from core.commons.commons import online
 
 #>>> mpd.status()
 #{'volume': '44', 'repeat': '0', 'random': '0', 'single': '0', 'consume': '0', 'playlist': '2', 'playlistlength': '13', 'mixrampdb': '0.000000', 'state': 'play', 'song': '3', 'songid': '4', 'time': '1:178', 'elapsed': '0.789', 'bitrate': '128', 'audio': '44100:24:2', 'nextsong': '4', 'nextsongid': '5'}
@@ -71,7 +69,7 @@ class MpdClient(Module):
 		self._mpd.connect(self._host, self._port)
 		if self._password:
 			self._mpd.password(self._password)
-	
+
 	def onMessage(self, intent: str, session: DialogSession) -> bool:
 		if not self.filterIntent(intent, session):
 			return False
