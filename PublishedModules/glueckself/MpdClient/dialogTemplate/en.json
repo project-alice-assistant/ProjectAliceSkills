@@ -7,7 +7,7 @@
 		{
 			"name": "mpdPlay",
 			"description": "User wants to start the current playlist.",
-			"enabledByDefault": false,
+			"enabledByDefault": true,
 			"utterances": [
 				"Music please",
 				"Please play me some music",
@@ -23,7 +23,7 @@
 		{
 			"name": "mpdStop",
 			"description": "User wants to stop the current playback.",
-			"enabledByDefault": false,
+			"enabledByDefault": true,
 			"utterances": [
 				"Turn off the music",
 				"Please turn of the music",
@@ -35,7 +35,7 @@
 		{
 			"name": "mpdNext",
 			"description": "User wants to skip to the next track.",
-			"enabledByDefault": false,
+			"enabledByDefault": true,
 			"utterances": [
 				"Next song please",
 				"Please play the next song",
@@ -50,7 +50,7 @@
 		{
 			"name": "mpdPrev",
 			"description": "User wants to return to the previous track.",
-			"enabledByDefault": false,
+			"enabledByDefault": true,
 			"utterances": [
 				"previous song please",
 				"Please play the previous song",

@@ -7,7 +7,7 @@
 		{
 			"name": "mpdPlay",
 			"description": "User wants to start the current playlist.",
-			"enabledByDefault": false,
+			"enabledByDefault": true,
 			"utterances": [
 				"Musik bitte",
 				"Bitte spiele mir Musik",
@@ -21,7 +21,7 @@
 		{
 			"name": "mpdStop",
 			"description": "User wants to stop the current playback.",
-			"enabledByDefault": false,
+			"enabledByDefault": true,
 			"utterances": [
 				"Schalte die Musik aus.",
 				"Schalte bitte die Musik aus.",
@@ -33,7 +33,7 @@
 		{
 			"name": "mpdNext",
 			"description": "User wants to skip to the next track.",
-			"enabledByDefault": false,
+			"enabledByDefault": true,
 			"utterances": [
 				"Nächstes Lied bitte",
 				"Nächsten Song bitte",
@@ -46,7 +46,7 @@
 		{
 			"name": "mpdPrev",
 			"description": "User wants to return to the previous track.",
-			"enabledByDefault": false,
+			"enabledByDefault": true,
 			"utterances": [
 				"Vorheriges Lied bitte",
 				"Vorherigen Song bitte",

@@ -41,7 +41,7 @@ class MpdClient(Module):
 		self._mpdConnected = False
 		self._mpd = mpdhelper.MPDClient()
 
-		self._oldPlaybackStatus = None
+		self._playbackStatus = None
 		
 		if not self._host:
 			self._logger.warn(f'[{self.name}] MPD host not configured, not doing anything.')
@@ -57,32 +57,16 @@ class MpdClient(Module):
 	def _mpdProcessStatus(self, status: dict):
 		if not status:
 			self._mpdConnected = False
+			self._playbackStatus = None
 			self._mpd.disconnect()
 			self._connect()
 			return
 
 		self._mpdConnected = True
-		playbackStatus = False
-		if status['state'] == 'play':
-			playbackStatus = True
+		self._playbackStatus = (status['state'] == 'play')
 
-		if self._oldPlaybackStatus == playbackStatus:
-			return
+		#self._logger.info(f'[{self.name}] Music playing is now {self._playbackStatus}')
 
-		self._logger.info(f'[{self.name}] Music playing is now {playbackStatus}')
-		self._oldPlaybackStatus = playbackStatus		
-		try:
-			# when playing: stop, next, prev. when stopped: play
-			intents = [
-				{'intentId': 'mpdPlay', 'enable': not playbackStatus },
-				{'intentId': 'mpdStop', 'enable': playbackStatus },
-				{'intentId': 'mpdNext', 'enable': playbackStatus },
-				{'intentId': 'mpdPrev', 'enable': playbackStatus }
-			]
-			self.MqttManager.configureIntents(intents)
-		except Exception as e:
-			self._logger.warning(f'[{self.name}] Failed to update intents to match the mpd state: {e}')
-	
 	def _connect(self):
 		self._mpd.connect(self._host, self._port)
 		if self._password:
@@ -91,26 +75,38 @@ class MpdClient(Module):
 	def onMessage(self, intent: str, session: DialogSession) -> bool:
 		if not self.filterIntent(intent, session):
 			return False
-		
+
 		if not self._mpdConnected:
 			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('notConnected'))
 			return True
 
 		if intent == self._INTENT_PLAY:
-			self._mpd.play()
-			self.endDialog(sessionId=session.sessionId)
+			if self._playbackStatus:
+				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('alreadyPlaying'))
+			else:
+				self._mpd.play()
+				self.endDialog(sessionId=session.sessionId)
 			return True
 		elif intent == self._INTENT_STOP:
-			self._mpd.stop()
-			self.endDialog(sessionId=session.sessionId)
+			# note that _playbackStatus can also be None when disconnected.
+			# while it shouldn't reach this line in that case, better to be on the safe side
+			if self._playbackStatus == False:
+				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('alreadyStopped'))
+			else:
+				self._mpd.stop()
+				self.endDialog(sessionId=session.sessionId)
 			return True
 		elif intent == self._INTENT_NEXT:
+			# TODO maybe say the title here if not playing
 			self._mpd.next()
 			self.endDialog(sessionId=session.sessionId)
 			return True
 		elif intent == self._INTENT_PREV:
-			self._mpd.prev()
+			# TODO maybe say the title here if not playing
+			self._mpd.previous()
 			self.endDialog(sessionId=session.sessionId)
 			return True
 		else:
 			return False
+		#TODO volume, playlists, ...
+		#TODO pause music if alice starts a dialogue
