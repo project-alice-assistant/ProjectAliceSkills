@@ -144,12 +144,12 @@ class BringShoppingList(Module):
 		return items
 
 
-	def _offlineHandler(session: DialogSession, *args, **kwargs):
+	def _offlineHandler(self, session: DialogSession, *args, **kwargs):
 		self.endDialog(session.sessionId, text=SuperManager.getInstance().talkManager.randomTalk('offline', module='system'))
 
 
 	### INTENTS ###
-	@online(offlineHandler=self._offlineHandler)
+	@online(offlineHandler=_offlineHandler)
 	def editList(self, session: DialogSession, intent: str, answer: str, action: Callable[[list], Tuple[list, list]]):
 		items = self._getShopItems(session, intent)
 		if items:
