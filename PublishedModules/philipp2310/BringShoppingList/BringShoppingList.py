@@ -48,28 +48,21 @@ class BringShoppingList(Module):
 		if not self.filterIntent(intent, session):
 			return False
 
-		if intent == self._INTENT_ADD_ITEM or (intent in {self._INTENT_ANSWER_SHOP, self._INTENT_SPELL_WORD} and session.previousIntent == self._INTENT_ADD_ITEM):
-			#Add item to list
+		if self._INTENT_ADD_ITEM in { intent, session.previousIntent }:
+			# Add item to list
 			self.editList(session, intent, 'add', self._addItemInt)
-		elif intent == self._INTENT_DEL_ITEM or (intent in {self._INTENT_ANSWER_SHOP, self._INTENT_SPELL_WORD} and session.previousIntent == self._INTENT_DEL_ITEM):
-			#Delete items from list
+		elif intent == self._INTENT_DEL_ITEM in { intent, session.previousIntent }:
+			# Delete items from list
 			self.editList(session, intent, 'rem', self._deleteItemInt)
 		elif intent == self._INTENT_READ_LIST:
-			self.endDialog(session.sessionId, text=self.readList())
-		elif intent == self._INTENT_CHECK_LIST or (intent in {self._INTENT_ANSWER_SHOP, self._INTENT_SPELL_WORD} and session.previousIntent == self._INTENT_CHECK_LIST):
-			#check if item is in list
+			# read out list
+			self.readList(session)
+		elif self._INTENT_CHECK_LIST in { intent, session.previousIntent }:
+			# check if item is in list
 			self.editList(session, intent, 'chk', self._checkListInt)
-		elif intent == self._INTENT_DEL_LIST:
-			self.continueDialog(
-				sessionId=session.sessionId,
-				text=self.randomTalk('chk_del_all'),
-				intentFilter=[self._INTENT_CONF_DEL],
-				previousIntent=self._INTENT_DEL_LIST)
-		elif session.previousIntent == self._INTENT_DEL_LIST and intent == self._INTENT_CONF_DEL:
-			if commons.isYes(session):
-				self.endDialog(session.sessionId, text=self.deleteCompleteList())
-			else:
-				self.endDialog(session.sessionId, text=self.randomTalk('nodel_all'))
+		elif self._INTENT_DEL_LIST in { intent, session.previousIntent }:
+			# delete complete list
+			self.deleteCompleteList(session, intent)
 
 		return True
 
@@ -163,20 +156,35 @@ class BringShoppingList(Module):
 				previousIntent=intent)
 
 
-	@online
-	def readList(self):
+	@online(offlineHandler=_offlineHandler)
+	def readList(self, session: DialogSession):
 		"""read the content of the list"""
 		items = self._getBring().get_items().json()['purchase']
 		itemlist = [item['name'] for item in items]
-		return self._getTextForList('read', itemlist)
+		self.endDialog(session.sessionId, text=self._getTextForList('read', itemlist))
 
 
-	@online
-	def deleteCompleteList(self) -> str:
+	@online(offlineHandler=_offlineHandler)
+	def deleteCompleteList(self, session: DialogSession, intent: str):
 		"""
 		perform the deletion of the complete list
 		-> load all and delete item by item
 		"""
+		sessionId = session.sessionId
+		if intent == self._INTENT_DEL_LIST:
+			self.continueDialog(
+				sessionId=sessionId,
+				text=self.randomTalk('chk_del_all'),
+				intentFilter=[self._INTENT_CONF_DEL],
+				previousIntent=intent)
+			return
+
+		if commons.isYes(session):
+			self.endDialog(sessionId, text=self.deleteCompleteList())
+		else:
+			self.endDialog(sessionId, text=self.randomTalk('nodel_all'))
+
+
 		items = self._getBring().get_items().json()['purchase']
 		for item in items:
 			self._getBring().recent_item(item['name'])
