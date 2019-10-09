@@ -1,2 +1,2 @@
-- exclude_patterns:
-  - PublishedModules/Psychokiller1888/PhiliphsHue/libraries/phue.py
+exclude_paths:
+- PublishedModules/Psychokiller1888/PhiliphsHue/libraries/*
