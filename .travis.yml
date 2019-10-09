@@ -9,11 +9,6 @@ install:
 
 script:
   - python3 Tools/JsonValidator/JsonValidator.py --all
-  - |
-    for module in PublishedModules/*
-    do
-    	module=${module%*/}
-    	find $module -name '*.py' | xargs mypy --pretty
-    done
+  - for module in PublishedModules/*; do find $module -name '*.py' | xargs mypy --pretty; done
   #- cores=$(nproc)
   #- pylint -j $cores PublishedModules/*/*/*.py --exit-zero
