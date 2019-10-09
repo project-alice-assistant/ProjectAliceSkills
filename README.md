@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/project-alice-powered-by-snips/ProjectAliceModules.svg?branch=master)](https://travis-ci.org/project-alice-powered-by-snips/ProjectAliceModules)
+[![Build Status](https://travis-ci.org/project-alice-powered-by-snips/ProjectAliceModules.svg?branch=master)](https://travis-ci.org/project-alice-powered-by-snips/ProjectAliceModules) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/8c37d708cde34cb998b45ff5d6e92d43)](https://www.codacy.com/manual/ProjectAlice/ProjectAliceModules?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=project-alice-powered-by-snips/ProjectAliceModules&amp;utm_campaign=Badge_Grade)
 
 # ProjectAliceModules
 
