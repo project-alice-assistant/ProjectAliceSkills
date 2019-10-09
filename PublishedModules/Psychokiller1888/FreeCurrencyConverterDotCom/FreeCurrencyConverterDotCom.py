@@ -64,7 +64,7 @@ class FreeCurrencyConverterDotCom(Module):
 
 
 	def offlineHandler(self, session: DialogSession):
-		self.endDialog(session.sessionId, text=SuperManager.getInstance().talkManager.randomTalk('offline', module='system'))
+		self.endDialog(session.sessionId, text=self.TalkManager.randomTalk('offline', module='system'))
 
 
 	@online(offlineHandler=offlineHandler)
