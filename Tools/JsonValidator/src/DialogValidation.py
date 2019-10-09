@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from typing import Generator, Optional
+from typing import Generator, Optional, Tuple
 from unidecode import unidecode
 
 from snips_nlu_parsers import get_all_builtin_entities
@@ -84,6 +84,26 @@ class DialogValidation(Validation):
 		return [x for x in values if x not in found]
 
 
+	def validateIntentSlot(self, allSlots: dict, file: Path, slot: str, values: list, intentName: str):
+		if self.isBuiltin(slot):
+			return
+
+		jsonPath = self._validModule['utterances'][file.name]
+
+		if slot in allSlots[file]:
+			missingValues = self.searchMissingSlotValues(values, allSlots[file][slot])
+			if missingValues:
+				self._error = True
+				jsonPath['missingSlotValue'][intentName][slot] = missingValues
+			return
+
+		self._error = True
+		if intentName in jsonPath['missingSlots']:
+			jsonPath['missingSlots'][intentName].append(slot)
+		else:
+			jsonPath['missingSlots'][intentName] = [slot]
+
+
 	def validateIntentSlots(self) -> None:
 		allSlots = dict()
 		# get slots from all json files of a module
@@ -92,25 +112,11 @@ class DialogValidation(Validation):
 
 		# check whether the same slots appear in all files
 		for file in self.jsonFiles:
-			jsonPath = self._validModule['utterances'][file.name]
 			# get data and check whether it is valid
 			data = self.validateSyntax(file)
 			for intentName, slots in DialogTemplate(data).utteranceSlots.items():
 				for slot, values in slots.items():
-					if self.isBuiltin(slot):
-						continue
-
-					if not slot in allSlots[file]:
-						self._error = True
-						if intentName in jsonPath['missingSlots']:
-							jsonPath['missingSlots'][intentName].append(slot)
-						else:
-							jsonPath['missingSlots'][intentName] = [slot]
-					else:
-						missingValues = self.searchMissingSlotValues(values, allSlots[file][slot])
-						if missingValues:
-							self._error = True
-							jsonPath['missingSlotValue'][intentName][slot] = missingValues
+					self.validateIntentSlot(allSlots, file, slot, values, intentName)
 		
 	
 	def validateIntents(self) -> None:
