@@ -5,7 +5,6 @@ from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.commons import commons, online
 from core.dialog.model.DialogSession import DialogSession
-from core.base.SuperManager import SuperManager
 
 
 class BringShoppingList(Module):
@@ -138,7 +137,7 @@ class BringShoppingList(Module):
 
 
 	def _offlineHandler(self, session: DialogSession, *args, **kwargs):
-		self.endDialog(session.sessionId, text=SuperManager.getInstance().talkManager.randomTalk('offline', module='system'))
+		self.endDialog(session.sessionId, text=self.TalkManager.randomTalk('offline', module='system'))
 
 
 	### INTENTS ###
