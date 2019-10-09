@@ -50,4 +50,4 @@ class Speedtest(Module):
 			self.say(text=self.randomTalk(text='result', replace=[downspeed, upspeed]))
 		except Exception as e:
 			self.say(self.randomTalk(text='failed'))
-			self._logger.warning('[{}] Download failed with: {}'.format(self.name, e))
+			self._logger.warning('[{}] Speedtest failed with: {}'.format(self.name, e))
