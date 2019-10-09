@@ -3,8 +3,9 @@ from BringApi.BringApi import BringApi
 
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
-from core.commons import commons
+from core.commons import commons, online
 from core.dialog.model.DialogSession import DialogSession
+from core.base.SuperManager import SuperManager
 
 
 class BringShoppingList(Module):
@@ -54,7 +55,7 @@ class BringShoppingList(Module):
 			#Delete items from list
 			self.editList(session, intent, 'rem', self._deleteItemInt)
 		elif intent == self._INTENT_READ_LIST:
-			self.readList(session)
+			self.endDialog(session.sessionId, text=self.readList())
 		elif intent == self._INTENT_CHECK_LIST or (intent in {self._INTENT_ANSWER_SHOP, self._INTENT_SPELL_WORD} and session.previousIntent == self._INTENT_CHECK_LIST):
 			#check if item is in list
 			self.editList(session, intent, 'chk', self._checkListInt)
@@ -66,7 +67,7 @@ class BringShoppingList(Module):
 				previousIntent=self._INTENT_DEL_LIST)
 		elif session.previousIntent == self._INTENT_DEL_LIST and intent == self._INTENT_CONF_DEL:
 			if commons.isYes(session):
-				self.endDialog(session.sessionId, text=self._deleteCompleteList())
+				self.endDialog(session.sessionId, text=self.deleteCompleteList())
 			else:
 				self.endDialog(session.sessionId, text=self.randomTalk('nodel_all'))
 
@@ -76,18 +77,6 @@ class BringShoppingList(Module):
 	def _getBring(self) -> BringApi:
 		"""get an instance of the BringApi"""
 		return BringApi(self._uuid, self._uuidlist)
-
-
-	def _deleteCompleteList(self) -> str:
-		"""
-		perform the deletion of the complete list
-		-> load all and delete item by item
-		"""
-		items = self._getBring().get_items().json()['purchase']
-		for item in items:
-			self._getBring().recent_item(item['name'])
-		return self.randomTalk('del_all')
-
 
 	def _addItemInt(self, items) -> Tuple[list, list]:
 		"""
@@ -155,7 +144,12 @@ class BringShoppingList(Module):
 		return items
 
 
+	def _offlineHandler(session: DialogSession, *args, **kwargs):
+		self.endDialog(session.sessionId, text=SuperManager.getInstance().talkManager.randomTalk('offline', module='system'))
+
+
 	### INTENTS ###
+	@online(offlineHandler=self._offlineHandler)
 	def editList(self, session: DialogSession, intent: str, answer: str, action: Callable[[list], Tuple[list, list]]):
 		items = self._getShopItems(session, intent)
 		if items:
@@ -169,11 +163,24 @@ class BringShoppingList(Module):
 				previousIntent=intent)
 
 
-	def readList(self, session: DialogSession):
+	@online
+	def readList(self):
 		"""read the content of the list"""
 		items = self._getBring().get_items().json()['purchase']
 		itemlist = [item['name'] for item in items]
-		self.endDialog(session.sessionId, text=self._getTextForList('read', itemlist))
+		return self._getTextForList('read', itemlist)
+
+
+	@online
+	def deleteCompleteList(self) -> str:
+		"""
+		perform the deletion of the complete list
+		-> load all and delete item by item
+		"""
+		items = self._getBring().get_items().json()['purchase']
+		for item in items:
+			self._getBring().recent_item(item['name'])
+		return self.randomTalk('del_all')
 
 
 	#### List/Text operations
