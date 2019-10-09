@@ -9,6 +9,20 @@ install:
 
 script:
   - python3 Tools/JsonValidator/JsonValidator.py --all
-  - for module in PublishedModules/*; do find $module -name '*.py' | xargs mypy --pretty; done
+  - |
+    for author in PublishedModules/*; do
+      GREEN='\033[0;32m'
+      RED='\033[0;31m'
+      NC='\033[0m' # No Color
+      echo "${author##*/}"
+      for module in ${author}/*; do
+        OUTPUT=$(find $module -name '*.py' | xargs mypy --pretty)
+        if [ $? -eq 0 ]; then
+          printf "  ${module##*/}: ${GREEN}${OUTPUT}${NC}\n"
+        else
+          printf "  ${RED}${OUTPUT}${NC}\n"
+        fi
+      done
+    done
   #- cores=$(nproc)
   #- pylint -j $cores PublishedModules/*/*/*.py --exit-zero
