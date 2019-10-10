@@ -44,7 +44,7 @@ class MpdClient(Module):
 		if not self._host:
 			self._logger.warn(f'[{self.name}] MPD host not configured, not doing anything.')
 			return
-		
+
 		self.ThreadManager.doLater(interval=1, func=self._mpdPollStatus)
 
 	def _mpdPollStatus(self):
