@@ -1,4 +1,4 @@
-from typing import Tuple, Callable
+from typing import Tuple, Callable, Generator
 from BringApi.BringApi import BringApi
 
 from core.base.model.Intent import Intent
@@ -45,8 +45,6 @@ class BringShoppingList(Module):
 
 	def onMessage(self, intent: str, session: DialogSession) -> bool:
 		"""handle all incoming messages"""
-		if not self.filterIntent(intent, session):
-			return False
 
 		if self._INTENT_ADD_ITEM in { intent, session.previousIntent }:
 			# Add item to list
@@ -70,6 +68,7 @@ class BringShoppingList(Module):
 	def _getBring(self) -> BringApi:
 		"""get an instance of the BringApi"""
 		return BringApi(self._uuid, self._uuidlist)
+
 
 	def _addItemInt(self, items) -> Tuple[list, list]:
 		"""
@@ -96,6 +95,8 @@ class BringShoppingList(Module):
 		bringItems = self._getBring().get_items().json()['purchase']
 		removed = list()
 		exist = list()
+		for item, entr in self._bringItems(items):
+
 		for item in items:
 			for entr in bringItems:
 				if entr['name'].lower() == item.lower():
@@ -125,15 +126,14 @@ class BringShoppingList(Module):
 
 	def _getShopItems(self, session: DialogSession, intent: str) -> list:
 		"""get the values of shopItem as a list of strings"""
-		items = list()
 		if intent == self._INTENT_SPELL_WORD:
 			item = ''.join([slot.value['value'] for slot in session.slotsAsObjects['Letters']])
-			items.append(item.capitalize())
-		else:
-			if 'shopItem' in session.slots:
-				for x in session.slotsAsObjects['shopItem']:
-					if x.value['value'] != "unknownword":
-						items.append(x.value['value'])
+			return [item.capitalize()]
+		
+		items = list()
+		for slot in session.slotsAsObjects.get('shopItem', list()):
+			if slot.value['value'] != "unknownword":
+				items.append(slot.value['value'])
 		return items
 
 
