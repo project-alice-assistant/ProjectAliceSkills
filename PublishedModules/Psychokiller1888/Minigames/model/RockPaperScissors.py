@@ -1,5 +1,6 @@
 import os
 import random
+from itertools import cycle
 
 from core.base.SuperManager import SuperManager
 from core.base.model.Intent import Intent
@@ -38,7 +39,8 @@ class RockPaperScissors(MiniGame):
 
 	def onMessage(self, intent: str, session: DialogSession):
 		if intent == self._INTENT_ANSWER_ROCK_PAPER_OR_SCISSORS:
-			me = random.choice(['rock', 'paper', 'scissors'])
+			choices = ['rock', 'paper', 'scissors']
+			me = random.choice(choices)
 
 			SuperManager.getInstance().mqttManager.playSound(
 				soundFile=os.path.join(commons.rootDir(), 'modules', 'Minigames', 'sounds', 'drum_suspens'),
@@ -53,7 +55,7 @@ class RockPaperScissors(MiniGame):
 			if player == me:
 				result = 'rockPaperScissorsTie'
 			# player wins
-			elif player == 'rock' and me == 'scissors' or player == 'paper' and me == 'rock' or player == 'scissors' and me == 'paper':
+			elif choices[choices.index(player) - 1] == me:
 				result = 'rockPaperScissorsWins'
 				redQueen.changeRedQueenStat('frustration', 2)
 			# alice wins
