@@ -2,7 +2,7 @@
 	"name": "MpdClient",
 	"version": 0.1,
 	"author": "glueckself",
-	"maintainers": ["glueckself"],
+	"maintainers": [],
 	"desc": "Control an MPD server",
 	"aliceMinVersion": 0.10,
 	"systemRequirements": [],
