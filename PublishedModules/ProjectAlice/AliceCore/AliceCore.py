@@ -189,15 +189,15 @@ class AliceCore(Module):
 			self.ThreadManager.doLater(interval=0.5, func=self.WakewordManager.addASample)
 
 
-	def onSnipsAssistantInstalled(self, *args, **kwargs):
+	def onSnipsAssistantInstalled(self):
 		self.say(text=self.randomTalk('confirmBundleUpdate'))
 
 
-	def onSnipsAssistantFailedInstalling(self, *args, **kwargs):
+	def onSnipsAssistantFailedInstalling(self):
 		self.say(text=self.randomTalk('bundleUpdateFailed'))
 
 
-	def onSnipsAssistantDownloadFailed(self, *args):
+	def onSnipsAssistantDownloadFailed(self):
 		self.say(text=self.randomTalk('bundleUpdateFailed'))
 
 
