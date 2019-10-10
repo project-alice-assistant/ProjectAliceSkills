@@ -30,28 +30,44 @@ class DateDayTimeYear(Module):
 		sessionId = session.sessionId
 
 		if intent == self._INTENT_GET_TIME:
-			minutes = datetime.now().strftime('%M').lstrip('0')
-			part = datetime.now().strftime('%p')
-
-			# english has a 12 hour clock and adds oh below 10 min
-			if self.LanguageManager.activeLanguage == 'en':
-				hours = datetime.now().strftime('%I').lstrip('0')
-				if minutes != '' and int(minutes) < 10:
-					minutes = 'oh {}'.format(minutes)
-			else:
-				hours = datetime.now().strftime('%H').lstrip('0')
-
-			self.endDialog(sessionId, self.TalkManager.randomTalk('time').format(hours, minutes, part))
+			self.timeIntent(sessionId)
 		elif intent == self._INTENT_GET_DATE:
-			date = datetime.now().strftime('%d %B %Y')
-			date = self.LanguageManager.localize(date)
-			self.endDialog(sessionId, self.TalkManager.randomTalk('date').format(date))
+			self.dateIntent(sessionId)
 		elif intent == self._INTENT_GET_DAY:
-			day = datetime.now().strftime('%A')
-			day = self.LanguageManager.localize(day)
-			self.endDialog(sessionId, self.TalkManager.randomTalk('day').format(day))
+			self.dayIntent(sessionId)
 		elif intent == self._INTENT_GET_YEAR:
-			year = datetime.now().strftime('%Y')
-			self.endDialog(sessionId, self.TalkManager.randomTalk('day').format(year))
+			self.yearIntent(sessionId)
 
 		return True
+
+
+	def timeIntent(self, sessionId: str):
+		minutes = datetime.now().strftime('%M').lstrip('0')
+		part = datetime.now().strftime('%p')
+
+		# english has a 12 hour clock and adds oh below 10 min
+		if self.LanguageManager.activeLanguage == 'en':
+			hours = datetime.now().strftime('%I').lstrip('0')
+			if minutes != '' and int(minutes) < 10:
+				minutes = 'oh {}'.format(minutes)
+		else:
+			hours = datetime.now().strftime('%H').lstrip('0')
+
+		self.endDialog(sessionId, self.TalkManager.randomTalk('time').format(hours, minutes, part))
+
+
+	def dateIntent(self, sessionId: str):
+		date = datetime.now().strftime('%d %B %Y')
+		date = self.LanguageManager.localize(date)
+		self.endDialog(sessionId, self.TalkManager.randomTalk('date').format(date))
+
+
+	def dayIntent(self, sessionId: str):
+		day = datetime.now().strftime('%A')
+		day = self.LanguageManager.localize(day)
+		self.endDialog(sessionId, self.TalkManager.randomTalk('day').format(day))
+
+
+	def yearIntent(self, sessionId: str):
+		year = datetime.now().strftime('%Y')
+		self.endDialog(sessionId, self.TalkManager.randomTalk('day').format(year))
