@@ -190,7 +190,7 @@ class AliceCore(Module):
 
 
 	def onSnipsAssistantInstalled(self):
-		self.say(text=self.randomTalk('confirmBundleUpdate'))
+		self.say(text=self.randomTalk('confirmBundleUpdate'), canBeEnqueued=False)
 
 
 	def onSnipsAssistantFailedInstalling(self):
