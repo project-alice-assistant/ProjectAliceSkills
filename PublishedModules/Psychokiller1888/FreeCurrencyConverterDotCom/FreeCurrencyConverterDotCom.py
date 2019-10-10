@@ -29,9 +29,6 @@ class FreeCurrencyConverterDotCom(Module):
 		self._apiKey = self.getConfig('apiKey')
 
 	def onMessage(self, intent: str, session: DialogSession) -> bool:
-		if not self.filterIntent(intent, session):
-			return False
-
 		if intent == self._INTENT_CONVERT_CURRENCY or session.previousIntent == self._INTENT_CONVERT_CURRENCY:
 			try:
 				self.convertCurrency(session)
