@@ -14,29 +14,23 @@ class Speedtest(Module):
 	_INTENT_SPEEDTEST = Intent('Speedtest')
 
 	def __init__(self):
-		self._SUPPORTED_INTENTS = [
-			self._INTENT_SPEEDTEST
-		]
+		self._ACTIONS = {
+			self._INTENT_SPEEDTEST: self.runSpeedtest
+		}
 
-		super().__init__(self._SUPPORTED_INTENTS)
+		super().__init__(list(self._ACTIONS), actionMappings=self._ACTIONS)
 
-	def onMessage(self, intent: str, session: DialogSession) -> bool:
-		if not self.filterIntent(intent, session):
-			return False
-
-		if intent == self._INTENT_SPEEDTEST:
-			self.endDialog(sessionId=session.sessionId, text=self.runSpeedtest())
-		return True
 
 	@online
-	def runSpeedtest(self) -> str:
+	def runSpeedtest(self, intent: str, session: DialogSession) -> str:
 		self.ThreadManager.doLater(interval=0, func=self.executeSpeedtest)
 		self._logger.info('[{}] Starting Speedtest'.format(self.name))
-		return self.randomTalk('running')
+		self.endDialog(sessionId=session.sessionId, text=self.randomTalk('running'))
+
 
 	def executeSpeedtest(self):
 		try:
-			servers: list = list()
+			servers = list()
 			speed = speedtest.Speedtest()
 			speed.get_servers(servers)
 			speed.get_best_server()
