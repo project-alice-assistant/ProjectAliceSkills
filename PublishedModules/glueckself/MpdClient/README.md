@@ -2,7 +2,7 @@
 ### Download
 ##### > WGET method
 ```bash
-wget http://bit.ly/????????? -O ~/ProjectAlice/system/moduleInstallTickets/MpdClient.install
+wget http://modules.projectalice.ch/MpdClient -O ~/ProjectAlice/system/moduleInstallTickets/MpdClient.install
 ```
 ##### > Alice CLI method
 ```bash
