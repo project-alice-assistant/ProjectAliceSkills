@@ -1,4 +1,4 @@
 {
-    "phueAutodiscoverFallback": true,
-    "phueBridgeIp": ""
+	"phueAutodiscoverFallback": true,
+	"phueBridgeIp": ""
 }

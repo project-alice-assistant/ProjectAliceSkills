@@ -1,14 +1,14 @@
 {
-    "clientId": "",
-    "clientSecret": "",
-    "username": "",
-    "password": "",
-    "WindAlertFromKmh": 5,
-    "TemperatureAlertHigh": 35,
-    "TemperatureAlertLow": 5,
-    "CO2AlertHigh": 1000,
-    "HumidityAlertHigh": 90,
-    "HumidityAlertLow": 30,
-    "PressureAlertHigh": 1100,
-    "PressureAlertLow": 700
+	"clientId": "",
+	"clientSecret": "",
+	"username": "",
+	"password": "",
+	"WindAlertFromKmh": 5,
+	"TemperatureAlertHigh": 35,
+	"TemperatureAlertLow": 5,
+	"CO2AlertHigh": 1000,
+	"HumidityAlertHigh": 90,
+	"HumidityAlertLow": 30,
+	"PressureAlertHigh": 1100,
+	"PressureAlertLow": 700
 }

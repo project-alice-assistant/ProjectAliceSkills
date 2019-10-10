@@ -1,7 +1,7 @@
 {
-    "module": "Zigbee2Mqtt",
-    "icon": "temperature",
-    "description": "Dummy",
-    "slotTypes": [],
-    "intents": []
+	"module": "Zigbee2Mqtt",
+	"icon": "temperature",
+	"description": "Dummy",
+	"slotTypes": [],
+	"intents": []
 }
