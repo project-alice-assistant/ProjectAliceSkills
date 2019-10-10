@@ -71,10 +71,9 @@ class GuessTheNumber(MiniGame):
 				text=SuperManager.getInstance().talkManager.randomTalk('guessTheNumberCorrect', 'Minigames').format(self._number, self._number)
 			)
 
+			textType = 'guessTheNumberScore'
 			if session.user != 'unknown' and SuperManager.getInstance().moduleManager.getModuleInstance('Minigames').checkAndStoreScore(user=session.user, score=score, biggerIsBetter=False):
 				textType = 'guessTheNumberNewHighscore'
-			else:
-				textType = 'guessTheNumberScore'
 
 			SuperManager.getInstance().mqttManager.say(
 				client=session.siteId,
@@ -93,10 +92,9 @@ class GuessTheNumber(MiniGame):
 			)
 			return
 
+		textType = 'guessTheNumberLess'
 		if number < self._number:
 			textType = 'guessTheNumberMore'
-		else:
-			textType = 'guessTheNumberLess'
 
 		SuperManager.getInstance().mqttManager.continueDialog(
 			sessionId=session.sessionId,
