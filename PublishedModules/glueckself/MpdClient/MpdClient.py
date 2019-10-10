@@ -31,16 +31,16 @@ class MpdClient(Module):
 		]
 
 		super().__init__(self._SUPPORTED_INTENTS)
-		
+
 		self._host = self.getConfig('mpdHost')
 		self._port = self.getConfig('mpdPort')
 		self._password = self.getConfig('mpdPassword')
-		
+
 		self._mpdConnected = False
 		self._mpd = mpdhelper.MPDClient()
 
 		self._playbackStatus = None
-		
+
 		if not self._host:
 			self._logger.warn(f'[{self.name}] MPD host not configured, not doing anything.')
 			return
