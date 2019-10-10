@@ -14,7 +14,7 @@ Control an MPD server
 - Version: 0.11
 - Author: glueckself
 - Maintainers: maxbachmann
-- Alice minimum version: 0.10
+- Alice minimum version: 0.11
 - Conditions:
   - en
   - de
