@@ -185,18 +185,18 @@ wget http://bit.ly/????????? -O ~/ProjectAlice/system/moduleInstallTickets/{modu
 
 '''
 
-WIDGET_CSS = '''.{widgetName} {
+WIDGET_CSS = '''.{widgetName} {{
 	width: 100%;
 	height: 100%;
 	background-color: white;
 	padding: 5px;
 	box-sizing: border-box;
-}
+}}
 
-.{widgetName} .icon {
+.{widgetName} .icon {{
 	width: 100%;
 	font-size: 1.5em;
-}'''
+}}'''
 
 WIDGET_JS = '''$(function(){});'''
 
@@ -446,7 +446,7 @@ def createWidgets(modulePath, answers):
 
 		for widget in moduleWidgets:
 			widget = str(widget).title().replace(' ', '')
-			(modulePath / 'widgets' / 'css' / f'{widget}.css').write_text(WIDGET_CSS.replace('{widgetName}', widget))
+			(modulePath / 'widgets' / 'css' / f'{widget}.css').write_text(WIDGET_CSS.format(widgetName=widget))
 			(modulePath / 'widgets' / 'js' / f'{widget}.js').write_text(WIDGET_JS)
 			(modulePath / 'widgets' / 'lang' / f'{widget}.lang.json').write_text('{}')
 			(modulePath / 'widgets' / 'templates' / f'{widget}.html').write_text(WIDGET_TEMPLATE.format(widget=widget))
