@@ -7,7 +7,7 @@ for author in PublishedModules/*; do
 	NC='\033[0m' # No Color
 	echo "${author##*/}"
 	for module in ${author}/*; do
-		OUTPUT=$(find $module -name '*.py' | xargs mypy --pretty)
+		OUTPUT="$(find $module -name '*.py' | xargs mypy --pretty)"
 		ERR=$?
 		if [ $ERR -eq 0 ]; then
 			printf "  ${module##*/}: ${GREEN}${OUTPUT}${NC}\n"
