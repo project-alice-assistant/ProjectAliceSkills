@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 ERROR=0
 for author in PublishedModules/*; do
 	GREEN='\033[0;32m'
