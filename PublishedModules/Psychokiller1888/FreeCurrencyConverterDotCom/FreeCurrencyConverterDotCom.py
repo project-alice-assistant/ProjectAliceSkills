@@ -37,7 +37,7 @@ class FreeCurrencyConverterDotCom(Module):
 				self.convertCurrency(session)
 			except Exception as e:
 				self._logger.error(e)
-				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('noServer'), siteId=session.siteId)
+				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('noServer'))
 
 		return True
 
@@ -69,7 +69,6 @@ class FreeCurrencyConverterDotCom(Module):
 
 	@online(offlineHandler=offlineHandler)
 	def convertCurrency(self, session: DialogSession) -> str:
-		siteId = session.siteId
 		slotsObject = session.slotsAsObjects
 		sessionId = session.sessionId
 		customData = session.customData
@@ -95,7 +94,4 @@ class FreeCurrencyConverterDotCom(Module):
 		conversion = data[f'{fromCurrency}_{toCurrency}']
 		converted = round(float(amount) * float(conversion), 2)
 
-		self.endDialog(
-			sessionId=sessionId,
-			text=self.randomTalk('answer').format(amount, fromCurrency, converted, toCurrency),
-			siteId=session.siteId)
+		self.endDialog(sessionId, text=self.randomTalk('answer').format(amount, fromCurrency, converted, toCurrency))
