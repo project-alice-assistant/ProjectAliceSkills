@@ -44,15 +44,15 @@ class Netatmo(Module):
 		if not self.getConfig('password'):
 			raise ModuleStartingFailed(moduleName=self.name, error='[{}] No credentials provided'.format(self.name))
 
-		if self._auth():
-			try:
-				self._weatherData = lnetatmo.WeatherStationData(self._netatmoAuth)
-			except lnetatmo.NoDevice:
-				raise ModuleStartingFailed(moduleName=self.name, error='[{}] No Netatmo device found'.format(self.name))
-			else:
-				return self._SUPPORTED_INTENTS
-		else:
+		if not self._auth():
 			raise ModuleStartingFailed(moduleName=self.name, error='[{}] Authentication failed'.format(self.name))
+		
+		try:
+			self._weatherData = lnetatmo.WeatherStationData(self._netatmoAuth)
+		except lnetatmo.NoDevice:
+			raise ModuleStartingFailed(moduleName=self.name, error='[{}] No Netatmo device found'.format(self.name))
+		else:
+			return self._SUPPORTED_INTENTS
 
 
 	def _auth(self) -> bool:
