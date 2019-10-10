@@ -1,0 +1,33 @@
+{
+	"notConnected": {
+		"default": [
+			"Ich habe keine Verbindung zum Server.",
+			"Ich kann den Server nicht steuern.",
+			"Ich bin nicht verbunden."
+		],
+		"short": [
+			"Nicht verbunden."
+		]
+	},
+	"alreadyStopped": {
+		"default": [
+			"Ich spiele die Musik nicht.",
+			"Das bin nicht ich.",
+			"Ahm, etwas anderes spielt Musik.",
+			"M P D spielt gerade keine Musik.",
+			"Die Musik ist hier nicht an."
+		]
+	},
+	"alreadyPlaying": {
+		"default": [
+			"Die Musik läuft bereits.",
+			"M P D spielt bereits Musik.",
+			"Musik läuft schon, sind die Lautsprecher an?"
+		]
+	},
+	"notPlaying": {
+		"default": [
+			"Das geht nicht, gerade spielt nichts."
+		]
+	}		
+}
