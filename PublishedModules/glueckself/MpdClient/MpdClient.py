@@ -88,7 +88,7 @@ class MpdClient(Module):
 		elif intent == self._INTENT_STOP:
 			# note that _playbackStatus can also be None when disconnected.
 			# while it shouldn't reach this line in that case, better to be on the safe side
-			if self._playbackStatus == False:
+			if not self._playbackStatus:
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('alreadyStopped'))
 			else:
 				self._mpd.stop()
