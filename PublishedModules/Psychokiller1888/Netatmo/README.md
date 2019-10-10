@@ -15,7 +15,7 @@ wget http://modules.projectalice.ch/Netatmo -O ~/ProjectAlice/system/moduleInsta
 ### Description
 Get readings from your netatmo hardware
 
-- Version: 1.01
+- Version: 1.02
 - Author: Psychokiller1888
 - Maintainers: N/A
 - Alice minimum version: 0.10
