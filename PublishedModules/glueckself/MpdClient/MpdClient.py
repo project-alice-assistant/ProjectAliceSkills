@@ -120,11 +120,11 @@ class MpdClient(Module):
 	def nextIntent(self, sessionId: str):
 		# TODO maybe say the title here if not playing
 		self._mpd.next()
-		self.endDialog(sessionId=session.sessionId)
+		self.endDialog(sessionId=sessionId)
 	
 
 	def prevIntent(self, sessionId: str):
 		# TODO maybe say the title here if not playing
 		self._mpd.previous()
-		self.endDialog(sessionId=session.sessionId)
+		self.endDialog(sessionId=sessionId)
 
