@@ -24,9 +24,6 @@ class InternationalSpaceStation(Module):
 		super().__init__(self._SUPPORTED_INTENTS)
 
 	def onMessage(self, intent: str, session: DialogSession) -> bool:
-		if not self.filterIntent(intent, session):
-			return False
-
 		sessionId = session.sessionId
 
 		try:
