@@ -1,6 +1,5 @@
 import os
 import random
-from itertools import cycle
 
 from core.base.SuperManager import SuperManager
 from core.base.model.Intent import Intent
