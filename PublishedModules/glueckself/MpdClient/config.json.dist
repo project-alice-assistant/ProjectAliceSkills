@@ -1,5 +1,5 @@
 {
-    "mpdHost": "localhost",
-    "mpdPort": 6600,
-    "mpdPassword": ""
+	"mpdHost": "localhost",
+	"mpdPort": 6600,
+	"mpdPassword": ""
 }

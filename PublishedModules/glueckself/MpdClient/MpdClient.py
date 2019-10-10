@@ -47,10 +47,12 @@ class MpdClient(Module):
 
 		self.ThreadManager.doLater(interval=1, func=self._mpdPollStatus)
 
+
 	def _mpdPollStatus(self):
 		status = self._mpd.status()
 		self._mpdProcessStatus(status)
 		self.ThreadManager.doLater(interval=1, func=self._mpdPollStatus)
+
 
 	def _mpdProcessStatus(self, status: dict):
 		if not status:
@@ -65,10 +67,12 @@ class MpdClient(Module):
 
 		#self._logger.info(f'[{self.name}] Music playing is now {self._playbackStatus}')
 
+
 	def _connect(self):
 		self._mpd.connect(self._host, self._port)
 		if self._password:
 			self._mpd.password(self._password)
+
 
 	def onMessage(self, intent: str, session: DialogSession) -> bool:
 		if not self.filterIntent(intent, session):
@@ -78,33 +82,49 @@ class MpdClient(Module):
 			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('notConnected'))
 			return True
 
+		sessionId = session.sessionId
+
 		if intent == self._INTENT_PLAY:
-			if self._playbackStatus:
-				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('alreadyPlaying'))
-			else:
-				self._mpd.play()
-				self.endDialog(sessionId=session.sessionId)
-			return True
+			self.playIntent(sessionId)
 		elif intent == self._INTENT_STOP:
-			# note that _playbackStatus can also be None when disconnected.
-			# while it shouldn't reach this line in that case, better to be on the safe side
-			if not self._playbackStatus:
-				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('alreadyStopped'))
-			else:
-				self._mpd.stop()
-				self.endDialog(sessionId=session.sessionId)
-			return True
+			self.stopIntent(sessionId)
 		elif intent == self._INTENT_NEXT:
-			# TODO maybe say the title here if not playing
-			self._mpd.next()
-			self.endDialog(sessionId=session.sessionId)
-			return True
+			self.nextIntent(sessionId)
 		elif intent == self._INTENT_PREV:
-			# TODO maybe say the title here if not playing
-			self._mpd.previous()
-			self.endDialog(sessionId=session.sessionId)
-			return True
+			self.prevIntent(sessionId)
 		else:
 			return False
+		return True
 		#TODO volume, playlists, ...
 		#TODO pause music if alice starts a dialogue
+
+
+	def playIntent(self, sessionId: str):
+		if self._playbackStatus:
+			self.endDialog(sessionId=sessionId, text=self.randomTalk('alreadyPlaying'))
+		else:
+			self._mpd.play()
+			self.endDialog(sessionId=sessionId)
+	
+
+	def stopIntent(self, sessionId: str):
+		# note that _playbackStatus can also be None when disconnected.
+		# while it shouldn't reach this line in that case, better to be on the safe side
+		if not self._playbackStatus:
+			self.endDialog(sessionId=sessionId, text=self.randomTalk('alreadyStopped'))
+		else:
+			self._mpd.stop()
+			self.endDialog(sessionId=sessionId)
+	
+
+	def nextIntent(self, sessionId: str):
+		# TODO maybe say the title here if not playing
+		self._mpd.next()
+		self.endDialog(sessionId=session.sessionId)
+	
+
+	def prevIntent(self, sessionId: str):
+		# TODO maybe say the title here if not playing
+		self._mpd.previous()
+		self.endDialog(sessionId=session.sessionId)
+

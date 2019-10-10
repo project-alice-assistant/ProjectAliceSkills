@@ -1,8 +1,8 @@
 {
 	"name": "MpdClient",
-	"version": 0.1,
+	"version": 0.11,
 	"author": "glueckself",
-	"maintainers": [],
+	"maintainers": ["maxbachmann"],
 	"desc": "Control an MPD server",
 	"aliceMinVersion": 0.10,
 	"systemRequirements": [],
