@@ -66,6 +66,7 @@ class Minigames(Module):
 
 	def minigameIntent(self, intent: str, session: DialogSession) -> bool:
 		self._minigame.onMessage(intent, session)
+		return True
 
 	def playGameIntent(self, intent: str, session: DialogSession) -> bool:
 		sessionId = session.sessionId
