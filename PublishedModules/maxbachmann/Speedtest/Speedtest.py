@@ -18,7 +18,7 @@ class Speedtest(Module):
 			self._INTENT_SPEEDTEST: self.runSpeedtest
 		}
 
-		super().__init__(list(self._INTENTS), actionMappings=self._INTENTS)
+		super().__init__(self._INTENTS)
 
 
 	@online
