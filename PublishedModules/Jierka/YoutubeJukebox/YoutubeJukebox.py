@@ -39,7 +39,7 @@ class YoutubeJukebox(Module):
 		utterances = self.getUtterancesByIntent(self._INTENT_SEARCH_MUSIC)
 		self._logger.info(f'[{self.name}] Raw input {inputt}')
 
-		inputtList = inputt.split(' ')
+		inputtList = inputt.split()
 		for utterance in utterances:
 			inputtList = [value for value in inputtList if value not in utterance.split(' ')]
 		
