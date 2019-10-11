@@ -478,7 +478,7 @@ class AliceCore(Module):
 					)
 				else:
 					self.endDialog(sessionId=sessionId, text=self.randomTalk('wakewordCaptureDone'))
-					self.WakewordManager.finalizeWakeword()
+					self.ThreadManager.doLater(interval=1.5, func=self.WakewordManager.finalizeWakeword)
 
 					self.ThreadManager.getEvent('AddingWakeword').clear()
 					if self.delayed:
