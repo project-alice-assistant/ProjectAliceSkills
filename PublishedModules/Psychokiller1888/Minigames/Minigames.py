@@ -94,6 +94,7 @@ class Minigames(Module):
 
 		elif self._minigame is not None:
 			self._minigame.onMessage(intent, session)
+		return True
 
 
 	def answerMinigameIntent(self, intent: str, session: DialogSession) -> bool:
