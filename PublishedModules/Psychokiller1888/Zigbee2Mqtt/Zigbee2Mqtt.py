@@ -4,7 +4,6 @@ from pathlib import Path
 
 from core.base.model.Module import Module
 from core.commons import commons
-from core.dialog.model.DialogSession import DialogSession
 
 
 class Zigbee2Mqtt(Module):

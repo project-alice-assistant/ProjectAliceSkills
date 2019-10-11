@@ -4,7 +4,6 @@ import lnetatmo
 
 from core.ProjectAliceExceptions import ModuleStartingFailed
 from core.base.model.Module import Module
-from core.dialog.model.DialogSession import DialogSession
 from core.util.model.TelemetryType import TelemetryType
 
 

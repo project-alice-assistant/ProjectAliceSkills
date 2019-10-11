@@ -2,7 +2,6 @@ import requests
 from enum import Enum
 
 from core.base.model.Module import Module
-from core.dialog.model.DialogSession import DialogSession
 
 
 class IftttException(Enum):

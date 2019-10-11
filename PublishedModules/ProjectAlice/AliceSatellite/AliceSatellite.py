@@ -48,7 +48,8 @@ class AliceSatellite(Module):
 		payload = session.payload
 		if 'data' in payload:
 			self._sensorReadings[session.siteId] = payload['data']
-	
+
+
 	def deviceDisconnectIntent(self, intent: str, session: DialogSession):
 		payload = session.payload
 		if 'uid' in payload:

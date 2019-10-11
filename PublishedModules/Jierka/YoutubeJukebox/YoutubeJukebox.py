@@ -57,7 +57,7 @@ class YoutubeJukebox(Module):
 
 		return clearInput
 
-	
+
 	def searchMusicIntent(self, intent: str, session: DialogSession):
 		siteId = session.siteId
 		sessionId = session.sessionId

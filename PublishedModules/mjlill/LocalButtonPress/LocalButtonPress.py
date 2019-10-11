@@ -30,7 +30,7 @@ class LocalButtonPress(Module):
 		GPIO.setup(self._gpioPin, GPIO.OUT)
 		GPIO.output(self._gpioPin, GPIO.LOW)
 
-	
+
 	def buttonOnIntent(self, intent: str, session: DialogSession):
 		GPIO.output(self._gpioPin, GPIO.HIGH)
 		self.endDialog(session.sessionId, self.TalkManager.randomTalk('DoButtonOn'))

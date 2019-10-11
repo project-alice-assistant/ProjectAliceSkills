@@ -41,7 +41,7 @@ class Tasmota(Module):
 		if intent.startswith('projectalice/devices/tasmota/'):
 			return True
 		super().filterIntent(intent=intent, session=session)
-		
+
 
 	def onMessage(self, intent: str, session: DialogSession) -> bool:
 		siteId = session.siteId

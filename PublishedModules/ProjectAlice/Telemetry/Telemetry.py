@@ -35,7 +35,7 @@ class Telemetry(Module):
 			'wind_strength': 'km/h'
 		}
 
-	
+
 	def telemetryIntent(self, intent: str, session: DialogSession):
 		slots = session.slots
 		siteId = session.siteId

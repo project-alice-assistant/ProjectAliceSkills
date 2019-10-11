@@ -1,5 +1,4 @@
 from core.base.model.Module import Module
-from core.dialog.model.DialogSession import DialogSession
 
 
 class Customisation(Module):

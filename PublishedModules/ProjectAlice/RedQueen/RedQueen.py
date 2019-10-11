@@ -41,7 +41,7 @@ class RedQueen(Module):
 		if not os.path.isfile(redQueenIdentityFile):
 			if os.path.isfile(redQueenIdentityFileTemplate):
 				shutil.copyfile(redQueenIdentityFileTemplate, redQueenIdentityFile)
-				self._logger.info(f'[{self.name}] New Red Queen is born'.format(self.name))
+				self._logger.info(f'[{self.name}] New Red Queen is born')
 
 				with open(self._getRedQueenIdentityFileName(), 'r') as f:
 					self._redQueen = json.load(f)
@@ -49,10 +49,10 @@ class RedQueen(Module):
 				self._redQueen['infos']['born'] = time.strftime("%d.%m.%Y")
 				self._saveRedQueenIdentity()
 			else:
-				self._logger.info(f'[{self.name}] Cannot find Red Queen identity template'.format(self.name))
+				self._logger.info(f'[{self.name}] Cannot find Red Queen identity template')
 				raise ModuleStartingFailed(moduleName=self.name)
 		else:
-			self._logger.info(f'[{self.name}] Found existing Red Queen identity'.format(self.name))
+			self._logger.info(f'[{self.name}] Found existing Red Queen identity')
 			with open(self._getRedQueenIdentityFileName(), 'r') as f:
 				self._redQueen = json.load(f)
 
