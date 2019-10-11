@@ -13,36 +13,40 @@ class Speller(Module):
 	_INTENT_ANSWER_WORD = Intent('UserRandomAnswer', isProtected=True)
 
 	def __init__(self):
-		self._SUPPORTED_INTENTS	= [
-			self._INTENT_DO_SPELL,
-			self._INTENT_ANSWER_WORD
-		]
+		self._SUPPORTED_INTENTS	= {
+			self._INTENT_DO_SPELL: self.spellIntent,
+			self._INTENT_ANSWER_WORD: self.answerWordIntent
+		}
 
 		super().__init__(self._SUPPORTED_INTENTS)
 
 
-	def onMessage(self, intent: str, session: DialogSession) -> bool:
+	def answerWordIntent(self, intent: str, session: DialogSession) -> bool:
+		if session.previousIntent == self._INTENT_DO_SPELL:
+			return spellIntent(intent=intent, session=session)
+		return False
+
+
+	def spellIntent(self, intent: str, session: DialogSession) -> bool:
 		sessionId = session.sessionId
 		slots = session.slots
+		word = slots.get('RandomWord', 'unknownword')
 
-		if intent == self._INTENT_DO_SPELL or (session.previousIntent == self._INTENT_DO_SPELL and intent == self._INTENT_ANSWER_WORD):
-			if 'RandomWord' in slots and slots['RandomWord'] != 'unknownword':
-				word = slots['RandomWord']
-				string = '<break time="160ms"/>'.join(list(word))
+		if word != 'unknownword':
+			string = '<break time="160ms"/>'.join(list(word))
 
-				self.endDialog(
-					sessionId=sessionId,
-					text=self.randomTalk(
-						text='isSpelled',
-						replace=[word, string]
-					)
+			self.endDialog(
+				sessionId=sessionId,
+				text=self.randomTalk(
+					text='isSpelled',
+					replace=[word, string]
 				)
-			else:
-				self.continueDialog(
-					sessionId=sessionId,
-					text=self.randomTalk('notUnderstood'),
-					intentFilter=[self._INTENT_ANSWER_WORD],
-					previousIntent=self._INTENT_DO_SPELL
-				)
-
+			)
+		else:
+			self.continueDialog(
+				sessionId=sessionId,
+				text=self.randomTalk('notUnderstood'),
+				intentFilter=[self._INTENT_ANSWER_WORD],
+				previousIntent=self._INTENT_DO_SPELL
+			)
 		return True
