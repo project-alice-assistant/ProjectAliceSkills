@@ -50,7 +50,7 @@ class Minigames(Module):
 				lib = importlib.import_module(f'modules.Minigames.model.{game}')
 				klass = getattr(lib, game)
 				minigame = klass()
-				self._INTENTS = {**self._INTENTS, dict.fromkeys(minigame.intents, self.minigameIntent)}
+				self._INTENTS = {**self._INTENTS, **dict.fromkeys(minigame.intents, self.minigameIntent)}
 			except Exception as e:
 				self._logger.error(f'[{self.name}] Something went wrong loading the minigame "{game}": {e}')
 
