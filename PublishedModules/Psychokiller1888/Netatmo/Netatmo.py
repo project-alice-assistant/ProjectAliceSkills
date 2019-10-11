@@ -21,6 +21,20 @@ class Netatmo(Module):
 		self._netatmoAuth 	= None
 		self._weatherData 	= None
 		self._authTries 	= 0
+		self._telemetryTypes = {
+			'Temperature': TelemetryType.TEMPERATURE,
+			'CO2': TelemetryType.CO2,
+			'Humidity': TelemetryType.HUMIDITY,
+			'Noise': TelemetryType.NOISE,
+			'Pressure': TelemetryType.PRESSURE,
+			'Rain': TelemetryType.RAIN,
+			'sum_rain_1': TelemetryType.SUM_RAIN_1,
+			'sum_rain_24': TelemetryType.SUM_RAIN_24,
+			'WindStrength': TelemetryType.WIND_STRENGTH,
+			'WindAngle': TelemetryType.WIND_ANGLE,
+			'GustStrength': TelemetryType.GUST_STRENGTH,
+			'GustAngle': TelemetryType.GUST_ANGLE
+		}
 
 
 	def onStart(self) -> list:
@@ -28,19 +42,18 @@ class Netatmo(Module):
 		if not self.getConfig('password'):
 			raise ModuleStartingFailed(moduleName=self.name, error=f'[{self.name}] No credentials provided')
 
-		if self._auth():
-			try:
-				self._weatherData = lnetatmo.WeatherStationData(self._netatmoAuth)
-			except lnetatmo.NoDevice:
-				raise ModuleStartingFailed(moduleName=self.name, error=f'[{self.name}] No Netatmo device found')
-			else:
-				return self._SUPPORTED_INTENTS
-		else:
+		if not self._auth():
 			raise ModuleStartingFailed(moduleName=self.name, error=f'[{self.name}] Authentication failed')
+
+		try:
+			self._weatherData = lnetatmo.WeatherStationData(self._netatmoAuth)
+		except lnetatmo.NoDevice:
+			raise ModuleStartingFailed(moduleName=self.name, error=f'[{self.name}] No Netatmo device found')
+		else:
+			return self._SUPPORTED_INTENTS
 
 
 	def _auth(self) -> bool:
-
 		try:
 			self._netatmoAuth = lnetatmo.ClientAuth(
 				clientId=self.getConfig('clientId'),
@@ -61,43 +74,15 @@ class Netatmo(Module):
 		return True
 
 
-	def onFullMinute(self):
+	def _lastWeatherData(self) -> Generator[Tuple[str, str, str], None, None]:
 		self._weatherData = lnetatmo.WeatherStationData(self._netatmoAuth)
+		for siteId, values in self._weatherData.lastData().items():
+			for key, value in values.items():
+				yield (siteId, self._telemetryTypes.get(key), value)
 
+
+	def onFullMinute(self):
 		now = time.time()
-		for siteId, value in self._weatherData.lastData().items():
-			if 'Temperature' in value:
-				self.TelemetryManager.storeData(ttype=TelemetryType.TEMPERATURE, value=value['Temperature'], service=self.name, siteId=siteId, timestamp=now)
-
-			if 'CO2' in value:
-				self.TelemetryManager.storeData(ttype=TelemetryType.CO2, value=value['CO2'], service=self.name, siteId=siteId, timestamp=now)
-
-			if 'Humidity' in value:
-				self.TelemetryManager.storeData(ttype=TelemetryType.HUMIDITY, value=value['Humidity'], service=self.name, siteId=siteId, timestamp=now)
-
-			if 'Noise' in value:
-				self.TelemetryManager.storeData(ttype=TelemetryType.NOISE, value=value['Noise'], service=self.name, siteId=siteId, timestamp=now)
-
-			if 'Pressure' in value:
-				self.TelemetryManager.storeData(ttype=TelemetryType.PRESSURE, value=value['Pressure'], service=self.name, siteId=siteId, timestamp=now)
-
-			if 'Rain' in value:
-				self.TelemetryManager.storeData(ttype=TelemetryType.RAIN, value=value['Rain'], service=self.name, siteId=siteId, timestamp=now)
-
-			if 'sum_rain_1' in value:
-				self.TelemetryManager.storeData(ttype=TelemetryType.SUM_RAIN_1, value=value['sum_rain_1'], service=self.name, siteId=siteId, timestamp=now)
-
-			if 'sum_rain_24' in value:
-				self.TelemetryManager.storeData(ttype=TelemetryType.SUM_RAIN_24, value=value['sum_rain_24'], service=self.name, siteId=siteId, timestamp=now)
-
-			if 'WindStrength' in value:
-				self.TelemetryManager.storeData(ttype=TelemetryType.WIND_STRENGTH, value=value['WindStrength'], service=self.name, siteId=siteId, timestamp=now)
-
-			if 'WindAngle' in value:
-				self.TelemetryManager.storeData(ttype=TelemetryType.WIND_ANGLE, value=value['WindAngle'], service=self.name, siteId=siteId, timestamp=now)
-
-			if 'GustStrength' in value:
-				self.TelemetryManager.storeData(ttype=TelemetryType.GUST_STRENGTH, value=value['GustStrength'], service=self.name, siteId=siteId, timestamp=now)
-
-			if 'GustAngle' in value:
-				self.TelemetryManager.storeData(ttype=TelemetryType.GUST_ANGLE, value=value['GustAngle'], service=self.name, siteId=siteId, timestamp=now)
+		for siteId, ttype, value in self._lastWeatherData():
+			if ttype:
+				self.TelemetryManager.storeData(ttype=ttype, value=value, service=self.name, siteId=siteId, timestamp=now)
