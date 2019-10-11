@@ -26,30 +26,32 @@ class Wikipedia(Module):
 		super().__init__(self._INTENTS)
 
 
-	def offlineHandler(self, session: DialogSession, *args, **kwargs):
+	def offlineHandler(self, session: DialogSession, *args, **kwargs) -> bool:
 		self.endDialog(session.sessionId, text=self.TalkManager.randomTalk('offline', module='system'))
+		return True
 
 
-	def spelledWordIntent(self, intent: str, session: DialogSession):
+	def spelledWordIntent(self, intent: str, session: DialogSession) -> bool:
 		word = ''
 		for slot in session.slotsAsObjects['Letters']:
 			word += slot.value['value']
 
 		if session.previousIntent == self._INTENT_SEARCH
 			session.customData['userInput'] = word
-			self.searchIntent(intent=intent, session=session)
+			return self.searchIntent(intent=intent, session=session)
+		return False
 
 
-	def randomWordIntent(self, intent: str, session: DialogSession):
+	def randomWordIntent(self, intent: str, session: DialogSession) -> bool:
 		word = session.slots['RandomWord']
 
 		if session.previousIntent == self._INTENT_SEARCH
 			session.customData['userInput'] = word
-			self.searchIntent(intent=intent, session=session)
-
+			return self.searchIntent(intent=intent, session=session)
+		return False
 
 	@online(offlineHandler=offlineHandler)
-	def searchIntent(self, intent: str, session: DialogSession):
+	def searchIntent(self, intent: str, session: DialogSession) -> bool:
 		slots = session.slots
 		sessionId = session.sessionId
 		customData = session.customData
@@ -66,7 +68,7 @@ class Wikipedia(Module):
 					'module': self.name,
 				}
 			)
-			return
+			return True
 
 		wikipedia.set_lang(self.LanguageManager.activeLanguage)
 		engine = customData.get('engine', 'wikipedia')
@@ -116,3 +118,4 @@ class Wikipedia(Module):
 		except Exception as e:
 			self._logger.error(f'Error: {e}')
 			self.endDialog(sessionId=sessionId, text=self.TalkManager.randomTalk('error', module='system'))
+		return True
