@@ -50,8 +50,7 @@ class Minigames(Module):
 				lib = importlib.import_module(f'modules.Minigames.model.{game}')
 				klass = getattr(lib, game)
 				minigame = klass()
-				self._minigames[game] = minigame
-				self._INTENTS += minigame.intents
+				self._INTENTS = {**self._INTENTS, dict.fromkeys(minigame.intents, self.minigameIntent)}
 			except Exception as e:
 				self._logger.error(f'[{self.name}] Something went wrong loading the minigame "{game}": {e}')
 
@@ -65,6 +64,8 @@ class Minigames(Module):
 		if self._minigame:
 			self._minigame.started = False
 
+	def minigameIntent(self, intent: str, session: DialogSession) -> bool:
+		self._minigame.onMessage(intent, session)
 
 	def playGameIntent(self, intent: str, session: DialogSession) -> bool:
 		sessionId = session.sessionId
@@ -94,6 +95,7 @@ class Minigames(Module):
 
 		elif self._minigame is not None:
 			self._minigame.onMessage(intent, session)
+		return True
 
 
 	def answerMinigameIntent(self, intent: str, session: DialogSession) -> bool:
