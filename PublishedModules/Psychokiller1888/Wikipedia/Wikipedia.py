@@ -17,101 +17,102 @@ class Wikipedia(Module):
 
 
 	def __init__(self):
-		self._SUPPORTED_INTENTS = [
-			self._INTENT_SEARCH,
-			self._INTENT_USER_ANSWER,
-			self._INTENT_SPELL_WORD
-		]
+		self._INTENTS = {
+			self._INTENT_SEARCH: self.searchIntent,
+			self._INTENT_USER_ANSWER: self.randomWordIntent,
+			self._INTENT_SPELL_WORD: self.spelledWordIntent
+		}
 
-		super().__init__(self._SUPPORTED_INTENTS)
+		super().__init__(self._INTENTS)
 
 
-	def onMessage(self, intent: str, session: DialogSession) -> bool:
+	def offlineHandler(self, session: DialogSession, *args, **kwargs):
+		self.endDialog(session.sessionId, text=self.TalkManager.randomTalk('offline', module='system'))
+
+
+	def spelledWordIntent(self, intent: str, session: DialogSession):
+		word = ''
+		for slot in session.slotsAsObjects['Letters']:
+			word += slot.value['value']
+
+		if session.previousIntent == self._INTENT_SEARCH
+			session.customData['userInput'] = word
+			self.searchIntent(intent=intent, session=session)
+
+
+	def randomWordIntent(self, intent: str, session: DialogSession):
+		word = session.slots['RandomWord']
+
+		if session.previousIntent == self._INTENT_SEARCH
+			session.customData['userInput'] = word
+			self.searchIntent(intent=intent, session=session)
+
+
+	@online(offlineHandler=offlineHandler)
+	def searchIntent(self, intent: str, session: DialogSession):
 		slots = session.slots
 		sessionId = session.sessionId
 		customData = session.customData
 
-		if intent == self._INTENT_SEARCH or session.previousIntent == self._INTENT_SEARCH:
-			if 'userInput' not in customData and 'what' not in slots and 'RandomWord' not in slots:
+		search = customData.get('userInput', slots.get('what'))
+
+		if not search:
+			self.continueDialog(
+				sessionId=sessionId,
+				text=self.randomTalk('whatToSearch'),
+				intentFilter=[self._INTENT_USER_ANSWER],
+				previousIntent=self._INTENT_SEARCH,
+				customData={
+					'module': self.name,
+				}
+			)
+			return
+
+		wikipedia.set_lang(self.LanguageManager.activeLanguage)
+		engine = customData.get('engine', 'wikipedia')
+
+		try:
+			if engine == 'wikipedia':
+				result = wikipedia.summary(search, sentences=3)
+			else:
+				result = wikipedia.summary(search, sentences=3)
+
+			if result:
+				self.endDialog(sessionId=sessionId, text=result)
+			else:
 				self.continueDialog(
 					sessionId=sessionId,
-					text=self.randomTalk('whatToSearch'),
+					text=self.TalkManager.randomTalk('noMatch').format(search),
 					intentFilter=[self._INTENT_USER_ANSWER],
 					previousIntent=self._INTENT_SEARCH,
 					customData={
 						'module': self.name,
+						'engine': engine
 					}
 				)
-			else:
-				if 'userInput' in customData:
-					what = customData['userInput']
-				elif 'what' in slots:
-					what = slots['what']
-				elif 'RandomWord' in slots:
-					what = slots['RandomWord']
-				else:
-					self.endDialog(sessionId=sessionId, text=self.TalkManager.randomTalk('error', module='system'))
-					return True
 
-				if intent == self._INTENT_SPELL_WORD:
-					search = ''
-					for slot in session.slotsAsObjects['Letters']:
-						search += slot.value['value']
-				else:
-					search = what
-
-				wikipedia.set_lang(self.LanguageManager.activeLanguage)
-				if 'engine' in customData:
-					engine = customData['engine']
-				else:
-					engine = 'wikipedia'
-
-				try:
-					if engine == 'wikipedia':
-						result = wikipedia.summary(search, sentences=3)
-					else:
-						result = wikipedia.summary(search, sentences=3)
-				except wikipedia.DisambiguationError:
-					self.continueDialog(
-						sessionId=sessionId,
-						text=self.TalkManager.randomTalk('ambiguous').format(search),
-						intentFilter=[self._INTENT_USER_ANSWER],
-						previousIntent=self._INTENT_SEARCH,
-						customData={
-							'module': self.name,
-							'engine': engine
-						}
-					)
-					return True
-				except wikipedia.WikipediaException:
-					self.continueDialog(
-						sessionId=sessionId,
-						text=self.TalkManager.randomTalk('noMatch').format(search),
-						intentFilter=[self._INTENT_USER_ANSWER],
-						previousIntent=self._INTENT_SEARCH,
-						customData={
-							'module': self.name,
-							'engine': engine
-						}
-					)
-					return True
-				except Exception as e:
-					self._logger.error(f'Error: {e}')
-					self.endDialog(sessionId=sessionId, text=self.TalkManager.randomTalk('error', module='system'))
-					return True
-
-				if result == '':
-					self.continueDialog(
-						sessionId=sessionId,
-						text=self.TalkManager.randomTalk('noMatch').format(search),
-						intentFilter=[self._INTENT_USER_ANSWER],
-						previousIntent=self._INTENT_SEARCH,
-						customData={
-							'module': self.name,
-							'engine': engine
-						}
-					)
-				else:
-					self.endDialog(sessionId=sessionId, text=result)
-
-		return True
+		except wikipedia.DisambiguationError:
+			self.continueDialog(
+				sessionId=sessionId,
+				text=self.TalkManager.randomTalk('ambiguous').format(search),
+				intentFilter=[self._INTENT_USER_ANSWER],
+				previousIntent=self._INTENT_SEARCH,
+				customData={
+					'module': self.name,
+					'engine': engine
+				}
+			)
+		except wikipedia.WikipediaException:
+			self.continueDialog(
+				sessionId=sessionId,
+				text=self.TalkManager.randomTalk('noMatch').format(search),
+				intentFilter=[self._INTENT_USER_ANSWER],
+				previousIntent=self._INTENT_SEARCH,
+				customData={
+					'module': self.name,
+					'engine': engine
+				}
+			)
+		except Exception as e:
+			self._logger.error(f'Error: {e}')
+			self.endDialog(sessionId=sessionId, text=self.TalkManager.randomTalk('error', module='system'))
