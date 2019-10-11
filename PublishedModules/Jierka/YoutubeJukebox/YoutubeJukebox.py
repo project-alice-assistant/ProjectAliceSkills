@@ -39,25 +39,22 @@ class YoutubeJukebox(Module):
 		utterances = self.getUtterancesByIntent(self._INTENT_SEARCH_MUSIC)
 		self._logger.info(f'[{self.name}] Raw input {inputt}')
 
+		inputtList = inputt.split(' ')
 		for utterance in utterances:
-			for word in utterance.split(' '):
-				inputt = inputt.replace(str(word.strip()) + ' ', '')
-				inputt = inputt.replace(' ' + str(word.strip()) + ' ', '')
-				inputt = inputt.replace(' ' + str(word.strip()), '')
+			inputtList = [value for value in inputtList if value not in utterance.split(' ')]
+		
+		clearInput = ' '.join(inputtList)
 
-		inputt = inputt.strip()
-
-		clearInput = ''
-
-		for word in inputt.split(' '):
-			if len(word) > 1:
-				clearInput = clearInput + str(word) + ' '
-
-		self._logger.info(f'[{self.name}] Cleaned input {inputt}')
+		self._logger.info(f'[{self.name}] Cleaned input {clearInput}')
 
 		return clearInput
 
 
+	def offlineHandler(self, session: DialogSession, *args, **kwargs):
+		self.endDialog(session.sessionId, text=self.TalkManager.randomTalk('offline', module='system'))
+
+
+	@online(offlineHandler=offlineHandler)
 	def searchMusicIntent(self, intent: str, session: DialogSession):
 		siteId = session.siteId
 		sessionId = session.sessionId
@@ -73,7 +70,7 @@ class YoutubeJukebox(Module):
 
 		for matchNum, match in enumerate(matches, start=1):
 			if 'list' not in match.group(1):
-				tmp = 'https://www.youtube.com' + match.group(1)
+				tmp = f'https://www.youtube.com{match.group(1)}'
 				if len(tmp) <= 70:
 					videolist.append(tmp)
 
