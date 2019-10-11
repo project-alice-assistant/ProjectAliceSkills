@@ -32,7 +32,7 @@ class MpdClient(Module):
 		#TODO volume, playlists, ...
 		#TODO pause music if alice starts a dialogue
 
-		super().__init__(list(self._INTENTS), actionMappings=self._INTENTS)
+		super().__init__(self._INTENTS)
 
 		self._host = self.getConfig('mpdHost')
 		self._port = self.getConfig('mpdPort')
