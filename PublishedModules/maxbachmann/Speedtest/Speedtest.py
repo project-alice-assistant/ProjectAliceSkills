@@ -22,10 +22,11 @@ class Speedtest(Module):
 
 
 	@online
-	def runSpeedtest(self, intent: str, session: DialogSession) -> str:
+	def runSpeedtest(self, intent: str, session: DialogSession) -> bool:
 		self.ThreadManager.doLater(interval=0, func=self.executeSpeedtest)
 		self._logger.info(f'[{self.name}] Starting Speedtest')
 		self.endDialog(sessionId=session.sessionId, text=self.randomTalk('running'))
+		return True
 
 
 	def executeSpeedtest(self):

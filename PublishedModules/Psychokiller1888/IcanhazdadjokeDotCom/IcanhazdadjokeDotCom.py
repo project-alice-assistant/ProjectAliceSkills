@@ -17,22 +17,24 @@ class IcanhazdadjokeDotCom(Module):
 		super().__init__(self._INTENTS)
 
 
-	def offlineHandler(self, session: DialogSession, **kwargs):
+	def offlineHandler(self, session: DialogSession, **kwargs) -> bool:
 		self.endDialog(session.sessionId, text=self.TalkManager.randomTalk('offline', module='system'))
+		return True
 
 
 	@online(offlineHandler=offlineHandler)
-	def jokeIntent(self, intent: str, session: DialogSession):
-			url = 'https://icanhazdadjoke.com/'
+	def jokeIntent(self, intent: str, session: DialogSession) -> bool:
+		url = 'https://icanhazdadjoke.com/'
 
-			headers = {
-				'Accept'    : 'text/plain',
-				'User-Agent': 'Project Alice',
-				'From'      : 'projectalice@projectalice.ch'
-			}
+		headers = {
+			'Accept'    : 'text/plain',
+			'User-Agent': 'Project Alice',
+			'From'      : 'projectalice@projectalice.ch'
+		}
 
-			response = requests.get(url, headers=headers)
-			if response is not None:
-				self.endDialog(session.sessionId, text=response.text)
-			else:
-				self.endDialog(session.sessionId, self.TalkManager.getrandomTalk('noJoke'))
+		response = requests.get(url, headers=headers)
+		if response is not None:
+			self.endDialog(session.sessionId, text=response.text)
+		else:
+			self.endDialog(session.sessionId, self.TalkManager.getrandomTalk('noJoke'))
+		return True

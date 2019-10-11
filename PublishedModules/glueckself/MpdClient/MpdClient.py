@@ -81,6 +81,7 @@ class MpdClient(Module):
 			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('notConnected'))
 			return True
 		super().onMessage(intent=intent, session=session)
+		return True
 
 
 	def playIntent(self, intent: str, session: DialogSession):

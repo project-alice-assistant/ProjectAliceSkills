@@ -24,7 +24,7 @@ class Calculator(Module):
 		super().__init__(self._INTENTS)
 
 
-	def mathIntent(self, intent: str, session: DialogSession):
+	def mathIntent(self, intent: str, session: DialogSession) -> bool:
 		slots = session.slotsAsObjects
 		sessionId = session.sessionId
 
@@ -56,6 +56,7 @@ class Calculator(Module):
 			answer = str(result)
 
 		self.endDialog(sessionId=sessionId, text=answer)
+		return True
 
 
 	def calculate(self, left: float, right: float, func: str) -> Optional[float]:
