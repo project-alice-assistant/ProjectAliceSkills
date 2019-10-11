@@ -31,7 +31,7 @@ class YoutubeJukebox(Module):
 
 
 	def getWildcard(self, session):
-		if type(session.payload) is str:
+		if isinstance(session.payload, str):
 			inputt = json.loads(session.payload)['input']
 		else:
 			inputt = session.payload['input']
