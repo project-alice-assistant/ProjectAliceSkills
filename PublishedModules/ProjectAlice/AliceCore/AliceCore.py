@@ -74,7 +74,7 @@ class AliceCore(Module):
 		}
 
 		self._threads = dict()
-		super().__init__(self._SUPPORTED_INTENTS, self._AUTH_ONLY_INTENTS)
+		super().__init__(self._SUPPORTED_INTENTS, authOnlyIntents=self._AUTH_ONLY_INTENTS)
 
 
 	def onStart(self):
