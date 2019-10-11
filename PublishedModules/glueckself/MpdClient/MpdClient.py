@@ -1,4 +1,4 @@
-from modules.MpdClient import mpdhelper
+from .libraries import mpdhelper
 
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
