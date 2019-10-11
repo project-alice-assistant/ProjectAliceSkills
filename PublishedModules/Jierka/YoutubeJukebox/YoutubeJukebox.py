@@ -52,7 +52,7 @@ class YoutubeJukebox(Module):
 
 	def offlineHandler(self, session: DialogSession, *args, **kwargs) -> bool:
 		self.endDialog(session.sessionId, text=self.TalkManager.randomTalk('offline', module='system'))
-    return True
+		return True
 
 
 	@online(offlineHandler=offlineHandler)
