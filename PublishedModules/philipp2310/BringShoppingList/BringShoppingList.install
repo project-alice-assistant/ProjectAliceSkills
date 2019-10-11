@@ -1,10 +1,10 @@
 {
 	"name": "BringShoppingList",
-	"version": 1.01,
+	"version": 1.02,
 	"author": "philipp2310",
-	"maintainers": [""],
+	"maintainers": ["maxbachmann"],
 	"desc": "Maintain your Bring! Shopping list",
-	"aliceMinVersion": 0.1,
+	"aliceMinVersion": 0.12,
 	"systemRequirements": [],
 	"pipRequirements": ["BringApi"],
 	"conditions": {

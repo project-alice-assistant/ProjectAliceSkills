@@ -3,25 +3,26 @@ import requests
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
+from core.commons.commons import online
 
 
 class IcanhazdadjokeDotCom(Module):
 	_INTENT_TELL_A_JOKE = Intent('TellAJoke')
 
-
 	def __init__(self):
-		self._SUPPORTED_INTENTS = [
-			self._INTENT_TELL_A_JOKE
-		]
+		self._INTENTS = {
+			self._INTENT_TELL_A_JOKE: self.jokeIntent
+		}
 
-		super().__init__(self._SUPPORTED_INTENTS)
+		super().__init__(self._INTENTS)
 
 
-	def onMessage(self, intent: str, session: DialogSession) -> bool:
-		if not self.filterIntent(intent, session):
-			return False
+	def offlineHandler(self, session: DialogSession, **kwargs):
+		self.endDialog(session.sessionId, text=self.TalkManager.randomTalk('offline', module='system'))
 
-		if intent == self._INTENT_TELL_A_JOKE:
+
+	@online(offlineHandler=offlineHandler)
+	def jokeIntent(self, intent: str, session: DialogSession):
 			url = 'https://icanhazdadjoke.com/'
 
 			headers = {
@@ -35,5 +36,3 @@ class IcanhazdadjokeDotCom(Module):
 				self.endDialog(session.sessionId, text=response.text)
 			else:
 				self.endDialog(session.sessionId, self.TalkManager.getrandomTalk('noJoke'))
-
-		return True

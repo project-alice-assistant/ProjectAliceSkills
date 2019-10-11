@@ -1,6 +1,6 @@
 {
 	"name": "AliceSatellite",
-	"version": 1.03,
+	"version": 1.04,
 	"author": "ProjectAlice",
 	"maintainers": [
 		"Psycho",
@@ -8,7 +8,7 @@
 		"maxbachmann"
 	],
 	"desc": "AliceSatellite is the official module to support Project Alice satellites",
-	"aliceMinVersion": 0.10,
+	"aliceMinVersion": 0.12,
 	"systemRequirements": [],
 	"pipRequirements": [],
 	"conditions": {

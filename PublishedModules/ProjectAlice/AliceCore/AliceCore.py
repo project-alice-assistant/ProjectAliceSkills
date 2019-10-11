@@ -206,9 +206,6 @@ class AliceCore(Module):
 			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('confirmGlobalStop'), siteId=session.siteId)
 			return True
 
-		if not self.filterIntent(intent, session):
-			return False
-
 		siteId = session.siteId
 		slots = session.slots
 		slotsObj = session.slotsAsObjects

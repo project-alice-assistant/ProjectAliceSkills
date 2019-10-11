@@ -27,9 +27,6 @@ class Wikipedia(Module):
 
 
 	def onMessage(self, intent: str, session: DialogSession) -> bool:
-		if not self.filterIntent(intent, session):
-			return False
-
 		slots = session.slots
 		sessionId = session.sessionId
 		customData = session.customData
@@ -99,7 +96,7 @@ class Wikipedia(Module):
 					)
 					return True
 				except Exception as e:
-					self._logger.error('Error: {}'.format(e))
+					self._logger.error(f'Error: {e}')
 					self.endDialog(sessionId=sessionId, text=self.TalkManager.randomTalk('error', module='system'))
 					return True
 

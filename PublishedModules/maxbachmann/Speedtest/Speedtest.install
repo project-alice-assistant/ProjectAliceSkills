@@ -4,7 +4,7 @@
 	"author": "maxbachmann",
 	"maintainers": ["Psychokiller1888"],
 	"desc": "run internet speed test",
-	"aliceMinVersion": 0.11,
+	"aliceMinVersion": 0.12,
 	"systemRequirements": [],
 	"pipRequirements": ["speedtest-cli"],
 	"conditions": {

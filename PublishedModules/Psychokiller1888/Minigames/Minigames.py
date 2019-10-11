@@ -47,13 +47,13 @@ class Minigames(Module):
 
 		for game in self._SUPPORTED_GAMES:
 			try:
-				lib = importlib.import_module('modules.Minigames.model.{}'.format(game))
+				lib = importlib.import_module(f'modules.Minigames.model.{game}')
 				klass = getattr(lib, game)
 				minigame = klass()
 				self._minigames[game] = minigame
 				self._SUPPORTED_INTENTS += minigame.intents
 			except Exception as e:
-				self._logger.error('[{}] Something went wrong loading the minigame "{}": {}'.format(self.name, game, e))
+				self._logger.error(f'[{self.name}] Something went wrong loading the minigame "{game}": {e}')
 
 
 	def onSessionTimeout(self, session: DialogSession):

@@ -16,10 +16,10 @@ wget http://bit.ly/????????? -O ~/ProjectAlice/system/moduleInstallTickets/Zigbe
 
 Have your zigbee devices communicate with alice directly over mqtt
 
-- Version: 1.0
+- Version: 0.11
 - Author: Psychokiller1888
-- Maintainers: N/A
-- Alice minimum version: 0.10
+- Maintainers: maxbachmann
+- Alice minimum version: 0.12
 - Conditions: N/A
 - Pip requirements: N/A
 - System requirements: nodejs make g++ gcc

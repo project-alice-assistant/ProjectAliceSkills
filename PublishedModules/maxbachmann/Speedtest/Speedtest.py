@@ -24,7 +24,7 @@ class Speedtest(Module):
 	@online
 	def runSpeedtest(self, intent: str, session: DialogSession) -> str:
 		self.ThreadManager.doLater(interval=0, func=self.executeSpeedtest)
-		self._logger.info('[{}] Starting Speedtest'.format(self.name))
+		self._logger.info(f'[{self.name}] Starting Speedtest')
 		self.endDialog(sessionId=session.sessionId, text=self.randomTalk('running'))
 
 
@@ -40,8 +40,8 @@ class Speedtest(Module):
 			result = speed.results.dict()
 			downspeed = '{:.2f}'.format(result['download']/1000000)
 			upspeed = '{:.2f}'.format(result['upload']/1000000)
-			self._logger.info('[{}] Download speed: {} Mbps, Upload speed: {} Mbps'.format(self.name, downspeed, upspeed))
+			self._logger.info(f'[{self.name}] Download speed: {downspeed} Mbps, Upload speed: {upspeed} Mbps')
 			self.say(text=self.randomTalk(text='result', replace=[downspeed, upspeed]))
 		except Exception as e:
 			self.say(self.randomTalk(text='failed'))
-			self._logger.warning('[{}] Speedtest failed with: {}'.format(self.name, e))
+			self._logger.warning(f'[{self.name}] Speedtest failed with: {e}')

@@ -17,51 +17,45 @@ class Calculator(Module):
 
 
 	def __init__(self):
-		self._SUPPORTED_INTENTS = [
-			self._INTENT_MATHS
-		]
+		self._INTENTS = {
+			self._INTENT_MATHS: self.mathIntent
+		}
 		self._lastNumber: Optional[float] = None
-		super().__init__(self._SUPPORTED_INTENTS)
+		super().__init__(self._INTENTS)
 
 
-	def onMessage(self, intent: str, session: DialogSession) -> bool:
-		if not self.filterIntent(intent, session):
-			return False
-
+	def mathIntent(self, intent: str, session: DialogSession):
 		slots = session.slotsAsObjects
 		sessionId = session.sessionId
 
-		if intent == self._INTENT_MATHS:
-			if ('Left' not in slots and 'Right' not in slots) or 'Function' not in slots:
-				self.continueDialog(sessionId=sessionId, text=self.TalkManager.randomTalk('notUnderstood'))
-				return True
+		if ('Left' not in slots and 'Right' not in slots) or 'Function' not in slots:
+			self.continueDialog(sessionId=sessionId, text=self.TalkManager.randomTalk('notUnderstood'))
+			return
 
-			func = slots['Function'][0].value['value']
+		func = slots['Function'][0].value['value']
 
-			if 'Left' in slots and 'Right' in slots:
-				result = self.calculate(float(slots['Left'][0].value['value']), float(slots['Right'][0].value['value']), func)
+		if 'Left' in slots and 'Right' in slots:
+			result = self.calculate(float(slots['Left'][0].value['value']), float(slots['Right'][0].value['value']), func)
 
-			elif 'Right' in slots and 'Left' not in slots:
-				if not isinstance(self._lastNumber, numbers.Number):
-					self.endDialog(sessionId=sessionId, text=self.TalkManager.randomTalk('noPreviousOperation'))
-					return True
+		elif 'Right' in slots and 'Left' not in slots:
+			if not isinstance(self._lastNumber, numbers.Number):
+				self.endDialog(sessionId=sessionId, text=self.TalkManager.randomTalk('noPreviousOperation'))
+				return
 
-				result = self.calculate(float(self._lastNumber), float(slots['Right'][0].value['value']), func)
+			result = self.calculate(float(self._lastNumber), float(slots['Right'][0].value['value']), func)
 
-			else:
-				self.continueDialog(sessionId=sessionId, text=self.TalkManager.randomTalk('notUnderstood'))
-				return True
+		else:
+			self.continueDialog(sessionId=sessionId, text=self.TalkManager.randomTalk('notUnderstood'))
+			return
 
-			if not isinstance(result, numbers.Number):
-				answer = 'not supported'
-			elif result % 1 == 0:
-				answer = str(int(result))
-			else:
-				answer = str(result)
+		if not isinstance(result, numbers.Number):
+			answer = 'not supported'
+		elif result % 1 == 0:
+			answer = str(int(result))
+		else:
+			answer = str(result)
 
-			self.endDialog(sessionId=sessionId, text=answer)
-
-		return True
+		self.endDialog(sessionId=sessionId, text=answer)
 
 
 	def calculate(self, left: float, right: float, func: str) -> Optional[float]:

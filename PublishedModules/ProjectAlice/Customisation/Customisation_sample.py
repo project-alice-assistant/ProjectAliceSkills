@@ -13,10 +13,3 @@ class Customisation(Module):
 		self._SUPPORTED_INTENTS = list()
 
 		super().__init__(self._SUPPORTED_INTENTS)
-
-
-	def onMessage(self, intent: str, session: DialogSession) -> bool:
-		if not self.filterIntent(intent, session):
-			return False
-
-		return True

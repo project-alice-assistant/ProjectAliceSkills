@@ -16,11 +16,12 @@ wget http://modules.projectalice.ch/PhilipsHue \
 ### Desc
 Control your Philips Hue lamps
 
-- Version: 1.24
+- Version: 1.25
 - Author: Psycho
 - Maintainers:
   - Jierka
-- Alice minimum version: 0.10
+  - maxbachmann
+- Alice minimum version: 0.12
 - Conditions:
   - en
 

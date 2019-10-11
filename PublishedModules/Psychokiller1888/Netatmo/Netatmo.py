@@ -27,17 +27,17 @@ class Netatmo(Module):
 	def onStart(self) -> list:
 		super().onStart()
 		if not self.getConfig('password'):
-			raise ModuleStartingFailed(moduleName=self.name, error='[{}] No credentials provided'.format(self.name))
+			raise ModuleStartingFailed(moduleName=self.name, error=f'[{self.name}] No credentials provided')
 
 		if self._auth():
 			try:
 				self._weatherData = lnetatmo.WeatherStationData(self._netatmoAuth)
 			except lnetatmo.NoDevice:
-				raise ModuleStartingFailed(moduleName=self.name, error='[{}] No Netatmo device found'.format(self.name))
+				raise ModuleStartingFailed(moduleName=self.name, error=f'[{self.name}] No Netatmo device found')
 			else:
 				return self._SUPPORTED_INTENTS
 		else:
-			raise ModuleStartingFailed(moduleName=self.name, error='[{}] Authentication failed'.format(self.name))
+			raise ModuleStartingFailed(moduleName=self.name, error=f'[{self.name}] Authentication failed')
 
 
 	def _auth(self) -> bool:
@@ -53,7 +53,7 @@ class Netatmo(Module):
 		except lnetatmo.AuthFailure:
 			self._authTries += 1
 			if self._authTries >= 3:
-				self._logger.warning('[{}] Tried to auth 3 times, giving up now'.format(self.name))
+				self._logger.warning(f'[{self.name}] Tried to auth 3 times, giving up now')
 				return False
 			else:
 				time.sleep(1)
@@ -102,7 +102,3 @@ class Netatmo(Module):
 
 			if 'GustAngle' in value:
 				self.TelemetryManager.storeData(ttype=TelemetryType.GUST_ANGLE, value=value['GustAngle'], service=self.name, siteId=siteId, timestamp=now)
-
-
-	def onMessage(self, intent: str, session: DialogSession) -> bool:
-		return False

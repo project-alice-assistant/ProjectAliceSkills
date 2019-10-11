@@ -16,12 +16,12 @@ class LocalButtonPress(Module):
 
 
 	def __init__(self):
-		self._SUPPORTED_INTENTS = [
-			self._INTENT_BUTTON_ON,
-			self._INTENT_BUTTON_OFF
-		]
+		self._INTENTS = {
+			self._INTENT_BUTTON_ON: self.buttonOnIntent,
+			self._INTENT_BUTTON_OFF: self.buttonOffIntent
+		}
 
-		super().__init__(self._SUPPORTED_INTENTS)
+		super().__init__(self._INTENTS)
 
 		self._gpioPin = self.getConfig('gpioPin')
 
@@ -30,17 +30,12 @@ class LocalButtonPress(Module):
 		GPIO.setup(self._gpioPin, GPIO.OUT)
 		GPIO.output(self._gpioPin, GPIO.LOW)
 
+	
+	def buttonOnIntent(self, intent: str, session: DialogSession):
+		GPIO.output(self._gpioPin, GPIO.HIGH)
+		self.endDialog(session.sessionId, self.TalkManager.randomTalk('DoButtonOn'))
 
-	def onMessage(self, intent: str, session: DialogSession) -> bool:
-		if not self.filterIntent(intent, session):
-			return False
 
-		if intent == self._INTENT_BUTTON_ON:
-			GPIO.output(self._gpioPin, GPIO.HIGH)
-			self.endDialog(session.sessionId, self.TalkManager.randomTalk('DoButtonOn'))
-
-		elif intent == self._INTENT_BUTTON_OFF:
-			GPIO.output(self._gpioPin, GPIO.LOW)
-			self.endDialog(session.sessionId, self.TalkManager.randomTalk('DoButtonOff'))
-
-		return True
+	def buttonOffIntent(self, intent: str, session: DialogSession):
+		GPIO.output(self._gpioPin, GPIO.LOW)
+		self.endDialog(session.sessionId, self.TalkManager.randomTalk('DoButtonOff'))

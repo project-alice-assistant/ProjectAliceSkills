@@ -9,17 +9,17 @@ class AliceSatellite(Module):
 
 
 	def __init__(self):
-		self._SUPPORTED_INTENTS = [
-			self._FEEDBACK_SENSORS,
-			self._DEVICE_DISCONNECTION
-		]
+		self._INTENTS = {
+			self._FEEDBACK_SENSORS: self.feedbackSensorIntent,
+			self._DEVICE_DISCONNECTION: self.deviceDisconnectIntent
+		}
 
 		self._sensorReadings = dict()
 
 		self.ProtectedIntentManager.protectIntent(self._FEEDBACK_SENSORS)
 		self.ProtectedIntentManager.protectIntent(self._DEVICE_DISCONNECTION)
 
-		super().__init__(self._SUPPORTED_INTENTS)
+		super().__init__(self._INTENTS)
 
 
 	def onBooted(self):
@@ -43,22 +43,16 @@ class AliceSatellite(Module):
 	def onFullMinute(self):
 		self.getSensorReadings()
 
-
-	def onMessage(self, intent: str, session: DialogSession) -> bool:
-		if not self.filterIntent(intent, session):
-			return False
-
-		if intent == self._FEEDBACK_SENSORS:
-			payload = session.payload
-			if 'data' in payload:
-				self._sensorReadings[session.siteId] = payload['data']
-
-		elif intent == self._DEVICE_DISCONNECTION:
-			payload = session.payload
-			if 'uid' in payload:
-				self.DeviceManager.deviceDisconnecting(payload['uid'])
-
-		return True
+	
+	def feedbackSensorIntent(self, intent: str, session: DialogSession):
+		payload = session.payload
+		if 'data' in payload:
+			self._sensorReadings[session.siteId] = payload['data']
+	
+	def deviceDisconnectIntent(self, intent: str, session: DialogSession):
+		payload = session.payload
+		if 'uid' in payload:
+			self.DeviceManager.deviceDisconnecting(payload['uid'])
 
 
 	def getSensorReadings(self):

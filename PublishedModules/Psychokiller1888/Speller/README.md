@@ -15,10 +15,10 @@ wget http://modules.projectalice.ch/Speller -O ~/ProjectAlice/system/moduleInsta
 ### Description
 Ask alice how to spell any word!
 
-- Version: 1.0
+- Version: 1.01
 - Author: Psychokiller1888
-- Maintainers: N/A
-- Alice minimum version: 0.10
+- Maintainers: maxbachmann
+- Alice minimum version: 0.12
 - Conditions:
   - en
   - fr

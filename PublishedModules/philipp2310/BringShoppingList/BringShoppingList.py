@@ -44,8 +44,6 @@ class BringShoppingList(Module):
 
 	def onMessage(self, intent: str, session: DialogSession) -> bool:
 		"""handle all incoming messages"""
-		if not self.filterIntent(intent, session):
-			return False
 
 		if intent == self._INTENT_ADD_ITEM or (intent in {self._INTENT_ANSWER_SHOP, self._INTENT_SPELL_WORD} and session.previousIntent == self._INTENT_ADD_ITEM):
 			#Add item to list

@@ -30,7 +30,8 @@ class Zigbee2Mqtt(Module):
 
 
 	def onModuleInstalled(self):
-		service = """[Unit]
+		service = f"""\
+[Unit]
 Description=zigbee2mqtt
 After=network.target
 
@@ -40,16 +41,12 @@ WorkingDirectory=/opt/zigbee2mqtt
 StandardOutput=inherit
 StandardError=inherit
 Restart=always
-User={}
+User={getpass.getuser()}
 
 [Install]
-WantedBy=multi-user.target""".format(getpass.getuser())
+WantedBy=multi-user.target"""
 
 		filepath = Path(commons.rootDir(), 'zigbee2mqtt.service')
 		filepath.write_text(service)
 		subprocess.run(['sudo', 'mv', str(filepath), '/etc/systemd/system/zigbee2mqtt.service'])
 		subprocess.run(['sudo', 'systemctl', 'daemon-reload'])
-
-
-	def onMessage(self, intent: str, session: DialogSession) -> bool:
-		return False
