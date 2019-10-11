@@ -41,7 +41,7 @@ class YoutubeJukebox(Module):
 
 		inputtList = inputt.split()
 		for utterance in utterances:
-			inputtList = [value for value in inputtList if value not in utterance.split(' ')]
+			inputtList = [value for value in inputtList if value not in utterance.split()]
 		
 		clearInput = ' '.join(inputtList)
 
