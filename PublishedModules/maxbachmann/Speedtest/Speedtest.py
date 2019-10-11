@@ -14,11 +14,11 @@ class Speedtest(Module):
 	_INTENT_SPEEDTEST = Intent('Speedtest')
 
 	def __init__(self):
-		self._ACTIONS = {
+		self._INTENTS = {
 			self._INTENT_SPEEDTEST: self.runSpeedtest
 		}
 
-		super().__init__(list(self._ACTIONS), actionMappings=self._ACTIONS)
+		super().__init__(list(self._INTENTS), actionMappings=self._INTENTS)
 
 
 	@online
