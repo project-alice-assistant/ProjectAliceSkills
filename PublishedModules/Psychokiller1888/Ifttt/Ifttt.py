@@ -2,7 +2,6 @@ import requests
 from enum import Enum
 
 from core.base.model.Module import Module
-from core.dialog.model.DialogSession import DialogSession
 
 
 class IftttException(Enum):
@@ -42,14 +41,10 @@ class Ifttt(Module):
 			result = self.databaseFetch(tableName='ifttt', query='SELECT * FROM :__table__ WHERE user = :user', values={'user': user.lower()})
 
 			if result:
-				answer = requests.post(url='https://maker.ifttt.com/trigger/{}/with/key/{}'.format(endPoint, result['key']))
+				answer = requests.post(url=f"https://maker.ifttt.com/trigger/{endPoint}/with/key/{result['key']}")
 				return IftttException.OK if answer.status_code == 200 else IftttException.BAD_REQUEST
 
 			return IftttException.NO_USER
 		except Exception as e:
-			self._logger.error('[{}] Error trying to request api: {}'.format(self.name, e))
+			self._logger.error(f'[{self.name}] Error trying to request api: {e}')
 			return IftttException.ERROR
-
-
-	def onMessage(self, intent: str, session: DialogSession) -> bool:
-		return False

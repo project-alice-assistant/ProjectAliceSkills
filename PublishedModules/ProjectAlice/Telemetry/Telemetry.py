@@ -13,12 +13,12 @@ class Telemetry(Module):
 	_INTENT_ANSWER_TELEMETRY_TYPE = Intent('AnswerTelemetryType')
 
 	def __init__(self):
-		self._SUPPORTED_INTENTS	= [
-			self._INTENT_GET_TELEMETRY_DATA,
-			self._INTENT_ANSWER_TELEMETRY_TYPE
-		]
+		self._INTENTS	= {
+			self._INTENT_GET_TELEMETRY_DATA: self.telemetryIntent,
+			self._INTENT_ANSWER_TELEMETRY_TYPE: self.telemetryIntent
+		}
 
-		super().__init__(self._SUPPORTED_INTENTS)
+		super().__init__(self._INTENTS)
 
 		self._telemetryUnits = {
 			'airQuality': '%',
@@ -36,32 +36,26 @@ class Telemetry(Module):
 		}
 
 
-	def onMessage(self, intent: str, session: DialogSession) -> bool:
-		if not self.filterIntent(intent, session):
-			return False
-
-		siteId = session.siteId
+	def telemetryIntent(self, intent: str, session: DialogSession):
 		slots = session.slots
+		siteId = session.siteId
 
-		if intent in {self._INTENT_GET_TELEMETRY_DATA, self._INTENT_ANSWER_TELEMETRY_TYPE}:
-			if 'siteId' in slots:
-				siteId = session.slotValue('Room')
+		if 'siteId' in slots:
+			siteId = session.slotValue('Room')
 
-			if 'TelemetryType' not in slots:
-				self.continueDialog(
-					sessionId=session.sessionId,
-					text=self.randomTalk('noType'),
-					intentFilter=[self._INTENT_ANSWER_TELEMETRY_TYPE],
-					slot='TelemetryType'
-				)
+		if 'TelemetryType' not in slots:
+			self.continueDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk('noType'),
+				intentFilter=[self._INTENT_ANSWER_TELEMETRY_TYPE],
+				slot='TelemetryType'
+			)
 
-			telemetryType = session.slotValue('TelemetryType')
+		telemetryType = session.slotValue('TelemetryType')
 
-			data = self.TelemetryManager.getData(siteId=siteId, ttype=telemetryType)
-			if data and 'value' in data:
-				answer = data['value'] + self._telemetryUnits.get(telemetryType, '')
-				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('answerInstant').format(answer))
-			else:
-				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('noData'))
-
-		return True
+		data = self.TelemetryManager.getData(siteId=siteId, ttype=telemetryType)
+		if data and 'value' in data:
+			answer = data['value'] + self._telemetryUnits.get(telemetryType, '')
+			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('answerInstant').format(answer))
+		else:
+			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('noData'))

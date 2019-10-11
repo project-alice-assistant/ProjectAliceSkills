@@ -1,10 +1,10 @@
 {
 	"name": "Speller",
-	"version": 1.0,
+	"version": 1.01,
 	"author": "Psychokiller1888",
-	"maintainers": [],
+	"maintainers": ["maxbachmann"],
 	"desc": "Ask alice how to spell any word!",
-	"aliceMinVersion": 0.10,
+	"aliceMinVersion": 0.12,
 	"pipRequirements": [],
 	"systemRequirements": [],
 	"conditions": {

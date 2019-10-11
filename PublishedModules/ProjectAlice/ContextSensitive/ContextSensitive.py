@@ -15,54 +15,46 @@ class ContextSensitive(Module):
 
 
 	def __init__(self):
-		self._SUPPORTED_INTENTS = [
-			self._INTENT_DELETE_THIS,
-			self._INTENT_REPEAT_THIS,
-			self._INTENT_EDIT_THIS
-		]
+		self._INTENTS = {
+			self._INTENT_DELETE_THIS: self.deleteThisIntent,
+			self._INTENT_REPEAT_THIS: self.repeatThisIntent,
+			self._INTENT_EDIT_THIS: self.editThisIntent
+		}
 
 		self._history: Deque = deque(list(), 10)
 		self._sayHistory: Dict[str, Deque] = dict()
 
-		super().__init__(self._SUPPORTED_INTENTS)
+		super().__init__(self._INTENTS)
 
 
-	def onMessage(self, intent: str, session: DialogSession) -> bool:
-		if not self.filterIntent(intent, session):
-			return False
+	def deleteThisIntent(self, intent: str, session: DialogSession):
+		modules = self.ModuleManager.getModules()
+		for module in modules.values():
+			try:
+				if module['instance'].onContextSensitiveDelete(session.sessionId):
+					self.endSession(sessionId=session.sessionId)
+					return True
+			except Exception:
+				continue
 
-		sessionId = session.sessionId
-		siteId = session.siteId
 
-		if intent == self._INTENT_DELETE_THIS:
-			modules = self.ModuleManager.getModules()
-			for module in modules.values():
-				try:
-					if module['instance'].onContextSensitiveDelete(sessionId):
-						self.endSession(sessionId=sessionId)
-						return True
-				except Exception:
-					continue
+	def editThisIntent(self, intent: str, session: DialogSession):
+		modules = self.ModuleManager.getModules()
+		for module in modules.values():
+			try:
+				if module['instance'].onContextSensitiveEdit(session.sessionId):
+					self.MqttManager.endDialog(sessionId=session.sessionId)
+					return
+			except:
+				continue
 
-		elif intent == self._INTENT_EDIT_THIS:
-			modules = self.ModuleManager.getModules()
-			for module in modules.values():
-				try:
-					if module['instance'].onContextSensitiveEdit(sessionId):
-						self.MqttManager.endDialog(sessionId=sessionId)
-						return True
-				except:
-					continue
 
-		elif intent == self._INTENT_REPEAT_THIS:
-			self.endDialog(sessionId, text=self.getLastChat(siteId=siteId))
-			return True
-
-		return True
+	def repeatThisIntent(self, intent: str, session: DialogSession):
+		self.endDialog(session.sessionId, text=self.getLastChat(siteId=session.siteId))
 
 
 	def addToMessageHistory(self, session: DialogSession):
-		if session.message.topic in self._SUPPORTED_INTENTS or session.message.topic == self._INTENT_ANSWER_YES_OR_NO or 'intent' not in session.message.topic:
+		if session.message.topic in self._INTENTS or session.message.topic == self._INTENT_ANSWER_YES_OR_NO or 'intent' not in session.message.topic:
 			return
 
 		try:
@@ -76,7 +68,7 @@ class ContextSensitive(Module):
 
 			self._history.appendleft(session)
 		except Exception as e:
-			self._logger.error('Error in {} module: {}'.format(self.name, e))
+			self._logger.error(f'Error in {self.name} module: {e}')
 
 
 	def lastMessage(self):

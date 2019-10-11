@@ -27,9 +27,6 @@ class FreeCurrencyConverterDotCom(Module):
 
 
 	def onMessage(self, intent: str, session: DialogSession) -> bool:
-		if not self.filterIntent(intent, session):
-			return False
-
 		siteId = session.siteId
 		slots = session.slots
 		slotsObject = session.slotsAsObjects
@@ -69,15 +66,14 @@ class FreeCurrencyConverterDotCom(Module):
 				fromCurrency = slotsObject['FromCurrency'][0].value['value']
 
 			try:
-				url = 'https://free.currconv.com/api/v7/convert?q={}_{}&compact=ultra&apiKey={}'.format(fromCurrency, toCurrency, self.getConfig('apiKey'))
+				url = f"https://free.currconv.com/api/v7/convert?q={fromCurrency}_{toCurrency}&compact=ultra&apiKey={self.getConfig('apiKey')}"
 				req = requests.get(url=url)
 				data = json.loads(req.content.decode())
 
-				conversion = data['{}_{}'.format(fromCurrency, toCurrency)]
+				conversion = data[f'{fromCurrency}_{toCurrency}']
 				converted = round(float(amount) * float(conversion), 2)
 
-				self.endDialog(sessionId, text=self.randomTalk('answer').format(amount, fromCurrency, converted, toCurrency),
-											siteId=siteId)
+				self.endDialog(sessionId, text=self.randomTalk('answer').format(amount, fromCurrency, converted, toCurrency), siteId=siteId)
 			except Exception as e:
 				self._logger.error(e)
 				self.endDialog(sessionId, text=self.randomTalk('noServer'), siteId=siteId)

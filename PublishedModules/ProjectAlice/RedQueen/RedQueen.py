@@ -21,16 +21,16 @@ class RedQueen(Module):
 
 
 	def __init__(self):
-		self._SUPPORTED_INTENTS = [
-			self._INTENT_WHO_ARE_YOU,
-			self._INTENT_GOOD_MORNING,
-			self._INTENT_GOOD_NIGHT,
-			self._INTENT_CHANGE_USER_STATE
-		]
+		self._INTENTS = {
+			self._INTENT_WHO_ARE_YOU: self.whoIntent,
+			self._INTENT_GOOD_MORNING: self.morningIntent,
+			self._INTENT_GOOD_NIGHT: self.nightIntent,
+			self._INTENT_CHANGE_USER_STATE: self.userStateIntent
+		}
 
 		self._redQueen = None
 
-		super().__init__(self._SUPPORTED_INTENTS)
+		super().__init__(self._INTENTS)
 
 
 	def onStart(self):
@@ -41,7 +41,7 @@ class RedQueen(Module):
 		if not os.path.isfile(redQueenIdentityFile):
 			if os.path.isfile(redQueenIdentityFileTemplate):
 				shutil.copyfile(redQueenIdentityFileTemplate, redQueenIdentityFile)
-				self._logger.info('[{}] New Red Queen is born'.format(self.name))
+				self._logger.info(f'[{self.name}] New Red Queen is born')
 
 				with open(self._getRedQueenIdentityFileName(), 'r') as f:
 					self._redQueen = json.load(f)
@@ -49,14 +49,14 @@ class RedQueen(Module):
 				self._redQueen['infos']['born'] = time.strftime("%d.%m.%Y")
 				self._saveRedQueenIdentity()
 			else:
-				self._logger.info('[{}] Cannot find Red Queen identity template'.format(self.name))
+				self._logger.info(f'[{self.name}] Cannot find Red Queen identity template')
 				raise ModuleStartingFailed(moduleName=self.name)
 		else:
-			self._logger.info('[{}] Found existing Red Queen identity'.format(self.name))
+			self._logger.info(f'[{self.name}] Found existing Red Queen identity')
 			with open(self._getRedQueenIdentityFileName(), 'r') as f:
 				self._redQueen = json.load(f)
 
-		return self._SUPPORTED_INTENTS
+		return self._INTENTS
 
 
 	def onStop(self):
@@ -183,51 +183,37 @@ class RedQueen(Module):
 		return True
 
 
-	def onMessage(self, intent: str, session: DialogSession) -> bool:
-		if not self.filterIntent(intent, session):
-			return False
+	def whoIntent(self, intent: str, session: DialogSession):
+		self.endDialog(sessionId=session.sessionId, text=self.randomTalk('aliceInfos'), siteId=session.siteId)
 
-		if intent == self._INTENT_CHANGE_USER_STATE:
-			slots = session.slotsAsObjects
-			if 'State' not in slots.keys():
-				self._logger.error('[{}] No state provided for changing user state'.format(self.name))
-				self.endDialog(sessionId=session.sessionId,
-											text=self.TalkManager.randomTalk('error', module='system'),
-											siteId=session.siteId)
-				return True
 
-			if 'Who' in slots.keys():
-				pass
-			else:
-				try:
-					self.ModuleManager.broadcast(slots['State'][0].value['value'])
-				except:
-					self._logger.warning('[{}] Unsupported user state "{}"'.format(self.name, slots['State'][0].value['value']))
+	def morningIntent(self, intent: str, session: DialogSession):
+		self.ModuleManager.broadcast('onWakeup')
+		time.sleep(0.5)
+		self.endDialog(sessionId=session.sessionId, text=self.randomTalk('goodMorning'), siteId=session.siteId)
 
-			self.endDialog(sessionId=session.sessionId,
-										text=self.TalkManager.randomTalk(slots['State'][0].value['value']),
-										siteId=session.siteId)
 
-		elif intent == self._INTENT_GOOD_NIGHT:
-			self.endDialog(sessionId=session.sessionId,
-										text=self.randomTalk('goodNight'),
-										siteId=session.siteId)
+	def nightIntent(self, intent: str, session: DialogSession):
+		self.endDialog(sessionId=session.sessionId, text=self.randomTalk('goodNight'), siteId=session.siteId)
+		self.ModuleManager.broadcast('onSleep')
 
-			self.ModuleManager.broadcast('onSleep')
 
-		elif intent == self._INTENT_GOOD_MORNING:
-			self.ModuleManager.broadcast('onWakeup')
-			time.sleep(0.5)
-			self.endDialog(sessionId=session.sessionId,
-										text=self.randomTalk('goodMorning'),
-										siteId=session.siteId)
+	def userStateIntent(self, intent: str, session: DialogSession):
+		slots = session.slotsAsObjects
+		if 'State' not in slots.keys():
+			self._logger.error(f'[{self.name}] No state provided for changing user state')
+			self.endDialog(sessionId=session.sessionId, text=self.TalkManager.randomTalk('error', module='system'), siteId=session.siteId)
+			return
 
-		elif intent == self._INTENT_WHO_ARE_YOU:
-			self.endDialog(sessionId=session.sessionId,
-										text=self.randomTalk('aliceInfos'),
-										siteId=session.siteId)
+		if 'Who' in slots.keys():
+			pass
+		else:
+			try:
+				self.ModuleManager.broadcast(slots['State'][0].value['value'])
+			except:
+				self._logger.warning('[{}] Unsupported user state "{}"'.format(self.name, slots['State'][0].value['value']))
 
-		return True
+		self.endDialog(sessionId=session.sessionId, text=self.TalkManager.randomTalk(slots['State'][0].value['value']), siteId=session.siteId)
 
 
 	def randomlySpeak(self, init: bool = False):
@@ -244,15 +230,15 @@ class RedQueen(Module):
 
 		rnd = random.randint(mini, maxi)
 		self.ThreadManager.doLater(interval=rnd, func=self.randomlySpeak)
-		self._logger.info('[{}] Scheduled next random speaking in {} seconds'.format(self.name, rnd))
+		self._logger.info(f'[{self.name}] Scheduled next random speaking in {rnd} seconds')
 
 		if not init and not self.UserManager.checkIfAllUser('goingBed') and not self.UserManager.checkIfAllUser('sleeping'):
-			self.say(self.randomTalk('randomlySpeak{}'.format(self.mood)), siteId='all')
+			self.say(self.randomTalk(f'randomlySpeak{self.mood}'), siteId='all')
 
 
 	def changeRedQueenStat(self, stat: str, amount: int):
 		if stat not in self._redQueen['stats'].keys():
-			self._logger.warning('[{}] Asked to change stat {} but it does not exist'.format(self.name, stat))
+			self._logger.warning(f'[{self.name}] Asked to change stat {stat} but it does not exist')
 
 		self._redQueen['stats'][stat] += amount
 		if self._redQueen['stats'][stat] < 0:
