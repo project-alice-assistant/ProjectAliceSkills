@@ -67,9 +67,6 @@ class Minigames(Module):
 
 
 	def onMessage(self, intent: str, session: DialogSession) -> bool:
-		if not self.filterIntent(intent, session):
-			return False
-
 		sessionId = session.sessionId
 		slots = session.slots
 

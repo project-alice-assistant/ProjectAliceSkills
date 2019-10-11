@@ -15,7 +15,7 @@ wget http://modules.projectalice.ch/Telemetry -O ~/ProjectAlice/system/moduleIns
 ### Description
 Access your stored telemetry data
 
-- Version: 0.13
+- Version: 0.14
 - Author: ProjectAlice
 - Maintainers: Psychokiller1888, maxbachmann
 - Alice minimum version: 0.12

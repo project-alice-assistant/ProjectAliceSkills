@@ -48,27 +48,33 @@ class BringShoppingList(Module):
 		if intent == self._INTENT_ADD_ITEM or (intent in {self._INTENT_ANSWER_SHOP, self._INTENT_SPELL_WORD} and session.previousIntent == self._INTENT_ADD_ITEM):
 			#Add item to list
 			self.editList(session, intent, 'add', self._addItemInt)
+			return True
 		elif intent == self._INTENT_DEL_ITEM or (intent in {self._INTENT_ANSWER_SHOP, self._INTENT_SPELL_WORD} and session.previousIntent == self._INTENT_DEL_ITEM):
 			#Delete items from list
 			self.editList(session, intent, 'rem', self._deleteItemInt)
+			return True
 		elif intent == self._INTENT_READ_LIST:
 			self.readList(session)
+			return True
 		elif intent == self._INTENT_CHECK_LIST or (intent in {self._INTENT_ANSWER_SHOP, self._INTENT_SPELL_WORD} and session.previousIntent == self._INTENT_CHECK_LIST):
 			#check if item is in list
 			self.editList(session, intent, 'chk', self._checkListInt)
+			return True
 		elif intent == self._INTENT_DEL_LIST:
 			self.continueDialog(
 				sessionId=session.sessionId,
 				text=self.randomTalk('chk_del_all'),
 				intentFilter=[self._INTENT_CONF_DEL],
 				previousIntent=self._INTENT_DEL_LIST)
+			return True
 		elif session.previousIntent == self._INTENT_DEL_LIST and intent == self._INTENT_CONF_DEL:
 			if commons.isYes(session):
 				self.endDialog(session.sessionId, text=self._deleteCompleteList())
 			else:
 				self.endDialog(session.sessionId, text=self.randomTalk('nodel_all'))
+			return True
 
-		return True
+		return False
 
 
 	def _getBring(self) -> BringApi:

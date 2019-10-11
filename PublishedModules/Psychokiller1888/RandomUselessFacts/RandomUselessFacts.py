@@ -25,8 +25,9 @@ class RandomUselessFacts(Module):
 		super().__init__(self._INTENTS)
 
 
-	def offlineHandler(self, session: DialogSession, **kwargs):
+	def offlineHandler(self, session: DialogSession, **kwargs) -> bool:
 		self.endDialog(session.sessionId, text=self.TalkManager.randomTalk('offline', module='system'))
+		return True
 
 
 	@online(offlineHandler=offlineHandler)
@@ -44,3 +45,4 @@ class RandomUselessFacts(Module):
 		else:
 			# Let's load the randomTalk and unescape it as uselessfact seems to encode special characters for german
 			self.endDialog(sessionId=session.sessionId, text=html.unescape(req.json()['text']))
+		return True

@@ -183,22 +183,25 @@ class RedQueen(Module):
 		return True
 
 
-	def whoIntent(self, intent: str, session: DialogSession):
+	def whoIntent(self, intent: str, session: DialogSession) -> bool:
 		self.endDialog(sessionId=session.sessionId, text=self.randomTalk('aliceInfos'), siteId=session.siteId)
+		return True
 
 
-	def morningIntent(self, intent: str, session: DialogSession):
+	def morningIntent(self, intent: str, session: DialogSession) -> bool:
 		self.ModuleManager.broadcast('onWakeup')
 		time.sleep(0.5)
 		self.endDialog(sessionId=session.sessionId, text=self.randomTalk('goodMorning'), siteId=session.siteId)
+		return True
 
 
-	def nightIntent(self, intent: str, session: DialogSession):
+	def nightIntent(self, intent: str, session: DialogSession) -> bool:
 		self.endDialog(sessionId=session.sessionId, text=self.randomTalk('goodNight'), siteId=session.siteId)
 		self.ModuleManager.broadcast('onSleep')
+		return True
 
 
-	def userStateIntent(self, intent: str, session: DialogSession):
+	def userStateIntent(self, intent: str, session: DialogSession) -> bool:
 		slots = session.slotsAsObjects
 		if 'State' not in slots.keys():
 			self._logger.error(f'[{self.name}] No state provided for changing user state')
@@ -214,6 +217,7 @@ class RedQueen(Module):
 				self._logger.warning('[{}] Unsupported user state "{}"'.format(self.name, slots['State'][0].value['value']))
 
 		self.endDialog(sessionId=session.sessionId, text=self.TalkManager.randomTalk(slots['State'][0].value['value']), siteId=session.siteId)
+		return True
 
 
 	def randomlySpeak(self, init: bool = False):

@@ -19,6 +19,7 @@ class RockPaperScissors(Module):
 		super().__init__(self._INTENTS)
 
 
-	def rockPaperScissorsIntent(self, intent: str, session: DialogSession):
+	def rockPaperScissorsIntent(self, intent: str, session: DialogSession) -> bool:
 		randomItem = self.randomTalk(text='RockPaperScissors')
 		self.endDialog(session.sessionId, self.randomTalk(text='answer', replace=[randomItem]))
+		return True

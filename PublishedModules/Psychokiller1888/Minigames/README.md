@@ -15,10 +15,10 @@ wget http://modules.projectalice.ch/Minigames -O ~/ProjectAlice/system/moduleIns
 ### Description
 Play a collection of many little games with alice
 
-- Version: 1.03
+- Version: 1.04
 - Author: Psychokiller1888
 - Maintainers: maxbachmann
-- Alice minimum version: 0.10
+- Alice minimum version: 0.12
 - Conditions:
   - en
   - de

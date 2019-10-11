@@ -17,7 +17,7 @@ wget http://modules.projectalice.ch/AliceCore \
 ### Description
 AliceCore is the official module that handles all core intents
 
-- Version: 1.16
+- Version: 1.17
 - Author: ProjectAlice
 - Maintainers:
   - Psycho, Jierka, maxbachmann

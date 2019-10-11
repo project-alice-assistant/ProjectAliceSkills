@@ -50,12 +50,13 @@ class YoutubeJukebox(Module):
 		return clearInput
 
 
-	def offlineHandler(self, session: DialogSession, *args, **kwargs):
+	def offlineHandler(self, session: DialogSession, *args, **kwargs) -> bool:
 		self.endDialog(session.sessionId, text=self.TalkManager.randomTalk('offline', module='system'))
+    return True
 
 
 	@online(offlineHandler=offlineHandler)
-	def searchMusicIntent(self, intent: str, session: DialogSession):
+	def searchMusicIntent(self, intent: str, session: DialogSession) -> bool:
 		siteId = session.siteId
 		sessionId = session.sessionId
 		wildcardQuery = self.getWildcard(session)
@@ -78,7 +79,7 @@ class YoutubeJukebox(Module):
 			self.say(text=self.randomTalk(text='noMatch', replace=[
 				wildcardQuery
 			]), siteId=siteId)
-			return
+			return True
 
 		item = videolist[1]
 		videoKey = item.split('=')[1]
@@ -103,3 +104,4 @@ class YoutubeJukebox(Module):
 				ydl.download([item])
 
 		subprocess.run(['sudo', 'mpg123', outputFile])
+		return True

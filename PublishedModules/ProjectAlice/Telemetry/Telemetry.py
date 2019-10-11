@@ -36,7 +36,7 @@ class Telemetry(Module):
 		}
 
 
-	def telemetryIntent(self, intent: str, session: DialogSession):
+	def telemetryIntent(self, intent: str, session: DialogSession) -> bool:
 		slots = session.slots
 		siteId = session.siteId
 
@@ -59,3 +59,5 @@ class Telemetry(Module):
 			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('answerInstant').format(answer))
 		else:
 			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('noData'))
+		
+		return True

@@ -27,7 +27,7 @@ class ContextSensitive(Module):
 		super().__init__(self._INTENTS)
 
 
-	def deleteThisIntent(self, intent: str, session: DialogSession):
+	def deleteThisIntent(self, intent: str, session: DialogSession) -> bool:
 		modules = self.ModuleManager.getModules()
 		for module in modules.values():
 			try:
@@ -36,24 +36,26 @@ class ContextSensitive(Module):
 					return True
 			except Exception:
 				continue
+		return True
 
 
-	def editThisIntent(self, intent: str, session: DialogSession):
+	def editThisIntent(self, intent: str, session: DialogSession) -> bool:
 		modules = self.ModuleManager.getModules()
 		for module in modules.values():
 			try:
 				if module['instance'].onContextSensitiveEdit(session.sessionId):
 					self.MqttManager.endDialog(sessionId=session.sessionId)
-					return
+					return True
 			except:
 				continue
+		return True
 
-
-	def repeatThisIntent(self, intent: str, session: DialogSession):
+	def repeatThisIntent(self, intent: str, session: DialogSession) -> bool:
 		self.endDialog(session.sessionId, text=self.getLastChat(siteId=session.siteId))
+		return True
 
 
-	def addToMessageHistory(self, session: DialogSession):
+	def addToMessageHistory(self, session: DialogSession) -> bool:
 		if session.message.topic in self._INTENTS or session.message.topic == self._INTENT_ANSWER_YES_OR_NO or 'intent' not in session.message.topic:
 			return
 
@@ -69,6 +71,7 @@ class ContextSensitive(Module):
 			self._history.appendleft(session)
 		except Exception as e:
 			self._logger.error(f'Error in {self.name} module: {e}')
+		return True
 
 
 	def lastMessage(self):

@@ -1,4 +1,4 @@
-from modules.MpdClient import mpdhelper
+from .libraries import mpdhelper
 
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
@@ -81,6 +81,7 @@ class MpdClient(Module):
 			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('notConnected'))
 			return True
 		super().onMessage(intent=intent, session=session)
+		return True
 
 
 	def playIntent(self, intent: str, session: DialogSession):

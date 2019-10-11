@@ -15,7 +15,7 @@ wget http://modules.projectalice.ch/RockPaperScissors -O ~/ProjectAlice/system/m
 ### Description
 Play rock paper scissors
 
-- Version: 0.11
+- Version: 0.12
 - Author: maxbachmann
 - Maintainers: Jierka, Psycho
 - Alice minimum version: 0.12
