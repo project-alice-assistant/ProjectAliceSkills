@@ -9,7 +9,7 @@ from random import randint
 from core.ProjectAliceExceptions import ModuleStartingFailed
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
-from core.commons import commons
+from core.commons import commons, constants
 from core.dialog.model.DialogSession import DialogSession
 
 
@@ -80,7 +80,10 @@ class RedQueen(Module):
 
 	@property
 	def mood(self) -> str:
-		return self._redQueen['infos']['mood']
+		if self._redQueen:
+			return self._redQueen['infos']['mood']
+		else:
+			return constants.UNKNOWN
 
 
 	@staticmethod
