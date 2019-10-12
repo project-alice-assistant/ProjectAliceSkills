@@ -138,11 +138,11 @@ class BringShoppingList(Module):
 	### INTENTS ###
 	def shopItemIntent(self, intent: str, session: DialogSession) -> bool:
 		if session.previousIntent == self._INTENT_ADD_ITEM:
-			return self.editList(session, intent, 'add', self._addItemInt)
+			return self.addItemIntent(intent, session)
 		elif session.previousIntent == self._INTENT_DEL_ITEM:
-			return self.editList(session, intent, 'rem', self._deleteItemInt)
+			return self.delItemIntent(intent, session)
 		elif session.previousIntent == self._INTENT_CHECK_LIST:
-			return self.editList(session, intent, 'chk', self._checkListInt)
+			return self.checkListIntent(intent, session)
 
 		return False:
 
