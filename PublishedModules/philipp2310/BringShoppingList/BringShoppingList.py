@@ -26,9 +26,9 @@ class BringShoppingList(Module):
 
 	def __init__(self):
 		self._SUPPORTED_INTENTS = {
-			self._INTENT_ADD_ITEM: lambda intent, session: self.editList(session, intent, 'add', self._addItemInt),
-			self._INTENT_DEL_ITEM: lambda intent, session: self.editList(session, intent, 'rem', self._deleteItemInt),
-			self._INTENT_CHECK_LIST: lambda intent, session: self.editList(session, intent, 'chk', self._checkListInt),
+			self._INTENT_ADD_ITEM: lambda intent, session: self.editList(intent, session, 'add', self._addItemInt),
+			self._INTENT_DEL_ITEM: lambda intent, session: self.editList(intent, session, 'rem', self._deleteItemInt),
+			self._INTENT_CHECK_LIST: lambda intent, session: self.editList(intent, session, 'chk', self._checkListInt),
 			self._INTENT_READ_LIST: self.readListIntent,
 			self._INTENT_DEL_LIST: self.delListIntent,
 			self._INTENT_CONF_DEL: self.confDelIntent,
