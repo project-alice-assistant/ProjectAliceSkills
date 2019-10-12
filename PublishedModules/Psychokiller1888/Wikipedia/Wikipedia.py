@@ -3,6 +3,7 @@ from wikipedia import wikipedia
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
+from core.commons.commons import online
 
 
 class Wikipedia(Module):
@@ -36,7 +37,7 @@ class Wikipedia(Module):
 		for slot in session.slotsAsObjects['Letters']:
 			word += slot.value['value']
 
-		if session.previousIntent == self._INTENT_SEARCH
+		if session.previousIntent == self._INTENT_SEARCH:
 			session.customData['userInput'] = word
 			return self.searchIntent(intent=intent, session=session)
 		return False
@@ -45,7 +46,7 @@ class Wikipedia(Module):
 	def randomWordIntent(self, intent: str, session: DialogSession) -> bool:
 		word = session.slots['RandomWord']
 
-		if session.previousIntent == self._INTENT_SEARCH
+		if session.previousIntent == self._INTENT_SEARCH:
 			session.customData['userInput'] = word
 			return self.searchIntent(intent=intent, session=session)
 		return False
