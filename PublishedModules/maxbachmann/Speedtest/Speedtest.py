@@ -21,7 +21,12 @@ class Speedtest(Module):
 		super().__init__(self._INTENTS)
 
 
-	@online
+	def offlineHandler(self, session: DialogSession, **kwargs) -> bool:
+		self.endDialog(session.sessionId, text=self.TalkManager.randomTalk('offline', module='system'))
+		return True
+
+
+	@online(offlineHandler=offlineHandler)
 	def runSpeedtest(self, intent: str, session: DialogSession) -> bool:
 		self.ThreadManager.doLater(interval=0, func=self.executeSpeedtest)
 		self._logger.info(f'[{self.name}] Starting Speedtest')
