@@ -161,6 +161,9 @@ class PhilipsHue(Module):
 
 	def onFullHour(self):
 		partOfTheDay = commons.partOfTheDay().lower()
+		if partOfTheDay not in self._scenes:
+			return
+
 		for group in self._groups.values():
 			if group.on:
 				self._bridge.run_scene(group_name=group.name, scene_name=self._scenes[partOfTheDay].name)
