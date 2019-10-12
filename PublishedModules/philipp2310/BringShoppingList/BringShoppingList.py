@@ -3,7 +3,7 @@ from BringApi.BringApi import BringApi
 
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
-from core.commons import commons
+from core.commons import commons, online
 from core.dialog.model.DialogSession import DialogSession
 
 
@@ -25,15 +25,16 @@ class BringShoppingList(Module):
 
 
 	def __init__(self):
-		self._SUPPORTED_INTENTS = [
-			self._INTENT_ADD_ITEM,
-			self._INTENT_DEL_ITEM,
-			self._INTENT_READ_LIST,
-			self._INTENT_CHECK_LIST,
-			self._INTENT_DEL_LIST,
-			self._INTENT_CONF_DEL,
-			self._INTENT_ANSWER_SHOP,
-			self._INTENT_SPELL_WORD]
+		self._SUPPORTED_INTENTS = {
+			self._INTENT_ADD_ITEM: lambda intent, session: self.editList(session, intent, 'add', self._addItemInt),
+			self._INTENT_DEL_ITEM: lambda intent, session: self.editList(session, intent, 'rem', self._deleteItemInt),
+			self._INTENT_CHECK_LIST: lambda intent, session: self.editList(session, intent, 'chk', self._checkListInt),
+			self._INTENT_READ_LIST: self.readListIntent,
+			self._INTENT_DEL_LIST: self.delListIntent,
+			self._INTENT_CONF_DEL: self.confDelIntent,
+			self._INTENT_ANSWER_SHOP: self.shopItemIntent,
+			self._INTENT_SPELL_WORD: self.shopItemIntent
+		}
 
 		super().__init__(self._SUPPORTED_INTENTS)
 
@@ -42,46 +43,12 @@ class BringShoppingList(Module):
 		self._uuidlist = self.getConfig('bringListUUID')
 
 
-	def onMessage(self, intent: str, session: DialogSession) -> bool:
-		"""handle all incoming messages"""
-
-		if intent == self._INTENT_ADD_ITEM or (intent in {self._INTENT_ANSWER_SHOP, self._INTENT_SPELL_WORD} and session.previousIntent == self._INTENT_ADD_ITEM):
-			#Add item to list
-			self.editList(session, intent, 'add', self._addItemInt)
-			return True
-		elif intent == self._INTENT_DEL_ITEM or (intent in {self._INTENT_ANSWER_SHOP, self._INTENT_SPELL_WORD} and session.previousIntent == self._INTENT_DEL_ITEM):
-			#Delete items from list
-			self.editList(session, intent, 'rem', self._deleteItemInt)
-			return True
-		elif intent == self._INTENT_READ_LIST:
-			self.readList(session)
-			return True
-		elif intent == self._INTENT_CHECK_LIST or (intent in {self._INTENT_ANSWER_SHOP, self._INTENT_SPELL_WORD} and session.previousIntent == self._INTENT_CHECK_LIST):
-			#check if item is in list
-			self.editList(session, intent, 'chk', self._checkListInt)
-			return True
-		elif intent == self._INTENT_DEL_LIST:
-			self.continueDialog(
-				sessionId=session.sessionId,
-				text=self.randomTalk('chk_del_all'),
-				intentFilter=[self._INTENT_CONF_DEL],
-				previousIntent=self._INTENT_DEL_LIST)
-			return True
-		elif session.previousIntent == self._INTENT_DEL_LIST and intent == self._INTENT_CONF_DEL:
-			if commons.isYes(session):
-				self.endDialog(session.sessionId, text=self._deleteCompleteList())
-			else:
-				self.endDialog(session.sessionId, text=self.randomTalk('nodel_all'))
-			return True
-
-		return False
-
-
 	def _getBring(self) -> BringApi:
 		"""get an instance of the BringApi"""
 		return BringApi(self._uuid, self._uuidlist)
 
 
+	@online
 	def _deleteCompleteList(self) -> str:
 		"""
 		perform the deletion of the complete list
@@ -145,7 +112,7 @@ class BringShoppingList(Module):
 		return found, missing
 
 
-	def _getShopItems(self, session: DialogSession, intent: str) -> list:
+	def _getShopItems(self, intent: str, session: DialogSession) -> list:
 		"""get the values of shopItem as a list of strings"""
 		items = list()
 		if intent == self._INTENT_SPELL_WORD:
@@ -159,8 +126,45 @@ class BringShoppingList(Module):
 		return items
 
 
+	def _offlineHandler(self, session: DialogSession, **kwargs) -> bool:
+		self.endDialog(session.sessionId, text=self.TalkManager.randomTalk('offline', module='system'))
+		return True
+
+
 	### INTENTS ###
-	def editList(self, session: DialogSession, intent: str, answer: str, action: Callable[[list], Tuple[list, list]]):
+	def shopItemIntent(self, intent: str, session: DialogSession) -> bool:
+		if session.previousIntent == self._INTENT_ADD_ITEM:
+			return self.editList(session, intent, 'add', self._addItemInt)
+		elif session.previousIntent == self._INTENT_DEL_ITEM:
+			return self.editList(session, intent, 'rem', self._deleteItemInt)
+		elif session.previousIntent == self._INTENT_CHECK_LIST:
+			return self.editList(session, intent, 'chk', self._checkListInt)
+
+		return False:
+
+
+	def delListIntent(self, intent: str, session: DialogSession) -> bool:
+		self.continueDialog(
+			sessionId=session.sessionId,
+			text=self.randomTalk('chk_del_all'),
+			intentFilter=[self._INTENT_CONF_DEL],
+			previousIntent=self._INTENT_DEL_LIST)
+		return True
+
+
+	def confDelIntent(self, intent: str, session: DialogSession) -> bool:
+		if session.previousIntent != self._INTENT_DEL_LIST:
+			if commons.isYes(session):
+				self.endDialog(session.sessionId, text=self._deleteCompleteList())
+			else:
+				self.endDialog(session.sessionId, text=self.randomTalk('nodel_all'))
+			return True
+
+		return False
+
+
+	@online(offlineHandler=_offlineHandler)
+	def editList(self, intent: str, session: DialogSession, answer: str, action: Callable[[list], Tuple[list, list]]) -> bool:
 		items = self._getShopItems(session, intent)
 		if items:
 			successfull, failed = action(items)
@@ -171,13 +175,16 @@ class BringShoppingList(Module):
 				text=self.randomTalk(f'{answer}_what'),
 				intentFilter=[self._INTENT_ANSWER_SHOP, self._INTENT_SPELL_WORD],
 				previousIntent=intent)
+		return True
 
 
-	def readList(self, session: DialogSession):
+	@online(offlineHandler=_offlineHandler)
+	def readListIntent(self, intent: str, session: DialogSession) -> bool:
 		"""read the content of the list"""
 		items = self._getBring().get_items().json()['purchase']
 		itemlist = [item['name'] for item in items]
 		self.endDialog(session.sessionId, text=self._getTextForList('read', itemlist))
+		return True
 
 
 	#### List/Text operations
