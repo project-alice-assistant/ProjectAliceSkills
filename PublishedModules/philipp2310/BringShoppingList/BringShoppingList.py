@@ -27,9 +27,9 @@ class BringShoppingList(Module):
 
 	def __init__(self):
 		self._SUPPORTED_INTENTS = {
-			self._INTENT_ADD_ITEM: lambda intent, session: self.editList(intent, session, 'add', self._addItemInt),
-			self._INTENT_DEL_ITEM: lambda intent, session: self.editList(intent, session, 'rem', self._deleteItemInt),
-			self._INTENT_CHECK_LIST: lambda intent, session: self.editList(intent, session, 'chk', self._checkListInt),
+			self._INTENT_ADD_ITEM: self.addItemIntent,
+			self._INTENT_DEL_ITEM: self.delItemIntent,
+			self._INTENT_CHECK_LIST: self.checkListIntent,
 			self._INTENT_READ_LIST: self.readListIntent,
 			self._INTENT_DEL_LIST: self.delListIntent,
 			self._INTENT_CONF_DEL: self.confDelIntent,
@@ -115,15 +115,18 @@ class BringShoppingList(Module):
 
 	def _getShopItems(self, intent: str, session: DialogSession) -> list:
 		"""get the values of shopItem as a list of strings"""
-		items = list()
 		if intent == self._INTENT_SPELL_WORD:
 			item = ''.join([slot.value['value'] for slot in session.slotsAsObjects['Letters']])
-			items.append(item.capitalize())
-		else:
-			if 'shopItem' in session.slots:
-				for x in session.slotsAsObjects['shopItem']:
-					if x.value['value'] != "unknownword":
-						items.append(x.value['value'])
+			return [item.capitalize()]
+		
+		items = [x.value['value'] for x in session.slotsAsObjects.get('shopItem', list()) if x.value['value'] != "unknownword"]
+
+		if not items:
+			self.continueDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk(f'{answer}_what'),
+				intentFilter=[self._INTENT_ANSWER_SHOP, self._INTENT_SPELL_WORD],
+				previousIntent=intent)
 		return items
 
 
@@ -165,17 +168,29 @@ class BringShoppingList(Module):
 
 
 	@online(offlineHandler=_offlineHandler)
-	def editList(self, intent: str, session: DialogSession, answer: str, action: Callable[[list], Tuple[list, list]]) -> bool:
+	def addItemIntent(self, intent: str, session: DialogSession) -> bool:
 		items = self._getShopItems(session, intent)
 		if items:
-			successfull, failed = action(items)
-			self.endDialog(session.sessionId, text=self._combineLists(answer, successfull, failed))
-		else:
-			self.continueDialog(
-				sessionId=session.sessionId,
-				text=self.randomTalk(f'{answer}_what'),
-				intentFilter=[self._INTENT_ANSWER_SHOP, self._INTENT_SPELL_WORD],
-				previousIntent=intent)
+			added, exist = self._addItemInt(items)
+			self.endDialog(session.sessionId, text=self._combineLists('add', added, exist))
+		return True
+
+
+	@online(offlineHandler=_offlineHandler)
+	def delItemIntent(self, intent: str, session: DialogSession) -> bool:
+		items = self._getShopItems(session, intent)
+		if items:
+			removed, exist = self._deleteItemInt(items)
+			self.endDialog(session.sessionId, text=self._combineLists('rem', removed, exist))
+		return True
+
+
+	@online(offlineHandler=_offlineHandler)
+	def checkListIntent(self, intent: str, session: DialogSession) -> bool:
+		items = self._getShopItems(session, intent)
+		if items:
+			found, missing = self._checkListInt(items)
+			self.endDialog(session.sessionId, text=self._combineLists('chk', found, missing))
 		return True
 
 
