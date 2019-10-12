@@ -33,7 +33,7 @@ class InternationalSpaceStation(Module):
 				self.endDialog(sessionId, text=self.getIssPosition())
 			
 		except Exception as e:
-			self._logger.error(e)
+			self.logError(e)
 			self.endDialog(sessionId, text=self.randomTalk('noServer'))
 
 		return True

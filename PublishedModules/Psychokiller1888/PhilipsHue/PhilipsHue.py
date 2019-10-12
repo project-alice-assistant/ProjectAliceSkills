@@ -59,14 +59,14 @@ class PhilipsHue(Module):
 				request = requests.get('https://www.meethue.com/api/nupnp')
 				response = request.json()
 				firstBridge = response[0]
-				self._logger.info(f"- [{self.name}] Autodiscover found bridge at {firstBridge['internalipaddress']}, saving ip to config.json")
+				self.logInfo(f"- [{self.name}] Autodiscover found bridge at {firstBridge['internalipaddress']}, saving ip to config.json")
 				self.updateConfig('phueAutodiscoverFallback', False)
 				self.updateConfig('phueBridgeIp', firstBridge['internalipaddress'])
 				if not self._connectBridge():
 					raise ModuleStartingFailed(moduleName=self.name, error=f'[{self.name}] Cannot connect to bridge')
 				return self._SUPPORTED_INTENTS
 			except IndexError:
-				self._logger.info(f'- [{self.name}] No bridge found')
+				self.logInfo(f'- [{self.name}] No bridge found')
 
 		raise ModuleStartingFailed(moduleName=self.name, error=f'[{self.name}] Cannot connect to bridge')
 
@@ -78,7 +78,7 @@ class PhilipsHue(Module):
 				hueConfigFileExists = os.path.isfile(hueConfigFile)
 
 				if not hueConfigFileExists:
-					self._logger.info(f'- [{self.name}] No philipsHueConf.conf file in PhilipsHue module directory')
+					self.logInfo(f'- [{self.name}] No philipsHueConf.conf file in PhilipsHue module directory')
 
 				self._bridge = Bridge(ip=self.ConfigManager.getModuleConfigByName(self.name, 'phueBridgeIp'), config_file_path=hueConfigFile)
 
@@ -100,17 +100,17 @@ class PhilipsHue(Module):
 				if self.delayed:
 					self.say(text=self.randomTalk('pressBridgeButton'))
 					self._bridgeConnectTries += 1
-					self._logger.warning(f"- [{self.name}] Bridge not registered, please press the bridge button, retry in 20 seconds")
+					self.logWarning(f"- [{self.name}] Bridge not registered, please press the bridge button, retry in 20 seconds")
 					time.sleep(20)
 					return self._connectBridge()
 				else:
 					self.delayed = True
 					raise ModuleStartDelayed(self.name)
 			except PhueException as e:
-				self._logger.error(f'- [{self.name}] Bridge error: {e}')
+				self.logError(f'- [{self.name}] Bridge error: {e}')
 				return False
 		else:
-			self._logger.error(f"- [{self.name}] Couldn't reach bridge")
+			self.logError(f"- [{self.name}] Couldn't reach bridge")
 			self.ThreadManager.doLater(interval=3, func=self.say, args=[self.randomTalk('pressBridgeButtonTimeout')])
 			return False
 
@@ -128,7 +128,7 @@ class PhilipsHue(Module):
 			self._scenes[scene.name.lower()] = scene
 
 		if self._house is None:
-			self._logger.warning(f'- [{self.name}] Coulnd\'t find any group named "House". Creating one')
+			self.logWarning(f'- [{self.name}] Coulnd\'t find any group named "House". Creating one')
 			self._bridge.create_group(name='House', lights=self._bridge.get_light().keys(), )
 
 		return True

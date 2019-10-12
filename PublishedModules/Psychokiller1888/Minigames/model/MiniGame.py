@@ -4,14 +4,15 @@ from abc import ABCMeta, abstractmethod
 
 from core.dialog.model import DialogSession
 from core.snips.samkilla.Intent import Intent
+from core.util.model.Logger import Logger
 
 
-class MiniGame(metaclass=ABCMeta):
+class MiniGame(metaclass=ABCMeta, Logger):
 
 	_INTENT_PLAY_GAME = Intent('PlayGame')
 
 	def __init__(self):
-		self._logger = logging.getLogger('ProjectAlice')
+		super().__init__()
 		self._started = False
 
 

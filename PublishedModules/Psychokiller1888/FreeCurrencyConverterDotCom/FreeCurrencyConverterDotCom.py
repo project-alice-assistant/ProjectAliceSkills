@@ -75,7 +75,7 @@ class FreeCurrencyConverterDotCom(Module):
 
 				self.endDialog(sessionId, text=self.randomTalk('answer').format(amount, fromCurrency, converted, toCurrency), siteId=siteId)
 			except Exception as e:
-				self._logger.error(e)
+				self.logError(e)
 				self.endDialog(sessionId, text=self.randomTalk('noServer'), siteId=siteId)
 
 		return True

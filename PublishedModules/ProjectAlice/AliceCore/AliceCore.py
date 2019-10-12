@@ -83,7 +83,7 @@ class AliceCore(Module):
 
 		if not self.UserManager.users:
 			if not self.delayed:
-				self._logger.warning(f'[{self.name}] No user found in database')
+				self.logWarning(f'[{self.name}] No user found in database')
 				raise ModuleStartDelayed(self.name)
 			else:
 				self._addFirstUser()
@@ -167,7 +167,7 @@ class AliceCore(Module):
 			elif onReboot == 'greetAndRebootModules':
 				self.ThreadManager.doLater(interval=3, func=self.say, args=[self.randomTalk('confirmRebootingModules'), 'all'])
 			else:
-				self._logger.warning(f'[{self.name}] onReboot config has an unknown value')
+				self.logWarning(f'[{self.name}] onReboot config has an unknown value')
 
 			self.ConfigManager.updateAliceConfiguration('onReboot', '')
 
@@ -278,13 +278,13 @@ class AliceCore(Module):
 
 		elif intent == self._INTENT_MODULE_GREETING:
 			if 'uid' not in payload or 'siteId' not in payload:
-				self._logger.warning('A device tried to connect but is missing informations in the payload, refused')
+				self.logWarning('A device tried to connect but is missing informations in the payload, refused')
 				self.publish(topic='projectalice/devices/connectionRefused', payload={'siteId': payload['siteId']})
 				return True
 
 			device = self.DeviceManager.deviceConnecting(uid=payload['uid'])
 			if device:
-				self._logger.info(f'Device with uid {device.uid} of type {device.deviceType} in room {device.room} connected')
+				self.logInfo(f'Device with uid {device.uid} of type {device.deviceType} in room {device.room} connected')
 				self.publish(topic='projectalice/devices/connectionAccepted', payload={'siteId': payload['siteId'], 'uid': payload['uid']})
 			else:
 				self.publish(topic='projectalice/devices/connectionRefused', payload={'siteId': payload['siteId'], 'uid': payload['uid']})
@@ -317,7 +317,7 @@ class AliceCore(Module):
 						self.ThreadManager.doLater(interval=5, func=self.restart)
 				else:
 					self.endDialog(sessionId)
-					self._logger.warn(f'[{self.name}] Asked to reboot, but missing params')
+					self.logWarning(f'[{self.name}] Asked to reboot, but missing params')
 
 			elif session.previousIntent == self._INTENT_DUMMY_ADD_USER:
 				if commons.isYes(session):
@@ -546,7 +546,7 @@ class AliceCore(Module):
 				update = 5
 
 			if update in {1, 5}: # All or system
-				self._logger.info(f'[{self.name}] Updating system')
+				self.logInfo(f'[{self.name}] Updating system')
 				self.endDialog(sessionId=sessionId, text=self.randomTalk('confirmAssistantUpdate'))
 
 				def systemUpdate():
@@ -560,17 +560,17 @@ class AliceCore(Module):
 				self.ThreadManager.doLater(interval=2, func=systemUpdate)
 
 			if update in {1, 4}: # All or modules
-				self._logger.info(f'[{self.name}] Updating modules')
+				self.logInfo(f'[{self.name}] Updating modules')
 				self.endDialog(sessionId=sessionId, text=self.randomTalk('confirmAssistantUpdate'))
 				self.ModuleManager.checkForModuleUpdates()
 
 			if update in {1, 2}: # All or Alice
-				self._logger.info(f'[{self.name}] Updating Alice')
+				self.logInfo(f'[{self.name}] Updating Alice')
 				if update == 2:
 					self.endDialog(sessionId=sessionId, text=self.randomTalk('confirmAssistantUpdate'))
 
 			if update in {1, 3}: # All or Assistant
-				self._logger.info(f'[{self.name}] Updating assistant')
+				self.logInfo(f'[{self.name}] Updating assistant')
 
 				if not self.LanguageManager.activeSnipsProjectId:
 					self.endDialog(sessionId=sessionId, text=self.randomTalk('noProjectIdSet'))

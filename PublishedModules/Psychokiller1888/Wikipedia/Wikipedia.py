@@ -96,7 +96,7 @@ class Wikipedia(Module):
 					)
 					return True
 				except Exception as e:
-					self._logger.error(f'Error: {e}')
+					self.logError(f'Error: {e}')
 					self.endDialog(sessionId=sessionId, text=self.TalkManager.randomTalk('error', module='system'))
 					return True
 

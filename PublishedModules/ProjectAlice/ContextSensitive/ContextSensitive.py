@@ -70,7 +70,7 @@ class ContextSensitive(Module):
 
 			self._history.appendleft(session)
 		except Exception as e:
-			self._logger.error(f'Error in {self.name} module: {e}')
+			self.logError(f'Error in {self.name} module: {e}')
 		return True
 
 

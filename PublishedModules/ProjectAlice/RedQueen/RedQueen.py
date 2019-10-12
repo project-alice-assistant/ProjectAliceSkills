@@ -41,7 +41,7 @@ class RedQueen(Module):
 		if not os.path.isfile(redQueenIdentityFile):
 			if os.path.isfile(redQueenIdentityFileTemplate):
 				shutil.copyfile(redQueenIdentityFileTemplate, redQueenIdentityFile)
-				self._logger.info(f'[{self.name}] New Red Queen is born')
+				self.logInfo(f'[{self.name}] New Red Queen is born')
 
 				with open(self._getRedQueenIdentityFileName(), 'r') as f:
 					self._redQueen = json.load(f)
@@ -49,10 +49,10 @@ class RedQueen(Module):
 				self._redQueen['infos']['born'] = time.strftime("%d.%m.%Y")
 				self._saveRedQueenIdentity()
 			else:
-				self._logger.info(f'[{self.name}] Cannot find Red Queen identity template')
+				self.logInfo(f'[{self.name}] Cannot find Red Queen identity template')
 				raise ModuleStartingFailed(moduleName=self.name)
 		else:
-			self._logger.info(f'[{self.name}] Found existing Red Queen identity')
+			self.logInfo(f'[{self.name}] Found existing Red Queen identity')
 			with open(self._getRedQueenIdentityFileName(), 'r') as f:
 				self._redQueen = json.load(f)
 
@@ -204,7 +204,7 @@ class RedQueen(Module):
 	def userStateIntent(self, intent: str, session: DialogSession) -> bool:
 		slots = session.slotsAsObjects
 		if 'State' not in slots.keys():
-			self._logger.error(f'[{self.name}] No state provided for changing user state')
+			self.logError(f'[{self.name}] No state provided for changing user state')
 			self.endDialog(sessionId=session.sessionId, text=self.TalkManager.randomTalk('error', module='system'), siteId=session.siteId)
 			return
 
@@ -214,7 +214,7 @@ class RedQueen(Module):
 			try:
 				self.ModuleManager.broadcast(slots['State'][0].value['value'])
 			except:
-				self._logger.warning('[{}] Unsupported user state "{}"'.format(self.name, slots['State'][0].value['value']))
+				self.logWarning('[{}] Unsupported user state "{}"'.format(self.name, slots['State'][0].value['value']))
 
 		self.endDialog(sessionId=session.sessionId, text=self.TalkManager.randomTalk(slots['State'][0].value['value']), siteId=session.siteId)
 		return True
@@ -234,7 +234,7 @@ class RedQueen(Module):
 
 		rnd = random.randint(mini, maxi)
 		self.ThreadManager.doLater(interval=rnd, func=self.randomlySpeak)
-		self._logger.info(f'[{self.name}] Scheduled next random speaking in {rnd} seconds')
+		self.logInfo(f'[{self.name}] Scheduled next random speaking in {rnd} seconds')
 
 		if not init and not self.UserManager.checkIfAllUser('goingBed') and not self.UserManager.checkIfAllUser('sleeping'):
 			self.say(self.randomTalk(f'randomlySpeak{self.mood}'), siteId='all')
@@ -242,7 +242,7 @@ class RedQueen(Module):
 
 	def changeRedQueenStat(self, stat: str, amount: int):
 		if stat not in self._redQueen['stats'].keys():
-			self._logger.warning(f'[{self.name}] Asked to change stat {stat} but it does not exist')
+			self.logWarning(f'[{self.name}] Asked to change stat {stat} but it does not exist')
 
 		self._redQueen['stats'][stat] += amount
 		if self._redQueen['stats'][stat] < 0:

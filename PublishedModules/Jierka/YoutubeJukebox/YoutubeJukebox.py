@@ -37,7 +37,7 @@ class YoutubeJukebox(Module):
 			inputt = session.payload['input']
 
 		utterances = self.getUtterancesByIntent(self._INTENT_SEARCH_MUSIC)
-		self._logger.info(f'[{self.name}] Raw input {inputt}')
+		self.logInfo(f'[{self.name}] Raw input {inputt}')
 
 		for utterance in utterances:
 			for word in utterance.split(' '):
@@ -53,7 +53,7 @@ class YoutubeJukebox(Module):
 			if len(word) > 1:
 				clearInput = clearInput + str(word) + ' '
 
-		self._logger.info(f'[{self.name}] Cleaned input {inputt}')
+		self.logInfo(f'[{self.name}] Cleaned input {inputt}')
 
 		return clearInput
 
@@ -85,7 +85,7 @@ class YoutubeJukebox(Module):
 
 		item = videolist[1]
 		videoKey = item.split('=')[1]
-		self._logger.info(f'[{self.name}] Music video found {item}')
+		self.logInfo(f'[{self.name}] Music video found {item}')
 
 		youtubeDlOptions = {
 			'outtmpl': '%(id)s.%(ext)s',

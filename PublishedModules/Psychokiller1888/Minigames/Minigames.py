@@ -53,7 +53,7 @@ class Minigames(Module):
 				self._minigames[game] = minigame
 				self._SUPPORTED_INTENTS += minigame.intents
 			except Exception as e:
-				self._logger.error(f'[{self.name}] Something went wrong loading the minigame "{game}": {e}')
+				self.logError(f'[{self.name}] Something went wrong loading the minigame "{game}": {e}')
 
 
 	def onSessionTimeout(self, session: DialogSession):
