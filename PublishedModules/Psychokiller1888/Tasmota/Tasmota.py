@@ -15,16 +15,11 @@ class Tasmota(Module):
 	_CONNECTING = 'projectalice/devices/tasmota/feedback/hello/+'
 	_FEEDBACK = 'projectalice/devices/tasmota/feedback/+'
 
-	_INTENT_ANSWER_YES_OR_NO = Intent('AnswerYesOrNo', isProtected=True)
-	_INTENT_ANSWER_ROOM = Intent('AnswerRoom', isProtected=True)
-
 
 	def __init__(self):
 		self._SUPPORTED_INTENTS = [
 			self._FEEDBACK,
-			self._CONNECTING,
-			self._INTENT_ANSWER_YES_OR_NO,
-			self._INTENT_ANSWER_ROOM
+			self._CONNECTING
 		]
 
 		self._connectingRegex = re.compile(self._CONNECTING.replace('+', '(.*)'))
