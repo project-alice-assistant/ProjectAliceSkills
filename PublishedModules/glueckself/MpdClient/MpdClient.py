@@ -44,7 +44,7 @@ class MpdClient(Module):
 		self._playbackStatus = None
 
 		if not self._host:
-			self._logger.warn(f'[{self.name}] MPD host not configured, not doing anything.')
+			self.logWarning('MPD host not configured, not doing anything.')
 			return
 
 		self.ThreadManager.doLater(interval=1, func=self._mpdPollStatus)
@@ -67,7 +67,7 @@ class MpdClient(Module):
 		self._mpdConnected = True
 		self._playbackStatus = (status['state'] == 'play')
 
-		#self._logger.info(f'[{self.name}] Music playing is now {self._playbackStatus}')
+		#self.logInfo(f'Music playing is now {self._playbackStatus}')
 
 
 	def _connect(self):

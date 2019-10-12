@@ -57,7 +57,7 @@ class ContextSensitive(Module):
 
 	def addToMessageHistory(self, session: DialogSession) -> bool:
 		if session.message.topic in self._INTENTS or session.message.topic == self._INTENT_ANSWER_YES_OR_NO or 'intent' not in session.message.topic:
-			return
+			return False
 
 		try:
 			customData = session.customData
@@ -70,7 +70,7 @@ class ContextSensitive(Module):
 
 			self._history.appendleft(session)
 		except Exception as e:
-			self._logger.error(f'Error in {self.name} module: {e}')
+			self.logError('Error adding to intent history: {e}')
 		return True
 
 

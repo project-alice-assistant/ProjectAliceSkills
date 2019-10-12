@@ -1,4 +1,5 @@
 import time
+from typing import Generator, Tuple
 
 import lnetatmo
 
@@ -65,7 +66,7 @@ class Netatmo(Module):
 		except lnetatmo.AuthFailure:
 			self._authTries += 1
 			if self._authTries >= 3:
-				self._logger.warning(f'[{self.name}] Tried to auth 3 times, giving up now')
+				self.logWarning('Tried to auth 3 times, giving up now')
 				return False
 			else:
 				time.sleep(1)

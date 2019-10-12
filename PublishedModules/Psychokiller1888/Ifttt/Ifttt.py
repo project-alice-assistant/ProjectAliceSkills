@@ -46,5 +46,5 @@ class Ifttt(Module):
 
 			return IftttException.NO_USER
 		except Exception as e:
-			self._logger.error(f'[{self.name}] Error trying to request api: {e}')
+			self.logError(f'Error trying to request api: {e}')
 			return IftttException.ERROR

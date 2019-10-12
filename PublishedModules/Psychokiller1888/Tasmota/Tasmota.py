@@ -46,12 +46,12 @@ class Tasmota(Module):
 			identifier = self._connectingRegex.match(intent).group(1)
 			if self.DeviceManager.getDeviceByUID(identifier):
 				# This device is known
-				self._logger.info(f'[{self.name}] A device just connected in {siteId}')
+				self.logInfo(f'A device just connected in {siteId}')
 				self.DeviceManager.deviceConnecting(uid=identifier)
 			else:
 				# We did not ask Alice to add a new device
 				if not self.DeviceManager.broadcastFlag.isSet():
-					self._logger.warning(f'[{self.name}] A device is trying to connect to Alice but is unknown')
+					self.logWarning('A device is trying to connect to Alice but is unknown')
 
 		elif self._feedbackRegex.match(intent):
 			if 'feedback' in payload:
