@@ -1,0 +1,19 @@
+{
+	"name": "AliceXmpp",
+	"version": 0.1,
+	"author": "glueckself",
+	"maintainers": [],
+	"desc": "Chat with alice via xmpp (jabber)",
+	"aliceMinVersion": 0.10,
+	"pipRequirements": [
+		"sleekxmpp",
+		"dnspython"
+	],
+	"systemRequirements": [],
+	"conditions": {
+		"lang": [
+			"en",
+			"de"
+		]
+	}
+}
