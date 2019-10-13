@@ -7,11 +7,6 @@
 	box-sizing: border-box;
 }
 
-.WorldMap .icon {
-	width: 100%;
-	font-size: 1.5em;
-}
-
 .WorldMap_map {
 	position: absolute;
 	margin-top: 70px;

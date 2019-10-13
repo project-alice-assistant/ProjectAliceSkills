@@ -192,17 +192,18 @@ WIDGET_CSS = '''.{widgetName} {{
 	padding: 5px;
 	box-sizing: border-box;
 }}
-
-.{widgetName} .icon {{
-	width: 100%;
-	font-size: 1.5em;
-}}'''
+'''
 
 WIDGET_JS = '''$(function(){});'''
 
 WIDGET_TEMPLATE = '''<div class="{widget}" id="{widget}">
-	<div class="icon">
-		<i class="fas fa-cross"></i>
+	<div class="widgetIcons">
+		<div class="widgetIcon">
+			<i class="fas fa-calendar-alt"></i>
+		</div>
+		<div class="widgetIcon" id="widgetSettings_{widget}">
+			<i class="fas fa-cog"></i>
+		</div>
 	</div>
 	<div>
 		
