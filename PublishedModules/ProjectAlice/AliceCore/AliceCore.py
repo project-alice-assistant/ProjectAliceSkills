@@ -22,7 +22,7 @@ class AliceCore(Module):
 	_INTENT_SWITCH_LANGUAGE = Intent('SwitchLanguage')
 	_INTENT_UPDATE_ALICE = Intent('DoAliceUpdate', isProtected=True)
 	_INTENT_REBOOT = Intent('RebootSystem')
-	_INTENT_STOP_LISTEN = Intent('StopListening')
+	_INTENT_STOP_LISTEN = Intent('StopListening', isProtected=True)
 	_INTENT_ADD_DEVICE = Intent('AddComponent')
 	_INTENT_ANSWER_HARDWARE_TYPE = Intent('AnswerHardwareType', isProtected=True)
 	_INTENT_ANSWER_ESP_TYPE = Intent('AnswerEspType', isProtected=True)
@@ -41,30 +41,30 @@ class AliceCore(Module):
 
 
 	def __init__(self):
-		self._SUPPORTED_INTENTS = [
-			self._INTENT_GLOBAL_STOP,
-			self._INTENT_MODULE_GREETING,
-			self._INTENT_ANSWER_YES_OR_NO,
-			self._INTENT_ANSWER_ROOM,
-			self._INTENT_SWITCH_LANGUAGE,
-			self._INTENT_UPDATE_ALICE,
-			self._INTENT_REBOOT,
-			self._INTENT_STOP_LISTEN,
-			self._INTENT_ADD_DEVICE,
-			self._INTENT_ANSWER_HARDWARE_TYPE,
-			self._INTENT_ANSWER_ESP_TYPE,
-			self._INTENT_ANSWER_NAME,
-			self._INTENT_SPELL_WORD,
-			self._INTENT_DUMMY_ADD_USER,
-			self._INTENT_DUMMY_ADD_WAKEWORD,
-			self._INTENT_DUMMY_WAKEWORD_INSTRUCTION,
-			self._INTENT_DUMMY_WAKEWORD_FAILED,
-			self._INTENT_ANSWER_WAKEWORD_CUTTING,
-			self._INTENT_DUMMY_WAKEWORD_OK,
-			self._INTENT_WAKEWORD,
-			self._INTENT_ADD_USER,
-			self._INTENT_ANSWER_ACCESSLEVEL
-		]
+		self._INTENTS = {
+			self._INTENT_GLOBAL_STOP: self.onMessage,
+			self._INTENT_MODULE_GREETING: self.deviceGreetingIntent,
+			self._INTENT_ANSWER_YES_OR_NO: self.answerYesOrNoIntent,
+			self._INTENT_ANSWER_ROOM: self.onMessage,
+			self._INTENT_SWITCH_LANGUAGE: self.onMessage,
+			self._INTENT_UPDATE_ALICE: self.aliceUpdateIntent,
+			self._INTENT_REBOOT: self.onMessage,
+			self._INTENT_STOP_LISTEN: self.onMessage,
+			self._INTENT_ADD_DEVICE: self.addDeviceIntent,
+			self._INTENT_ANSWER_HARDWARE_TYPE: self.onMessage,
+			self._INTENT_ANSWER_ESP_TYPE: self.onMessage,
+			self._INTENT_ANSWER_NAME: self.onMessage,
+			self._INTENT_SPELL_WORD: self.onMessage,
+			self._INTENT_DUMMY_ADD_USER: self.onMessage,
+			self._INTENT_DUMMY_ADD_WAKEWORD: self.onMessage,
+			self._INTENT_DUMMY_WAKEWORD_INSTRUCTION: self.onMessage,
+			self._INTENT_DUMMY_WAKEWORD_FAILED: self.onMessage,
+			self._INTENT_ANSWER_WAKEWORD_CUTTING: self.onMessage,
+			self._INTENT_DUMMY_WAKEWORD_OK: self.onMessage,
+			self._INTENT_WAKEWORD: self.onMessage,
+			self._INTENT_ADD_USER: self.onMessage,
+			self._INTENT_ANSWER_ACCESSLEVEL: self.onMessage
+		}
 
 		self._AUTH_ONLY_INTENTS = {
 			self._INTENT_ADD_USER: 'admin',
@@ -74,7 +74,7 @@ class AliceCore(Module):
 		}
 
 		self._threads = dict()
-		super().__init__(self._SUPPORTED_INTENTS, authOnlyIntents=self._AUTH_ONLY_INTENTS)
+		super().__init__(self._INTENTS, authOnlyIntents=self._AUTH_ONLY_INTENTS)
 
 
 	def onStart(self):
@@ -88,7 +88,7 @@ class AliceCore(Module):
 			else:
 				self._addFirstUser()
 
-		return self._SUPPORTED_INTENTS
+		return self._INTENTS
 
 
 	def _addFirstUser(self):
@@ -201,6 +201,147 @@ class AliceCore(Module):
 		self.say(text=self.randomTalk('bundleUpdateFailed'))
 
 
+	def addDeviceIntent(self, intent: str, session: DialogSession) -> bool:
+		if self.DeviceManager.isBusy():
+			self.endDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk('busy'),
+				siteId=session.siteId
+			)
+			return True
+
+		if 'Hardware' not in session.slots:
+			self.continueDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk('whatHardware'),
+				intentFilter=[self._INTENT_ANSWER_HARDWARE_TYPE, self._INTENT_ANSWER_ESP_TYPE],
+				previousIntent=self._INTENT_ADD_DEVICE
+			)
+			return True
+
+		elif session.slotsAsObjects['Hardware'][0].value['value'] == 'esp' and 'EspType' not in session.slots:
+			self.continueDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk('whatESP'),
+				intentFilter=[self._INTENT_ANSWER_HARDWARE_TYPE, self._INTENT_ANSWER_ESP_TYPE],
+				previousIntent=self._INTENT_ADD_DEVICE
+			)
+			return True
+
+		elif 'Room' not in session.slots:
+			self.continueDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk('whichRoom'),
+				intentFilter=[self._INTENT_ANSWER_ROOM],
+				previousIntent=self._INTENT_ADD_DEVICE
+			)
+			return True
+
+		hardware = session.slotsAsObjects['Hardware'][0].value['value']
+		if hardware == 'esp':
+			if not self.ModuleManager.isModuleActive('Tasmota'):
+				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('requireTasmotaModule'))
+				return True
+
+			if self.DeviceManager.isBusy():
+				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('busy'))
+				return True
+
+			if not self.DeviceManager.startTasmotaFlashingProcess(commons.cleanRoomNameToSiteId(session.slots['Room']), session.slotsAsObjects['EspType'][0].value['value'], session):
+				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('espFailed'))
+
+		elif hardware == 'satellite':
+			if self.DeviceManager.startBroadcastingForNewDevice(commons.cleanRoomNameToSiteId(session.slots['Room']), session.siteId):
+				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('confirmDeviceAddingMode'))
+			else:
+				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('busy'))
+		else:
+			self.continueDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk('unknownHardware'),
+				intentFilter=[self._INTENT_ANSWER_HARDWARE_TYPE],
+				previousIntent=self._INTENT_ADD_DEVICE
+			)
+			return True
+
+
+	def deviceGreetingIntent(self, intent: str, session: DialogSession) -> bool:
+		if 'uid' not in session.payload or 'siteId' not in session.payload:
+			self.logWarning('A device tried to connect but is missing informations in the payload, refused')
+			self.publish(topic='projectalice/devices/connectionRefused', payload={'siteId': session.payload['siteId']})
+			return True
+
+		device = self.DeviceManager.deviceConnecting(uid=session.payload['uid'])
+		if device:
+			self.logInfo(f'Device with uid {device.uid} of type {device.deviceType} in room {device.room} connected')
+			self.publish(topic='projectalice/devices/connectionAccepted', payload={'siteId': session.payload['siteId'], 'uid': session.payload['uid']})
+		else:
+			self.publish(topic='projectalice/devices/connectionRefused', payload={'siteId': session.payload['siteId'], 'uid': session.payload['uid']})
+			return True
+
+
+	def answerYesOrNoIntent(self, intent: str, session: DialogSession) -> bool:
+		pass
+
+
+	def aliceUpdateIntent(self, intent: str, session: DialogSession) -> bool:
+		if not self.InternetManager.online:
+			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('noAssistantUpdateOffline'))
+			return True
+
+		self.publish('hermes/leds/systemUpdate')
+
+		if 'WhatToUpdate' not in session.slots:
+			update = 1
+		elif session.slots['WhatToUpdate'] == 'alice':
+			update = 2
+		elif session.slots['WhatToUpdate'] == 'assistant':
+			update = 3
+		elif session.slots['WhatToUpdate'] == 'modules':
+			update = 4
+		else:
+			update = 5
+
+		if update in {1, 5}:  # All or system
+			self.logInfo('Updating system')
+			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('confirmAssistantUpdate'))
+
+
+			def systemUpdate():
+				subprocess.run(['sudo', 'apt-get', 'update'])
+				subprocess.run(['sudo', 'apt-get', 'dist-upgrade', '-y'])
+				subprocess.run(['git', 'stash'])
+				subprocess.run(['git', 'pull'])
+				subprocess.run(['git', 'stash', 'clear'])
+				SuperManager.getInstance().threadManager.doLater(interval=2, func=subprocess.run, args=['sudo', 'systemctl', 'restart', 'ProjectAlice'])
+
+
+			self.ThreadManager.doLater(interval=2, func=systemUpdate)
+
+		if update in {1, 4}:  # All or modules
+			self.logInfo('Updating modules')
+			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('confirmAssistantUpdate'))
+			self.ModuleManager.checkForModuleUpdates()
+
+		if update in {1, 2}:  # All or Alice
+			self.logInfo('Updating Alice')
+			if update == 2:
+				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('confirmAssistantUpdate'))
+
+		if update in {1, 3}:  # All or Assistant
+			self.logInfo('Updating assistant')
+
+			if not self.LanguageManager.activeSnipsProjectId:
+				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('noProjectIdSet'))
+			elif not self.SnipsConsoleManager.loginCredentialsAreConfigured():
+				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('bundleUpdateNoCredentials'))
+			else:
+				if update == 3:
+					self.endDialog(sessionId=session.sessionId, text=self.randomTalk('confirmAssistantUpdate'))
+
+				self.ThreadManager.doLater(interval=2, func=self.SamkillaManager.sync)
+
+
 	def onMessage(self, intent: str, session: DialogSession) -> bool:
 		if intent == self._INTENT_GLOBAL_STOP:
 			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('confirmGlobalStop'), siteId=session.siteId)
@@ -211,86 +352,8 @@ class AliceCore(Module):
 		slotsObj = session.slotsAsObjects
 		sessionId = session.sessionId
 		customData = session.customData
-		payload = session.payload
 
-		if self._INTENT_ADD_DEVICE in {intent, session.previousIntent}:
-			if self.DeviceManager.isBusy():
-				self.endDialog(
-					sessionId=sessionId,
-					text=self.randomTalk('busy'),
-					siteId=siteId
-				)
-				return True
-
-			if 'Hardware' not in slots:
-				self.continueDialog(
-					sessionId=sessionId,
-					text=self.randomTalk('whatHardware'),
-					intentFilter=[self._INTENT_ANSWER_HARDWARE_TYPE, self._INTENT_ANSWER_ESP_TYPE],
-					previousIntent=self._INTENT_ADD_DEVICE
-				)
-				return True
-
-			elif slotsObj['Hardware'][0].value['value'] == 'esp' and 'EspType' not in slots:
-				self.continueDialog(
-					sessionId=sessionId,
-					text=self.randomTalk('whatESP'),
-					intentFilter=[self._INTENT_ANSWER_HARDWARE_TYPE, self._INTENT_ANSWER_ESP_TYPE],
-					previousIntent=self._INTENT_ADD_DEVICE
-				)
-				return True
-
-			elif 'Room' not in slots:
-				self.continueDialog(
-					sessionId=sessionId,
-					text=self.randomTalk('whichRoom'),
-					intentFilter=[self._INTENT_ANSWER_ROOM],
-					previousIntent=self._INTENT_ADD_DEVICE
-				)
-				return True
-
-			hardware = slotsObj['Hardware'][0].value['value']
-			if hardware == 'esp':
-				if not self.ModuleManager.isModuleActive('Tasmota'):
-					self.endDialog(sessionId=sessionId, text=self.randomTalk('requireTasmotaModule'))
-					return True
-
-				if self.DeviceManager.isBusy():
-					self.endDialog(sessionId=sessionId, text=self.randomTalk('busy'))
-					return True
-
-				if not self.DeviceManager.startTasmotaFlashingProcess(commons.cleanRoomNameToSiteId(slots['Room']), slotsObj['EspType'][0].value['value'], session):
-					self.endDialog(sessionId=sessionId, text=self.randomTalk('espFailed'))
-
-			elif hardware == 'satellite':
-				if self.DeviceManager.startBroadcastingForNewDevice(commons.cleanRoomNameToSiteId(slots['Room']), siteId):
-					self.endDialog(sessionId=sessionId, text=self.randomTalk('confirmDeviceAddingMode'))
-				else:
-					self.endDialog(sessionId=sessionId, text=self.randomTalk('busy'))
-			else:
-				self.continueDialog(
-					sessionId=sessionId,
-					text=self.randomTalk('unknownHardware'),
-					intentFilter=[self._INTENT_ANSWER_HARDWARE_TYPE],
-					previousIntent=self._INTENT_ADD_DEVICE
-				)
-				return True
-
-		elif intent == self._INTENT_MODULE_GREETING:
-			if 'uid' not in payload or 'siteId' not in payload:
-				self.logWarning('A device tried to connect but is missing informations in the payload, refused')
-				self.publish(topic='projectalice/devices/connectionRefused', payload={'siteId': payload['siteId']})
-				return True
-
-			device = self.DeviceManager.deviceConnecting(uid=payload['uid'])
-			if device:
-				self.logInfo(f'Device with uid {device.uid} of type {device.deviceType} in room {device.room} connected')
-				self.publish(topic='projectalice/devices/connectionAccepted', payload={'siteId': payload['siteId'], 'uid': payload['uid']})
-			else:
-				self.publish(topic='projectalice/devices/connectionRefused', payload={'siteId': payload['siteId'], 'uid': payload['uid']})
-				return True
-
-		elif intent == self._INTENT_ANSWER_YES_OR_NO:
+		if intent == self._INTENT_ANSWER_YES_OR_NO:
 			if session.previousIntent == self._INTENT_REBOOT:
 				if 'step' in customData:
 					if customData['step'] == 1:
@@ -527,60 +590,6 @@ class AliceCore(Module):
 			except ConfigurationUpdateFailed:
 				self.endDialog(text=self.randomTalk('langSwitchFailed'))
 
-		elif intent == self._INTENT_UPDATE_ALICE:
-			if not self.InternetManager.online:
-				self.endDialog(sessionId=sessionId, text=self.randomTalk('noAssistantUpdateOffline'))
-				return True
-
-			self.publish('hermes/leds/systemUpdate')
-
-			if 'WhatToUpdate' not in slots:
-				update = 1
-			elif slots['WhatToUpdate'] == 'alice':
-				update = 2
-			elif slots['WhatToUpdate'] == 'assistant':
-				update = 3
-			elif slots['WhatToUpdate'] == 'modules':
-				update = 4
-			else:
-				update = 5
-
-			if update in {1, 5}: # All or system
-				self.logInfo('Updating system')
-				self.endDialog(sessionId=sessionId, text=self.randomTalk('confirmAssistantUpdate'))
-
-				def systemUpdate():
-					subprocess.run(['sudo', 'apt-get', 'update'])
-					subprocess.run(['sudo', 'apt-get', 'dist-upgrade', '-y'])
-					subprocess.run(['git', 'stash'])
-					subprocess.run(['git', 'pull'])
-					subprocess.run(['git', 'stash', 'clear'])
-					SuperManager.getInstance().threadManager.doLater(interval=2, func=subprocess.run, args=['sudo', 'systemctl', 'restart', 'ProjectAlice'])
-
-				self.ThreadManager.doLater(interval=2, func=systemUpdate)
-
-			if update in {1, 4}: # All or modules
-				self.logInfo('Updating modules')
-				self.endDialog(sessionId=sessionId, text=self.randomTalk('confirmAssistantUpdate'))
-				self.ModuleManager.checkForModuleUpdates()
-
-			if update in {1, 2}: # All or Alice
-				self.logInfo('Updating Alice')
-				if update == 2:
-					self.endDialog(sessionId=sessionId, text=self.randomTalk('confirmAssistantUpdate'))
-
-			if update in {1, 3}: # All or Assistant
-				self.logInfo('Updating assistant')
-
-				if not self.LanguageManager.activeSnipsProjectId:
-					self.endDialog(sessionId=sessionId, text=self.randomTalk('noProjectIdSet'))
-				elif not self.SnipsConsoleManager.loginCredentialsAreConfigured():
-					self.endDialog(sessionId=sessionId, text=self.randomTalk('bundleUpdateNoCredentials'))
-				else:
-					if update == 3:
-						self.endDialog(sessionId=sessionId, text=self.randomTalk('confirmAssistantUpdate'))
-
-					self.ThreadManager.doLater(interval=2, func=self.SamkillaManager.sync)
 
 		elif intent == self._INTENT_REBOOT:
 			self.continueDialog(
