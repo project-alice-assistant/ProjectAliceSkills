@@ -8,7 +8,7 @@
         $('#DateDayTimeYear_date').html(d + '.' + m + '.' + y);
 
         setTimeout(function () {
-            startTime()
+            startTime();
         }, 500);
     }
 
