@@ -74,10 +74,8 @@ class AliceCore(Module):
 		}
 
 		self._INTENT_ANSWER_YES_OR_NO.dialogMapping = {
-			self._INTENT_REBOOT: {
-				0: self.confirmModuleReboot,
-				1: self.reboot
-			}
+			'confirmedReboot': self.confirmModuleReboot,
+			'confirmedModuleReboot': self.reboot
 		}
 
 		self._threads = dict()
@@ -89,7 +87,7 @@ class AliceCore(Module):
 			sessionId=session.sessionId,
 			text=self.randomTalk('confirmReboot'),
 			intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
-			previousIntent=self._INTENT_REBOOT
+			currentDialogState='confirmedReboot'
 		)
 		return True
 
@@ -100,7 +98,7 @@ class AliceCore(Module):
 				sessionId=session.sessionId,
 				text=self.randomTalk('askRebootModules'),
 				intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
-				previousIntent=self._INTENT_REBOOT
+				currentDialogState='confirmedModuleReboot'
 			)
 		else:
 			self.endDialog(session.sessionId, self.randomTalk('abortReboot'))
