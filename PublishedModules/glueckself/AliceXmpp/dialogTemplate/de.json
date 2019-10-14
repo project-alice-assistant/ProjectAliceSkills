@@ -3,37 +3,9 @@
     "icon": "time",
     "description": "Chat with alice via xmpp (jabber)",
     "slotTypes": [
-        {
-            "name": "DummySlot",
-            "matchingStrictness": null,
-            "automaticallyExtensible": false,
-            "useSynonyms": true,
-            "values": [
-                {
-                    "value": "foo",
-                    "synonyms": ["bar"]
-                }
-            ]
-        }
+
     ],
     "intents": [
-        {
-            "name": "Dummy",
-            "description": "REMOVE this dummy intent!",
-            "enabledByDefault": true,
-            "utterances": [
-                "dummy {foo:=>DummySlotName}",
-                "bar"
-            ],
-            "slots": [
-                {
-                    "name": "DummySlotName",
-                    "description": "dummy",
-                    "required": false,
-                    "type": "DummySlot",
-                    "missingQuestion": ""
-                }
-            ]
-        }
+
     ]
 }
