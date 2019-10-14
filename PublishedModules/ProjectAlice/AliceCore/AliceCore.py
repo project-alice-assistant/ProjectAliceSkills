@@ -41,30 +41,30 @@ class AliceCore(Module):
 
 
 	def __init__(self):
-		self._INTENTS = {
-			self._INTENT_GLOBAL_STOP: self.onMessage,
-			self._INTENT_MODULE_GREETING: self.deviceGreetingIntent,
-			self._INTENT_ANSWER_YES_OR_NO: self.answerYesOrNoIntent,
-			self._INTENT_ANSWER_ROOM: self.onMessage,
-			self._INTENT_SWITCH_LANGUAGE: self.onMessage,
-			self._INTENT_UPDATE_ALICE: self.aliceUpdateIntent,
-			self._INTENT_REBOOT: self.onMessage,
-			self._INTENT_STOP_LISTEN: self.onMessage,
-			self._INTENT_ADD_DEVICE: self.addDeviceIntent,
-			self._INTENT_ANSWER_HARDWARE_TYPE: self.onMessage,
-			self._INTENT_ANSWER_ESP_TYPE: self.onMessage,
-			self._INTENT_ANSWER_NAME: self.onMessage,
-			self._INTENT_SPELL_WORD: self.onMessage,
-			self._INTENT_DUMMY_ADD_USER: self.onMessage,
-			self._INTENT_DUMMY_ADD_WAKEWORD: self.onMessage,
-			self._INTENT_DUMMY_WAKEWORD_INSTRUCTION: self.onMessage,
-			self._INTENT_DUMMY_WAKEWORD_FAILED: self.onMessage,
-			self._INTENT_ANSWER_WAKEWORD_CUTTING: self.onMessage,
-			self._INTENT_DUMMY_WAKEWORD_OK: self.onMessage,
-			self._INTENT_WAKEWORD: self.onMessage,
-			self._INTENT_ADD_USER: self.onMessage,
-			self._INTENT_ANSWER_ACCESSLEVEL: self.onMessage
-		}
+		self._INTENTS = [
+			self._INTENT_GLOBAL_STOP,
+			(self._INTENT_MODULE_GREETING, self.deviceGreetingIntent),
+			(self._INTENT_ANSWER_YES_OR_NO, self.answerYesOrNoIntent),
+			self._INTENT_ANSWER_ROOM,
+			self._INTENT_SWITCH_LANGUAGE,
+			(self._INTENT_UPDATE_ALICE, self.aliceUpdateIntent),
+			(self._INTENT_REBOOT, self.confirmReboot),
+			self._INTENT_STOP_LISTEN,
+			(self._INTENT_ADD_DEVICE, self.addDeviceIntent),
+			self._INTENT_ANSWER_HARDWARE_TYPE,
+			self._INTENT_ANSWER_ESP_TYPE,
+			self._INTENT_ANSWER_NAME,
+			self._INTENT_SPELL_WORD,
+			self._INTENT_DUMMY_ADD_USER,
+			self._INTENT_DUMMY_ADD_WAKEWORD,
+			self._INTENT_DUMMY_WAKEWORD_INSTRUCTION,
+			self._INTENT_DUMMY_WAKEWORD_FAILED,
+			self._INTENT_ANSWER_WAKEWORD_CUTTING,
+			self._INTENT_DUMMY_WAKEWORD_OK,
+			self._INTENT_WAKEWORD,
+			self._INTENT_ADD_USER,
+			self._INTENT_ANSWER_ACCESSLEVEL
+		]
 
 		self._AUTH_ONLY_INTENTS = {
 			self._INTENT_ADD_USER: 'admin',
@@ -75,9 +75,8 @@ class AliceCore(Module):
 
 		self._INTENT_ANSWER_YES_OR_NO.dialogMapping = {
 			self._INTENT_REBOOT: {
-				0: self.confirmReboot,
-				1: self.confirmModuleReboot,
-				2: self.reboot
+				0: self.confirmModuleReboot,
+				1: self.reboot
 			}
 		}
 
@@ -85,16 +84,17 @@ class AliceCore(Module):
 		super().__init__(self._INTENTS, authOnlyIntents=self._AUTH_ONLY_INTENTS)
 
 
-	def confirmReboot(self, intent: Intent, session: DialogSession):
+	def confirmReboot(self, intent: Intent, session: DialogSession) -> bool:
 		self.continueDialog(
 			sessionId=session.sessionId,
 			text=self.randomTalk('confirmReboot'),
 			intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
 			previousIntent=self._INTENT_REBOOT
 		)
+		return True
 
 
-	def confirmModuleReboot(self, intent: Intent, session: DialogSession):
+	def confirmModuleReboot(self, intent: Intent, session: DialogSession) -> bool:
 		if commons.isYes(session):
 			self.continueDialog(
 				sessionId=session.sessionId,
@@ -105,8 +105,10 @@ class AliceCore(Module):
 		else:
 			self.endDialog(session.sessionId, self.randomTalk('abortReboot'))
 
+		return True
 
-	def reboot(self, intent: Intent, session: DialogSession):
+
+	def reboot(self, intent: Intent, session: DialogSession) -> bool:
 		value = 'greet'
 		if commons.isYes(session):
 			value = 'greetAndRebootModules'
@@ -114,6 +116,8 @@ class AliceCore(Module):
 		self.ConfigManager.updateAliceConfiguration('onReboot', value)
 		self.endDialog(session.sessionId, self.randomTalk('confirmRebooting'))
 		self.ThreadManager.doLater(interval=5, func=subprocess.run, args=[['sudo', 'shutdown', '-r', 'now']])
+
+		return True
 
 
 	def onStart(self):
