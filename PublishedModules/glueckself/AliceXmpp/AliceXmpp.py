@@ -61,7 +61,7 @@ class AliceXmpp(Module):
 		for jid, _sessionId in self._sessions.items():
 			if _sessionId == sessionId:
 				return jid
-		return None
+		return ""
 
 	def onSay(self, session: DialogSession):
 		breakpoint()
