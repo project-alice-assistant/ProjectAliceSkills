@@ -49,7 +49,7 @@ class AliceCore(Module):
 			self._INTENT_SWITCH_LANGUAGE,
 			(self._INTENT_UPDATE_ALICE, self.aliceUpdateIntent),
 			(self._INTENT_REBOOT, self.confirmReboot),
-			self._INTENT_STOP_LISTEN,
+			(self._INTENT_STOP_LISTEN, self.stopListenIntent),
 			(self._INTENT_ADD_DEVICE, self.addDeviceIntent),
 			self._INTENT_ANSWER_HARDWARE_TYPE,
 			self._INTENT_ANSWER_ESP_TYPE,
@@ -78,11 +78,96 @@ class AliceCore(Module):
 			'confirmedModuleReboot': self.reboot
 		}
 
+		self._INTENT_ANSWER_HARDWARE_TYPE.dialogMapping = {
+			'addDevice_missingHardware': self.addDeviceIntent,
+			'addDevice_missingEspType': self.addDeviceIntent,
+			'addDevice_missingRoom': self.addDeviceIntent
+		}
+
+
 		self._threads = dict()
 		super().__init__(self._INTENTS, authOnlyIntents=self._AUTH_ONLY_INTENTS)
 
 
-	def confirmReboot(self, intent: Intent, session: DialogSession) -> bool:
+	def stopListenIntent(self, intent: str, session: DialogSession) -> bool:
+		if 'Duration' in session.slots:
+			duration = commons.getDuration(session)
+			if duration > 0:
+				self.ThreadManager.doLater(interval=duration, func=self.unmuteSite, args=[session.siteId])
+
+		aliceModule = self.ModuleManager.getModuleInstance('AliceSatellite')
+		if aliceModule:
+			aliceModule.notifyDevice('projectalice/devices/stopListen', siteId=session.siteId)
+
+		self.endDialog(sessionId=session.sessionId)
+		return True
+
+
+	def addDeviceIntent(self, intent: str, session: DialogSession) -> bool:
+		if self.DeviceManager.isBusy():
+			self.endDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk('busy'),
+				siteId=session.siteId
+			)
+			return True
+
+		if 'Hardware' not in session.slots:
+			self.continueDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk('whatHardware'),
+				intentFilter=[self._INTENT_ANSWER_HARDWARE_TYPE, self._INTENT_ANSWER_ESP_TYPE],
+				currentDialogState='addDevice_missingHardware'
+			)
+			return True
+
+		elif session.slotsAsObjects['Hardware'][0].value['value'] == 'esp' and 'EspType' not in session.slots:
+			self.continueDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk('whatESP'),
+				intentFilter=[self._INTENT_ANSWER_HARDWARE_TYPE, self._INTENT_ANSWER_ESP_TYPE],
+				currentDialogState='addDevice_missingEspType'
+			)
+			return True
+
+		elif 'Room' not in session.slots:
+			self.continueDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk('whichRoom'),
+				intentFilter=[self._INTENT_ANSWER_ROOM],
+				currentDialogState='addDevice_missingRoom'
+			)
+			return True
+
+		hardware = session.slotsAsObjects['Hardware'][0].value['value']
+		if hardware == 'esp':
+			if not self.ModuleManager.isModuleActive('Tasmota'):
+				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('requireTasmotaModule'))
+				return True
+
+			if self.DeviceManager.isBusy():
+				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('busy'))
+				return True
+
+			if not self.DeviceManager.startTasmotaFlashingProcess(commons.cleanRoomNameToSiteId(session.slots['Room']), session.slotsAsObjects['EspType'][0].value['value'], session):
+				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('espFailed'))
+
+		elif hardware == 'satellite':
+			if self.DeviceManager.startBroadcastingForNewDevice(commons.cleanRoomNameToSiteId(session.slots['Room']), session.siteId):
+				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('confirmDeviceAddingMode'))
+			else:
+				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('busy'))
+		else:
+			self.continueDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk('unknownHardware'),
+				intentFilter=[self._INTENT_ANSWER_HARDWARE_TYPE],
+				currentDialogState='addDevice_missingHardware'
+			)
+			return True
+
+
+	def confirmReboot(self, intent: str, session: DialogSession) -> bool:
 		self.continueDialog(
 			sessionId=session.sessionId,
 			text=self.randomTalk('confirmReboot'),
@@ -92,7 +177,7 @@ class AliceCore(Module):
 		return True
 
 
-	def confirmModuleReboot(self, intent: Intent, session: DialogSession) -> bool:
+	def confirmModuleReboot(self, intent: str, session: DialogSession) -> bool:
 		if commons.isYes(session):
 			self.continueDialog(
 				sessionId=session.sessionId,
@@ -106,7 +191,7 @@ class AliceCore(Module):
 		return True
 
 
-	def reboot(self, intent: Intent, session: DialogSession) -> bool:
+	def reboot(self, intent: str, session: DialogSession) -> bool:
 		value = 'greet'
 		if commons.isYes(session):
 			value = 'greetAndRebootModules'
@@ -240,70 +325,6 @@ class AliceCore(Module):
 
 	def onSnipsAssistantDownloadFailed(self):
 		self.say(text=self.randomTalk('bundleUpdateFailed'))
-
-
-	def addDeviceIntent(self, intent: str, session: DialogSession) -> bool:
-		if self.DeviceManager.isBusy():
-			self.endDialog(
-				sessionId=session.sessionId,
-				text=self.randomTalk('busy'),
-				siteId=session.siteId
-			)
-			return True
-
-		if 'Hardware' not in session.slots:
-			self.continueDialog(
-				sessionId=session.sessionId,
-				text=self.randomTalk('whatHardware'),
-				intentFilter=[self._INTENT_ANSWER_HARDWARE_TYPE, self._INTENT_ANSWER_ESP_TYPE],
-				previousIntent=self._INTENT_ADD_DEVICE
-			)
-			return True
-
-		elif session.slotsAsObjects['Hardware'][0].value['value'] == 'esp' and 'EspType' not in session.slots:
-			self.continueDialog(
-				sessionId=session.sessionId,
-				text=self.randomTalk('whatESP'),
-				intentFilter=[self._INTENT_ANSWER_HARDWARE_TYPE, self._INTENT_ANSWER_ESP_TYPE],
-				previousIntent=self._INTENT_ADD_DEVICE
-			)
-			return True
-
-		elif 'Room' not in session.slots:
-			self.continueDialog(
-				sessionId=session.sessionId,
-				text=self.randomTalk('whichRoom'),
-				intentFilter=[self._INTENT_ANSWER_ROOM],
-				previousIntent=self._INTENT_ADD_DEVICE
-			)
-			return True
-
-		hardware = session.slotsAsObjects['Hardware'][0].value['value']
-		if hardware == 'esp':
-			if not self.ModuleManager.isModuleActive('Tasmota'):
-				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('requireTasmotaModule'))
-				return True
-
-			if self.DeviceManager.isBusy():
-				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('busy'))
-				return True
-
-			if not self.DeviceManager.startTasmotaFlashingProcess(commons.cleanRoomNameToSiteId(session.slots['Room']), session.slotsAsObjects['EspType'][0].value['value'], session):
-				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('espFailed'))
-
-		elif hardware == 'satellite':
-			if self.DeviceManager.startBroadcastingForNewDevice(commons.cleanRoomNameToSiteId(session.slots['Room']), session.siteId):
-				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('confirmDeviceAddingMode'))
-			else:
-				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('busy'))
-		else:
-			self.continueDialog(
-				sessionId=session.sessionId,
-				text=self.randomTalk('unknownHardware'),
-				intentFilter=[self._INTENT_ANSWER_HARDWARE_TYPE],
-				previousIntent=self._INTENT_ADD_DEVICE
-			)
-			return True
 
 
 	def deviceGreetingIntent(self, intent: str, session: DialogSession) -> bool:
@@ -598,18 +619,6 @@ class AliceCore(Module):
 				self.endDialog(text=self.randomTalk(text='langNotSupported', replace=[slots['ToLang']]))
 			except ConfigurationUpdateFailed:
 				self.endDialog(text=self.randomTalk('langSwitchFailed'))
-
-		elif intent == self._INTENT_STOP_LISTEN:
-			if 'Duration' in slots:
-				duration = commons.getDuration(session)
-				if duration > 0:
-					self.ThreadManager.doLater(interval=duration, func=self.unmuteSite, args=[siteId])
-
-			aliceModule = self.ModuleManager.getModuleInstance('AliceSatellite')
-			if aliceModule:
-				aliceModule.notifyDevice('projectalice/devices/stopListen', siteId=siteId)
-
-			self.endDialog(sessionId=sessionId)
 
 		elif session.previousIntent == self._INTENT_DUMMY_ADD_USER and intent in {self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD}:
 			if not self.UserManager.users:
