@@ -1,0 +1,8 @@
+{
+	"aliceXmppJid": "",
+	"aliceXmppPassword": "",
+	"aliceXmppAuthorizedJids": [ "" ],
+	"aliceXmppServer": "",
+	"aliceXmppPort": 5222,
+	"aliceXmppSSL": "tls"
+}
