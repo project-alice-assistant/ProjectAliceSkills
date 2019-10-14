@@ -76,12 +76,44 @@ class AliceCore(Module):
 		self._INTENT_ANSWER_YES_OR_NO.dialogMapping = {
 			self._INTENT_REBOOT: {
 				0: self.confirmReboot,
-				1: self.reboot
+				1: self.confirmModuleReboot,
+				2: self.reboot
 			}
 		}
 
 		self._threads = dict()
 		super().__init__(self._INTENTS, authOnlyIntents=self._AUTH_ONLY_INTENTS)
+
+
+	def confirmReboot(self, intent: Intent, session: DialogSession):
+		self.continueDialog(
+			sessionId=session.sessionId,
+			text=self.randomTalk('confirmReboot'),
+			intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
+			previousIntent=self._INTENT_REBOOT
+		)
+
+
+	def confirmModuleReboot(self, intent: Intent, session: DialogSession):
+		if commons.isYes(session):
+			self.continueDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk('askRebootModules'),
+				intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
+				previousIntent=self._INTENT_REBOOT
+			)
+		else:
+			self.endDialog(session.sessionId, self.randomTalk('abortReboot'))
+
+
+	def reboot(self, intent: Intent, session: DialogSession):
+		value = 'greet'
+		if commons.isYes(session):
+			value = 'greetAndRebootModules'
+
+		self.ConfigManager.updateAliceConfiguration('onReboot', value)
+		self.endDialog(session.sessionId, self.randomTalk('confirmRebooting'))
+		self.ThreadManager.doLater(interval=5, func=subprocess.run, args=[['sudo', 'shutdown', '-r', 'now']])
 
 
 	def onStart(self):
@@ -361,35 +393,7 @@ class AliceCore(Module):
 		customData = session.customData
 
 		if intent == self._INTENT_ANSWER_YES_OR_NO:
-			if session.previousIntent == self._INTENT_REBOOT:
-				if 'step' in customData:
-					if customData['step'] == 1:
-						if commons.isYes(session):
-							self.continueDialog(
-								sessionId=sessionId,
-								text=self.randomTalk('askRebootModules'),
-								intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
-								previousIntent=self._INTENT_REBOOT,
-								customData={
-									'module': self.name,
-									'step'  : 2
-								}
-							)
-						else:
-							self.endDialog(sessionId, self.randomTalk('abortReboot'))
-					else:
-						value = 'greet'
-						if commons.isYes(session):
-							value = 'greetAndRebootModules'
-
-						self.ConfigManager.updateAliceConfiguration('onReboot', value)
-						self.endDialog(sessionId, self.randomTalk('confirmRebooting'))
-						self.ThreadManager.doLater(interval=5, func=self.restart)
-				else:
-					self.endDialog(sessionId)
-					self.logWarning('Asked to reboot, but missing params')
-
-			elif session.previousIntent == self._INTENT_DUMMY_ADD_USER:
+			if session.previousIntent == self._INTENT_DUMMY_ADD_USER:
 				if commons.isYes(session):
 					self.UserManager.addNewUser(customData['name'], AccessLevel.ADMIN.name.lower())
 					self.continueDialog(
@@ -597,19 +601,6 @@ class AliceCore(Module):
 			except ConfigurationUpdateFailed:
 				self.endDialog(text=self.randomTalk('langSwitchFailed'))
 
-
-		elif intent == self._INTENT_REBOOT:
-			self.continueDialog(
-				sessionId=sessionId,
-				text=self.randomTalk('confirmReboot'),
-				intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
-				previousIntent=self._INTENT_REBOOT,
-				customData={
-					'module': self.name,
-					'step'  : 1
-				}
-			)
-
 		elif intent == self._INTENT_STOP_LISTEN:
 			if 'Duration' in slots:
 				duration = commons.getDuration(session)
@@ -729,11 +720,6 @@ class AliceCore(Module):
 	def unmuteSite(self, siteId):
 		self.ModuleManager.getModuleInstance('AliceSatellite').notifyDevice('projectalice/devices/startListen', siteId=siteId)
 		self.ThreadManager.doLater(interval=1, func=self.say, args=[self.randomTalk('listeningAgain'), siteId])
-
-
-	@staticmethod
-	def reboot():
-		subprocess.run(['sudo', 'shutdown', '-r', 'now'])
 
 
 	@staticmethod
