@@ -6,6 +6,7 @@
 	"desc": "Chat with alice via xmpp (jabber)",
 	"aliceMinVersion": 0.10,
 	"pipRequirements": [
+		"pyasn1==0.3.7",
 		"sleekxmpp",
 		"dnspython"
 	],
