@@ -12,6 +12,9 @@
 			"en",
 			"de",
 			"fr"
+		],
+		"notModule": [
+		    "Psychokiller1888/Minigames"
 		]
 	}
 }

@@ -15,7 +15,7 @@ wget http://modules.projectalice.ch/FindMyPhone -O ~/ProjectAlice/system/moduleI
 ### Description
 Using ifttt one can ask alice to find his phone. sets the ring tone at max volume and initiates a call on it.
 
-- Version: 1.02
+- Version: 1.03
 - Author: Psychokiller1888
 - Maintainers: maxbachmann
 - Alice minimum version: 0.12

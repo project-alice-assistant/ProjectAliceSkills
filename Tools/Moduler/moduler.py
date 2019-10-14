@@ -297,7 +297,7 @@ def createDestinationFolder(modulePath, answers):
 	)
 
 def createInstallFile(modulePath, answers):
-	reqs = []
+	reqs = list()
 	while True:
 		questions = [
 			{
@@ -315,12 +315,11 @@ def createInstallFile(modulePath, answers):
 			}
 		]
 		subAnswers = prompt(questions, style=STYLE)
-		if subAnswers['requirements'] and subAnswers['req'] != 'stop':
-			reqs.append(subAnswers['req'])
-		else:
+		if not subAnswers['requirements'] or subAnswers['req'] == 'stop':
 			break
+		reqs.append(subAnswers['req'])
 
-	sysreqs = []
+	sysreqs = list()
 	while True:
 		questions = [
 			{
@@ -338,30 +337,22 @@ def createInstallFile(modulePath, answers):
 			}
 		]
 		subAnswers = prompt(questions, style=STYLE)
-		if subAnswers['sysrequirements'] and subAnswers['sysreq'] != 'stop':
-			sysreqs.append(subAnswers['sysreq'])
-		else:
+		if not subAnswers['sysrequirements'] or subAnswers['sysreq'] == 'stop':
 			break
+		sysreqs.append(subAnswers['sysreq'])
 
 	print('Creating install file')
-	langs = ''
-	for lang in answers['langs']:
-		langs += f'\n\t\t\t"{lang}",'
-	if answers['langs']:
-		langs = langs[:-1] + '\n\t\t'
+	langs = ','.join([f'\n\t\t\t"{lang}"' for lang in answers['langs']])
+	if langs:
+		langs += '\n\t\t'
 
-	pipRequirements = ''
-	for req in reqs:
-		pipRequirements += f'\n\t\t"{req}",'
-	if reqs:
-		pipRequirements = pipRequirements[:-1] + '\n\t'
+	pipRequirements = ','.join([f'\n\t\t"{req}"' for req in reqs])
+	if pipRequirements:
+		pipRequirements += '\n\t'
 
-	systemRequirements = ''
-	for req in sysreqs:
-		systemRequirements += f'\n\t\t"{req}",'
-	if sysreqs:
-		systemRequirements = systemRequirements[:-1] + '\n\t'
-
+	systemRequirements = ','.join([f'\n\t\t"{req}"' for req in sysreqs])
+	if systemRequirements:
+		systemRequirements += '\n\t'
 
 	Path(modulePath, answers['moduleName']).with_suffix('.install').write_text(
 		INSTALL_JSON.format(
@@ -426,32 +417,33 @@ def createWidgets(modulePath, answers):
 			}
 		]
 		subAnswers = prompt(questions, style=STYLE)
-		if subAnswers['widgets'] and subAnswers['widget'] != 'stop':
-			moduleWidgets.append(subAnswers['widget'])
-		else:
+		if not subAnswers['widgets'] or subAnswers['widget'] == 'stop':
 			break
+		moduleWidgets.append(subAnswers['widget'])
 
-	if moduleWidgets:
-		print('Creating widgets base directories')
-		(modulePath / 'widgets' / 'css').mkdir(parents=True, exist_ok=True)
-		(modulePath / 'widgets' / 'fonts').mkdir(parents=True, exist_ok=True)
-		(modulePath / 'widgets' / 'img').mkdir(parents=True, exist_ok=True)
-		(modulePath / 'widgets' / 'js').mkdir(parents=True, exist_ok=True)
-		(modulePath / 'widgets' / 'lang').mkdir(parents=True, exist_ok=True)
-		(modulePath / 'widgets' / 'templates').mkdir(parents=True, exist_ok=True)
+	if not moduleWidgets:
+		return
+	
+	print('Creating widgets base directories')
+	(modulePath / 'widgets' / 'css').mkdir(parents=True, exist_ok=True)
+	(modulePath / 'widgets' / 'fonts').mkdir(parents=True, exist_ok=True)
+	(modulePath / 'widgets' / 'img').mkdir(parents=True, exist_ok=True)
+	(modulePath / 'widgets' / 'js').mkdir(parents=True, exist_ok=True)
+	(modulePath / 'widgets' / 'lang').mkdir(parents=True, exist_ok=True)
+	(modulePath / 'widgets' / 'templates').mkdir(parents=True, exist_ok=True)
 
-		(modulePath / 'widgets' / '__init__.py').touch(exist_ok=True)
-		(modulePath / 'widgets' / 'css' / 'common.css').touch(exist_ok=True)
-		(modulePath / 'widgets' / 'img' / '.gitkeep').touch(exist_ok=True)
-		(modulePath / 'widgets' / 'fonts' / '.gitkeep').touch(exist_ok=True)
+	(modulePath / 'widgets' / '__init__.py').touch(exist_ok=True)
+	(modulePath / 'widgets' / 'css' / 'common.css').touch(exist_ok=True)
+	(modulePath / 'widgets' / 'img' / '.gitkeep').touch(exist_ok=True)
+	(modulePath / 'widgets' / 'fonts' / '.gitkeep').touch(exist_ok=True)
 
-		for widget in moduleWidgets:
-			widget = str(widget).title().replace(' ', '')
-			(modulePath / 'widgets' / 'css' / f'{widget}.css').write_text(WIDGET_CSS.format(widgetName=widget))
-			(modulePath / 'widgets' / 'js' / f'{widget}.js').write_text(WIDGET_JS)
-			(modulePath / 'widgets' / 'lang' / f'{widget}.lang.json').write_text('{}')
-			(modulePath / 'widgets' / 'templates' / f'{widget}.html').write_text(WIDGET_TEMPLATE.format(widget=widget))
-			(modulePath / 'widgets' / f'{widget}.py').write_text(WIDGET_CLASS.format(widget=widget))
+	for widget in moduleWidgets:
+		widget = str(widget).title().replace(' ', '')
+		(modulePath / 'widgets' / 'css' / f'{widget}.css').write_text(WIDGET_CSS.format(widgetName=widget))
+		(modulePath / 'widgets' / 'js' / f'{widget}.js').write_text(WIDGET_JS)
+		(modulePath / 'widgets' / 'lang' / f'{widget}.lang.json').write_text('{}')
+		(modulePath / 'widgets' / 'templates' / f'{widget}.html').write_text(WIDGET_TEMPLATE.format(widget=widget))
+		(modulePath / 'widgets' / f'{widget}.py').write_text(WIDGET_CLASS.format(widget=widget))
 
 
 def cli():
