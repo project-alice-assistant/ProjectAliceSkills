@@ -44,7 +44,7 @@ class AliceCore(Module):
 		self._INTENTS = [
 			self._INTENT_GLOBAL_STOP,
 			(self._INTENT_MODULE_GREETING, self.deviceGreetingIntent),
-			(self._INTENT_ANSWER_YES_OR_NO, self.answerYesOrNoIntent),
+			self._INTENT_ANSWER_YES_OR_NO,
 			self._INTENT_ANSWER_ROOM,
 			self._INTENT_SWITCH_LANGUAGE,
 			(self._INTENT_UPDATE_ALICE, self.aliceUpdateIntent),
@@ -321,10 +321,6 @@ class AliceCore(Module):
 		else:
 			self.publish(topic='projectalice/devices/connectionRefused', payload={'siteId': session.payload['siteId'], 'uid': session.payload['uid']})
 			return True
-
-
-	def answerYesOrNoIntent(self, intent: str, session: DialogSession) -> bool:
-		pass
 
 
 	def aliceUpdateIntent(self, intent: str, session: DialogSession) -> bool:
