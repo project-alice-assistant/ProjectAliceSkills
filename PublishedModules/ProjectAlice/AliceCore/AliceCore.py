@@ -73,6 +73,13 @@ class AliceCore(Module):
 			self._INTENT_REBOOT: 'default'
 		}
 
+		self._INTENT_ANSWER_YES_OR_NO.dialogMapping = {
+			self._INTENT_REBOOT: {
+				0: self.confirmReboot,
+				1: self.reboot
+			}
+		}
+
 		self._threads = dict()
 		super().__init__(self._INTENTS, authOnlyIntents=self._AUTH_ONLY_INTENTS)
 
