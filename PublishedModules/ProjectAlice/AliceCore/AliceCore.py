@@ -10,7 +10,6 @@ from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.commons import commons, constants
 from core.dialog.model.DialogSession import DialogSession
-from core.user.model.AccessLevels import AccessLevel
 from core.voice.WakewordManager import WakewordManagerState
 
 
@@ -61,7 +60,7 @@ class AliceCore(Module):
 			self._INTENT_DUMMY_WAKEWORD_FAILED,
 			self._INTENT_ANSWER_WAKEWORD_CUTTING,
 			self._INTENT_DUMMY_WAKEWORD_OK,
-			self._INTENT_WAKEWORD,
+			(self._INTENT_WAKEWORD, self.confirmWakeword),
 			self._INTENT_ADD_USER,
 			self._INTENT_ANSWER_ACCESSLEVEL
 		]
@@ -74,17 +73,19 @@ class AliceCore(Module):
 		}
 
 		self._INTENT_ANSWER_YES_OR_NO.dialogMapping = {
-			'confirmedReboot': self.confirmModuleReboot,
-			'confirmedModuleReboot': self.reboot,
-			'firstUser_confirmUsername': self.checkUsername
+			'confirmingReboot': self.confirmModuleReboot,
+			'confirmingModuleReboot': self.reboot,
+			'confirmingUsername': self.checkUsername,
+			'confirmingWakewordCreation': self.createWakeword,
+			'confirmingRecaptureAfterFailure': self.tryFixAndRecapture
 		}
 
 		self._INTENT_ANSWER_NAME.dialogMapping = {
-			'firstUser_addFirstUser': self.confirmUsername
+			'addingFirstUser': self.confirmUsername
 		}
 
 		self._INTENT_SPELL_WORD.dialogMapping = {
-			'firstUser_addFirstUser': self.confirmUsername
+			'addingFirstUser': self.confirmUsername
 		}
 
 
@@ -92,25 +93,129 @@ class AliceCore(Module):
 		super().__init__(self._INTENTS, authOnlyIntents=self._AUTH_ONLY_INTENTS)
 
 
-	def checkUsername(self, intent: str, session: DialogSession) -> bool:
-		if session.slots['Name'] in self.UserManager.getAllUserNames(skipGuests=False):
+	def tryFixAndRecapture(self, intent: str, session: DialogSession) -> bool:
+		if commons.isYes(session):
+			self.WakewordManager.tryCaptureFix()
 			self.continueDialog(
 				sessionId=session.sessionId,
-				text=self.randomTalk(text='userAlreadyExist', replace=[session.slots['Name']]),
-				intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
-				currentDialogState='firstUser_addFirstUser'
+				text=self.randomTalk('addWakewordAccepted'),
+				intentFilter=[self._INTENT_WAKEWORD]
 			)
-			return True
+		else:
+			if self.delayed:
+				self.delayed = False
+				self.ThreadManager.getEvent('AddingWakeword').clear()
+				self.ThreadManager.doLater(interval=2, func=self.onStart)
 
-		if 'UserAccessLevel' not in session.slots and 'UserAccessLevel' not in session.customData:
+			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('cancellingWakewordCapture'))
+
+		return True
+
+
+	def confirmWakeword(self, intent: str, session: DialogSession) -> bool:
+		i = 0  # Failsafe...
+		while self.WakewordManager.state != WakewordManagerState.CONFIRMING:
+			i += 1
+			if i > 15:
+				self.continueDialog(
+					sessionId=session.sessionId,
+					text=self.randomTalk('wakewordCaptureTooNoisy'),
+					intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
+					currentDialogState='confirmingRecaptureAfterFailure'
+				)
+				return True
+			time.sleep(0.5)
+
+		filepath = Path(tempfile.gettempdir(), str(self.WakewordManager.getLastSampleNumber())).with_suffix('.wav')
+
+		if not filepath.exists():
 			self.continueDialog(
 				sessionId=session.sessionId,
-				text=self.randomTalk('addUserWhatAccessLevel'),
-				intentFilter=[self._INTENT_ANSWER_ACCESSLEVEL],
-				currentDialogState='firstUser_confirmUsername',
-				slot='UserAccessLevel'
+				text=self.randomTalk('wakewordCaptureFailed'),
+				intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
+				currentDialogState='confirmingRecaptureAfterFailure'
 			)
-			return True
+		else:
+			self.playSound(
+				soundFilename=str(self.WakewordManager.getLastSampleNumber()),
+				location=Path(tempfile.gettempdir()),
+				sessionId='checking-wakeword',
+				siteId=session.siteId
+			)
+
+			text = 'howWasTheCapture' if self.WakewordManager.getLastSampleNumber() == 1 else 'howWasThisCapture'
+
+			self.continueDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk(text),
+				intentFilter=[self._INTENT_ANSWER_WAKEWORD_CUTTING],
+				slot='WakewordCaptureResult',
+				currentDialogState='confirmingCaptureResult'
+			)
+
+
+	def createWakeword(self, intent: str, session: DialogSession) -> bool:
+		if commons.isYes(session):
+			self.WakewordManager.newWakeword(username=session.customData['username'])
+			self.ThreadManager.newEvent('AddingWakeword').set()
+
+			self.continueDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk('addWakewordAccepted'),
+				intentFilter=[self._INTENT_WAKEWORD]
+			)
+		else:
+			if self.delayed:
+				self.delayed = False
+				self.ThreadManager.doLater(interval=2, func=self.onStart)
+
+			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('addWakewordDenied'))
+
+		return True
+
+
+	def checkUsername(self, intent: str, session: DialogSession) -> bool:
+		if commons.isYes(session):
+			if session.slots['Name'] in self.UserManager.getAllUserNames(skipGuests=False):
+				self.continueDialog(
+					sessionId=session.sessionId,
+					text=self.randomTalk(text='userAlreadyExist', replace=[session.slots['Name']]),
+					intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
+					currentDialogState='addingFirstUser'
+				)
+				return True
+
+			if 'UserAccessLevel' not in session.slots and 'UserAccessLevel' not in session.customData:
+				self.continueDialog(
+					sessionId=session.sessionId,
+					text=self.randomTalk('addUserWhatAccessLevel'),
+					intentFilter=[self._INTENT_ANSWER_ACCESSLEVEL],
+					currentDialogState='confirmingUsername',
+					slot='UserAccessLevel'
+				)
+				return True
+
+			elif 'UserAccessLevel' not in session.slots:
+				accessLevel = session.slots['UserAccessLevel']
+
+			else:
+				accessLevel = session.customData['UserAccessLevel']
+
+			self.UserManager.addNewUser(session.customData['username'], accessLevel)
+			self.continueDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk('addUserWakeword', replace=[session.customData['name']]),
+				intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
+				currentDialogState='confirmingWakewordCreation'
+			)
+		else:
+			self.continueDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk('soWhatsTheName'),
+				intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
+				currentDialogState='addingFirstUser'
+			)
+		return True
 
 
 	def confirmUsername(self, intent: str, session: DialogSession) -> bool:
@@ -124,7 +229,7 @@ class AliceCore(Module):
 				sessionId=session.sessionId,
 				text=self.TalkManager.randomTalk('notUnderstood', module='system'),
 				intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
-				currentDialogState='firstUser_addFirstUser'
+				currentDialogState='addingFirstUser'
 			)
 			return True
 
@@ -132,7 +237,7 @@ class AliceCore(Module):
 			sessionId=session.sessionId,
 			text=self.randomTalk(text='addUserConfirmUsername', replace=[username]),
 			intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
-			currentDialogState='firstUser_confirmUsername',
+			currentDialogState='confirmingUsername',
 			customData={
 				'username': username
 			}
@@ -168,7 +273,7 @@ class AliceCore(Module):
 				sessionId=session.sessionId,
 				text=self.randomTalk('whatHardware'),
 				intentFilter=[self._INTENT_ANSWER_HARDWARE_TYPE, self._INTENT_ANSWER_ESP_TYPE],
-				currentDialogState='addDevice_missingHardware'
+				currentDialogState='specifyingHardware'
 			)
 			return True
 
@@ -177,7 +282,7 @@ class AliceCore(Module):
 				sessionId=session.sessionId,
 				text=self.randomTalk('whatESP'),
 				intentFilter=[self._INTENT_ANSWER_HARDWARE_TYPE, self._INTENT_ANSWER_ESP_TYPE],
-				currentDialogState='addDevice_missingEspType'
+				currentDialogState='specifyingEspType'
 			)
 			return True
 
@@ -186,7 +291,7 @@ class AliceCore(Module):
 				sessionId=session.sessionId,
 				text=self.randomTalk('whichRoom'),
 				intentFilter=[self._INTENT_ANSWER_ROOM],
-				currentDialogState='addDevice_missingRoom'
+				currentDialogState='specifyingRoom'
 			)
 			return True
 
@@ -213,7 +318,7 @@ class AliceCore(Module):
 				sessionId=session.sessionId,
 				text=self.randomTalk('unknownHardware'),
 				intentFilter=[self._INTENT_ANSWER_HARDWARE_TYPE],
-				currentDialogState='addDevice_missingHardware'
+				currentDialogState='specifyingHardware'
 			)
 			return True
 
@@ -223,7 +328,7 @@ class AliceCore(Module):
 			sessionId=session.sessionId,
 			text=self.randomTalk('confirmReboot'),
 			intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
-			currentDialogState='confirmedReboot'
+			currentDialogState='confirmingReboot'
 		)
 		return True
 
@@ -234,7 +339,7 @@ class AliceCore(Module):
 				sessionId=session.sessionId,
 				text=self.randomTalk('askRebootModules'),
 				intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
-				currentDialogState='confirmedModuleReboot'
+				currentDialogState='confirmingModuleReboot'
 			)
 		else:
 			self.endDialog(session.sessionId, self.randomTalk('abortReboot'))
@@ -273,7 +378,7 @@ class AliceCore(Module):
 			text=self.randomTalk('addAdminUser'),
 			intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
 			canBeEnqueued=False,
-			currentDialogState='firstUser_addFirstUser',
+			currentDialogState='addingFirstUser',
 			customData={
 				'UserAccessLevel': 'admin'
 			}
@@ -468,37 +573,11 @@ class AliceCore(Module):
 		if intent == self._INTENT_ANSWER_YES_OR_NO:
 			if session.previousIntent == self._INTENT_DUMMY_ADD_USER:
 				if commons.isYes(session):
-					self.UserManager.addNewUser(customData['name'], AccessLevel.ADMIN.name.lower())
-					self.continueDialog(
-						sessionId=sessionId,
-						text=self.randomTalk('addUserWakeword', replace=[customData['name']]),
-						intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
-						previousIntent=self._INTENT_DUMMY_ADD_WAKEWORD
-					)
-				else:
-					self.continueDialog(
-						sessionId=sessionId,
-						text=self.randomTalk('soWhatsTheName'),
-						intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
-						previousIntent=self._INTENT_DUMMY_ADD_USER
-					)
+					pass
+
 
 			elif session.previousIntent == self._INTENT_DUMMY_ADD_WAKEWORD:
-				if commons.isYes(session):
-					self.WakewordManager.newWakeword(username=customData['name'])
-					self.ThreadManager.newEvent('AddingWakeword').set()
-					self.continueDialog(
-						sessionId=sessionId,
-						text=self.randomTalk('addWakewordAccepted'),
-						intentFilter=[self._INTENT_WAKEWORD],
-						previousIntent=self._INTENT_DUMMY_WAKEWORD_INSTRUCTION
-					)
-				else:
-					if self.delayed:
-						self.delayed = False
-						self.ThreadManager.doLater(interval=2, func=self.onStart)
-
-					self.endDialog(sessionId=sessionId, text=self.randomTalk('addWakewordDenied'))
+				pass
 
 			elif session.previousIntent == self._INTENT_ADD_USER:
 				if commons.isYes(session):
@@ -535,65 +614,13 @@ class AliceCore(Module):
 					)
 
 			elif session.previousIntent == self._INTENT_DUMMY_WAKEWORD_FAILED:
-				if commons.isYes(session):
-					self.WakewordManager.tryCaptureFix()
-					self.continueDialog(
-						sessionId=sessionId,
-						text=self.randomTalk('addWakewordAccepted'),
-						intentFilter=[self._INTENT_WAKEWORD],
-						previousIntent=self._INTENT_DUMMY_WAKEWORD_INSTRUCTION
-					)
-				else:
-					if self.delayed:
-						self.delayed = False
-						self.ThreadManager.getEvent('AddingWakeword').clear()
-						self.ThreadManager.doLater(interval=2, func=self.onStart)
-
-					self.endDialog(sessionId=sessionId, text=self.randomTalk('cancellingWakewordCapture'))
+				pass
 
 			else:
 				return False
 
 		elif intent == self._INTENT_WAKEWORD and session.previousIntent == self._INTENT_DUMMY_WAKEWORD_INSTRUCTION:
-			i = 0 # Failsafe...
-			while self.WakewordManager.state != WakewordManagerState.CONFIRMING:
-				i += 1
-				if i > 15:
-					self.continueDialog(
-						sessionId=sessionId,
-						text=self.randomTalk('wakewordCaptureTooNoisy'),
-						intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
-						previousIntent=self._INTENT_DUMMY_WAKEWORD_FAILED
-					)
-					return True
-				time.sleep(0.5)
-
-			filepath = Path(tempfile.gettempdir(), str(self.WakewordManager.getLastSampleNumber())).with_suffix('.wav')
-
-			if not filepath.exists():
-				self.continueDialog(
-					sessionId=sessionId,
-					text=self.randomTalk('wakewordCaptureFailed'),
-					intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
-					previousIntent=self._INTENT_DUMMY_WAKEWORD_FAILED
-				)
-			else:
-				self.playSound(
-					soundFilename=str(self.WakewordManager.getLastSampleNumber()),
-					location=Path(tempfile.gettempdir()),
-					sessionId='checking-wakeword',
-					siteId=session.siteId
-				)
-
-				text = 'howWasTheCapture' if self.WakewordManager.getLastSampleNumber() == 1 else 'howWasThisCapture'
-
-				self.continueDialog(
-					sessionId=sessionId,
-					text=self.randomTalk(text),
-					intentFilter=[self._INTENT_ANSWER_WAKEWORD_CUTTING],
-					slot='WakewordCaptureResult',
-					previousIntent=self._INTENT_WAKEWORD
-				)
+			pass
 
 		elif intent == self._INTENT_ANSWER_WAKEWORD_CUTTING:
 			if session.slotValue('WakewordCaptureResult') == 'more':
