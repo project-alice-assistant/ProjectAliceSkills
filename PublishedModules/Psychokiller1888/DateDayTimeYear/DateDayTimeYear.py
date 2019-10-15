@@ -13,12 +13,12 @@ class DateDayTimeYear(Module):
 
 
 	def __init__(self):
-		self._INTENTS = {
-			self._INTENT_GET_TIME: self.timeIntent,
-			self._INTENT_GET_DATE: self.dateIntent,
-			self._INTENT_GET_DAY: self.dayIntent,
-			self._INTENT_GET_YEAR: self.yearIntent
-		}
+		self._INTENTS = [
+			(self._INTENT_GET_TIME, self.timeIntent),
+			(self._INTENT_GET_DATE, self.dateIntent),
+			(self._INTENT_GET_DAY, self.dayIntent),
+			(self._INTENT_GET_YEAR, self.yearIntent)
+		]
 
 		super().__init__(self._INTENTS)
 
