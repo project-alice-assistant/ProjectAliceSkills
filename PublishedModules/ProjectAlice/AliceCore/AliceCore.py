@@ -38,6 +38,7 @@ class AliceCore(Module):
 	_INTENT_WAKEWORD = Intent('CallWakeword', isProtected=True)
 	_INTENT_ADD_USER = Intent('AddNewUser', isProtected=True)
 	_INTENT_ANSWER_ACCESSLEVEL = Intent('AnswerAccessLevel', isProtected=True)
+	_INTENT_ANSWER_NUMBER = Intent('AnswerNumber', isProtected=True)
 
 
 	def __init__(self):
@@ -53,6 +54,7 @@ class AliceCore(Module):
 			(self._INTENT_ADD_DEVICE, self.addDeviceIntent),
 			(self._INTENT_ANSWER_HARDWARE_TYPE, self.addDeviceIntent),
 			(self._INTENT_ANSWER_ESP_TYPE, self.addDeviceIntent),
+			self._INTENT_ANSWER_NUMBER,
 			self._INTENT_ANSWER_NAME,
 			self._INTENT_SPELL_WORD,
 			self._INTENT_DUMMY_ADD_USER,
@@ -78,7 +80,8 @@ class AliceCore(Module):
 			'confirmingModuleReboot': self.reboot,
 			'confirmingUsername': self.checkUsername,
 			'confirmingWakewordCreation': self.createWakeword,
-			'confirmingRecaptureAfterFailure': self.tryFixAndRecapture
+			'confirmingRecaptureAfterFailure': self.tryFixAndRecapture,
+			'confirmingPinCode': self.askCreateWakeword
 		}
 
 		self._INTENT_ANSWER_NAME.dialogMapping = {
@@ -89,8 +92,61 @@ class AliceCore(Module):
 			'addingFirstUser': self.confirmUsername
 		}
 
+		self._INTENT_ANSWER_NUMBER.dialogMapping = {
+			'addingPinCode': self.addUserPinCode
+		}
+
 		self._threads = dict()
 		super().__init__(self._INTENTS, authOnlyIntents=self._AUTH_ONLY_INTENTS)
+
+
+	def askCreateWakeword(self, _intent: str, session: DialogSession) -> bool:
+		if 'pinCode' in session.customData:
+			self.UserManager.addUserPinCode(session.customData['username'], session.customData['pinCode'])
+
+		self.continueDialog(
+			sessionId=session.sessionId,
+			text=self.randomTalk('addUserWakeword', replace=[session.customData['username']]),
+			intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
+			currentDialogState='confirmingWakewordCreation'
+		)
+		return True
+
+
+	def addUserPinCode(self, _intent: str, session: DialogSession) -> bool:
+		if 'Number' not in session.slotsAsObjects:
+			self.continueDialog(
+				sessionId=session.sessionId,
+				text=self.TalkManager.randomTalk('notUnderstood', module='system'),
+				intentFilter=[self._INTENT_ANSWER_NUMBER],
+				currentDialogState='addingPinCode'
+			)
+			return True
+		else:
+			pin = ''
+			print(session.slotsAsObjects['Number'])
+			for number in session.slotsAsObjects['Number']:
+				pin += str(int(number.value['value']))
+
+			if len(pin) != 4:
+				self.continueDialog(
+					sessionId=session.sessionId,
+					text=self.randomTalk('addAdminPinInvalid'),
+					intentFilter=[self._INTENT_ANSWER_NUMBER],
+					currentDialogState='addingPinCode'
+				)
+			else:
+				self.continueDialog(
+					sessionId=session.sessionId,
+					text=self.randomTalk('addAdminPinConfirm', replace=pin.split()),
+					intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
+					currentDialogState='confirmingPinCode',
+					customData={
+						'pinCode': int(pin)
+					}
+				)
+
+			return True
 
 
 	def confirmWakewordTrimming(self, _intent: str, session: DialogSession) -> bool:
@@ -270,10 +326,11 @@ class AliceCore(Module):
 			self.UserManager.addNewUser(session.customData['username'], accessLevel)
 			self.continueDialog(
 				sessionId=session.sessionId,
-				text=self.randomTalk('addUserWakeword', replace=[session.customData['username']]),
-				intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
-				currentDialogState='confirmingWakewordCreation'
+				text=self.randomTalk('addAdminPin'),
+				intentFilter=[self._INTENT_ANSWER_NUMBER],
+				currentDialogState='addingPinCode'
 			)
+
 		else:
 			self.continueDialog(
 				sessionId=session.sessionId,

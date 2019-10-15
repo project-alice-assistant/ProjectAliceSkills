@@ -323,6 +323,17 @@
 			"Welcome to Project Alice! There seems to be no user defined yet, let's do this! Please, tell me your name."
 		]
 	},
+	"addAdminPin": [
+		"<s>We need some layer of security since you are the administrator!</s><s>For that you need to define a pin code that has 4 digits.</s><s>Make sure to remember it though, you will need it to use my interface, adding new users or accessing priviledged functions.</s><s>Please tell me your four digits pin.</s>"
+	],
+	"addAdminPinInvalid": [
+		"I need four digits, your pin code is not valid. Please, give me another pin code",
+		"Four digits please, your pin code is not ok. Please, give me another pin code"
+	],
+	"addAdminPinConfirm" : [
+		"{} {} {} {}? Is that correct?",
+		"{} {} {} {}? Did I understand correctly?"
+	],
 	"confirmUsername": {
 		"default": [
 			"Did I understand correctly? Your name is {}?",
