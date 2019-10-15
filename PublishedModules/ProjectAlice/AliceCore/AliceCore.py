@@ -45,14 +45,14 @@ class AliceCore(Module):
 			self._INTENT_GLOBAL_STOP,
 			(self._INTENT_MODULE_GREETING, self.deviceGreetingIntent),
 			self._INTENT_ANSWER_YES_OR_NO,
-			self._INTENT_ANSWER_ROOM,
+			(self._INTENT_ANSWER_ROOM, self.addDeviceIntent),
 			self._INTENT_SWITCH_LANGUAGE,
 			(self._INTENT_UPDATE_ALICE, self.aliceUpdateIntent),
 			(self._INTENT_REBOOT, self.confirmReboot),
 			(self._INTENT_STOP_LISTEN, self.stopListenIntent),
 			(self._INTENT_ADD_DEVICE, self.addDeviceIntent),
-			self._INTENT_ANSWER_HARDWARE_TYPE,
-			self._INTENT_ANSWER_ESP_TYPE,
+			(self._INTENT_ANSWER_HARDWARE_TYPE, self.addDeviceIntent),
+			(self._INTENT_ANSWER_ESP_TYPE, self.addDeviceIntent),
 			self._INTENT_ANSWER_NAME,
 			self._INTENT_SPELL_WORD,
 			self._INTENT_DUMMY_ADD_USER,
@@ -75,18 +75,69 @@ class AliceCore(Module):
 
 		self._INTENT_ANSWER_YES_OR_NO.dialogMapping = {
 			'confirmedReboot': self.confirmModuleReboot,
-			'confirmedModuleReboot': self.reboot
+			'confirmedModuleReboot': self.reboot,
+			'firstUser_confirmUsername': self.checkUsername
 		}
 
-		self._INTENT_ANSWER_HARDWARE_TYPE.dialogMapping = {
-			'addDevice_missingHardware': self.addDeviceIntent,
-			'addDevice_missingEspType': self.addDeviceIntent,
-			'addDevice_missingRoom': self.addDeviceIntent
+		self._INTENT_ANSWER_NAME.dialogMapping = {
+			'firstUser_addFirstUser': self.confirmUsername
+		}
+
+		self._INTENT_SPELL_WORD.dialogMapping = {
+			'firstUser_addFirstUser': self.confirmUsername
 		}
 
 
 		self._threads = dict()
 		super().__init__(self._INTENTS, authOnlyIntents=self._AUTH_ONLY_INTENTS)
+
+
+	def checkUsername(self, intent: str, session: DialogSession) -> bool:
+		if session.slots['Name'] in self.UserManager.getAllUserNames(skipGuests=False):
+			self.continueDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk(text='userAlreadyExist', replace=[session.slots['Name']]),
+				intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
+				currentDialogState='firstUser_addFirstUser'
+			)
+			return True
+
+		if 'UserAccessLevel' not in session.slots and 'UserAccessLevel' not in session.customData:
+			self.continueDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk('addUserWhatAccessLevel'),
+				intentFilter=[self._INTENT_ANSWER_ACCESSLEVEL],
+				currentDialogState='firstUser_confirmUsername',
+				slot='UserAccessLevel'
+			)
+			return True
+
+
+	def confirmUsername(self, intent: str, session: DialogSession) -> bool:
+		if intent == self._INTENT_SPELL_WORD:
+			username = ''.join([slot.value['value'] for slot in session.slotsAsObjects['Letters']])
+		else:
+			username = session.slots['Name']
+
+		if session.slotRawValue('Name') == constants.UNKNOWN_WORD:
+			self.continueDialog(
+				sessionId=session.sessionId,
+				text=self.TalkManager.randomTalk('notUnderstood', module='system'),
+				intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
+				currentDialogState='firstUser_addFirstUser'
+			)
+			return True
+
+		self.continueDialog(
+			sessionId=session.sessionId,
+			text=self.randomTalk(text='addUserConfirmUsername', replace=[username]),
+			intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
+			currentDialogState='firstUser_confirmUsername',
+			customData={
+				'username': username
+			}
+		)
+		return True
 
 
 	def stopListenIntent(self, intent: str, session: DialogSession) -> bool:
@@ -221,8 +272,11 @@ class AliceCore(Module):
 		self.ask(
 			text=self.randomTalk('addAdminUser'),
 			intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
-			previousIntent=self._INTENT_DUMMY_ADD_USER,
-			canBeEnqueued=False
+			canBeEnqueued=False,
+			currentDialogState='firstUser_addFirstUser',
+			customData={
+				'UserAccessLevel': 'admin'
+			}
 		)
 
 
