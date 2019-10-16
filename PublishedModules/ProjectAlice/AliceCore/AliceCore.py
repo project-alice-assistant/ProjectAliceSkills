@@ -323,7 +323,7 @@ class AliceCore(Module):
 			else:
 				accessLevel = session.customData['UserAccessLevel']
 
-			if accessLevel == AccessLevel.ADMIN.name:
+			if accessLevel.lower() == AccessLevel.ADMIN.name.lower():
 				text = 'addAdminPin'
 			else:
 				text = 'addUserPin'
