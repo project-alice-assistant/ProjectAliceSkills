@@ -25,7 +25,7 @@ class FindMyPhone(Module):
 		super().__init__(self._SUPPORTED_INTENTS)
 
 
-	def onMessage(self, intent: str, session: DialogSession) -> bool:
+	def onMessage(self, intent: str, session: DialogSession):
 		sessionId = session.sessionId
 		slots = session.slots
 
@@ -47,8 +47,9 @@ class FindMyPhone(Module):
 			module = self.getModuleInstance('Ifttt')
 			if not module:
 				self.endDialog(sessionId=sessionId, text=self.randomTalk('error'))
-				return True
+				return
 
+			# noinspection PyUnresolvedReferences
 			answer = module.sendRequest(endPoint='locatePhone', user=who)
 			if answer == IftttException.NOT_CONNECTED:
 				self.endDialog(sessionId=sessionId, text=self.randomTalk('notConnected'))
@@ -59,4 +60,4 @@ class FindMyPhone(Module):
 			else:
 				self.endDialog(sessionId=sessionId, text=self.randomTalk('acknowledge'))
 
-		return True
+		return
