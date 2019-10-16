@@ -304,7 +304,7 @@
 	},
 	"espFlashingDone": {
 		"default": [
-			"Ok, I have flashed your esp device with Tasmota, you can now unplug it and power it"
+			"Ok, I have flashed your esp device with Tasmota, you can now unplug it and power it."
 		]
 	},
 	"whatConfig": {
@@ -315,7 +315,7 @@
 	},
 	"noStartWithoutAdmin": {
 		"default": [
-			"Ok, canceling but without user I cannot start, going down"
+			"Ok, canceling but without user I cannot start, going down."
 		]
 	},
 	"addAdminUser": {
@@ -330,16 +330,16 @@
 		"<s>Let's set a pin code to protect your account.</s><s>Please give me a 4 digits code.</s><s>Make sure to remember it, it will allow you to access priviledged functions!</s>"
 	],
 	"addPinInvalid": [
-		"I need four digits, your pin code is not valid. Please, give me another pin code",
-		"Four digits please, your pin code is not ok. Please, give me another pin code"
+		"I need four digits, your pin code is not valid. Please, give me another pin code.",
+		"Four digits please, your pin code is not ok. Please, give me another pin code."
 	],
 	"addPinConfirm" : [
 		"{} {} {} {}? Is that correct?",
 		"{} {} {} {}? Did I understand correctly?"
 	],
-	"addAdminWrongPin": [
+	"addWrongPin": [
 		"Ok, my mistake, sorry, what's it then?",
-		"I'm sorry, tell me you pin again"
+		"I'm sorry, tell me you pin again."
 	],
 	"confirmUsername": {
 		"default": [
