@@ -334,6 +334,10 @@
 		"{} {} {} {}? Is that correct?",
 		"{} {} {} {}? Did I understand correctly?"
 	],
+	"addAdminWrongPin": [
+		"Ok, my mistake, sorry, what's it then?",
+		"I'm sorry, tell me you pin again"
+	],
 	"confirmUsername": {
 		"default": [
 			"Did I understand correctly? Your name is {}?",

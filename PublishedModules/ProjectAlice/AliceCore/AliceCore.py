@@ -100,9 +100,18 @@ class AliceCore(Module):
 		super().__init__(self._INTENTS, authOnlyIntents=self._AUTH_ONLY_INTENTS)
 
 
-	def askCreateWakeword(self, _intent: str, session: DialogSession) -> bool:
+	def askCreateWakeword(self, session: DialogSession, **_kwargs) -> bool:
 		if 'pinCode' in session.customData:
-			self.UserManager.addUserPinCode(session.customData['username'], session.customData['pinCode'])
+			if commons.isYes(session):
+				self.UserManager.addNewUser(session.customData['username'], session.customData['accessLevel'], session.customData['pinCode'])
+			else:
+				self.continueDialog(
+					sessionId=session.sessionId,
+					text=self.randomTalk('addAdminWrongPin'),
+					intentFilter=[self._INTENT_ANSWER_NUMBER],
+					currentDialogState='addingPinCode'
+				)
+				return True
 
 		self.continueDialog(
 			sessionId=session.sessionId,
@@ -113,7 +122,7 @@ class AliceCore(Module):
 		return True
 
 
-	def addUserPinCode(self, _intent: str, session: DialogSession) -> bool:
+	def addUserPinCode(self, session: DialogSession, **_kwargs) -> bool:
 		if 'Number' not in session.slotsAsObjects:
 			self.continueDialog(
 				sessionId=session.sessionId,
@@ -124,7 +133,6 @@ class AliceCore(Module):
 			return True
 		else:
 			pin = ''
-			print(session.slotsAsObjects['Number'])
 			for number in session.slotsAsObjects['Number']:
 				pin += str(int(number.value['value']))
 
@@ -138,7 +146,7 @@ class AliceCore(Module):
 			else:
 				self.continueDialog(
 					sessionId=session.sessionId,
-					text=self.randomTalk('addAdminPinConfirm', replace=pin.split()),
+					text=self.randomTalk('addAdminPinConfirm', replace=[digit for digit in pin]),
 					intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
 					currentDialogState='confirmingPinCode',
 					customData={
@@ -149,7 +157,7 @@ class AliceCore(Module):
 			return True
 
 
-	def confirmWakewordTrimming(self, _intent: str, session: DialogSession) -> bool:
+	def confirmWakewordTrimming(self, session: DialogSession, **_kwargs) -> bool:
 		if session.slotValue('WakewordCaptureResult') == 'more':
 			self.WakewordManager.trimMore()
 
@@ -183,7 +191,7 @@ class AliceCore(Module):
 				if self.delayed:
 					self.delayed = False
 					self.ThreadManager.doLater(interval=2, func=self.onStart)
-					self.ThreadManager.doLater(interval=6, func=self.say, args=[self.randomTalk('wakewordCaptureDone'), session.siteId])
+					self.ThreadManager.doLater(interval=4, func=self.say, args=[self.randomTalk('wakewordCaptureDone'), session.siteId])
 
 			return True
 
@@ -217,10 +225,10 @@ class AliceCore(Module):
 		return True
 
 
-	def tryFixAndRecapture(self, _intent: str, session: DialogSession) -> bool:
+	def tryFixAndRecapture(self, intent: str, session: DialogSession) -> bool:
 		if commons.isYes(session):
 			self.WakewordManager.tryCaptureFix()
-			return self.confirmWakewordTrimming(_intent, session)
+			return self.confirmWakewordTrimming(intent=intent, session=session)
 		else:
 			if self.delayed:
 				self.delayed = False
@@ -232,7 +240,7 @@ class AliceCore(Module):
 		return True
 
 
-	def confirmWakeword(self, _intent: str, session: DialogSession) -> bool:
+	def confirmWakeword(self, session: DialogSession, **_kwargs) -> bool:
 		i = 0  # Failsafe...
 		while self.WakewordManager.state != WakewordManagerState.CONFIRMING:
 			i += 1
@@ -276,7 +284,7 @@ class AliceCore(Module):
 		return True
 
 
-	def createWakeword(self, _intent: str, session: DialogSession) -> bool:
+	def createWakeword(self, session: DialogSession, **_kwargs) -> bool:
 		if commons.isYes(session):
 			self.WakewordManager.newWakeword(username=session.customData['username'])
 			self.ThreadManager.newEvent('AddingWakeword').set()
@@ -296,7 +304,7 @@ class AliceCore(Module):
 		return True
 
 
-	def checkUsername(self, _intent: str, session: DialogSession) -> bool:
+	def checkUsername(self, session: DialogSession, **_kwargs) -> bool:
 		if commons.isYes(session):
 			if session.slots['Name'] in self.UserManager.getAllUserNames(skipGuests=False):
 				self.continueDialog(
@@ -323,12 +331,14 @@ class AliceCore(Module):
 			else:
 				accessLevel = session.customData['UserAccessLevel']
 
-			self.UserManager.addNewUser(session.customData['username'], accessLevel)
 			self.continueDialog(
 				sessionId=session.sessionId,
 				text=self.randomTalk('addAdminPin'),
 				intentFilter=[self._INTENT_ANSWER_NUMBER],
-				currentDialogState='addingPinCode'
+				currentDialogState='addingPinCode',
+				customData={
+					'accessLevel': accessLevel
+				}
 			)
 
 		else:
@@ -341,8 +351,8 @@ class AliceCore(Module):
 		return True
 
 
-	def confirmUsername(self, _intent: str, session: DialogSession) -> bool:
-		if _intent == self._INTENT_ANSWER_NAME:
+	def confirmUsername(self, intent: str, session: DialogSession) -> bool:
+		if intent == self._INTENT_ANSWER_NAME:
 			username = str(session.slots['Name']).lower()
 			if commons.isSpelledWord(username):
 				username = username.replace(' ', '')
@@ -370,7 +380,7 @@ class AliceCore(Module):
 		return True
 
 
-	def stopListenIntent(self, _intent: str, session: DialogSession) -> bool:
+	def stopListenIntent(self, session: DialogSession, **_kwargs) -> bool:
 		if 'Duration' in session.slots:
 			duration = commons.getDuration(session)
 			if duration > 0:
@@ -384,7 +394,7 @@ class AliceCore(Module):
 		return True
 
 
-	def addDeviceIntent(self, _intent: str, session: DialogSession) -> bool:
+	def addDeviceIntent(self, session: DialogSession, **_kwargs) -> bool:
 		if self.DeviceManager.isBusy():
 			self.endDialog(
 				sessionId=session.sessionId,
@@ -448,7 +458,7 @@ class AliceCore(Module):
 			return True
 
 
-	def confirmReboot(self, _intent: str, session: DialogSession) -> bool:
+	def confirmReboot(self, session: DialogSession, **_kwargs) -> bool:
 		self.continueDialog(
 			sessionId=session.sessionId,
 			text=self.randomTalk('confirmReboot'),
@@ -458,7 +468,7 @@ class AliceCore(Module):
 		return True
 
 
-	def confirmModuleReboot(self, _intent: str, session: DialogSession) -> bool:
+	def confirmModuleReboot(self, session: DialogSession, **_kwargs) -> bool:
 		if commons.isYes(session):
 			self.continueDialog(
 				sessionId=session.sessionId,
@@ -472,7 +482,7 @@ class AliceCore(Module):
 		return True
 
 
-	def reboot(self, _intent: str, session: DialogSession) -> bool:
+	def reboot(self, session: DialogSession, **_kwargs) -> bool:
 		value = 'greet'
 		if commons.isYes(session):
 			value = 'greetAndRebootModules'
@@ -706,7 +716,6 @@ class AliceCore(Module):
 
 			elif session.previousIntent == self._INTENT_ADD_USER:
 				if commons.isYes(session):
-					self.UserManager.addNewUser(customData['username'], slots['UserAccessLevel'])
 					self.continueDialog(
 						sessionId=sessionId,
 						text=self.randomTalk('addUserWakeword', replace=[slots['Name'], slots['UserAccessLevel']]),
