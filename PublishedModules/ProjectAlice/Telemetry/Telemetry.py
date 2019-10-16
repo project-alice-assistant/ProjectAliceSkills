@@ -1,6 +1,7 @@
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
+from core.util.model.TelemetryType import TelemetryType
 
 
 class Telemetry(Module):
@@ -53,7 +54,7 @@ class Telemetry(Module):
 
 		telemetryType = session.slotValue('TelemetryType')
 
-		data = self.TelemetryManager.getData(siteId=siteId, ttype=telemetryType)
+		data = self.TelemetryManager.getData(siteId=siteId, ttype=TelemetryType(telemetryType))
 		if data and 'value' in data:
 			answer = data['value'] + self._telemetryUnits.get(telemetryType, '')
 			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('answerInstant').format(answer))

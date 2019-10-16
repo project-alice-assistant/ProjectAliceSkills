@@ -73,11 +73,12 @@ class Calculator(Module):
 		elif func == 'modulo':
 			result = left % right
 		elif func == 'sine':
-			result = round(math.sin(left), 3)
+			result = math.sin(left)
 		elif func == 'cosine':
-			result = round(math.cos(left), 3)
+			result = math.cos(left)
 		elif func == 'tangent':
-			result = round(math.tan(left), 3)
+			result = math.tan(left)
 
+		result = round(result, 3)
 		self._lastNumber = result
 		return result
