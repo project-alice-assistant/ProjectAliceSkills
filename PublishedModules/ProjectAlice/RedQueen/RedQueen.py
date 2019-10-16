@@ -21,12 +21,12 @@ class RedQueen(Module):
 
 
 	def __init__(self):
-		self._INTENTS = {
-			self._INTENT_WHO_ARE_YOU: self.whoIntent,
-			self._INTENT_GOOD_MORNING: self.morningIntent,
-			self._INTENT_GOOD_NIGHT: self.nightIntent,
-			self._INTENT_CHANGE_USER_STATE: self.userStateIntent
-		}
+		self._INTENTS = [
+			(self._INTENT_WHO_ARE_YOU, self.whoIntent),
+			(self._INTENT_GOOD_MORNING, self.morningIntent),
+			(self._INTENT_GOOD_NIGHT, self.nightIntent),
+			(self._INTENT_CHANGE_USER_STATE, self.userStateIntent)
+		]
 
 		self._redQueen = None
 
@@ -183,30 +183,27 @@ class RedQueen(Module):
 		return True
 
 
-	def whoIntent(self, intent: str, session: DialogSession) -> bool:
+	def whoIntent(self, session: DialogSession, **_kwargs):
 		self.endDialog(sessionId=session.sessionId, text=self.randomTalk('aliceInfos'), siteId=session.siteId)
-		return True
 
 
-	def morningIntent(self, intent: str, session: DialogSession) -> bool:
+	def morningIntent(self, session: DialogSession, **_kwargs):
 		self.ModuleManager.broadcast('onWakeup')
 		time.sleep(0.5)
 		self.endDialog(sessionId=session.sessionId, text=self.randomTalk('goodMorning'), siteId=session.siteId)
-		return True
 
 
-	def nightIntent(self, intent: str, session: DialogSession) -> bool:
+	def nightIntent(self, session: DialogSession, **_kwargs):
 		self.endDialog(sessionId=session.sessionId, text=self.randomTalk('goodNight'), siteId=session.siteId)
 		self.ModuleManager.broadcast('onSleep')
-		return True
 
 
-	def userStateIntent(self, intent: str, session: DialogSession) -> bool:
+	def userStateIntent(self, session: DialogSession, **_kwargs):
 		slots = session.slotsAsObjects
 		if 'State' not in slots.keys():
 			self.logError('No state provided for changing user state')
 			self.endDialog(sessionId=session.sessionId, text=self.TalkManager.randomTalk('error', module='system'), siteId=session.siteId)
-			return False
+			return
 
 		if 'Who' in slots.keys():
 			pass
@@ -217,7 +214,6 @@ class RedQueen(Module):
 				self.logWarning(f"Unsupported user state \"{slots['State'][0].value['value']}\"")
 
 		self.endDialog(sessionId=session.sessionId, text=self.TalkManager.randomTalk(slots['State'][0].value['value']), siteId=session.siteId)
-		return True
 
 
 	def randomlySpeak(self, init: bool = False):
