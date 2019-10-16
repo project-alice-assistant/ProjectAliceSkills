@@ -17,14 +17,14 @@ class Calculator(Module):
 
 
 	def __init__(self):
-		self._INTENTS = {
-			self._INTENT_MATHS: self.mathIntent
-		}
-		self._lastNumber: Optional[float] = None
+		self._INTENTS = [
+			(self._INTENT_MATHS, self.mathIntent)
+		]
+		self._lastNumber: float = 0
 		super().__init__(self._INTENTS)
 
 
-	def mathIntent(self, intent: str, session: DialogSession) -> bool:
+	def mathIntent(self, session: DialogSession, **_kwargs):
 		slots = session.slotsAsObjects
 		sessionId = session.sessionId
 
@@ -42,7 +42,7 @@ class Calculator(Module):
 				self.endDialog(sessionId=sessionId, text=self.TalkManager.randomTalk('noPreviousOperation'))
 				return
 
-			result = self.calculate(float(self._lastNumber), float(slots['Right'][0].value['value']), func)
+			result = self.calculate(self._lastNumber, float(slots['Right'][0].value['value']), func)
 
 		else:
 			self.continueDialog(sessionId=sessionId, text=self.TalkManager.randomTalk('notUnderstood'))
@@ -56,7 +56,6 @@ class Calculator(Module):
 			answer = str(result)
 
 		self.endDialog(sessionId=sessionId, text=answer)
-		return True
 
 
 	def calculate(self, left: float, right: float, func: str) -> Optional[float]:
