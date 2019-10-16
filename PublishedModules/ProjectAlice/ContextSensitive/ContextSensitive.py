@@ -15,11 +15,11 @@ class ContextSensitive(Module):
 
 
 	def __init__(self):
-		self._INTENTS = {
-			self._INTENT_DELETE_THIS: self.deleteThisIntent,
-			self._INTENT_REPEAT_THIS: self.repeatThisIntent,
-			self._INTENT_EDIT_THIS: self.editThisIntent
-		}
+		self._INTENTS = [
+			(self._INTENT_DELETE_THIS, self.deleteThisIntent),
+			(self._INTENT_REPEAT_THIS, self.repeatThisIntent),
+			(self._INTENT_EDIT_THIS, self.editThisIntent)
+		]
 
 		self._history: Deque = deque(list(), 10)
 		self._sayHistory: Dict[str, Deque] = dict()
@@ -27,32 +27,29 @@ class ContextSensitive(Module):
 		super().__init__(self._INTENTS)
 
 
-	def deleteThisIntent(self, intent: str, session: DialogSession) -> bool:
+	def deleteThisIntent(self, session: DialogSession, **_kwargs):
 		modules = self.ModuleManager.getModules()
 		for module in modules.values():
 			try:
 				if module['instance'].onContextSensitiveDelete(session.sessionId):
 					self.endSession(sessionId=session.sessionId)
-					return True
+					return
 			except Exception:
 				continue
-		return True
 
 
-	def editThisIntent(self, intent: str, session: DialogSession) -> bool:
+	def editThisIntent(self, session: DialogSession, **_kwargs):
 		modules = self.ModuleManager.getModules()
 		for module in modules.values():
 			try:
 				if module['instance'].onContextSensitiveEdit(session.sessionId):
 					self.MqttManager.endDialog(sessionId=session.sessionId)
-					return True
+					return
 			except:
 				continue
-		return True
 
-	def repeatThisIntent(self, intent: str, session: DialogSession) -> bool:
+	def repeatThisIntent(self, session: DialogSession, **_kwargs):
 		self.endDialog(session.sessionId, text=self.getLastChat(siteId=session.siteId))
-		return True
 
 
 	def addToMessageHistory(self, session: DialogSession) -> bool:
@@ -74,7 +71,7 @@ class ContextSensitive(Module):
 		return True
 
 
-	def lastMessage(self):
+	def lastMessage(self) -> str:
 		return self._history[-1] if self._history else None
 
 
@@ -85,5 +82,5 @@ class ContextSensitive(Module):
 		self._sayHistory[siteId].appendleft(text)
 
 
-	def getLastChat(self, siteId: str):
+	def getLastChat(self, siteId: str) -> str:
 		return self._sayHistory[siteId][-1] if self._sayHistory.get(siteId) else self.randomTalk('nothing')
