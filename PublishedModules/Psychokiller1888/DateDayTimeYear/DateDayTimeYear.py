@@ -23,7 +23,7 @@ class DateDayTimeYear(Module):
 		super().__init__(self._INTENTS)
 
 
-	def timeIntent(self, intent: str, session: DialogSession) -> bool:
+	def timeIntent(self, session: DialogSession, **_kwargs):
 		minutes = datetime.now().strftime('%M').lstrip('0')
 		part = datetime.now().strftime('%p')
 
@@ -36,24 +36,20 @@ class DateDayTimeYear(Module):
 			hours = datetime.now().strftime('%H').lstrip('0')
 
 		self.endDialog(session.sessionId, self.TalkManager.randomTalk('time').format(hours, minutes, part))
-		return True
 
 
-	def dateIntent(self, intent: str, session: DialogSession) -> bool:
+	def dateIntent(self, session: DialogSession, **_kwargs):
 		date = datetime.now().strftime('%d %B %Y')
 		date = self.LanguageManager.localize(date)
 		self.endDialog(session.sessionId, self.TalkManager.randomTalk('date').format(date))
-		return True
 
 
-	def dayIntent(self, intent: str, session: DialogSession) -> bool:
+	def dayIntent(self, session: DialogSession, **_kwargs):
 		day = datetime.now().strftime('%A')
 		day = self.LanguageManager.localize(day)
 		self.endDialog(session.sessionId, self.TalkManager.randomTalk('day').format(day))
-		return True
 
 
-	def yearIntent(self, intent: str, session: DialogSession) -> bool:
+	def yearIntent(self, session: DialogSession, **_kwargs):
 		year = datetime.now().strftime('%Y')
 		self.endDialog(session.sessionId, self.TalkManager.randomTalk('day').format(year))
-		return True
