@@ -19,63 +19,53 @@ class FreeCurrencyConverterDotCom(Module):
 
 	def __init__(self):
 		self._SUPPORTED_INTENTS = [
-			self._INTENT_ANSWER_CURRENCY,
-			self._INTENT_CONVERT_CURRENCY
+			(self._INTENT_ANSWER_CURRENCY, self.convertCurrencyIntent),
+			(self._INTENT_CONVERT_CURRENCY, self.convertCurrencyIntent),
 		]
 
 		super().__init__(self._SUPPORTED_INTENTS)
 
 
-	def onMessage(self, intent: str, session: DialogSession) -> bool:
-		siteId = session.siteId
-		slots = session.slots
-		slotsObject = session.slotsAsObjects
-		sessionId = session.sessionId
-		customData = session.customData
+	def convertCurrencyIntent(self, session: DialogSession, **_kwargs):
+		amount = 1
+		if 'Amount' in session.slots:
+			amount = session.slotsAsObjects['Amount'][0].value['value']
+		elif 'amount' in session.customData:
+			amount = session.customData['Amount']
 
-		if intent == self._INTENT_CONVERT_CURRENCY or session.previousIntent == self._INTENT_CONVERT_CURRENCY:
-			amount = 1
-			if 'Amount' in slots:
-				amount = slotsObject['Amount'][0].value['value']
-			elif 'amount' in customData:
-				amount = customData['Amount']
+		toCurrency = self.ConfigManager.getAliceConfigByName('baseCurrency', self.name)
+		if 'ToCurrency' in session.slotsAsObjects:
+			toCurrency = session.slotsAsObjects['ToCurrency'][0].value['value']
+		elif 'toCurrency' in session.customData:
+			toCurrency = session.customData['toCurrency']
 
-			toCurrency = self.ConfigManager.getAliceConfigByName('baseCurrency', self.name)
-			if 'ToCurrency' in slotsObject:
-				toCurrency = slotsObject['ToCurrency'][0].value['value']
-			elif 'toCurrency' in customData:
-				toCurrency = customData['toCurrency']
-
-			if 'FromCurrency' not in slots:
-				if 'Currency' in slots:
-					fromCurrency = slotsObject['Currency'][0].value['value']
-				else:
-					self.continueDialog(
-						sessionId=sessionId,
-						intentFilter=[self._INTENT_ANSWER_CURRENCY],
-						text=self.TalkManager.randomTalk(module=self.name, talk='fromWhatCurrency'),
-						previousIntent=self._INTENT_CONVERT_CURRENCY,
-						customData={
-							'module'    : self.name,
-							'amount'    : amount,
-							'toCurrency': toCurrency
-						}
-					)
-					return True
+		if 'FromCurrency' not in session.slots:
+			if 'Currency' in session.slots:
+				fromCurrency = session.slotsAsObjects['Currency'][0].value['value']
 			else:
-				fromCurrency = slotsObject['FromCurrency'][0].value['value']
+				self.continueDialog(
+					sessionId=session.sessionId,
+					intentFilter=[self._INTENT_ANSWER_CURRENCY],
+					text=self.TalkManager.randomTalk(module=self.name, talk='fromWhatCurrency'),
+					customData={
+						'module'    : self.name,
+						'amount'    : amount,
+						'toCurrency': toCurrency
+					}
+				)
+				return
+		else:
+			fromCurrency = session.slotsAsObjects['FromCurrency'][0].value['value']
 
-			try:
-				url = f"https://free.currconv.com/api/v7/convert?q={fromCurrency}_{toCurrency}&compact=ultra&apiKey={self.getConfig('apiKey')}"
-				req = requests.get(url=url)
-				data = json.loads(req.content.decode())
+		try:
+			url = f"https://free.currconv.com/api/v7/convert?q={fromCurrency}_{toCurrency}&compact=ultra&apiKey={self.getConfig('apiKey')}"
+			req = requests.get(url=url)
+			data = json.loads(req.content.decode())
 
-				conversion = data[f'{fromCurrency}_{toCurrency}']
-				converted = round(float(amount) * float(conversion), 2)
+			conversion = data[f'{fromCurrency}_{toCurrency}']
+			converted = round(float(amount) * float(conversion), 2)
 
-				self.endDialog(sessionId, text=self.randomTalk('answer').format(amount, fromCurrency, converted, toCurrency), siteId=siteId)
-			except Exception as e:
-				self._logger.error(e)
-				self.endDialog(sessionId, text=self.randomTalk('noServer'), siteId=siteId)
-
-		return True
+			self.endDialog(session.sessionId, text=self.randomTalk('answer').format(amount, fromCurrency, converted, toCurrency), siteId=session.siteId)
+		except Exception as e:
+			self._logger.error(e)
+			self.endDialog(session.sessionId, text=self.randomTalk('noServer'), siteId=session.siteId)

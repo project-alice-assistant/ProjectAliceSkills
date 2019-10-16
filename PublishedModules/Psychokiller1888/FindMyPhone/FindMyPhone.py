@@ -1,8 +1,10 @@
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
+from core.commons import constants
 from core.dialog.model.DialogSession import DialogSession
 
 try:
+	# noinspection PyUnresolvedReferences
 	from modules.Ifttt.Ifttt import IftttException
 except:
 	pass
@@ -29,12 +31,11 @@ class FindMyPhone(Module):
 		sessionId = session.sessionId
 		slots = session.slots
 
-		if session.user == 'unknown' and 'Who' not in slots and 'Name' not in slots:
+		if session.user == constants.UNKNOWN_USER and 'Who' not in slots and 'Name' not in slots:
 			self.continueDialog(
 				sessionId=sessionId,
 				text=self.randomTalk('whosPhone'),
-				intentFilter=[self._INTENT_ANSWER_NAME],
-				previousIntent=self._INTENT_FIND_PHONE
+				intentFilter=[self._INTENT_ANSWER_NAME]
 			)
 		else:
 			if 'Who' in slots:
@@ -59,5 +60,3 @@ class FindMyPhone(Module):
 				self.endDialog(sessionId=sessionId, text=self.randomTalk('unknown', replace=[who]))
 			else:
 				self.endDialog(sessionId=sessionId, text=self.randomTalk('acknowledge'))
-
-		return
