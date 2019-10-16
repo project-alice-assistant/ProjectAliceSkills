@@ -9,10 +9,10 @@ class AliceSatellite(Module):
 
 
 	def __init__(self):
-		self._INTENTS = {
-			self._FEEDBACK_SENSORS: self.feedbackSensorIntent,
-			self._DEVICE_DISCONNECTION: self.deviceDisconnectIntent
-		}
+		self._INTENTS = [
+			(self._FEEDBACK_SENSORS, self.feedbackSensorIntent),
+			(self._DEVICE_DISCONNECTION, self.deviceDisconnectIntent)
+		]
 
 		self._sensorReadings = dict()
 
@@ -44,18 +44,16 @@ class AliceSatellite(Module):
 		self.getSensorReadings()
 
 	
-	def feedbackSensorIntent(self, intent: str, session: DialogSession) -> bool:
+	def feedbackSensorIntent(self, session: DialogSession, **_kwargs):
 		payload = session.payload
 		if 'data' in payload:
 			self._sensorReadings[session.siteId] = payload['data']
-		return True
 
 
-	def deviceDisconnectIntent(self, intent: str, session: DialogSession) -> bool:
+	def deviceDisconnectIntent(self, session: DialogSession, **_kwargs):
 		payload = session.payload
 		if 'uid' in payload:
 			self.DeviceManager.deviceDisconnecting(payload['uid'])
-		return True
 
 
 	def getSensorReadings(self):
