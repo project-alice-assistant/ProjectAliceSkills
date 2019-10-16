@@ -103,7 +103,7 @@ class AliceCore(Module):
 	def askCreateWakeword(self, session: DialogSession, **_kwargs) -> bool:
 		if 'pinCode' in session.customData:
 			if commons.isYes(session):
-				self.UserManager.addNewUser(session.customData['username'], session.customData['accessLevel'], session.customData['pinCode'])
+				self.UserManager.addNewUser(name=session.customData['username'], access=session.customData['accessLevel'], pinCode=session.customData['pinCode'])
 			else:
 				self.continueDialog(
 					sessionId=session.sessionId,
