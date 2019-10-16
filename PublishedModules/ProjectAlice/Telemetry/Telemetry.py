@@ -13,10 +13,10 @@ class Telemetry(Module):
 	_INTENT_ANSWER_TELEMETRY_TYPE = Intent('AnswerTelemetryType')
 
 	def __init__(self):
-		self._INTENTS	= {
-			self._INTENT_GET_TELEMETRY_DATA: self.telemetryIntent,
-			self._INTENT_ANSWER_TELEMETRY_TYPE: self.telemetryIntent
-		}
+		self._INTENTS	= [
+			(self._INTENT_GET_TELEMETRY_DATA, self.telemetryIntent),
+			(self._INTENT_ANSWER_TELEMETRY_TYPE, self.telemetryIntent)
+		]
 
 		super().__init__(self._INTENTS)
 
@@ -36,7 +36,7 @@ class Telemetry(Module):
 		}
 
 
-	def telemetryIntent(self, intent: str, session: DialogSession) -> bool:
+	def telemetryIntent(self, session: DialogSession, **_kwargs):
 		slots = session.slots
 		siteId = session.siteId
 
@@ -59,5 +59,3 @@ class Telemetry(Module):
 			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('answerInstant').format(answer))
 		else:
 			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('noData'))
-		
-		return True
