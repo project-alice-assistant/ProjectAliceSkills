@@ -1,10 +1,10 @@
 {
 	"name": "Netatmo",
-	"version": 1.03,
+	"version": 1.04,
 	"author": "Psychokiller1888",
 	"maintainers": ["maxbachmann"],
 	"desc": "Get readings from your netatmo hardware",
-	"aliceMinVersion": 0.12,
+	"aliceMinVersion": 0.13,
 	"pipRequirements": [
 		"lnetatmo"
 	],
