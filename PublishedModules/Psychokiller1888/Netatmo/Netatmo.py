@@ -1,5 +1,5 @@
 import time
-from typing import Generator, Tuple
+from typing import Tuple
 
 import lnetatmo
 
@@ -41,15 +41,15 @@ class Netatmo(Module):
 	def onStart(self) -> list:
 		super().onStart()
 		if not self.getConfig('password'):
-			raise ModuleStartingFailed(moduleName=self.name, error=f'[{self.name}] No credentials provided')
+			raise ModuleStartingFailed(moduleName=self.name, error='No credentials provided')
 
 		if not self._auth():
-			raise ModuleStartingFailed(moduleName=self.name, error=f'[{self.name}] Authentication failed')
+			raise ModuleStartingFailed(moduleName=self.name, error='Authentication failed')
 
 		try:
 			self._weatherData = lnetatmo.WeatherStationData(self._netatmoAuth)
 		except lnetatmo.NoDevice:
-			raise ModuleStartingFailed(moduleName=self.name, error=f'[{self.name}] No Netatmo device found')
+			raise ModuleStartingFailed(moduleName=self.name, error='No Netatmo device found')
 		else:
 			return self._SUPPORTED_INTENTS
 
@@ -75,7 +75,7 @@ class Netatmo(Module):
 		return True
 
 
-	def _lastWeatherData(self) -> Generator[Tuple[str, str, str], None, None]:
+	def _lastWeatherData(self) -> Tuple[str, str, str]:
 		self._weatherData = lnetatmo.WeatherStationData(self._netatmoAuth)
 		for siteId, values in self._weatherData.lastData().items():
 			for key, value in values.items():
