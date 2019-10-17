@@ -8,7 +8,7 @@ chown -R pi:pi /opt/zigbee2mqtt
 cd /opt/zigbee2mqtt || exit
 sudo -u "$(logname)" npm install
 
-cat >> /etc/systemd/system/zigbee2mqtt.service <<EOL
+cat > /etc/systemd/system/zigbee2mqtt.service <<EOL
 [Unit]
 Description=zigbee2mqtt
 After=network.target
@@ -24,3 +24,5 @@ User=pi
 [Install]
 WantedBy=multi-user.target
 EOL
+
+systemctl daemon-reload
