@@ -32,17 +32,17 @@ class Calculator(Module):
 			self.continueDialog(sessionId=sessionId, text=self.TalkManager.randomTalk('notUnderstood'))
 			return
 
-		func = slots['Function'][0].value['value']
+		func = session.slotValue('Function')
 
 		if 'Left' in slots and 'Right' in slots:
-			result = self.calculate(float(slots['Left'][0].value['value']), float(slots['Right'][0].value['value']), func)
+			result = self.calculate(float(session.slotValue('Left')), float(session.slotValue('Right')), func)
 
 		elif 'Right' in slots and 'Left' not in slots:
 			if not isinstance(self._lastNumber, numbers.Number):
 				self.endDialog(sessionId=sessionId, text=self.TalkManager.randomTalk('noPreviousOperation'))
 				return
 
-			result = self.calculate(self._lastNumber, float(slots['Right'][0].value['value']), func)
+			result = self.calculate(self._lastNumber, float(session.slotValue('Right')), func)
 
 		else:
 			self.continueDialog(sessionId=sessionId, text=self.TalkManager.randomTalk('notUnderstood'))
