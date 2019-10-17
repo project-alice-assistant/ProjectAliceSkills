@@ -78,6 +78,10 @@ class Netatmo(Module):
 	def _lastWeatherData(self) -> Tuple[str, str, str]:
 		self._weatherData = lnetatmo.WeatherStationData(self._netatmoAuth)
 		for siteId, values in self._weatherData.lastData().items():
+
+			if siteId == 'Wind' or siteId == 'Rain':
+				siteId = self.LanguageManager.getStrings('outside')[0]
+
 			for key, value in values.items():
 				yield (siteId.lower(), self._telemetryTypes.get(key), value)
 

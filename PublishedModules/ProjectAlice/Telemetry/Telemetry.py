@@ -56,7 +56,7 @@ class Telemetry(Module):
 
 		data = self.TelemetryManager.getData(siteId=siteId, ttype=TelemetryType(telemetryType))
 
-		if data[0]:
+		if data and data[0]:
 			answer = data['value'] + self._telemetryUnits.get(telemetryType, '')
 			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('answerInstant').format(answer))
 		else:
