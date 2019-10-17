@@ -7,7 +7,6 @@
 	"aliceMinVersion": 0.12,
 	"pipRequirements": [],
 	"systemRequirements": [
-		"nodejs",
 		"make",
 		"g++",
 		"gcc"

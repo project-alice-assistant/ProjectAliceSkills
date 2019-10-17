@@ -1,8 +1,11 @@
-cd ~
-curl -sL https://deb.nodesource.com/setup_10.x | -E bash -
+#!/usr/bin/env bash
+
+cd ~ || exit
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+apt-get install -y nodejs
 git clone https://github.com/Koenkk/zigbee2mqtt.git /opt/zigbee2mqtt
 chown -R pi:pi /opt/zigbee2mqtt
-cd /opt/zigbee2mqtt
+cd /opt/zigbee2mqtt || exit
 npm install
 
 cat >> /etc/systemd/system/zigbee2mqtt.service <<EOL
