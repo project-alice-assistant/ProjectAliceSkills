@@ -4,7 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget http://bit.ly/????????? -O ~/ProjectAlice/system/moduleInstallTickets/Zigbee2Mqtt.install
+wget http://modules.projectalice.ch/Zigbee2Mqtt -O ~/ProjectAlice/system/moduleInstallTickets/Zigbee2Mqtt.install
 ```
 
 ##### > Alice CLI method
