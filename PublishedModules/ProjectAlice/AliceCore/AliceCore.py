@@ -609,7 +609,7 @@ class AliceCore(Module):
 		self.say(text=self.randomTalk('bundleUpdateFailed'))
 
 
-	def deviceGreetingIntent(self, _intent: str, session: DialogSession) -> bool:
+	def deviceGreetingIntent(self, session: DialogSession, **_kwargs) -> bool:
 		if 'uid' not in session.payload or 'siteId' not in session.payload:
 			self.logWarning('A device tried to connect but is missing informations in the payload, refused')
 			self.publish(topic='projectalice/devices/connectionRefused', payload={'siteId': session.payload['siteId']})
@@ -624,7 +624,7 @@ class AliceCore(Module):
 			return True
 
 
-	def aliceUpdateIntent(self, _intent: str, session: DialogSession) -> bool:
+	def aliceUpdateIntent(self, session: DialogSession, **_kwargs) -> bool:
 		if not self.InternetManager.online:
 			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('noAssistantUpdateOffline'))
 			return True
