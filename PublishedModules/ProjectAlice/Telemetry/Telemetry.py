@@ -41,7 +41,7 @@ class Telemetry(Module):
 		slots = session.slots
 		siteId = session.siteId
 
-		if 'siteId' in slots:
+		if 'Room' in slots:
 			siteId = session.slotValue('Room')
 
 		if 'TelemetryType' not in slots:
@@ -55,7 +55,8 @@ class Telemetry(Module):
 		telemetryType = session.slotValue('TelemetryType')
 
 		data = self.TelemetryManager.getData(siteId=siteId, ttype=TelemetryType(telemetryType))
-		if data and 'value' in data:
+
+		if data[0]:
 			answer = data['value'] + self._telemetryUnits.get(telemetryType, '')
 			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('answerInstant').format(answer))
 		else:

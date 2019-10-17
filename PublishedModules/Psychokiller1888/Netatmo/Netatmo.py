@@ -79,7 +79,7 @@ class Netatmo(Module):
 		self._weatherData = lnetatmo.WeatherStationData(self._netatmoAuth)
 		for siteId, values in self._weatherData.lastData().items():
 			for key, value in values.items():
-				yield (siteId, self._telemetryTypes.get(key), value)
+				yield (siteId.lower(), self._telemetryTypes.get(key), value)
 
 
 	def onFullMinute(self):
