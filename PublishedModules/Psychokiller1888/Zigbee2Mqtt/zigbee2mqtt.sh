@@ -6,7 +6,7 @@ apt-get install -y nodejs
 git clone https://github.com/Koenkk/zigbee2mqtt.git /opt/zigbee2mqtt
 chown -R pi:pi /opt/zigbee2mqtt
 cd /opt/zigbee2mqtt || exit
-npm install
+sudo -u "$(logname)" npm install
 
 cat >> /etc/systemd/system/zigbee2mqtt.service <<EOL
 [Unit]
