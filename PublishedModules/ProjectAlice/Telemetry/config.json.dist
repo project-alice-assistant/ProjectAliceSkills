@@ -6,5 +6,8 @@
 	"HumidityAlertHigh": 90,
 	"HumidityAlertLow": 30,
 	"PressureAlertHigh": 1100,
-	"PressureAlertLow": 700
+	"PressureAlertLow": 700,
+	"NoiseAlert": 130,
+	"TooMuchRainAlert": 5,
+	"UVIndexAlert": 10
 }
