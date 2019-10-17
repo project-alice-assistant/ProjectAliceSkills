@@ -1,5 +1,7 @@
 # Zigbee2Mqtt
 
+This module assumes you have already flashed your zigbee dongle. For more info on how to: https://www.zigbee2mqtt.io/getting_started/flashing_the_cc2531.html
+
 ### Download
 
 ##### > WGET method
