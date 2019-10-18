@@ -8,6 +8,8 @@ class StringCleaner:
 		self._modules = Path('../../PublishedModules')
 		self._core = Path('../../../ProjectAlice/core')
 
+		self._langFR = dict()
+		self._langDE = dict()
 		self._languageStrings= dict()
 
 
@@ -19,6 +21,22 @@ class StringCleaner:
 				fileContent = json.load(fp)
 				d = {key: p.parent for key in fileContent}
 				self._languageStrings = {**self._languageStrings, **d}
+
+		for p in self._modules.rglob('fr.json'):
+			if p.parent.stem != 'talks':
+				continue
+			with p.open() as fp:
+				fileContent = json.load(fp)
+				d = {key: p.parent for key in fileContent}
+				self._langFR = {**self._languageStrings, **d}
+
+		for p in self._modules.rglob('de.json'):
+			if p.parent.stem != 'talks':
+				continue
+			with p.open() as fp:
+				fileContent = json.load(fp)
+				d = {key: p.parent for key in fileContent}
+				self._langDE = {**self._languageStrings, **d}
 
 
 	def checkLangUsage(self):
@@ -45,8 +63,19 @@ class StringCleaner:
 		print(f'Found {len(deprecated)} possibly deprecated strings')
 
 
+	def checkTranslations(self):
+		for key, file in self._langFR.items():
+			if key not in self._languageStrings:
+				print(f'{key} in file {file} is not used in any en.json')
+
+		for key, file in self._langDE.items():
+			if key not in self._languageStrings:
+				print(f'{key} in file {file} is not used in any en.json')
+
+
 if __name__ == '__main__':
 	cleaner = StringCleaner()
 	cleaner.loadLangFiles()
 	cleaner.checkLangUsage()
+	cleaner.checkTranslations()
 
