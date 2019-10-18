@@ -344,8 +344,6 @@ class AliceCore(Module):
 	def confirmUsername(self, intent: str, session: DialogSession):
 		if intent == self._INTENT_ANSWER_NAME:
 			username = str(session.slots['Name']).lower()
-			if commons.isSpelledWord(username):
-				username = username.replace(' ', '')
 		else:
 			username = ''.join([slot.value['value'] for slot in session.slotsAsObjects['Letters']])
 
@@ -473,8 +471,7 @@ class AliceCore(Module):
 		self.ThreadManager.doLater(interval=5, func=subprocess.run, args=[['sudo', 'shutdown', '-r', 'now']])
 
 
-	#TODO return value should be a dict according to Module.py, so it appears something is wrong here
-	def onStart(self):
+	def onStart(self) -> dict:
 		super().onStart()
 		self.changeFeedbackSound(inDialog=False)
 
@@ -484,7 +481,7 @@ class AliceCore(Module):
 				raise ModuleStartDelayed(self.name)
 			self._addFirstUser()
 
-		return self._INTENTS
+		return self.supportedIntents
 
 
 	def _addFirstUser(self):
