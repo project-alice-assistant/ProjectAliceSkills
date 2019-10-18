@@ -258,23 +258,24 @@ class AliceCore(Module):
 				intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
 				currentDialogState='confirmingRecaptureAfterFailure'
 			)
-		else:
-			self.playSound(
-				soundFilename=str(self.WakewordManager.getLastSampleNumber()),
-				location=Path(tempfile.gettempdir()),
-				sessionId='checking-wakeword',
-				siteId=session.siteId
-			)
+			return
+		
+		self.playSound(
+			soundFilename=str(self.WakewordManager.getLastSampleNumber()),
+			location=Path(tempfile.gettempdir()),
+			sessionId='checking-wakeword',
+			siteId=session.siteId
+		)
 
-			text = 'howWasTheCapture' if self.WakewordManager.getLastSampleNumber() == 1 else 'howWasThisCapture'
+		text = 'howWasTheCapture' if self.WakewordManager.getLastSampleNumber() == 1 else 'howWasThisCapture'
 
-			self.continueDialog(
-				sessionId=session.sessionId,
-				text=self.randomTalk(text),
-				intentFilter=[self._INTENT_ANSWER_WAKEWORD_CUTTING],
-				slot='WakewordCaptureResult',
-				currentDialogState='confirmingCaptureResult'
-			)
+		self.continueDialog(
+			sessionId=session.sessionId,
+			text=self.randomTalk(text),
+			intentFilter=[self._INTENT_ANSWER_WAKEWORD_CUTTING],
+			slot='WakewordCaptureResult',
+			currentDialogState='confirmingCaptureResult'
+		)
 
 
 	def createWakeword(self, session: DialogSession, **_kwargs):
@@ -378,11 +379,7 @@ class AliceCore(Module):
 
 	def addDeviceIntent(self, session: DialogSession, **_kwargs):
 		if self.DeviceManager.isBusy():
-			self.endDialog(
-				sessionId=session.sessionId,
-				text=self.randomTalk('busy'),
-				siteId=session.siteId
-			)
+			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('busy'))
 			return
 
 		hardware = session.slots.get('Hardware')
@@ -598,49 +595,40 @@ class AliceCore(Module):
 
 
 	def aliceUpdateIntent(self, session: DialogSession, **_kwargs):
+		#TODO when online decorator is updated to alpha3 it should be used
 		if not self.InternetManager.online:
 			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('noAssistantUpdateOffline'))
 			return
 
 		self.publish('hermes/leds/systemUpdate')
+		updateTypes = {
+			'all': 1,
+			'alice': 2,
+			'assistant': 3,
+			'modules': 4
+		}
+		update = updateTypes.get(session.slots.get('WhatToUpdate', 'all'), 5)
 
-		if 'WhatToUpdate' not in session.slots:
-			update = 1
-		elif session.slots['WhatToUpdate'] == 'alice':
-			update = 2
-		elif session.slots['WhatToUpdate'] == 'assistant':
-			update = 3
-		elif session.slots['WhatToUpdate'] == 'modules':
-			update = 4
-		else:
-			update = 5
-
+		self.endDialog(sessionId=session.sessionId, text=self.randomTalk('confirmAssistantUpdate'))
 		if update in {1, 5}:  # All or system
 			self.logInfo('Updating system')
-			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('confirmAssistantUpdate'))
 			self.ThreadManager.doLater(interval=2, func=self.systemUpdate)
 
 		if update in {1, 4}:  # All or modules
 			self.logInfo('Updating modules')
-			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('confirmAssistantUpdate'))
 			self.ModuleManager.checkForModuleUpdates()
 
 		if update in {1, 2}:  # All or Alice
 			self.logInfo('Updating Alice')
-			if update == 2:
-				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('confirmAssistantUpdate'))
 
 		if update in {1, 3}:  # All or Assistant
 			self.logInfo('Updating assistant')
 
 			if not self.LanguageManager.activeSnipsProjectId:
-				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('noProjectIdSet'))
+				self.ThreadManager.doLater(interval=1, func=self.say, args=[self.randomTalk('noProjectIdSet'), session.siteId])
 			elif not self.SnipsConsoleManager.loginCredentialsAreConfigured():
-				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('bundleUpdateNoCredentials'))
+				self.ThreadManager.doLater(interval=1, func=self.say, args=[self.randomTalk('bundleUpdateNoCredentials'), session.siteId])
 			else:
-				if update == 3:
-					self.endDialog(sessionId=session.sessionId, text=self.randomTalk('confirmAssistantUpdate'))
-
 				self.ThreadManager.doLater(interval=2, func=self.SamkillaManager.sync)
 
 
