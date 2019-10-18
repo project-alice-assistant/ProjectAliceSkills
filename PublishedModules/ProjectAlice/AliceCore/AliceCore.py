@@ -9,6 +9,7 @@ from core.base.SuperManager import SuperManager
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.commons import commons, constants
+from core.commons.commons import online
 from core.dialog.model.DialogSession import DialogSession
 from core.user.model.AccessLevels import AccessLevel
 from core.voice.WakewordManager import WakewordManagerState
@@ -594,12 +595,8 @@ class AliceCore(Module):
 			self.publish(topic='projectalice/devices/connectionRefused', payload={'siteId': session.payload['siteId'], 'uid': session.payload['uid']})
 
 
+	@online(text='noAssistantUpdateOffline')
 	def aliceUpdateIntent(self, session: DialogSession, **_kwargs):
-		#TODO when online decorator is updated to alpha3 it should be used
-		if not self.InternetManager.online:
-			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('noAssistantUpdateOffline'))
-			return
-
 		self.publish('hermes/leds/systemUpdate')
 		updateTypes = {
 			'all': 1,
