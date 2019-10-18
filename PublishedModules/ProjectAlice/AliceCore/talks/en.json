@@ -256,6 +256,9 @@
 			"I'm sorry, but for that I need the Tasmota module to be enabled"
 		]
 	},
+	"requireZigbeeModule": [
+		"I'm sorry, but for that I need the ZigBee module to be enabled"
+	],
 	"whatHardware": {
 		"default": [
 			"What kind of device do you want to add?",

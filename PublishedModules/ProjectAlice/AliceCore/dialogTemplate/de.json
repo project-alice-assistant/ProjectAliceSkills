@@ -381,6 +381,10 @@
 						"satellit",
 						"satelliten"
 					]
+				},
+				{
+					"value": "zigbee",
+					"synonyms": []
 				}
 			]
 		},

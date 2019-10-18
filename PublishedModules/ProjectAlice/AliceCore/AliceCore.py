@@ -437,6 +437,17 @@ class AliceCore(Module):
 			if not self.DeviceManager.startTasmotaFlashingProcess(commons.cleanRoomNameToSiteId(session.slots['Room']), session.slotsAsObjects['EspType'][0].value['value'], session):
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('espFailed'))
 
+		elif hardware == 'zigbee':
+			if not self.ModuleManager.isModuleActive('Zigbee2Mqtt'):
+				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('requireZigbeeModule'))
+				return
+
+			if self.DeviceManager.isBusy():
+				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('busy'))
+				return
+
+			self.DeviceManager.addZigBeeDevice()
+
 		elif hardware == 'satellite':
 			if self.DeviceManager.startBroadcastingForNewDevice(commons.cleanRoomNameToSiteId(session.slots['Room']), session.siteId):
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('confirmDeviceAddingMode'))
