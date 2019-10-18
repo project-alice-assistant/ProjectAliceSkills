@@ -325,10 +325,7 @@ class AliceCore(Module):
 			)
 			return
 
-		if accessLevel.lower() == AccessLevel.ADMIN.name.lower():
-			text = 'addAdminPin'
-		else:
-			text = 'addUserPin'
+		text = 'addAdminPin' if accessLevel.lower() == AccessLevel.ADMIN.name.lower() else 'addUserPin'
 
 		self.continueDialog(
 			sessionId=session.sessionId,
@@ -388,7 +385,10 @@ class AliceCore(Module):
 			)
 			return
 
-		if 'Hardware' not in session.slots:
+		hardware = session.slots.get('Hardware')
+		espType = session.slots.get('EspType')
+		room = session.slots.get('Room')
+		if not hardware:
 			self.continueDialog(
 				sessionId=session.sessionId,
 				text=self.randomTalk('whatHardware'),
@@ -397,7 +397,7 @@ class AliceCore(Module):
 			)
 			return
 
-		elif session.slotsAsObjects['Hardware'][0].value['value'] == 'esp' and 'EspType' not in session.slots:
+		if hardware == 'esp' and not espType:
 			self.continueDialog(
 				sessionId=session.sessionId,
 				text=self.randomTalk('whatESP'),
@@ -406,7 +406,7 @@ class AliceCore(Module):
 			)
 			return
 
-		elif 'Room' not in session.slots:
+		if not room:
 			self.continueDialog(
 				sessionId=session.sessionId,
 				text=self.randomTalk('whichRoom'),
@@ -415,7 +415,6 @@ class AliceCore(Module):
 			)
 			return
 
-		hardware = session.slotsAsObjects['Hardware'][0].value['value']
 		if hardware == 'esp':
 			if not self.ModuleManager.isModuleActive('Tasmota'):
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('requireTasmotaModule'))
@@ -425,11 +424,11 @@ class AliceCore(Module):
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('busy'))
 				return
 
-			if not self.DeviceManager.startTasmotaFlashingProcess(commons.cleanRoomNameToSiteId(session.slots['Room']), session.slotsAsObjects['EspType'][0].value['value'], session):
+			if not self.DeviceManager.startTasmotaFlashingProcess(commons.cleanRoomNameToSiteId(room), espType, session):
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('espFailed'))
 
 		elif hardware == 'satellite':
-			if self.DeviceManager.startBroadcastingForNewDevice(commons.cleanRoomNameToSiteId(session.slots['Room']), session.siteId):
+			if self.DeviceManager.startBroadcastingForNewDevice(commons.cleanRoomNameToSiteId(room), session.siteId):
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('confirmDeviceAddingMode'))
 			else:
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('busy'))
