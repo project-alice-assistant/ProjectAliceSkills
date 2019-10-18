@@ -1,10 +1,9 @@
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
-from core.commons import constants
 from core.dialog.model.DialogSession import DialogSession
+from core.commons.commons import online
 
 try:
-	# noinspection PyUnresolvedReferences
 	from modules.Ifttt.Ifttt import IftttException
 except:
 	pass
@@ -19,44 +18,44 @@ class FindMyPhone(Module):
 	_INTENT_ANSWER_NAME = Intent('AnswerName', isProtected=True)
 
 	def __init__(self):
-		self._SUPPORTED_INTENTS	= [
-			self._INTENT_FIND_PHONE,
+		self._INTENTS = [
+			(self._INTENT_FIND_PHONE, self.findPhoneIntent),
 			self._INTENT_ANSWER_NAME
 		]
 
-		super().__init__(self._SUPPORTED_INTENTS)
+		self._INTENT_ANSWER_NAME.dialogMapping = {
+			'phoneOwner': self.findPhoneIntent
+		}
+
+		super().__init__(self._INTENTS)
 
 
-	def onMessage(self, intent: str, session: DialogSession):
+	@online
+	def findPhoneIntent(self, session: DialogSession, **_kwargs):
 		sessionId = session.sessionId
 		slots = session.slots
 
-		if session.user == constants.UNKNOWN_USER and 'Who' not in slots and 'Name' not in slots:
+		who = slots.get('Who', slots.get('Name', session.user))
+		if who == 'unknown':
 			self.continueDialog(
 				sessionId=sessionId,
 				text=self.randomTalk('whosPhone'),
-				intentFilter=[self._INTENT_ANSWER_NAME]
+				intentFilter=[self._INTENT_ANSWER_NAME],
+				currentDialogState='phoneOwner'
 			)
+			return
+
+		module = self.getModuleInstance('Ifttt')
+		if not module:
+			self.endDialog(sessionId=sessionId, text=self.randomTalk('error'))
+			return
+
+		answer = module.sendRequest(endPoint='locatePhone', user=who)
+		if answer == IftttException.NOT_CONNECTED:
+			self.endDialog(sessionId=sessionId, text=self.randomTalk('notConnected'))
+		elif answer in {IftttException.ERROR, IftttException.BAD_REQUEST}:
+			self.endDialog(sessionId=sessionId, text=self.randomTalk('error'))
+		elif answer == IftttException.NO_USER:
+			self.endDialog(sessionId=sessionId, text=self.randomTalk('unknown', replace=[who]))
 		else:
-			if 'Who' in slots:
-				who = slots['Who']
-			elif 'Name' in slots:
-				who = slots['Name']
-			else:
-				who = session.user
-
-			module = self.getModuleInstance('Ifttt')
-			if not module:
-				self.endDialog(sessionId=sessionId, text=self.randomTalk('error'))
-				return
-
-			# noinspection PyUnresolvedReferences
-			answer = module.sendRequest(endPoint='locatePhone', user=who)
-			if answer == IftttException.NOT_CONNECTED:
-				self.endDialog(sessionId=sessionId, text=self.randomTalk('notConnected'))
-			elif answer in {IftttException.ERROR, IftttException.BAD_REQUEST}:
-				self.endDialog(sessionId=sessionId, text=self.randomTalk('error'))
-			elif answer == IftttException.NO_USER:
-				self.endDialog(sessionId=sessionId, text=self.randomTalk('unknown', replace=[who]))
-			else:
-				self.endDialog(sessionId=sessionId, text=self.randomTalk('acknowledge'))
+			self.endDialog(sessionId=sessionId, text=self.randomTalk('acknowledge'))
