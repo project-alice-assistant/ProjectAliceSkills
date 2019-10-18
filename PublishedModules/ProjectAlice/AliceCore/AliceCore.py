@@ -37,7 +37,7 @@ class AliceCore(Module):
 
 	def __init__(self):
 		self._INTENTS = [
-			self._INTENT_GLOBAL_STOP,
+			(self._INTENT_GLOBAL_STOP, self.globalStopIntent),
 			(self._INTENT_MODULE_GREETING, self.deviceGreetingIntent),
 			self._INTENT_ANSWER_YES_OR_NO,
 			(self._INTENT_ANSWER_ROOM, self.addDeviceIntent),
@@ -645,12 +645,8 @@ class AliceCore(Module):
 				self.ThreadManager.doLater(interval=2, func=self.SamkillaManager.sync)
 
 
-	def onMessage(self, intent: str, session: DialogSession) -> bool:
-		if intent == self._INTENT_GLOBAL_STOP:
-			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('confirmGlobalStop'), siteId=session.siteId)
-			return True
-
-		return False
+	def globalStopIntent(self, session: DialogSession, **_kwargs):
+		self.endDialog(sessionId=session.sessionId, text=self.randomTalk('confirmGlobalStop'))
 
 
 	def unmuteSite(self, siteId):
