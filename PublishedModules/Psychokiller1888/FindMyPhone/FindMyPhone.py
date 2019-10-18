@@ -2,6 +2,7 @@ from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
 from core.commons.commons import online
+from core.commons import constants
 
 try:
 	from modules.Ifttt.Ifttt import IftttException
@@ -36,7 +37,7 @@ class FindMyPhone(Module):
 		slots = session.slots
 
 		who = slots.get('Who', slots.get('Name', session.user))
-		if who == 'unknown':
+		if who == constants.UNKNOWN_USER:
 			self.continueDialog(
 				sessionId=sessionId,
 				text=self.randomTalk('whosPhone'),
