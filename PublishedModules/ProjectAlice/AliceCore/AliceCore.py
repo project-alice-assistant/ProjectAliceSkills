@@ -132,28 +132,26 @@ class AliceCore(Module):
 				currentDialogState='addingPinCode'
 			)
 			return
-		else:
-			pin = ''
-			for number in session.slotsAsObjects['Number']:
-				pin += str(int(number.value['value']))
+		
+		pin = ''.join([str(int(x.value['value'])) for x in session.slotsAsObjects['Number']])
 
-			if len(pin) != 4:
-				self.continueDialog(
-					sessionId=session.sessionId,
-					text=self.randomTalk('addPinInvalid'),
-					intentFilter=[self._INTENT_ANSWER_NUMBER],
-					currentDialogState='addingPinCode'
-				)
-			else:
-				self.continueDialog(
-					sessionId=session.sessionId,
-					text=self.randomTalk('addPinConfirm', replace=[digit for digit in pin]),
-					intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
-					currentDialogState='confirmingPinCode',
-					customData={
-						'pinCode': int(pin)
-					}
-				)
+		if len(pin) != 4:
+			self.continueDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk('addPinInvalid'),
+				intentFilter=[self._INTENT_ANSWER_NUMBER],
+				currentDialogState='addingPinCode'
+			)
+		else:
+			self.continueDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk('addPinConfirm', replace=[digit for digit in pin]),
+				intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
+				currentDialogState='confirmingPinCode',
+				customData={
+					'pinCode': int(pin)
+				}
+			)
 
 
 	def confirmWakewordTrimming(self, session: DialogSession, **_kwargs):
@@ -226,14 +224,15 @@ class AliceCore(Module):
 	def tryFixAndRecapture(self, intent: str, session: DialogSession):
 		if commons.isYes(session):
 			self.WakewordManager.tryCaptureFix()
-			return self.confirmWakewordTrimming(intent=intent, session=session)
-		else:
-			if self.delayed:
-				self.delayed = False
-				self.ThreadManager.getEvent('AddingWakeword').clear()
-				self.ThreadManager.doLater(interval=2, func=self.onStart)
+			self.confirmWakewordTrimming(intent=intent, session=session)
+			return
+		
+		if self.delayed:
+			self.delayed = False
+			self.ThreadManager.getEvent('AddingWakeword').clear()
+			self.ThreadManager.doLater(interval=2, func=self.onStart)
 
-			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('cancellingWakewordCapture'))
+		self.endDialog(sessionId=session.sessionId, text=self.randomTalk('cancellingWakewordCapture'))
 
 
 	def confirmWakeword(self, session: DialogSession, **_kwargs):
@@ -247,7 +246,7 @@ class AliceCore(Module):
 					intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
 					currentDialogState='confirmingRecaptureAfterFailure'
 				)
-				return True
+				return
 			time.sleep(0.5)
 
 		filepath = Path(tempfile.gettempdir(), str(self.WakewordManager.getLastSampleNumber())).with_suffix('.wav')
@@ -297,54 +296,49 @@ class AliceCore(Module):
 
 
 	def checkUsername(self, session: DialogSession, **_kwargs):
-		if commons.isYes(session):
-			if session.customData['username'] in self.UserManager.getAllUserNames(skipGuests=False):
-				self.continueDialog(
-					sessionId=session.sessionId,
-					text=self.randomTalk(text='userAlreadyExist', replace=[session.slots['Name']]),
-					intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
-					currentDialogState='addingUser'
-				)
-				return
-
-			if 'UserAccessLevel' not in session.slots and 'UserAccessLevel' not in session.customData:
-				self.continueDialog(
-					sessionId=session.sessionId,
-					text=self.randomTalk('addUserWhatAccessLevel'),
-					intentFilter=[self._INTENT_ANSWER_ACCESSLEVEL],
-					currentDialogState='confirmingUsername',
-					slot='UserAccessLevel'
-				)
-				return
-
-			elif 'UserAccessLevel' in session.slots:
-				accessLevel = session.slots['UserAccessLevel']
-
-			else:
-				accessLevel = session.customData['UserAccessLevel']
-
-			if accessLevel.lower() == AccessLevel.ADMIN.name.lower():
-				text = 'addAdminPin'
-			else:
-				text = 'addUserPin'
-
-			self.continueDialog(
-				sessionId=session.sessionId,
-				text=self.randomTalk(text),
-				intentFilter=[self._INTENT_ANSWER_NUMBER],
-				currentDialogState='addingPinCode',
-				customData={
-					'accessLevel': accessLevel
-				}
-			)
-
-		else:
+		if not commons.isYes(session):
 			self.continueDialog(
 				sessionId=session.sessionId,
 				text=self.randomTalk('soWhatsTheName'),
 				intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
 				currentDialogState='addingUser'
 			)
+			return
+		
+		if session.customData['username'] in self.UserManager.getAllUserNames(skipGuests=False):
+			self.continueDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk(text='userAlreadyExist', replace=[session.slots['Name']]),
+				intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
+				currentDialogState='addingUser'
+			)
+			return
+
+		accessLevel = session.slots.get('UserAccessLevel', session.customData.get('UserAccessLevel'))
+		if not accessLevel:
+			self.continueDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk('addUserWhatAccessLevel'),
+				intentFilter=[self._INTENT_ANSWER_ACCESSLEVEL],
+				currentDialogState='confirmingUsername',
+				slot='UserAccessLevel'
+			)
+			return
+
+		if accessLevel.lower() == AccessLevel.ADMIN.name.lower():
+			text = 'addAdminPin'
+		else:
+			text = 'addUserPin'
+
+		self.continueDialog(
+			sessionId=session.sessionId,
+			text=self.randomTalk(text),
+			intentFilter=[self._INTENT_ANSWER_NUMBER],
+			currentDialogState='addingPinCode',
+			customData={
+				'accessLevel': accessLevel
+			}
+		)
 
 
 	def confirmUsername(self, intent: str, session: DialogSession):
@@ -376,10 +370,9 @@ class AliceCore(Module):
 
 
 	def stopListenIntent(self, session: DialogSession, **_kwargs):
-		if 'Duration' in session.slots:
-			duration = commons.getDuration(session)
-			if duration > 0:
-				self.ThreadManager.doLater(interval=duration, func=self.unmuteSite, args=[session.siteId])
+		duration = commons.getDuration(session)
+		if duration:
+			self.ThreadManager.doLater(interval=duration, func=self.unmuteSite, args=[session.siteId])
 
 		aliceModule = self.ModuleManager.getModuleInstance('AliceSatellite')
 		if aliceModule:
@@ -473,15 +466,14 @@ class AliceCore(Module):
 
 
 	def reboot(self, session: DialogSession, **_kwargs):
-		value = 'greet'
-		if commons.isYes(session):
-			value = 'greetAndRebootModules'
+		value = 'greetAndRebootModules' if commons.isYes(session) else 'greet'
 
 		self.ConfigManager.updateAliceConfiguration('onReboot', value)
 		self.endDialog(session.sessionId, self.randomTalk('confirmRebooting'))
 		self.ThreadManager.doLater(interval=5, func=subprocess.run, args=[['sudo', 'shutdown', '-r', 'now']])
 
 
+	#TODO return value should be a dict according to Module.py, so it appears something is wrong here
 	def onStart(self):
 		super().onStart()
 		self.changeFeedbackSound(inDialog=False)
@@ -490,8 +482,7 @@ class AliceCore(Module):
 			if not self.delayed:
 				self.logWarning('No user found in database')
 				raise ModuleStartDelayed(self.name)
-			else:
-				self._addFirstUser()
+			self._addFirstUser()
 
 		return self._INTENTS
 
@@ -509,16 +500,12 @@ class AliceCore(Module):
 
 
 	def onUserCancel(self, session: DialogSession):
-		if self.delayed: # type: ignore
+		if not self.delayed: # type: ignore
 			self.delayed = False
 
 			if not self.ThreadManager.getEvent('AddingWakeword').isSet():
 				self.say(text=self.randomTalk('noStartWithoutAdmin'), siteId=session.siteId)
-
-				def stop():
-					subprocess.run(['sudo', 'systemctl', 'stop', 'ProjectAlice'])
-
-				self.ThreadManager.doLater(interval=10, func=stop)
+				self.ThreadManager.doLater(interval=10, func=self.stop)
 			else:
 				self.ThreadManager.getEvent('AddingWakeword').clear()
 				self.say(text=self.randomTalk('cancellingWakewordCapture'), siteId=session.siteId)
@@ -534,11 +521,7 @@ class AliceCore(Module):
 
 
 	def onSessionError(self, session: DialogSession):
-		if self.delayed:
-			if not self.UserManager.users:
-				self._addFirstUser()
-			else:
-				self.delayed = False
+		self.onSessionTimeout(session)
 
 
 	def onSessionStarted(self, session: DialogSession):
@@ -548,12 +531,7 @@ class AliceCore(Module):
 	def onSessionEnded(self, session: DialogSession):
 		if not self.ThreadManager.getEvent('AddingWakeword').isSet():
 			self.changeFeedbackSound(inDialog=False, siteId=session.siteId)
-
-			if self.delayed:
-				if not self.UserManager.users:
-					self._addFirstUser()
-				else:
-					self.delayed = False
+			self.onSessionTimeout(session)
 
 
 	def onSleep(self):
@@ -609,11 +587,11 @@ class AliceCore(Module):
 		self.say(text=self.randomTalk('bundleUpdateFailed'))
 
 
-	def deviceGreetingIntent(self, session: DialogSession, **_kwargs) -> bool:
+	def deviceGreetingIntent(self, session: DialogSession, **_kwargs):
 		if 'uid' not in session.payload or 'siteId' not in session.payload:
 			self.logWarning('A device tried to connect but is missing informations in the payload, refused')
 			self.publish(topic='projectalice/devices/connectionRefused', payload={'siteId': session.payload['siteId']})
-			return True
+			return
 
 		device = self.DeviceManager.deviceConnecting(uid=session.payload['uid'])
 		if device:
@@ -621,13 +599,12 @@ class AliceCore(Module):
 			self.publish(topic='projectalice/devices/connectionAccepted', payload={'siteId': session.payload['siteId'], 'uid': session.payload['uid']})
 		else:
 			self.publish(topic='projectalice/devices/connectionRefused', payload={'siteId': session.payload['siteId'], 'uid': session.payload['uid']})
-			return True
 
 
-	def aliceUpdateIntent(self, session: DialogSession, **_kwargs) -> bool:
+	def aliceUpdateIntent(self, session: DialogSession, **_kwargs):
 		if not self.InternetManager.online:
 			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('noAssistantUpdateOffline'))
-			return True
+			return
 
 		self.publish('hermes/leds/systemUpdate')
 
@@ -645,18 +622,7 @@ class AliceCore(Module):
 		if update in {1, 5}:  # All or system
 			self.logInfo('Updating system')
 			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('confirmAssistantUpdate'))
-
-
-			def systemUpdate():
-				subprocess.run(['sudo', 'apt-get', 'update'])
-				subprocess.run(['sudo', 'apt-get', 'dist-upgrade', '-y'])
-				subprocess.run(['git', 'stash'])
-				subprocess.run(['git', 'pull'])
-				subprocess.run(['git', 'stash', 'clear'])
-				SuperManager.getInstance().threadManager.doLater(interval=2, func=subprocess.run, args=['sudo', 'systemctl', 'restart', 'ProjectAlice'])
-
-
-			self.ThreadManager.doLater(interval=2, func=systemUpdate)
+			self.ThreadManager.doLater(interval=2, func=self.systemUpdate)
 
 		if update in {1, 4}:  # All or modules
 			self.logInfo('Updating modules')
@@ -687,7 +653,7 @@ class AliceCore(Module):
 			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('confirmGlobalStop'), siteId=session.siteId)
 			return True
 
-		return True
+		return False
 
 
 	def unmuteSite(self, siteId):
@@ -698,6 +664,21 @@ class AliceCore(Module):
 	@staticmethod
 	def restart():
 		subprocess.run(['sudo', 'systemctl', 'restart', 'ProjectAlice'])
+
+
+	@staticmethod
+	def stop():
+		subprocess.run(['sudo', 'systemctl', 'stop', 'ProjectAlice'])
+
+
+	@classmethod
+	def systemUpdate(cls):
+		subprocess.run(['sudo', 'apt-get', 'update'])
+		subprocess.run(['sudo', 'apt-get', 'dist-upgrade', '-y'])
+		subprocess.run(['git', 'stash'])
+		subprocess.run(['git', 'pull'])
+		subprocess.run(['git', 'stash', 'clear'])
+		SuperManager.getInstance().threadManager.doLater(interval=2, func=cls.restart)
 
 
 	def cancelUnregister(self):
@@ -724,10 +705,7 @@ class AliceCore(Module):
 			return
 
 		# Unfortunately we can't yet get rid of the feedback sound because Alice hears herself finishing the sentence and capturing part of it
-		if inDialog:
-			state = '_ask'
-		else:
-			state = ''
+		state = '_ask' if inDialog else ''
 
 		subprocess.run(['sudo', 'ln', '-sfn', f'{commons.rootDir()}/system/sounds/{self.LanguageManager.activeLanguage}/start_of_input{state}.wav', f'{commons.rootDir()}/assistant/custom_dialogue/sound/start_of_input.wav'])
 		subprocess.run(['sudo', 'ln', '-sfn', f'{commons.rootDir()}/system/sounds/{self.LanguageManager.activeLanguage}/error{state}.wav', f'{commons.rootDir()}/assistant/custom_dialogue/sound/error.wav'])
