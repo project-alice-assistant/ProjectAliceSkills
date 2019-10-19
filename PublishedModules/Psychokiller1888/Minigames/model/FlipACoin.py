@@ -41,7 +41,7 @@ class FlipACoin(MiniGame):
 			coin = random.choice(['heads', 'tails'])
 
 			SuperManager.getInstance().mqttManager.playSound(
-				soundFile=os.path.join(Commons.rootDir(), 'modules', 'Minigames', 'sounds', 'coinflip'),
+				soundFile=os.path.join(self.Commons.rootDir(), 'modules', 'Minigames', 'sounds', 'coinflip'),
 				sessionId='coinflip',
 				siteId=session.siteId,
 				absolutePath=True

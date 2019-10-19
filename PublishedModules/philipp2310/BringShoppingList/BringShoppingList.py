@@ -68,7 +68,7 @@ class BringShoppingList(Module):
 				previousIntent=self._INTENT_DEL_LIST)
 			return True
 		elif session.previousIntent == self._INTENT_DEL_LIST and intent == self._INTENT_CONF_DEL:
-			if Commons.isYes(session):
+			if self.Commons.isYes(session):
 				self.endDialog(session.sessionId, text=self._deleteCompleteList())
 			else:
 				self.endDialog(session.sessionId, text=self.randomTalk('nodel_all'))

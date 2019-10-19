@@ -260,4 +260,4 @@ class RedQueen(Module):
 			'Boredom'    : self._redQueen['stats']['boredom']
 		}
 
-		return Commons.dictMaxValue(stats)
+		return self.Commons.dictMaxValue(stats)

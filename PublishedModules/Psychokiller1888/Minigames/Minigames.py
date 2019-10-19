@@ -109,7 +109,7 @@ class Minigames(Module):
 		sessionId = session.sessionId
 
 		if not self._minigame or not self._minigame.started:
-			if not Commons.isYes(session):
+			if not self.Commons.isYes(session):
 				self.endDialog(
 					sessionId=sessionId,
 					text=self.randomTalk('endPlaying')
@@ -123,7 +123,7 @@ class Minigames(Module):
 				)
 		
 		elif self._minigame is not None and session.customData and 'askRetry' in session.customData.keys():
-			if Commons.isYes(session):
+			if self.Commons.isYes(session):
 				self._minigame.start(session)
 			else:
 				self._minigame = None

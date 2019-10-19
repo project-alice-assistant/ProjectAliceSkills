@@ -42,7 +42,7 @@ class RockPaperScissors(MiniGame):
 			me = random.choice(choices)
 
 			SuperManager.getInstance().mqttManager.playSound(
-				soundFile=os.path.join(Commons.rootDir(), 'modules', 'Minigames', 'sounds', 'drum_suspens'),
+				soundFile=os.path.join(self.Commons.rootDir(), 'modules', 'Minigames', 'sounds', 'drum_suspens'),
 				siteId=session.siteId,
 				absolutePath=True
 			)

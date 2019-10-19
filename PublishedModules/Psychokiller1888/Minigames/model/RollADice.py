@@ -26,7 +26,7 @@ class RollADice(MiniGame):
 		super().start(session)
 
 		SuperManager.getInstance().mqttManager.playSound(
-			soundFile=os.path.join(Commons.rootDir(), 'modules', 'Minigames', 'sounds', 'rollADice'),
+			soundFile=os.path.join(self.Commons.rootDir(), 'modules', 'Minigames', 'sounds', 'rollADice'),
 			sessionId='rollADice',
 			siteId=session.siteId,
 			absolutePath=True

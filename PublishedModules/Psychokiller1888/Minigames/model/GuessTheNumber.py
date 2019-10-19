@@ -61,7 +61,7 @@ class GuessTheNumber(MiniGame):
 			scoreFormatted = SuperManager.getInstance().languageManager.getTranslations(module='Minigames', key='minutesAndSeconds')[0].format(round(m), round(s))
 
 			SuperManager.getInstance().mqttManager.playSound(
-				soundFile=os.path.join(Commons.rootDir(), 'modules', 'Minigames', 'sounds', 'applause'),
+				soundFile=os.path.join(self.Commons.rootDir(), 'modules', 'Minigames', 'sounds', 'applause'),
 				siteId=session.siteId,
 				absolutePath=True
 			)

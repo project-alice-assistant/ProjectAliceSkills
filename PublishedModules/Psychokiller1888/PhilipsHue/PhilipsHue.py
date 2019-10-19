@@ -160,7 +160,7 @@ class PhilipsHue(Module):
 
 
 	def onFullHour(self):
-		partOfTheDay = Commons.partOfTheDay().lower()
+		partOfTheDay = self.Commons.partOfTheDay().lower()
 		if partOfTheDay not in self._scenes:
 			return
 
@@ -208,7 +208,7 @@ class PhilipsHue(Module):
 					return True
 
 		if intent == self._INTENT_LIGHT_ON:
-			partOfTheDay = Commons.partOfTheDay().lower()
+			partOfTheDay = self.Commons.partOfTheDay().lower()
 			if 'Room' in slots:
 				for slot in slots['Room']:
 					room = slot.value['value'].lower()
@@ -294,7 +294,7 @@ class PhilipsHue(Module):
 
 
 		elif intent == self._INTENT_MANAGE_LIGHTS:
-			partOfTheDay = Commons.partOfTheDay().lower()
+			partOfTheDay = self.Commons.partOfTheDay().lower()
 			if 'Room' not in slots:
 				room = place
 
