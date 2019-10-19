@@ -421,8 +421,7 @@ class AliceCore(Module):
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('busy'))
 
 			elif not self.DeviceManager.startTasmotaFlashingProcess(commons.cleanRoomNameToSiteId(room), espType, session):
-				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('espFailed'))
-			#TODO it is possible that the session is not ended here
+				self.ThreadManager.doLater(interval=1, func=self.say, args=[self.randomTalk('espFailed'), session.siteId])
 
 		elif hardware == 'satellite':
 			if self.DeviceManager.startBroadcastingForNewDevice(commons.cleanRoomNameToSiteId(room), session.siteId):
