@@ -26,18 +26,34 @@ class BringShoppingList(Module):
 
 
 	def __init__(self):
-		self._SUPPORTED_INTENTS = {
+		self._INTENTS = [
+			(self._INTENT_ADD_ITEM, self.addItemIntent),
+			(self._INTENT_DEL_ITEM, self.delItemIntent),
+			(self._INTENT_CHECK_LIST, self.checkListIntent),
+			(self._INTENT_READ_LIST, self.readListIntent),
+			(self._INTENT_DEL_LIST, self.delListIntent),
+			self._INTENT_CONF_DEL,
+			self._INTENT_ANSWER_SHOP,
+			self._INTENT_SPELL_WORD
+		]
+
+		self._INTENT_ANSWER_SHOP.dialogMapping = {
 			self._INTENT_ADD_ITEM: self.addItemIntent,
 			self._INTENT_DEL_ITEM: self.delItemIntent,
-			self._INTENT_CHECK_LIST: self.checkListIntent,
-			self._INTENT_READ_LIST: self.readListIntent,
-			self._INTENT_DEL_LIST: self.delListIntent,
-			self._INTENT_CONF_DEL: self.confDelIntent,
-			self._INTENT_ANSWER_SHOP: self.shopItemIntent,
-			self._INTENT_SPELL_WORD: self.shopItemIntent
+			self._INTENT_CHECK_LIST: self.checkListIntent
 		}
 
-		super().__init__(self._SUPPORTED_INTENTS)
+		self._INTENT_SPELL_WORD.dialogMapping = {
+			self._INTENT_ADD_ITEM: self.addItemIntent,
+			self._INTENT_DEL_ITEM: self.delItemIntent,
+			self._INTENT_CHECK_LIST: self.checkListIntent
+		}
+
+		self._INTENT_CONF_DEL.dialogMapping = {
+			'confDelList': self.confDelIntent
+		}
+
+		super().__init__(self._INTENTS)
 
 		# Get config values
 		self._uuid = self.getConfig('uuid')
@@ -126,81 +142,56 @@ class BringShoppingList(Module):
 				sessionId=session.sessionId,
 				text=self.randomTalk(f'{answer}_what'),
 				intentFilter=[self._INTENT_ANSWER_SHOP, self._INTENT_SPELL_WORD],
-				previousIntent=intent)
+				currentDialogState=intent)
 		return items
 
 
-	def _offlineHandler(self, session: DialogSession, **kwargs) -> bool:
-		self.endDialog(session.sessionId, text=self.TalkManager.randomTalk('offline', module='system'))
-		return True
-
-
 	### INTENTS ###
-	def shopItemIntent(self, intent: str, session: DialogSession) -> bool:
-		if session.previousIntent == self._INTENT_ADD_ITEM:
-			return self.addItemIntent(intent, session)
-		elif session.previousIntent == self._INTENT_DEL_ITEM:
-			return self.delItemIntent(intent, session)
-		elif session.previousIntent == self._INTENT_CHECK_LIST:
-			return self.checkListIntent(intent, session)
-
-		return False:
-
-
-	def delListIntent(self, intent: str, session: DialogSession) -> bool:
+	def delListIntent(self, session: DialogSession, **_kwargs):
 		self.continueDialog(
 			sessionId=session.sessionId,
 			text=self.randomTalk('chk_del_all'),
 			intentFilter=[self._INTENT_CONF_DEL],
-			previousIntent=self._INTENT_DEL_LIST)
-		return True
+			currentDialogState='confDelList')
 
 
-	def confDelIntent(self, intent: str, session: DialogSession) -> bool:
-		if session.previousIntent != self._INTENT_DEL_LIST:
-			if commons.isYes(session):
-				self.endDialog(session.sessionId, text=self._deleteCompleteList())
-			else:
-				self.endDialog(session.sessionId, text=self.randomTalk('nodel_all'))
-			return True
-
-		return False
+	def confDelIntent(self, session: DialogSession, **_kwargs):
+		if commons.isYes(session):
+			self.endDialog(session.sessionId, text=self._deleteCompleteList())
+		else:
+			self.endDialog(session.sessionId, text=self.randomTalk('nodel_all'))
 
 
-	@online(offlineHandler=_offlineHandler)
-	def addItemIntent(self, intent: str, session: DialogSession) -> bool:
+	@online
+	def addItemIntent(self, intent: str, session: DialogSession):
 		items = self._getShopItems(session, intent)
 		if items:
 			added, exist = self._addItemInt(items)
 			self.endDialog(session.sessionId, text=self._combineLists('add', added, exist))
-		return True
 
 
-	@online(offlineHandler=_offlineHandler)
-	def delItemIntent(self, intent: str, session: DialogSession) -> bool:
+	@online
+	def delItemIntent(self, intent: str, session: DialogSession):
 		items = self._getShopItems(session, intent)
 		if items:
 			removed, exist = self._deleteItemInt(items)
 			self.endDialog(session.sessionId, text=self._combineLists('rem', removed, exist))
-		return True
 
 
-	@online(offlineHandler=_offlineHandler)
-	def checkListIntent(self, intent: str, session: DialogSession) -> bool:
+	@online
+	def checkListIntent(self, intent: str, session: DialogSession):
 		items = self._getShopItems(session, intent)
 		if items:
 			found, missing = self._checkListInt(items)
 			self.endDialog(session.sessionId, text=self._combineLists('chk', found, missing))
-		return True
 
 
-	@online(offlineHandler=_offlineHandler)
-	def readListIntent(self, intent: str, session: DialogSession) -> bool:
+	@online
+	def readListIntent(self, intent: str, session: DialogSession):
 		"""read the content of the list"""
 		items = self._getBring().get_items().json()['purchase']
 		itemlist = [item['name'] for item in items]
 		self.endDialog(session.sessionId, text=self._getTextForList('read', itemlist))
-		return True
 
 
 	#### List/Text operations
