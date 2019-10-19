@@ -5,7 +5,7 @@ import random
 
 from core.base.SuperManager import SuperManager
 from core.base.model.Intent import Intent
-from core.commons import commons
+from core.commons import Commons
 from core.dialog.model.DialogSession import DialogSession
 from .MiniGame import MiniGame
 
@@ -61,7 +61,7 @@ class GuessTheNumber(MiniGame):
 			scoreFormatted = SuperManager.getInstance().languageManager.getTranslations(module='Minigames', key='minutesAndSeconds')[0].format(round(m), round(s))
 
 			SuperManager.getInstance().mqttManager.playSound(
-				soundFile=os.path.join(commons.rootDir(), 'modules', 'Minigames', 'sounds', 'applause'),
+				soundFile=os.path.join(Commons.rootDir(), 'modules', 'Minigames', 'sounds', 'applause'),
 				siteId=session.siteId,
 				absolutePath=True
 			)

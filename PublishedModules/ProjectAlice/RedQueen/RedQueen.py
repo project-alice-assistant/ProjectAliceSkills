@@ -9,7 +9,7 @@ from random import randint
 from core.ProjectAliceExceptions import ModuleStartingFailed
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
-from core.commons import commons, constants
+from core.commons import Commons, constants
 from core.dialog.model.DialogSession import DialogSession
 
 
@@ -260,4 +260,4 @@ class RedQueen(Module):
 			'Boredom'    : self._redQueen['stats']['boredom']
 		}
 
-		return commons.dictMaxValue(stats)
+		return Commons.dictMaxValue(stats)

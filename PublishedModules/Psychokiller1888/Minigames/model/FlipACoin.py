@@ -3,7 +3,7 @@ import random
 
 from core.base.SuperManager import SuperManager
 from core.base.model.Intent import Intent
-from core.commons import commons
+from core.commons import Commons
 from core.dialog.model.DialogSession import DialogSession
 from .MiniGame import MiniGame
 
@@ -41,7 +41,7 @@ class FlipACoin(MiniGame):
 			coin = random.choice(['heads', 'tails'])
 
 			SuperManager.getInstance().mqttManager.playSound(
-				soundFile=os.path.join(commons.rootDir(), 'modules', 'Minigames', 'sounds', 'coinflip'),
+				soundFile=os.path.join(Commons.rootDir(), 'modules', 'Minigames', 'sounds', 'coinflip'),
 				sessionId='coinflip',
 				siteId=session.siteId,
 				absolutePath=True
