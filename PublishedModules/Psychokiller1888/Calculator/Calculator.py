@@ -27,9 +27,9 @@ class Calculator(Module):
 			'*': lambda x,y: x*y,
 			'square root': lambda x,_: math.sqrt(x),
 			'modulo': lambda x,y: x%y,
-			'sine': lambda x,_: round(math.sin(x), 3),
-			'cosine': lambda x,_: round(math.cos(x), 3),
-			'tangent': lambda x,_: round(math.tan(x), 3)
+			'sine': lambda x,_: math.sin(x),
+			'cosine': lambda x,_: math.cos(x),
+			'tangent': lambda x,_: math.tan(x)
 		}
 		super().__init__(self._INTENTS)
 
@@ -43,6 +43,6 @@ class Calculator(Module):
 			self.continueDialog(sessionId=session.sessionId, text=self.randomTalk('notUnderstood'))
 			return
 
-		self._lastNumber = mathOperation(left, right)
+		self._lastNumber = round(mathOperation(left, right), 3)
 		answer = str(self._lastNumber) if self._lastNumber % 1 else str(int(self._lastNumber))
 		self.endDialog(sessionId=session.sessionId, text=answer)
