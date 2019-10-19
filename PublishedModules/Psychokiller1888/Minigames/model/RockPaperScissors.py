@@ -3,7 +3,6 @@ import random
 
 from core.base.SuperManager import SuperManager
 from core.base.model.Intent import Intent
-from core.commons import CommonsManager
 from core.dialog.model.DialogSession import DialogSession
 from .MiniGame import MiniGame
 
@@ -42,7 +41,7 @@ class RockPaperScissors(MiniGame):
 			me = random.choice(choices)
 
 			SuperManager.getInstance().mqttManager.playSound(
-				soundFile=os.path.join(self.Commons.rootDir(), 'modules', 'Minigames', 'sounds', 'drum_suspens'),
+				soundFile=os.path.join(SuperManager.getInstance().commons.rootDir(), 'modules', 'Minigames', 'sounds', 'drum_suspens'),
 				siteId=session.siteId,
 				absolutePath=True
 			)

@@ -9,7 +9,7 @@ from random import randint
 from core.ProjectAliceExceptions import ModuleStartingFailed
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
-from core.commons import CommonsManager, constants
+from core.commons import constants
 from core.dialog.model.DialogSession import DialogSession
 
 

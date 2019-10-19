@@ -3,7 +3,7 @@ import speedtest
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
-from core.commons.CommonsManager import online
+from core.util.Decorators import Decorators
 
 class Speedtest(Module):
 	"""
@@ -26,7 +26,7 @@ class Speedtest(Module):
 		return True
 
 
-	@online(offlineHandler=offlineHandler)
+	@Decorators.online(offlineHandler=offlineHandler)
 	def runSpeedtest(self, intent: str, session: DialogSession) -> bool:
 		self.ThreadManager.doLater(interval=0, func=self.executeSpeedtest)
 		self.logInfo('Starting Speedtest')

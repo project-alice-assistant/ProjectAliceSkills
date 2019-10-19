@@ -3,7 +3,7 @@ import requests
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
-from core.commons.CommonsManager import online
+from core.util.Decorators import Decorators
 
 
 class InternationalSpaceStation(Module):
@@ -43,7 +43,7 @@ class InternationalSpaceStation(Module):
 	def queryApi(url: str, *args, **kargs) -> dict:
 		return requests.get(url=url.format(*args, **kargs)).json()
 
-	@online
+	@Decorators.online
 	def getIssPosition(self) -> str:
 		data = self.queryApi('http://api.open-notify.org/iss-now.json')
 		latitude = float(data['iss_position']['latitude'])
@@ -82,7 +82,7 @@ class InternationalSpaceStation(Module):
 			place
 		])
 
-	@online
+	@Decorators.online
 	def getAstronauts(self) -> str:
 		data = self.queryApi('http://api.open-notify.org/astros.json')
 		amount = data['number']
