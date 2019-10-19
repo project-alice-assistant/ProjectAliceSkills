@@ -28,7 +28,7 @@ class Calculator(Module):
 			'square root': lambda x, y: math.sqrt(x),
 			'modulo': lambda x, y: x%y,
 			'sine': lambda x, y: round(math.sin(x), 3),
-			'cosine': lambda x, y: round(math.cos(x), 3)
+			'cosine': lambda x, y: round(math.cos(x), 3),
 			'tangent': lambda x, y: round(math.tan(x), 3)
 		}
 		super().__init__(self._INTENTS)
@@ -44,5 +44,5 @@ class Calculator(Module):
 			return
 
 		self._lastNumber = self._mathOperations[mathOperation](float(left), float(right))
-		answer = str(int(self._lastNumber)) if self._lastNumber % 1 == 0 else str(self._lastNumber)
+		answer = str(self._lastNumber) if self._lastNumber % 1 else str(int(self._lastNumber))
 		self.endDialog(sessionId=session.sessionId, text=answer)
