@@ -35,14 +35,14 @@ class Calculator(Module):
 
 
 	def mathIntent(self, intent: str, session: DialogSession):
-		func = session.slots.get('Function')
+		mathOperation = session.slots.get('Function')
 		left = session.slots.get('Left', self._lastNumber)
 		right = session.slots.get('Right')
 
-		if right is None or not func:
+		if right is None or not mathOperation:
 			self.continueDialog(sessionId=session.sessionId, text=self.randomTalk('notUnderstood'))
 			return
 
-		self._lastNumber = self._mathOperations[func](float(left), float(right))
+		self._lastNumber = self._mathOperations[mathOperation](float(left), float(right))
 		answer = str(int(self._lastNumber)) if self._lastNumber % 1 == 0 else str(self._lastNumber)
 		self.endDialog(sessionId=session.sessionId, text=answer)
