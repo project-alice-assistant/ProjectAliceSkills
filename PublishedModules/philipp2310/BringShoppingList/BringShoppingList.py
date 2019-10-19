@@ -3,7 +3,7 @@ from BringApi.BringApi import BringApi
 
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
-from core.commons import Commons
+from core.commons import CommonsManager
 from core.dialog.model.DialogSession import DialogSession
 
 

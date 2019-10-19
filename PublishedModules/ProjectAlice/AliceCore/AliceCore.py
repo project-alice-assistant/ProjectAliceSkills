@@ -8,7 +8,7 @@ from core.ProjectAliceExceptions import ModuleStartDelayed
 from core.base.SuperManager import SuperManager
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
-from core.commons import Commons, constants
+from core.commons import CommonsManager, constants
 from core.dialog.model.DialogSession import DialogSession
 from core.user.model.AccessLevels import AccessLevel
 from core.voice.WakewordManager import WakewordManagerState

@@ -3,7 +3,7 @@ import requests
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
-from core.commons.Commons import online
+from core.commons.CommonsManager import online
 
 
 class IcanhazdadjokeDotCom(Module):
