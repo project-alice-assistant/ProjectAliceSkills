@@ -21,15 +21,15 @@ class Calculator(Module):
 
 		self._lastNumber = 0
 		self._mathOperations = {
-			'+': lambda x, y: x+y,
-			'-': lambda x, y: x-y,
-			'/': lambda x, y: x/y,
-			'*': lambda x, y: x*y,
-			'square root': lambda x, y: math.sqrt(x),
-			'modulo': lambda x, y: x%y,
-			'sine': lambda x, y: round(math.sin(x), 3),
-			'cosine': lambda x, y: round(math.cos(x), 3),
-			'tangent': lambda x, y: round(math.tan(x), 3)
+			'+': lambda x,y: x+y,
+			'-': lambda x,y: x-y,
+			'/': lambda x,y: x/y,
+			'*': lambda x,y: x*y,
+			'square root': lambda x,_: math.sqrt(x),
+			'modulo': lambda x,y: x%y,
+			'sine': lambda x,_: round(math.sin(x), 3),
+			'cosine': lambda x,_: round(math.cos(x), 3),
+			'tangent': lambda x,_: round(math.tan(x), 3)
 		}
 		super().__init__(self._INTENTS)
 
