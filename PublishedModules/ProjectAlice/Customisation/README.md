@@ -16,12 +16,12 @@ wget http://modules.projectalice.ch/Customisation \
 ### Description
 Customisation is the official customisation module. Use it to customize your experience
 
-- Version: 1.03
+- Version: 1.04
 - Author: ProjectAlice
 - Maintainers:
   - Psycho
   - Jierka
   - maxbachmann
-- Alice minimum version: 0.12
+- Alice minimum version: 0.13
 - Conditions: N/A
 - Requirements: N/A

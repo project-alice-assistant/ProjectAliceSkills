@@ -16,11 +16,11 @@ wget http://modules.projectalice.ch/RandomUselessFacts \
 ### Description
 Gets you the daily random useless fact or a random one
 
-- Version: 1.42
+- Version: 1.43
 - Author: Psychokiller1888
 - Maintainers:
   - maxbachmann
-- Alice minimum version: 0.12
+- Alice minimum version: 0.13
 - Conditions:
   - en
   - de

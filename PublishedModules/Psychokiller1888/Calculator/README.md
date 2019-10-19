@@ -16,7 +16,7 @@ wget modules.projectalice.ch/Calculator \
 ### Description
 Do some calculation with alice
 
-- Version: 1.14
+- Version: 1.15
 - Author: Psychokiller1888
 - Maintainers:
   - Jierka

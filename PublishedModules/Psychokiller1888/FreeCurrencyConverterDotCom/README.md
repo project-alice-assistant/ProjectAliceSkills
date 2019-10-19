@@ -16,7 +16,7 @@ wget http://modules.projectalice.ch/FreeCurrencyConverterDotCom \
 ### Description
 Let's you convert world currencies
 
-- Version: 1.25
+- Version: 1.26
 - Author: Psychokiller1888
 - Maintainers: maxbachmann
 - Alice minimum version: 0.13
