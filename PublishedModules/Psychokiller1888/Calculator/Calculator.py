@@ -34,7 +34,7 @@ class Calculator(Module):
 		super().__init__(self._INTENTS)
 
 
-	def mathIntent(self, intent: str, session: DialogSession):
+	def mathIntent(self, session: DialogSession, **_kwargs):
 		mathOperation = session.slots.get('Function')
 		left = session.slots.get('Left', self._lastNumber)
 		right = session.slots.get('Right')
