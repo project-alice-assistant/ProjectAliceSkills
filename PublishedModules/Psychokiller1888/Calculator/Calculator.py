@@ -1,6 +1,4 @@
 import math
-import numbers
-from typing import Optional
 
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
@@ -20,65 +18,31 @@ class Calculator(Module):
 		self._INTENTS = [
 			(self._INTENT_MATHS, self.mathIntent)
 		]
-		self._lastNumber: float = 0
+
+		self._lastNumber = 0
+		self._mathOperations = {
+			'+': lambda x, y: x+y,
+			'-': lambda x, y: x-y,
+			'/': lambda x, y: x/y,
+			'*': lambda x, y: x*y,
+			'square root': lambda x, y: math.sqrt(x),
+			'modulo': lambda x, y: x%y,
+			'sine': lambda x, y: round(math.sin(x), 3),
+			'cosine': lambda x, y: round(math.cos(x), 3)
+			'tangent': lambda x, y: round(math.tan(x), 3)
+		}
 		super().__init__(self._INTENTS)
 
 
-	def mathIntent(self, session: DialogSession, **_kwargs):
-		slots = session.slotsAsObjects
-		sessionId = session.sessionId
+	def mathIntent(self, intent: str, session: DialogSession):
+		func = session.slots.get('Function')
+		left = session.slots.get('Left', self._lastNumber)
+		right = session.slots.get('Right')
 
-		if ('Left' not in slots and 'Right' not in slots) or 'Function' not in slots:
-			self.continueDialog(sessionId=sessionId, text=self.TalkManager.randomTalk('notUnderstood'))
+		if right is None or not func:
+			self.continueDialog(sessionId=session.sessionId, text=self.randomTalk('notUnderstood'))
 			return
 
-		func = session.slotValue('Function')
-
-		if 'Left' in slots and 'Right' in slots:
-			result = self.calculate(float(session.slotValue('Left')), float(session.slotValue('Right')), func)
-
-		elif 'Right' in slots and 'Left' not in slots:
-			if not isinstance(self._lastNumber, numbers.Number):
-				self.endDialog(sessionId=sessionId, text=self.TalkManager.randomTalk('noPreviousOperation'))
-				return
-
-			result = self.calculate(self._lastNumber, float(session.slotValue('Right')), func)
-
-		else:
-			self.continueDialog(sessionId=sessionId, text=self.TalkManager.randomTalk('notUnderstood'))
-			return
-
-		if not isinstance(result, numbers.Number):
-			answer = 'not supported'
-		elif result % 1 == 0:
-			answer = str(int(result))
-		else:
-			answer = str(result)
-
-		self.endDialog(sessionId=sessionId, text=answer)
-
-
-	def calculate(self, left: float, right: float, func: str) -> Optional[float]:
-		result: Optional[float] = None
-		if func == '+':
-			result = left + right
-		elif func == '-':
-			result = left - right
-		elif func == '/':
-			result = left / right
-		elif func == '*':
-			result = left * right
-		elif func == 'square root':
-			result = math.sqrt(left)
-		elif func == 'modulo':
-			result = left % right
-		elif func == 'sine':
-			result = math.sin(left)
-		elif func == 'cosine':
-			result = math.cos(left)
-		elif func == 'tangent':
-			result = math.tan(left)
-
-		result = round(result, 3)
-		self._lastNumber = result
-		return result
+		self._lastNumber = self._mathOperations[func](float(left), float(right))
+		answer = str(int(self._lastNumber)) if self._lastNumber % 1 == 0 else str(self._lastNumber)
+		self.endDialog(sessionId=session.sessionId, text=answer)
