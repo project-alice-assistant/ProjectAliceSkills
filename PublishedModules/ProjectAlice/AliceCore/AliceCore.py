@@ -416,14 +416,13 @@ class AliceCore(Module):
 		if hardware == 'esp':
 			if not self.ModuleManager.isModuleActive('Tasmota'):
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('requireTasmotaModule'))
-				return
 
-			if self.DeviceManager.isBusy():
+			elif self.DeviceManager.isBusy():
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('busy'))
-				return
 
-			if not self.DeviceManager.startTasmotaFlashingProcess(commons.cleanRoomNameToSiteId(room), espType, session):
+			elif not self.DeviceManager.startTasmotaFlashingProcess(commons.cleanRoomNameToSiteId(room), espType, session):
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('espFailed'))
+			#TODO it is possible that the session is not ended here
 
 		elif hardware == 'satellite':
 			if self.DeviceManager.startBroadcastingForNewDevice(commons.cleanRoomNameToSiteId(room), session.siteId):
@@ -582,17 +581,19 @@ class AliceCore(Module):
 
 
 	def deviceGreetingIntent(self, session: DialogSession, **_kwargs):
-		if 'uid' not in session.payload or 'siteId' not in session.payload:
+		uid = session.payload.get('uid')
+		siteId = session.payload.get('siteId')
+		if not uid or not siteId:
 			self.logWarning('A device tried to connect but is missing informations in the payload, refused')
-			self.publish(topic='projectalice/devices/connectionRefused', payload={'siteId': session.payload['siteId']})
+			self.publish(topic='projectalice/devices/connectionRefused', payload={'siteId': siteId})
 			return
 
-		device = self.DeviceManager.deviceConnecting(uid=session.payload['uid'])
+		device = self.DeviceManager.deviceConnecting(uid=uid)
 		if device:
 			self.logInfo(f'Device with uid {device.uid} of type {device.deviceType} in room {device.room} connected')
-			self.publish(topic='projectalice/devices/connectionAccepted', payload={'siteId': session.payload['siteId'], 'uid': session.payload['uid']})
+			self.publish(topic='projectalice/devices/connectionAccepted', payload={'siteId': siteId, 'uid': uid})
 		else:
-			self.publish(topic='projectalice/devices/connectionRefused', payload={'siteId': session.payload['siteId'], 'uid': session.payload['uid']})
+			self.publish(topic='projectalice/devices/connectionRefused', payload={'siteId': siteId, 'uid': uid})
 
 
 	@online(text='noAssistantUpdateOffline')
@@ -659,10 +660,9 @@ class AliceCore(Module):
 
 
 	def cancelUnregister(self):
-		if 'unregisterTimeout' in self._threads:
-			thread = self._threads['unregisterTimeout']
+		thread = self._threads.pop('unregisterTimeout', None)
+		if thread:
 			thread.cancel()
-			del self._threads['unregisterTimeout']
 
 
 	def langSwitch(self, newLang: str, siteId: str):
