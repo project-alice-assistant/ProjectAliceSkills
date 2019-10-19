@@ -4,7 +4,7 @@ import requests
 
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
-from core.commons.commons import online
+from core.util.Decorators import Decorators
 from core.dialog.model.DialogSession import DialogSession
 
 
@@ -30,7 +30,7 @@ class RandomUselessFacts(Module):
 		return True
 
 
-	@online(offlineHandler=offlineHandler)
+	@Decorators.online(offlineHandler=offlineHandler)
 	def uselessFactIntent(self, intent: str, session: DialogSession):
 		if not 'type' in session.slots:
 			ttype = 'random'

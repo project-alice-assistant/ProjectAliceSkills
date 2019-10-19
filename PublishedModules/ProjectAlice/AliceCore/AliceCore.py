@@ -8,7 +8,7 @@ from core.ProjectAliceExceptions import ModuleStartDelayed
 from core.base.SuperManager import SuperManager
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
-from core.commons import commons, constants
+from core.commons import constants
 from core.dialog.model.DialogSession import DialogSession
 from core.user.model.AccessLevels import AccessLevel
 from core.voice.WakewordManager import WakewordManagerState
@@ -104,7 +104,7 @@ class AliceCore(Module):
 
 	def askCreateWakeword(self, session: DialogSession, **_kwargs):
 		if 'pinCode' in session.customData:
-			if commons.isYes(session):
+			if self.Commons.isYes(session):
 				self.UserManager.addNewUser(name=session.customData['username'], access=session.customData['accessLevel'], pinCode=session.customData['pinCode'])
 			else:
 				self.continueDialog(
@@ -224,7 +224,7 @@ class AliceCore(Module):
 
 
 	def tryFixAndRecapture(self, intent: str, session: DialogSession):
-		if commons.isYes(session):
+		if self.Commons.isYes(session):
 			self.WakewordManager.tryCaptureFix()
 			return self.confirmWakewordTrimming(intent=intent, session=session)
 		else:
@@ -279,7 +279,7 @@ class AliceCore(Module):
 
 
 	def createWakeword(self, session: DialogSession, **_kwargs):
-		if commons.isYes(session):
+		if self.Commons.isYes(session):
 			self.WakewordManager.newWakeword(username=session.customData['username'])
 			self.ThreadManager.newEvent('AddingWakeword').set()
 
@@ -297,7 +297,7 @@ class AliceCore(Module):
 
 
 	def checkUsername(self, session: DialogSession, **_kwargs):
-		if commons.isYes(session):
+		if self.Commons.isYes(session):
 			if session.customData['username'] in self.UserManager.getAllUserNames(skipGuests=False):
 				self.continueDialog(
 					sessionId=session.sessionId,
@@ -350,7 +350,7 @@ class AliceCore(Module):
 	def confirmUsername(self, intent: str, session: DialogSession):
 		if intent == self._INTENT_ANSWER_NAME:
 			username = str(session.slots['Name']).lower()
-			if commons.isSpelledWord(username):
+			if self.Commons.isSpelledWord(username):
 				username = username.replace(' ', '')
 		else:
 			username = ''.join([slot.value['value'] for slot in session.slotsAsObjects['Letters']])
@@ -377,7 +377,7 @@ class AliceCore(Module):
 
 	def stopListenIntent(self, session: DialogSession, **_kwargs):
 		if 'Duration' in session.slots:
-			duration = commons.getDuration(session)
+			duration = self.Commons.getDuration(session)
 			if duration > 0:
 				self.ThreadManager.doLater(interval=duration, func=self.unmuteSite, args=[session.siteId])
 
@@ -434,7 +434,7 @@ class AliceCore(Module):
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('busy'))
 				return
 
-			if not self.DeviceManager.startTasmotaFlashingProcess(commons.cleanRoomNameToSiteId(session.slots['Room']), session.slotsAsObjects['EspType'][0].value['value'], session):
+			if not self.DeviceManager.startTasmotaFlashingProcess(self.Commons.cleanRoomNameToSiteId(session.slots['Room']), session.slotsAsObjects['EspType'][0].value['value'], session):
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('espFailed'))
 
 		elif hardware == 'zigbee':
@@ -449,7 +449,7 @@ class AliceCore(Module):
 			self.DeviceManager.addZigBeeDevice()
 
 		elif hardware == 'satellite':
-			if self.DeviceManager.startBroadcastingForNewDevice(commons.cleanRoomNameToSiteId(session.slots['Room']), session.siteId):
+			if self.DeviceManager.startBroadcastingForNewDevice(self.Commons.cleanRoomNameToSiteId(session.slots['Room']), session.siteId):
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('confirmDeviceAddingMode'))
 			else:
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('busy'))
@@ -472,7 +472,7 @@ class AliceCore(Module):
 
 
 	def confirmModuleReboot(self, session: DialogSession, **_kwargs):
-		if commons.isYes(session):
+		if self.Commons.isYes(session):
 			self.continueDialog(
 				sessionId=session.sessionId,
 				text=self.randomTalk('askRebootModules'),
@@ -485,7 +485,7 @@ class AliceCore(Module):
 
 	def reboot(self, session: DialogSession, **_kwargs):
 		value = 'greet'
-		if commons.isYes(session):
+		if self.Commons.isYes(session):
 			value = 'greetAndRebootModules'
 
 		self.ConfigManager.updateAliceConfiguration('onReboot', value)
@@ -720,7 +720,7 @@ class AliceCore(Module):
 
 	def langSwitch(self, newLang: str, siteId: str):
 		self.publish(topic='hermes/asr/textCaptured', payload={'siteId': siteId})
-		subprocess.run([f'{commons.rootDir()}/system/scripts/langSwitch.sh', newLang])
+		subprocess.run([f'{self.Commons.rootDir()}/system/scripts/langSwitch.sh', newLang])
 		self.ThreadManager.doLater(interval=3, func=self._confirmLangSwitch, args=[siteId])
 
 
@@ -731,7 +731,7 @@ class AliceCore(Module):
 
 	# noinspection PyUnusedLocal
 	def changeFeedbackSound(self, inDialog: bool, siteId: str = 'all'):
-		if not Path(commons.rootDir(), 'assistant').exists():
+		if not Path(self.Commons.rootDir(), 'assistant').exists():
 			return
 
 		# Unfortunately we can't yet get rid of the feedback sound because Alice hears herself finishing the sentence and capturing part of it
@@ -740,5 +740,5 @@ class AliceCore(Module):
 		else:
 			state = ''
 
-		subprocess.run(['sudo', 'ln', '-sfn', f'{commons.rootDir()}/system/sounds/{self.LanguageManager.activeLanguage}/start_of_input{state}.wav', f'{commons.rootDir()}/assistant/custom_dialogue/sound/start_of_input.wav'])
-		subprocess.run(['sudo', 'ln', '-sfn', f'{commons.rootDir()}/system/sounds/{self.LanguageManager.activeLanguage}/error{state}.wav', f'{commons.rootDir()}/assistant/custom_dialogue/sound/error.wav'])
+		subprocess.run(['sudo', 'ln', '-sfn', f'{self.Commons.rootDir()}/system/sounds/{self.LanguageManager.activeLanguage}/start_of_input{state}.wav', f'{self.Commons.rootDir()}/assistant/custom_dialogue/sound/start_of_input.wav'])
+		subprocess.run(['sudo', 'ln', '-sfn', f'{self.Commons.rootDir()}/system/sounds/{self.LanguageManager.activeLanguage}/error{state}.wav', f'{self.Commons.rootDir()}/assistant/custom_dialogue/sound/error.wav'])

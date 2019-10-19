@@ -3,7 +3,6 @@ from BringApi.BringApi import BringApi
 
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
-from core.commons import commons
 from core.dialog.model.DialogSession import DialogSession
 
 
@@ -68,7 +67,7 @@ class BringShoppingList(Module):
 				previousIntent=self._INTENT_DEL_LIST)
 			return True
 		elif session.previousIntent == self._INTENT_DEL_LIST and intent == self._INTENT_CONF_DEL:
-			if commons.isYes(session):
+			if self.Commons.isYes(session):
 				self.endDialog(session.sessionId, text=self._deleteCompleteList())
 			else:
 				self.endDialog(session.sessionId, text=self.randomTalk('nodel_all'))

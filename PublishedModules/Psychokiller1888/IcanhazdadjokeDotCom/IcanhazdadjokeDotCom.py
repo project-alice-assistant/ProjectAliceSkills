@@ -3,7 +3,7 @@ import requests
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
-from core.commons.commons import online
+from core.util.Decorators import Decorators
 
 
 class IcanhazdadjokeDotCom(Module):
@@ -21,7 +21,7 @@ class IcanhazdadjokeDotCom(Module):
 		self.endDialog(session.sessionId, text=self.TalkManager.randomTalk('offline', module='system'))
 
 
-	@online(offlineHandler=offlineHandler)
+	@Decorators.online(offlineHandler=offlineHandler)
 	def jokeIntent(self, session: DialogSession, **_kwargs):
 		url = 'https://icanhazdadjoke.com/'
 
