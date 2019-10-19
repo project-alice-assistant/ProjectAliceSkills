@@ -196,24 +196,11 @@ class BringShoppingList(Module):
 
 	#### List/Text operations
 	def _combineLists(self, answer: str, first: list, second: list) -> str:
-		"""
-		Combines two lists(if filled)
-		first+CONN+second
-		first
-		second
-		"""
-		strout = ''
-		if first:
-			strout = self._getTextForList(answer, first)
+		firstAnswer = self._getTextForList(answer, first) if first else ''
+		secondAnswer = self._getTextForList(f'{answer}_f', second) if second else ''
+		combinedAnswer = self.randomTalk('state_con', [firstAnswer, secondAnswer]) if first and second else ''
 
-		if second:
-			backup = strout  # don't overwrite added list... even if empty!
-			strout = self._getTextForList(f'{answer}_f', second)
-
-		if first and second:
-			strout = self.randomTalk('state_con', [backup, strout])
-
-		return strout
+		return combinedAnswer or firstAnswer or secondAnswer
 
 
 	def _getTextForList(self, pref: str, items: list) -> str:
@@ -223,5 +210,5 @@ class BringShoppingList(Module):
 		if len(items) == 1:
 			return self.randomTalk(f'{pref}_one', [items[0]])
 
-		value = self.randomTalk('gen_list', ['", "'.join(items[:-1]), items[-1]])
+		value = self.randomTalk('gen_list', [', '.join(items[:-1]), items[-1]])
 		return self.randomTalk(f'{pref}_multi', [value])
