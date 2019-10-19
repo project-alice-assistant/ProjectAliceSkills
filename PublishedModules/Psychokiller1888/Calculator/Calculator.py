@@ -35,9 +35,9 @@ class Calculator(Module):
 
 
 	def mathIntent(self, session: DialogSession, **_kwargs):
-		mathOperation = self._mathOperations.get(session.slots.get('Function'))
-		left = float(session.slots.get('Left', self._lastNumber))
-		right = float(session.slots.get('Right', 0))
+		mathOperation = self._mathOperations.get(session.slotValue('Function'))
+		left = float(session.slotValue('Left') or self._lastNumber)
+		right = float(session.slotValue('Right') or 0)
 
 		if not mathOperation:
 			self.continueDialog(sessionId=session.sessionId, text=self.randomTalk('notUnderstood'))
