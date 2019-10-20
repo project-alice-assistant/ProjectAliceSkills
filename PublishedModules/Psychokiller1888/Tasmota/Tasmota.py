@@ -35,7 +35,7 @@ class Tasmota(Module):
 	def filterIntent(self, intent: str, session: DialogSession) -> bool:
 		if intent.startswith('projectalice/devices/tasmota/'):
 			return True
-		super().filterIntent(intent=intent, session=session)
+		return super().filterIntent(intent=intent, session=session)
 
 
 	def onMessage(self, intent: str, session: DialogSession) -> bool:
