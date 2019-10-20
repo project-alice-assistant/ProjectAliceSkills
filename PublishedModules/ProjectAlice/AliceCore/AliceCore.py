@@ -8,8 +8,8 @@ from core.ProjectAliceExceptions import ModuleStartDelayed
 from core.base.SuperManager import SuperManager
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
-from core.commons import commons, constants
-from core.commons.commons import online
+from core.util.Decorators import Decorators
+from core.commons import constants
 from core.dialog.model.DialogSession import DialogSession
 from core.user.model.AccessLevels import AccessLevel
 from core.voice.WakewordManager import WakewordManagerState
@@ -105,7 +105,7 @@ class AliceCore(Module):
 
 	def askCreateWakeword(self, session: DialogSession, **_kwargs):
 		if 'pinCode' in session.customData:
-			if commons.isYes(session):
+			if self.Commons.isYes(session):
 				self.UserManager.addNewUser(name=session.customData['username'], access=session.customData['accessLevel'], pinCode=session.customData['pinCode'])
 			else:
 				self.continueDialog(
@@ -223,7 +223,7 @@ class AliceCore(Module):
 
 
 	def tryFixAndRecapture(self, intent: str, session: DialogSession):
-		if commons.isYes(session):
+		if self.Commons.isYes(session):
 			self.WakewordManager.tryCaptureFix()
 			self.confirmWakewordTrimming(intent=intent, session=session)
 			return
@@ -280,7 +280,7 @@ class AliceCore(Module):
 
 
 	def createWakeword(self, session: DialogSession, **_kwargs):
-		if commons.isYes(session):
+		if self.Commons.isYes(session):
 			self.WakewordManager.newWakeword(username=session.customData['username'])
 			self.ThreadManager.newEvent('AddingWakeword').set()
 
@@ -298,7 +298,7 @@ class AliceCore(Module):
 
 
 	def checkUsername(self, session: DialogSession, **_kwargs):
-		if not commons.isYes(session):
+		if not self.Common.isYes(session):
 			self.continueDialog(
 				sessionId=session.sessionId,
 				text=self.randomTalk('soWhatsTheName'),
@@ -367,7 +367,7 @@ class AliceCore(Module):
 
 
 	def stopListenIntent(self, session: DialogSession, **_kwargs):
-		duration = commons.getDuration(session)
+		duration = self.Commons.getDuration(session)
 		if duration:
 			self.ThreadManager.doLater(interval=duration, func=self.unmuteSite, args=[session.siteId])
 
@@ -420,11 +420,22 @@ class AliceCore(Module):
 			elif self.DeviceManager.isBusy():
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('busy'))
 
-			elif not self.DeviceManager.startTasmotaFlashingProcess(commons.cleanRoomNameToSiteId(room), espType, session):
+			elif not self.DeviceManager.startTasmotaFlashingProcess(self.Commons.cleanRoomNameToSiteId(room), espType, session):
 				self.ThreadManager.doLater(interval=1, func=self.say, args=[self.randomTalk('espFailed'), session.siteId])
 
+		elif hardware == 'zigbee':
+			if not self.ModuleManager.isModuleActive('Zigbee2Mqtt'):
+				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('requireZigbeeModule'))
+				return
+
+			if self.DeviceManager.isBusy():
+				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('busy'))
+				return
+
+			self.DeviceManager.addZigBeeDevice()
+
 		elif hardware == 'satellite':
-			if self.DeviceManager.startBroadcastingForNewDevice(commons.cleanRoomNameToSiteId(room), session.siteId):
+			if self.DeviceManager.startBroadcastingForNewDevice(self.Commons.cleanRoomNameToSiteId(room), session.siteId):
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('confirmDeviceAddingMode'))
 			else:
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('busy'))
@@ -447,7 +458,7 @@ class AliceCore(Module):
 
 
 	def confirmModuleReboot(self, session: DialogSession, **_kwargs):
-		if commons.isYes(session):
+		if self.Commons.isYes(session):
 			self.continueDialog(
 				sessionId=session.sessionId,
 				text=self.randomTalk('askRebootModules'),
@@ -459,7 +470,7 @@ class AliceCore(Module):
 
 
 	def reboot(self, session: DialogSession, **_kwargs):
-		value = 'greetAndRebootModules' if commons.isYes(session) else 'greet'
+		value = 'greetAndRebootModules' if self.Commons.isYes(session) else 'greet'
 
 		self.ConfigManager.updateAliceConfiguration('onReboot', value)
 		self.endDialog(session.sessionId, self.randomTalk('confirmRebooting'))
@@ -595,7 +606,7 @@ class AliceCore(Module):
 			self.publish(topic='projectalice/devices/connectionRefused', payload={'siteId': siteId, 'uid': uid})
 
 
-	@online(text='noAssistantUpdateOffline')
+	@Decorators.online(text='noAssistantUpdateOffline')
 	def aliceUpdateIntent(self, session: DialogSession, **_kwargs):
 		self.publish('hermes/leds/systemUpdate')
 		updateTypes = {
@@ -666,7 +677,7 @@ class AliceCore(Module):
 
 	def langSwitch(self, newLang: str, siteId: str):
 		self.publish(topic='hermes/asr/textCaptured', payload={'siteId': siteId})
-		subprocess.run([f'{commons.rootDir()}/system/scripts/langSwitch.sh', newLang])
+		subprocess.run([f'{self.Commons.rootDir()}/system/scripts/langSwitch.sh', newLang])
 		self.ThreadManager.doLater(interval=3, func=self._confirmLangSwitch, args=[siteId])
 
 
@@ -677,11 +688,11 @@ class AliceCore(Module):
 
 	# noinspection PyUnusedLocal
 	def changeFeedbackSound(self, inDialog: bool, siteId: str = 'all'):
-		if not Path(commons.rootDir(), 'assistant').exists():
+		if not Path(self.Commons.rootDir(), 'assistant').exists():
 			return
 
 		# Unfortunately we can't yet get rid of the feedback sound because Alice hears herself finishing the sentence and capturing part of it
 		state = '_ask' if inDialog else ''
 
-		subprocess.run(['sudo', 'ln', '-sfn', f'{commons.rootDir()}/system/sounds/{self.LanguageManager.activeLanguage}/start_of_input{state}.wav', f'{commons.rootDir()}/assistant/custom_dialogue/sound/start_of_input.wav'])
-		subprocess.run(['sudo', 'ln', '-sfn', f'{commons.rootDir()}/system/sounds/{self.LanguageManager.activeLanguage}/error{state}.wav', f'{commons.rootDir()}/assistant/custom_dialogue/sound/error.wav'])
+		subprocess.run(['sudo', 'ln', '-sfn', f'{self.Commons.rootDir()}/system/sounds/{self.LanguageManager.activeLanguage}/start_of_input{state}.wav', f'{self.Commons.rootDir()}/assistant/custom_dialogue/sound/start_of_input.wav'])
+		subprocess.run(['sudo', 'ln', '-sfn', f'{self.Commons.rootDir()}/system/sounds/{self.LanguageManager.activeLanguage}/error{state}.wav', f'{self.Commons.rootDir()}/assistant/custom_dialogue/sound/error.wav'])

@@ -6,7 +6,6 @@ import requests
 from core.ProjectAliceExceptions import ModuleStartDelayed, ModuleStartingFailed
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
-from core.commons import commons
 from core.dialog.model.DialogSession import DialogSession
 from .libraries.phue import Bridge, PhueException, PhueRegistrationException
 
@@ -160,7 +159,7 @@ class PhilipsHue(Module):
 
 
 	def onFullHour(self):
-		partOfTheDay = commons.partOfTheDay().lower()
+		partOfTheDay = self.Commons.partOfTheDay().lower()
 		if partOfTheDay not in self._scenes:
 			return
 
@@ -208,7 +207,7 @@ class PhilipsHue(Module):
 					return True
 
 		if intent == self._INTENT_LIGHT_ON:
-			partOfTheDay = commons.partOfTheDay().lower()
+			partOfTheDay = self.Commons.partOfTheDay().lower()
 			if 'Room' in slots:
 				for slot in slots['Room']:
 					room = slot.value['value'].lower()
@@ -294,7 +293,7 @@ class PhilipsHue(Module):
 
 
 		elif intent == self._INTENT_MANAGE_LIGHTS:
-			partOfTheDay = commons.partOfTheDay().lower()
+			partOfTheDay = self.Commons.partOfTheDay().lower()
 			if 'Room' not in slots:
 				room = place
 

@@ -11,10 +11,10 @@ wget http://modules.projectalice.ch/MpdClient -O ~/ProjectAlice/system/moduleIns
 ### Description
 Control an MPD server
 
-- Version: 0.13
+- Version: 0.15
 - Author: glueckself
 - Maintainers: maxbachmann
-- Alice minimum version: 0.12
+- Alice minimum version: 0.13
 - Conditions:
   - en
   - de
