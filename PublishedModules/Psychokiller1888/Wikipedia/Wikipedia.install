@@ -1,6 +1,6 @@
 {
 	"name": "Wikipedia",
-	"version": 1.36,
+	"version": 1.37,
 	"author": "Psychokiller1888",
 	"maintainers": ["Jierka", "maxbachmann"],
 	"desc": "Allows one to find informations about a topic on wikipedia",
@@ -13,7 +13,8 @@
 	"conditions": {
 		"lang": [
 			"en",
-			"fr"
+			"fr",
+			"de"
 		],
 		"online": true
 	}

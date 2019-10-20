@@ -16,7 +16,7 @@ wget http://modules.projectalice.ch/Wikipedia \
 ### Description
 Allows one to find informations about a topic on wikipedia
 
-- Version: 1.36
+- Version: 1.37
 - Author: Psychokiller1888
 - Maintainers:
     - Jierka
@@ -25,5 +25,6 @@ Allows one to find informations about a topic on wikipedia
 - Conditions:
   - en
   - fr
+  - de
   - online
 - Requirements: wikipedia

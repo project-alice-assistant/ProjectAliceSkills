@@ -39,12 +39,10 @@ class Telemetry(Module):
 
 	def telemetryIntent(self, session: DialogSession, **_kwargs):
 		slots = session.slots
-		siteId = session.siteId
+		siteId = session.slotValue('Room') or session.siteId
+		telemetryType = session.slotValue('TelemetryType')
 
-		if 'Room' in slots:
-			siteId = session.slotValue('Room')
-
-		if 'TelemetryType' not in slots:
+		if not telemetryType:
 			self.continueDialog(
 				sessionId=session.sessionId,
 				text=self.randomTalk('noType'),
@@ -52,12 +50,10 @@ class Telemetry(Module):
 				slot='TelemetryType'
 			)
 
-		telemetryType = session.slotValue('TelemetryType')
-
 		data = self.TelemetryManager.getData(siteId=siteId, ttype=TelemetryType(telemetryType))
 
-		if data and data[0]:
-			answer = data['value'] + self._telemetryUnits.get(telemetryType, '')
+		if data and 'value' in data:
+			answer = f"{data['value']} {self._telemetryUnits.get(telemetryType, '')}"
 			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('answerInstant').format(answer))
 		else:
 			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('noData'))
