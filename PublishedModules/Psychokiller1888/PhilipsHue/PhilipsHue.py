@@ -195,8 +195,6 @@ class PhilipsHue(Module):
 
 
 	def lightOnIntent(self, session: DialogSession, **_kwargs):
-		slots = session.slotsAsObjects
-		siteId = session.siteId
 		partOfTheDay = self.Commons.partOfTheDay().lower()
 
 		for room in self._getRooms(session):
@@ -213,9 +211,6 @@ class PhilipsHue(Module):
 
 
 	def lightOffIntent(self, session: DialogSession, **_kwargs):
-		slots = session.slotsAsObjects
-		siteId = session.siteId
-
 		for room in self._getRooms(session):
 			if room == 'everywhere':
 				self._bridge.set_group(0, 'on', False)
@@ -228,18 +223,16 @@ class PhilipsHue(Module):
 
 
 	def lightSceneIntent(self, session: DialogSession, **_kwargs):
-		slots = session.slotsAsObjects
-		place = session.siteId
 		sessionId = session.sessionId
 		customData = session.customData
 
 		if 'scene' in customData:
 			scene = customData['scene']
-		elif len(slots.get('Scene', list())) > 1:
+		elif len(session.slotsAsObjects.get('Scene', list())) > 1:
 			self.endDialog(sessionId, text=self.randomTalk('cantSpecifyMoreThanOneScene'))
 			return
 		else:
-			scene = slots.slotValue('Scene').lower()
+			scene = session.slotValue('Scene').lower()
 
 		if not scene:
 			self.continueDialog(
@@ -254,7 +247,7 @@ class PhilipsHue(Module):
 			)
 			return
 		elif scene not in self._scenes:
-			self.endDialog(sessionId=session.sessionId, text=self.randomTalk(text='sceneUnknown', replace=[scene]))
+			self.endDialog(sessionId=sessionId, text=self.randomTalk(text='sceneUnknown', replace=[scene]))
 			return
 
 		for room in self._getRooms(session):
@@ -262,13 +255,10 @@ class PhilipsHue(Module):
 				self.endDialog(sessionId, text=self.randomTalk('sceneNotInThisRoom'))
 				return
 
-		self.endDialog(session.sessionId, text=self.randomTalk('confirm'))
+		self.endDialog(sessionId, text=self.randomTalk('confirm'))
 
 
 	def manageLightsIntent(self, session: DialogSession, **_kwargs):
-		slots = session.slotsAsObjects
-		sessionId = session.sessionId
-		siteId = session.siteId
 		partOfTheDay = self.Commons.partOfTheDay().lower()
 
 		for room in self._getRooms(session):
@@ -289,11 +279,9 @@ class PhilipsHue(Module):
 
 
 	def dimLightsIntent(self, session: DialogSession, **_kwargs):
-		slots = session.slotsAsObjects
-		sessionId = session.sessionId
-		if 'Percent' not in slots:
+		if 'Percent' not in session.slots:
 			self.continueDialog(
-				sessionId=sessionId,
+				sessionId=session.sessionId,
 				text=self.randomTalk('whatPercentage'),
 				intentFilter=[self._INTENT_ANSWER_PERCENT],
 				previousIntent=self._INTENT_DIM_LIGHTS,
@@ -303,9 +291,7 @@ class PhilipsHue(Module):
 			)
 			return
 
-		percentage = int(slots['Percent'][0].rawValue.replace('%', ''))
-		percentage = self.Commons.clamp(percentage, 0, 100)
-
+		percentage = self.Commons.clamp(session.slotValue('Percent'), 0, 100)
 		brightness = int(round(254 / 100 * percentage))
 
 		for room in self._getRooms(session):
