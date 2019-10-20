@@ -75,7 +75,7 @@ class InternationalSpaceStation(Module):
 
 	@Decorators.anyExcept(exceptions=(RequestException, KeyError), text='noServer', printStack=True)
 	@Decorators.online
-	def getAstronauts(self, session: DialogSession, **_kwarg):
+	def getAstronauts(self, session: DialogSession, **_kwargs):
 		data = self.queryApi('http://api.open-notify.org/astros.json')
 		amount = data['number']
 
