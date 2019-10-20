@@ -298,7 +298,7 @@ class AliceCore(Module):
 
 
 	def checkUsername(self, session: DialogSession, **_kwargs):
-		if not self.Common.isYes(session):
+		if not self.Commons.isYes(session):
 			self.continueDialog(
 				sessionId=session.sessionId,
 				text=self.randomTalk('soWhatsTheName'),
