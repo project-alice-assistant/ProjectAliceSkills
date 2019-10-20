@@ -1,4 +1,5 @@
 import requests
+from requests.exceptions import RequestException
 
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
