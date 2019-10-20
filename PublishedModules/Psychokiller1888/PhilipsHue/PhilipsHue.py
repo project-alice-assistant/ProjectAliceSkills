@@ -69,9 +69,8 @@ class PhilipsHue(Module):
 				self.logInfo(f"Autodiscover found bridge at {firstBridge['internalipaddress']}, saving ip to config.json")
 				self.updateConfig('phueAutodiscoverFallback', False)
 				self.updateConfig('phueBridgeIp', firstBridge['internalipaddress'])
-				if not self._connectBridge():
-					raise ModuleStartingFailed(moduleName=self.name, error='Cannot connect to bridge')
-				return self.supportedIntents
+				if self._connectBridge():
+					return self.supportedIntents
 			except IndexError:
 				self.logInfo('No bridge found')
 
@@ -79,46 +78,46 @@ class PhilipsHue(Module):
 
 
 	def _connectBridge(self) -> bool:
-		if self._bridgeConnectTries < 3:
-			try:
-				hueConfigFile = self.getResource(self.name, 'philipsHueConf.conf')
-				hueConfigFileExists = os.path.isfile(hueConfigFile)
-
-				if not hueConfigFileExists:
-					self.logInfo('No philipsHueConf.conf file in PhilipsHue module directory')
-
-				self._bridge = Bridge(ip=self.ConfigManager.getModuleConfigByName(self.name, 'phueBridgeIp'), config_file_path=hueConfigFile)
-
-				if not self._bridge:
-					raise PhueException
-
-				self._bridge.connect()
-				if not self._bridge.registered:
-					raise PhueRegistrationException
-
-				elif not hueConfigFileExists:
-					self.ThreadManager.doLater(
-						interval=3,
-						func=self.say,
-						args=[self.randomTalk('pressBridgeButtonConfirmation')]
-					)
-
-			except PhueRegistrationException:
-				if self.delayed:
-					self.say(text=self.randomTalk('pressBridgeButton'))
-					self._bridgeConnectTries += 1
-					self.logWarning("-Bridge not registered, please press the bridge button, retry in 20 seconds")
-					time.sleep(20)
-					return self._connectBridge()
-				else:
-					self.delayed = True
-					raise ModuleStartDelayed(self.name)
-			except PhueException as e:
-				self.logError(f'Bridge error: {e}')
-				return False
-		else:
+		if self._bridgeConnectTries >= 3:
 			self.logError("Couldn't reach bridge")
 			self.ThreadManager.doLater(interval=3, func=self.say, args=[self.randomTalk('pressBridgeButtonTimeout')])
+			return False
+
+		try:
+			hueConfigFile = self.getResource(self.name, 'philipsHueConf.conf')
+			hueConfigFileExists = os.path.isfile(hueConfigFile)
+
+			if not hueConfigFileExists:
+				self.logInfo('No philipsHueConf.conf file in PhilipsHue module directory')
+
+			self._bridge = Bridge(ip=self.ConfigManager.getModuleConfigByName(self.name, 'phueBridgeIp'), config_file_path=hueConfigFile)
+
+			if not self._bridge:
+				raise PhueException
+
+			self._bridge.connect()
+			if not self._bridge.registered:
+				raise PhueRegistrationException
+
+			elif not hueConfigFileExists:
+				self.ThreadManager.doLater(
+					interval=3,
+					func=self.say,
+					args=[self.randomTalk('pressBridgeButtonConfirmation')]
+				)
+
+		except PhueRegistrationException:
+			if self.delayed:
+				self.say(text=self.randomTalk('pressBridgeButton'))
+				self._bridgeConnectTries += 1
+				self.logWarning("-Bridge not registered, please press the bridge button, retry in 20 seconds")
+				time.sleep(20)
+				return self._connectBridge()
+			else:
+				self.delayed = True
+				raise ModuleStartDelayed(self.name)
+		except PhueException as e:
+			self.logError(f'Bridge error: {e}')
 			return False
 
 		self._bridgeConnectTries = 0
@@ -180,7 +179,7 @@ class PhilipsHue(Module):
 		rooms = [slot.value['value'].lower() for slot in session.slotsAsObjects.get('Room', list())]
 		if rooms:
 			return rooms
-		
+
 		room = customData.get('room', session.siteId).lower()
 		if room == 'default':
 			room = self.ConfigManager.getAliceConfigByName('room').lower()
@@ -200,7 +199,7 @@ class PhilipsHue(Module):
 		slots = session.slotsAsObjects
 		siteId = session.siteId
 		partOfTheDay = self.Commons.partOfTheDay().lower()
-		
+
 		rooms = self._getRooms(session)
 		if not self._validateRooms(session, rooms):
 			return
@@ -230,7 +229,7 @@ class PhilipsHue(Module):
 			if room == 'everywhere':
 				self._bridge.set_group(0, 'on', False)
 				break
-				
+
 			for light in self._groups[room].lights:
 				light.on = False
 
@@ -293,13 +292,13 @@ class PhilipsHue(Module):
 			if room == 'everywhere':
 				self._bridge.set_group(0, 'on', not self._bridge.get_group(0, 'on'))
 				break
-			
+
 			if group.on:
 				group.on = False
 				continue
 			elif (partOfTheDay in self._scenes or self._bridge.run_scene(group_name=group.name, scene_name=self._scenes[partOfTheDay].name)):
 				continue
-			
+	
 			for light in group.lights:
 				light.on = True
 
@@ -320,7 +319,7 @@ class PhilipsHue(Module):
 				}
 			)
 			return
-		
+
 		percentage = int(slots['Percent'][0].rawValue.replace('%', ''))
 		percentage = self.Commons.clamp(percentage, 0, 100)
 
@@ -334,7 +333,7 @@ class PhilipsHue(Module):
 			if room == 'everywhere':
 				self._bridge.set_group(0, 'brightness', brightness)
 				break
-				
+
 			for light in self._groups[room].lights:
 				light.brightness = brightness
 
@@ -342,18 +341,14 @@ class PhilipsHue(Module):
 
 
 	def runScene(self, scene, group=None):
-		if group is None:
-			if self._house is not None:
-				self._bridge.run_scene(group_name='House', scene_name=scene)
-			else:
-				for g in self._groups:
-					self._bridge.run_scene(group_name=g.name, scene_name=scene)
-		else:
-			if type(group) is str:
-				name = group
-			else:
-				name = group.name
+		if group:
+			name = group if isinstance(group, str) else group.name
 			self._bridge.run_scene(group_name=name, scene_name=scene)
+		elif self._house:
+			self._bridge.run_scene(group_name='House', scene_name=scene)
+		else:
+			for g in self._groups:
+				self._bridge.run_scene(group_name=g.name, scene_name=scene)
 
 
 	def lightsOff(self, group=0):
