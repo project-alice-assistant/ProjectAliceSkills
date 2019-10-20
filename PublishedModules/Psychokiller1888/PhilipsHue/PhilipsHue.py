@@ -272,7 +272,7 @@ class PhilipsHue(Module):
 				continue
 			elif (partOfTheDay in self._scenes or self._bridge.run_scene(group_name=group.name, scene_name=self._scenes[partOfTheDay].name)):
 				continue
-	
+
 			for light in group.lights:
 				light.on = True
 
