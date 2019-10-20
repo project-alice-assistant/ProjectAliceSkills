@@ -15,10 +15,10 @@ wget http://modules.projectalice.ch/ifttt -O ~/ProjectAlice/system/moduleInstall
 ### Description
 Use ifttt services
 
-- Version: 1.02
+- Version: 1.03
 - Author: Psychokiller1888
 - Maintainers: maxbachmann
-- Alice minimum version: 0.12
+- Alice minimum version: 0.13
 - Conditions:
   - online
 - Requirements: N/A

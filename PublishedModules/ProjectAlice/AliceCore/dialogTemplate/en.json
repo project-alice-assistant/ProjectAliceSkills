@@ -354,6 +354,10 @@
 					"synonyms": [
 						"alice"
 					]
+				},
+				{
+					"value": "zigbee",
+					"synonyms": []
 				}
 			]
 		},

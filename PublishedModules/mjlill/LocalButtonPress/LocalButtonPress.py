@@ -14,12 +14,11 @@ class LocalButtonPress(Module):
 	_INTENT_BUTTON_ON = Intent('DoButtonOn')
 	_INTENT_BUTTON_OFF = Intent('DoButtonOff')
 
-
 	def __init__(self):
-		self._INTENTS = {
-			self._INTENT_BUTTON_ON: self.buttonOnIntent,
-			self._INTENT_BUTTON_OFF: self.buttonOffIntent
-		}
+		self._INTENTS = [
+			(self._INTENT_BUTTON_ON, self.buttonOnIntent),
+			(self._INTENT_BUTTON_OFF, self.buttonOffIntent)
+		]
 
 		super().__init__(self._INTENTS)
 
@@ -31,13 +30,11 @@ class LocalButtonPress(Module):
 		GPIO.output(self._gpioPin, GPIO.LOW)
 
 
-	def buttonOnIntent(self, intent: str, session: DialogSession) -> bool:
+	def buttonOnIntent(self, intent: str, session: DialogSession):
 		GPIO.output(self._gpioPin, GPIO.HIGH)
 		self.endDialog(session.sessionId, self.TalkManager.randomTalk('DoButtonOn'))
-		return True
 
 
-	def buttonOffIntent(self, intent: str, session: DialogSession) -> bool:
+	def buttonOffIntent(self, intent: str, session: DialogSession):
 		GPIO.output(self._gpioPin, GPIO.LOW)
 		self.endDialog(session.sessionId, self.TalkManager.randomTalk('DoButtonOff'))
-		return True

@@ -9,6 +9,7 @@ import youtube_dl
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
+from core.util.Decorators import Decorators
 
 
 class YoutubeJukebox(Module):
@@ -58,7 +59,8 @@ class YoutubeJukebox(Module):
 		return clearInput
 
 
-	def searchMusicIntent(self, intent: str, session: DialogSession) -> bool:
+	@Decorators.online
+	def searchMusicIntent(self, session: DialogSession, **_kwargs):
 		siteId = session.siteId
 		sessionId = session.sessionId
 		wildcardQuery = self.getWildcard(session)
@@ -73,7 +75,7 @@ class YoutubeJukebox(Module):
 
 		for matchNum, match in enumerate(matches, start=1):
 			if 'list' not in match.group(1):
-				tmp = 'https://www.youtube.com' + match.group(1)
+				tmp = f'https://www.youtube.com{match.group(1)}'
 				if len(tmp) <= 70:
 					videolist.append(tmp)
 
@@ -81,7 +83,7 @@ class YoutubeJukebox(Module):
 			self.say(text=self.randomTalk(text='noMatch', replace=[
 				wildcardQuery
 			]), siteId=siteId)
-			return True
+			return
 
 		item = videolist[1]
 		videoKey = item.split('=')[1]
@@ -106,4 +108,3 @@ class YoutubeJukebox(Module):
 				ydl.download([item])
 
 		subprocess.run(['sudo', 'mpg123', outputFile])
-		return True
