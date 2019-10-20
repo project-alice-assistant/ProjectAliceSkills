@@ -177,14 +177,13 @@ class PhilipsHue(Module):
 
 	def _getRooms(self, session: DialogSession) -> list:
 		rooms = [slot.value['value'].lower() for slot in session.slotsAsObjects.get('Room', list())]
-		if rooms:
-			return rooms
+		if not rooms:
+			room = customData.get('room', session.siteId).lower()
+			if room == 'default':
+				room = self.ConfigManager.getAliceConfigByName('room').lower()
+			rooms = [room]
 
-		room = customData.get('room', session.siteId).lower()
-		if room == 'default':
-			room = self.ConfigManager.getAliceConfigByName('room').lower()
-
-		return [room]
+		return rooms if self._validateRooms(session, rooms) else list()
 
 
 	def _validateRooms(self, session: DialogSession, rooms: list) -> bool:
@@ -200,11 +199,7 @@ class PhilipsHue(Module):
 		siteId = session.siteId
 		partOfTheDay = self.Commons.partOfTheDay().lower()
 
-		rooms = self._getRooms(session)
-		if not self._validateRooms(session, rooms):
-			return
-
-		for room in rooms:
+		for room in self._getRooms(session):
 			if room == 'everywhere':
 				self._bridge.set_group(0, 'on', True)
 				break
@@ -221,11 +216,7 @@ class PhilipsHue(Module):
 		slots = session.slotsAsObjects
 		siteId = session.siteId
 
-		rooms = self._getRooms(session)
-		if not self._validateRooms(session, rooms):
-			return
-
-		for room in rooms:
+		for room in self._getRooms(session):
 			if room == 'everywhere':
 				self._bridge.set_group(0, 'on', False)
 				break
@@ -266,11 +257,7 @@ class PhilipsHue(Module):
 			self.endDialog(sessionId=session.sessionId, text=self.randomTalk(text='sceneUnknown', replace=[scene]))
 			return
 
-		rooms = self._getRooms(session)
-		if not self._validateRooms(session, rooms):
-			return
-
-		for room in rooms:
+		for room in self._getRooms(session):
 			if not self._bridge.run_scene(group_name=self._groups[room].name, scene_name=self._scenes[scene].name):
 				self.endDialog(sessionId, text=self.randomTalk('sceneNotInThisRoom'))
 				return
@@ -284,11 +271,7 @@ class PhilipsHue(Module):
 		siteId = session.siteId
 		partOfTheDay = self.Commons.partOfTheDay().lower()
 
-		rooms = self._getRooms(session)
-		if not self._validateRooms(session, rooms):
-			return
-
-		for room in rooms:
+		for room in self._getRooms(session):
 			if room == 'everywhere':
 				self._bridge.set_group(0, 'on', not self._bridge.get_group(0, 'on'))
 				break
@@ -325,11 +308,7 @@ class PhilipsHue(Module):
 
 		brightness = int(round(254 / 100 * percentage))
 
-		rooms = self._getRooms(session)
-		if not self._validateRooms(session, rooms):
-			return
-
-		for room in rooms:
+		for room in self._getRooms(session):
 			if room == 'everywhere':
 				self._bridge.set_group(0, 'brightness', brightness)
 				break
@@ -344,11 +323,13 @@ class PhilipsHue(Module):
 		if group:
 			name = group if isinstance(group, str) else group.name
 			self._bridge.run_scene(group_name=name, scene_name=scene)
-		elif self._house:
+			return
+		if self._house:
 			self._bridge.run_scene(group_name='House', scene_name=scene)
-		else:
-			for g in self._groups:
-				self._bridge.run_scene(group_name=g.name, scene_name=scene)
+			return
+		
+		for g in self._groups:
+			self._bridge.run_scene(group_name=g.name, scene_name=scene)
 
 
 	def lightsOff(self, group=0):
