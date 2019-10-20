@@ -1,4 +1,5 @@
-from speedtest import SpeedtestException, Speedtest
+import speedtest
+from speedtest import SpeedtestException
 
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
@@ -31,7 +32,7 @@ class Speedtest(Module):
 	@Decorators.anyExcept(exceptions=(SpeedtestException, KeyError), text='failed', printStack=True)
 	@Decorators.online
 	def executeSpeedtest(self, session: DialogSession):
-		speed = Speedtest()
+		speed = speedtest.Speedtest()
 		speed.get_servers()
 		speed.get_best_server()
 		speed.download()
