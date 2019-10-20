@@ -12,14 +12,13 @@ class RockPaperScissors(Module):
 	_INTENT_ROCK_PAPER_SCISSORS = Intent('RockPaperScissors')
 
 	def __init__(self):
-		self._INTENTS = {
-			self._INTENT_ROCK_PAPER_SCISSORS: self.rockPaperScissorsIntent
-		}
+		self._INTENTS = [
+			(self._INTENT_ROCK_PAPER_SCISSORS, self.rockPaperScissorsIntent)
+		]
 
 		super().__init__(self._INTENTS)
 
 
-	def rockPaperScissorsIntent(self, intent: str, session: DialogSession) -> bool:
+	def rockPaperScissorsIntent(self, session: DialogSession, **_kwargs):
 		randomItem = self.randomTalk(text='RockPaperScissors')
 		self.endDialog(session.sessionId, self.randomTalk(text='answer', replace=[randomItem]))
-		return True
