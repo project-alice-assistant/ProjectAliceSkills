@@ -1,4 +1,5 @@
 import requests
+from requests.exceptions import RequestException
 
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
@@ -17,34 +18,23 @@ class InternationalSpaceStation(Module):
 
 	def __init__(self):
 		self._SUPPORTED_INTENTS	= [
-			self._INTENT_ASTRONAUTS,
-			self._INTENT_ISS_POSITION
+			(self._INTENT_ASTRONAUTS, self.getAstronauts),
+			(self._INTENT_ISS_POSITION, self.getIssPosition)
 		]
 
 		super().__init__(self._SUPPORTED_INTENTS)
 
-	def onMessage(self, intent: str, session: DialogSession) -> bool:
-		sessionId = session.sessionId
-
-		try:
-			if intent == self._INTENT_ASTRONAUTS:
-				self.endDialog(sessionId, text=self.getAstronauts())
-			elif intent == self._INTENT_ISS_POSITION:
-				self.endDialog(sessionId, text=self.getIssPosition())
-			
-		except Exception as e:
-			self._logger.error(e)
-			self.endDialog(sessionId, text=self.randomTalk('noServer'))
-
-		return True
-
 
 	@staticmethod
 	def queryApi(url: str, *args, **kargs) -> dict:
-		return requests.get(url=url.format(*args, **kargs)).json()
+		response = requests.get(url=url.format(*args, **kargs))
+		response.raise_for_status()
+		return response.json()
 
+
+	@Decorators.anyExcept(exceptions=(RequestException, KeyError), text='noServer', printStack=True)
 	@Decorators.online
-	def getIssPosition(self) -> str:
+	def getIssPosition(self, session: DialogSession, **_kwargs):
 		data = self.queryApi('http://api.open-notify.org/iss-now.json')
 		latitude = float(data['iss_position']['latitude'])
 		longitude = float(data['iss_position']['longitude'])
@@ -75,27 +65,29 @@ class InternationalSpaceStation(Module):
 		
 		textType = 'issPlacePosition' if place else 'issPosition'
 
-
-		return self.randomTalk(text=textType, replace=[
+		answer = self.randomTalk(text=textType, replace=[
 			"<say-as interpret-as=\"ordinal\">{:.0f}</say-as>".format(latitude),
 			"<say-as interpret-as=\"ordinal\">{:.0f}</say-as>".format(longitude),
 			place
 		])
+		self.endDialog(sessionId=session.sessionId, text=answer)
 
+
+	@Decorators.anyExcept(exceptions=(RequestException, KeyError), text='noServer', printStack=True)
 	@Decorators.online
-	def getAstronauts(self) -> str:
+	def getAstronauts(self, session: DialogSession, **_kwarg):
 		data = self.queryApi('http://api.open-notify.org/astros.json')
 		amount = data['number']
 
 		if not amount:
-			return self.randomTalk(text='noAstronauts')
-
-		if amount == 1:
-			return self.randomTalk(text='oneAstronaut', replace=[data['people'][0]['name']])
-
-		return self.randomTalk(text='multipleAstronauts', replace=[
+			answer = self.randomTalk(text='noAstronauts')
+		elif amount == 1:
+			answer = self.randomTalk(text='oneAstronaut', replace=[data['people'][0]['name']])
+		else:
+			answer = self.randomTalk(text='multipleAstronauts', replace=[
 				', '.join(str(x['name']) for x in data['people'][:-1]),
 				data['people'][-1]['name'],
 				amount
 			])
+		self.endDialog(sessionId=session.sessionId, text=answer)
 		
