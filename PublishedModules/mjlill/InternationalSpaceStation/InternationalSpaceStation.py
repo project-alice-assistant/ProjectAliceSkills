@@ -90,4 +90,3 @@ class InternationalSpaceStation(Module):
 				amount
 			])
 		self.endDialog(sessionId=session.sessionId, text=answer)
-		
