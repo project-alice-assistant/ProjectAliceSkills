@@ -267,6 +267,7 @@ class PhilipsHue(Module):
 				self._bridge.set_group(0, 'on', not self._bridge.get_group(0, 'on'))
 				break
 
+			group = self._groups[room]
 			if group.on:
 				group.on = False
 				continue
