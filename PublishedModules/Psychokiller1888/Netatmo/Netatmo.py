@@ -63,11 +63,11 @@ class Netatmo(Module):
 				password=self.getConfig('password'),
 				scope='read_station'
 			)
-		except lnetatmo.AuthFailure:
+		except Exception:
 			self._authTries += 1
 			if self._authTries >= 3:
 				self.logWarning('Tried to auth 3 times, giving up now')
-				return False
+				raise ModuleStartingFailed
 			else:
 				time.sleep(1)
 				return self._auth()
