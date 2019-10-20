@@ -178,7 +178,7 @@ class PhilipsHue(Module):
 	def _getRooms(self, session: DialogSession) -> list:
 		rooms = [slot.value['value'].lower() for slot in session.slotsAsObjects.get('Room', list())]
 		if not rooms:
-			room = customData.get('room', session.siteId).lower()
+			room = session.customData.get('room', session.siteId).lower()
 			if room == 'default':
 				room = self.ConfigManager.getAliceConfigByName('room').lower()
 			rooms = [room]
