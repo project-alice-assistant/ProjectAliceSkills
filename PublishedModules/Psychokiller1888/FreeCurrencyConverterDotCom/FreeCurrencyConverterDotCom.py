@@ -3,7 +3,7 @@ import requests
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
-from core.commons.commons import online
+from core.util.Decorators import Decorators
 
 
 class FreeCurrencyConverterDotCom(Module):
@@ -21,12 +21,13 @@ class FreeCurrencyConverterDotCom(Module):
 			(self._INTENT_ANSWER_CURRENCY, self.convertCurrencyIntent),
 			(self._INTENT_CONVERT_CURRENCY, self.convertCurrencyIntent),
 		]
-		
+
 		self._apiKey = self.getConfig('apiKey')
 		super().__init__(self._SUPPORTED_INTENTS)
 
 
-	@online
+	@Decorators.anyExcept(exceptions=(RequestException, KeyError), text='noServer', printStack=True)
+	@Decorators.online
 	def convertCurrencyIntent(self, session: DialogSession, **_kwargs):
 		amount = session.slots.get('Amount', session.customData.get('Amount', 1))
 
@@ -48,14 +49,12 @@ class FreeCurrencyConverterDotCom(Module):
 			)
 			return
 
-		try:
-			url = f'https://free.currconv.com/api/v7/convert?q={fromCurrency}_{toCurrency}&compact=ultra&apiKey={self._apiKey}'
-			data = requests.get(url=url).json()
+		url = f'https://free.currconv.com/api/v7/convert?q={fromCurrency}_{toCurrency}&compact=ultra&apiKey={self._apiKey}'
+		response = requests.get(url=url)
+		response.raise_for_status()
+		data = response.json()
 
-			conversion = data[f'{fromCurrency}_{toCurrency}']
-			converted = round(float(amount) * float(conversion), 2)
+		conversion = data[f'{fromCurrency}_{toCurrency}']
+		converted = round(float(amount) * float(conversion), 2)
 
-			self.endDialog(session.sessionId, text=self.randomTalk('answer').format(amount, fromCurrency, converted, toCurrency))
-		except Exception as e:
-			self._logger.error(e)
-			self.endDialog(session.sessionId, text=self.randomTalk('noServer'))
+		self.endDialog(session.sessionId, text=self.randomTalk('answer').format(amount, fromCurrency, converted, toCurrency))
