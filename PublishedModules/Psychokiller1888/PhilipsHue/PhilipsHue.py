@@ -25,7 +25,7 @@ class PhilipsHue(Module):
 		self._INTENTS = [
 			(self._INTENT_LIGHT_ON, self.lightOnIntent),
 			(self._INTENT_LIGHT_OFF, self.lightOffIntent),
-			(self._INTENT_LIGHT_SCENE, self.lightSceneIntent)
+			(self._INTENT_LIGHT_SCENE, self.lightSceneIntent),
 			(self._INTENT_MANAGE_LIGHTS, self.manageLightsIntent),
 			(self._INTENT_DIM_LIGHTS, self.dimLightsIntent),
 			self._INTENT_ANSWER_PERCENT,
@@ -234,6 +234,7 @@ class PhilipsHue(Module):
 		else:
 			scene = session.slotValue('Scene').lower()
 
+		rooms = self._getRooms(session)
 		if not scene:
 			self.continueDialog(
 				sessionId=sessionId,
@@ -242,7 +243,7 @@ class PhilipsHue(Module):
 				previousIntent=self._INTENT_LIGHT_SCENE,
 				customData={
 					'module': self.name,
-					'room'  : room
+					'room'  : rooms
 				}
 			)
 			return
@@ -250,7 +251,7 @@ class PhilipsHue(Module):
 			self.endDialog(sessionId=sessionId, text=self.randomTalk(text='sceneUnknown', replace=[scene]))
 			return
 
-		for room in self._getRooms(session):
+		for room in rooms:
 			if not self._bridge.run_scene(group_name=self._groups[room].name, scene_name=self._scenes[scene].name):
 				self.endDialog(sessionId, text=self.randomTalk('sceneNotInThisRoom'))
 				return
@@ -313,7 +314,7 @@ class PhilipsHue(Module):
 		if self._house:
 			self._bridge.run_scene(group_name='House', scene_name=scene)
 			return
-		
+
 		for g in self._groups:
 			self._bridge.run_scene(group_name=g.name, scene_name=scene)
 
