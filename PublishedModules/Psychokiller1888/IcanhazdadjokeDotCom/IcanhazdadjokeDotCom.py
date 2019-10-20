@@ -27,7 +27,7 @@ class IcanhazdadjokeDotCom(Module):
 			'User-Agent': 'Project Alice',
 			'From'      : 'projectalice@projectalice.ch'
 		}
-		
+
 		response = requests.get(url, headers=headers)
 		response.raise_for_status()
 		self.endDialog(session.sessionId, text=response.text)
