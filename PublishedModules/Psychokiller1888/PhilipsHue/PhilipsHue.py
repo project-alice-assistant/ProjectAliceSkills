@@ -128,7 +128,7 @@ class PhilipsHue(Module):
 
 		if self._house is None:
 			self.logWarning('Coulnd\'t find any group named "House". Creating one')
-			self._bridge.create_group(name='House', lights=self._bridge.get_light().keys(), )
+			self._bridge.create_group(name='House', lights=list(self._bridge.get_light()), )
 
 		return True
 
@@ -169,209 +169,204 @@ class PhilipsHue(Module):
 
 
 	def onMessage(self, intent: str, session: DialogSession) -> bool:
-		siteId = session.siteId
+		if self._bridge is None or not self._bridge.registered:
+			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('lightBridgeFailure'))
+			return True
+
+		rooms = [slot.value['value'].lower() for slot in session.slotsAsObjects.get('Room', list())]
+		for room in rooms:
+			if room not in self._groups and room != 'everywhere':
+				self.endDialog(sessionId=session.sessionId, text=self.randomTalk(text='roomUnknown', replace=[room]))
+				return True
+
+		scenes = [slot.value['value'].lower() for slot in session.slotsAsObjects.get('Scene', list())]
+		for scene in scenes:
+			if scene not in self._scenes:
+				self.endDialog(sessionId=session.sessionId, text=self.randomTalk(text='sceneUnknown', replace=[scene]))
+				return True
+
+		if intent == self._INTENT_LIGHT_ON:
+			self.lightOnIntent(session)
+			return True
+		elif intent == self._INTENT_LIGHT_OFF:
+			self.lightOffIntent(session)
+			return True
+		elif intent == self._INTENT_LIGHT_SCENE or (session.previousIntent == self._INTENT_LIGHT_SCENE and intent == self._INTENT_USER_ANSWER):
+			self.lightSceneIntent(session)
+			return True
+		elif intent == self._INTENT_MANAGE_LIGHTS:
+			self.manageLightsIntent(session)
+			return True
+		elif intent == self._INTENT_DIM_LIGHTS or session.previousIntent == self._INTENT_DIM_LIGHTS:
+			self.dimLightsIntent(session)
+			return True
+
+		return False
+
+
+	def lightOnIntent(self, session: DialogSession, **_kwargs):
 		slots = session.slotsAsObjects
+		siteId = session.siteId
+		partOfTheDay = self.Commons.partOfTheDay().lower()
+		rooms = [slot.value['value'].lower() for slot in slots.get('Room', list())]
+		if not rooms:
+			if siteId.lower() not in self._groups:
+				self.endDialog(session.sessionId, text=self.randomTalk(text='roomUnknown', replace=[session.siteId]))
+				return
+			rooms = [siteId.lower()]
+
+		for room in rooms:
+			if room == 'everywhere':
+				self._bridge.set_group(0, 'on', True)
+				break
+			elif (partOfTheDay in self._scenes or self._bridge.run_scene(
+					group_name=self._groups[room].name,
+					scene_name=self._scenes[partOfTheDay].name)):
+				continue
+
+			for light in self._groups[room].lights:
+				light.on = True
+
+		self.endDialog(session.sessionId, text=self.randomTalk('confirm'))
+
+
+	def lightOffIntent(self, session: DialogSession, **_kwargs):
+		slots = session.slotsAsObjects
+		siteId = session.siteId
+
+		rooms = [slot.value['value'].lower() for slot in slots.get('Room', list())]
+		if not rooms:
+			if siteId.lower() not in self._groups:
+				self.endDialog(session.sessionId, text=self.randomTalk(text='roomUnknown', replace=[session.siteId]))
+				return
+			rooms = [siteId.lower()]
+
+		for room in rooms:
+			if room == 'everywhere':
+				self._bridge.set_group(0, 'on', False)
+				break
+				
+			for light in self._groups[room].lights:
+				light.on = False
+
+		self.endDialog(session.sessionId, text=self.randomTalk('confirm'))
+
+
+	def lightSceneIntent(self, session: DialogSession, **_kwargs):
+		slots = session.slotsAsObjects
+		place = session.siteId
 		sessionId = session.sessionId
 		customData = session.customData
 
-		if self._bridge is None or not self._bridge.registered:
-			self.endDialog(
+		if 'scene' in customData:
+			scene = customData['scene']
+		elif len(slots.get('Scene', list())) > 1:
+			self.endDialog(sessionId, text=self.randomTalk('cantSpecifyMoreThanOneScene'))
+			return
+		else:
+			scene = slots.slotValue('Scene').lower()
+
+		if not scene:
+			self.continueDialog(
 				sessionId=sessionId,
-				text=self.randomTalk('lightBridgeFailure')
+				text=self.randomTalk('whatScenery'),
+				intentFilter=[self._INTENT_USER_ANSWER],
+				previousIntent=self._INTENT_LIGHT_SCENE,
+				customData={
+					'module': self.name,
+					'room'  : room
+				}
 			)
-			return True
+			return
 
-		previousIntent = session.previousIntent
+		rooms = [slot.value['value'].lower() for slot in slots.get('Room', list())]
+		if not rooms:
+			place = customData.get('room', session.siteId)
+			if place.lower() not in self._groups:
+				self.endDialog(session.sessionId, text=self.randomTalk(text='roomUnknown', replace=[place.siteId]))
+				return
+			rooms = [place.lower()]
 
-		place = siteId
+		for room in rooms:
+			if not self._bridge.run_scene(group_name=self._groups[room].name, scene_name=self._scenes[scene].name):
+				self.endDialog(sessionId, text=self.randomTalk('sceneNotInThisRoom'))
+				return
 
-		room = ''
-		if 'Room' in slots:
-			for slot in slots['Room']:
-				room = slot.value['value'].lower()
-				if room not in self._groups.keys() and room != 'everywhere':
-					self.endDialog(
-						sessionId=sessionId,
-						text=self.randomTalk(text='roomUnknown', replace=[room])
-					)
-					return True
-
-		if 'Scene' in slots:
-			for slot in slots['Scene']:
-				scene = slot.value['value'].lower()
-				if scene not in self._scenes.keys():
-					self.endDialog(
-						sessionId=sessionId,
-						text=self.randomTalk(text='sceneUnknown', replace=[scene])
-					)
-					return True
-
-		if intent == self._INTENT_LIGHT_ON:
-			partOfTheDay = self.Commons.partOfTheDay().lower()
-			if 'Room' in slots:
-				for slot in slots['Room']:
-					room = slot.value['value'].lower()
-					if room == 'everywhere':
-						self._bridge.set_group(0, 'on', True)
-						break
-
-					elif (partOfTheDay not in self._scenes or
-						not self._bridge.run_scene(
-							group_name=self._groups[room].name,
-							scene_name=self._scenes[partOfTheDay].name)):
-						for light in self._groups[room].lights:
-							light.on = True
-			elif place.lower() in self._groups.keys():
-				if (partOfTheDay not in self._scenes or
-						not self._bridge.run_scene(
-							group_name=self._groups[place.lower()].name,
-							scene_name=self._scenes[partOfTheDay].name)):
-					for light in self._groups[place.lower()].lights:
-						light.on = True
-			else:
-				self.endDialog(sessionId, text=self.randomTalk(text='roomUnknown', replace=[siteId]))
-				return True
+		self.endDialog(session.sessionId, text=self.randomTalk('confirm'))
 
 
-		elif intent == self._INTENT_LIGHT_OFF:
-			if 'Room' in slots:
-				for slot in slots['Room']:
-					room = slot.value['value'].lower()
-					if room == 'everywhere':
-						self._bridge.set_group(0, 'on', False)
-						break
-					else:
-						for light in self._groups[room].lights:
-							light.on = False
-			else:
-				if place.lower() in self._groups.keys():
-					for light in self._groups[place.lower()].lights:
-						light.on = False
-				else:
-					self.endDialog(sessionId, text=self.randomTalk(text='roomUnknown', replace=[siteId]))
-					return True
+	def manageLightsIntent(self, session: DialogSession, **_kwargs):
+		slots = session.slotsAsObjects
+		sessionId = session.sessionId
+		siteId = session.siteId
+		partOfTheDay = self.Commons.partOfTheDay().lower()
 
-		elif intent == self._INTENT_LIGHT_SCENE or (previousIntent == self._INTENT_LIGHT_SCENE and intent == self._INTENT_USER_ANSWER):
-			if 'Scene' not in slots and 'Scene' not in customData:
-				self.continueDialog(
-					sessionId=sessionId,
-					text=self.randomTalk('whatScenery'),
-					intentFilter=[self._INTENT_USER_ANSWER],
-					previousIntent=self._INTENT_LIGHT_SCENE,
-					customData={
-						'module': self.name,
-						'room'  : room
-					}
-				)
-				return True
-			else:
-				if 'scene' in customData:
-					scene = customData['scene']
+		rooms = [slot.value['value'].lower() for slot in slots.get('Room', list())]
+		if not rooms:
+			if siteId.lower() not in self._groups:
+				self.endDialog(session.sessionId, text=self.randomTalk(text='roomUnknown', replace=[session.siteId]))
+				return
+			rooms = [siteId.lower()]
 
-				elif len(slots['Scene']) > 1:
-					self.endDialog(sessionId, text=self.randomTalk('cantSpecifyMoreThanOneScene'))
-					return True
-				else:
-					scene = slots['Scene'][0].value['value'].lower()
+		for room in rooms:
+			if room == 'everywhere':
+				self._bridge.set_group(0, 'on', not self._bridge.get_group(0, 'on'))
+				break
+			
+			if group.on:
+				group.on = False
+				continue
+			elif (partOfTheDay in self._scenes or self._bridge.run_scene(
+					group_name=group.name,
+					scene_name=self._scenes[partOfTheDay].name)):
+				continue
+			
+			for light in group.lights:
+				light.on = True
 
-				if 'Room' in slots:
-					for slot in slots['Room']:
-						room = slot.value['value'].lower()
-						if not self._bridge.run_scene(group_name=self._groups[room].name, scene_name=self._scenes[scene].name):
-							self.endDialog(sessionId, text=self.randomTalk('sceneNotInThisRoom'))
-							return True
-				elif not room and 'room' in customData:
-					place = customData['room']
-
-				if place.lower() in self._groups.keys():
-					if not self._bridge.run_scene(group_name=self._groups[place].name, scene_name=self._scenes[scene].name):
-						self.endDialog(sessionId, text=self.randomTalk('sceneNotInThisRoom'))
-						return True
-				else:
-					self.endDialog(sessionId, text=self.randomTalk(text='roomUnknown', replace=[place]))
-					return True
+		self.endDialog(session.sessionId, text=self.randomTalk('confirm'))
 
 
-		elif intent == self._INTENT_MANAGE_LIGHTS:
-			partOfTheDay = self.Commons.partOfTheDay().lower()
-			if 'Room' not in slots:
-				room = place
+	def dimLightsIntent(self, session: DialogSession, **_kwargs):
+		slots = session.slotsAsObjects
+		sessionId = session.sessionId
+		if 'Percent' not in slots:
+			self.continueDialog(
+				sessionId=sessionId,
+				text=self.randomTalk('whatPercentage'),
+				intentFilter=[self._INTENT_ANSWER_PERCENT],
+				previousIntent=self._INTENT_DIM_LIGHTS,
+				customData={
+					'module': self.name
+				}
+			)
+			return
+		
+		percentage = int(slots['Percent'][0].rawValue.replace('%', ''))
+		percentage = self.Commons.clamp(percentage, 0, 100)
 
-				if room not in self._groups.keys():
-					self.endDialog(sessionId, text=self.randomTalk(text='roomUnknown', replace=[room]))
-					return True
+		brightness = int(round(254 / 100 * percentage))
 
-				group = self._groups[room]
-				if group.on:
-					group.on = False
-				elif (partOfTheDay not in self._scenes or
-					not self._bridge.run_scene(
-						group_name=group.name,
-						scene_name=self._scenes[partOfTheDay].name)):
-					for light in group.lights:
-						light.on = True
+		rooms = [slot.value['value'].lower() for slot in slots.get('Room', list())]
+		if not rooms:
+			room = session.siteId.lower()
+			if room == 'default':
+				room = self.ConfigManager.getAliceConfigByName('room')
 
-			else:
-				for slot in slots['Room']:
-					room = slot.value['value'].lower()
-					if room == 'everywhere':
-						self._bridge.set_group(0, 'on', not self._bridge.get_group(0, 'on'))
-						break
-					else:
-						group = self._groups[room]
-						if group.on:
-							group.on = False
-						elif (partOfTheDay not in self._scenes or
-							not self._bridge.run_scene(
-								group_name=group.name,
-								scene_name=self._scenes[partOfTheDay].name)):
-							for light in group.lights:
-								light.on = True
+			if siteId.lower() not in self._groups:
+				self.endDialog(session.sessionId, text=self.randomTalk(text='roomUnknown', replace=[session.siteId]))
+				return
+			rooms = [siteId.lower()]
 
-		elif intent == self._INTENT_DIM_LIGHTS or previousIntent == self._INTENT_DIM_LIGHTS:
-			if 'Percent' not in slots:
-				self.continueDialog(
-					sessionId=sessionId,
-					text=self.randomTalk('whatPercentage'),
-					intentFilter=[self._INTENT_ANSWER_PERCENT],
-					previousIntent=self._INTENT_DIM_LIGHTS,
-					customData={
-						'module': self.name
-					}
-				)
-				return True
-			else:
-				percentage = int(slots['Percent'][0].rawValue.replace('%', ''))
-				if percentage < 0:
-					percentage = 0
-				elif percentage > 100:
-					percentage = 100
+		for room in rooms:
+			if room == 'everywhere':
+				self._bridge.set_group(0, 'brightness', brightness)
+				break
+				
+			for light in self._groups[room].lights:
+				light.brightness = brightness
 
-				brightness = int(round(254 / 100 * percentage))
-
-				if 'Room' not in slots:
-					room = siteId.lower()
-					if room == 'default':
-						room = self.ConfigManager.getAliceConfigByName('room')
-
-					if room not in self._groups.keys():
-						self.endDialog(sessionId, text=self.randomTalk(text='roomUnknown', replace=[room]))
-						return True
-
-					for light in self._groups[room].lights:
-						light.brightness = brightness
-				else:
-					for slot in slots['Room']:
-						room = slot.value['value'].lower()
-						if room == 'everywhere':
-							self._bridge.set_group(0, 'brightness', brightness)
-							break
-						else:
-							for light in self._groups[room].lights:
-								light.brightness = brightness
-
-		self.endDialog(sessionId, text=self.randomTalk('confirm'))
-		return True
+		self.endDialog(session.sessionId, text=self.randomTalk('confirm'))
 
 
 	def runScene(self, scene, group=None):
