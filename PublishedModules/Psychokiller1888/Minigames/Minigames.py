@@ -1,5 +1,5 @@
 import importlib
-import time
+from typing import Optional
 
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
@@ -71,9 +71,11 @@ class Minigames(Module):
 			self._minigame.started = False
 
 
-	def minigameIntent(self, intent: str, session: DialogSession) -> bool:
+	def minigameIntent(self, session: DialogSession, intent: str) -> Optional[bool]:
+		if session.currentState != MiniGame.MiniGame.PLAYING_MINIGAME_STATE:
+			return False
+
 		self._minigame.onMessage(intent, session)
-		return True
 
 
 	def answerAnotherGame(self, session: DialogSession, **_kwargs):
@@ -83,11 +85,14 @@ class Minigames(Module):
 				text=self.randomTalk('endPlaying')
 			)
 		else:
-			self.continueDialog(
-				sessionId=session.sessionId,
-				intentFilter=[self._INTENT_ANSWER_MINI_GAME],
-				text=self.TalkManager.randomTalk('whichGame')
-			)
+			if session.currentState != MiniGame.MiniGame.ANSWERING_PLAY_AGAIN_STATE:
+				self.continueDialog(
+					sessionId=session.sessionId,
+					intentFilter=[self._INTENT_ANSWER_MINI_GAME],
+					text=self.TalkManager.randomTalk('whichGame')
+				)
+			else:
+				self._minigame.start()
 		return
 
 
@@ -119,54 +124,3 @@ class Minigames(Module):
 		elif self._minigame is not None:
 			self._minigame.onMessage(intent, session)
 		return True
-
-
-	def yesNoIntent(self, session: DialogSession, **_kwargs):
-		sessionId = session.sessionId
-
-		if not self._minigame or not self._minigame.started:
-			if not self.Commons.isYes(session):
-				self.endDialog(
-					sessionId=sessionId,
-					text=self.randomTalk('endPlaying')
-				)
-			else:
-				self.continueDialog(
-					sessionId=sessionId,
-					intentFilter=[self._INTENT_ANSWER_MINI_GAME],
-					text=self.TalkManager.randomTalk('whichGame')
-				)
-			return
-		
-		elif self._minigame is not None and session.customData and 'askRetry' in session.customData.keys():
-			if self.Commons.isYes(session):
-				self._minigame.start(session)
-			else:
-				self._minigame = None
-				self.endDialog(
-					sessionId=sessionId,
-					text=self.randomTalk('endPlaying')
-				)
-			return
-
-		return False
-
-
-	# noinspection SqlResolve
-	def checkAndStoreScore(self, user: str, score: int, biggerIsBetter: bool = True) -> bool:
-		lastScore = self.databaseFetch(tableName='highscores', query='SELECT * FROM :__table__ WHERE username = :username ORDER BY score DESC LIMIT 1', values={'username': user})
-		self.databaseInsert(
-			tableName='highscores',
-			values={'username': user, 'score': score, 'timestamp': round(time.time())}
-		)
-
-		if lastScore:
-			if biggerIsBetter and score > int(lastScore['score']):
-				return True
-			elif not biggerIsBetter and score < int(lastScore['score']):
-				return True
-			else:
-				return False
-
-		else:
-			return True
