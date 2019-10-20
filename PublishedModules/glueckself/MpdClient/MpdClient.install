@@ -1,6 +1,6 @@
 {
 	"name": "MpdClient",
-	"version": 0.14,
+	"version": 0.15,
 	"author": "glueckself",
 	"maintainers": ["maxbachmann"],
 	"desc": "Control an MPD server",

@@ -16,7 +16,7 @@ wget http://modules.projectalice.ch/YoutubeJukebox \
 ### Description
 Allows to play music from youtube
 
-- Version: 1.03
+- Version: 1.04
 - Author: Jierka
 - Maintainers:
   - Psycho
