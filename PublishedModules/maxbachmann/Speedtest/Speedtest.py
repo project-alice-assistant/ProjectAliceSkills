@@ -14,24 +14,18 @@ class Speedtest(Module):
 	_INTENT_SPEEDTEST = Intent('Speedtest')
 
 	def __init__(self):
-		self._INTENTS = {
-			self._INTENT_SPEEDTEST: self.runSpeedtest
-		}
+		self._INTENTS = [
+			(self._INTENT_SPEEDTEST, self.runSpeedtest)
+		]
 
 		super().__init__(self._INTENTS)
 
 
-	def offlineHandler(self, session: DialogSession, **kwargs) -> bool:
-		self.endDialog(session.sessionId, text=self.TalkManager.randomTalk('offline', module='system'))
-		return True
-
-
-	@Decorators.online(offlineHandler=offlineHandler)
-	def runSpeedtest(self, intent: str, session: DialogSession) -> bool:
+	@Decorators.online
+	def runSpeedtest(self, session: DialogSession, **_kwargs):
 		self.ThreadManager.doLater(interval=0, func=self.executeSpeedtest)
 		self.logInfo('Starting Speedtest')
 		self.endDialog(sessionId=session.sessionId, text=self.randomTalk('running'))
-		return True
 
 
 	def executeSpeedtest(self):
