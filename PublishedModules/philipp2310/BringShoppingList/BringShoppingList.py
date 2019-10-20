@@ -3,9 +3,8 @@ from BringApi.BringApi import BringApi
 
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
-from core.commons import commons
-from core.commons.commons import online
 from core.dialog.model.DialogSession import DialogSession
+from core.util.Decorators import Decorators
 
 
 class BringShoppingList(Module):
@@ -65,7 +64,7 @@ class BringShoppingList(Module):
 		return BringApi(self._uuid, self._uuidlist)
 
 
-	@online
+	@Decorators.online
 	def _deleteCompleteList(self) -> str:
 		"""
 		perform the deletion of the complete list
@@ -156,13 +155,13 @@ class BringShoppingList(Module):
 
 
 	def confDelIntent(self, session: DialogSession, **_kwargs):
-		if commons.isYes(session):
+		if self.Commons.isYes(session):
 			self.endDialog(session.sessionId, text=self._deleteCompleteList())
 		else:
 			self.endDialog(session.sessionId, text=self.randomTalk('nodel_all'))
 
 
-	@online
+	@Decorators.online
 	def addItemIntent(self, intent: str, session: DialogSession):
 		items = self._getShopItems(session, intent)
 		if items:
@@ -170,7 +169,7 @@ class BringShoppingList(Module):
 			self.endDialog(session.sessionId, text=self._combineLists('add', added, exist))
 
 
-	@online
+	@Decorators.online
 	def delItemIntent(self, intent: str, session: DialogSession):
 		items = self._getShopItems(session, intent)
 		if items:
@@ -178,7 +177,7 @@ class BringShoppingList(Module):
 			self.endDialog(session.sessionId, text=self._combineLists('rem', removed, exist))
 
 
-	@online
+	@Decorators.online
 	def checkListIntent(self, intent: str, session: DialogSession):
 		items = self._getShopItems(session, intent)
 		if items:
@@ -186,7 +185,7 @@ class BringShoppingList(Module):
 			self.endDialog(session.sessionId, text=self._combineLists('chk', found, missing))
 
 
-	@online
+	@Decorators.online
 	def readListIntent(self, intent: str, session: DialogSession):
 		"""read the content of the list"""
 		items = self._getBring().get_items().json()['purchase']
