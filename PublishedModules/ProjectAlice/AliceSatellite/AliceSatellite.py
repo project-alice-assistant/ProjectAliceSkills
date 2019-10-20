@@ -29,15 +29,15 @@ class AliceSatellite(Module):
 
 
 	def onSleep(self):
-		self.broadcast('projectalice/devices/sleep')
+		self.publish('projectalice/devices/sleep')
 
 
 	def onWakeup(self):
-		self.broadcast('projectalice/devices/wakeup')
+		self.publish('projectalice/devices/wakeup')
 
 
 	def onGoingBed(self):
-		self.broadcast('projectalice/devices/goingBed')
+		self.publish('projectalice/devices/goingBed')
 
 
 	def onFullMinute(self):
@@ -57,7 +57,7 @@ class AliceSatellite(Module):
 
 
 	def getSensorReadings(self):
-		self.broadcast('projectalice/devices/alice/getSensors')
+		self.publish('projectalice/devices/alice/getSensors')
 
 
 	def temperatureAt(self, siteId: str) -> str:
