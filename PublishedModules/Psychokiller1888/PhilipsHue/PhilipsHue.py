@@ -22,15 +22,23 @@ class PhilipsHue(Module):
 
 
 	def __init__(self):
-		self._SUPPORTED_INTENTS = [
-			self._INTENT_LIGHT_ON,
-			self._INTENT_LIGHT_OFF,
-			self._INTENT_LIGHT_SCENE,
-			self._INTENT_MANAGE_LIGHTS,
-			self._INTENT_DIM_LIGHTS,
+		self._INTENTS = [
+			(self._INTENT_LIGHT_ON, self.lightOnIntent),
+			(self._INTENT_LIGHT_OFF, self.lightOffIntent),
+			(self._INTENT_LIGHT_SCENE, self.lightSceneIntent)
+			(self._INTENT_MANAGE_LIGHTS, self.manageLightsIntent),
+			(self._INTENT_DIM_LIGHTS, self.dimLightsIntent),
 			self._INTENT_ANSWER_PERCENT,
 			self._INTENT_USER_ANSWER
 		]
+
+		self._INTENT_ANSWER_PERCENT.dialogMapping = {
+			'whatPercentage': self.dimLightsIntent
+		}
+
+		self._INTENT_USER_ANSWER.dialogMapping = {
+			'whatScenery': self.lightSceneIntent
+		}
 
 		self._bridge: Bridge = None
 		self._groups = dict()
@@ -40,7 +48,7 @@ class PhilipsHue(Module):
 
 		self._house = None
 
-		super().__init__(self._SUPPORTED_INTENTS)
+		super().__init__(self._INTENTS)
 
 
 	def onStart(self) -> list:
@@ -49,7 +57,7 @@ class PhilipsHue(Module):
 		if self.getConfig('phueBridgeIp'):
 			if self._connectBridge():
 				self.delayed = False
-				return self._SUPPORTED_INTENTS
+				return self.supportedIntents
 			else:
 				self.updateConfig('phueAutodiscoverFallback', True)
 				self.updateConfig('phueBridgeIp', '')
@@ -63,7 +71,7 @@ class PhilipsHue(Module):
 				self.updateConfig('phueBridgeIp', firstBridge['internalipaddress'])
 				if not self._connectBridge():
 					raise ModuleStartingFailed(moduleName=self.name, error='Cannot connect to bridge')
-				return self._SUPPORTED_INTENTS
+				return self.supportedIntents
 			except IndexError:
 				self.logInfo('No bridge found')
 
@@ -168,60 +176,40 @@ class PhilipsHue(Module):
 				self._bridge.run_scene(group_name=group.name, scene_name=self._scenes[partOfTheDay].name)
 
 
-	def onMessage(self, intent: str, session: DialogSession) -> bool:
-		if self._bridge is None or not self._bridge.registered:
-			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('lightBridgeFailure'))
-			return True
-
+	def _getRooms(self, session: DialogSession) -> list:
 		rooms = [slot.value['value'].lower() for slot in session.slotsAsObjects.get('Room', list())]
+		if rooms:
+			return rooms
+		
+		room = customData.get('room', session.siteId).lower()
+		if room == 'default':
+			room = self.ConfigManager.getAliceConfigByName('room').lower()
+
+		return [room]
+
+
+	def _validateRooms(self, session: DialogSession, rooms: list) -> bool:
 		for room in rooms:
 			if room not in self._groups and room != 'everywhere':
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk(text='roomUnknown', replace=[room]))
-				return True
-
-		scenes = [slot.value['value'].lower() for slot in session.slotsAsObjects.get('Scene', list())]
-		for scene in scenes:
-			if scene not in self._scenes:
-				self.endDialog(sessionId=session.sessionId, text=self.randomTalk(text='sceneUnknown', replace=[scene]))
-				return True
-
-		if intent == self._INTENT_LIGHT_ON:
-			self.lightOnIntent(session)
-			return True
-		elif intent == self._INTENT_LIGHT_OFF:
-			self.lightOffIntent(session)
-			return True
-		elif intent == self._INTENT_LIGHT_SCENE or (session.previousIntent == self._INTENT_LIGHT_SCENE and intent == self._INTENT_USER_ANSWER):
-			self.lightSceneIntent(session)
-			return True
-		elif intent == self._INTENT_MANAGE_LIGHTS:
-			self.manageLightsIntent(session)
-			return True
-		elif intent == self._INTENT_DIM_LIGHTS or session.previousIntent == self._INTENT_DIM_LIGHTS:
-			self.dimLightsIntent(session)
-			return True
-
-		return False
+				return False
+		return True
 
 
 	def lightOnIntent(self, session: DialogSession, **_kwargs):
 		slots = session.slotsAsObjects
 		siteId = session.siteId
 		partOfTheDay = self.Commons.partOfTheDay().lower()
-		rooms = [slot.value['value'].lower() for slot in slots.get('Room', list())]
-		if not rooms:
-			if siteId.lower() not in self._groups:
-				self.endDialog(session.sessionId, text=self.randomTalk(text='roomUnknown', replace=[session.siteId]))
-				return
-			rooms = [siteId.lower()]
+		
+		rooms = self._getRooms(session)
+		if not self._validateRooms(session, rooms):
+			return
 
 		for room in rooms:
 			if room == 'everywhere':
 				self._bridge.set_group(0, 'on', True)
 				break
-			elif (partOfTheDay in self._scenes or self._bridge.run_scene(
-					group_name=self._groups[room].name,
-					scene_name=self._scenes[partOfTheDay].name)):
+			elif (partOfTheDay in self._scenes or self._bridge.run_scene(group_name=self._groups[room].name, scene_name=self._scenes[partOfTheDay].name)):
 				continue
 
 			for light in self._groups[room].lights:
@@ -234,12 +222,9 @@ class PhilipsHue(Module):
 		slots = session.slotsAsObjects
 		siteId = session.siteId
 
-		rooms = [slot.value['value'].lower() for slot in slots.get('Room', list())]
-		if not rooms:
-			if siteId.lower() not in self._groups:
-				self.endDialog(session.sessionId, text=self.randomTalk(text='roomUnknown', replace=[session.siteId]))
-				return
-			rooms = [siteId.lower()]
+		rooms = self._getRooms(session)
+		if not self._validateRooms(session, rooms):
+			return
 
 		for room in rooms:
 			if room == 'everywhere':
@@ -278,14 +263,13 @@ class PhilipsHue(Module):
 				}
 			)
 			return
+		elif scene not in self._scenes:
+			self.endDialog(sessionId=session.sessionId, text=self.randomTalk(text='sceneUnknown', replace=[scene]))
+			return
 
-		rooms = [slot.value['value'].lower() for slot in slots.get('Room', list())]
-		if not rooms:
-			place = customData.get('room', session.siteId)
-			if place.lower() not in self._groups:
-				self.endDialog(session.sessionId, text=self.randomTalk(text='roomUnknown', replace=[place.siteId]))
-				return
-			rooms = [place.lower()]
+		rooms = self._getRooms(session)
+		if not self._validateRooms(session, rooms):
+			return
 
 		for room in rooms:
 			if not self._bridge.run_scene(group_name=self._groups[room].name, scene_name=self._scenes[scene].name):
@@ -301,12 +285,9 @@ class PhilipsHue(Module):
 		siteId = session.siteId
 		partOfTheDay = self.Commons.partOfTheDay().lower()
 
-		rooms = [slot.value['value'].lower() for slot in slots.get('Room', list())]
-		if not rooms:
-			if siteId.lower() not in self._groups:
-				self.endDialog(session.sessionId, text=self.randomTalk(text='roomUnknown', replace=[session.siteId]))
-				return
-			rooms = [siteId.lower()]
+		rooms = self._getRooms(session)
+		if not self._validateRooms(session, rooms):
+			return
 
 		for room in rooms:
 			if room == 'everywhere':
@@ -316,9 +297,7 @@ class PhilipsHue(Module):
 			if group.on:
 				group.on = False
 				continue
-			elif (partOfTheDay in self._scenes or self._bridge.run_scene(
-					group_name=group.name,
-					scene_name=self._scenes[partOfTheDay].name)):
+			elif (partOfTheDay in self._scenes or self._bridge.run_scene(group_name=group.name, scene_name=self._scenes[partOfTheDay].name)):
 				continue
 			
 			for light in group.lights:
@@ -347,16 +326,9 @@ class PhilipsHue(Module):
 
 		brightness = int(round(254 / 100 * percentage))
 
-		rooms = [slot.value['value'].lower() for slot in slots.get('Room', list())]
-		if not rooms:
-			room = session.siteId.lower()
-			if room == 'default':
-				room = self.ConfigManager.getAliceConfigByName('room')
-
-			if siteId.lower() not in self._groups:
-				self.endDialog(session.sessionId, text=self.randomTalk(text='roomUnknown', replace=[session.siteId]))
-				return
-			rooms = [siteId.lower()]
+		rooms = self._getRooms(session)
+		if not self._validateRooms(session, rooms):
+			return
 
 		for room in rooms:
 			if room == 'everywhere':
