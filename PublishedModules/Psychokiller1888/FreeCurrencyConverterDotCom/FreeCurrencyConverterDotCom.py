@@ -49,6 +49,11 @@ class FreeCurrencyConverterDotCom(Module):
 			)
 			return
 
+		if not self._apiKey:
+			self.logWarning(msg="please create a api key at https://www.currencyconverterapi.com/ and add it to the module config")
+			self.endDialog(session.sessionId, text=self.randomTalk('noApiKey'))
+			return
+
 		url = f'https://free.currconv.com/api/v7/convert?q={fromCurrency}_{toCurrency}&compact=ultra&apiKey={self._apiKey}'
 		response = requests.get(url=url)
 		response.raise_for_status()
