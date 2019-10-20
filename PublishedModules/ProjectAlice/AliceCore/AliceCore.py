@@ -186,7 +186,7 @@ class AliceCore(Module):
 				self.ThreadManager.doLater(interval=1, func=self.WakewordManager.finalizeWakeword)
 
 				self.ThreadManager.getEvent('AddingWakeword').clear()
-				if self.delayed:
+				if self.delayed: # type: ignore
 					self.delayed = False
 					self.ThreadManager.doLater(interval=2, func=self.onStart)
 
@@ -503,7 +503,7 @@ class AliceCore(Module):
 
 
 	def onUserCancel(self, session: DialogSession):
-		if not self.delayed: # type: ignore
+		if not self.delayed:
 			self.delayed = False
 
 			if not self.ThreadManager.getEvent('AddingWakeword').isSet():
