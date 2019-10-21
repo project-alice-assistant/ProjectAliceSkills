@@ -6,7 +6,6 @@ import requests
 from core.ProjectAliceExceptions import ModuleStartDelayed, ModuleStartingFailed
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
-from core.commons import commons
 from core.dialog.model.DialogSession import DialogSession
 from .libraries.phue import Bridge, PhueException, PhueRegistrationException
 
@@ -59,26 +58,26 @@ class PhilipsHue(Module):
 				request = requests.get('https://www.meethue.com/api/nupnp')
 				response = request.json()
 				firstBridge = response[0]
-				self._logger.info(f"- [{self.name}] Autodiscover found bridge at {firstBridge['internalipaddress']}, saving ip to config.json")
+				self.logInfo(f"Autodiscover found bridge at {firstBridge['internalipaddress']}, saving ip to config.json")
 				self.updateConfig('phueAutodiscoverFallback', False)
 				self.updateConfig('phueBridgeIp', firstBridge['internalipaddress'])
 				if not self._connectBridge():
-					raise ModuleStartingFailed(moduleName=self.name, error=f'[{self.name}] Cannot connect to bridge')
+					raise ModuleStartingFailed(moduleName=self.name, error='Cannot connect to bridge')
 				return self._SUPPORTED_INTENTS
 			except IndexError:
-				self._logger.info(f'- [{self.name}] No bridge found')
+				self.logInfo('No bridge found')
 
-		raise ModuleStartingFailed(moduleName=self.name, error=f'[{self.name}] Cannot connect to bridge')
+		raise ModuleStartingFailed(moduleName=self.name, error='Cannot connect to bridge')
 
 
 	def _connectBridge(self) -> bool:
 		if self._bridgeConnectTries < 3:
 			try:
-				hueConfigFile = self.getResource(self.name, "philipsHueConf.conf")
+				hueConfigFile = self.getResource(self.name, 'philipsHueConf.conf')
 				hueConfigFileExists = os.path.isfile(hueConfigFile)
 
 				if not hueConfigFileExists:
-					self._logger.info(f'- [{self.name}] No philipsHueConf.conf file in PhilipsHue module directory')
+					self.logInfo('No philipsHueConf.conf file in PhilipsHue module directory')
 
 				self._bridge = Bridge(ip=self.ConfigManager.getModuleConfigByName(self.name, 'phueBridgeIp'), config_file_path=hueConfigFile)
 
@@ -100,17 +99,17 @@ class PhilipsHue(Module):
 				if self.delayed:
 					self.say(text=self.randomTalk('pressBridgeButton'))
 					self._bridgeConnectTries += 1
-					self._logger.warning(f"- [{self.name}] Bridge not registered, please press the bridge button, retry in 20 seconds")
+					self.logWarning("-Bridge not registered, please press the bridge button, retry in 20 seconds")
 					time.sleep(20)
 					return self._connectBridge()
 				else:
 					self.delayed = True
 					raise ModuleStartDelayed(self.name)
 			except PhueException as e:
-				self._logger.error(f'- [{self.name}] Bridge error: {e}')
+				self.logError(f'Bridge error: {e}')
 				return False
 		else:
-			self._logger.error(f"- [{self.name}] Couldn't reach bridge")
+			self.logError("Couldn't reach bridge")
 			self.ThreadManager.doLater(interval=3, func=self.say, args=[self.randomTalk('pressBridgeButtonTimeout')])
 			return False
 
@@ -128,7 +127,7 @@ class PhilipsHue(Module):
 			self._scenes[scene.name.lower()] = scene
 
 		if self._house is None:
-			self._logger.warning(f'- [{self.name}] Coulnd\'t find any group named "House". Creating one')
+			self.logWarning('Coulnd\'t find any group named "House". Creating one')
 			self._bridge.create_group(name='House', lights=self._bridge.get_light().keys(), )
 
 		return True
@@ -160,7 +159,10 @@ class PhilipsHue(Module):
 
 
 	def onFullHour(self):
-		partOfTheDay = commons.partOfTheDay().lower()
+		partOfTheDay = self.Commons.partOfTheDay().lower()
+		if partOfTheDay not in self._scenes:
+			return
+
 		for group in self._groups.values():
 			if group.on:
 				self._bridge.run_scene(group_name=group.name, scene_name=self._scenes[partOfTheDay].name)
@@ -205,7 +207,7 @@ class PhilipsHue(Module):
 					return True
 
 		if intent == self._INTENT_LIGHT_ON:
-			partOfTheDay = commons.partOfTheDay().lower()
+			partOfTheDay = self.Commons.partOfTheDay().lower()
 			if 'Room' in slots:
 				for slot in slots['Room']:
 					room = slot.value['value'].lower()
@@ -291,7 +293,7 @@ class PhilipsHue(Module):
 
 
 		elif intent == self._INTENT_MANAGE_LIGHTS:
-			partOfTheDay = commons.partOfTheDay().lower()
+			partOfTheDay = self.Commons.partOfTheDay().lower()
 			if 'Room' not in slots:
 				room = place
 

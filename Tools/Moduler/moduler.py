@@ -69,15 +69,11 @@ class {moduleName}(Module):
 		super().__init__(self._SUPPORTED_INTENTS)
 
 
-	def onMessage(self, intent: str, session: DialogSession) -> bool:
-		if not self.filterIntent(intent, session):
-			return False
+	def onMessage(self, intent: str, session: DialogSession):
 
 		sessionId = session.sessionId
 		siteId = session.siteId
-		slots = session.slots
-
-		return True'''
+		slots = session.slots'''
 
 INSTALL_JSON = '''{{
 	"name": "{moduleName}",

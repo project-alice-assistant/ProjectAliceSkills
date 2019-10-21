@@ -1,4 +1,5 @@
 import time
+from typing import Tuple
 
 import lnetatmo
 
@@ -14,7 +15,7 @@ class Netatmo(Module):
 	"""
 
 	def __init__(self):
-		self._SUPPORTED_INTENTS	= []
+		self._SUPPORTED_INTENTS	= list()
 
 		super().__init__(self._SUPPORTED_INTENTS)
 
@@ -40,15 +41,15 @@ class Netatmo(Module):
 	def onStart(self) -> list:
 		super().onStart()
 		if not self.getConfig('password'):
-			raise ModuleStartingFailed(moduleName=self.name, error=f'[{self.name}] No credentials provided')
+			raise ModuleStartingFailed(moduleName=self.name, error='No credentials provided')
 
 		if not self._auth():
-			raise ModuleStartingFailed(moduleName=self.name, error=f'[{self.name}] Authentication failed')
+			raise ModuleStartingFailed(moduleName=self.name, error='Authentication failed')
 
 		try:
 			self._weatherData = lnetatmo.WeatherStationData(self._netatmoAuth)
 		except lnetatmo.NoDevice:
-			raise ModuleStartingFailed(moduleName=self.name, error=f'[{self.name}] No Netatmo device found')
+			raise ModuleStartingFailed(moduleName=self.name, error='No Netatmo device found')
 		else:
 			return self._SUPPORTED_INTENTS
 
@@ -62,11 +63,11 @@ class Netatmo(Module):
 				password=self.getConfig('password'),
 				scope='read_station'
 			)
-		except lnetatmo.AuthFailure:
+		except Exception:
 			self._authTries += 1
 			if self._authTries >= 3:
-				self._logger.warning(f'[{self.name}] Tried to auth 3 times, giving up now')
-				return False
+				self.logWarning('Tried to auth 3 times, giving up now')
+				raise ModuleStartingFailed
 			else:
 				time.sleep(1)
 				return self._auth()
@@ -74,11 +75,15 @@ class Netatmo(Module):
 		return True
 
 
-	def _lastWeatherData(self) -> Generator[Tuple[str, str, str], None, None]:
+	def _lastWeatherData(self) -> Tuple[str, str, str]:
 		self._weatherData = lnetatmo.WeatherStationData(self._netatmoAuth)
 		for siteId, values in self._weatherData.lastData().items():
+
+			if siteId == 'Wind' or siteId == 'Rain':
+				siteId = self.LanguageManager.getStrings('outside')[0]
+
 			for key, value in values.items():
-				yield (siteId, self._telemetryTypes.get(key), value)
+				yield (siteId.lower(), self._telemetryTypes.get(key), value)
 
 
 	def onFullMinute(self):

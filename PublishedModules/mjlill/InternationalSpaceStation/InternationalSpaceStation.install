@@ -1,6 +1,6 @@
 {
 	"name": "InternationalSpaceStation",
-	"version": 1.14,
+	"version": 1.18,
 	"author": "mjlill",
 	"maintainers": [
 		 "maxbachmann",
@@ -8,7 +8,7 @@
 		 "Psycho"
 	],
 	"desc": "Inquire information about the international space station",
-	"aliceMinVersion": 0.11,
+	"aliceMinVersion": 0.13,
 	"systemRequirements": [],
 	"pipRequirements": [],
 	"conditions": {

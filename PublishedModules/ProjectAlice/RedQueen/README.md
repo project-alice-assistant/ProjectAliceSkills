@@ -16,32 +16,16 @@ wget http://modules.projectalice.ch/RedQueen \
 ### Desc
 Red Queen is the official Project Alice personality module
 
-- Version: 1.07
+- Version: 1.09
 - Author: ProjectAlice
 - Maintainers:
   - Psycho, Jierka, maxbachmann
-- Alice minimum version: 0.12
+- Alice minimum version: 0.13
 - Conditions:
   - EN
   - FR
   - DE
 - Requirements: N/A
-
-
-### Configuration
-
-`randomSpeeking`:
- - type: `bool`
- 
-`randomTalkMinDelay`:
- - type: `int`
-
-`randomTalkMaxDelay`:
- - type: `int`
- 
- `disableMoodTraits`:
- - type: `bool`
-
 
 ### Extra files
 
