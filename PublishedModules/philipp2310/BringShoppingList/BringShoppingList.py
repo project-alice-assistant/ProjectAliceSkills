@@ -128,7 +128,7 @@ class BringShoppingList(Module):
 		return found, missing
 
 
-	def _getShopItems(self, intent: str, session: DialogSession) -> list:
+	def _getShopItems(self, answer: str, intent: str, session: DialogSession) -> list:
 		"""get the values of shopItem as a list of strings"""
 		if intent == self._INTENT_SPELL_WORD:
 			item = ''.join([slot.value['value'] for slot in session.slotsAsObjects['Letters']])
@@ -163,7 +163,7 @@ class BringShoppingList(Module):
 
 	@Decorators.online
 	def addItemIntent(self, intent: str, session: DialogSession):
-		items = self._getShopItems(session, intent)
+		items = self._getShopItems('add', session, intent)
 		if items:
 			added, exist = self._addItemInt(items)
 			self.endDialog(session.sessionId, text=self._combineLists('add', added, exist))
@@ -171,7 +171,7 @@ class BringShoppingList(Module):
 
 	@Decorators.online
 	def delItemIntent(self, intent: str, session: DialogSession):
-		items = self._getShopItems(session, intent)
+		items = self._getShopItems('rem', session, intent)
 		if items:
 			removed, exist = self._deleteItemInt(items)
 			self.endDialog(session.sessionId, text=self._combineLists('rem', removed, exist))
@@ -179,7 +179,7 @@ class BringShoppingList(Module):
 
 	@Decorators.online
 	def checkListIntent(self, intent: str, session: DialogSession):
-		items = self._getShopItems(session, intent)
+		items = self._getShopItems('chk', session, intent)
 		if items:
 			found, missing = self._checkListInt(items)
 			self.endDialog(session.sessionId, text=self._combineLists('chk', found, missing))
