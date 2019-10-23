@@ -18,7 +18,7 @@ Inquire the latest news
 - Version: 0.1
 - Author: maxbachmann
 - Maintainers: N/A
-- Alice minimum version: 0.11
+- Alice minimum version: 0.13
 - Conditions:
   - en
   - de

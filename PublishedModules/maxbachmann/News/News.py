@@ -1,9 +1,10 @@
 import requests
+from requests import RequestException
 
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
-from core.commons.commons import online, translate
+from core.util.Decorators import Decorators
 
 
 class News(Module):
@@ -16,52 +17,23 @@ class News(Module):
 
 	def __init__(self):
 		self._SUPPORTED_INTENTS	= [
-			self._INTENT_NEWS
+			(self._INTENT_NEWS: self.getNews)
 		]
 
 		super().__init__(self._SUPPORTED_INTENTS)
 		self._apiKey = self.getConfig('apiKey')
 		self._region = self.getConfig('langCode')
-		
-
-	def onMessage(self, intent: str, session: DialogSession) -> bool:
-		if not self.filterIntent(intent, session):
-			return False
-
-		sessionId = session.sessionId
-		slots = session.slotsAsObjects
-
-		try:
-			if intent == self._INTENT_NEWS:
-				self.endDialog(sessionId, text=self.getNews(slots))
-			
-		except Exception as e:
-			self._logger.error(e)
-			self.endDialog(sessionId, text=self.randomTalk('noServer'))
-
-		return True
 
 
-	@staticmethod
-	def queryApi(url: str, *args, **kargs) -> dict:
-		return requests.get(url=url.format(*args, **kargs)).json()
+	@Decorators.anyExcept(exceptions=(RequestException, KeyError), text='noServer', printStack=True)
+	@Decorators.online
+	def getNews(self, session: DialogSession, **_kwargs):
+		slots = session.slotValue('number') or 10
+		region = session.slotValue('region') or self._region
+		category = session.slotValue('category') or 'general'
 
-	@online
-	def getNews(self, slots: dict) -> str:
-		if 'number' in slots:
-			number = slots['number'].value['value']
-		else:
-			number = 10
-		
-		if 'region' in slots:
-			region = slots['region'].value['value']
-		else:
-			region = self._region
-		
-		if 'category' in slots:
-			category = slots['category'].value['value']
-		else:
-			category = 'general'
-		
-		articles = self.queryApi(f'https://newsapi.org/v2/top-headlines?country={region}&category={category}&pageSize={number}&apiKey={self._apiKey}')['articles']
-		return '<break time=\"400ms\"/>'.join([f"{article['title']}<break time=\"200ms\"/>{article['description']}" for article in articles])
+		response = requests.get(url=f'https://newsapi.org/v2/top-headlines?country={region}&category={category}&pageSize={number}&apiKey={self._apiKey}')
+		response.raise_for_status()
+		articles = response.json()['articles']
+		answer = '<break time=\"400ms\"/>'.join([f"{article['title']}<break time=\"200ms\"/>{article['description']}" for article in articles])
+		self.endDialog(sessionId=session.sessionId, text=answer)
