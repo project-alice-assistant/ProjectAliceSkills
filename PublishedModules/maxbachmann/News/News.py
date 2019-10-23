@@ -22,7 +22,7 @@ class News(Module):
 
 		super().__init__(self._INTENTS)
 		self._apiKey = self.getConfig('apiKey')
-		self._region = self.getConfig('langCode')
+		self._region = self.getConfig('defaultLangCode')
 
 
 	@Decorators.anyExcept(exceptions=(RequestException, KeyError), text='noServer', printStack=True)
