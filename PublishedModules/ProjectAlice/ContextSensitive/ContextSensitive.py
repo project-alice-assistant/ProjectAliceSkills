@@ -65,7 +65,7 @@ class ContextSensitive(Module):
 				data['customData'] = customData
 				session.payload = data
 
-			self._history.appendleft(session)
+			self._history.append(session)
 		except Exception as e:
 			self.logError('Error adding to intent history: {e}')
 		return True
@@ -79,7 +79,7 @@ class ContextSensitive(Module):
 		if siteId not in self._sayHistory:
 			self._sayHistory[siteId] = deque(list(), 10)
 
-		self._sayHistory[siteId].appendleft(text)
+		self._sayHistory[siteId].append(text)
 
 
 	def getLastChat(self, siteId: str) -> str:
