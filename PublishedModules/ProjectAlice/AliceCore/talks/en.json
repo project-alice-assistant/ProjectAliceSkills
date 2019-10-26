@@ -434,5 +434,23 @@
 	],
 	"addUserAddWakewordDenied": [
 		"Ok, I understand, keep in mind I won't be able to define if {} is home, sleeping, playing games or remember stuff about {}."
-	]
+	],
+	"explainInterfaceAuth": {
+		"default": [
+			"If you want to access this part, I need to authenticate you. Call me by my name please!",
+			"To access this part of the interface I need to authenticate you. Please call me by my name"
+		],
+		"short": [
+			"Call me by my name please"
+		]
+	},
+	"greetAndNeedPinCode": {
+		"default": [
+			"Hey {}! Check your interface and enter your pin code!",
+			"Nice {}. Now check your interface and enter your pin code"
+		],
+		"short": [
+			"Enter pin code on the interface"
+		]
+	}
 }

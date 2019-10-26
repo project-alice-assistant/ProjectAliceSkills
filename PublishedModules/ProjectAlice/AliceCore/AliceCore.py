@@ -490,6 +490,16 @@ class AliceCore(Module):
 		return self.supportedIntents
 
 
+	def onHotword(self, siteId: str, user: str = constants.UNKNOWN_USER):
+		if not self.ThreadManager.getEvent('authUser').isSet():
+			return
+
+		self.say(
+			text=self.randomTalk('greetAndNeedPinCode', replace=[user])
+		)
+		self.ThreadManager.getEvent('authUser').clear()
+
+
 	def _addFirstUser(self):
 		self.ask(
 			text=self.randomTalk('addAdminUser'),
@@ -503,7 +513,7 @@ class AliceCore(Module):
 
 
 	def onUserCancel(self, session: DialogSession):
-		if not self.delayed:
+		if self.delayed:
 			self.delayed = False
 
 			if not self.ThreadManager.getEvent('AddingWakeword').isSet():
@@ -529,6 +539,8 @@ class AliceCore(Module):
 
 	def onSessionStarted(self, session: DialogSession):
 		self.changeFeedbackSound(inDialog=True, siteId=session.siteId)
+		if self.ThreadManager.getEvent('authUser').isSet():
+			self.endSession(session.sessionId)
 
 
 	def onSessionEnded(self, session: DialogSession):
@@ -696,3 +708,12 @@ class AliceCore(Module):
 
 		subprocess.run(['sudo', 'ln', '-sfn', f'{self.Commons.rootDir()}/system/sounds/{self.LanguageManager.activeLanguage}/start_of_input{state}.wav', f'{self.Commons.rootDir()}/assistant/custom_dialogue/sound/start_of_input.wav'])
 		subprocess.run(['sudo', 'ln', '-sfn', f'{self.Commons.rootDir()}/system/sounds/{self.LanguageManager.activeLanguage}/error{state}.wav', f'{self.Commons.rootDir()}/assistant/custom_dialogue/sound/error.wav'])
+
+
+	def explainInterfaceAuth(self):
+		self.ThreadManager.newEvent('authUser').set()
+		self.changeFeedbackSound(inDialog=True)
+		self.say(
+			text=self.randomTalk('explainInterfaceAuth'),
+			siteId=constants.ALL
+		)
