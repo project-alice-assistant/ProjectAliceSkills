@@ -584,6 +584,9 @@ class AliceCore(Module):
 			elif self.UserManager.hasAccessLevel(session.user, AccessLevel.ADMIN):
 				# End the session immediately because the ASR is listening to the previous wakeword call
 				self.endSession(sessionId=session.sessionId)
+
+				AdminAuth.user = user
+
 				self.ask(
 					text=self.randomTalk('greetAndNeedPinCode', replace=[session.user]),
 					siteId=session.siteId,
@@ -598,8 +601,6 @@ class AliceCore(Module):
 					sessionId=session.sessionId,
 					text=self.randomTalk('userAuthAccessLevelTooLow')
 				)
-
-				AdminAuth.nextPage = user
 
 
 	def onSessionEnded(self, session: DialogSession):

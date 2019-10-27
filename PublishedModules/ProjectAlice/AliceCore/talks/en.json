@@ -446,8 +446,8 @@
 	},
 	"greetAndNeedPinCode": {
 		"default": [
-			"Hey {}! I need your pin code now, either tell it or enter it on your interface!",
-			"Hi {}. To continue I need you personal pin code. You can tell it to me or enter it on the interface"
+			"Hey {}! I need your pin code now, you can either speak it now or enter it on your interface!",
+			"Hi {}. To continue I need your personal pin code. You can tell it to me now or enter it on the interface."
 		],
 		"short": [
 			"Say or enter pin code on the interface"
@@ -466,7 +466,7 @@
 		"Nope, incorrect, try again"
 	],
 	"authOk": [
-		"Ok, you are verfied, you have now access",
+		"Ok, you are verified, you have now access",
 		"Cool, it's correct, you have now access"
 	]
 }
