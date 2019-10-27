@@ -87,11 +87,35 @@ class AliceCore(Module):
 		}
 
 		self._INTENT_ANSWER_NUMBER.dialogMapping = {
-			'addingPinCode': self.addUserPinCode
+			'addingPinCode': self.addUserPinCode,
+			'userAuth': self.authUser
 		}
 
 		self._threads = dict()
 		super().__init__(self._INTENTS, authOnlyIntents=self._AUTH_ONLY_INTENTS)
+
+
+	def authUser(self, session: DialogSession, **_kwargs):
+		if 'Number' not in session.slotsAsObjects:
+			self.continueDialog(
+				sessionId=session.sessionId,
+				text=self.TalkManager.randomTalk('notUnderstood', module='system'),
+				intentFilter=[self._INTENT_ANSWER_NUMBER],
+				currentDialogState='userAuth'
+			)
+			return
+
+		pin = ''.join([str(int(x.value['value'])) for x in session.slotsAsObjects['Number']])
+
+		if self.UserManager.getUser(session.user).pin != pin :
+			self.endDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk('authFailed')
+			)
+		else:
+			self.UserManager.getUser(session.user).isAuthenticated = True
+
+		self.ThreadManager.getEvent('authUser').clear()
 
 
 	def addNewUser(self, session: DialogSession, **_kwargs):
@@ -490,16 +514,6 @@ class AliceCore(Module):
 		return self.supportedIntents
 
 
-	def onHotword(self, siteId: str, user: str = constants.UNKNOWN_USER):
-		if not self.ThreadManager.getEvent('authUser').isSet():
-			return
-
-		self.say(
-			text=self.randomTalk('greetAndNeedPinCode', replace=[user])
-		)
-		self.ThreadManager.getEvent('authUser').clear()
-
-
 	def _addFirstUser(self):
 		self.ask(
 			text=self.randomTalk('addAdminUser'),
@@ -539,8 +553,15 @@ class AliceCore(Module):
 
 	def onSessionStarted(self, session: DialogSession):
 		self.changeFeedbackSound(inDialog=True, siteId=session.siteId)
+
 		if self.ThreadManager.getEvent('authUser').isSet():
-			self.endSession(session.sessionId)
+			self.SnipsServicesManager.toggleFeedbackSound(state='on')
+			self.continueDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk('greetAndNeedPinCode', replace=[session.user]),
+				intentFilter=[self._INTENT_ANSWER_NUMBER],
+				currentDialogState='userAuth'
+			)
 
 
 	def onSessionEnded(self, session: DialogSession):
@@ -712,7 +733,7 @@ class AliceCore(Module):
 
 	def explainInterfaceAuth(self):
 		self.ThreadManager.newEvent('authUser').set()
-		self.changeFeedbackSound(inDialog=True)
+		self.SnipsServicesManager.toggleFeedbackSound(state='off')
 		self.say(
 			text=self.randomTalk('explainInterfaceAuth'),
 			siteId=constants.ALL

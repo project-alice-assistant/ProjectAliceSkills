@@ -446,11 +446,15 @@
 	},
 	"greetAndNeedPinCode": {
 		"default": [
-			"Hey {}! Check your interface and enter your pin code!",
-			"Nice {}. Now check your interface and enter your pin code"
+			"Hey {}! I need your pin code now, either tell it or enter it on your interface!",
+			"Nice {}. To continue I need you personal pin code. You can tell it to me or enter it on the interface"
 		],
 		"short": [
-			"Enter pin code on the interface"
+			"Say or enter pin code on the interface"
 		]
-	}
+	},
+	"authFailed": [
+		"Sorry, this is not correct, I can't let you go further",
+		"Nope, incorrect, try again"
+	]
 }
