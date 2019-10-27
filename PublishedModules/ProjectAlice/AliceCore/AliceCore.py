@@ -513,6 +513,18 @@ class AliceCore(Module):
 		self.ThreadManager.doLater(interval=5, func=subprocess.run, args=[['sudo', 'shutdown', '-r', 'now']])
 
 
+	def _addFirstUser(self):
+		self.ask(
+			text=self.randomTalk('addAdminUser'),
+			intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
+			canBeEnqueued=False,
+			currentDialogState='addingUser',
+			customData={
+				'UserAccessLevel': 'admin'
+			}
+		)
+
+
 	def onStart(self) -> dict:
 		super().onStart()
 		self.changeFeedbackSound(inDialog=False)
@@ -524,18 +536,6 @@ class AliceCore(Module):
 			self._addFirstUser()
 
 		return self.supportedIntents
-
-
-	def _addFirstUser(self):
-		self.ask(
-			text=self.randomTalk('addAdminUser'),
-			intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
-			canBeEnqueued=False,
-			currentDialogState='addingUser',
-			customData={
-				'UserAccessLevel': 'admin'
-			}
-		)
 
 
 	def onHotword(self, siteId: str, user: str = constants.UNKNOWN_USER):
@@ -576,20 +576,14 @@ class AliceCore(Module):
 			self.SnipsServicesManager.toggleFeedbackSound(state='on')
 
 			user = self.UserManager.getUser(session.user)
-			if not user or session.user == constants.UNKNOWN_USER:
+			if user == constants.UNKNOWN_USER:
 				self.endDialog(
 					sessionId=session.sessionId,
 					text=self.randomTalk('userAuthUnknown')
 				)
-			elif not self.UserManager.hasAccessLevel(session.user, AccessLevel.ADMIN):
-				self.endDialog(
-					sessionId=session.sessionId,
-					text=self.randomTalk('userAuthAccessLevelTooLow')
-				)
-			else:
+			elif self.UserManager.hasAccessLevel(session.user, AccessLevel.ADMIN):
 				# End the session immediately because the ASR is listening to the previous wakeword call
 				self.endSession(sessionId=session.sessionId)
-
 				self.ask(
 					text=self.randomTalk('greetAndNeedPinCode', replace=[session.user]),
 					siteId=session.siteId,
@@ -598,6 +592,11 @@ class AliceCore(Module):
 					customData={
 						'user': session.user.lower()
 					}
+				)
+			else:
+				self.endDialog(
+					sessionId=session.sessionId,
+					text=self.randomTalk('userAuthAccessLevelTooLow')
 				)
 
 				AdminAuth.nextPage = user
@@ -771,6 +770,7 @@ class AliceCore(Module):
 
 
 	def explainInterfaceAuth(self):
+		self.ThreadManager.getEvent('authUser').clear()
 		self.ThreadManager.newEvent('authUserWaitWakeword').set()
 		self.SnipsServicesManager.toggleFeedbackSound(state='off')
 		self.say(
