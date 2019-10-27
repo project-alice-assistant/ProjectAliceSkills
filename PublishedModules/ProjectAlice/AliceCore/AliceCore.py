@@ -8,6 +8,7 @@ from core.ProjectAliceExceptions import ModuleStartDelayed
 from core.base.SuperManager import SuperManager
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
+from core.interface.views.AdminAuth import AdminAuth
 from core.util.Decorators import Decorators
 from core.commons import constants
 from core.dialog.model.DialogSession import DialogSession
@@ -107,13 +108,24 @@ class AliceCore(Module):
 
 		pin = ''.join([str(int(x.value['value'])) for x in session.slotsAsObjects['Number']])
 
-		if self.UserManager.getUser(session.user).pin != pin :
+		user = self.UserManager.getUser(session.customData['user'])
+		if not user:
+			self.endDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk('userAuthUnknown')
+			)
+
+		if user.pin != int(pin):
 			self.endDialog(
 				sessionId=session.sessionId,
 				text=self.randomTalk('authFailed')
 			)
 		else:
 			self.UserManager.getUser(session.user).isAuthenticated = True
+			self.endDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk('authOk')
+			)
 
 		self.ThreadManager.getEvent('authUser').clear()
 
@@ -526,6 +538,12 @@ class AliceCore(Module):
 		)
 
 
+	def onHotword(self, siteId: str, user: str = constants.UNKNOWN_USER):
+		if self.ThreadManager.getEvent('authUserWaitWakeword').isSet():
+			self.ThreadManager.getEvent('authUserWaitWakeword').clear()
+			self.ThreadManager.newEvent('authUser').set()
+
+
 	def onUserCancel(self, session: DialogSession):
 		if self.delayed:
 			self.delayed = False
@@ -554,14 +572,35 @@ class AliceCore(Module):
 	def onSessionStarted(self, session: DialogSession):
 		self.changeFeedbackSound(inDialog=True, siteId=session.siteId)
 
-		if self.ThreadManager.getEvent('authUser').isSet():
+		if self.ThreadManager.getEvent('authUser').isSet() and session.currentState != 'userAuth':
 			self.SnipsServicesManager.toggleFeedbackSound(state='on')
-			self.continueDialog(
-				sessionId=session.sessionId,
-				text=self.randomTalk('greetAndNeedPinCode', replace=[session.user]),
-				intentFilter=[self._INTENT_ANSWER_NUMBER],
-				currentDialogState='userAuth'
-			)
+
+			user = self.UserManager.getUser(session.user)
+			if not user or session.user == constants.UNKNOWN_USER:
+				self.endDialog(
+					sessionId=session.sessionId,
+					text=self.randomTalk('userAuthUnknown')
+				)
+			elif not self.UserManager.hasAccessLevel(session.user, AccessLevel.ADMIN):
+				self.endDialog(
+					sessionId=session.sessionId,
+					text=self.randomTalk('userAuthAccessLevelTooLow')
+				)
+			else:
+				# End the session immediately because the ASR is listening to the previous wakeword call
+				self.endSession(sessionId=session.sessionId)
+
+				self.ask(
+					text=self.randomTalk('greetAndNeedPinCode', replace=[session.user]),
+					siteId=session.siteId,
+					intentFilter=[self._INTENT_ANSWER_NUMBER],
+					currentDialogState='userAuth',
+					customData={
+						'user': session.user.lower()
+					}
+				)
+
+				AdminAuth.nextPage = user
 
 
 	def onSessionEnded(self, session: DialogSession):
@@ -732,7 +771,7 @@ class AliceCore(Module):
 
 
 	def explainInterfaceAuth(self):
-		self.ThreadManager.newEvent('authUser').set()
+		self.ThreadManager.newEvent('authUserWaitWakeword').set()
 		self.SnipsServicesManager.toggleFeedbackSound(state='off')
 		self.say(
 			text=self.randomTalk('explainInterfaceAuth'),
