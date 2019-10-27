@@ -115,7 +115,7 @@ class AliceCore(Module):
 				text=self.randomTalk('userAuthUnknown')
 			)
 
-		if user.pin != int(pin):
+		if not user.checkPassword(pin):
 			self.endDialog(
 				sessionId=session.sessionId,
 				text=self.randomTalk('authFailed')
