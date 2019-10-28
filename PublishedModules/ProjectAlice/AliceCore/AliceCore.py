@@ -121,8 +121,7 @@ class AliceCore(Module):
 				text=self.randomTalk('authFailed')
 			)
 		else:
-			self.UserManager.getUser(session.user).isAuthenticated = True
-			AdminAuth.loginUser()
+			user.isAuthenticated = True
 			self.endDialog(
 				sessionId=session.sessionId,
 				text=self.randomTalk('authOk')
@@ -542,6 +541,11 @@ class AliceCore(Module):
 	def onHotword(self, siteId: str, user: str = constants.UNKNOWN_USER):
 		if self.ThreadManager.getEvent('authUserWaitWakeword').isSet():
 			self.ThreadManager.getEvent('authUserWaitWakeword').clear()
+
+
+	def onWakeword(self, siteId: str, user: str = constants.UNKNOWN_USER):
+		if self.ThreadManager.getEvent('authUserWaitWakeword').isSet():
+			self.ThreadManager.getEvent('authUserWaitWakeword').clear()
 			self.ThreadManager.newEvent('authUser').set()
 
 
@@ -586,7 +590,7 @@ class AliceCore(Module):
 				# End the session immediately because the ASR is listening to the previous wakeword call
 				self.endSession(sessionId=session.sessionId)
 
-				AdminAuth.user = user
+				AdminAuth.setUser(user)
 
 				self.ask(
 					text=self.randomTalk('greetAndNeedPinCode', replace=[session.user]),
@@ -772,6 +776,7 @@ class AliceCore(Module):
 
 
 	def explainInterfaceAuth(self):
+		AdminAuth.setUser(None)
 		self.ThreadManager.getEvent('authUser').clear()
 		self.ThreadManager.newEvent('authUserWaitWakeword').set()
 		self.SnipsServicesManager.toggleFeedbackSound(state='off')
