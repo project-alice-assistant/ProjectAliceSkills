@@ -122,6 +122,7 @@ class AliceCore(Module):
 			)
 		else:
 			self.UserManager.getUser(session.user).isAuthenticated = True
+			AdminAuth.loginUser()
 			self.endDialog(
 				sessionId=session.sessionId,
 				text=self.randomTalk('authOk')
