@@ -9121,7 +9121,11 @@
 					"value": "Melons"
 				},
 				{
-					"value": "Cola"
+					"value": "Cola",
+					"synonyms": [
+						"Coke",
+						"Coca Cola"
+					]
 				},
 				{
 					"value": "Milka chocolate"
@@ -9135,7 +9139,10 @@
 			"description": "Add something to the shopping list",
 			"enabledByDefault": true,
 			"utterances": [
-				"Please add {Bread:=>shopItem} to my shopping list"
+				"Please add {Bread:=>shopItem} to my shopping list",
+				"add {Bread:=>shopItem} to my shopping list",
+				"can you add {Bread:=>shopItem} to my shopping list",
+				"write {Bread:=>shopItem} on my shopping list"
 			],
 			"slots": [
 				{
@@ -9153,7 +9160,8 @@
 			"enabledByDefault": false,
 			"utterances": [
 				"{Bread:=>shopItem}",
-				"{Bread:=>shopItem} and {Bread:=>shopItem}"
+				"{Bread:=>shopItem} and {Bread:=>shopItem}",
+				"{Bread:=>shopItem} {Banana:=>shopItem} {Water:=>shopItem}"
 			],
 			"slots": [
 				{
@@ -9170,7 +9178,10 @@
 			"description": "Delete something from the shopping list",
 			"enabledByDefault": true,
 			"utterances": [
-				"Please remove {Bread:=>shopItem} from my shopping list"
+				"Please remove {Bread:=>shopItem} from my shopping list",
+				"take {Bread:=>shopItem} off my shopping list",
+				"delete {Bread:=>shopItem} from my shopping list",
+				"there's no more need for {Bread:=>shopItem} on my shopping list"
 			],
 			"slots": [
 				{
@@ -9187,7 +9198,10 @@
 			"description": "Read the shopping list",
 			"enabledByDefault": true,
 			"utterances": [
-				"What is written on my shopping list?"
+				"what is written on my shopping list?",
+				"what's on my shopping list?",
+				"please tell me what I have on my shopping list",
+				"can you tell me what's on my shopping list"
 			],
 			"slots": []
 		},
@@ -9196,7 +9210,9 @@
 			"description": "Check if an Item is on the shopping list",
 			"enabledByDefault": true,
 			"utterances": [
-				"Is {Bread:=>shopItem} on my shopping list?"
+				"Is {Bread:=>shopItem} on my shopping list?",
+				"Do I have {Bananas:=>shopItem} on my shooping list?",
+				"Did I already add {Coke:=>shopItem} to my shooping list?",
 			],
 			"slots": [
 				{
@@ -9213,7 +9229,10 @@
 			"description": "delete the complete shopping list",
 			"enabledByDefault": true,
 			"utterances": [
-				"Please delete the complete shopping list."
+				"Please delete the complete shopping list",
+				"delete my shopping list",
+				"drop the complete shopping list would you",
+				"remove everything on my shopping list please"
 			],
 			"slots": []
 		}
