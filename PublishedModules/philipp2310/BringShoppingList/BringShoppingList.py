@@ -1,6 +1,5 @@
 from typing import Tuple
 
-import requests
 from BringApi.BringApi import BringApi
 
 from core.ProjectAliceExceptions import ModuleStartingFailed
@@ -57,53 +56,38 @@ class BringShoppingList(Module):
 			'confDelList': self.confDelIntent
 		}
 
-		self._uuid = self.getConfig('uuid')
-		self._uuidlist = self.getConfig('listUuid')
+		self._email = self.getConfig("bringEmail")
+		self._password = self.getConfig("bringPassword")
 		self._bring = None
-	
-	
+
+
 	def onStart(self) -> dict:
-		if not self.getConfig('uuid') or not self.getConfig('listUuid'):
-			self._connectAccount()
-
-		self._uuid = self.getConfig('uuid')
-		self._uuidlist = self.getConfig('listUuid')
-
-		self._bring = BringApi(self._uuid, self._uuidlist)
-		
+		self._connectAccount()
 		return super().onStart()
+
+
+	def bring(self):
+		if not self._bring:
+			self._bring = BringApi(self._email, self._password, use_login=True)
+		return self._bring
 
 
 	@Decorators.online
 	def _connectAccount(self):
 		try:
-			req = requests.get(f'https://api.getbring.com/rest/bringlists?email={self.getConfig("bringEmail")}&password={self.getConfig("bringPassword")}')
-			if req.status_code != 200:
-				raise Exception
-
-			data = req.json()
-			if data:
-				if 'errorcode' in data or 'uuid' not in data or 'bringListUUID' not in data:
-					raise Exception
-
-				self.updateConfig('uuid', data['uuid'])
-				self.updateConfig('listUuid', data['bringListUUID'])
-			else:
-				raise Exception
-		except:
+			self._bring = BringApi(self._email, self._password, use_login=True)
+		except BringApi.AuthentificationFailed:
 			raise ModuleStartingFailed(self._name, 'Please check your account login and password')
 
 
-	@Decorators.online
-	def _deleteCompleteList(self) -> str:
+	def _deleteCompleteList(self):
 		"""
 		perform the deletion of the complete list
 		-> load all and delete item by item
 		"""
-		items = self._bring.get_items().json()['purchase']
+		items = self.bring().get_items().json()['purchase']
 		for item in items:
-			self._bring.recent_item(item['name'])
-		return self.randomTalk('del_all')
+			self.bring().recent_item(item['name'])
 
 
 	def _addItemInt(self, items) -> Tuple[list, list]:
@@ -111,12 +95,12 @@ class BringShoppingList(Module):
 		internal method to add a list of items to the shopping list
 		:returns: two splitted lists of successfull adds and items that already existed.
 		"""
-		bringItems = self._bring.get_items().json()['purchase']
+		bringItems = self.bring().get_items().json()['purchase']
 		added = list()
 		exist = list()
 		for item in items:
 			if not any(entr['name'].lower() == item.lower() for entr in bringItems):
-				self._bring.purchase_item(item, "")
+				self.bring().purchase_item(item, "")
 				added.append(item)
 			else:
 				exist.append(item)
@@ -128,15 +112,15 @@ class BringShoppingList(Module):
 		internal method to delete a list of items from the shopping list
 		:returns: two splitted lists of successfull deletions and items that were not on the list
 		"""
-		bringItems = self._bring.get_items().json()['purchase']
+		bringItems = self.bring().get_items().json()['purchase']
 		removed = list()
 		exist = list()
 		for item in items:
 			for entr in bringItems:
 				if entr['name'].lower() == item.lower():
-					self._bring.recent_item(entr['name'])
+					self.bring().recent_item(entr['name'])
 					removed.append(item)
-					break	
+					break
 			else:
 				exist.append(item)
 		return removed, exist
@@ -147,7 +131,7 @@ class BringShoppingList(Module):
 		internal method to check if a list of items is on the shopping list
 		:returns: two splitted lists, one with the items on the list, one with the missing ones
 		"""
-		bringItems = self._bring.get_items().json()['purchase']
+		bringItems = self.bring().get_items().json()['purchase']
 		found = list()
 		missing = list()
 		for item in items:
@@ -163,7 +147,7 @@ class BringShoppingList(Module):
 		if intent == self._INTENT_SPELL_WORD:
 			item = ''.join([slot.value['value'] for slot in session.slotsAsObjects['Letters']])
 			return [item.capitalize()]
-		
+
 		items = [x.value['value'] for x in session.slotsAsObjects.get('shopItem', list()) if x.value['value'] != "unknownword"]
 
 		if not items:
@@ -184,13 +168,17 @@ class BringShoppingList(Module):
 			currentDialogState='confDelList')
 
 
+	@Decorators.anyExcept(exceptions=BringApi.AuthentificationFailed, text='authFailed')
+	@Decorators.online
 	def confDelIntent(self, session: DialogSession, **_kwargs):
 		if self.Commons.isYes(session):
-			self.endDialog(session.sessionId, text=self._deleteCompleteList())
+			self._deleteCompleteList()
+			self.endDialog(session.sessionId, text=self.randomTalk('del_all'))
 		else:
 			self.endDialog(session.sessionId, text=self.randomTalk('nodel_all'))
 
 
+	@Decorators.anyExcept(exceptions=BringApi.AuthentificationFailed, text='authFailed')
 	@Decorators.online
 	def addItemIntent(self, intent: str, session: DialogSession):
 		items = self._getShopItems('add', intent, session)
@@ -199,6 +187,7 @@ class BringShoppingList(Module):
 			self.endDialog(session.sessionId, text=self._combineLists('add', added, exist))
 
 
+	@Decorators.anyExcept(exceptions=BringApi.AuthentificationFailed, text='authFailed')
 	@Decorators.online
 	def delItemIntent(self, intent: str, session: DialogSession):
 		items = self._getShopItems('rem', intent, session)
@@ -207,6 +196,7 @@ class BringShoppingList(Module):
 			self.endDialog(session.sessionId, text=self._combineLists('rem', removed, exist))
 
 
+	@Decorators.anyExcept(exceptions=BringApi.AuthentificationFailed, text='authFailed')
 	@Decorators.online
 	def checkListIntent(self, intent: str, session: DialogSession):
 		items = self._getShopItems('chk', intent, session)
@@ -215,10 +205,11 @@ class BringShoppingList(Module):
 			self.endDialog(session.sessionId, text=self._combineLists('chk', found, missing))
 
 
+	@Decorators.anyExcept(exceptions=BringApi.AuthentificationFailed, text='authFailed')
 	@Decorators.online
-	def readListIntent(self,session: DialogSession, **_kwargs):
+	def readListIntent(self, session: DialogSession, **_kwargs):
 		"""read the content of the list"""
-		items = self._bring.get_items().json()['purchase']
+		items = self.bring().get_items().json()['purchase']
 		itemlist = [item['name'] for item in items]
 		self.endDialog(session.sessionId, text=self._getTextForList('read', itemlist))
 

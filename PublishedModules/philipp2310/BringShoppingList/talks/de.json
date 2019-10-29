@@ -8,14 +8,9 @@
 			"{} und {}"
 		]
 	},
-	"state_con": {
-		"default": [
-			"{} , aber {}"
-		],
-		"short": [
-			"{}, aber {}"
-		]
-	},
+	"state_con": [
+		"{} , aber {}"
+	],
 	"read_one": {
 		"default": [
 			"Auf deiner Einkaufsliste steht {}",
@@ -215,5 +210,8 @@
 		"short": [
 			"Einkaufsliste wirklich löschen?"
 		]
-	}
+	},
+	"authFailed": [
+		"Authentifizierung fehlgeschlagen. Bitte prüfe deine Login Daten in den Einstellungen"
+	]
 }

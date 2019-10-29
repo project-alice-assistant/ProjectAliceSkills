@@ -8,14 +8,9 @@
 			"{} and {}"
 		]
 	},
-	"state_con": {
-		"default": [
-			"{}, but {}"
-		],
-		"short": [
-			"{}, but {}"
-		]
-	},
+	"state_con": [
+		"{}, but {}"
+	],
 	"read_one": {
 		"default": [
 			"You got {} on your shopping list",
@@ -215,5 +210,8 @@
 		"short": [
 			"Should I delete the shopping list?"
 		]
-	}
+	},
+	"authFailed": [
+		"Authentification failed, please check your account login and password in the settings"
+	]
 }
