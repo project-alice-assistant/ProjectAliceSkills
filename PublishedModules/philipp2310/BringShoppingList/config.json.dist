@@ -1,2 +1,6 @@
-{"uuid":"XXX",
-"bringListUUID":"xxx"}
+{
+	"bringEmail": "",
+	"bringPassword": "",
+	"uuid": "",
+	"listUuid": ""
+}

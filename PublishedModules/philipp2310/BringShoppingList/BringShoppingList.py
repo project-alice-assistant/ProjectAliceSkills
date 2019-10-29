@@ -1,6 +1,9 @@
-from typing import Tuple, Callable
+from typing import Tuple
+
+import requests
 from BringApi.BringApi import BringApi
 
+from core.ProjectAliceExceptions import ModuleStartingFailed
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
@@ -36,6 +39,8 @@ class BringShoppingList(Module):
 			self._INTENT_SPELL_WORD
 		]
 
+		super().__init__(self._INTENTS)
+
 		self._INTENT_ANSWER_SHOP.dialogMapping = {
 			self._INTENT_ADD_ITEM: self.addItemIntent,
 			self._INTENT_DEL_ITEM: self.delItemIntent,
@@ -52,11 +57,38 @@ class BringShoppingList(Module):
 			'confDelList': self.confDelIntent
 		}
 
-		super().__init__(self._INTENTS)
-
-		# Get config values
 		self._uuid = self.getConfig('uuid')
-		self._uuidlist = self.getConfig('bringListUUID')
+		self._uuidlist = self.getConfig('listUuid')
+	
+	
+	def onStart(self) -> dict:
+		if not self.getConfig('uuid') or not self.getConfig('listUuid'):
+			self._connectAccount()
+
+		self._uuid = self.getConfig('uuid')
+		self._uuidlist = self.getConfig('listUuid')
+		
+		return super().onStart()
+
+
+	@Decorators.online
+	def _connectAccount(self):
+		try:
+			req = requests.get(f'https://api.getbring.com/rest/bringlists?email={self.getConfig("bringEmail")}&password={self.getConfig("bringPassword")}')
+			if req.status_code != 200:
+				raise Exception
+
+			data = req.json()
+			if data:
+				if 'errorcode' in data or 'uuid' not in data or 'bringListUUID' not in data:
+					raise Exception
+
+				self.updateConfig('uuid', data['uuid'])
+				self.updateConfig('listUuid', data['bringListUUID'])
+			else:
+				raise Exception
+		except:
+			raise ModuleStartingFailed(self._name, 'Please check your account login and password')
 
 
 	def _getBring(self) -> BringApi:
@@ -163,7 +195,7 @@ class BringShoppingList(Module):
 
 	@Decorators.online
 	def addItemIntent(self, intent: str, session: DialogSession):
-		items = self._getShopItems('add', session, intent)
+		items = self._getShopItems('add', intent, session)
 		if items:
 			added, exist = self._addItemInt(items)
 			self.endDialog(session.sessionId, text=self._combineLists('add', added, exist))
@@ -171,7 +203,7 @@ class BringShoppingList(Module):
 
 	@Decorators.online
 	def delItemIntent(self, intent: str, session: DialogSession):
-		items = self._getShopItems('rem', session, intent)
+		items = self._getShopItems('rem', intent, session)
 		if items:
 			removed, exist = self._deleteItemInt(items)
 			self.endDialog(session.sessionId, text=self._combineLists('rem', removed, exist))
@@ -179,14 +211,14 @@ class BringShoppingList(Module):
 
 	@Decorators.online
 	def checkListIntent(self, intent: str, session: DialogSession):
-		items = self._getShopItems('chk', session, intent)
+		items = self._getShopItems('chk', intent, session)
 		if items:
 			found, missing = self._checkListInt(items)
 			self.endDialog(session.sessionId, text=self._combineLists('chk', found, missing))
 
 
 	@Decorators.online
-	def readListIntent(self, intent: str, session: DialogSession):
+	def readListIntent(self,session: DialogSession, **_kwargs):
 		"""read the content of the list"""
 		items = self._getBring().get_items().json()['purchase']
 		itemlist = [item['name'] for item in items]

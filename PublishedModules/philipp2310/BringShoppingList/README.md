@@ -15,12 +15,12 @@ alice module:install philipp2310/BringShoppingList
 ### Description
 View and edit your Bring! Shopping list
 
-- Version: 1.04
+- Version: 1.05
 - Author: philipp2310
-- Maintainers: maxbachmann
+- Maintainers: maxbachmann, Psychokiller1888
 - Alice minimum version: 0.13
 - Conditions:
   - en
   - de
 - Requirements:
-  - An account for Bring! with its secret UUID
+  - An account for Bring! https://getbring.com/
