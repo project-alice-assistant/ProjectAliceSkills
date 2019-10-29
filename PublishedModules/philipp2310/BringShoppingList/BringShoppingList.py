@@ -59,6 +59,7 @@ class BringShoppingList(Module):
 
 		self._uuid = self.getConfig('uuid')
 		self._uuidlist = self.getConfig('listUuid')
+		self._bring = None
 	
 	
 	def onStart(self) -> dict:
@@ -67,6 +68,8 @@ class BringShoppingList(Module):
 
 		self._uuid = self.getConfig('uuid')
 		self._uuidlist = self.getConfig('listUuid')
+
+		self._bring = BringApi(self._uuid, self._uuidlist)
 		
 		return super().onStart()
 
@@ -91,20 +94,15 @@ class BringShoppingList(Module):
 			raise ModuleStartingFailed(self._name, 'Please check your account login and password')
 
 
-	def _getBring(self) -> BringApi:
-		"""get an instance of the BringApi"""
-		return BringApi(self._uuid, self._uuidlist)
-
-
 	@Decorators.online
 	def _deleteCompleteList(self) -> str:
 		"""
 		perform the deletion of the complete list
 		-> load all and delete item by item
 		"""
-		items = self._getBring().get_items().json()['purchase']
+		items = self._bring.get_items().json()['purchase']
 		for item in items:
-			self._getBring().recent_item(item['name'])
+			self._bring.recent_item(item['name'])
 		return self.randomTalk('del_all')
 
 
@@ -113,12 +111,12 @@ class BringShoppingList(Module):
 		internal method to add a list of items to the shopping list
 		:returns: two splitted lists of successfull adds and items that already existed.
 		"""
-		bringItems = self._getBring().get_items().json()['purchase']
+		bringItems = self._bring.get_items().json()['purchase']
 		added = list()
 		exist = list()
 		for item in items:
 			if not any(entr['name'].lower() == item.lower() for entr in bringItems):
-				self._getBring().purchase_item(item, "")
+				self._bring.purchase_item(item, "")
 				added.append(item)
 			else:
 				exist.append(item)
@@ -130,13 +128,13 @@ class BringShoppingList(Module):
 		internal method to delete a list of items from the shopping list
 		:returns: two splitted lists of successfull deletions and items that were not on the list
 		"""
-		bringItems = self._getBring().get_items().json()['purchase']
+		bringItems = self._bring.get_items().json()['purchase']
 		removed = list()
 		exist = list()
 		for item in items:
 			for entr in bringItems:
 				if entr['name'].lower() == item.lower():
-					self._getBring().recent_item(entr['name'])
+					self._bring.recent_item(entr['name'])
 					removed.append(item)
 					break	
 			else:
@@ -149,7 +147,7 @@ class BringShoppingList(Module):
 		internal method to check if a list of items is on the shopping list
 		:returns: two splitted lists, one with the items on the list, one with the missing ones
 		"""
-		bringItems = self._getBring().get_items().json()['purchase']
+		bringItems = self._bring.get_items().json()['purchase']
 		found = list()
 		missing = list()
 		for item in items:
@@ -220,7 +218,7 @@ class BringShoppingList(Module):
 	@Decorators.online
 	def readListIntent(self,session: DialogSession, **_kwargs):
 		"""read the content of the list"""
-		items = self._getBring().get_items().json()['purchase']
+		items = self._bring.get_items().json()['purchase']
 		itemlist = [item['name'] for item in items]
 		self.endDialog(session.sessionId, text=self._getTextForList('read', itemlist))
 
@@ -238,8 +236,8 @@ class BringShoppingList(Module):
 		"""Combine entries of list into wrapper sentence"""
 		if not items:
 			return self.randomTalk(f'{pref}_none')
-		if len(items) == 1:
+		elif len(items) == 1:
 			return self.randomTalk(f'{pref}_one', [items[0]])
 
-		value = self.randomTalk('gen_list', [', '.join(items[:-1]), items[-1]])
+		value = self.randomTalk(text='gen_list', replace=[', '.join(items[:-1]), items[-1]])
 		return self.randomTalk(f'{pref}_multi', [value])
