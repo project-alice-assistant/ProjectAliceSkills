@@ -545,6 +545,7 @@ class AliceCore(Module):
 
 	def onWakeword(self, siteId: str, user: str = constants.UNKNOWN_USER):
 		if self.ThreadManager.getEvent('authUserWaitWakeword').isSet():
+			self.SnipsServicesManager.toggleFeedbackSound(state='on')
 			self.ThreadManager.getEvent('authUserWaitWakeword').clear()
 			self.ThreadManager.newEvent('authUser').set()
 
@@ -568,6 +569,8 @@ class AliceCore(Module):
 				self._addFirstUser()
 			else:
 				self.delayed = False
+		elif self.ThreadManager.getEvent('authUser').isSet():
+			self.endSession(session.sessionId)
 
 
 	def onSessionError(self, session: DialogSession):
@@ -592,20 +595,31 @@ class AliceCore(Module):
 
 				AdminAuth.setUser(user)
 
-				self.ask(
-					text=self.randomTalk('greetAndNeedPinCode', replace=[session.user]),
-					siteId=session.siteId,
-					intentFilter=[self._INTENT_ANSWER_NUMBER],
-					currentDialogState='userAuth',
-					customData={
-						'user': session.user.lower()
-					}
+				#Delay a greeting as the user might already by authenticated through cookies
+				self.ThreadManager.doLater(
+					interval=0.75,
+					func=self.greetAndAskPin,
+					args=[session]
 				)
 			else:
 				self.endDialog(
 					sessionId=session.sessionId,
 					text=self.randomTalk('userAuthAccessLevelTooLow')
 				)
+
+
+	def greetAndAskPin(self, session: DialogSession):
+		if not AdminAuth.user.isAuthenticated:
+			self.ask(
+				text=self.randomTalk('greetAndNeedPinCode', replace=[session.user]),
+				siteId=session.siteId,
+				intentFilter=[self._INTENT_ANSWER_NUMBER],
+				currentDialogState='userAuth',
+				customData={
+					'user': session.user.lower()
+				}
+			)
+
 
 
 	def onSessionEnded(self, session: DialogSession):
