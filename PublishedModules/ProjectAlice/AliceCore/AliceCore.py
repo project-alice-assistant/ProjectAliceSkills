@@ -782,5 +782,6 @@ class AliceCore(Module):
 		self.SnipsServicesManager.toggleFeedbackSound(state='off')
 		self.say(
 			text=self.randomTalk('explainInterfaceAuth'),
-			siteId=constants.ALL
+			siteId=constants.ALL,
+			canBeEnqueued=False
 		)
