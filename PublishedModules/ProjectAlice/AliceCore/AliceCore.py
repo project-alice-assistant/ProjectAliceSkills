@@ -552,9 +552,11 @@ class AliceCore(Module):
 
 
 	def onHotword(self, siteId: str, user: str = constants.UNKNOWN_USER):
-		self.SnipsServicesManager.toggleFeedbackSound(state='on')
 		self.ThreadManager.getEvent('authUserWaitWakeword').clear()
 		self.ThreadManager.getEvent('authUser').clear()
+
+		if self.ThreadManager.getEvent('authUserWaitWakeword').isSet():
+			self.SnipsServicesManager.toggleFeedbackSound(state='on')
 
 
 	def onWakeword(self, siteId: str, user: str = constants.UNKNOWN_USER):
