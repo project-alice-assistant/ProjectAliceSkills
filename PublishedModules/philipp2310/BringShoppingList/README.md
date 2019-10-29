@@ -23,4 +23,4 @@ View and edit your Bring! Shopping list
   - en
   - de
 - Requirements:
-  - An account for Bring! https://getbring.com/
+  - An account for Bring! https://getbring.com/. Module settings will ask for uuid and list uuid. Ignore these and simply enter your email and password, the two other settings will be automagically fetched
