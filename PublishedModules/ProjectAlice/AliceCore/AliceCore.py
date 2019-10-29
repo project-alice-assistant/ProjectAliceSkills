@@ -538,6 +538,13 @@ class AliceCore(Module):
 			)
 
 
+	def endUserAuth(self):
+		self.ThreadManager.clearEvent('authUser')
+		if self.ThreadManager.getEvent('authUserWaitWakeword').isSet():
+			self.SnipsServicesManager.toggleFeedbackSound(state='on')
+			self.ThreadManager.clearEvent('authUserWaitWakeword')
+
+
 	def onStart(self) -> dict:
 		super().onStart()
 		self.changeFeedbackSound(inDialog=False)
@@ -552,17 +559,13 @@ class AliceCore(Module):
 
 
 	def onHotword(self, siteId: str, user: str = constants.UNKNOWN_USER):
-		self.ThreadManager.getEvent('authUserWaitWakeword').clear()
-		self.ThreadManager.getEvent('authUser').clear()
-
-		if self.ThreadManager.getEvent('authUserWaitWakeword').isSet():
-			self.SnipsServicesManager.toggleFeedbackSound(state='on')
+		self.endUserAuth()
 
 
 	def onWakeword(self, siteId: str, user: str = constants.UNKNOWN_USER):
 		if self.ThreadManager.getEvent('authUserWaitWakeword').isSet():
 			self.SnipsServicesManager.toggleFeedbackSound(state='on')
-			self.ThreadManager.getEvent('authUserWaitWakeword').clear()
+			self.ThreadManager.clearEvent('authUserWaitWakeword')
 			self.ThreadManager.newEvent('authUser').set()
 
 
@@ -578,8 +581,7 @@ class AliceCore(Module):
 				self.say(text=self.randomTalk('cancellingWakewordCapture'), siteId=session.siteId)
 				self.ThreadManager.doLater(interval=2, func=self.onStart)
 
-		self.ThreadManager.getEvent('authUserWaitWakeword').clear()
-		self.ThreadManager.getEvent('authUser').clear()
+		self.endUserAuth()
 
 
 	def onSessionTimeout(self, session: DialogSession):
@@ -588,8 +590,6 @@ class AliceCore(Module):
 				self._addFirstUser()
 			else:
 				self.delayed = False
-		elif self.ThreadManager.getEvent('authUser').isSet():
-			self.endSession(session.sessionId)
 
 
 	def onSessionError(self, session: DialogSession):
@@ -625,6 +625,8 @@ class AliceCore(Module):
 					sessionId=session.sessionId,
 					text=self.randomTalk('userAuthAccessLevelTooLow')
 				)
+		elif session.currentState == 'userAuth':
+			AdminAuth.setLinkedSnipsSession(session)
 
 
 	def onSessionEnded(self, session: DialogSession):
@@ -796,7 +798,7 @@ class AliceCore(Module):
 
 	def explainInterfaceAuth(self):
 		AdminAuth.setUser(None)
-		self.ThreadManager.getEvent('authUser').clear()
+		self.ThreadManager.clearEvent('authUser')
 		self.ThreadManager.newEvent('authUserWaitWakeword').set()
 		self.SnipsServicesManager.toggleFeedbackSound(state='off')
 		self.say(
@@ -807,6 +809,4 @@ class AliceCore(Module):
 
 
 	def authWithKeyboard(self):
-		self.SnipsServicesManager.toggleFeedbackSound(state='on')
-		self.ThreadManager.getEvent('authUser').clear()
-		self.ThreadManager.getEvent('authUserWaitWakeword').clear()
+		self.endUserAuth()
