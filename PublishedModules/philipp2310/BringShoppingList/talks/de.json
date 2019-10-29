@@ -107,7 +107,7 @@
 		"short": ["Was soll ich löschen?"]
 	},
 
-	"check_one": {
+	"chk_one": {
 		"default": ["Ich habe {} auf der Einkaufsliste gefunden",
 			"{} steht auf der Einkaufsliste",
 			"{} befindet sich auf dem Einkaufszettel"

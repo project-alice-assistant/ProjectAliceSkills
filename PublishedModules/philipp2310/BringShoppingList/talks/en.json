@@ -108,7 +108,7 @@
 		"short": ["What should I delete?"]
 	},
 
-	"check_one": {
+	"chk_one": {
 		"default": ["{} is on your shopping list",
 			"I found {} on your shopping list",
 			"{} is on the list"
