@@ -1,6 +1,5 @@
 from typing import Tuple
 
-from requests import RequestException
 from BringApi.BringApi import BringApi
 
 from core.ProjectAliceExceptions import ModuleStartingFailed
@@ -169,7 +168,6 @@ class BringShoppingList(Module):
 			currentDialogState='confDelList')
 
 
-	@Decorators.anyExcept(exceptions=(RequestException, KeyError), text='noServer', printStack=True)
 	@Decorators.anyExcept(exceptions=BringApi.AuthentificationFailed, text='authFailed')
 	@Decorators.online
 	def confDelIntent(self, session: DialogSession, **_kwargs):
@@ -180,7 +178,6 @@ class BringShoppingList(Module):
 			self.endDialog(session.sessionId, text=self.randomTalk('nodel_all'))
 
 
-	@Decorators.anyExcept(exceptions=(RequestException, KeyError), text='noServer', printStack=True)
 	@Decorators.anyExcept(exceptions=BringApi.AuthentificationFailed, text='authFailed')
 	@Decorators.online
 	def addItemIntent(self, intent: str, session: DialogSession):
@@ -190,7 +187,6 @@ class BringShoppingList(Module):
 			self.endDialog(session.sessionId, text=self._combineLists('add', added, exist))
 
 
-	@Decorators.anyExcept(exceptions=(RequestException, KeyError), text='noServer', printStack=True)
 	@Decorators.anyExcept(exceptions=BringApi.AuthentificationFailed, text='authFailed')
 	@Decorators.online
 	def delItemIntent(self, intent: str, session: DialogSession):
@@ -200,7 +196,6 @@ class BringShoppingList(Module):
 			self.endDialog(session.sessionId, text=self._combineLists('rem', removed, exist))
 
 
-	@Decorators.anyExcept(exceptions=(RequestException, KeyError), text='noServer', printStack=True)
 	@Decorators.anyExcept(exceptions=BringApi.AuthentificationFailed, text='authFailed')
 	@Decorators.online
 	def checkListIntent(self, intent: str, session: DialogSession):
@@ -210,7 +205,6 @@ class BringShoppingList(Module):
 			self.endDialog(session.sessionId, text=self._combineLists('chk', found, missing))
 
 
-	@Decorators.anyExcept(exceptions=(RequestException, KeyError), text='noServer', printStack=True)
 	@Decorators.anyExcept(exceptions=BringApi.AuthentificationFailed, text='authFailed')
 	@Decorators.online
 	def readListIntent(self, session: DialogSession, **_kwargs):
