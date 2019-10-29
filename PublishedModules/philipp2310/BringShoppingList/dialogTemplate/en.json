@@ -9212,7 +9212,7 @@
 			"utterances": [
 				"Is {Bread:=>shopItem} on my shopping list?",
 				"Do I have {Bananas:=>shopItem} on my shooping list?",
-				"Did I already add {Coke:=>shopItem} to my shooping list?",
+				"Did I already add {Coke:=>shopItem} to my shooping list?"
 			],
 			"slots": [
 				{
