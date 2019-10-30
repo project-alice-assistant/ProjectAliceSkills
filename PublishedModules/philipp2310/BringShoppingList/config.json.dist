@@ -1,4 +1,6 @@
 {
 	"bringEmail": "",
-	"bringPassword": ""
+	"bringPassword": "",
+	"uuid": "",
+	"listUuid": ""
 }

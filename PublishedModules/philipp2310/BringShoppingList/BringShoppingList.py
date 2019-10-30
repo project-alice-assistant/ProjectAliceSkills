@@ -56,26 +56,30 @@ class BringShoppingList(Module):
 			'confDelList': self.confDelIntent
 		}
 
-		self._email = self.getConfig("bringEmail")
-		self._password = self.getConfig("bringPassword")
+		self._uuid = self.getConfig('uuid')
+		self._uuidlist = self.getConfig('listUuid')
 		self._bring = None
 
 
-	def onStart(self) -> dict:
 		self._connectAccount()
 		return super().onStart()
 
 
 	def bring(self):
 		if not self._bring:
-			self._bring = BringApi(self._email, self._password, use_login=True)
+			if not self._uuid or not self._uuidlist:
+				self._uuid, self._uuidlist = BringApi.login(self.getConfig("bringEmail"), self.getConfig("bringPassword"))
+				self.updateConfig('uuid', self._uuid)
+				self.updateConfig('listUuid', self._uuidlist)
+
+			self._bring = BringApi(self._uuid, self._uuidlist)
 		return self._bring
 
 
 	@Decorators.online
 	def _connectAccount(self):
 		try:
-			self._bring = BringApi(self._email, self._password, use_login=True)
+			self._bring = self.bring()
 		except BringApi.AuthentificationFailed:
 			raise ModuleStartingFailed(self._name, 'Please check your account login and password')
 
