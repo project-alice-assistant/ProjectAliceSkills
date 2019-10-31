@@ -56,7 +56,7 @@ class RedQueen(Module):
 			with open(self._getRedQueenIdentityFileName(), 'r') as f:
 				self._redQueen = json.load(f)
 
-		return self._INTENTS
+		return self.supportedIntents
 
 
 	def onStop(self):

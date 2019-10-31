@@ -50,8 +50,8 @@ class Netatmo(Module):
 			self._weatherData = lnetatmo.WeatherStationData(self._netatmoAuth)
 		except lnetatmo.NoDevice:
 			raise ModuleStartingFailed(moduleName=self.name, error='No Netatmo device found')
-		else:
-			return self._SUPPORTED_INTENTS
+
+		return self.supportedIntents
 
 
 	def _auth(self) -> bool:

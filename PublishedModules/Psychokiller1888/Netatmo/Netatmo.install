@@ -1,6 +1,6 @@
 {
 	"name": "Netatmo",
-	"version": 1.05,
+	"version": 1.06,
 	"author": "Psychokiller1888",
 	"maintainers": ["maxbachmann"],
 	"desc": "Get readings from your netatmo hardware",

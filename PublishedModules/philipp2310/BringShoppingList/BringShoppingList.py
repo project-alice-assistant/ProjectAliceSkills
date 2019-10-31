@@ -61,8 +61,10 @@ class BringShoppingList(Module):
 		self._bring = None
 
 
+	def onStart(self):
+		super().onStart()
 		self._connectAccount()
-		return super().onStart()
+		return self.supportedIntents
 
 
 	def bring(self):
