@@ -6,7 +6,7 @@
 	"desc": "Maintain your Bring! Shopping list",
 	"aliceMinVersion": 0.13,
 	"systemRequirements": [],
-	"pipRequirements": ["BringApi"],
+	"pipRequirements": ["BringApi>=0.0.3"],
 	"conditions": {
 		"lang": [
 			"en",
