@@ -8,6 +8,14 @@
 		"fr": [
 			"s'il te plaît",
 			"pourrais-tu"
+		],
+		"de": [
+			"bitte",
+			"danke",
+			"kannst du",
+			"wärst du so nett",
+			"würdest du",
+			"könntest du"
 		]
 	}
 }
