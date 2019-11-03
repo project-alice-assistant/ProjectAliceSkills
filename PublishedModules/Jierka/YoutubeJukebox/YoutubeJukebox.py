@@ -36,7 +36,7 @@ class YoutubeJukebox(Module):
 			inputt = session.payload['input']
 
 		utterances = self.getUtterancesByIntent(self._INTENT_SEARCH_MUSIC)
-		self._logger.info(f'[{self.name}] Raw input {inputt}')
+		self.logInfo(f'Raw input {inputt}')
 
 		inputtList = inputt.split()
 		for utterance in utterances:
@@ -44,7 +44,7 @@ class YoutubeJukebox(Module):
 
 		clearInput = ' '.join(inputtList)
 
-		self._logger.info(f'[{self.name}] Cleaned input {clearInput}')
+		self.logInfo(f'Cleaned input {clearInput}')
 
 		return clearInput
 
