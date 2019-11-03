@@ -4,6 +4,7 @@ import subprocess
 import os
 import re
 import requests
+from requests import RequestException
 import youtube_dl
 
 from core.base.model.Intent import Intent
@@ -20,13 +21,10 @@ class YoutubeJukebox(Module):
 
 	_INTENT_SEARCH_MUSIC = Intent('SearchMusic')
 
-	BASE_URL = 'https://www.youtube.com/results?search_query='
-	REGEX = r"<a\b(?=[^>]* class=\"[^\"]*(?<=[\" ])yt-uix-tile-link[\" ])(?=[^>]* href=\"([^\"]*))"
-
 	def __init__(self):
-		self._INTENTS = {
-			self._INTENT_SEARCH_MUSIC: self.searchMusicIntent
-		}
+		self._INTENTS = [
+			(self._INTENT_SEARCH_MUSIC, self.searchMusicIntent)
+		]
 
 		super().__init__(self._INTENTS)
 
@@ -38,56 +36,37 @@ class YoutubeJukebox(Module):
 			inputt = session.payload['input']
 
 		utterances = self.getUtterancesByIntent(self._INTENT_SEARCH_MUSIC)
-		self.logInfo(f'Raw input {inputt}')
+		self._logger.info(f'[{self.name}] Raw input {inputt}')
 
+		inputtList = inputt.split()
 		for utterance in utterances:
-			for word in utterance.split(' '):
-				inputt = inputt.replace(str(word.strip()) + ' ', '')
-				inputt = inputt.replace(' ' + str(word.strip()) + ' ', '')
-				inputt = inputt.replace(' ' + str(word.strip()), '')
+			inputtList = [value for value in inputtList if value not in utterance.split()]
 
-		inputt = inputt.strip()
+		clearInput = ' '.join(inputtList)
 
-		clearInput = ''
-
-		for word in inputt.split(' '):
-			if len(word) > 1:
-				clearInput = clearInput + str(word) + ' '
-
-		self.logInfo(f'Cleaned input {inputt}')
+		self._logger.info(f'[{self.name}] Cleaned input {clearInput}')
 
 		return clearInput
 
 
+	@Decorators.anyExcept(exceptions=RequestException, text='noServer', printStack=True)
 	@Decorators.online
 	def searchMusicIntent(self, session: DialogSession, **_kwargs):
-		siteId = session.siteId
-		sessionId = session.sessionId
 		wildcardQuery = self.getWildcard(session)
 
-		self.endSession(sessionId=sessionId)
+		self.endSession(sessionId=session.sessionId)
 
-		r = requests.get(self.BASE_URL + wildcardQuery)
-		page = r.text
-		page = page[page.find('item-section'):]
-		matches = re.finditer(self.REGEX, page, re.MULTILINE)
-		videolist = list()
-
-		for matchNum, match in enumerate(matches, start=1):
-			if 'list' not in match.group(1):
-				tmp = f'https://www.youtube.com{match.group(1)}'
-				if len(tmp) <= 70:
-					videolist.append(tmp)
+		response = requests.get("http://www.youtube.com/results", {'search_query':wildcardQuery})
+		response.raise_for_status()
+		videolist = re.findall(r'href=\"\/watch\?v=(.{11})', response.text)
 
 		if not videolist:
-			self.say(text=self.randomTalk(text='noMatch', replace=[
-				wildcardQuery
-			]), siteId=siteId)
+			self.say(text=self.randomTalk(text='noMatch', replace=[wildcardQuery]), siteId=session.siteId)
 			return
 
-		item = videolist[1]
-		videoKey = item.split('=')[1]
-		self.logInfo(f'Music video found {item}')
+		videoKey = videolist[0]
+		videoUrl = f'http://www.youtube.com/watch?v={videoKey}'
+		self.logInfo(f'Music video found {videoUrl}')
 
 		youtubeDlOptions = {
 			'outtmpl': '%(id)s.%(ext)s',
@@ -105,6 +84,6 @@ class YoutubeJukebox(Module):
 		if not os.path.isfile(outputFile):
 			with youtube_dl.YoutubeDL(youtubeDlOptions) as ydl:
 				os.chdir(resourceDir)
-				ydl.download([item])
+				ydl.download([videoUrl])
 
 		subprocess.run(['sudo', 'mpg123', outputFile])
