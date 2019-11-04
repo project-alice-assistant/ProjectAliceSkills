@@ -1,13 +1,13 @@
 {
 	"name": "Calculator",
-	"version": 1.17,
+	"version": 1.0.17,
 	"author": "Psychokiller1888",
 	"maintainers": [
 		"maxbachmann",
 		"Jierka"
 	],
 	"desc": "Do some calculation with alice",
-	"aliceMinVersion": 0.13,
+	"aliceMinVersion": "1.0.0-a3",
 	"systemRequirements": [],
 	"pipRequirements": [],
 	"conditions": {

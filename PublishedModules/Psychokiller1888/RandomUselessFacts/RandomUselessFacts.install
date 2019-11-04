@@ -1,12 +1,12 @@
 {
 	"name": "RandomUselessFacts",
-	"version": 1.44,
+	"version": 1.0.44,
 	"author": "Psychokiller1888",
 	"maintainers": [
 		"maxbachmann"
 	],
 	"desc": "Gets you the daily random useless fact or a random one",
-	"aliceMinVersion": 0.13,
+	"aliceMinVersion": "1.0.0-a3",
 	"systemRequirements": [],
 	"pipRequirements": [],
 	"conditions": {

@@ -21,12 +21,12 @@ Press an imaginary button on or off
  Edit the python script to assign a different gpio pin
 
 
-- Version: 1.63
+- Version: 1.0.63
 - Author: mjlill
 - Maintainers:
   - Psycho
   - maxbachmann
-- Alice minimum version: 0.13
+- Alice minimum Version: 1.0.0-a3
 - Conditions:
   - en
 - Requirements: 

@@ -1,13 +1,13 @@
 {
 	"name": "DateDayTimeYear",
-	"version": 1.07,
+	"version": 1.0.07,
 	"author": "Psychokiller1888",
 	"maintainers": [
 		"Jierka",
 		"maxbachmann"
 	],
 	"desc": "Ask for the time, date, day and year",
-	"aliceMinVersion": 0.13,
+	"aliceMinVersion": "1.0.0-a3",
 	"systemRequirements": [],
 	"pipRequirements": [],
 	"conditions": {

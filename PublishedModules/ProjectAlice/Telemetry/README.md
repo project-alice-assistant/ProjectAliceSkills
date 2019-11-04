@@ -15,10 +15,10 @@ wget http://modules.projectalice.ch/Telemetry -O ~/ProjectAlice/system/moduleIns
 ### Description
 Access your stored telemetry data
 
-- Version: 1.02
+- Version: 1.0.2
 - Author: ProjectAlice
 - Maintainers: Psychokiller1888, maxbachmann
-- Alice minimum version: 0.13
+- Alice minimum Version: 1.0.0-a3
 - Conditions:
   - en
   - de

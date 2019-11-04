@@ -60,11 +60,11 @@ class {moduleName}(Module):
 
 INSTALL_JSON = '''{{
 	"name": "{moduleName}",
-	"version": 0.1,
+	"version": 0.0.1,
 	"author": "{username}",
 	"maintainers": [],
 	"desc": "{description}",
-	"aliceMinVersion": 0.10,
+	"aliceMinVersion": 1.0.0,
 	"pipRequirements": [{pipRequirements}],
 	"systemRequirements": [{systemRequirements}],
 	"conditions": {{
@@ -142,10 +142,10 @@ wget http://bit.ly/????????? -O ~/ProjectAlice/system/moduleInstallTickets/{modu
 ### Description
 {description}
 
-- Version: 0.1
+- Version: 0.0.1
 - Author: {username}
 - Maintainers: N/A
-- Alice minimum version: 0.10
+- Alice minimum version: 1.0.0
 - Conditions:
 {langs}
 - Pip requirements: N/A
