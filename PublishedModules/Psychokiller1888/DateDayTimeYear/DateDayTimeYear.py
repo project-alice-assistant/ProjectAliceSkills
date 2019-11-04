@@ -30,11 +30,11 @@ class DateDayTimeYear(Module):
 
 		# english has a 12 hour clock and adds oh below 10 min
 		if self.LanguageManager.activeLanguage == 'en':
-			hours = f'{datetime.now().hours%12}'
+			hours = f'{datetime.now().hour%12}'
 			if minutes != '' and int(minutes) < 10:
 				minutes = f'oh {minutes}'
 		else:
-			hours = f'{datetime.now().hours}'
+			hours = f'{datetime.now().hour}'
 
 		self.endDialog(session.sessionId, self.TalkManager.randomTalk('time').format(hours, minutes, part))
 
