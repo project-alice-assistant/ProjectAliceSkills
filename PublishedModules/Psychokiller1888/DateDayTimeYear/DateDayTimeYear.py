@@ -1,5 +1,5 @@
 from datetime import datetime
-from babel.dates import format_date, format_time
+from babel.dates import format_date
 
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
