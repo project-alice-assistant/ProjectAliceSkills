@@ -1,4 +1,5 @@
 from datetime import datetime
+from babel.dates import format_date
 
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
@@ -29,24 +30,23 @@ class DateDayTimeYear(Module):
 
 		# english has a 12 hour clock and adds oh below 10 min
 		if self.LanguageManager.activeLanguage == 'en':
-			hours = datetime.now().strftime('%I').lstrip('0')
+			hours = f'{datetime.now().hours%12}'
 			if minutes != '' and int(minutes) < 10:
 				minutes = f'oh {minutes}'
 		else:
-			hours = datetime.now().strftime('%H').lstrip('0')
+			hours = f'{datetime.now().hours}'
 
 		self.endDialog(session.sessionId, self.TalkManager.randomTalk('time').format(hours, minutes, part))
 
 
 	def dateIntent(self, session: DialogSession, **_kwargs):
-		date = datetime.now().strftime('%d %B %Y')
-		date = self.LanguageManager.localize(date)
+		# for english defaults to en_US -> 'November 4, 2019' instead of 4 November 2019 in en_GB
+		date = format_date(datetime.now(), format='long', locale=self.LanguageManager.activeLanguage)
 		self.endDialog(session.sessionId, self.TalkManager.randomTalk('date').format(date))
 
 
 	def dayIntent(self, session: DialogSession, **_kwargs):
-		day = datetime.now().strftime('%A')
-		day = self.LanguageManager.localize(day)
+		day = format_date(datetime.now(), "EEEE", locale=self.LanguageManager.activeLanguage)
 		self.endDialog(session.sessionId, self.TalkManager.randomTalk('day').format(day))
 
 
