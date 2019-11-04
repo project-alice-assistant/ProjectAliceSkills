@@ -1,6 +1,6 @@
 {
 	"name": "DateDayTimeYear",
-	"version": 1.07,
+	"version": 1.08,
 	"author": "Psychokiller1888",
 	"maintainers": [
 		"Jierka",
@@ -9,7 +9,7 @@
 	"desc": "Ask for the time, date, day and year",
 	"aliceMinVersion": 0.13,
 	"systemRequirements": [],
-	"pipRequirements": [],
+	"pipRequirements": ["Babel"],
 	"conditions": {
 		"lang": [
 			"en",
