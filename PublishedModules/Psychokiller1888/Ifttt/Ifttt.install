@@ -1,6 +1,6 @@
 {
 	"name": "Ifttt",
-	"version": 1.0.03,
+	"version": "1.0.3",
 	"author": "Psychokiller1888",
 	"maintainers": ["maxbachmann"],
 	"desc": "Use ifttt services",

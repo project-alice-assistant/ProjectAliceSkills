@@ -1,6 +1,6 @@
 {
 	"name": "YoutubeJukebox",
-	"version": 1.0.06,
+	"version": "1.0.6",
 	"author": "Jierka",
 	"maintainers": ["Psycho", "maxbachmann"],
 	"desc": "Allows to play music from youtube",
