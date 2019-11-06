@@ -1,32 +1,23 @@
-import json
 from typing import Dict, Deque
 from collections import deque
 
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
+from core.util.Decorators import Decorators
 
 
 class ContextSensitive(Module):
-	_INTENT_DELETE_THIS = Intent('DeleteThis', isProtected=True)
-	_INTENT_REPEAT_THIS = Intent('RepeatThis', isProtected=True)
-	_INTENT_EDIT_THIS = Intent('EditThis', isProtected=True)
 	_INTENT_ANSWER_YES_OR_NO = Intent('AnswerYesOrNo', isProtected=True)
 
-
 	def __init__(self):
-		self._INTENTS = [
-			(self._INTENT_DELETE_THIS, self.deleteThisIntent),
-			(self._INTENT_REPEAT_THIS, self.repeatThisIntent),
-			(self._INTENT_EDIT_THIS, self.editThisIntent)
-		]
-
 		self._history: Deque = deque(list(), 10)
 		self._sayHistory: Dict[str, Deque] = dict()
 
-		super().__init__(self._INTENTS)
+		super().__init__()
 
 
+	@Decorators.Intent('DeleteThis', isProtected=True)
 	def deleteThisIntent(self, session: DialogSession, **_kwargs):
 		modules = self.ModuleManager.getModules()
 		for module in modules.values():
@@ -38,6 +29,7 @@ class ContextSensitive(Module):
 				continue
 
 
+	@Decorators.Intent('EditThis', isProtected=True)
 	def editThisIntent(self, session: DialogSession, **_kwargs):
 		modules = self.ModuleManager.getModules()
 		for module in modules.values():
@@ -48,6 +40,8 @@ class ContextSensitive(Module):
 			except:
 				continue
 
+
+	@Decorators.Intent('RepeatThis', isProtected=True)
 	def repeatThisIntent(self, session: DialogSession, **_kwargs):
 		self.endDialog(session.sessionId, text=self.getLastChat(siteId=session.siteId))
 

@@ -1,6 +1,6 @@
 {
 	"name": "Speller",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"author": "Psychokiller1888",
 	"maintainers": ["maxbachmann"],
 	"desc": "Ask alice how to spell any word!",

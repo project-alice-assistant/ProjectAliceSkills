@@ -1,7 +1,7 @@
-from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
 from core.util.model.TelemetryType import TelemetryType
+from core.util.Decorators import Decorators
 
 
 class Telemetry(Module):
@@ -10,16 +10,8 @@ class Telemetry(Module):
 	Description: Access your stored telemetry data
 	"""
 
-	_INTENT_GET_TELEMETRY_DATA = Intent('GetTelemetryData')
-	_INTENT_ANSWER_TELEMETRY_TYPE = Intent('AnswerTelemetryType')
-
 	def __init__(self):
-		self._INTENTS	= [
-			(self._INTENT_GET_TELEMETRY_DATA, self.telemetryIntent),
-			(self._INTENT_ANSWER_TELEMETRY_TYPE, self.telemetryIntent)
-		]
-
-		super().__init__(self._INTENTS)
+		super().__init__()
 
 		self._telemetryUnits = {
 			'airQuality': '%',
@@ -36,9 +28,9 @@ class Telemetry(Module):
 			'wind_strength': 'km/h'
 		}
 
-
+	@Decorators.Intent('GetTelemetryData')
+	@Decorators.Intent('AnswerTelemetryType')
 	def telemetryIntent(self, session: DialogSession, **_kwargs):
-		slots = session.slots
 		siteId = session.slotValue('Room') or session.siteId
 		telemetryType = session.slotValue('TelemetryType')
 

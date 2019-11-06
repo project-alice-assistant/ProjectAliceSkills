@@ -16,7 +16,7 @@ wget http://modules.projectalice.ch/IcanhazdadjokeDotCom \
 ### Description
 Get a random dad joke on demand
 
-- Version: 1.0.18
+- Version: 1.0.19
 - Author: Psycho
 - Maintainers:
   - Jierka

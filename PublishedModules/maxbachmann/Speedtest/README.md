@@ -25,7 +25,7 @@ Examples for Raspberry Pi:
 
 If a Raspberry Pi 3 B - connected to WiFi - runs Alice you won't get more than 40 Mbit/s from the speedtest despite your internet connection may have more bandwith.
 
-- Version: 0.0.68
+- Version: 0.0.69
 - Author: maxbachmann
 - Maintainers: Psycho
 - Alice minimum Version: 1.0.0-a3

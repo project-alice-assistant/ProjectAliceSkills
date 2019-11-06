@@ -15,13 +15,11 @@ class Netatmo(Module):
 	"""
 
 	def __init__(self):
-		self._SUPPORTED_INTENTS	= list()
+		super().__init__()
 
-		super().__init__(self._SUPPORTED_INTENTS)
-
-		self._netatmoAuth 	= None
-		self._weatherData 	= None
-		self._authTries 	= 0
+		self._netatmoAuth = None
+		self._weatherData = None
+		self._authTries = 0
 		self._telemetryTypes = {
 			'Temperature': TelemetryType.TEMPERATURE,
 			'CO2': TelemetryType.CO2,

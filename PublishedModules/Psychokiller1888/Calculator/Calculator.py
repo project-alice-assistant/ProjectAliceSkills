@@ -3,6 +3,7 @@ import math
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
+from core.util.Decorators import Decorators
 
 
 class Calculator(Module):
@@ -11,29 +12,23 @@ class Calculator(Module):
 	Description: Do some calculation with alice
 	"""
 
-	_INTENT_MATHS = Intent('Maths')
-
-
 	def __init__(self):
-		self._INTENTS = [
-			(self._INTENT_MATHS, self.mathIntent)
-		]
-
 		self._lastNumber = 0
 		self._mathOperations = {
-			'+': lambda x,y: x+y,
-			'-': lambda x,y: x-y,
-			'/': lambda x,y: x/y,
-			'*': lambda x,y: x*y,
-			'square root': lambda x,_: math.sqrt(x),
-			'modulo': lambda x,y: x%y,
-			'sine': lambda x,_: math.sin(x),
-			'cosine': lambda x,_: math.cos(x),
-			'tangent': lambda x,_: math.tan(x)
+			'+': lambda x, y: x+y,
+			'-': lambda x, y: x-y,
+			'/': lambda x, y: x/y,
+			'*': lambda x, y: x*y,
+			'square root': lambda x, _: math.sqrt(x),
+			'modulo': lambda x, y: x%y,
+			'sine': lambda x, _: math.sin(x),
+			'cosine': lambda x, _: math.cos(x),
+			'tangent': lambda x, _: math.tan(x)
 		}
-		super().__init__(self._INTENTS)
+		super().__init__()
 
 
+	@Decorators.Intent('Maths')
 	def mathIntent(self, session: DialogSession, **_kwargs):
 		mathOperation = self._mathOperations.get(session.slotValue('Function'))
 		left = float(session.slotValue('Left') or self._lastNumber)

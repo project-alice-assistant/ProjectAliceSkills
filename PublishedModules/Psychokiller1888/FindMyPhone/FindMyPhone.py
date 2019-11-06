@@ -1,4 +1,3 @@
-from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
 from core.util.Decorators import Decorators
@@ -15,22 +14,8 @@ class FindMyPhone(Module):
 	Description: Using ifttt one can ask alice to find his phone. sets the ring tone at max volume and initiates a call on it.
 	"""
 
-	_INTENT_FIND_PHONE = Intent('FindPhone')
-	_INTENT_ANSWER_NAME = Intent('AnswerName', isProtected=True)
-
-	def __init__(self):
-		self._INTENTS = [
-			(self._INTENT_FIND_PHONE, self.findPhoneIntent),
-			self._INTENT_ANSWER_NAME
-		]
-
-		self._INTENT_ANSWER_NAME.dialogMapping = {
-			'phoneOwner': self.findPhoneIntent
-		}
-
-		super().__init__(self._INTENTS)
-
-
+	@Decorators.Intent('FindPhone')
+	@Decorators.Intent('AnswerName', requiredState='phoneOwner', isProtected=True)
 	@Decorators.online
 	def findPhoneIntent(self, session: DialogSession, **_kwargs):
 		sessionId = session.sessionId

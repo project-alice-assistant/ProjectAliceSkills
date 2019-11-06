@@ -3,7 +3,6 @@ from typing import Tuple
 from BringApi.BringApi import BringApi
 
 from core.ProjectAliceExceptions import ModuleStartingFailed
-from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
 from core.util.Decorators import Decorators
@@ -15,46 +14,8 @@ class BringShoppingList(Module):
 	Description: maintaines a Bring! shopping list
 	"""
 
-	### Intents
-	_INTENT_ADD_ITEM = Intent('addItem_bringshop')
-	_INTENT_DEL_ITEM = Intent('deleteItem_bringshop')
-	_INTENT_READ_LIST = Intent('readList_bringshop')
-	_INTENT_CHECK_LIST = Intent('checkList_bringshop', isProtected=True)
-	_INTENT_DEL_LIST = Intent('deleteList_bringshop')
-	_INTENT_CONF_DEL = Intent('AnswerYesOrNo', isProtected=True)
-	_INTENT_ANSWER_SHOP = Intent('whatItem_bringshop', isProtected=True)
-	_INTENT_SPELL_WORD = Intent('SpellWord', isProtected=True)
-
-
 	def __init__(self):
-		self._INTENTS = [
-			(self._INTENT_ADD_ITEM, self.addItemIntent),
-			(self._INTENT_DEL_ITEM, self.delItemIntent),
-			(self._INTENT_CHECK_LIST, self.checkListIntent),
-			(self._INTENT_READ_LIST, self.readListIntent),
-			(self._INTENT_DEL_LIST, self.delListIntent),
-			self._INTENT_CONF_DEL,
-			self._INTENT_ANSWER_SHOP,
-			self._INTENT_SPELL_WORD
-		]
-
-		super().__init__(self._INTENTS)
-
-		self._INTENT_ANSWER_SHOP.dialogMapping = {
-			self._INTENT_ADD_ITEM: self.addItemIntent,
-			self._INTENT_DEL_ITEM: self.delItemIntent,
-			self._INTENT_CHECK_LIST: self.checkListIntent
-		}
-
-		self._INTENT_SPELL_WORD.dialogMapping = {
-			self._INTENT_ADD_ITEM: self.addItemIntent,
-			self._INTENT_DEL_ITEM: self.delItemIntent,
-			self._INTENT_CHECK_LIST: self.checkListIntent
-		}
-
-		self._INTENT_CONF_DEL.dialogMapping = {
-			'confDelList': self.confDelIntent
-		}
+		super().__init__()
 
 		self._uuid = self.getConfig('uuid')
 		self._uuidlist = self.getConfig('listUuid')
@@ -161,11 +122,12 @@ class BringShoppingList(Module):
 				sessionId=session.sessionId,
 				text=self.randomTalk(f'{answer}_what'),
 				intentFilter=[self._INTENT_ANSWER_SHOP, self._INTENT_SPELL_WORD],
-				currentDialogState=intent)
+				currentDialogState=str(intent))
 		return items
 
 
 	### INTENTS ###
+	@Decorators.Intent('deleteList_bringshop')
 	def delListIntent(self, session: DialogSession, **_kwargs):
 		self.continueDialog(
 			sessionId=session.sessionId,
@@ -174,6 +136,7 @@ class BringShoppingList(Module):
 			currentDialogState='confDelList')
 
 
+	@Decorators.Intent('AnswerYesOrNo', requiredState='confDelList', isProtected=True)
 	@Decorators.anyExcept(exceptions=BringApi.AuthentificationFailed, text='authFailed')
 	@Decorators.online
 	def confDelIntent(self, session: DialogSession, **_kwargs):
@@ -184,6 +147,9 @@ class BringShoppingList(Module):
 			self.endDialog(session.sessionId, text=self.randomTalk('nodel_all'))
 
 
+	@Decorators.Intent('addItem_bringshop')
+	@Decorators.Intent('SpellWord', requiredState='addItem_bringshop', isProtected=True)
+	@Decorators.Intent('whatItem_bringshop', requiredState='addItem_bringshop', isProtected=True)
 	@Decorators.anyExcept(exceptions=BringApi.AuthentificationFailed, text='authFailed')
 	@Decorators.online
 	def addItemIntent(self, intent: str, session: DialogSession):
@@ -193,6 +159,9 @@ class BringShoppingList(Module):
 			self.endDialog(session.sessionId, text=self._combineLists('add', added, exist))
 
 
+	@Decorators.Intent('deleteItem_bringshop')
+	@Decorators.Intent('SpellWord', requiredState='deleteItem_bringshop', isProtected=True)
+	@Decorators.Intent('whatItem_bringshop', requiredState='deleteItem_bringshop', isProtected=True)
 	@Decorators.anyExcept(exceptions=BringApi.AuthentificationFailed, text='authFailed')
 	@Decorators.online
 	def delItemIntent(self, intent: str, session: DialogSession):
@@ -202,6 +171,9 @@ class BringShoppingList(Module):
 			self.endDialog(session.sessionId, text=self._combineLists('rem', removed, exist))
 
 
+	@Decorators.Intent('checkList_bringshop', isProtected=True)
+	@Decorators.Intent('SpellWord', requiredState='checkList_bringshop', isProtected=True)
+	@Decorators.Intent('whatItem_bringshop', requiredState='checkList_bringshop', isProtected=True)
 	@Decorators.anyExcept(exceptions=BringApi.AuthentificationFailed, text='authFailed')
 	@Decorators.online
 	def checkListIntent(self, intent: str, session: DialogSession):
@@ -211,6 +183,7 @@ class BringShoppingList(Module):
 			self.endDialog(session.sessionId, text=self._combineLists('chk', found, missing))
 
 
+	@Decorators.Intent('readList_bringshop')
 	@Decorators.anyExcept(exceptions=BringApi.AuthentificationFailed, text='authFailed')
 	@Decorators.online
 	def readListIntent(self, session: DialogSession, **_kwargs):

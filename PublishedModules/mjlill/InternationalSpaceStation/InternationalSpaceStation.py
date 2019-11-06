@@ -1,7 +1,6 @@
 import requests
 from requests.exceptions import RequestException
 
-from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
 from core.util.Decorators import Decorators
@@ -13,18 +12,6 @@ class InternationalSpaceStation(Module):
 	Description: Inquire information about the international space station
 	"""
 
-	_INTENT_ASTRONAUTS = Intent('Astronauts')
-	_INTENT_ISS_POSITION = Intent('IssPosition')
-
-	def __init__(self):
-		self._SUPPORTED_INTENTS	= [
-			(self._INTENT_ASTRONAUTS, self.getAstronauts),
-			(self._INTENT_ISS_POSITION, self.getIssPosition)
-		]
-
-		super().__init__(self._SUPPORTED_INTENTS)
-
-
 	@staticmethod
 	def queryApi(url: str, *args, **kargs) -> dict:
 		response = requests.get(url=url.format(*args, **kargs))
@@ -32,6 +19,7 @@ class InternationalSpaceStation(Module):
 		return response.json()
 
 
+	@Decorators.Intent('IssPosition')
 	@Decorators.anyExcept(exceptions=(RequestException, KeyError), text='noServer', printStack=True)
 	@Decorators.online
 	def getIssPosition(self, session: DialogSession, **_kwargs):
@@ -73,6 +61,7 @@ class InternationalSpaceStation(Module):
 		self.endDialog(sessionId=session.sessionId, text=answer)
 
 
+	@Decorators.Intent('Astronauts')
 	@Decorators.anyExcept(exceptions=(RequestException, KeyError), text='noServer', printStack=True)
 	@Decorators.online
 	def getAstronauts(self, session: DialogSession, **_kwargs):

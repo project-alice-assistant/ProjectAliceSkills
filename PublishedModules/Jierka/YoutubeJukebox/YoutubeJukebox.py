@@ -7,7 +7,6 @@ import requests
 from requests import RequestException
 import youtube_dl
 
-from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
 from core.util.Decorators import Decorators
@@ -18,16 +17,6 @@ class YoutubeJukebox(Module):
 	Author: Jierka
 	Description: Allows to play music from youtube
 	"""
-
-	_INTENT_SEARCH_MUSIC = Intent('SearchMusic')
-
-	def __init__(self):
-		self._INTENTS = [
-			(self._INTENT_SEARCH_MUSIC, self.searchMusicIntent)
-		]
-
-		super().__init__(self._INTENTS)
-
 
 	def getWildcard(self, session):
 		if isinstance(session.payload, str):
@@ -49,6 +38,7 @@ class YoutubeJukebox(Module):
 		return clearInput
 
 
+	@Decorators.Intent('SearchMusic')
 	@Decorators.anyExcept(exceptions=RequestException, text='noServer', printStack=True)
 	@Decorators.online
 	def searchMusicIntent(self, session: DialogSession, **_kwargs):

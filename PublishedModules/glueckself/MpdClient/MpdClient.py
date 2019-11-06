@@ -1,8 +1,8 @@
-from .libraries import mpdhelper
-
-from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
+from core.util.Decorators import Decorators
+
+from .libraries import mpdhelper
 
 #>>> mpd.status()
 #{'volume': '44', 'repeat': '0', 'random': '0', 'single': '0', 'consume': '0', 'playlist': '2', 'playlistlength': '13', 'mixrampdb': '0.000000', 'state': 'play', 'song': '3', 'songid': '4', 'time': '1:178', 'elapsed': '0.789', 'bitrate': '128', 'audio': '44100:24:2', 'nextsong': '4', 'nextsongid': '5'}
@@ -17,22 +17,11 @@ class MpdClient(Module):
 	Description: Control an MPD server
 	"""
 
-	_INTENT_PLAY = Intent('mpdPlay')
-	_INTENT_STOP = Intent('mpdStop')
-	_INTENT_NEXT = Intent('mpdNext')
-	_INTENT_PREV = Intent('mpdPrev')
-
 	def __init__(self):
-		self._INTENTS = [
-			(self._INTENT_PLAY, self.playIntent),
-			(self._INTENT_STOP, self.stopIntent),
-			(self._INTENT_NEXT, self.nextIntent),
-			(self._INTENT_PREV, self.prevIntent)
-		]
 		#TODO volume, playlists, ...
 		#TODO pause music if alice starts a dialogue
 
-		super().__init__(self._INTENTS)
+		super().__init__()
 
 		self._host = self.getConfig('mpdHost')
 		self._port = self.getConfig('mpdPort')
@@ -76,6 +65,7 @@ class MpdClient(Module):
 			self._mpd.password(self._password)
 
 
+	@Decorators.Intent('mpdPlay')
 	def playIntent(self, session: DialogSession, **_kwargs):
 		if not self._mpdConnected:
 			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('notConnected'))
@@ -84,8 +74,9 @@ class MpdClient(Module):
 		else:
 			self._mpd.play()
 			self.endSession(sessionId=session.sessionId)
-	
 
+
+	@Decorators.Intent('mpdStop')
 	def stopIntent(self, session: DialogSession, **_kwargs):
 		# note that _playbackStatus can also be None when disconnected.
 		# while it shouldn't reach this line in that case, better to be on the safe side
@@ -96,8 +87,9 @@ class MpdClient(Module):
 		else:
 			self._mpd.stop()
 			self.endSession(sessionId=session.sessionId)
-	
 
+
+	@Decorators.Intent('mpdNext')
 	def nextIntent(self, session: DialogSession, **_kwargs):
 		# TODO maybe say the title here if not playing
 		if not self._mpdConnected:
@@ -105,8 +97,8 @@ class MpdClient(Module):
 		else:
 			self._mpd.next()
 			self.endSession(sessionId=session.sessionId)
-	
 
+	@Decorators.Intent('mpdPrev')
 	def prevIntent(self, session: DialogSession, **_kwargs):
 		# TODO maybe say the title here if not playing
 		if not self._mpdConnected:

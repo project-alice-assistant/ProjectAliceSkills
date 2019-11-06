@@ -14,29 +14,6 @@ class Wikipedia(Module):
 	Description: Allows one to find informations about a topic on wikipedia
 	"""
 
-	_INTENT_SEARCH = Intent('DoSearch')
-	_INTENT_USER_ANSWER = Intent('UserRandomAnswer', isProtected=True)
-	_INTENT_SPELL_WORD = Intent('SpellWord', isProtected=True)
-
-
-	def __init__(self):
-		self._INTENTS = [
-			(self._INTENT_SEARCH, self.searchIntent),
-			self._INTENT_USER_ANSWER,
-			self._INTENT_SPELL_WORD
-		]
-
-		self._INTENT_USER_ANSWER.dialogMapping = {
-			'whatToSearch': self.searchIntent
-		}
-
-		self._INTENT_SPELL_WORD.dialogMapping = {
-			'whatToSearch': self.searchIntent
-		}
-
-		super().__init__(self._INTENTS)
-
-
 	@staticmethod
 	def _extractSlots(session: DialogSession) -> str:
 		if 'Letters' in session.slots:
@@ -62,6 +39,9 @@ class Wikipedia(Module):
 		self._whatToSearch(session, 'ambiguous')
 
 
+	@Decorators.Intent('DoSearch')
+	@Decorators.Intent('UserRandomAnswer', requiredState='whatToSearch', isProtected=True)
+	@Decorators.Intent('SpellWord', requiredState='whatToSearch', isProtected=True)
 	@Decorators.anyExcept(printStack=True)
 	@Decorators.anyExcept(exceptions=wikipedia.WikipediaException, exceptHandler=noMatchHandler)
 	@Decorators.anyExcept(exceptions=wikipedia.DisambiguationError, exceptHandler=ambiguousHandler)

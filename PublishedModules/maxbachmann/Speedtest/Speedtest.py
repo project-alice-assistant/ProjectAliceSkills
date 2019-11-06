@@ -1,7 +1,6 @@
 import speedtest
 from speedtest import SpeedtestException
 
-from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
 from core.util.Decorators import Decorators
@@ -12,16 +11,7 @@ class Speedtest(Module):
 	Description: run internet speed test
 	"""
 
-	_INTENT_SPEEDTEST = Intent('Speedtest')
-
-	def __init__(self):
-		self._INTENTS = [
-			(self._INTENT_SPEEDTEST, self.runSpeedtest)
-		]
-
-		super().__init__(self._INTENTS)
-
-
+	@Decorators.Intent('Speedtest')
 	@Decorators.online
 	def runSpeedtest(self, session: DialogSession, **_kwargs):
 		self.ThreadManager.doLater(interval=0, func=self.executeSpeedtest, kwargs={'session': session})
