@@ -1,5 +1,5 @@
 import importlib
-import time
+from typing import Optional
 
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
@@ -33,13 +33,11 @@ class Minigames(Module):
 	}
 
 	def __init__(self):
-		self._INTENTS	= {
-			self._INTENT_PLAY_GAME: self.playGameIntent,
-			self._INTENT_ANSWER_MINI_GAME: self.answerMinigameIntent,
-			self._INTENT_ANSWER_YES_OR_NO: self.yesNoIntent
-		}
-
-		super().__init__(self._INTENTS, databaseSchema=self.DATABASE)
+		self._INTENTS = [
+			(self._INTENT_PLAY_GAME, self.playGameIntent),
+			(self._INTENT_ANSWER_MINI_GAME, self.playGameIntent),
+			(self._INTENT_ANSWER_YES_OR_NO, self.answerAnotherGame)
+		]
 
 		self._minigames = dict()
 		self._minigame: MiniGame = None
@@ -49,9 +47,18 @@ class Minigames(Module):
 				lib = importlib.import_module(f'modules.Minigames.model.{game}')
 				klass = getattr(lib, game)
 				minigame = klass()
-				self._INTENTS = {**self._INTENTS, **dict.fromkeys(minigame.intents, self.minigameIntent)}
+
+				self._minigames[game] = minigame
+
+				minigameIntentList = list()
+				for intent in minigame.intents:
+					minigameIntentList.append((intent, self.minigameIntent))
+
+				self._INTENTS = [*self._INTENTS, *minigameIntentList]
 			except Exception as e:
 				self.logError(f'Something went wrong loading the minigame "{game}": {e}')
+
+		super().__init__(self._INTENTS, databaseSchema=self.DATABASE)
 
 
 	def onSessionTimeout(self, session: DialogSession):
@@ -63,9 +70,31 @@ class Minigames(Module):
 		if self._minigame:
 			self._minigame.started = False
 
-	def minigameIntent(self, intent: str, session: DialogSession) -> bool:
+
+	def minigameIntent(self, session: DialogSession, intent: str) -> Optional[bool]:
+		if session.currentState != MiniGame.MiniGame.PLAYING_MINIGAME_STATE:
+			return False
+
 		self._minigame.onMessage(intent, session)
-		return True
+
+
+	def answerAnotherGame(self, session: DialogSession, **_kwargs):
+		if not self.Commons.isYes(session):
+			self.endDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk('endPlaying')
+			)
+		else:
+			if session.currentState != MiniGame.MiniGame.ANSWERING_PLAY_AGAIN_STATE:
+				self.continueDialog(
+					sessionId=session.sessionId,
+					intentFilter=[self._INTENT_ANSWER_MINI_GAME],
+					text=self.TalkManager.randomTalk('whichGame')
+				)
+			else:
+				self._minigame.start()
+		return
+
 
 	def playGameIntent(self, intent: str, session: DialogSession) -> bool:
 		sessionId = session.sessionId
@@ -76,8 +105,7 @@ class Minigames(Module):
 				self.continueDialog(
 					sessionId=sessionId,
 					intentFilter=[self._INTENT_ANSWER_MINI_GAME],
-					text=self.TalkManager.randomTalk('whichGame'),
-					previousIntent=self._INTENT_PLAY_GAME
+					text=self.TalkManager.randomTalk('whichGame')
 				)
 
 			elif session.slotValue('WhichGame') not in self._SUPPORTED_GAMES:
@@ -85,7 +113,7 @@ class Minigames(Module):
 					sessionId=sessionId,
 					intentFilter=[self._INTENT_ANSWER_MINI_GAME, self._INTENT_ANSWER_YES_OR_NO],
 					text=self.TalkManager.randomTalk('unknownGame'),
-					previousIntent=self._INTENT_PLAY_GAME
+					currentDialogState='answeringPlayAnotherGamer'
 				)
 
 			else:
@@ -96,59 +124,3 @@ class Minigames(Module):
 		elif self._minigame is not None:
 			self._minigame.onMessage(intent, session)
 		return True
-
-
-	def answerMinigameIntent(self, intent: str, session: DialogSession) -> bool:
-		if session.previousIntent == self._INTENT_PLAY_GAME:
-			return playGameIntent(intent=intent, session=session)
-		return False
-
-
-	def yesNoIntent(self, intent: str, session: DialogSession) -> bool:
-		sessionId = session.sessionId
-
-		if not self._minigame or not self._minigame.started:
-			if not self.Commons.isYes(session):
-				self.endDialog(
-					sessionId=sessionId,
-					text=self.randomTalk('endPlaying')
-				)
-			else:
-				self.continueDialog(
-					sessionId=sessionId,
-					intentFilter=[self._INTENT_ANSWER_MINI_GAME],
-					text=self.TalkManager.randomTalk('whichGame'),
-					previousIntent=self._INTENT_PLAY_GAME
-				)
-		
-		elif self._minigame is not None and session.customData and 'askRetry' in session.customData.keys():
-			if self.Commons.isYes(session):
-				self._minigame.start(session)
-			else:
-				self._minigame = None
-				self.endDialog(
-					sessionId=sessionId,
-					text=self.randomTalk('endPlaying')
-				)
-
-		return False
-
-
-	def checkAndStoreScore(self, user: str, score: int, biggerIsBetter: bool = True) -> bool:
-		lastScore = self.databaseFetch(tableName='highscores', query='SELECT * FROM :__table__ WHERE username = :username ORDER BY score DESC LIMIT 1', values={'username': user})
-		self.databaseInsert(
-			tableName='highscores',
-			query='INSERT INTO :__table__ (username, score, timestamp) VALUES (:username, :score, :timestamp)',
-			values={'username': user, 'score': score, 'timestamp': round(time.time())}
-		)
-
-		if lastScore:
-			if biggerIsBetter and score > int(lastScore['score']):
-				return True
-			elif not biggerIsBetter and score < int(lastScore['score']):
-				return True
-			else:
-				return False
-
-		else:
-			return True

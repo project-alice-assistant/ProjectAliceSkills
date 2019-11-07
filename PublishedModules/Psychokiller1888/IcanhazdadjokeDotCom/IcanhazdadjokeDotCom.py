@@ -1,4 +1,5 @@
 import requests
+from requests.exceptions import RequestException
 
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
@@ -17,11 +18,8 @@ class IcanhazdadjokeDotCom(Module):
 		super().__init__(self._INTENTS)
 
 
-	def offlineHandler(self, session: DialogSession, **_kwargs):
-		self.endDialog(session.sessionId, text=self.TalkManager.randomTalk('offline', module='system'))
-
-
-	@Decorators.online(offlineHandler=offlineHandler)
+	@Decorators.anyExcept(exceptions=RequestException, text='noJoke', printStack=True)
+	@Decorators.online
 	def jokeIntent(self, session: DialogSession, **_kwargs):
 		url = 'https://icanhazdadjoke.com/'
 
@@ -32,7 +30,5 @@ class IcanhazdadjokeDotCom(Module):
 		}
 
 		response = requests.get(url, headers=headers)
-		if response is not None:
-			self.endDialog(session.sessionId, text=response.text)
-		else:
-			self.endDialog(session.sessionId, self.TalkManager.getrandomTalk('noJoke'))
+		response.raise_for_status()
+		self.endDialog(session.sessionId, text=response.text)

@@ -1,20 +1,3 @@
-"""
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <https://www.gnu.org/licenses/>
-
-    author: Psycho (Laurent Chervet)
-"""
-
 from __future__ import print_function, unicode_literals
 import shutil
 from pathlib import Path
@@ -77,11 +60,11 @@ class {moduleName}(Module):
 
 INSTALL_JSON = '''{{
 	"name": "{moduleName}",
-	"version": 0.1,
+	"version": 0.0.1,
 	"author": "{username}",
 	"maintainers": [],
 	"desc": "{description}",
-	"aliceMinVersion": 0.10,
+	"aliceMinVersion": 1.0.0,
 	"pipRequirements": [{pipRequirements}],
 	"systemRequirements": [{systemRequirements}],
 	"conditions": {{
@@ -159,10 +142,10 @@ wget http://bit.ly/????????? -O ~/ProjectAlice/system/moduleInstallTickets/{modu
 ### Description
 {description}
 
-- Version: 0.1
+- Version: 0.0.1
 - Author: {username}
 - Maintainers: N/A
-- Alice minimum version: 0.10
+- Alice minimum version: 1.0.0
 - Conditions:
 {langs}
 - Pip requirements: N/A

@@ -15,7 +15,7 @@ class Netatmo(Module):
 	"""
 
 	def __init__(self):
-		self._SUPPORTED_INTENTS	= []
+		self._SUPPORTED_INTENTS	= list()
 
 		super().__init__(self._SUPPORTED_INTENTS)
 
@@ -50,8 +50,8 @@ class Netatmo(Module):
 			self._weatherData = lnetatmo.WeatherStationData(self._netatmoAuth)
 		except lnetatmo.NoDevice:
 			raise ModuleStartingFailed(moduleName=self.name, error='No Netatmo device found')
-		else:
-			return self._SUPPORTED_INTENTS
+
+		return self.supportedIntents
 
 
 	def _auth(self) -> bool:
@@ -63,11 +63,11 @@ class Netatmo(Module):
 				password=self.getConfig('password'),
 				scope='read_station'
 			)
-		except lnetatmo.AuthFailure:
+		except Exception:
 			self._authTries += 1
 			if self._authTries >= 3:
 				self.logWarning('Tried to auth 3 times, giving up now')
-				return False
+				raise ModuleStartingFailed
 			else:
 				time.sleep(1)
 				return self._auth()

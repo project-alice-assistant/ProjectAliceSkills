@@ -434,5 +434,39 @@
 	],
 	"addUserAddWakewordDenied": [
 		"Ok, I understand, keep in mind I won't be able to define if {} is home, sleeping, playing games or remember stuff about {}."
+	],
+	"explainInterfaceAuth": {
+		"default": [
+			"If you want to access this part, I need to authenticate you. Call me by my name please!",
+			"To access this part of the interface I need to authenticate you. Please call me by my name"
+		],
+		"short": [
+			"Call me by my name please"
+		]
+	},
+	"greetAndNeedPinCode": {
+		"default": [
+			"Hey {}! I need your pin code now, you can either speak it now or enter it on your interface!",
+			"Hi {}. To continue I need your personal pin code. You can tell it to me now or enter it on the interface."
+		],
+		"short": [
+			"Say or enter pin code on the interface"
+		]
+	},
+	"userAuthUnknown": [
+		"I'm sorry but I did not recognize you",
+		"Sorry, but I don't know who you are"
+	],
+	"userAuthAccessLevelTooLow": [
+		"Sorry {} but your access level is too low",
+		"Unfortunately {}, your access level is too low"
+	],
+	"authFailed": [
+		"Sorry, this is not correct, I can't let you go further",
+		"Nope, incorrect, try again"
+	],
+	"authOk": [
+		"Ok, you are verified, you have now access",
+		"Cool, it's correct, you have now access"
 	]
 }

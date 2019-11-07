@@ -70,8 +70,5 @@ class AliceSatellite(Module):
 
 	def restartDevice(self):
 		devices = self.DeviceManager.getDevicesByType(deviceType=self.name, connectedOnly=True, onlyOne=False)
-		if not devices:
-			return
-
 		for device in devices:
 			self.publish(topic='projectalice/devices/restart', payload={'uid': device.uid})

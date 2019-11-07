@@ -1,15 +1,15 @@
 {
-	"whatToSearch": {
-		"default": [
-			"Bien sûr! Que dois-je rechercher?",
-			"Je peux, bien sûr! Qu'aimerais-tu que je recherche?",
-			"Oui, volontier! Que recherche tu?"
-		]
-	},
-	"noMatch": {
-		"default": [
-			"Désolée, je n'ai pas trouvé d'informations au sujet de <say-as interpret-as=\"interjection\">{}</say-as>. Essaie une autre requête s'il te plait"
-		]
-	}
+	"whatToSearch": [
+		"Bien sûr! Que dois-je rechercher?",
+		"Je peux, bien sûr! Qu'aimerais-tu que je recherche?",
+		"Oui, volontier! Que recherche tu?"
+	],
+	"noMatch": [
+		"Désolée, je n'ai pas trouvé d'informations au sujet de <say-as interpret-as=\"interjection\">{}</say-as>. Essaie une autre requête s'il te plait"
+	],
+	"noServer": [
+		"Je n'arrive pas à avoir cette information",
+		"Le serveur semble être injoignable"
+	]
 }
 

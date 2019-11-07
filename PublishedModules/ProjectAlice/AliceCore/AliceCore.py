@@ -8,6 +8,7 @@ from core.ProjectAliceExceptions import ModuleStartDelayed
 from core.base.SuperManager import SuperManager
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
+from core.interface.views.AdminAuth import AdminAuth
 from core.util.Decorators import Decorators
 from core.commons import constants
 from core.dialog.model.DialogSession import DialogSession
@@ -87,11 +88,46 @@ class AliceCore(Module):
 		}
 
 		self._INTENT_ANSWER_NUMBER.dialogMapping = {
-			'addingPinCode': self.addUserPinCode
+			'addingPinCode': self.addUserPinCode,
+			'userAuth': self.authUser
 		}
 
 		self._threads = dict()
 		super().__init__(self._INTENTS, authOnlyIntents=self._AUTH_ONLY_INTENTS)
+
+
+	def authUser(self, session: DialogSession, **_kwargs):
+		if 'Number' not in session.slotsAsObjects:
+			self.continueDialog(
+				sessionId=session.sessionId,
+				text=self.TalkManager.randomTalk('notUnderstood', module='system'),
+				intentFilter=[self._INTENT_ANSWER_NUMBER],
+				currentDialogState='userAuth'
+			)
+			return
+
+		pin = ''.join([str(int(x.value['value'])) for x in session.slotsAsObjects['Number']])
+
+		user = self.UserManager.getUser(session.customData['user'])
+		if not user:
+			self.endDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk('userAuthUnknown')
+			)
+
+		if not user.checkPassword(pin):
+			self.endDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk('authFailed')
+			)
+		else:
+			user.isAuthenticated = True
+			self.endDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk('authOk')
+			)
+
+		self.ThreadManager.getEvent('authUser').clear()
 
 
 	def addNewUser(self, session: DialogSession, **_kwargs):
@@ -186,7 +222,7 @@ class AliceCore(Module):
 				self.ThreadManager.doLater(interval=1, func=self.WakewordManager.finalizeWakeword)
 
 				self.ThreadManager.getEvent('AddingWakeword').clear()
-				if self.delayed:
+				if self.delayed: # type: ignore
 					self.delayed = False
 					self.ThreadManager.doLater(interval=2, func=self.onStart)
 
@@ -477,6 +513,38 @@ class AliceCore(Module):
 		self.ThreadManager.doLater(interval=5, func=subprocess.run, args=[['sudo', 'shutdown', '-r', 'now']])
 
 
+	def _addFirstUser(self):
+		self.ask(
+			text=self.randomTalk('addAdminUser'),
+			intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
+			canBeEnqueued=False,
+			currentDialogState='addingUser',
+			customData={
+				'UserAccessLevel': 'admin'
+			}
+		)
+
+
+	def greetAndAskPin(self, session: DialogSession):
+		if not AdminAuth.getUser().isAuthenticated and self.ThreadManager.getEvent('authUser').isSet():
+			self.ask(
+				text=self.randomTalk('greetAndNeedPinCode', replace=[session.user]),
+				siteId=session.siteId,
+				intentFilter=[self._INTENT_ANSWER_NUMBER],
+				currentDialogState='userAuth',
+				customData={
+					'user': session.user.lower()
+				}
+			)
+
+
+	def endUserAuth(self):
+		self.ThreadManager.clearEvent('authUser')
+		if self.ThreadManager.getEvent('authUserWaitWakeword').isSet():
+			self.SnipsServicesManager.toggleFeedbackSound(state='on')
+			self.ThreadManager.clearEvent('authUserWaitWakeword')
+
+
 	def onStart(self) -> dict:
 		super().onStart()
 		self.changeFeedbackSound(inDialog=False)
@@ -490,20 +558,19 @@ class AliceCore(Module):
 		return self.supportedIntents
 
 
-	def _addFirstUser(self):
-		self.ask(
-			text=self.randomTalk('addAdminUser'),
-			intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
-			canBeEnqueued=False,
-			currentDialogState='addingUser',
-			customData={
-				'UserAccessLevel': 'admin'
-			}
-		)
+	def onHotword(self, siteId: str, user: str = constants.UNKNOWN_USER):
+		self.endUserAuth()
+
+
+	def onWakeword(self, siteId: str, user: str = constants.UNKNOWN_USER):
+		if self.ThreadManager.getEvent('authUserWaitWakeword').isSet():
+			self.SnipsServicesManager.toggleFeedbackSound(state='on')
+			self.ThreadManager.clearEvent('authUserWaitWakeword')
+			self.ThreadManager.newEvent('authUser').set()
 
 
 	def onUserCancel(self, session: DialogSession):
-		if not self.delayed: # type: ignore
+		if self.delayed:
 			self.delayed = False
 
 			if not self.ThreadManager.getEvent('AddingWakeword').isSet():
@@ -513,6 +580,8 @@ class AliceCore(Module):
 				self.ThreadManager.getEvent('AddingWakeword').clear()
 				self.say(text=self.randomTalk('cancellingWakewordCapture'), siteId=session.siteId)
 				self.ThreadManager.doLater(interval=2, func=self.onStart)
+
+		self.endUserAuth()
 
 
 	def onSessionTimeout(self, session: DialogSession):
@@ -529,6 +598,35 @@ class AliceCore(Module):
 
 	def onSessionStarted(self, session: DialogSession):
 		self.changeFeedbackSound(inDialog=True, siteId=session.siteId)
+
+		if self.ThreadManager.getEvent('authUser').isSet() and session.currentState != 'userAuth':
+			self.SnipsServicesManager.toggleFeedbackSound(state='on')
+
+			user = self.UserManager.getUser(session.user)
+			if user == constants.UNKNOWN_USER:
+				self.endDialog(
+					sessionId=session.sessionId,
+					text=self.randomTalk('userAuthUnknown')
+				)
+			elif self.UserManager.hasAccessLevel(session.user, AccessLevel.ADMIN):
+				# End the session immediately because the ASR is listening to the previous wakeword call
+				self.endSession(sessionId=session.sessionId)
+
+				AdminAuth.setUser(user)
+
+				#Delay a greeting as the user might already by authenticated through cookies
+				self.ThreadManager.doLater(
+					interval=0.75,
+					func=self.greetAndAskPin,
+					args=[session]
+				)
+			else:
+				self.endDialog(
+					sessionId=session.sessionId,
+					text=self.randomTalk('userAuthAccessLevelTooLow')
+				)
+		elif session.currentState == 'userAuth':
+			AdminAuth.setLinkedSnipsSession(session)
 
 
 	def onSessionEnded(self, session: DialogSession):
@@ -696,3 +794,19 @@ class AliceCore(Module):
 
 		subprocess.run(['sudo', 'ln', '-sfn', f'{self.Commons.rootDir()}/system/sounds/{self.LanguageManager.activeLanguage}/start_of_input{state}.wav', f'{self.Commons.rootDir()}/assistant/custom_dialogue/sound/start_of_input.wav'])
 		subprocess.run(['sudo', 'ln', '-sfn', f'{self.Commons.rootDir()}/system/sounds/{self.LanguageManager.activeLanguage}/error{state}.wav', f'{self.Commons.rootDir()}/assistant/custom_dialogue/sound/error.wav'])
+
+
+	def explainInterfaceAuth(self):
+		AdminAuth.setUser(None)
+		self.ThreadManager.clearEvent('authUser')
+		self.ThreadManager.newEvent('authUserWaitWakeword').set()
+		self.SnipsServicesManager.toggleFeedbackSound(state='off')
+		self.say(
+			text=self.randomTalk('explainInterfaceAuth'),
+			siteId=constants.ALL,
+			canBeEnqueued=False
+		)
+
+
+	def authWithKeyboard(self):
+		self.endUserAuth()

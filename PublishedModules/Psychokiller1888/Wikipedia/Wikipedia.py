@@ -1,8 +1,11 @@
+from typing import Tuple
+
 from wikipedia import wikipedia
 
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
+from core.util.Decorators import Decorators
 
 
 class Wikipedia(Module):
@@ -17,101 +20,62 @@ class Wikipedia(Module):
 
 
 	def __init__(self):
-		self._SUPPORTED_INTENTS = [
-			self._INTENT_SEARCH,
+		self._INTENTS = [
+			(self._INTENT_SEARCH, self.searchIntent),
 			self._INTENT_USER_ANSWER,
 			self._INTENT_SPELL_WORD
 		]
 
-		super().__init__(self._SUPPORTED_INTENTS)
+		self._INTENT_USER_ANSWER.dialogMapping = {
+			'whatToSearch': self.searchIntent
+		}
+
+		self._INTENT_SPELL_WORD.dialogMapping = {
+			'whatToSearch': self.searchIntent
+		}
+
+		super().__init__(self._INTENTS)
 
 
-	def onMessage(self, intent: str, session: DialogSession) -> bool:
-		slots = session.slots
-		sessionId = session.sessionId
-		customData = session.customData
+	@staticmethod
+	def _extractSlots(session: DialogSession) -> str:
+		if 'Letters' in session.slots:
+			return ''.join([slot.value['value'] for slot in session.slotsAsObjects['Letters']])
+		return session.slots.get('What', session.slots.get('RandomWord'))
 
-		if intent == self._INTENT_SEARCH or session.previousIntent == self._INTENT_SEARCH:
-			if 'userInput' not in customData and 'what' not in slots and 'RandomWord' not in slots:
-				self.continueDialog(
-					sessionId=sessionId,
-					text=self.randomTalk('whatToSearch'),
-					intentFilter=[self._INTENT_USER_ANSWER],
-					previousIntent=self._INTENT_SEARCH,
-					customData={
-						'module': self.name,
-					}
-				)
-			else:
-				if 'userInput' in customData:
-					what = customData['userInput']
-				elif 'what' in slots:
-					what = slots['what']
-				elif 'RandomWord' in slots:
-					what = slots['RandomWord']
-				else:
-					self.endDialog(sessionId=sessionId, text=self.TalkManager.randomTalk('error', module='system'))
-					return True
 
-				if intent == self._INTENT_SPELL_WORD:
-					search = ''
-					for slot in session.slotsAsObjects['Letters']:
-						search += slot.value['value']
-				else:
-					search = what
+	def _whatToSearch(self, session: DialogSession, question: str):
+		search = self._extractSearchWord(session)
+		self.continueDialog(
+			sessionId=session.sessionId,
+			text=self.randomTalk(text=question, replace=[search]),
+			intentFilter=[self._INTENT_USER_ANSWER, self._INTENT_SPELL_WORD],
+			currentDialogState='whatToSearch'
+		)
 
-				wikipedia.set_lang(self.LanguageManager.activeLanguage)
-				if 'engine' in customData:
-					engine = customData['engine']
-				else:
-					engine = 'wikipedia'
 
-				try:
-					if engine == 'wikipedia':
-						result = wikipedia.summary(search, sentences=3)
-					else:
-						result = wikipedia.summary(search, sentences=3)
-				except wikipedia.DisambiguationError:
-					self.continueDialog(
-						sessionId=sessionId,
-						text=self.TalkManager.randomTalk('ambiguous').format(search),
-						intentFilter=[self._INTENT_USER_ANSWER],
-						previousIntent=self._INTENT_SEARCH,
-						customData={
-							'module': self.name,
-							'engine': engine
-						}
-					)
-					return True
-				except wikipedia.WikipediaException:
-					self.continueDialog(
-						sessionId=sessionId,
-						text=self.TalkManager.randomTalk('noMatch').format(search),
-						intentFilter=[self._INTENT_USER_ANSWER],
-						previousIntent=self._INTENT_SEARCH,
-						customData={
-							'module': self.name,
-							'engine': engine
-						}
-					)
-					return True
-				except Exception as e:
-					self._logger.error(f'Error: {e}')
-					self.endDialog(sessionId=sessionId, text=self.TalkManager.randomTalk('error', module='system'))
-					return True
+	def noMatchHandler(self, session: DialogSession, **_kwargs):
+		self._whatToSearch(session, 'noMatch')
 
-				if result == '':
-					self.continueDialog(
-						sessionId=sessionId,
-						text=self.TalkManager.randomTalk('noMatch').format(search),
-						intentFilter=[self._INTENT_USER_ANSWER],
-						previousIntent=self._INTENT_SEARCH,
-						customData={
-							'module': self.name,
-							'engine': engine
-						}
-					)
-				else:
-					self.endDialog(sessionId=sessionId, text=result)
 
-		return True
+	def ambiguousHandler(self, session: DialogSession, **_kwargs):
+		self._whatToSearch(session, 'ambiguous')
+
+
+	@Decorators.anyExcept(printStack=True)
+	@Decorators.anyExcept(exceptions=wikipedia.WikipediaException, exceptHandler=noMatchHandler)
+	@Decorators.anyExcept(exceptions=wikipedia.DisambiguationError, exceptHandler=ambiguousHandler)
+	@Decorators.online
+	def searchIntent(self, session: DialogSession, **_kwargs):
+		search = self._extractSearchWord(session)
+		if not search:
+			self._whatToSearch(session, 'whatToSearch')
+			return
+
+		wikipedia.set_lang(self.LanguageManager.activeLanguage)
+		result = wikipedia.summary(search, sentences=3)
+
+		if not result:
+			self._whatToSearch(session, 'noMatch')
+		else:
+			self.endDialog(sessionId=session.sessionId, text=result)

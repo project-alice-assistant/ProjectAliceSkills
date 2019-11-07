@@ -16,14 +16,14 @@ wget http://bit.ly/DateDayTimeYear \
 ### Description
 Ask for the time, date, day and year
 
-- Version: 1.07
+- Version: 1.0.9
 - Author: Psycho
 - Maintainers:
   - Jierka
   - maxbachmann
-- Alice minimum version: 0.13
+- Alice minimum version: 1.0.0-a3
 - Conditions:
   - en
   - fr
   - de
-- Requirements: N/A
+- Requirements: Babel

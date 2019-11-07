@@ -69,8 +69,9 @@ class PhilipsHue(Module):
 				self.logInfo(f"Autodiscover found bridge at {firstBridge['internalipaddress']}, saving ip to config.json")
 				self.updateConfig('phueAutodiscoverFallback', False)
 				self.updateConfig('phueBridgeIp', firstBridge['internalipaddress'])
-				if self._connectBridge():
-					return self.supportedIntents
+				if not self._connectBridge():
+					raise ModuleStartingFailed(moduleName=self.name, error='Cannot connect to bridge')
+				return self.supportedIntents
 			except IndexError:
 				self.logInfo('No bridge found')
 

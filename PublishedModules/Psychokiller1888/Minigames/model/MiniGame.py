@@ -1,18 +1,21 @@
-import logging
+import time
 
-from abc import ABCMeta, abstractmethod
-
+from core.base.model.ProjectAliceObject import ProjectAliceObject
 from core.dialog.model import DialogSession
-from core.snips.samkilla.Intent import Intent
 
 
-class MiniGame(metaclass=ABCMeta):
+class MiniGame(ProjectAliceObject):
 
-	_INTENT_PLAY_GAME = Intent('PlayGame')
+	_INTENT_PLAY_GAME = 'PlayGame'
+	_INTENT_ANSWER_YES_OR_NO = 'AnswerYesOrNo'
+
+	PLAYING_MINIGAME_STATE = 'playingMiniGame'
+	ANSWERING_PLAY_AGAIN_STATE = 'answeringPlayAgain'
 
 	def __init__(self):
-		self._logger = logging.getLogger('ProjectAlice')
+		super().__init__(logDepth=4)
 		self._started = False
+		self._intents = list()
 
 
 	@property
@@ -26,16 +29,34 @@ class MiniGame(metaclass=ABCMeta):
 
 
 	@property
-	@abstractmethod
 	def intents(self) -> list:
-		pass
+		return self._intents
 
 
-	@abstractmethod
 	def start(self, session: DialogSession):
 		self._started = True
 
 
-	@abstractmethod
-	def onMessage(self, intent: str, session: DialogSession):
-		pass
+	# noinspection SqlResolve
+	def checkAndStoreScore(self, user: str, score: int, biggerIsBetter: bool = True) -> bool:
+		lastScore = self.DatabaseManager.databaseFetch(
+			tableName='highscores',
+			query='SELECT * FROM :__table__ WHERE username = :username ORDER BY score DESC LIMIT 1',
+			values={'username': user}
+		)
+
+		self.DatabaseManager.databaseInsert(
+			tableName='highscores',
+			values={'username': user, 'score': score, 'timestamp': round(time.time())}
+		)
+
+		if lastScore:
+			if biggerIsBetter and score > int(lastScore['score']):
+				return True
+			elif not biggerIsBetter and score < int(lastScore['score']):
+				return True
+			else:
+				return False
+
+		else:
+			return True

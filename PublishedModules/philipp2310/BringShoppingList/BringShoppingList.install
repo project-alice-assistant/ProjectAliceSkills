@@ -1,12 +1,12 @@
 {
 	"name": "BringShoppingList",
-	"version": 1.04,
+	"version": "1.0.9",
 	"author": "philipp2310",
-	"maintainers": ["maxbachmann"],
+	"maintainers": ["maxbachmann", "Psychokiller1888"],
 	"desc": "Maintain your Bring! Shopping list",
-	"aliceMinVersion": 0.13,
+	"aliceMinVersion": "1.0.0-a3",
 	"systemRequirements": [],
-	"pipRequirements": ["BringApi"],
+	"pipRequirements": ["BringApi>=0.0.3"],
 	"conditions": {
 		"lang": [
 			"en",
