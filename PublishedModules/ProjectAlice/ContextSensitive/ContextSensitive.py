@@ -4,7 +4,7 @@ from collections import deque
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
-from core.util.Decorators import Decorators
+from core.util.Decorators import IntentHandler
 
 
 class ContextSensitive(Module):
@@ -17,7 +17,7 @@ class ContextSensitive(Module):
 		super().__init__()
 
 
-	@Decorators.Intent('DeleteThis', isProtected=True)
+	@IntentHandler('DeleteThis', isProtected=True)
 	def deleteThisIntent(self, session: DialogSession, **_kwargs):
 		modules = self.ModuleManager.getModules()
 		for module in modules.values():
@@ -29,7 +29,7 @@ class ContextSensitive(Module):
 				continue
 
 
-	@Decorators.Intent('EditThis', isProtected=True)
+	@IntentHandler('EditThis', isProtected=True)
 	def editThisIntent(self, session: DialogSession, **_kwargs):
 		modules = self.ModuleManager.getModules()
 		for module in modules.values():
@@ -41,7 +41,7 @@ class ContextSensitive(Module):
 				continue
 
 
-	@Decorators.Intent('RepeatThis', isProtected=True)
+	@IntentHandler('RepeatThis', isProtected=True)
 	def repeatThisIntent(self, session: DialogSession, **_kwargs):
 		self.endDialog(session.sessionId, text=self.getLastChat(siteId=session.siteId))
 

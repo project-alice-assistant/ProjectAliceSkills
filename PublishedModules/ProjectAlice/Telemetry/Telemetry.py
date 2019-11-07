@@ -1,7 +1,7 @@
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
 from core.util.model.TelemetryType import TelemetryType
-from core.util.Decorators import Decorators
+from core.util.Decorators import IntentHandler
 
 
 class Telemetry(Module):
@@ -28,8 +28,8 @@ class Telemetry(Module):
 			'wind_strength': 'km/h'
 		}
 
-	@Decorators.Intent('GetTelemetryData')
-	@Decorators.Intent('AnswerTelemetryType')
+	@IntentHandler('GetTelemetryData')
+	@IntentHandler('AnswerTelemetryType')
 	def telemetryIntent(self, session: DialogSession, **_kwargs):
 		siteId = session.slotValue('Room') or session.siteId
 		telemetryType = session.slotValue('TelemetryType')

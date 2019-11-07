@@ -3,7 +3,7 @@ from requests.exceptions import RequestException
 
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
-from core.util.Decorators import Decorators
+from core.util.Decorators import Decorators, IntentHandler
 
 
 class FreeCurrencyConverterDotCom(Module):
@@ -17,8 +17,8 @@ class FreeCurrencyConverterDotCom(Module):
 		super().__init__()
 
 
-	@Decorators.Intent('ConvertCurrency')
-	@Decorators.Intent('AnswerCurrency', isProtected=True)
+	@IntentHandler('ConvertCurrency')
+	@IntentHandler('AnswerCurrency', isProtected=True)
 	@Decorators.anyExcept(exceptions=(RequestException, KeyError), text='noServer', printStack=True)
 	@Decorators.online
 	def convertCurrencyIntent(self, session: DialogSession, **_kwargs):

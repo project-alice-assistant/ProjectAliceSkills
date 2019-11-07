@@ -5,7 +5,7 @@ from wikipedia import wikipedia
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
-from core.util.Decorators import Decorators
+from core.util.Decorators import Decorators, IntentHandler
 
 
 class Wikipedia(Module):
@@ -39,9 +39,9 @@ class Wikipedia(Module):
 		self._whatToSearch(session, 'ambiguous')
 
 
-	@Decorators.Intent('DoSearch')
-	@Decorators.Intent('UserRandomAnswer', requiredState='whatToSearch', isProtected=True)
-	@Decorators.Intent('SpellWord', requiredState='whatToSearch', isProtected=True)
+	@IntentHandler('DoSearch')
+	@IntentHandler('UserRandomAnswer', requiredState='whatToSearch', isProtected=True)
+	@IntentHandler('SpellWord', requiredState='whatToSearch', isProtected=True)
 	@Decorators.anyExcept(printStack=True)
 	@Decorators.anyExcept(exceptions=wikipedia.WikipediaException, exceptHandler=noMatchHandler)
 	@Decorators.anyExcept(exceptions=wikipedia.DisambiguationError, exceptHandler=ambiguousHandler)

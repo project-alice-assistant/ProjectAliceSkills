@@ -1,6 +1,6 @@
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
-from core.util.Decorators import Decorators
+from core.util.Decorators import IntentHandler
 
 
 class Speller(Module):
@@ -9,8 +9,8 @@ class Speller(Module):
 	Description: Ask alice how to spell any word!
 	"""
 
-	@Decorators.Intent('DoSpellWord')
-	@Decorators.Intent('UserRandomAnswer', requiredState='answerWord', isProtected=True)
+	@IntentHandler('DoSpellWord')
+	@IntentHandler('UserRandomAnswer', requiredState='answerWord', isProtected=True)
 	def spellIntent(self, session: DialogSession, **_kwargs):
 		word = session.slotValue('RandomWord') or 'unknownword'
 

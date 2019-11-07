@@ -1,6 +1,6 @@
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
-from core.util.Decorators import Decorators
+from core.util.Decorators import IntentHandler
 
 
 class RockPaperScissors(Module):
@@ -9,7 +9,7 @@ class RockPaperScissors(Module):
 	Description: Play rock paper scissors
 	"""
 
-	@Decorators.Intent('RockPaperScissors')
+	@IntentHandler('RockPaperScissors')
 	def rockPaperScissorsIntent(self, session: DialogSession, **_kwargs):
 		randomItem = self.randomTalk(text='RockPaperScissors')
 		self.endDialog(session.sessionId, self.randomTalk(text='answer', replace=[randomItem]))

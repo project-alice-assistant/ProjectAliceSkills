@@ -1,6 +1,6 @@
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
-from core.util.Decorators import Decorators
+from core.util.Decorators import Decorators, IntentHandler
 from core.commons import constants
 
 try:
@@ -14,8 +14,8 @@ class FindMyPhone(Module):
 	Description: Using ifttt one can ask alice to find his phone. sets the ring tone at max volume and initiates a call on it.
 	"""
 
-	@Decorators.Intent('FindPhone')
-	@Decorators.Intent('AnswerName', requiredState='phoneOwner', isProtected=True)
+	@IntentHandler('FindPhone')
+	@IntentHandler('AnswerName', requiredState='phoneOwner', isProtected=True)
 	@Decorators.online
 	def findPhoneIntent(self, session: DialogSession, **_kwargs):
 		sessionId = session.sessionId

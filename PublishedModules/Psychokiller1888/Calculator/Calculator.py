@@ -1,9 +1,8 @@
 import math
 
-from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
-from core.util.Decorators import Decorators
+from core.util.Decorators import IntentHandler
 
 
 class Calculator(Module):
@@ -28,7 +27,7 @@ class Calculator(Module):
 		super().__init__()
 
 
-	@Decorators.Intent('Maths')
+	@IntentHandler('Maths')
 	def mathIntent(self, session: DialogSession, **_kwargs):
 		mathOperation = self._mathOperations.get(session.slotValue('Function'))
 		left = float(session.slotValue('Left') or self._lastNumber)

@@ -5,7 +5,7 @@ from BringApi.BringApi import BringApi
 from core.ProjectAliceExceptions import ModuleStartingFailed
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
-from core.util.Decorators import Decorators
+from core.util.Decorators import Decorators, IntentHandler
 
 
 class BringShoppingList(Module):
@@ -127,7 +127,7 @@ class BringShoppingList(Module):
 
 
 	### INTENTS ###
-	@Decorators.Intent('deleteList_bringshop')
+	@IntentHandler('deleteList_bringshop')
 	def delListIntent(self, session: DialogSession, **_kwargs):
 		self.continueDialog(
 			sessionId=session.sessionId,
@@ -136,7 +136,7 @@ class BringShoppingList(Module):
 			currentDialogState='confDelList')
 
 
-	@Decorators.Intent('AnswerYesOrNo', requiredState='confDelList', isProtected=True)
+	@IntentHandler('AnswerYesOrNo', requiredState='confDelList', isProtected=True)
 	@Decorators.anyExcept(exceptions=BringApi.AuthentificationFailed, text='authFailed')
 	@Decorators.online
 	def confDelIntent(self, session: DialogSession, **_kwargs):
@@ -147,9 +147,9 @@ class BringShoppingList(Module):
 			self.endDialog(session.sessionId, text=self.randomTalk('nodel_all'))
 
 
-	@Decorators.Intent('addItem_bringshop')
-	@Decorators.Intent('SpellWord', requiredState='addItem_bringshop', isProtected=True)
-	@Decorators.Intent('whatItem_bringshop', requiredState='addItem_bringshop', isProtected=True)
+	@IntentHandler('addItem_bringshop')
+	@IntentHandler('SpellWord', requiredState='addItem_bringshop', isProtected=True)
+	@IntentHandler('whatItem_bringshop', requiredState='addItem_bringshop', isProtected=True)
 	@Decorators.anyExcept(exceptions=BringApi.AuthentificationFailed, text='authFailed')
 	@Decorators.online
 	def addItemIntent(self, intent: str, session: DialogSession):
@@ -159,9 +159,9 @@ class BringShoppingList(Module):
 			self.endDialog(session.sessionId, text=self._combineLists('add', added, exist))
 
 
-	@Decorators.Intent('deleteItem_bringshop')
-	@Decorators.Intent('SpellWord', requiredState='deleteItem_bringshop', isProtected=True)
-	@Decorators.Intent('whatItem_bringshop', requiredState='deleteItem_bringshop', isProtected=True)
+	@IntentHandler('deleteItem_bringshop')
+	@IntentHandler('SpellWord', requiredState='deleteItem_bringshop', isProtected=True)
+	@IntentHandler('whatItem_bringshop', requiredState='deleteItem_bringshop', isProtected=True)
 	@Decorators.anyExcept(exceptions=BringApi.AuthentificationFailed, text='authFailed')
 	@Decorators.online
 	def delItemIntent(self, intent: str, session: DialogSession):
@@ -171,9 +171,9 @@ class BringShoppingList(Module):
 			self.endDialog(session.sessionId, text=self._combineLists('rem', removed, exist))
 
 
-	@Decorators.Intent('checkList_bringshop', isProtected=True)
-	@Decorators.Intent('SpellWord', requiredState='checkList_bringshop', isProtected=True)
-	@Decorators.Intent('whatItem_bringshop', requiredState='checkList_bringshop', isProtected=True)
+	@IntentHandler('checkList_bringshop', isProtected=True)
+	@IntentHandler('SpellWord', requiredState='checkList_bringshop', isProtected=True)
+	@IntentHandler('whatItem_bringshop', requiredState='checkList_bringshop', isProtected=True)
 	@Decorators.anyExcept(exceptions=BringApi.AuthentificationFailed, text='authFailed')
 	@Decorators.online
 	def checkListIntent(self, intent: str, session: DialogSession):
@@ -183,7 +183,7 @@ class BringShoppingList(Module):
 			self.endDialog(session.sessionId, text=self._combineLists('chk', found, missing))
 
 
-	@Decorators.Intent('readList_bringshop')
+	@IntentHandler('readList_bringshop')
 	@Decorators.anyExcept(exceptions=BringApi.AuthentificationFailed, text='authFailed')
 	@Decorators.online
 	def readListIntent(self, session: DialogSession, **_kwargs):

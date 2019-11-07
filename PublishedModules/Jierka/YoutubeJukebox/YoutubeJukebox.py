@@ -9,7 +9,7 @@ import youtube_dl
 
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
-from core.util.Decorators import Decorators
+from core.util.Decorators import Decorators, IntentHandler
 
 
 class YoutubeJukebox(Module):
@@ -38,7 +38,7 @@ class YoutubeJukebox(Module):
 		return clearInput
 
 
-	@Decorators.Intent('SearchMusic')
+	@IntentHandler('SearchMusic')
 	@Decorators.anyExcept(exceptions=RequestException, text='noServer', printStack=True)
 	@Decorators.online
 	def searchMusicIntent(self, session: DialogSession, **_kwargs):
