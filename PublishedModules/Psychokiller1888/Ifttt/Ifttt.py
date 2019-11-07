@@ -27,9 +27,7 @@ class Ifttt(Module):
 	}
 
 	def __init__(self):
-		self._SUPPORTED_INTENTS	= []
-
-		super().__init__(self._SUPPORTED_INTENTS, authOnlyIntents=self.DATABASE)
+		super().__init__(authOnlyIntents=self.DATABASE)
 
 
 	# noinspection SqlResolve

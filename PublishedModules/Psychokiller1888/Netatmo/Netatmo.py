@@ -15,9 +15,7 @@ class Netatmo(Module):
 	"""
 
 	def __init__(self):
-		self._SUPPORTED_INTENTS	= list()
-
-		super().__init__(self._SUPPORTED_INTENTS)
+		super().__init__()
 
 		self._netatmoAuth 	= None
 		self._weatherData 	= None

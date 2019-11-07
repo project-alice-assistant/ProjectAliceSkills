@@ -1,8 +1,8 @@
 import math
 
-from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
+from core.util.Decorators import IntentWrapper
 
 
 class Calculator(Module):
@@ -11,14 +11,7 @@ class Calculator(Module):
 	Description: Do some calculation with alice
 	"""
 
-	_INTENT_MATHS = Intent('Maths')
-
-
 	def __init__(self):
-		self._INTENTS = [
-			(self._INTENT_MATHS, self.mathIntent)
-		]
-
 		self._lastNumber = 0
 		self._mathOperations = {
 			'+': lambda x,y: x+y,
@@ -31,9 +24,10 @@ class Calculator(Module):
 			'cosine': lambda x,_: math.cos(x),
 			'tangent': lambda x,_: math.tan(x)
 		}
-		super().__init__(self._INTENTS)
+		super().__init__()
 
 
+	@IntentWrapper('Maths')
 	def mathIntent(self, session: DialogSession, **_kwargs):
 		mathOperation = self._mathOperations.get(session.slotValue('Function'))
 		left = float(session.slotValue('Left') or self._lastNumber)

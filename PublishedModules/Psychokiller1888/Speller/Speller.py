@@ -25,8 +25,7 @@ class Speller(Module):
 		super().__init__(self._SUPPORTED_INTENTS)
 
 
-	def spellIntent(self, session: DialogSession, **kwargs):
-		sessionId = session.sessionId
+	def spellIntent(self, session: DialogSession, **_kwargs):
 		word = session.slotValue('RandomWord') or 'unknownword'
 
 		if word == 'unknownword':
@@ -37,7 +36,7 @@ class Speller(Module):
 				currentDialogState='answerWord'
 			)
 			return
-		
+
 		string = '<break time="160ms"/>'.join(list(word))
 
-		self.endDialog(sessionId=session.sessionId, text=self.randomTalk( text='isSpelled', replace=[word, string]))
+		self.endDialog(sessionId=session.sessionId, text=self.randomTalk(text='isSpelled', replace=[word, string]))
