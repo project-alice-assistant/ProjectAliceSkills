@@ -26,7 +26,9 @@ class Wikipedia(Module):
 		self.continueDialog(
 			sessionId=session.sessionId,
 			text=self.randomTalk(text=question, replace=[search]),
-			intentFilter=[self._INTENT_USER_ANSWER, self._INTENT_SPELL_WORD],
+			intentFilter=[
+				Intent('SpellWord', isProtected=True),
+				Intent('UserRandomAnswer', isProtected=True)],
 			currentDialogState='whatToSearch'
 		)
 

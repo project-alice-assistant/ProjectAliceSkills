@@ -1,6 +1,7 @@
 import requests
 from requests.exceptions import RequestException
 
+from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
 from core.util.Decorators import Decorators, IntentHandler
@@ -32,7 +33,7 @@ class FreeCurrencyConverterDotCom(Module):
 		if not fromCurrency:
 			self.continueDialog(
 				sessionId=session.sessionId,
-				intentFilter=[self._INTENT_ANSWER_CURRENCY],
+				intentFilter=[Intent('AnswerCurrency', isProtected=True)],
 				text=self.TalkManager.randomTalk(module=self.name, talk='fromWhatCurrency'),
 				customData={
 					'module'    : self.name,

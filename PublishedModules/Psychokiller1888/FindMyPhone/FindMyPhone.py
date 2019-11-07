@@ -1,3 +1,4 @@
+from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
 from core.util.Decorators import Decorators, IntentHandler
@@ -26,7 +27,7 @@ class FindMyPhone(Module):
 			self.continueDialog(
 				sessionId=sessionId,
 				text=self.randomTalk('whosPhone'),
-				intentFilter=[self._INTENT_ANSWER_NAME],
+				intentFilter=[Intent('AnswerName', isProtected=True)],
 				currentDialogState='phoneOwner'
 			)
 			return

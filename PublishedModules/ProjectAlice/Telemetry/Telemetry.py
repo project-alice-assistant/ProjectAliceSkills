@@ -1,3 +1,4 @@
+from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
 from core.util.model.TelemetryType import TelemetryType
@@ -38,7 +39,7 @@ class Telemetry(Module):
 			self.continueDialog(
 				sessionId=session.sessionId,
 				text=self.randomTalk('noType'),
-				intentFilter=[self._INTENT_ANSWER_TELEMETRY_TYPE],
+				intentFilter=[Intent('AnswerTelemetryType')],
 				slot='TelemetryType'
 			)
 

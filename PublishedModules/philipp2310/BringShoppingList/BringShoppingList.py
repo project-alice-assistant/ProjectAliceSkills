@@ -2,6 +2,7 @@ from typing import Tuple
 
 from BringApi.BringApi import BringApi
 
+from core.base.model.Intent import Intent
 from core.ProjectAliceExceptions import ModuleStartingFailed
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
@@ -121,7 +122,9 @@ class BringShoppingList(Module):
 			self.continueDialog(
 				sessionId=session.sessionId,
 				text=self.randomTalk(f'{answer}_what'),
-				intentFilter=[self._INTENT_ANSWER_SHOP, self._INTENT_SPELL_WORD],
+				intentFilter=[
+					Intent('SpellWord', isProtected=True),
+					Intent('whatItem_bringshop', isProtected=True)],
 				currentDialogState=str(intent))
 		return items
 
@@ -132,7 +135,7 @@ class BringShoppingList(Module):
 		self.continueDialog(
 			sessionId=session.sessionId,
 			text=self.randomTalk('chk_del_all'),
-			intentFilter=[self._INTENT_CONF_DEL],
+			intentFilter=[Intent('AnswerYesOrNo', isProtected=True)],
 			currentDialogState='confDelList')
 
 

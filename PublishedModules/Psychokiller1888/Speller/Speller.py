@@ -1,3 +1,4 @@
+from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
 from core.util.Decorators import IntentHandler
@@ -18,7 +19,7 @@ class Speller(Module):
 			self.continueDialog(
 				sessionId=session.sessionId,
 				text=self.randomTalk('notUnderstood'),
-				intentFilter=[self._INTENT_ANSWER_WORD],
+				intentFilter=[Intent('UserRandomAnswer', isProtected=True)],
 				currentDialogState='answerWord'
 			)
 			return
