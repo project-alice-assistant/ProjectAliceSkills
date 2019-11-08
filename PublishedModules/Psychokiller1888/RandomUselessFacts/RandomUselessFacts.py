@@ -4,7 +4,7 @@ import requests
 from requests.exceptions import RequestException
 
 from core.base.model.Module import Module
-from core.util.Decorators import Decorators, IntentWrapper
+from core.util.Decorators import Decorators, IntentHandler
 from core.dialog.model.DialogSession import DialogSession
 
 
@@ -14,7 +14,7 @@ class RandomUselessFacts(Module):
 	Description: Gets you the daily random useless fact or a random one
 	"""
 
-	@IntentWrapper('GetUselessFact')
+	@IntentHandler('GetUselessFact')
 	@Decorators.anyExcept(exceptions=(RequestException, KeyError), text='error', printStack=True)
 	@Decorators.online
 	def uselessFactIntent(self, session: DialogSession, **_kwargs):

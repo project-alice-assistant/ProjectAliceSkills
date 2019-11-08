@@ -3,7 +3,7 @@ import RPi.GPIO as GPIO
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
-from core.util.Decorators import IntentWrapper
+from core.util.Decorators import IntentHandler
 
 
 class LocalButtonPress(Module):
@@ -23,13 +23,13 @@ class LocalButtonPress(Module):
 		GPIO.output(self._gpioPin, GPIO.LOW)
 
 
-	@IntentWrapper('DoButtonOn')
+	@IntentHandler('DoButtonOn')
 	def buttonOnIntent(self, session: DialogSession, **_kwargs):
 		GPIO.output(self._gpioPin, GPIO.HIGH)
 		self.endDialog(session.sessionId, self.TalkManager.randomTalk('DoButtonOn'))
 
 
-	@IntentWrapper('DoButtonOff')
+	@IntentHandler('DoButtonOff')
 	def buttonOffIntent(self, session: DialogSession, **_kwargs):
 		GPIO.output(self._gpioPin, GPIO.LOW)
 		self.endDialog(session.sessionId, self.TalkManager.randomTalk('DoButtonOff'))

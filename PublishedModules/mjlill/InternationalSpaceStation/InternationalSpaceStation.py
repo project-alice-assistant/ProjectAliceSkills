@@ -3,7 +3,7 @@ from requests.exceptions import RequestException
 
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
-from core.util.Decorators import Decorators, IntentWrapper
+from core.util.Decorators import Decorators, IntentHandler
 
 
 class InternationalSpaceStation(Module):
@@ -19,7 +19,7 @@ class InternationalSpaceStation(Module):
 		return response.json()
 
 
-	@IntentWrapper('IssPosition')
+	@IntentHandler('IssPosition')
 	@Decorators.anyExcept(exceptions=(RequestException, KeyError), text='noServer', printStack=True)
 	@Decorators.online
 	def getIssPosition(self, session: DialogSession, **_kwargs):
@@ -61,7 +61,7 @@ class InternationalSpaceStation(Module):
 		self.endDialog(sessionId=session.sessionId, text=answer)
 
 
-	@IntentWrapper('Astronauts')
+	@IntentHandler('Astronauts')
 	@Decorators.anyExcept(exceptions=(RequestException, KeyError), text='noServer', printStack=True)
 	@Decorators.online
 	def getAstronauts(self, session: DialogSession, **_kwargs):

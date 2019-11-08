@@ -1,6 +1,6 @@
 {
 	"name": "RockPaperScissors",
-	"version": "0.0.15",
+	"version": "0.0.16",
 	"author": "maxbachmann",
 	"maintainers": ["Jierka", "Psycho"],
 	"desc": "Play rock paper scissors",
