@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
-cd ~/ProjectAlice/modules/Customisation || exit
+cd "/home/$(logname)/ProjectAlice/modules/Customisation" || exit
 
 if [[ ! -f "Customisation.py" ]]; then
-  mv Customisation.py.dist Customisation.py
+  sudo -u "$(logname)" bash <<EOF
+    mv Customisation.py.dist Customisation.py
+EOF
 fi
