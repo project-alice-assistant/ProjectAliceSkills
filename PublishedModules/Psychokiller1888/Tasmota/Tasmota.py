@@ -1,6 +1,5 @@
 import re
 
-from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.device.model.TasmotaConfigs import TasmotaConfigs
 from core.dialog.model.DialogSession import DialogSession
@@ -57,14 +56,14 @@ class Tasmota(Module):
 			if 'feedback' in payload:
 				if payload['deviceType'] == 'switch':
 					if payload['feedback'] > 0:
-						self.ModuleManager.broadcast('onButtonPressed', args=[siteId])
+						self.ModuleManager.moduleBroadcast('onButtonPressed', args=[siteId])
 					else:
-						self.ModuleManager.broadcast('onButtonReleased', args=[siteId])
+						self.ModuleManager.moduleBroadcast('onButtonReleased', args=[siteId])
 				elif payload['deviceType'] == 'pir':
 					if payload['feedback'] > 0:
-						self.ModuleManager.broadcast('onMotionDetected', args=[siteId])
+						self.ModuleManager.moduleBroadcast('onMotionDetected', args=[siteId])
 					else:
-						self.ModuleManager.broadcast('onMotionStopped', args=[siteId])
+						self.ModuleManager.moduleBroadcast('onMotionStopped', args=[siteId])
 
 		return True
 

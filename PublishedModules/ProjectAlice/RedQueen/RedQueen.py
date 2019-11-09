@@ -191,14 +191,14 @@ class RedQueen(Module):
 
 
 	def morningIntent(self, session: DialogSession, **_kwargs):
-		self.ModuleManager.broadcast('onWakeup')
+		self.ModuleManager.moduleBroadcast('onWakeup')
 		time.sleep(0.5)
 		self.endDialog(sessionId=session.sessionId, text=self.randomTalk('goodMorning'), siteId=session.siteId)
 
 
 	def nightIntent(self, session: DialogSession, **_kwargs):
 		self.endDialog(sessionId=session.sessionId, text=self.randomTalk('goodNight'), siteId=session.siteId)
-		self.ModuleManager.broadcast('onSleep')
+		self.ModuleManager.moduleBroadcast('onSleep')
 
 
 	def userStateIntent(self, session: DialogSession, **_kwargs):
@@ -212,7 +212,7 @@ class RedQueen(Module):
 			pass
 		else:
 			try:
-				self.ModuleManager.broadcast(slots['State'][0].value['value'])
+				self.ModuleManager.moduleBroadcast(slots['State'][0].value['value'])
 			except:
 				self.logWarning(f"Unsupported user state \"{slots['State'][0].value['value']}\"")
 
