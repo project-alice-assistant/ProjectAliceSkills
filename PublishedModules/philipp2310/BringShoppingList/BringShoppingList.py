@@ -70,7 +70,7 @@ class BringShoppingList(Module):
 	def bring(self):
 		if not self._bring:
 			if not self._uuid or not self._uuidlist:
-				self._uuid, self._uuidlist = BringApi.login(self.getConfig("bringEmail"), self.getConfig("bringPassword"))
+				self._uuid, self._uuidlist = BringApi.login(self.getConfig('bringEmail'), self.getConfig('bringPassword'))
 				self.updateConfig('uuid', self._uuid)
 				self.updateConfig('listUuid', self._uuidlist)
 
