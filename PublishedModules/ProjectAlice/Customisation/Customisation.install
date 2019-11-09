@@ -1,6 +1,6 @@
 {
 	"name": "Customisation",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"author": "ProjectAlice",
 	"maintainers": [
 		"Psycho",
@@ -11,6 +11,7 @@
 	"aliceMinVersion": "1.0.0-a3",
 	"systemRequirements": [],
 	"pipRequirements": [],
+	"script": "postInstall.sh",
 	"conditions": {
 		"lang": [
 			"en",

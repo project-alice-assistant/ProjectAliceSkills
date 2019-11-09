@@ -16,7 +16,7 @@ wget http://modules.projectalice.ch/Customisation \
 ### Description
 Customisation is the official customisation module. Use it to customize your experience
 
-- Version: 1.0.4
+- Version: 1.0.5
 - Author: ProjectAlice
 - Maintainers:
   - Psycho
