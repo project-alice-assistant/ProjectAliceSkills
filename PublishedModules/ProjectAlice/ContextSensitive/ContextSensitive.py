@@ -1,6 +1,5 @@
-import json
-from typing import Dict, Deque
 from collections import deque
+from typing import Deque, Dict
 
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
@@ -19,7 +18,7 @@ class ContextSensitive(Module):
 
 	@IntentHandler('DeleteThis', isProtected=True)
 	def deleteThisIntent(self, session: DialogSession, **_kwargs):
-		modules = self.ModuleManager.getModules()
+		modules = self.ModuleManager.activeModules()
 		for module in modules.values():
 			try:
 				if module['instance'].onContextSensitiveDelete(session.sessionId):
@@ -31,7 +30,7 @@ class ContextSensitive(Module):
 
 	@IntentHandler('EditThis', isProtected=True)
 	def editThisIntent(self, session: DialogSession, **_kwargs):
-		modules = self.ModuleManager.getModules()
+		modules = self.ModuleManager.activeModules()
 		for module in modules.values():
 			try:
 				if module['instance'].onContextSensitiveEdit(session.sessionId):
