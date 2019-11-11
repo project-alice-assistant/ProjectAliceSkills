@@ -18,8 +18,7 @@ class ContextSensitive(Module):
 
 	@IntentHandler('DeleteThis', isProtected=True)
 	def deleteThisIntent(self, session: DialogSession, **_kwargs):
-		modules = self.ModuleManager.activeModules()
-		for module in modules.values():
+		for module in self.ModuleManager.activeModules.values():
 			try:
 				if module['instance'].onContextSensitiveDelete(session.sessionId):
 					self.endSession(sessionId=session.sessionId)
@@ -30,8 +29,7 @@ class ContextSensitive(Module):
 
 	@IntentHandler('EditThis', isProtected=True)
 	def editThisIntent(self, session: DialogSession, **_kwargs):
-		modules = self.ModuleManager.activeModules()
-		for module in modules.values():
+		for module in self.ModuleManager.activeModules.values():
 			try:
 				if module['instance'].onContextSensitiveEdit(session.sessionId):
 					self.endSession(sessionId=session.sessionId)
