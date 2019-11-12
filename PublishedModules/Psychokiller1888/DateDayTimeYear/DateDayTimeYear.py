@@ -47,7 +47,7 @@ class DateDayTimeYear(Module):
 				answer = f'{hours}'
 
 		elif self.LanguageManager.activeLanguage == 'fr':
-			if minutes < 45:
+			if minutes < 30:
 				if hours == 12:
 					hours = 'midi'
 				elif hours == 0:
@@ -61,24 +61,27 @@ class DateDayTimeYear(Module):
 					hours += 1
 
 			if minutes > 0:
-				if 10 <= minutes < 15 or 15 < minutes < 30 or 30 < minutes < 45:
-					answer = f'{hours} {"" if isinstance(hours, str) else "heures"} {minutes}'
-				elif minutes == 15:
-					answer = f'{hours} et quart'
+				if minutes == 15:
+					answer = f'{hours} {"heures" if isinstance(hours, int) else ""} et quart'
 				elif minutes == 30:
 					if isinstance(hours, int) and hours >= 13:
-						answer = f'{hours} trente'
+						answer = f'{hours % 12} {minutes}'
+					elif isinstance(hours, str):
+						answer = f'{hours} {minutes}'
 					else:
-						answer = f'{hours} et demi'
+						answer = f'{hours} heures et demie'
 				elif minutes == 45:
 					if isinstance(hours, int) and hours >= 13:
-						answer = f'{hours % 12} moins quart'
+						answer = f'{hours % 12} heures moins quart'
 					else:
 						answer = f'{hours} moins quart'
+				elif minutes > 30:
+					answer = f'{hours} {"heures" if isinstance(hours, int) else ""} moins {60 - minutes}'
 				else:
-					answer = f'{hours} moins {minutes}'
+					answer = f'{hours} {"heures" if isinstance(hours, int) else ""} {minutes}'
 			else:
-				answer = f'{hours}'
+				answer = f'{hours} {"heures" if isinstance(hours, int) else ""}'
+
 
 		elif self.LanguageManager.activeLanguage == 'de':
 			if minutes == 30:
@@ -95,16 +98,16 @@ class DateDayTimeYear(Module):
 					hours = 'Mitternacht'
 
 			if minutes > 0:
-				if 10 <= minutes < 15 or 15 < minutes < 30 or 30 < minutes < 45:
-					answer = f'{minutes} nach {hours}'
-				elif minutes == 15:
-					answer = f'viertel ab {hours}'
+				if minutes == 15:
+					answer = f'viertel nach {hours}'
 				elif minutes == 30:
 					answer = f'halb {hours}'
 				elif minutes == 45:
 					answer = f'viertel vor {hours}'
+				elif minutes > 45:
+					answer = f'{60 - minutes} vor {hours}'
 				else:
-					answer = f'{minutes} vor {hours}'
+					answer = f'{minutes} nach {hours}'
 			else:
 				answer = f'{hours}'
 		else:
