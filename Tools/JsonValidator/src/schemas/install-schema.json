@@ -22,7 +22,7 @@
 			"examples": [
 				"AliceCore"
 			],
-			"pattern": "^[a-zA-Z ]+$"
+			"pattern": "^[a-zA-Z0-9]+$"
 		},
 		"version": {
 			"$id": "#/properties/version",
