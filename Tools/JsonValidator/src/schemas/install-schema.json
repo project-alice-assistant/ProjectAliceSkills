@@ -1,5 +1,9 @@
 {
+	"definitions": {},
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "https://raw.githubusercontent.com/project-alice-powered-by-snips/ProjectAliceModules/master/Tools/JsonValidator/src/schemas/install-schema.json",
 	"type": "object",
+	"title": "Module install file schema",
 	"required": [
 		"name",
 		"version",
@@ -7,56 +11,217 @@
 		"maintainers",
 		"desc",
 		"aliceMinVersion",
-		"systemRequirements",
-		"pipRequirements",
 		"conditions"
 	],
 	"properties": {
 		"name": {
-			"type": "string"
+			"$id": "#/properties/name",
+			"type": "string",
+			"title": "Name of the module",
+			"default": "",
+			"examples": [
+				"AliceCore"
+			],
+			"pattern": "^[a-zA-Z ]+$"
 		},
 		"version": {
-			"type": "number"
+			"$id": "#/properties/version",
+			"type": "string",
+			"title": "Version of the module",
+			"default": "",
+			"examples": [
+				"1.0.9"
+			],
+			"pattern": "^[0-9]+.[0-9]+.[0-9]+$"
 		},
 		"author": {
-			"type": "string"
+			"$id": "#/properties/author",
+			"type": "string",
+			"title": "Github username",
+			"default": "",
+			"examples": [
+				"ProjectAlice"
+			],
+			"pattern": "^[a-zA-Z0-9 ]+$"
 		},
 		"maintainers": {
+			"$id": "#/properties/maintainers",
 			"type": "array",
+			"title": "A place for maintainers to credit themselves",
 			"items": {
-				"type": "string"
+				"$id": "#/properties/maintainers/items",
+				"type": "string",
+				"title": "Github username",
+				"default": "",
+				"examples": [
+					"maxbachmann",
+					"Psychokiller1888"
+				],
+				"pattern": "^[a-zA-Z0-9 ]+$"
 			}
 		},
 		"desc": {
-			"type": "string"
+			"$id": "#/properties/desc",
+			"type": "string",
+			"title": "Description of the module",
+			"default": "",
+			"examples": [
+				"This module is one of the standard modules and does support core functions such as adding users"
+			],
+			"pattern": "^[a-zA-Z0-9 ]+$"
 		},
 		"aliceMinVersion": {
-			"type": [
-				"number"
-			]
+			"$id": "#/properties/aliceMinVersion",
+			"type": "string",
+			"title": "The minimum Alice version required for this module version to install",
+			"default": "",
+			"examples": [
+				"1.0.0-a3"
+			],
+			"pattern": "^[0-9]+.[0-9]+.[0-9]+(-((a)+|(b)+|(rc)+)[0-9]+)?$"
 		},
 		"systemRequirements": {
+			"$id": "#/properties/systemRequirements",
 			"type": "array",
+			"title": "Add any requirements that need to be install through apt-get",
 			"items": {
-				"type": "string"
+				"$id": "#/properties/systemRequirements/items",
+				"type": "string",
+				"title": "apt-get package",
+				"default": "",
+				"examples": [
+					"pyaudio"
+				],
+				"pattern": "^(.*)$"
 			}
 		},
+		"script": {
+			"$id": "#/properties/script",
+			"type": "string",
+			"title": "A script to be run after the module installation",
+			"default": "",
+			"examples": [
+				"postinstall.sh",
+				"checkDependancies.sh"
+			],
+			"pattern": "^[a-z-A-Z0-9]+.sh$"
+		},
 		"pipRequirements": {
+			"$id": "#/properties/pipRequirements",
 			"type": "array",
+			"title": "Add any requirements that need to be installed through PIP",
 			"items": {
-				"type": "string"
+				"$id": "#/properties/pipRequirements/items",
+				"type": "string",
+				"title": "PIP packages, supporting versioning",
+				"default": "",
+				"examples": [
+					"BringApi>=0.0.3"
+				],
+				"pattern": "^(.*)$"
 			}
 		},
 		"conditions": {
+			"$id": "#/properties/conditions",
 			"type": "object",
+			"title": "Conditions for the module to start",
+			"required": [
+				"lang"
+			],
 			"properties": {
 				"lang": {
+					"$id": "#/properties/conditions/properties/lang",
 					"type": "array",
+					"title": "List of supported languages for this module",
 					"items": {
+						"$id": "#/properties/conditions/properties/lang/items",
 						"type": "string",
-						"minLength": 2,
-						"maxLength": 2,
-						"pattern": "^[a-z]+$"
+						"title": "Language code",
+						"default": "",
+						"examples": [
+							"en",
+							"de"
+						],
+						"pattern": "^(en)|(de)|(fr)$"
+					}
+				},
+				"module": {
+					"$id": "#/properties/conditions/properties/module",
+					"type": "array",
+					"title": "List of required modules to start this one",
+					"items": {
+						"$id": "#/properties/conditions/properties/modules/items",
+						"type": "object",
+						"title": "Required module definition",
+						"properties": {
+							"name": {
+								"$id": "#/properties/conditions/properties/modules/items/name",
+								"type": "string",
+								"title": "Name of the module",
+								"default": "",
+								"examples": [
+									"PhilipsHue",
+									"Bring"
+								],
+								"pattern": "^[A-Z][a-zA-Z0-9]+$"
+							},
+							"url": {
+								"$id": "#/properties/conditions/properties/modules/items/url",
+								"type": "string",
+								"title": "Url to download the module",
+								"default": "",
+								"examples": [
+									"http://modules.projectalice.ch/PhilipsHue"
+								],
+								"pattern": "^(http(s)?:/{2})[a-zA-Z0-9.-_]+$"
+							}
+						},
+						"required": [
+							"name",
+							"url"
+						]
+					}
+				},
+				"online": {
+					"$id": "#/properties/conditions/properties/online",
+					"type": "boolean",
+					"title": "If this module needs Alice to be able to access internet",
+					"default": true
+				},
+				"asrArbitraryCapture": {
+					"$id": "#/properties/conditions/properties/asrArbitraryCapture",
+					"type": "boolean",
+					"title": "If this module requires an ASR that is able to capture arbitrary text, like Google ASR, unlike Snips ASR",
+					"default": true
+				},
+				"activeManager": {
+					"$id": "#/properties/conditions/properties/activeManager",
+					"type": "array",
+					"title": "List of managers that need to be active for this module to run",
+					"items": {
+						"$id": "#/properties/conditions/properties/activeManager/items",
+						"type": "string",
+						"title": "Manager name",
+						"default": "",
+						"examples": [
+							"TelemetryManager"
+						],
+						"pattern": "^[A-Z][a-zA-Z]+$"
+					}
+				},
+				"notModule": {
+					"$id": "#/properties/conditions/properties/notModule",
+					"type": "array",
+					"title": "List of modules that are incompatible with this one",
+					"items": {
+						"$id": "#/properties/conditions/properties/notModule/items",
+						"type": "string",
+						"title": "Module name",
+						"default": "",
+						"examples": [
+							"Netatmo"
+						],
+						"pattern": "^[A-Z][a-zA-Z]+$"
 					}
 				}
 			}
