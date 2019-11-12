@@ -16,7 +16,7 @@ wget http://bit.ly/DateDayTimeYear \
 ### Description
 Ask for the time, date, day and year
 
-- Version: 1.0.12
+- Version: 1.0.13
 - Author: Psycho
 - Maintainers:
   - maxbachmann

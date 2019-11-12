@@ -11,8 +11,8 @@ class DateDayTimeYear(Module):
 
 	@IntentHandler('GetTime')
 	def timeIntent(self, session: DialogSession, **_kwargs):
-		minutes = int(datetime.now().strftime('%M').lstrip('0'))
-		hours = int(datetime.now().hour)
+		minutes = datetime.now().minute
+		hours = datetime.now().hour
 
 		# english has a 12 hour clock
 		if self.LanguageManager.activeLanguage == 'en':
@@ -33,7 +33,6 @@ class DateDayTimeYear(Module):
 					hours = (hours % 12) + 1
 
 			if minutes > 0:
-				minutes = int(minutes)
 				if 0 <= minutes < 15 or 15 < minutes < 30 or 30 < minutes < 45:
 					answer = f'{minutes} past {hours}'
 				elif minutes == 15:
@@ -62,7 +61,6 @@ class DateDayTimeYear(Module):
 					hours += 1
 
 			if minutes > 0:
-				minutes = int(minutes)
 				if 10 <= minutes < 15 or 15 < minutes < 30 or 30 < minutes < 45:
 					answer = f'{hours} {"" if isinstance(hours, str) else "heures"} {minutes}'
 				elif minutes == 15:
@@ -97,7 +95,6 @@ class DateDayTimeYear(Module):
 					hours = 'Mitternacht'
 
 			if minutes > 0:
-				minutes = int(minutes)
 				if 10 <= minutes < 15 or 15 < minutes < 30 or 30 < minutes < 45:
 					answer = f'{minutes} nach {hours}'
 				elif minutes == 15:

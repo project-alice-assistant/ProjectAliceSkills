@@ -43,7 +43,7 @@ class AliceSatellite(Module):
 	def onFullMinute(self):
 		self.getSensorReadings()
 
-	
+
 	def feedbackSensorIntent(self, session: DialogSession, **_kwargs):
 		payload = session.payload
 		if 'data' in payload:
