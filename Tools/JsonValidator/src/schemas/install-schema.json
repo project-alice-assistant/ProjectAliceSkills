@@ -125,9 +125,6 @@
 			"$id": "#/properties/conditions",
 			"type": "object",
 			"title": "Conditions for the module to start",
-			"required": [
-				"lang"
-			],
 			"properties": {
 				"lang": {
 					"$id": "#/properties/conditions/properties/lang",
