@@ -68,7 +68,7 @@
 			"examples": [
 				"This module is one of the standard modules and does support core functions such as adding users"
 			],
-			"pattern": "^[a-zA-Z0-9 ]+$"
+			"pattern": "^[a-zA-Z0-9 ,.-?!_@#%&/()=]+$"
 		},
 		"aliceMinVersion": {
 			"$id": "#/properties/aliceMinVersion",
