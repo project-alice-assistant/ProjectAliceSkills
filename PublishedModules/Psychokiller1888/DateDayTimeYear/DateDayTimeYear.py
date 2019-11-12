@@ -107,12 +107,12 @@ class DateDayTimeYear(Module):
 					answer = f'halb {hours}'
 				elif minutes == 45:
 					answer = f'viertel vor {hours}'
-				elif minutes > 45:
+				elif minutes > 30:
 					answer = f'{60 - minutes} vor {hours}'
 				else:
 					answer = f'{minutes} nach {hours}'
 			else:
-				answer = f'{hours}'
+				answer = f'{hours} Uhr'
 		else:
 			answer = f'{hours} {minutes}'
 
