@@ -1,4 +1,5 @@
 from datetime import datetime
+
 from babel.dates import format_date
 
 from core.base.model.Module import Module
@@ -10,18 +11,109 @@ class DateDayTimeYear(Module):
 
 	@IntentHandler('GetTime')
 	def timeIntent(self, session: DialogSession, **_kwargs):
-		minutes = datetime.now().strftime('%M').lstrip('0')
-		part = datetime.now().strftime('%p')
+		minutes = int(datetime.now().strftime('%M').lstrip('0'))
+		hours = int(datetime.now().hour)
 
-		# english has a 12 hour clock and adds oh below 10 min
+		# english has a 12 hour clock
 		if self.LanguageManager.activeLanguage == 'en':
-			hours = f'{datetime.now().hour%12}'
-			if minutes != '' and int(minutes) < 10:
-				minutes = f'oh {minutes}'
-		else:
-			hours = f'{datetime.now().hour}'
 
-		self.endDialog(session.sessionId, self.TalkManager.randomTalk('time').format(hours, minutes, part))
+			if minutes < 45:
+				if hours == 12:
+					hours = 'midday'
+				elif hours == 0:
+					hours = 'midnight'
+				else:
+					hours = hours % 12
+			else:
+				if hours + 1 == 12:
+					hours = 'midday'
+				elif hours + 1 == 24:
+					hours = 'midnight'
+				else:
+					hours = (hours % 12) + 1
+
+			if minutes > 0:
+				minutes = int(minutes)
+				if 0 <= minutes < 15 or 15 < minutes < 30 or 30 < minutes < 45:
+					answer = f'{minutes} past {hours}'
+				elif minutes == 15:
+					answer = f'quarter past {hours}'
+				elif minutes == 30:
+					answer = f'half past {hours}'
+				elif minutes == 45:
+					answer = f'quarter to {hours}'
+				else:
+					answer = f'{minutes} to {hours}'
+			else:
+				answer = f'{hours}'
+
+		elif self.LanguageManager.activeLanguage == 'fr':
+			if minutes < 45:
+				if hours == 12:
+					hours = 'midi'
+				elif hours == 0:
+					hours = 'minuit'
+			else:
+				if hours + 1 == 12:
+					hours = 'midi'
+				elif hours + 1 == 24:
+					hours = 'minuit'
+				else:
+					hours += 1
+
+			if minutes > 0:
+				minutes = int(minutes)
+				if 10 <= minutes < 15 or 15 < minutes < 30 or 30 < minutes < 45:
+					answer = f'{hours} {"" if isinstance(hours, str) else "heures"} {minutes}'
+				elif minutes == 15:
+					answer = f'{hours} et quart'
+				elif minutes == 30:
+					if isinstance(hours, int) and hours >= 13:
+						answer = f'{hours} trente'
+					else:
+						answer = f'{hours} et demi'
+				elif minutes == 45:
+					if isinstance(hours, int) and hours >= 13:
+						answer = f'{hours % 12} moins quart'
+					else:
+						answer = f'{hours} moins quart'
+				else:
+					answer = f'{hours} moins {minutes}'
+			else:
+				answer = f'{hours}'
+
+		elif self.LanguageManager.activeLanguage == 'de':
+			if minutes == 30:
+				hours = (hours % 12) + 1
+			elif minutes < 45:
+				if hours == 12:
+					hours = 'Mittag'
+				elif hours == 0:
+					hours = 'Mitternacht'
+			else:
+				if hours + 1 == 12:
+					hours = 'Mittag'
+				elif hours + 1 == 24:
+					hours = 'Mitternacht'
+
+			if minutes > 0:
+				minutes = int(minutes)
+				if 10 <= minutes < 15 or 15 < minutes < 30 or 30 < minutes < 45:
+					answer = f'{minutes} nach {hours}'
+				elif minutes == 15:
+					answer = f'viertel ab {hours}'
+				elif minutes == 30:
+					answer = f'halb {hours}'
+				elif minutes == 45:
+					answer = f'viertel vor {hours}'
+				else:
+					answer = f'{minutes} vor {hours}'
+			else:
+				answer = f'{hours}'
+		else:
+			answer = f'{hours} {minutes}'
+
+		self.endDialog(session.sessionId, self.TalkManager.randomTalk('time').format(answer))
 
 
 	@IntentHandler('GetDate')

@@ -1,10 +1,10 @@
 {
 	"time": {
 		"default": [
-			"It is <say-as interpret-as=\"time\" format=\"hms12\">{} {} {}</say-as>"
+			"It is {}"
 		],
 		"short": [
-			"<say-as interpret-as=\"time\" format=\"hms12\">{} {} {}</say-as>"
+			"{}"
 		]
 	},
 	"date": {
@@ -17,7 +17,7 @@
 	},
 	"day": {
 		"default": [
-			"{}"
+			"Today is {}"
 		]
 	},
 	"year": {
