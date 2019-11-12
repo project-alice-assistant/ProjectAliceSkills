@@ -92,11 +92,17 @@ class DateDayTimeYear(Module):
 					hours = 'Mittag'
 				elif hours == 0:
 					hours = 'Mitternacht'
+				elif hours == 1:
+					hours = 'eins'
 			else:
 				if hours + 1 == 12:
-					hours = 'Mittag'
+					if minutes != 30:
+						hours = 'Mittag'
 				elif hours + 1 == 24:
-					hours = 'Mitternacht'
+					if minutes != 30:
+						hours = 'Mitternacht'
+				elif hours + 1 == 1:
+					hours = 'eins'
 				else:
 					hours = (hours % 12) + 1
 
