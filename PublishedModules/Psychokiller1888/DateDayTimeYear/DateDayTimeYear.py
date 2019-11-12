@@ -14,10 +14,8 @@ class DateDayTimeYear(Module):
 		minutes = datetime.now().minute
 		hours = datetime.now().hour
 
-		# english has a 12 hour clock
 		if self.LanguageManager.activeLanguage == 'en':
-
-			if minutes < 45:
+			if minutes <= 30:
 				if hours == 12:
 					hours = 'midday'
 				elif hours == 0:
@@ -33,21 +31,26 @@ class DateDayTimeYear(Module):
 					hours = (hours % 12) + 1
 
 			if minutes > 0:
-				if 0 <= minutes < 15 or 15 < minutes < 30 or 30 < minutes < 45:
-					answer = f'{minutes} past {hours}'
-				elif minutes == 15:
+				if minutes == 15:
 					answer = f'quarter past {hours}'
 				elif minutes == 30:
 					answer = f'half past {hours}'
 				elif minutes == 45:
 					answer = f'quarter to {hours}'
+				elif minutes > 30:
+					answer = f'{60 - minutes} to {hours}'
+				elif 0 < minutes < 10:
+					if isinstance(hours, int):
+						answer = f'{hours} of {minutes}'
+					else:
+						answer = f'{minutes} past {hours}'
 				else:
-					answer = f'{minutes} to {hours}'
+					answer = f'{minutes} past {hours}'
 			else:
-				answer = f'{hours}'
+				answer = f"{hours} o'clock"
 
 		elif self.LanguageManager.activeLanguage == 'fr':
-			if minutes < 30:
+			if minutes <= 30:
 				if hours == 12:
 					hours = 'midi'
 				elif hours == 0:
@@ -84,9 +87,7 @@ class DateDayTimeYear(Module):
 
 
 		elif self.LanguageManager.activeLanguage == 'de':
-			if minutes == 30:
-				hours = (hours % 12) + 1
-			elif minutes < 45:
+			if minutes < 30:
 				if hours == 12:
 					hours = 'Mittag'
 				elif hours == 0:
@@ -96,6 +97,8 @@ class DateDayTimeYear(Module):
 					hours = 'Mittag'
 				elif hours + 1 == 24:
 					hours = 'Mitternacht'
+				else:
+					hours = (hours % 12) + 1
 
 			if minutes > 0:
 				if minutes == 15:
