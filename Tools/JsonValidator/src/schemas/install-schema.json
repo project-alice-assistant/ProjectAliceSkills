@@ -219,9 +219,9 @@
 						"title": "Module name",
 						"default": "",
 						"examples": [
-							"Netatmo"
+							"Psychokiller1888/Netatmo"
 						],
-						"pattern": "^[A-Z][a-zA-Z]+$"
+						"pattern": "^[a-zA-Z0-9]+/[A-Z][a-zA-Z0-9]+$"
 					}
 				}
 			}
