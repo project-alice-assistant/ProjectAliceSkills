@@ -16,11 +16,11 @@ wget http://modules.projectalice.ch/Tasmota \
 ### Description
 This module allows you to not only connect tasmota esp devices, but listen to them
 
-- Version: 1.34
+- Version: 1.0.34
 - Author: Psychokiller1888
 - Maintainers:
   - maxbachmann
-- Alice minimum version: 0.12
+- Alice minimum Version: 1.0.0-a3
 - Conditions:
   - en
   - fr

@@ -1,29 +1,17 @@
 import requests
+from requests.exceptions import RequestException
 
-from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
-from core.commons.commons import online
+from core.util.Decorators import Decorators, IntentHandler
 
 
 class IcanhazdadjokeDotCom(Module):
-	_INTENT_TELL_A_JOKE = Intent('TellAJoke')
 
-	def __init__(self):
-		self._INTENTS = {
-			self._INTENT_TELL_A_JOKE: self.jokeIntent
-		}
-
-		super().__init__(self._INTENTS)
-
-
-	def offlineHandler(self, session: DialogSession, **kwargs) -> bool:
-		self.endDialog(session.sessionId, text=self.TalkManager.randomTalk('offline', module='system'))
-		return True
-
-
-	@online(offlineHandler=offlineHandler)
-	def jokeIntent(self, intent: str, session: DialogSession) -> bool:
+	@IntentHandler('TellAJoke')
+	@Decorators.anyExcept(exceptions=RequestException, text='noJoke', printStack=True)
+	@Decorators.online
+	def jokeIntent(self, session: DialogSession, **_kwargs):
 		url = 'https://icanhazdadjoke.com/'
 
 		headers = {
@@ -33,8 +21,5 @@ class IcanhazdadjokeDotCom(Module):
 		}
 
 		response = requests.get(url, headers=headers)
-		if response is not None:
-			self.endDialog(session.sessionId, text=response.text)
-		else:
-			self.endDialog(session.sessionId, self.TalkManager.getrandomTalk('noJoke'))
-		return True
+		response.raise_for_status()
+		self.endDialog(session.sessionId, text=response.text)

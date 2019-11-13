@@ -256,6 +256,9 @@
 			"I'm sorry, but for that I need the Tasmota module to be enabled"
 		]
 	},
+	"requireZigbeeModule": [
+		"I'm sorry, but for that I need the ZigBee module to be enabled"
+	],
 	"whatHardware": {
 		"default": [
 			"What kind of device do you want to add?",
@@ -304,7 +307,7 @@
 	},
 	"espFlashingDone": {
 		"default": [
-			"Ok, I have flashed your esp device with Tasmota, you can now unplug it and power it"
+			"Ok, I have flashed your esp device with Tasmota, you can now unplug it and power it."
 		]
 	},
 	"whatConfig": {
@@ -315,7 +318,7 @@
 	},
 	"noStartWithoutAdmin": {
 		"default": [
-			"Ok, canceling but without user I cannot start, going down"
+			"Ok, canceling but without user I cannot start, going down."
 		]
 	},
 	"addAdminUser": {
@@ -323,6 +326,24 @@
 			"Welcome to Project Alice! There seems to be no user defined yet, let's do this! Please, tell me your name."
 		]
 	},
+	"addAdminPin": [
+		"<s>We need some layer of security since you are the administrator!</s><s>For that you need to define a pin code that has 4 digits.</s><s>Make sure to remember it though, you will need it to use my interface, adding new users or accessing priviledged functions.</s><s>Please tell me your four digits pin.</s>"
+	],
+	"addUserPin": [
+		"<s>Let's set a pin code to protect your account.</s><s>Please give me a 4 digits code.</s><s>Make sure to remember it, it will allow you to access priviledged functions!</s>"
+	],
+	"addPinInvalid": [
+		"I need four digits, your pin code is not valid. Please, give me another pin code.",
+		"Four digits please, your pin code is not ok. Please, give me another pin code."
+	],
+	"addPinConfirm" : [
+		"{} {} {} {}? Is that correct?",
+		"{} {} {} {}? Did I understand correctly?"
+	],
+	"addWrongPin": [
+		"Ok, my mistake, sorry, what's it then?",
+		"I'm sorry, tell me you pin again."
+	],
 	"confirmUsername": {
 		"default": [
 			"Did I understand correctly? Your name is {}?",
@@ -391,9 +412,9 @@
 		"Ok, let's forget about it for now. You can retry when the environment is calmer. For now you can call me by saying <break time=\"100ms\"/> \"Hey Snips\", but I won't be able to recognize you though."
 	],
 	"addUserWhatsTheName": [
-		"I can do that! Tell me his name please!",
-		"Sure, just tell me his name",
-		"No problemo, I need you to give me his name though"
+		"I can do that! So, miss or mister new user, what's your name?",
+		"Sure thing! Ok, unknown person, tell me your name!",
+		"No problemo, gladly! What's you name miss or mister new user?"
 	],
 	"addUserWhatAccessLevel": [
 		"What access level do you want to grant? There's admin, default, kid, worker and guest",
@@ -413,5 +434,39 @@
 	],
 	"addUserAddWakewordDenied": [
 		"Ok, I understand, keep in mind I won't be able to define if {} is home, sleeping, playing games or remember stuff about {}."
+	],
+	"explainInterfaceAuth": {
+		"default": [
+			"If you want to access this part, I need to authenticate you. Call me by my name please!",
+			"To access this part of the interface I need to authenticate you. Please call me by my name"
+		],
+		"short": [
+			"Call me by my name please"
+		]
+	},
+	"greetAndNeedPinCode": {
+		"default": [
+			"Hey {}! I need your pin code now, you can either speak it now or enter it on your interface!",
+			"Hi {}. To continue I need your personal pin code. You can tell it to me now or enter it on the interface."
+		],
+		"short": [
+			"Say or enter pin code on the interface"
+		]
+	},
+	"userAuthUnknown": [
+		"I'm sorry but I did not recognize you",
+		"Sorry, but I don't know who you are"
+	],
+	"userAuthAccessLevelTooLow": [
+		"Sorry {} but your access level is too low",
+		"Unfortunately {}, your access level is too low"
+	],
+	"authFailed": [
+		"Sorry, this is not correct, I can't let you go further",
+		"Nope, incorrect, try again"
+	],
+	"authOk": [
+		"Ok, you are verified, you have now access",
+		"Cool, it's correct, you have now access"
 	]
 }

@@ -118,7 +118,9 @@
 				"how is the {air quality:=>TelemetryType} in the {kitchenb:=>Room}",
 				"{how warm:=>TelemetryType} is it in the {kitchen:=>Room}",
 				"{how cold:=>TelemetryType} {outside:=>Room} please",
-				"please tell me how {humid:=>TelemetryType} it is in the {bathroom:=>Room}"
+				"please tell me how {humid:=>TelemetryType} it is in the {bathroom:=>Room}",
+				"what's the {temperature:=>TelemetryType} in the {living room:=>Room}",
+				"give me the {humidity:=>TelemetryType} in the {office:=>Room} please"
 			],
 			"slots": [
 				{

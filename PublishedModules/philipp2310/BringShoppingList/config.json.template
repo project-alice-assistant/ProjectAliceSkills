@@ -1,0 +1,24 @@
+{
+	"bringEmail": {
+		"defaultValue": "",
+		"dataType": "email",
+		"description": "Bring email"
+	},
+	"bringPassword": {
+		"defaultValue": "",
+		"dataType": "password",
+		"description": "Bring password"
+	},
+	"uuid": {
+		"defaultValue": "",
+		"dataType": "string",
+		"description": "Bring user uuid",
+		"display": "hidden"
+	},
+	"listUuid": {
+		"defaultValue": "",
+		"dataType": "string",
+		"description": "Bring list uuid",
+		"display": "hidden"
+	}
+}

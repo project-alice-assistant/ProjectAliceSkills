@@ -1,168 +1,217 @@
 {
 	"gen_list": {
-		"default": ["{} und {}",
+		"default": [
+			"{} und {}",
 			"{} sowie {}"
 		],
-		"short": ["{} und {}"]
+		"short": [
+			"{} und {}"
+		]
 	},
-
-	"state_con": {
-		"default": ["{} , aber {}"],
-		"short": ["{}, aber {}"]
-	},
+	"state_con": [
+		"{} , aber {}"
+	],
 	"read_one": {
-		"default": ["Auf deiner Einkaufsliste steht {}",
+		"default": [
+			"Auf deiner Einkaufsliste steht {}",
 			"Du hast nur {} auf deiner Einkaufsliste stehen",
 			"Ausser {} steht nichts auf dem Einkaufszettel"
 		],
-		"short": ["{}"]
+		"short": [
+			"{}"
+		]
 	},
-
 	"read_multi": {
-		"default": ["Du hast {} auf deiner Einkaufsliste stehen",
+		"default": [
+			"Du hast {} auf deiner Einkaufsliste stehen",
 			"{} stehen auf deiner Einkaufsliste"
 		],
-		"short": ["{}"]
+		"short": [
+			"{}"
+		]
 	},
-
 	"read_none": {
-		"default": ["Du hast nichts auf deiner Einkaufsliste",
+		"default": [
+			"Du hast nichts auf deiner Einkaufsliste",
 			"Deine Einkaufsliste ist leer",
 			"Es steht nichts auf der Einkaufsliste",
 			"Du hast noch nichts auf deiner Einkaufsliste"
 		],
-		"short": ["Die Liste ist leer"]
+		"short": [
+			"Die Liste ist leer"
+		]
 	},
 	"add_one": {
-		"default": ["Ok, ich schreibe {} auf den Einkaufszettel",
+		"default": [
+			"Ok, ich schreibe {} auf den Einkaufszettel",
 			"Ich habe {} auf den Einkaufszettel geschrieben",
 			"{} wurde auf die Einkaufsliste geschrieben",
 			"{} wurde hinzugefügt"
 		],
-		"short": ["{} hinzugefügt"]
+		"short": [
+			"{} hinzugefügt"
+		]
 	},
-
 	"add_multi": {
-		"default": ["Ok, ich schreibe {} auf den Einkaufszettel",
+		"default": [
+			"Ok, ich schreibe {} auf den Einkaufszettel",
 			"Ich habe {} auf den Einkaufszettel geschrieb",
 			"{} wurden auf die Einkaufsliste geschrieben",
 			"Ich schreibe folgendes auf die Einkaufsliste: {}"
 		],
-		"short": ["{} hinzugefügt"]
+		"short": [
+			"{} hinzugefügt"
+		]
 	},
-
 	"add_f_one": {
-		"default": ["{} ist bereits vorhanden",
+		"default": [
+			"{} ist bereits vorhanden",
 			"{} steht schon auf der Liste"
 		],
-		"short": ["{} ist bereits vorhanden"]
+		"short": [
+			"{} ist bereits vorhanden"
+		]
 	},
-
 	"add_f_multi": {
-		"default": ["{} sind bereits vorhanden",
+		"default": [
+			"{} sind bereits vorhanden",
 			"{} standen schon auf der Liste",
 			"{} stehen schon auf deiner Einkaufsliste"
 		],
-		"short": ["{} sind bereits vorhanden"]
+		"short": [
+			"{} sind bereits vorhanden"
+		]
 	},
-
 	"add_what": {
-		"default": ["Was fehlt noch auf dem Einkaufszettel?",
+		"default": [
+			"Was fehlt noch auf dem Einkaufszettel?",
 			"Was soll ich auf den Einkaufszettel schreiben?"
 		],
-		"short": ["Was soll ich hinzufügen?"]
+		"short": [
+			"Was soll ich hinzufügen?"
+		]
 	},
-
 	"rem_one": {
-		"default": ["Ich habe {} von der Einkaufsliste gestrichen",
+		"default": [
+			"Ich habe {} von der Einkaufsliste gestrichen",
 			"Ok, {} wurde von der Liste gestrichen",
 			"{} wurde von der Einkaufsliste gestrichen"
 		],
-		"short": ["{} gestrichen"]
+		"short": [
+			"{} gestrichen"
+		]
 	},
-
 	"rem_multi": {
-		"default": ["Ok, {} sind von der Liste gestrichen worden",
+		"default": [
+			"Ok, {} sind von der Liste gestrichen worden",
 			"{} wurden von der Einkaufsliste gestrichen"
 		],
-		"short": ["{} gestrichen"]
+		"short": [
+			"{} gestrichen"
+		]
 	},
-
 	"rem_f_one": {
-		"default": ["ich konnte {} nicht finden.",
+		"default": [
+			"ich konnte {} nicht finden.",
 			"{} stand nicht auf der Liste."
 		],
-		"short": ["{} nicht gefunden"]
+		"short": [
+			"{} nicht gefunden"
+		]
 	},
-
 	"rem_f_multi": {
-		"default": ["{} standen nicht auf der Einkaufsliste."],
-		"short": ["{} nicht gefunden"]
+		"default": [
+			"{} standen nicht auf der Einkaufsliste."
+		],
+		"short": [
+			"{} nicht gefunden"
+		]
 	},
-
 	"rem_what": {
-		"default": ["Was soll ich von der Einkaufsliste nehmen?",
+		"default": [
+			"Was soll ich von der Einkaufsliste nehmen?",
 			"Was soll ich vom Einkaufszettel streichen?"
 		],
-		"short": ["Was soll ich löschen?"]
+		"short": [
+			"Was soll ich löschen?"
+		]
 	},
-
-	"check_one": {
-		"default": ["Ich habe {} auf der Einkaufsliste gefunden",
+	"chk_one": {
+		"default": [
+			"Ich habe {} auf der Einkaufsliste gefunden",
 			"{} steht auf der Einkaufsliste",
 			"{} befindet sich auf dem Einkaufszettel"
 		],
-		"short": ["{} ist vorhanden"]
+		"short": [
+			"{} ist vorhanden"
+		]
 	},
-
 	"chk_multi": {
-		"default": ["{} stehen auf der Einkaufsliste",
+		"default": [
+			"{} stehen auf der Einkaufsliste",
 			"{} stehen auf deinem Einkaufszettel"
 		],
-		"short": ["{} sind vorhanden"]
+		"short": [
+			"{} sind vorhanden"
+		]
 	},
-
 	"chk_f_one": {
-		"default": ["ich konnte {} nicht finden.",
+		"default": [
+			"ich konnte {} nicht finden.",
 			"{} steht nicht auf der Liste."
 		],
-		"short": ["ich habe {} nicht gefunden"]
+		"short": [
+			"ich habe {} nicht gefunden"
+		]
 	},
-
 	"chk_f_multi": {
-		"default": ["{} stehen nicht auf der Einkaufsliste.",
+		"default": [
+			"{} stehen nicht auf der Einkaufsliste.",
 			"{} stehen nicht auf deinem Einkaufszettel"
 		],
-		"short": ["{} sind nicht auf der Liste"]
+		"short": [
+			"{} sind nicht auf der Liste"
+		]
 	},
-
 	"chk_what": {
-		"default": ["Ich habe nicht verstanden was ich auf der Einkaufsliste suchen soll.",
+		"default": [
+			"Ich habe nicht verstanden was ich auf der Einkaufsliste suchen soll.",
 			"Was soll ich auf dem Zettel suchen?"
 		],
-		"short": ["Was soll ich suchen?"]
+		"short": [
+			"Was soll ich suchen?"
+		]
 	},
-
 	"del_all": {
-		"default": ["Ich habe die komplette Einkaufsliste gelöscht.",
+		"default": [
+			"Ich habe die komplette Einkaufsliste gelöscht.",
 			"Deine Einkaufsliste wurde geleert."
 		],
-		"short": ["Einkaufsliste gelöscht"]
+		"short": [
+			"Einkaufsliste gelöscht"
+		]
 	},
-
 	"nodel_all": {
-		"default": ["Das war knapp! Fast hätte ich die Liste gelöscht",
+		"default": [
+			"Das war knapp! Fast hätte ich die Liste gelöscht",
 			"Ok, ich lösche nichts",
 			"Keine Sorge, ich merke mir alles was du einkaufen musst!"
 		],
-		"short": ["Ok, alles bleibt."]
+		"short": [
+			"Ok, alles bleibt."
+		]
 	},
-
 	"chk_del_all": {
-		"default": ["Bist du dir sicher, dass ich die komplette Einkaufsliste löschen soll?",
+		"default": [
+			"Bist du dir sicher, dass ich die komplette Einkaufsliste löschen soll?",
 			"Soll ich wirklich die ganze Liste löschen?",
 			"Bitte bestätige: komplette Liste löschen?"
 		],
-		"short": ["Einkaufsliste wirklich löschen?"]
-	}
+		"short": [
+			"Einkaufsliste wirklich löschen?"
+		]
+	},
+	"authFailed": [
+		"Authentifizierung fehlgeschlagen. Bitte prüfe deine Login Daten in den Einstellungen"
+	]
 }

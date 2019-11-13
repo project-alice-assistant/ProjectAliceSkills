@@ -1,169 +1,217 @@
 {
 	"gen_list": {
-		"default": ["{} and {}",
-			"{} as well as {]"
+		"default": [
+			"{} and {}",
+			"{} as well as {}"
 		],
-		"short": ["{} and {}"]
+		"short": [
+			"{} and {}"
+		]
 	},
-
-	"state_con": {
-		"default": ["{} , but {}"],
-		"short": ["{}, but {}"]
-	},
-
+	"state_con": [
+		"{}, but {}"
+	],
 	"read_one": {
-		"default": ["You got {} on your shopping list",
+		"default": [
+			"You got {} on your shopping list",
 			"There is only {} on your shopping list",
 			"Nothing but {} is on the shopping list"
 		],
-		"short": ["{}"]
+		"short": [
+			"{}"
+		]
 	},
-
 	"read_multi": {
-		"default": ["There is {} and {} on your shopping list",
+		"default": [
+			"There is {} and {} on your shopping list",
 			"{} and {} are on your shopping list"
 		],
-		"short": ["{} and {}"]
+		"short": [
+			"{} and {}"
+		]
 	},
-
 	"read_none": {
-		"default": ["Your shopping list is empty",
+		"default": [
+			"Your shopping list is empty",
 			"There is nothing on your shopping list",
 			"Nothing is written on your shopping list",
 			"Your shopping list is still empty"
 		],
-		"short": ["The list is empty"]
+		"short": [
+			"The list is empty"
+		]
 	},
 	"add_one": {
-		"default": ["Ok, I wrote {} onto your shopping list",
+		"default": [
+			"Ok, I wrote {} onto your shopping list",
 			"I added {} to the shopping list",
 			"{} was added to your shopping list",
 			"{} was added"
 		],
-		"short": ["added {}"]
+		"short": [
+			"added {}"
+		]
 	},
-
 	"add_multi": {
-		"default": ["Ok, I'll write {} and {} to the shopping list",
+		"default": [
+			"Ok, I'll write {} and {} to the shopping list",
 			"I added {} and {} to your shopping list",
 			"{} and {} were added to your shopping list",
 			"I'll add the following to your shopping list: {} and {}"
 		],
-		"short": ["Added {} and {}"]
+		"short": [
+			"Added {} and {}"
+		]
 	},
-
 	"add_f_one": {
-		"default": ["{} is already on your shopping list",
+		"default": [
+			"{} is already on your shopping list",
 			"{} was on the list"
 		],
-		"short": ["{} is on the list"]
+		"short": [
+			"{} is on the list"
+		]
 	},
-
 	"add_f_multi": {
-		"default": ["{} and {} are already on the list",
+		"default": [
+			"{} and {} are already on the list",
 			"{} and {} were already on the shopping list",
 			"{} and {} have been on your shopping list"
 		],
-		"short": ["{} and {} are already there"]
+		"short": [
+			"{} and {} are already there"
+		]
 	},
-
 	"add_what": {
-		"default": ["Sorry, I could not understand what I should add to your shopping list",
+		"default": [
+			"Sorry, I could not understand what I should add to your shopping list",
 			"What should I add to the shopping list?"
 		],
-		"short": ["What should I add?"]
+		"short": [
+			"What should I add?"
+		]
 	},
-
 	"rem_one": {
-		"default": ["I removed {} from the shopping list",
+		"default": [
+			"I removed {} from the shopping list",
 			"Ok, {} was cleared from your shopping list",
 			"{} got deleted from the shopping list"
 		],
-		"short": ["deleted {}"]
+		"short": [
+			"deleted {}"
+		]
 	},
-
 	"rem_multi": {
-		"default": ["Ok, {} and {} have been removed from your shopping list",
+		"default": [
+			"Ok, {} and {} have been removed from your shopping list",
 			"{} as well as {} are deleted from the shopping list"
 		],
-		"short": ["deleted {} and {}"]
+		"short": [
+			"deleted {} and {}"
+		]
 	},
-
 	"rem_f_one": {
-		"default": ["I couldn't find {}.",
+		"default": [
+			"I couldn't find {}.",
 			"{} were not on the list."
 		],
-		"short": ["{} is not on the list"]
+		"short": [
+			"{} is not on the list"
+		]
 	},
-
 	"rem_f_multi": {
-		"default": ["{} and {} were not on your shopping list."],
-		"short": ["{} and {} were not on the list"]
+		"default": [
+			"{} and {} were not on your shopping list."
+		],
+		"short": [
+			"{} and {} were not on the list"
+		]
 	},
-
 	"rem_what": {
-		"default": ["I did not understand what I should remove from the shopping list.",
+		"default": [
+			"I did not understand what I should remove from the shopping list.",
 			"What should I delete from the shopping list."
 		],
-		"short": ["What should I delete?"]
+		"short": [
+			"What should I delete?"
+		]
 	},
-
-	"check_one": {
-		"default": ["{} is on your shopping list",
+	"chk_one": {
+		"default": [
+			"{} is on your shopping list",
 			"I found {} on your shopping list",
 			"{} is on the list"
 		],
-		"short": ["{} was found"]
+		"short": [
+			"{} was found"
+		]
 	},
-
 	"chk_multi": {
-		"default": ["{} and {} is on the shopping list",
+		"default": [
+			"{} and {} is on the shopping list",
 			"{} and {} are on your shopping list"
 		],
-		"short": ["found {} and {}"]
+		"short": [
+			"found {} and {}"
+		]
 	},
-
 	"chk_f_one": {
-		"default": ["I could not find {}.",
+		"default": [
+			"I could not find {}.",
 			"{} is not on your list."
 		],
-		"short": ["I didn't find {}"]
+		"short": [
+			"I didn't find {}"
+		]
 	},
-
 	"chk_f_multi": {
-		"default": ["{} and {} are not on your shopping list",
+		"default": [
+			"{} and {} are not on your shopping list",
 			"I could not find {} and {} on your shopping list"
 		],
-		"short": ["Couldn't find {} and {}"]
+		"short": [
+			"Couldn't find {} and {}"
+		]
 	},
-
 	"chk_what": {
-		"default": ["What should I look for on the shopping list?",
+		"default": [
+			"What should I look for on the shopping list?",
 			"What do you want me to search on your shopping list?"
 		],
-		"short": ["What should I look for?"]
+		"short": [
+			"What should I look for?"
+		]
 	},
-
 	"del_all": {
-		"default": ["I cleared your complete shopping list.",
+		"default": [
+			"I cleared your complete shopping list.",
 			"The complete shopping list was deleted."
 		],
-		"short": ["Shopping list deleted."]
+		"short": [
+			"Shopping list deleted."
+		]
 	},
-
 	"nodel_all": {
-		"default": ["Close call! I almost deleted your complete shopping list!",
+		"default": [
+			"Close call! I almost deleted your complete shopping list!",
 			"Ok, I won't delete anything.",
 			"No problem, I will remember everything you need to buy!"
 		],
-		"short": ["Ok, nothing removed."]
+		"short": [
+			"Ok, nothing removed."
+		]
 	},
-
 	"chk_del_all": {
-		"default": ["Are you sure I should delete the complete shopping list?",
+		"default": [
+			"Are you sure I should delete the complete shopping list?",
 			"Should I really delete the complete shopping list?",
 			"Please confirm the deletion of the shopping list?"
 		],
-		"short": ["Should I delete the shopping list?"]
-	}
+		"short": [
+			"Should I delete the shopping list?"
+		]
+	},
+	"authFailed": [
+		"Authentification failed, please check your account login and password in the settings"
+	]
 }

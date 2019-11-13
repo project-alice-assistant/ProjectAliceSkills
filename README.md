@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/project-alice-powered-by-snips/ProjectAliceModules.svg?branch=master)](https://travis-ci.org/project-alice-powered-by-snips/ProjectAliceModules) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/8c37d708cde34cb998b45ff5d6e92d43)](https://www.codacy.com/manual/ProjectAlice/ProjectAliceModules?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=project-alice-powered-by-snips/ProjectAliceModules&amp;utm_campaign=Badge_Grade) ![GitHub](https://img.shields.io/github/license/Psychokiller1888/ProjectAliceModules) [![Maintainability](https://api.codeclimate.com/v1/badges/1c61965accf480b5d5ef/maintainability)](https://codeclimate.com/github/project-alice-powered-by-snips/ProjectAliceModules/maintainability)
 
-# ProjectAliceModules
+# ProjectAliceModules (alpha3)
 
 This repository is home of all curated and approved modules for Project Alice.
 
@@ -15,6 +15,7 @@ Syntax of `dialogTemplate.json`, `talk.json` and `Module.install` files of all M
 
 ## Auto modules creation
 Downloading Tools/Moduler you can have a basic tool to create the basic needed files for a module to work. This saves you the hassle of creating the directory tree, the required files and so on. It also follows the strict conventions we made for modules and will avoid you trouble when submitting your module for review.
+
 
 ## Copyright
 Project Alice ships under GPLv3, it means you are free to use and redistribute our code but are not allowed to use any part of it under a closed license. Give the community back what you've been given!

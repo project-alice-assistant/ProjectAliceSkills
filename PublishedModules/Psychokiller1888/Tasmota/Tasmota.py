@@ -1,6 +1,5 @@
 import re
 
-from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.device.model.TasmotaConfigs import TasmotaConfigs
 from core.dialog.model.DialogSession import DialogSession
@@ -26,13 +25,8 @@ class Tasmota(Module):
 		self._feedbackRegex = re.compile(self._FEEDBACK.replace('+', '(.*)'))
 
 		self._initializingModule = False
-		self._confArray = list()
+		self._confArray = []
 		self._tasmotaConfigs = None
-
-		self._signals = {
-			'switch': ['onButtonPressed', 'onButtonReleased'],
-			'pir': ['onMotionDetected', 'onMotionStopped'],
-		}
 
 		super().__init__(self._SUPPORTED_INTENTS)
 
@@ -40,41 +34,40 @@ class Tasmota(Module):
 	def filterIntent(self, intent: str, session: DialogSession) -> bool:
 		if intent.startswith('projectalice/devices/tasmota/'):
 			return True
-		return False
+		return super().filterIntent(intent=intent, session=session)
+
+
+	def onMessage(self, intent: str, session: DialogSession) -> bool:
+		siteId = session.siteId
+		payload = session.payload
+
+		if self._connectingRegex.match(intent):
+			identifier = self._connectingRegex.match(intent).group(1)
+			if self.DeviceManager.getDeviceByUID(identifier):
+				# This device is known
+				self.logInfo(f'A device just connected in {siteId}')
+				self.DeviceManager.deviceConnecting(uid=identifier)
+			else:
+				# We did not ask Alice to add a new device
+				if not self.DeviceManager.broadcastFlag.isSet():
+					self.logWarning('A device is trying to connect to Alice but is unknown')
+
+		elif self._feedbackRegex.match(intent):
+			if 'feedback' in payload:
+				if payload['deviceType'] == 'switch':
+					if payload['feedback'] > 0:
+						self.ModuleManager.moduleBroadcast('onButtonPressed', args=[siteId])
+					else:
+						self.ModuleManager.moduleBroadcast('onButtonReleased', args=[siteId])
+				elif payload['deviceType'] == 'pir':
+					if payload['feedback'] > 0:
+						self.ModuleManager.moduleBroadcast('onMotionDetected', args=[siteId])
+					else:
+						self.ModuleManager.moduleBroadcast('onMotionStopped', args=[siteId])
+
+		return True
 
 
 	def _initConf(self, identifier: str, deviceBrand: str, deviceType: str):
 		self._tasmotaConfigs = TasmotaConfigs(deviceType, identifier)
 		self._confArray = self._tasmotaConfigs.getConfigs(deviceBrand, self.DeviceManager.broadcastRoom)
-
-
-	def onMessage(self, intent: str, session: DialogSession) -> bool:
-		if self._connectingRegex.match(intent):
-			self.connectingIntent(intent, session)
-		elif self._feedbackRegex.match(intent):
-			self.feebackIntent(intent, session)
-
-		return True
-
-
-	def connectingIntent(self, intent: str, session: DialogSession):
-		identifier = self._connectingRegex.match(intent).group(1)
-		if self.DeviceManager.getDeviceByUID(identifier):
-			# This device is known
-			self._logger.info(f'[{self.name}] A device just connected in {siteId}')
-			self.DeviceManager.deviceConnecting(uid=identifier)
-		# We did not ask Alice to add a new device
-		elif not self.DeviceManager.broadcastFlag.isSet():
-			self._logger.warning(f'[{self.name}] A device is trying to connect to Alice but is unknown')
-
-
-	def feebackIntent(self, intent: str, session: DialogSession):
-		siteId = session.siteId
-		payload = session.payload
-
-		if not 'feedback' in payload:
-			return
-
-		if payload['deviceType'] in {'switch', 'pir'}:
-			signal = self._signals[payload['deviceType']] [bool(payload['feedback'])]
-			self.ModuleManager.broadcast(signal, args=[siteId])

@@ -16,12 +16,12 @@ wget modules.projectalice.ch/Calculator \
 ### Description
 Do some calculation with alice
 
-- Version: 1.13
+- Version: 1.0.19
 - Author: Psychokiller1888
 - Maintainers:
   - Jierka
   - maxbachmann
-- Alice minimum version: 0.12
+- Alice minimum Version: 1.0.0-a3
 - Conditions:
   - en
   - de

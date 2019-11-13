@@ -1,10 +1,10 @@
-import json
-
 import requests
+from requests.exceptions import RequestException
 
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
+from core.util.Decorators import Decorators
 
 
 class FreeCurrencyConverterDotCom(Module):
@@ -19,63 +19,48 @@ class FreeCurrencyConverterDotCom(Module):
 
 	def __init__(self):
 		self._SUPPORTED_INTENTS = [
-			self._INTENT_ANSWER_CURRENCY,
-			self._INTENT_CONVERT_CURRENCY
+			(self._INTENT_ANSWER_CURRENCY, self.convertCurrencyIntent),
+			(self._INTENT_CONVERT_CURRENCY, self.convertCurrencyIntent),
 		]
 
+		self._apiKey = self.getConfig('apiKey')
 		super().__init__(self._SUPPORTED_INTENTS)
 
 
-	def onMessage(self, intent: str, session: DialogSession) -> bool:
-		siteId = session.siteId
-		slots = session.slots
-		slotsObject = session.slotsAsObjects
-		sessionId = session.sessionId
-		customData = session.customData
+	@Decorators.anyExcept(exceptions=(RequestException, KeyError), text='noServer', printStack=True)
+	@Decorators.online
+	def convertCurrencyIntent(self, session: DialogSession, **_kwargs):
+		amount = session.slots.get('Amount', session.customData.get('Amount', 1))
 
-		if intent == self._INTENT_CONVERT_CURRENCY or session.previousIntent == self._INTENT_CONVERT_CURRENCY:
-			amount = 1
-			if 'Amount' in slots:
-				amount = slotsObject['Amount'][0].value['value']
-			elif 'amount' in customData:
-				amount = customData['Amount']
+		toCurrency = session.slots.get('ToCurrency',
+			session.customData.get('toCurrency',
+			self.ConfigManager.getAliceConfigByName('baseCurrency', self.name)))
 
-			toCurrency = self.ConfigManager.getAliceConfigByName('baseCurrency', self.name)
-			if 'ToCurrency' in slotsObject:
-				toCurrency = slotsObject['ToCurrency'][0].value['value']
-			elif 'toCurrency' in customData:
-				toCurrency = customData['toCurrency']
+		fromCurrency = session.slots.get('FromCurrency', session.slots.get('Currency'))
+		if not fromCurrency:
+			self.continueDialog(
+				sessionId=session.sessionId,
+				intentFilter=[self._INTENT_ANSWER_CURRENCY],
+				text=self.TalkManager.randomTalk(module=self.name, talk='fromWhatCurrency'),
+				customData={
+					'module'    : self.name,
+					'amount'    : amount,
+					'toCurrency': toCurrency
+				}
+			)
+			return
 
-			if 'FromCurrency' not in slots:
-				if 'Currency' in slots:
-					fromCurrency = slotsObject['Currency'][0].value['value']
-				else:
-					self.continueDialog(
-						sessionId=sessionId,
-						intentFilter=[self._INTENT_ANSWER_CURRENCY],
-						text=self.TalkManager.randomTalk(module=self.name, talk='fromWhatCurrency'),
-						previousIntent=self._INTENT_CONVERT_CURRENCY,
-						customData={
-							'module'    : self.name,
-							'amount'    : amount,
-							'toCurrency': toCurrency
-						}
-					)
-					return True
-			else:
-				fromCurrency = slotsObject['FromCurrency'][0].value['value']
+		if not self._apiKey:
+			self.logWarning(msg="please create a api key at https://www.currencyconverterapi.com/ and add it to the module config")
+			self.endDialog(session.sessionId, text=self.randomTalk('noApiKey'))
+			return
 
-			try:
-				url = f"https://free.currconv.com/api/v7/convert?q={fromCurrency}_{toCurrency}&compact=ultra&apiKey={self.getConfig('apiKey')}"
-				req = requests.get(url=url)
-				data = json.loads(req.content.decode())
+		url = f'https://free.currconv.com/api/v7/convert?q={fromCurrency}_{toCurrency}&compact=ultra&apiKey={self._apiKey}'
+		response = requests.get(url=url)
+		response.raise_for_status()
+		data = response.json()
 
-				conversion = data[f'{fromCurrency}_{toCurrency}']
-				converted = round(float(amount) * float(conversion), 2)
+		conversion = data[f'{fromCurrency}_{toCurrency}']
+		converted = round(float(amount) * float(conversion), 2)
 
-				self.endDialog(sessionId, text=self.randomTalk('answer').format(amount, fromCurrency, converted, toCurrency), siteId=siteId)
-			except Exception as e:
-				self._logger.error(e)
-				self.endDialog(sessionId, text=self.randomTalk('noServer'), siteId=siteId)
-
-		return True
+		self.endDialog(session.sessionId, text=self.randomTalk('answer').format(amount, fromCurrency, converted, toCurrency))

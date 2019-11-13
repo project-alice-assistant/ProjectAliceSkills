@@ -1,0 +1,22 @@
+{
+	"randomSpeaking": {
+		"defaultValue": true,
+		"dataType": "boolean",
+		"description": "Allows Alice to randomly speak on herself"
+	},
+	"randomTalkMinDelay": {
+		"defaultValue": 900,
+		"dataType": "integer",
+		"description": "The minimum time between each random talk. This can be decreased by Alice's mood"
+	},
+	"randomTalkMaxDelay": {
+		"defaultValue": 1800,
+		"dataType": "integer",
+		"description": "The maximum time between each random talk. This can be increased by Alice's mood"
+	},
+	"disableMoodTraits": {
+		"defaultValue": false,
+		"dataType": "boolean",
+		"description": "By disabling Alice's mood traits she won't feel tired, angry, frustrated etc etc"
+	}
+}

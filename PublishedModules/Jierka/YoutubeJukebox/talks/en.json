@@ -1,15 +1,15 @@
 {
-	"whatToSearch": {
-		"default": [
-			"Sure! What do you want me to search?",
-			"Of course! What shall I search",
-			"I can, of course, what do you want me to look for?"
-		]
-	},
-	"noMatch": {
-		"default": [
-			"Sorry, I couldn't find anything about <say-as interpret-as=\"interjection\">{}</say-as>. Try another request please"
-		]
-	}
+	"whatToSearch": [
+		"Sure! What do you want me to search?",
+		"Of course! What shall I search",
+		"I can, of course, what do you want me to look for?"
+	],
+	"noMatch": [
+		"Sorry, I couldn't find anything about <say-as interpret-as=\"interjection\">{}</say-as>. Try another request please"
+	],
+	"noServer": [
+		"I can't reach the server, sorry",
+		"There seems to be a server problem"
+	]
 }
 

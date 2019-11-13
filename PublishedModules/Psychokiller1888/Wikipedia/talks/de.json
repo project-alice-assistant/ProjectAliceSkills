@@ -1,0 +1,13 @@
+{
+	"whatToSearch": [
+		"Sicher! Was soll ich suchen?",
+		"Natürlich! Was soll ich suchen",
+		"Ich kann natürlich, wonach soll ich suchen?"
+	],
+	"noMatch": [
+		"Sorry, ich konnte nichts über <say-as interpret-as=\"interjection\">{}</say-as> finden. Versuch bitte ein anderes Suchwort"
+	],
+	"ambiguous": [
+		"Ich habe viele Ergebnisse für diese Suche gefunden. Bitte sei genauer oder versuche den Suchbegriff zu buchstabieren."
+	]
+}

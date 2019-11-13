@@ -1,6 +1,6 @@
 {
 	"name": "Customisation",
-	"version": 1.03,
+	"version": "1.0.7",
 	"author": "ProjectAlice",
 	"maintainers": [
 		"Psycho",
@@ -8,9 +8,10 @@
 		"maxbachmann"
 	],
 	"desc": "A module for anyone to override Project Alice default behavior",
-	"aliceMinVersion": 0.12,
+	"aliceMinVersion": "1.0.0-a3",
 	"systemRequirements": [],
 	"pipRequirements": [],
+	"script": "postInstall.sh",
 	"conditions": {
 		"lang": [
 			"en",

@@ -1,6 +1,7 @@
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
+from core.util.model.TelemetryType import TelemetryType
 
 
 class Telemetry(Module):
@@ -13,10 +14,10 @@ class Telemetry(Module):
 	_INTENT_ANSWER_TELEMETRY_TYPE = Intent('AnswerTelemetryType')
 
 	def __init__(self):
-		self._INTENTS	= {
-			self._INTENT_GET_TELEMETRY_DATA: self.telemetryIntent,
-			self._INTENT_ANSWER_TELEMETRY_TYPE: self.telemetryIntent
-		}
+		self._INTENTS	= [
+			(self._INTENT_GET_TELEMETRY_DATA, self.telemetryIntent),
+			(self._INTENT_ANSWER_TELEMETRY_TYPE, self.telemetryIntent)
+		]
 
 		super().__init__(self._INTENTS)
 
@@ -36,14 +37,12 @@ class Telemetry(Module):
 		}
 
 
-	def telemetryIntent(self, intent: str, session: DialogSession) -> bool:
+	def telemetryIntent(self, session: DialogSession, **_kwargs):
 		slots = session.slots
-		siteId = session.siteId
+		siteId = session.slotValue('Room') or session.siteId
+		telemetryType = session.slotValue('TelemetryType')
 
-		if 'siteId' in slots:
-			siteId = session.slotValue('Room')
-
-		if 'TelemetryType' not in slots:
+		if not telemetryType:
 			self.continueDialog(
 				sessionId=session.sessionId,
 				text=self.randomTalk('noType'),
@@ -51,13 +50,10 @@ class Telemetry(Module):
 				slot='TelemetryType'
 			)
 
-		telemetryType = session.slotValue('TelemetryType')
+		data = self.TelemetryManager.getData(siteId=siteId, ttype=TelemetryType(telemetryType))
 
-		data = self.TelemetryManager.getData(siteId=siteId, ttype=telemetryType)
 		if data and 'value' in data:
-			answer = data['value'] + self._telemetryUnits.get(telemetryType, '')
+			answer = f"{data['value']} {self._telemetryUnits.get(telemetryType, '')}"
 			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('answerInstant').format(answer))
 		else:
 			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('noData'))
-		
-		return True

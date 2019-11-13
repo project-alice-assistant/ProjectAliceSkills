@@ -1,8 +1,9 @@
-from .libraries import mpdhelper
-
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
+from core.util.Decorators import IntentHandler
+
+from .libraries import mpdhelper
 
 #>>> mpd.status()
 #{'volume': '44', 'repeat': '0', 'random': '0', 'single': '0', 'consume': '0', 'playlist': '2', 'playlistlength': '13', 'mixrampdb': '0.000000', 'state': 'play', 'song': '3', 'songid': '4', 'time': '1:178', 'elapsed': '0.789', 'bitrate': '128', 'audio': '44100:24:2', 'nextsong': '4', 'nextsongid': '5'}
@@ -17,22 +18,11 @@ class MpdClient(Module):
 	Description: Control an MPD server
 	"""
 
-	_INTENT_PLAY = Intent('mpdPlay')
-	_INTENT_STOP = Intent('mpdStop')
-	_INTENT_NEXT = Intent('mpdNext')
-	_INTENT_PREV = Intent('mpdPrev')
-
 	def __init__(self):
-		self._INTENTS = {
-			self._INTENT_PLAY: self.playIntent,
-			self._INTENT_STOP: self.stopIntent,
-			self._INTENT_NEXT: self.nextIntent,
-			self._INTENT_PREV: self.prevIntent
-		}
 		#TODO volume, playlists, ...
 		#TODO pause music if alice starts a dialogue
 
-		super().__init__(self._INTENTS)
+		super().__init__()
 
 		self._host = self.getConfig('mpdHost')
 		self._port = self.getConfig('mpdPort')
@@ -44,7 +34,7 @@ class MpdClient(Module):
 		self._playbackStatus = None
 
 		if not self._host:
-			self._logger.warn(f'[{self.name}] MPD host not configured, not doing anything.')
+			self.logWarning('MPD host not configured, not doing anything.')
 			return
 
 		self.ThreadManager.doLater(interval=1, func=self._mpdPollStatus)
@@ -67,7 +57,7 @@ class MpdClient(Module):
 		self._mpdConnected = True
 		self._playbackStatus = (status['state'] == 'play')
 
-		#self._logger.info(f'[{self.name}] Music playing is now {self._playbackStatus}')
+		#self.logInfo(f'Music playing is now {self._playbackStatus}')
 
 
 	def _connect(self):
@@ -76,39 +66,45 @@ class MpdClient(Module):
 			self._mpd.password(self._password)
 
 
-	def onMessage(self, intent: str, session: DialogSession) -> bool:
+	@IntentHandler('mpdPlay')
+	def playIntent(self, session: DialogSession, **_kwargs):
 		if not self._mpdConnected:
 			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('notConnected'))
-			return True
-		super().onMessage(intent=intent, session=session)
-		return True
-
-
-	def playIntent(self, intent: str, session: DialogSession):
-		if self._playbackStatus:
+		elif self._playbackStatus:
 			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('alreadyPlaying'))
 		else:
 			self._mpd.play()
-			self.endDialog(sessionId=session.sessionId)
-	
+			self.endSession(sessionId=session.sessionId)
 
-	def stopIntent(self, intent: str, session: DialogSession):
+
+	@IntentHandler('mpdStop')
+	def stopIntent(self, session: DialogSession, **_kwargs):
 		# note that _playbackStatus can also be None when disconnected.
 		# while it shouldn't reach this line in that case, better to be on the safe side
-		if not self._playbackStatus:
+		if not self._mpdConnected:
+			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('notConnected'))
+		elif not self._playbackStatus:
 			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('alreadyStopped'))
 		else:
 			self._mpd.stop()
-			self.endDialog(sessionId=session.sessionId)
-	
+			self.endSession(sessionId=session.sessionId)
 
-	def nextIntent(self, intent: str, session: DialogSession):
-		# TODO maybe say the title here if not playing
-		self._mpd.next()
-		self.endDialog(sessionId=session.sessionId)
-	
 
-	def prevIntent(self, intent: str, session: DialogSession):
+	@IntentHandler('mpdNext')
+	def nextIntent(self, session: DialogSession, **_kwargs):
 		# TODO maybe say the title here if not playing
-		self._mpd.previous()
-		self.endDialog(sessionId=session.sessionId)
+		if not self._mpdConnected:
+			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('notConnected'))
+		else:
+			self._mpd.next()
+			self.endSession(sessionId=session.sessionId)
+
+
+	@IntentHandler('mpdPrev')
+	def prevIntent(self, session: DialogSession, **_kwargs):
+		# TODO maybe say the title here if not playing
+		if not self._mpdConnected:
+			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('notConnected'))
+		else:
+			self._mpd.previous()
+			self.endSession(sessionId=session.sessionId)

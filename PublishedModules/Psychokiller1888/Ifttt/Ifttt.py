@@ -27,9 +27,7 @@ class Ifttt(Module):
 	}
 
 	def __init__(self):
-		self._SUPPORTED_INTENTS	= []
-
-		super().__init__(self._SUPPORTED_INTENTS, authOnlyIntents=self.DATABASE)
+		super().__init__(authOnlyIntents=self.DATABASE)
 
 
 	# noinspection SqlResolve
@@ -46,5 +44,5 @@ class Ifttt(Module):
 
 			return IftttException.NO_USER
 		except Exception as e:
-			self._logger.error(f'[{self.name}] Error trying to request api: {e}')
+			self.logError(f'Error trying to request api: {e}')
 			return IftttException.ERROR

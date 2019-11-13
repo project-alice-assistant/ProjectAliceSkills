@@ -1,0 +1,57 @@
+{
+	"WindAlertFromKmh": {
+		"defaultValue": 5,
+		"dataType": "integer",
+		"description": "Minimum wind to trigger wind alert"
+	},
+	"TemperatureAlertHigh": {
+		"defaultValue": 35,
+		"dataType": "integer",
+		"description": "Temperature, in celsius, at which a high temperature alert is broadcasted"
+	},
+	"TemperatureAlertLow": {
+		"defaultValue": 5,
+		"dataType": "integer",
+		"description": "Temperature, in celsius, at which a low temperature alert is broadcasted"
+	},
+	"CO2AlertHigh": {
+		"defaultValue": 1000,
+		"dataType": "integer",
+		"description": "The concentration of CO2 at which a CO2 alertis broadcaster"
+	},
+	"HumidityAlertHigh": {
+		"defaultValue": 90,
+		"dataType": "integer",
+		"description": "Humidity, in percent, at which a high humidity alert is broadcasted"
+	},
+	"HumidityAlertLow": {
+		"defaultValue": 30,
+		"dataType": "integer",
+		"description": "Humidity, in percent, at which a low humidity alert is broadcasted"
+	},
+	"PressureAlertHigh": {
+		"defaultValue": 1100,
+		"dataType": "integer",
+		"description": "Pressure, in mbar, at which a high pressure alert is broadcasted"
+	},
+	"PressureAlertLow": {
+		"defaultValue": 700,
+		"dataType": "integer",
+		"description": "Pressure, in mbar, at which a low pressure alert is broadcasted"
+	},
+	"NoiseAlert": {
+		"defaultValue": 130,
+		"dataType": "integer",
+		"description": "Noise, in db, at which a high noice alert is broadcasted"
+	},
+	"TooMuchRainAlert": {
+		"defaultValue": 5,
+		"dataType": "integer",
+		"description": "Rain, in mm/minute, at which a heavy rain alert is broadcasted"
+	},
+	"UVIndexAlert": {
+		"defaultValue": 10,
+		"dataType": "integer",
+		"description": "UV index at which a high UV alert is broadcasted"
+	}
+}

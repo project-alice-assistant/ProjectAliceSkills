@@ -1,6 +1,8 @@
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
+from core.util.Decorators import Decorators
+from core.commons import constants
 
 try:
 	from modules.Ifttt.Ifttt import IftttException
@@ -17,38 +19,37 @@ class FindMyPhone(Module):
 	_INTENT_ANSWER_NAME = Intent('AnswerName', isProtected=True)
 
 	def __init__(self):
-		self._INTENTS = {
-			self._INTENT_FIND_PHONE: self.findPhoneIntent,
-			self._INTENT_ANSWER_NAME: self.answerNameIntent
+		self._INTENTS = [
+			(self._INTENT_FIND_PHONE, self.findPhoneIntent),
+			self._INTENT_ANSWER_NAME
+		]
+
+		self._INTENT_ANSWER_NAME.dialogMapping = {
+			'phoneOwner': self.findPhoneIntent
 		}
 
 		super().__init__(self._INTENTS)
 
 
-	def answerNameIntent(self, intent: str, session: DialogSession) -> bool:
-		if session.previousIntent == self._INTENT_FIND_PHONE:
-			return self.findPhoneIntent(intent=intent, session=session)
-		return False
-
-
-	def findPhoneIntent(self, intent: str, session: DialogSession) -> bool:
+	@Decorators.online
+	def findPhoneIntent(self, session: DialogSession, **_kwargs):
 		sessionId = session.sessionId
 		slots = session.slots
 
 		who = slots.get('Who', slots.get('Name', session.user))
-		if who == 'unknown':
+		if who == constants.UNKNOWN_USER:
 			self.continueDialog(
 				sessionId=sessionId,
 				text=self.randomTalk('whosPhone'),
 				intentFilter=[self._INTENT_ANSWER_NAME],
-				previousIntent=self._INTENT_FIND_PHONE
+				currentDialogState='phoneOwner'
 			)
-			return True
+			return
 
 		module = self.getModuleInstance('Ifttt')
 		if not module:
 			self.endDialog(sessionId=sessionId, text=self.randomTalk('error'))
-			return True
+			return
 
 		answer = module.sendRequest(endPoint='locatePhone', user=who)
 		if answer == IftttException.NOT_CONNECTED:
@@ -59,5 +60,3 @@ class FindMyPhone(Module):
 			self.endDialog(sessionId=sessionId, text=self.randomTalk('unknown', replace=[who]))
 		else:
 			self.endDialog(sessionId=sessionId, text=self.randomTalk('acknowledge'))
-
-		return True

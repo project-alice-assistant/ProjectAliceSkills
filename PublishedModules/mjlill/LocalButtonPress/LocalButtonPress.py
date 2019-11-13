@@ -3,6 +3,7 @@ import RPi.GPIO as GPIO
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
+from core.util.Decorators import IntentHandler
 
 
 class LocalButtonPress(Module):
@@ -11,17 +12,8 @@ class LocalButtonPress(Module):
 	Description: Press an imaginary button on or off
 	"""
 
-	_INTENT_BUTTON_ON = Intent('DoButtonOn')
-	_INTENT_BUTTON_OFF = Intent('DoButtonOff')
-
-
 	def __init__(self):
-		self._INTENTS = {
-			self._INTENT_BUTTON_ON: self.buttonOnIntent,
-			self._INTENT_BUTTON_OFF: self.buttonOffIntent
-		}
-
-		super().__init__(self._INTENTS)
+		super().__init__()
 
 		self._gpioPin = self.getConfig('gpioPin')
 
@@ -31,13 +23,13 @@ class LocalButtonPress(Module):
 		GPIO.output(self._gpioPin, GPIO.LOW)
 
 
-	def buttonOnIntent(self, intent: str, session: DialogSession) -> bool:
+	@IntentHandler('DoButtonOn')
+	def buttonOnIntent(self, session: DialogSession, **_kwargs):
 		GPIO.output(self._gpioPin, GPIO.HIGH)
 		self.endDialog(session.sessionId, self.TalkManager.randomTalk('DoButtonOn'))
-		return True
 
 
-	def buttonOffIntent(self, intent: str, session: DialogSession) -> bool:
+	@IntentHandler('DoButtonOff')
+	def buttonOffIntent(self, session: DialogSession, **_kwargs):
 		GPIO.output(self._gpioPin, GPIO.LOW)
 		self.endDialog(session.sessionId, self.TalkManager.randomTalk('DoButtonOff'))
-		return True

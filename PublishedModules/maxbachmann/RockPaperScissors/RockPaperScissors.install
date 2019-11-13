@@ -1,10 +1,10 @@
 {
 	"name": "RockPaperScissors",
-	"version": 0.12,
+	"version": "0.0.16",
 	"author": "maxbachmann",
 	"maintainers": ["Jierka", "Psycho"],
 	"desc": "Play rock paper scissors",
-	"aliceMinVersion": 0.12,
+	"aliceMinVersion": "1.0.0-a3",
 	"systemRequirements": [],
 	"pipRequirements": [],
 	"conditions": {
