@@ -41,7 +41,7 @@ class DateDayTimeYear(Module):
 					answer = f'{60 - minutes} to {hours}'
 				elif 0 < minutes < 10:
 					if isinstance(hours, int):
-						answer = f'{hours} of {minutes}'
+						answer = f'{hours} oh {minutes}'
 					else:
 						answer = f'{minutes} past {hours}'
 				else:
