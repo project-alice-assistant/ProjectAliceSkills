@@ -1,3 +1,7 @@
 {
-
+	"options_format": {
+		"en": "Date format",
+		"fr": "Format date",
+		"de": "Datumsformat"
+	}
 }

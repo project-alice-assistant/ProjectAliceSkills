@@ -1,10 +1,12 @@
 # Zigbee2Mqtt
 
+This module assumes you have already flashed your zigbee dongle. For more info on how to: https://www.zigbee2mqtt.io/getting_started/flashing_the_cc2531.html
+
 ### Download
 
 ##### > WGET method
 ```bash
-wget http://bit.ly/????????? -O ~/ProjectAlice/system/moduleInstallTickets/Zigbee2Mqtt.install
+wget http://modules.projectalice.ch/Zigbee2Mqtt -O ~/ProjectAlice/system/moduleInstallTickets/Zigbee2Mqtt.install
 ```
 
 ##### > Alice CLI method

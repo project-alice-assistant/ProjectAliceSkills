@@ -4,7 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget http://bit.ly/DateDayTimeYear \
+wget http://modules.projectalice.ch/DateDayTimeYear \
 -O ~/ProjectAlice/system/moduleInstallTickets/DateDayTimeYear.install
 ```
 
