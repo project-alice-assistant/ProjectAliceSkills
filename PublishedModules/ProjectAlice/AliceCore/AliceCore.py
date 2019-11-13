@@ -8,11 +8,11 @@ from core.ProjectAliceExceptions import ModuleStartDelayed
 from core.base.SuperManager import SuperManager
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
-from core.interface.views.AdminAuth import AdminAuth
-from core.util.Decorators import Decorators
 from core.commons import constants
 from core.dialog.model.DialogSession import DialogSession
+from core.interface.views.AdminAuth import AdminAuth
 from core.user.model.AccessLevels import AccessLevel
+from core.util.Decorators import Online
 from core.voice.WakewordManager import WakewordManagerState
 
 
@@ -704,7 +704,7 @@ class AliceCore(Module):
 			self.publish(topic='projectalice/devices/connectionRefused', payload={'siteId': siteId, 'uid': uid})
 
 
-	@Decorators.online(text='noAssistantUpdateOffline')
+	@Online(text='noAssistantUpdateOffline')
 	def aliceUpdateIntent(self, session: DialogSession, **_kwargs):
 		self.publish('hermes/leds/systemUpdate')
 		updateTypes = {

@@ -4,7 +4,7 @@ from requests.exceptions import RequestException
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
-from core.util.Decorators import Decorators
+from core.util.Decorators import AnyExcept, Online
 
 
 class FreeCurrencyConverterDotCom(Module):
@@ -27,8 +27,8 @@ class FreeCurrencyConverterDotCom(Module):
 		super().__init__(self._SUPPORTED_INTENTS)
 
 
-	@Decorators.anyExcept(exceptions=(RequestException, KeyError), text='noServer', printStack=True)
-	@Decorators.online
+	@AnyExcept(exceptions=(RequestException, KeyError), text='noServer', printStack=True)
+	@Online
 	def convertCurrencyIntent(self, session: DialogSession, **_kwargs):
 		amount = session.slots.get('Amount', session.customData.get('Amount', 1))
 

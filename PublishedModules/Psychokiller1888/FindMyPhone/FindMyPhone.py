@@ -1,8 +1,8 @@
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
-from core.dialog.model.DialogSession import DialogSession
-from core.util.Decorators import Decorators
 from core.commons import constants
+from core.dialog.model.DialogSession import DialogSession
+from core.util.Decorators import Online
 
 try:
 	from modules.Ifttt.Ifttt import IftttException
@@ -31,7 +31,7 @@ class FindMyPhone(Module):
 		super().__init__(self._INTENTS)
 
 
-	@Decorators.online
+	@Online
 	def findPhoneIntent(self, session: DialogSession, **_kwargs):
 		sessionId = session.sessionId
 		slots = session.slots

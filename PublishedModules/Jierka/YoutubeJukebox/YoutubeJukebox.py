@@ -4,12 +4,12 @@ import subprocess
 import os
 import re
 import requests
-from requests import RequestException
 import youtube_dl
+from requests import RequestException
 
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
-from core.util.Decorators import Decorators, IntentHandler
+from core.util.Decorators import AnyExcept, IntentHandler, Online
 
 
 class YoutubeJukebox(Module):
@@ -39,8 +39,8 @@ class YoutubeJukebox(Module):
 
 
 	@IntentHandler('SearchMusic')
-	@Decorators.anyExcept(exceptions=RequestException, text='noServer', printStack=True)
-	@Decorators.online
+	@AnyExcept(exceptions=RequestException, text='noServer', printStack=True)
+	@Online
 	def searchMusicIntent(self, session: DialogSession, **_kwargs):
 		wildcardQuery = self.getWildcard(session)
 
@@ -48,7 +48,7 @@ class YoutubeJukebox(Module):
 
 		response = requests.get("http://www.youtube.com/results", {'search_query':wildcardQuery})
 		response.raise_for_status()
-		videolist = re.findall(r'href=\"\/watch\?v=(.{11})', response.text)
+		videolist = re.findall(r'href=\"/watch\?v=(.{11})', response.text)
 
 		if not videolist:
 			self.say(text=self.randomTalk(text='noMatch', replace=[wildcardQuery]), siteId=session.siteId)

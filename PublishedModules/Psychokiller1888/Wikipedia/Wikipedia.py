@@ -1,11 +1,9 @@
-from typing import Tuple
-
 from wikipedia import wikipedia
 
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
-from core.util.Decorators import Decorators
+from core.util.Decorators import AnyExcept, Online
 
 
 class Wikipedia(Module):
@@ -62,10 +60,10 @@ class Wikipedia(Module):
 		self._whatToSearch(session, 'ambiguous')
 
 
-	@Decorators.anyExcept(printStack=True)
-	@Decorators.anyExcept(exceptions=wikipedia.WikipediaException, exceptHandler=noMatchHandler)
-	@Decorators.anyExcept(exceptions=wikipedia.DisambiguationError, exceptHandler=ambiguousHandler)
-	@Decorators.online
+	@AnyExcept(printStack=True)
+	@AnyExcept(exceptions=wikipedia.WikipediaException, exceptHandler=noMatchHandler)
+	@AnyExcept(exceptions=wikipedia.DisambiguationError, exceptHandler=ambiguousHandler)
+	@Online
 	def searchIntent(self, session: DialogSession, **_kwargs):
 		search = self._extractSearchWord(session)
 		if not search:

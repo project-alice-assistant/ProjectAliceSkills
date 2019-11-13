@@ -4,8 +4,8 @@ import requests
 from requests.exceptions import RequestException
 
 from core.base.model.Module import Module
-from core.util.Decorators import Decorators, IntentHandler
 from core.dialog.model.DialogSession import DialogSession
+from core.util.Decorators import AnyExcept, IntentHandler, Online
 
 
 class RandomUselessFacts(Module):
@@ -15,8 +15,8 @@ class RandomUselessFacts(Module):
 	"""
 
 	@IntentHandler('GetUselessFact')
-	@Decorators.anyExcept(exceptions=(RequestException, KeyError), text='error', printStack=True)
-	@Decorators.online
+	@AnyExcept(exceptions=(RequestException, KeyError), text='error', printStack=True)
+	@Online
 	def uselessFactIntent(self, session: DialogSession, **_kwargs):
 		ttype = session.slotValue('type') or 'random'
 

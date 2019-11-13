@@ -3,7 +3,7 @@ from requests.exceptions import RequestException
 
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
-from core.util.Decorators import Decorators, IntentHandler
+from core.util.Decorators import AnyExcept, IntentHandler, Online
 
 
 class InternationalSpaceStation(Module):
@@ -20,8 +20,8 @@ class InternationalSpaceStation(Module):
 
 
 	@IntentHandler('IssPosition')
-	@Decorators.anyExcept(exceptions=(RequestException, KeyError), text='noServer', printStack=True)
-	@Decorators.online
+	@AnyExcept(exceptions=(RequestException, KeyError), text='noServer', printStack=True)
+	@Online
 	def getIssPosition(self, session: DialogSession, **_kwargs):
 		data = self.queryApi('http://api.open-notify.org/iss-now.json')
 		latitude = float(data['iss_position']['latitude'])
@@ -62,8 +62,8 @@ class InternationalSpaceStation(Module):
 
 
 	@IntentHandler('Astronauts')
-	@Decorators.anyExcept(exceptions=(RequestException, KeyError), text='noServer', printStack=True)
-	@Decorators.online
+	@AnyExcept(exceptions=(RequestException, KeyError), text='noServer', printStack=True)
+	@Online
 	def getAstronauts(self, session: DialogSession, **_kwargs):
 		data = self.queryApi('http://api.open-notify.org/astros.json')
 		amount = data['number']

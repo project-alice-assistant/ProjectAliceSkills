@@ -3,14 +3,14 @@ from requests.exceptions import RequestException
 
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
-from core.util.Decorators import Decorators, IntentHandler
+from core.util.Decorators import AnyExcept, IntentHandler, Online
 
 
 class IcanhazdadjokeDotCom(Module):
 
 	@IntentHandler('TellAJoke')
-	@Decorators.anyExcept(exceptions=RequestException, text='noJoke', printStack=True)
-	@Decorators.online
+	@AnyExcept(exceptions=RequestException, text='noJoke', printStack=True)
+	@Online
 	def jokeIntent(self, session: DialogSession, **_kwargs):
 		url = 'https://icanhazdadjoke.com/'
 

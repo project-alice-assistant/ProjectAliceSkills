@@ -6,7 +6,7 @@ from core.ProjectAliceExceptions import ModuleStartingFailed
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
-from core.util.Decorators import Decorators
+from core.util.Decorators import AnyExcept, Online
 
 
 class BringShoppingList(Module):
@@ -78,7 +78,7 @@ class BringShoppingList(Module):
 		return self._bring
 
 
-	@Decorators.online
+	@Online
 	def _connectAccount(self):
 		try:
 			self._bring = self.bring()
@@ -174,8 +174,8 @@ class BringShoppingList(Module):
 			currentDialogState='confDelList')
 
 
-	@Decorators.anyExcept(exceptions=BringApi.AuthentificationFailed, text='authFailed')
-	@Decorators.online
+	@AnyExcept(exceptions=BringApi.AuthentificationFailed, text='authFailed')
+	@Online
 	def confDelIntent(self, session: DialogSession, **_kwargs):
 		if self.Commons.isYes(session):
 			self._deleteCompleteList()
@@ -184,8 +184,8 @@ class BringShoppingList(Module):
 			self.endDialog(session.sessionId, text=self.randomTalk('nodel_all'))
 
 
-	@Decorators.anyExcept(exceptions=BringApi.AuthentificationFailed, text='authFailed')
-	@Decorators.online
+	@AnyExcept(exceptions=BringApi.AuthentificationFailed, text='authFailed')
+	@Online
 	def addItemIntent(self, intent: str, session: DialogSession):
 		items = self._getShopItems('add', intent, session)
 		if items:
@@ -193,8 +193,8 @@ class BringShoppingList(Module):
 			self.endDialog(session.sessionId, text=self._combineLists('add', added, exist))
 
 
-	@Decorators.anyExcept(exceptions=BringApi.AuthentificationFailed, text='authFailed')
-	@Decorators.online
+	@AnyExcept(exceptions=BringApi.AuthentificationFailed, text='authFailed')
+	@Online
 	def delItemIntent(self, intent: str, session: DialogSession):
 		items = self._getShopItems('rem', intent, session)
 		if items:
@@ -202,8 +202,8 @@ class BringShoppingList(Module):
 			self.endDialog(session.sessionId, text=self._combineLists('rem', removed, exist))
 
 
-	@Decorators.anyExcept(exceptions=BringApi.AuthentificationFailed, text='authFailed')
-	@Decorators.online
+	@AnyExcept(exceptions=BringApi.AuthentificationFailed, text='authFailed')
+	@Online
 	def checkListIntent(self, intent: str, session: DialogSession):
 		items = self._getShopItems('chk', intent, session)
 		if items:
@@ -211,8 +211,8 @@ class BringShoppingList(Module):
 			self.endDialog(session.sessionId, text=self._combineLists('chk', found, missing))
 
 
-	@Decorators.anyExcept(exceptions=BringApi.AuthentificationFailed, text='authFailed')
-	@Decorators.online
+	@AnyExcept(exceptions=BringApi.AuthentificationFailed, text='authFailed')
+	@Online
 	def readListIntent(self, session: DialogSession, **_kwargs):
 		"""read the content of the list"""
 		items = self.bring().get_items().json()['purchase']

@@ -3,7 +3,8 @@ from speedtest import SpeedtestException
 
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
-from core.util.Decorators import Decorators, IntentHandler
+from core.util.Decorators import AnyExcept, IntentHandler, Online
+
 
 class Speedtest(Module):
 	"""
@@ -12,15 +13,15 @@ class Speedtest(Module):
 	"""
 
 	@IntentHandler('Speedtest')
-	@Decorators.online
+	@Online
 	def runSpeedtest(self, session: DialogSession, **_kwargs):
 		self.ThreadManager.doLater(interval=0, func=self.executeSpeedtest, kwargs={'session': session})
 		self.logInfo('Starting Speedtest')
 		self.endDialog(sessionId=session.sessionId, text=self.randomTalk('running'))
 
 
-	@Decorators.anyExcept(exceptions=(SpeedtestException, KeyError), text='failed', printStack=True)
-	@Decorators.online
+	@AnyExcept(exceptions=(SpeedtestException, KeyError), text='failed', printStack=True)
+	@Online
 	def executeSpeedtest(self, session: DialogSession):
 		speed = speedtest.Speedtest()
 		speed.get_servers()
