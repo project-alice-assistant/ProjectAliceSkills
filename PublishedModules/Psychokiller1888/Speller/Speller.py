@@ -37,6 +37,6 @@ class Speller(Module):
 			)
 			return
 
-		string = '<break time="160ms"/>'.join(list(word))
+		string = '<break time="160ms"/>'.join(word)
 
 		self.endDialog(sessionId=session.sessionId, text=self.randomTalk(text='isSpelled', replace=[word, string]))
