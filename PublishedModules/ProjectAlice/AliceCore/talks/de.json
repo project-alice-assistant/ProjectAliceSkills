@@ -311,6 +311,42 @@
 		"<s>Ok {}! Ich brauche drei Aufnahmen von dir, die mich aufrufen sollen, indem du <break time=\"100ms\"/> \"Hey Alice\" <break time=\"150ms\"/> sagst</s><s><s>Die Aufnahmen sollten in einer ruhigen Umgebung erstellt werden, damit diese später funktionieren</s><s><s>Lass es uns erledigen, ruf mich auf!</s>"
 	],
 	"addUserAddWakewordDenied": [
-		"Ok, I understand, keep in mind I won't be able to define if {} is home, sleeping, playing games or remember stuff about {}."
+		"Ok, ich verstehe, aber denke daran, dass ich so nicht weiß ob {} zuhause ist, schläft, TV schaut und ich kann mir auch nichts über {} merken."
+	],
+	"explainInterfaceAuth": {
+		"default": [
+			"Für dieses Menü musst du dich authentifizieren. Bitte sag meinen Namen!",
+			"Du musst dich authentifizieren um diesen Bereich zu sehen. Bitte sag meinen Namen!"
+		],
+		"short": [
+			"Bitte sag meinen Namen."
+		]
+	},
+	"greetAndNeedPinCode": {
+		"default": [
+			"Hey {}! Jetzt benötige ich deinen Pincode. Bitte sag ihn mir, oder gib ihn am Bildschirm ein!",
+			"Hi {}. Um fortzufahren benötige ich deine Pin. Sag sie mir, oder tippe sie am Bildschirm ein."
+		],
+		"short": [
+			"Sage oder gebe deine Pin ein"
+		]
+	},
+	"userAuthUnknown": [
+		"Entschuldigung, ich konnte dich nicht erkennen",
+		"Entschuldigung, aber ich weiß nicht wer du bist"
+	],
+	"userAuthAccessLevelTooLow": [
+		"Entschuldigung {}, aber deine Berechtigung reicht nicht aus",
+		"Es tut mir leid, {}, aber das kann ich nicht tun. Deine Berechtigung reicht nicht aus"
+	],
+	"authFailed": [
+		"Leider nicht korrekt. Versuche es doch nochmal",
+		"Nein, so nicht. "
+	],
+	"authOk": [
+		"Ok, dich mag ich. Viel Spaß in meinen Einstellungen.",
+		"Cool, das stimmt. Du hast jetzt Zugriff!",
+		"Identifizierung... erfolgreich!"
 	]
+}
 }
