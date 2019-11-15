@@ -30,4 +30,5 @@ jobs:
       if: always()
       run: |
         pip install mypy
-        ./.travis/mypy.sh
+        # ./.travis/mypy.sh
+        exit 1
