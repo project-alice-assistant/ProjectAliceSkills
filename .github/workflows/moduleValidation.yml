@@ -28,4 +28,3 @@ jobs:
       run: |
         pip install mypy
         ./.travis/mypy.sh
-        exit 1
