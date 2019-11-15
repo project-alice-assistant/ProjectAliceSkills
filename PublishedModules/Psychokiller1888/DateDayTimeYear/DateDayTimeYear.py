@@ -17,14 +17,14 @@ class DateDayTimeYear(Module):
 		if self.LanguageManager.activeLanguage == 'en':
 			if minutes <= 30:
 				if hours == 12:
-					hours = 'midday'
+					hours = 'noon'
 				elif hours == 0:
 					hours = 'midnight'
 				else:
 					hours = hours % 12
 			else:
 				if hours + 1 == 12:
-					hours = 'midday'
+					hours = 'noon'
 				elif hours + 1 == 24:
 					hours = 'midnight'
 				else:
@@ -47,7 +47,10 @@ class DateDayTimeYear(Module):
 				else:
 					answer = f'{minutes} past {hours}'
 			else:
-				answer = f"{hours} o'clock"
+				if hours == 'midnight' or hours == 'noon':
+					answer = answer = f" It is ",  {hours}"
+				else:
+					answer = f"{hours} o'clock"
 
 		elif self.LanguageManager.activeLanguage == 'fr':
 			if minutes <= 30:
