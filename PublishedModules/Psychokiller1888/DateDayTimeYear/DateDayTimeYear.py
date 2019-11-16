@@ -117,6 +117,7 @@ class DayTimeDe(DayTime):
 
 		# e.g. 6:25 is spoken relative to the half hour '5 vor halb 7'
 		elif self._minutes == 25:
+			self.hours += 1
 			answer = f'5 vor halb {self._numberFixup(self.hours12)}'
 
 		# e.g. 6:30 is usually spoken as 'halb 7'
@@ -126,6 +127,7 @@ class DayTimeDe(DayTime):
 
 		# e.g. 6:35 is spoken relative to the half hour '5 nach halb 7'
 		elif self._minutes == 35:
+			self.hours += 1
 			answer = f'5 nach halb {self._numberFixup(self.hours12)}'
 
 		# e.g. 6:45 is 'Viertel vor 7'
