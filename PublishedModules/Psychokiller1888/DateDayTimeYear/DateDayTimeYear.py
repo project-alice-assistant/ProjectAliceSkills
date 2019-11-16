@@ -144,13 +144,16 @@ class DayTimeDe(DayTime):
 
 
 class DayTimeFr(DayTime):
-	def _stringifyHours(self) -> Union[str, int]:
+	def _stringifyHours(self) -> str:
 		if self._hours == 12:
-			return 'midi'
-		if self._hours == 0:
-			return 'minuit'
-
-		return self.hours12
+			hour = 'midi'
+		elif self._hours == 0:
+			hour = 'minuit'
+		elif self.hours12 == 1:
+			hour = f'{self.hours12} heure'
+		else:
+			hour = f'{self.hours12} heures'
+		return hour
 
 
 	def __str__(self) -> str:
@@ -160,30 +163,22 @@ class DayTimeFr(DayTime):
 		hours = self._stringifyHours()
 
 		if self._minutes == 0:
-			answer = f'{hours}{" heures" if isinstance(hours, int) else ""}'
+			answer = hours
 
 		elif self._minutes == 15:
-			answer = f'{hours} {"heures" if isinstance(hours, int) else ""} et quart'
+			answer = f'{hours} et quart'
 
 		elif self._minutes == 30:
-			if isinstance(hours, int) and self._hours >= 13:
-				answer = f'{hours} {self._minutes}'
-			elif isinstance(hours, str):
-				answer = f'{hours} {self._minutes}'
-			else:
-				answer = f'{hours} heures et demie'
+			answer = f'{hours} et demie'
 
 		elif self._minutes == 45:
-			if isinstance(hours, int) and self._hours >= 13:
-				answer = f'{hours} heures moins quart'
-			else:
-				answer = f'{hours} moins quart'
+			answer = f'{hours} moins quart'
 
 		elif self._minutes > 30:
-			answer = f'{hours} {"heures" if isinstance(hours, int) else ""} moins {60 - self._minutes}'
+			answer = f'{hours} moins {60 - self._minutes}'
 
 		else:
-			answer = f'{hours} {"heures" if isinstance(hours, int) else ""} {self._minutes}'
+			answer = f'{hours} {self._minutes}'
 
 		return answer
 
