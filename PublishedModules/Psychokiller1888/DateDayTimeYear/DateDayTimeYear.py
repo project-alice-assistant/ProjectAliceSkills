@@ -1,3 +1,4 @@
+from typing import Union
 from datetime import datetime
 
 from babel.dates import format_date
@@ -6,121 +7,201 @@ from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
 from core.util.Decorators import IntentHandler
 
+class DayTime:
+	def __init__(self, dt: datetime):
+		self._hours = dt.hour
+		self._minutes = dt.minute
+
+
+	@property
+	def hours12(self) -> int:
+		return self._hours % 12
+
+
+	@property
+	def hours(self) -> int:
+		return self._hours
+
+
+	@hours.setter
+	def hours(self, hours: int):
+		self._hours = hours % 24
+
+
+	@property
+	def minutes(self) -> int:
+		return self._minutes
+
+
+	def __str__(self) -> str:
+		return f'{self.hours12} {self._minutes}'
+
+
+class DayTimeEn(DayTime):
+	def _stringifyHours(self) -> Union[str, int]:
+		if self._hours == 12:
+			return 'noon'
+		if self._hours == 0:
+			return 'midnight'
+
+		return self.hours12
+
+
+	def __str__(self) -> str:
+		if self._minutes == 0:
+			hours = self._stringifyHours()
+			if isinstance(hours, int):
+				return f"{hours} o'clock"
+			return hours
+
+		if self._minutes == 15:
+			return f'quarter past {self._stringifyHours()}'
+
+		if self._minutes == 30:
+			return f'half past {self._stringifyHours()}'
+
+		if self._minutes == 45:
+			self.hours += 1
+			return f'quarter to {self._stringifyHours()}'
+
+		if 0 < self._minutes < 10:
+			hours = self._stringifyHours()
+			if isinstance(hours, int):
+				return f'{hours} o {self._minutes}'
+			return f'{self._minutes} past {hours}'
+
+		return f'{self._stringifyHours()} {self._minutes}'
+
+
+class DayTimeDe(DayTime):
+	def _stringifyFullHours(self) -> str:
+		if self._hours == 12:
+			return 'Mittag'
+		if self._hours == 0:
+			return 'Mitternacht'
+
+		return f'{self._numberFixup(self.hours12)}'
+
+
+	def _numberFixup(self, number: int) -> Union[str, int]:
+		"""
+		The TTS says 'ein' for 1, but for german time it is:
+			Es ist eins
+		This fixes the number for the tts
+		"""
+		if number == 1:
+			return 'eins'
+		return number
+
+
+	def __str__(self) -> str:
+		# Full hour is spoken without minutes and uses Mittag/Mitternacht
+		if self._minutes == 0:
+			return self._stringifyFullHours()
+
+
+		# when not a 5min step e.g. 6:21 -> '6 Uhr 21'
+		if self._minutes % 5:
+			answer = f'{self.hours12} Uhr {self._numberFixup(self._minutes)}'
+
+		# e.g. 6:15 is 'Viertel nach 6'
+		# in south germany 'viertel 7' is used aswell, but it confuses many north german people
+		# whether this is 6:15 or 6:45 -> not used here
+		elif self._minutes == 15:
+			answer = f'Viertel nach {self._numberFixup(self.hours12)}'
+
+		# 5 min steps 5, 10, 20 are spoken relative to the current hour
+		elif self._minutes <= 20:
+			answer = f'{self._minutes} nach {self._numberFixup(self.hours12)}'
+
+		# e.g. 6:25 is spoken relative to the half hour '5 vor halb 7'
+		elif self._minutes == 25:
+			answer = f'5 vor halb {self._numberFixup(self.hours12)}'
+
+		# e.g. 6:30 is usually spoken as 'halb 7'
+		elif self._minutes == 30:
+			self.hours += 1
+			answer = f'halb {self._numberFixup(self.hours12)}'
+
+		# e.g. 6:35 is spoken relative to the half hour '5 nach halb 7'
+		elif self._minutes == 35:
+			answer = f'5 nach halb {self._numberFixup(self.hours12)}'
+
+		# e.g. 6:45 is 'Viertel vor 7'
+		# in south germany 'dreiviertel 7' is used aswell, but it confuses many north german people
+		# whether this is 6:45 or 6:15 -> not used here
+		elif self._minutes == 45:
+			self.hours += 1
+			answer = f'Viertel vor {self._numberFixup(self.hours12)}'
+
+		# 5 min steps 40, 50, 55 are spoken relative to the next full hour
+		elif self._minutes >= 40:
+			self.hours += 1
+			answer = f'{60 - self._minutes} vor {self._numberFixup(self.hours12)}'
+
+		#TODO add config option whether it should use am/pm (in german e.g. morgens, mittags, nachmittags abends nachts)
+		return answer
+
+
+class DayTimeFr(DayTime):
+	def _stringifyHours(self) -> Union[str, int]:
+		if self._hours == 12:
+			return 'midi'
+		if self._hours == 0:
+			return 'minuit'
+
+		return self.hours12
+
+
+	def __str__(self) -> str:
+		if self._minutes > 30:
+			self.hours += 1
+
+		hours = self._stringifyHours()
+
+		if self._minutes == 0:
+			answer = f'{hours}{" heures" if isinstance(hours, int) else ""}'
+
+		elif self._minutes == 15:
+			answer = f'{hours} {"heures" if isinstance(hours, int) else ""} et quart'
+
+		elif self._minutes == 30:
+			if isinstance(hours, int) and self._hours >= 13:
+				answer = f'{hours} {self._minutes}'
+			elif isinstance(hours, str):
+				answer = f'{hours} {self._minutes}'
+			else:
+				answer = f'{hours} heures et demie'
+
+		elif self._minutes == 45:
+			if isinstance(hours, int) and self._hours >= 13:
+				answer = f'{hours} heures moins quart'
+			else:
+				answer = f'{hours} moins quart'
+
+		elif self._minutes > 30:
+			answer = f'{hours} {"heures" if isinstance(hours, int) else ""} moins {60 - self._minutes}'
+
+		else:
+			answer = f'{hours} {"heures" if isinstance(hours, int) else ""} {self._minutes}'
+
+		return answer
+
 
 class DateDayTimeYear(Module):
 
 	@IntentHandler('GetTime')
 	def timeIntent(self, session: DialogSession, **_kwargs):
-		minutes = datetime.now().minute
-		hours = datetime.now().hour
-
 		if self.LanguageManager.activeLanguage == 'en':
-			if hours == 12:
-				hours = 'noon'
-			elif hours == 0:
-				hours = 'midnight'
-			else:
-				hours = hours % 12
-
-			if minutes > 0:
-				if minutes == 15:
-					answer = f'quarter past {hours}'
-				elif minutes == 30:
-					answer = f'half past {hours}'
-				elif minutes == 45:
-					if hours + 12 == 23:
-						answer = f'quarter to midnight'
-					elif hours + 1 == 11:
-						answer = f'quarter to noon'
-					else:
-						answer = f'quarter to {hours + 1}'
-				elif 0 < minutes < 10:
-					if isinstance(hours, int):
-						answer = f'{hours} o {minutes}'
-					else:
-						answer = f'{minutes} past {hours}'
-				else:
-					answer = f'{hours} {minutes}'
-			else:
-				if hours == 'midnight' or hours == 'noon':
-					answer = f" It is {hours}"
-				else:
-					answer = f"{hours} o'clock"
-
+			dayTime = DayTimeEn(datetime.now())
 		elif self.LanguageManager.activeLanguage == 'fr':
-			if minutes <= 30:
-				if hours == 12:
-					hours = 'midi'
-				elif hours == 0:
-					hours = 'minuit'
-			else:
-				if hours + 1 == 12:
-					hours = 'midi'
-				elif hours + 1 == 24:
-					hours = 'minuit'
-				else:
-					hours += 1
-
-			if minutes > 0:
-				if minutes == 15:
-					answer = f'{hours} {"heures" if isinstance(hours, int) else ""} et quart'
-				elif minutes == 30:
-					if isinstance(hours, int) and hours >= 13:
-						answer = f'{hours % 12} {minutes}'
-					elif isinstance(hours, str):
-						answer = f'{hours} {minutes}'
-					else:
-						answer = f'{hours} heures et demie'
-				elif minutes == 45:
-					if isinstance(hours, int) and hours >= 13:
-						answer = f'{hours % 12} heures moins quart'
-					else:
-						answer = f'{hours} moins quart'
-				elif minutes > 30:
-					answer = f'{hours} {"heures" if isinstance(hours, int) else ""} moins {60 - minutes}'
-				else:
-					answer = f'{hours} {"heures" if isinstance(hours, int) else ""} {minutes}'
-			else:
-				answer = f'{hours} {"heures" if isinstance(hours, int) else ""}'
-
-
+			dayTime = DayTimeFr(datetime.now())
 		elif self.LanguageManager.activeLanguage == 'de':
-			if minutes < 30:
-				if hours == 12:
-					hours = 'Mittag'
-				elif hours == 0:
-					hours = 'Mitternacht'
-				elif hours == 1:
-					hours = 'eins'
-			else:
-				if hours + 1 == 12:
-					if minutes != 30:
-						hours = 'Mittag'
-				elif hours + 1 == 24:
-					if minutes != 30:
-						hours = 'Mitternacht'
-				elif hours + 1 == 1:
-					hours = 'eins'
-				else:
-					hours = (hours % 12) + 1
-
-			if minutes > 0:
-				if minutes == 15:
-					answer = f'viertel nach {hours}'
-				elif minutes == 30:
-					answer = f'halb {hours}'
-				elif minutes == 45:
-					answer = f'viertel vor {hours}'
-				elif minutes > 30:
-					answer = f'{60 - minutes} vor {hours}'
-				else:
-					answer = f'{minutes} nach {hours}'
-			else:
-				answer = f'{hours} Uhr'
+			dayTime = DayTimeDe(datetime.now())
 		else:
-			answer = f'{hours} {minutes}'
+			dayTime = DayTime(datetime.now())
 
-		self.endDialog(session.sessionId, self.TalkManager.randomTalk('time').format(answer))
+		self.endDialog(session.sessionId, self.TalkManager.randomTalk('time').format(str(dayTime)))
 
 
 	@IntentHandler('GetDate')
