@@ -38,7 +38,7 @@ class DayTime:
 
 
 class DayTimeEn(DayTime):
-	def _stringifyHours(self) -> Union[str, int]:
+	def _stringifyFullHours(self) -> Union[str, int]:
 		if self._hours == 12:
 			return 'noon'
 		if self._hours == 0:
@@ -49,29 +49,26 @@ class DayTimeEn(DayTime):
 
 	def __str__(self) -> str:
 		if self._minutes == 0:
-			hours = self._stringifyHours()
+			hours = self._stringifyFullHours()
 			answer = hours
 			if isinstance(hours, int):
 				answer = f"{hours} o'clock"
 
+		elif self._minutes < 10:
+			answer = f'{self.hours12} o {self._minutes}'
+
 		elif self._minutes == 15:
-			answer = f'quarter past {self._stringifyHours()}'
+			answer = f'quarter past {self.hours12}'
 
 		elif self._minutes == 30:
-			answer = f'half past {self._stringifyHours()}'
+			answer = f'half past {self.hours12}'
 
 		elif self._minutes == 45:
 			self.hours += 1
-			answer = f'quarter to {self._stringifyHours()}'
+			answer = f'quarter to {self.hours12}'
 
 		else:
-			hours = self._stringifyHours()
-			if isinstance(hours, int) and self._minutes < 10:
-				answer = f'{hours} o {self._minutes}'
-			elif isinstance(hours, int):
-				answer = f'{hours} {self._minutes}'
-			else:
-				answer = f'{self._minutes} past {hours}'
+			answer = f'{self.hours12} {self._minutes}'
 
 		return answer
 
