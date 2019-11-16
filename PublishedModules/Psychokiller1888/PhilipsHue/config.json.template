@@ -1,9 +1,4 @@
 {
-	"phueAutodiscoverFallback": {
-		"defaultValue": true,
-		"dataType": "boolean",
-		"description": "Allow bridge auto discovery"
-	},
 	"phueBridgeIp": {
 		"defaultValue": "",
 		"dataType": "string",
