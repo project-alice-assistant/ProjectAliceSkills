@@ -13,7 +13,6 @@ class DateDayTimeYear(Module):
 	def timeIntent(self, session: DialogSession, **_kwargs):
 		minutes = datetime.now().minute
 		hours = datetime.now().hour
-		hours24 = datetime.now().hour
 
 		if self.LanguageManager.activeLanguage == 'en':
 			if hours == 12:
@@ -29,12 +28,12 @@ class DateDayTimeYear(Module):
 				elif minutes == 30:
 					answer = f'half past {hours}'
 				elif minutes == 45:
-					if hours24 == 23:
+					if hours + 12 == 23:
 						answer = f'quarter to midnight'
-					elif hours24 == 11:
+					elif hours + 1 == 11:
 						answer = f'quarter to noon'
 					else:
-						answer = f'quarter to {(hours24 % 12) + 1}'
+						answer = f'quarter to {hours + 1}'
 				elif 0 < minutes < 10:
 					if isinstance(hours, int):
 						answer = f'{hours} o {minutes}'
@@ -44,7 +43,7 @@ class DateDayTimeYear(Module):
 					answer = f'{hours} {minutes}'
 			else:
 				if hours == 'midnight' or hours == 'noon':
-					answer = answer = f" It is {hours}"
+					answer = f" It is {hours}"
 				else:
 					answer = f"{hours} o'clock"
 
