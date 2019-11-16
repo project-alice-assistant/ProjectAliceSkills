@@ -18,8 +18,6 @@ Rewrite for Project Alice: Psycho
 
 import json
 import logging
-import os
-import platform
 import socket
 
 import requests
@@ -639,7 +637,7 @@ class Bridge(object):
 	"""
 
 
-	def __init__(self, ip = None, username = None, config_file_path = None):
+	def __init__(self, config_file_path, ip = None, username = None):
 		""" Initialization function.
 
 		Parameters:
@@ -650,14 +648,7 @@ class Bridge(object):
 
 		"""
 
-		if config_file_path is not None:
-			self.config_file_path = config_file_path
-		elif os.getenv(USER_HOME) is not None and os.access(os.getenv(USER_HOME), os.W_OK):
-			self.config_file_path = os.path.join(os.getenv(USER_HOME), '.python_hue')
-		elif 'iPad' in platform.machine() or 'iPhone' in platform.machine() or 'iPad' in platform.machine():
-			self.config_file_path = os.path.join(os.getenv(USER_HOME), 'Documents', '.python_hue')
-		else:
-			self.config_file_path = os.path.join(os.getcwd(), '.python_hue')
+		self.config_file_path = config_file_path
 
 		self.ip = ip
 		self.username = username
@@ -738,8 +729,8 @@ class Bridge(object):
 		for line in response:
 			for key in line:
 				if 'success' in key:
-					with open(self.config_file_path, 'w') as f:
-						logger.info('Writing configuration file to ' + self.config_file_path)
+					with self.config_file_path.open('w') as f:
+						logger.info(f'Writing configuration file to {self.config_file_path}')
 						f.write(json.dumps({self.ip: line['success']}))
 						logger.info('Reconnecting to the bridge')
 					self.connect()
@@ -762,7 +753,7 @@ class Bridge(object):
 
 		if self.ip is None or self.username is None:
 			try:
-				with open(self.config_file_path) as f:
+				with self.config_file_path.open() as f:
 					config = json.loads(f.read())
 					if self.ip is None:
 						self.ip = list(config.keys())[0]

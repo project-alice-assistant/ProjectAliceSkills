@@ -1,6 +1,5 @@
 import time
 
-import os
 import requests
 
 from core.ProjectAliceExceptions import ModuleStartDelayed, ModuleStartingFailed
@@ -51,79 +50,95 @@ class PhilipsHue(Module):
 
 		super().__init__(self._INTENTS)
 
+		self._hueConfigFile = self.getResource(self.name, 'philipsHueConf.conf')
+		if not self._hueConfigFile.exists():
+			self.logInfo('No philipsHueConf.conf file in PhilipsHue module directory')
+
 
 	def onStart(self) -> dict:
 		super().onStart()
 
-		if self.getConfig('phueBridgeIp'):
-			if self._connectBridge():
-				self.delayed = False
+		self._bridge = Bridge(ip=self.getConfig('phueBridgeIp'), config_file_path=self._hueConfigFile)
+
+		if not self.delayed:
+			if self.getConfig('phueBridgeIp'):
+				if not self._isPHUEBridge(self.getConfig('phueBridgeIp')):
+					self.logWarning('Configured Philips Hue bridge IP is not a bridge')
+					self.updateConfig('phueBridgeIp', '')
+					self.delayed = True
+					raise ModuleStartDelayed(self.name)
+
+				if not self._bridge.connect():
+					self.logWarning("Couldn't connect to bridge")
+					self.updateConfig('phueBridgeIp', '')
+					self.delayed = True
+					raise ModuleStartDelayed(self.name)
+
+				try:
+					self._bridge.register_app()
+				except PhueRegistrationException:
+					self.logWarning('Alice not registerd on bridge')
+					self.delayed = True
+					raise ModuleStartDelayed(self.name)
+				except PhueException as e:
+					raise ModuleStartingFailed(moduleName=self.name, error=f'Error connecting to bridge: {e}')
+
 				return self.supportedIntents
 			else:
-				self.updateConfig('phueAutodiscoverFallback', True)
-				self.updateConfig('phueBridgeIp', '')
-		elif self.getConfig('phueAutodiscoverFallback'):
+				self.logInfo(f'Philips Hue bridge IP not set')
+				self.delayed = True
+				raise ModuleStartDelayed(self.name)
+		else:
+			if self.getAliceConfig('stayCompletlyOffline'):
+				raise ModuleStartingFailed(moduleName=self.name, error='Bridge IP not set and stay completly offline set to True, cannot auto discover Philips Hue bridge')
+			elif not self.InternetManager.online:
+				raise ModuleStartingFailed(moduleName=self.name, error='Bridge IP not set and currently offline, cannot auto discover Philips Hue bridge')
 			try:
 				request = requests.get('https://www.meethue.com/api/nupnp')
-				response = request.json()
-				firstBridge = response[0]
-				self.logInfo(f"Autodiscover found bridge at {firstBridge['internalipaddress']}, saving ip to config.json")
-				self.updateConfig('phueAutodiscoverFallback', False)
-				self.updateConfig('phueBridgeIp', firstBridge['internalipaddress'])
-				if not self._connectBridge():
-					raise ModuleStartingFailed(moduleName=self.name, error='Cannot connect to bridge')
-				return self.supportedIntents
-			except IndexError:
-				self.logInfo('No bridge found')
+				for ip in request.json():
+					if self._isPHUEBridge(ip['internalipaddress']):
+						self._bridge.ip = ip['internalipaddress']
+						break
 
-		raise ModuleStartingFailed(moduleName=self.name, error='Cannot connect to bridge')
+				if not self._bridge.ip:
+					raise ModuleStartingFailed(moduleName=self.name, error='No compatible bridge found on network')
+			except Exception as e:
+				raise ModuleStartingFailed(moduleName=self.name, error=f'Something went wrong trying to autodiscover the bridge: {e}')
+
+			self.ThreadManager.newThread(name='PHUERegister', target=self._registerOnBridge)
+
+		return self.supportedIntents
 
 
-	def _connectBridge(self) -> bool:
-		if self._bridgeConnectTries >= 3:
-			self.logError("Couldn't reach bridge")
-			self.ThreadManager.doLater(interval=3, func=self.say, args=[self.randomTalk('pressBridgeButtonTimeout')])
-			return False
-
+	def _registerOnBridge(self):
 		try:
-			hueConfigFile = self.getResource(self.name, 'philipsHueConf.conf')
-			hueConfigFileExists = os.path.isfile(hueConfigFile)
+			self._bridge.register_app()
+			self._bridgeConnectTries = 0
 
-			if not hueConfigFileExists:
-				self.logInfo('No philipsHueConf.conf file in PhilipsHue module directory')
-
-			self._bridge = Bridge(ip=self.ConfigManager.getModuleConfigByName(self.name, 'phueBridgeIp'), config_file_path=hueConfigFile)
-
-			if not self._bridge:
-				raise PhueException
-
-			self._bridge.connect()
-			if not self._bridge.registered:
-				raise PhueRegistrationException
-
-			elif not hueConfigFileExists:
+			if not self.getConfig('phueBridgeIp'):
+				self.updateConfig('phueBridgeIp', self._bridge.ip)
 				self.ThreadManager.doLater(
 					interval=3,
 					func=self.say,
 					args=[self.randomTalk('pressBridgeButtonConfirmation')]
 				)
 
+			self._setBridgeDefaults()
 		except PhueRegistrationException:
-			if self.delayed:
+			if self._bridgeConnectTries < 3:
 				self.say(text=self.randomTalk('pressBridgeButton'))
 				self._bridgeConnectTries += 1
-				self.logWarning("-Bridge not registered, please press the bridge button, retry in 20 seconds")
+				self.logWarning('Bridge not registered, please press the bridge button, retry in 20 seconds')
 				time.sleep(20)
-				return self._connectBridge()
+				self._registerOnBridge()
 			else:
-				self.delayed = True
-				raise ModuleStartDelayed(self.name)
+				self.ThreadManager.doLater(interval=3, func=self.say, args=[self.randomTalk('pressBridgeButtonTimeout')])
+				raise ModuleStartingFailed(moduleName=self.name, error=f"Couldn't reach bridge")
 		except PhueException as e:
-			self.logError(f'Bridge error: {e}')
-			return False
+			raise ModuleStartingFailed(moduleName=self.name, error=f'Error connecting to bridge: {e}')
 
-		self._bridgeConnectTries = 0
 
+	def _setBridgeDefaults(self):
 		for group in self._bridge.groups:
 			if 'group for' in group.name.lower():
 				continue
@@ -136,10 +151,22 @@ class PhilipsHue(Module):
 			self._scenes[scene.name.lower()] = scene
 
 		if self._house is None:
-			self.logWarning('Coulnd\'t find any group named "House". Creating one')
-			self._bridge.create_group(name='House', lights=list(self._bridge.get_light()), )
+			self.logWarning('Coulnd\'t find any group named "House", creating one...')
+			self._bridge.create_group(name='House', lights=[self._bridge.get_light()])
 
-		return True
+
+	@staticmethod
+	def _isPHUEBridge(ip: str) -> bool:
+		try:
+			resp = requests.get(f'http://{ip}/api/config', timeout=2)
+			data = resp.json()
+
+			if 'swversion' in data and 'bridgeid' in data:
+				return True
+
+			return False
+		except Exception:
+			return False
 
 
 	@property
