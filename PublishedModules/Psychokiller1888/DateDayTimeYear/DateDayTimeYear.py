@@ -15,7 +15,7 @@ class DayTime:
 
 	@property
 	def hours12(self) -> int:
-		return self._hours % 12
+		return self._hours % 12 or 12
 
 
 	@property
