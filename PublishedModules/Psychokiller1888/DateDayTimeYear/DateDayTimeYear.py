@@ -83,7 +83,8 @@ class DayTimeDe(DayTime):
 		return f'{self._numberFixup(self.hours12)}'
 
 
-	def _numberFixup(self, number: int) -> Union[str, int]:
+	@staticmethod
+	def _numberFixup(number: int) -> Union[str, int]:
 		"""
 		The TTS says 'ein' for 1, but for german time it is:
 			Es ist eins
@@ -135,7 +136,7 @@ class DayTimeDe(DayTime):
 			answer = f'Viertel vor {self._numberFixup(self.hours12)}'
 
 		# 5 min steps 40, 50, 55 are spoken relative to the next full hour
-		elif self._minutes >= 40:
+		else:
 			self.hours += 1
 			answer = f'{60 - self._minutes} vor {self._numberFixup(self.hours12)}'
 
