@@ -50,27 +50,30 @@ class DayTimeEn(DayTime):
 	def __str__(self) -> str:
 		if self._minutes == 0:
 			hours = self._stringifyHours()
+			answer = hours
 			if isinstance(hours, int):
-				return f"{hours} o'clock"
-			return hours
+				answer = f"{hours} o'clock"
 
-		if self._minutes == 15:
-			return f'quarter past {self._stringifyHours()}'
+		elif self._minutes == 15:
+			answer = f'quarter past {self._stringifyHours()}'
 
-		if self._minutes == 30:
-			return f'half past {self._stringifyHours()}'
+		elif self._minutes == 30:
+			answer = f'half past {self._stringifyHours()}'
 
-		if self._minutes == 45:
+		elif self._minutes == 45:
 			self.hours += 1
-			return f'quarter to {self._stringifyHours()}'
+			answer = f'quarter to {self._stringifyHours()}'
 
-		if 0 < self._minutes < 10:
+		else:
 			hours = self._stringifyHours()
-			if isinstance(hours, int):
-				return f'{hours} o {self._minutes}'
-			return f'{self._minutes} past {hours}'
+			if isinstance(hours, int) and self._minutes < 10:
+				answer = f'{hours} o {self._minutes}'
+			elif isinstance(hours, int):
+				answer = f'{hours} {self._minutes}'
+			else:
+				answer = f'{self._minutes} past {hours}'
 
-		return f'{self._stringifyHours()} {self._minutes}'
+		return answer
 
 
 class DayTimeDe(DayTime):
