@@ -1,6 +1,6 @@
 {
 	"name": "Tasmota",
-	"version": "1.0.34",
+	"version": "1.0.35",
 	"author": "Psychokiller1888",
 	"maintainers": ["maxbachmann"],
 	"desc": "This module allows you to not only connect tasmota esp devices, but listen to them",
@@ -10,7 +10,8 @@
 	"conditions": {
 		"lang": [
 			"en",
-			"fr"
+			"fr",
+			"de"
 		],
 		"online": true
 	}
