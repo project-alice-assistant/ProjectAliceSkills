@@ -39,7 +39,7 @@ class Ifttt(Module):
 			result = self.databaseFetch(tableName='ifttt', query='SELECT * FROM :__table__ WHERE user = :user', values={'user': user.lower()})
 
 			if result:
-				answer = requests.post(url=f"https://maker.ifttt.com/trigger/{endPoint}/with/key/{result['key']}")
+				answer = requests.post(url=f"https://maker.ifttt.com/trigger/{endPoint}/with/key/{result[0]['key']}")
 				return IftttException.OK if answer.status_code == 200 else IftttException.BAD_REQUEST
 
 			return IftttException.NO_USER

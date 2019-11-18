@@ -1,10 +1,10 @@
 {
 	"name": "Ifttt",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"author": "Psychokiller1888",
 	"maintainers": ["maxbachmann"],
 	"desc": "Use ifttt services",
-	"aliceMinVersion": "1.0.0-a3",
+	"aliceMinVersion": "1.0.0-a4",
 	"systemRequirements": [],
 	"pipRequirements": [],
 	"conditions": {

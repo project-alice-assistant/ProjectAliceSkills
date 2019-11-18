@@ -51,9 +51,9 @@ class MiniGame(ProjectAliceObject):
 		)
 
 		if lastScore:
-			if biggerIsBetter and score > int(lastScore['score']):
+			if biggerIsBetter and score > int(lastScore[0]['score']):
 				return True
-			elif not biggerIsBetter and score < int(lastScore['score']):
+			elif not biggerIsBetter and score < int(lastScore[0]['score']):
 				return True
 			else:
 				return False
