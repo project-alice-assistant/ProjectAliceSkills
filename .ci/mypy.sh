@@ -13,7 +13,7 @@ for author in PublishedModules/*; do
 		AMOUNT=0
 
 		while read fname; do
-  			NEWOUTPUT="$(mypy $fname --pretty)"
+  			NEWOUTPUT="$(mypy "$fname" --pretty)"
 			ERR=$?
 			AMOUNT=$((AMOUNT+1))
 			# when there is a mypi error append the text from mypi to OUTPUT
@@ -22,7 +22,7 @@ for author in PublishedModules/*; do
 				ERROR=$ERR
 			fi
 		# use process substitution, so while is not executed in subshell
-		done < <(find $module -name "*.py")
+		done < <(find "$module" -name "*.py")
 
 		# when no error print success, else print the error output of mypi
 		if [ $ERR -eq 0 ]; then

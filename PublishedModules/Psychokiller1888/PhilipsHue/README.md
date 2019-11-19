@@ -32,7 +32,7 @@ Configuration
 
 `phueAutodiscoverFallback`:
  - type: `bool`
- 
+
 `phueBridgeIp`:
  - type: `string`
- 
+

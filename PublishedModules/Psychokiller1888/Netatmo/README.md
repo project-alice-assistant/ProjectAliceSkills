@@ -42,11 +42,11 @@ Get readings from your netatmo hardware
 `username`:
  - type: `str`
  - desc: `Your Netatmo account username`
- 
+
 `password`:
  - type: `str`
  - desc: `Your Netatmo account password`
- 
+
 `WindAlertFromKmh`:
  - type: `int`
  - desc: `An event is broadcasted when this limit is reached`
