@@ -38,21 +38,18 @@ class DayTime:
 
 
 class DayTimeEn(DayTime):
-	def _stringifyFullHours(self) -> Union[str, int]:
+	def _stringifyFullHours(self) -> str:
 		if self._hours == 12:
 			return 'noon'
 		if self._hours == 0:
 			return 'midnight'
 
-		return self.hours12
+		return f"{self.hours12} o'clock"
 
 
 	def __str__(self) -> str:
 		if self._minutes == 0:
-			hours = self._stringifyFullHours()
-			answer = hours
-			if isinstance(hours, int):
-				answer = f"{hours} o'clock"
+			answer = self._stringifyFullHours()
 
 		elif self._minutes < 10:
 			answer = f'{self.hours12} o {self._minutes}'
@@ -191,7 +188,7 @@ class DateDayTimeYear(Module):
 	@IntentHandler('GetTime')
 	def timeIntent(self, session: DialogSession, **_kwargs):
 		if self.LanguageManager.activeLanguage == 'en':
-			dayTime = DayTimeEn(datetime.now())
+			dayTime: DayTime = DayTimeEn(datetime.now())
 		elif self.LanguageManager.activeLanguage == 'fr':
 			dayTime = DayTimeFr(datetime.now())
 		elif self.LanguageManager.activeLanguage == 'de':

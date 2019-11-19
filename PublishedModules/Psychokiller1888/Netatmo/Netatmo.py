@@ -1,5 +1,5 @@
 import time
-from typing import Tuple
+from typing import Tuple, Generator
 
 import lnetatmo
 
@@ -73,7 +73,7 @@ class Netatmo(Module):
 		return True
 
 
-	def _lastWeatherData(self) -> Tuple[str, str, str]:
+	def _lastWeatherData(self) -> Generator[Tuple[str, str, str], None, None]:
 		self._weatherData = lnetatmo.WeatherStationData(self._netatmoAuth)
 		for siteId, values in self._weatherData.lastData().items():
 
