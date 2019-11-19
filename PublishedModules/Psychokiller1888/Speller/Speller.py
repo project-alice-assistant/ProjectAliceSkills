@@ -1,6 +1,7 @@
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
+from core.util.Decorators import IntentHandler
 
 
 class Speller(Module):
@@ -9,22 +10,8 @@ class Speller(Module):
 	Description: Ask alice how to spell any word!
 	"""
 
-	_INTENT_DO_SPELL = Intent('DoSpellWord')
-	_INTENT_ANSWER_WORD = Intent('UserRandomAnswer', isProtected=True)
-
-	def __init__(self):
-		self._SUPPORTED_INTENTS	= [
-			(self._INTENT_DO_SPELL, self.spellIntent),
-			self._INTENT_ANSWER_WORD
-		]
-
-		self._INTENT_ANSWER_WORD.dialogMapping = {
-			'answerWord': self.spellIntent
-		}
-
-		super().__init__(self._SUPPORTED_INTENTS)
-
-
+	@IntentHandler('DoSpellWord')
+	@IntentHandler('UserRandomAnswer', isProtected=True, requiredState='answerWord')
 	def spellIntent(self, session: DialogSession, **_kwargs):
 		word = session.slotValue('RandomWord') or 'unknownword'
 
@@ -32,7 +19,7 @@ class Speller(Module):
 			self.continueDialog(
 				sessionId=session.sessionId,
 				text=self.randomTalk('notUnderstood'),
-				intentFilter=[self._INTENT_ANSWER_WORD],
+				intentFilter=[Intent('UserRandomAnswer')],
 				currentDialogState='answerWord'
 			)
 			return

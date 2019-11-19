@@ -4,7 +4,7 @@ from requests.exceptions import RequestException
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
-from core.util.Decorators import AnyExcept, Online
+from core.util.Decorators import AnyExcept, Online, IntentHandler
 
 
 class FreeCurrencyConverterDotCom(Module):
@@ -13,20 +13,13 @@ class FreeCurrencyConverterDotCom(Module):
 	Description: Let's you convert world currencies
 	"""
 
-	_INTENT_CONVERT_CURRENCY = Intent('ConvertCurrency')
-	_INTENT_ANSWER_CURRENCY = Intent('AnswerCurrency', isProtected=True)
-
-
 	def __init__(self):
-		self._SUPPORTED_INTENTS = [
-			(self._INTENT_ANSWER_CURRENCY, self.convertCurrencyIntent),
-			(self._INTENT_CONVERT_CURRENCY, self.convertCurrencyIntent),
-		]
-
 		self._apiKey = self.getConfig('apiKey')
-		super().__init__(self._SUPPORTED_INTENTS)
+		super().__init__()
 
 
+	@IntentHandler('ConvertCurrency')
+	@IntentHandler('AnswerCurrency', isProtected=True)
 	@AnyExcept(exceptions=(RequestException, KeyError), text='noServer', printStack=True)
 	@Online
 	def convertCurrencyIntent(self, session: DialogSession, **_kwargs):
@@ -40,7 +33,7 @@ class FreeCurrencyConverterDotCom(Module):
 		if not fromCurrency:
 			self.continueDialog(
 				sessionId=session.sessionId,
-				intentFilter=[self._INTENT_ANSWER_CURRENCY],
+				intentFilter=[Intent('AnswerCurrency')],
 				text=self.TalkManager.randomTalk(module=self.name, talk='fromWhatCurrency'),
 				customData={
 					'module'    : self.name,
