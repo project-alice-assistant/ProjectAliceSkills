@@ -215,4 +215,4 @@ class DateDayTimeYear(Module):
 	@IntentHandler('GetYear')
 	def yearIntent(self, session: DialogSession, **_kwargs):
 		year = datetime.now().strftime('%Y')
-		self.endDialog(session.sessionId, self.TalkManager.randomTalk('day').format(year))
+		self.endDialog(session.sessionId, self.TalkManager.randomTalk('year').format(year))
