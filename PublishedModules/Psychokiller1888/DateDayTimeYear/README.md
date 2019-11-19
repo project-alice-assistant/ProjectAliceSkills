@@ -16,7 +16,7 @@ wget http://modules.projectalice.ch/DateDayTimeYear \
 ### Description
 Ask for the time, date, day and year
 
-- Version: 1.0.16
+- Version: 1.0.17
 - Author: Psycho
 - Maintainers:
   - maxbachmann
