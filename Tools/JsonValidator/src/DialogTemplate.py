@@ -7,55 +7,77 @@ class DialogTemplate:
 	def __init__(self, dialogTemplate: dict, verbosity: int = 0):
 		self._dialogTemplate = dialogTemplate
 		self._verbosity = verbosity
+		self._slots = dict()
+		self._intents = dict()
+		self._cleanedUtterances = dict()
+		self._utteranceSlots = dict()
+
+		self._initSlots()
+		self._initIntents()
+		self._initCleanedUtterances()
+		self._initUtteranceSlots()
+
+
+	def _initSlots(self):
+		for slot in self._dialogTemplate['slotTypes']:
+			self._slots[slot['name']] = slot
+
+
+	def _initIntents(self):
+		for intent in self._dialogTemplate['intents']:
+			self._intents[intent['name']] = intent
+
+
+	def _cleanUtterance(self, utterance: str) -> str:
+		def upperRepl(match: Match) -> str:
+			return match.group(1).upper()
+
+		cleanUtterance = utterance.lower()
+		if self._verbosity:
+			cleanUtterance = re.sub(r'{.*?:=>(.*?)}', upperRepl, cleanUtterance)
+		cleanUtterance = re.sub(r'[^a-zA-Z1-9 ]', '', cleanUtterance)
+		return ' '.join(cleanUtterance.split())
+
+
+	def _initCleanedUtterances(self):
+		for intentName, intents in self.intents.items():
+			self._cleanedUtterances[intentName] = defaultdict(list)
+			for utterance in intents['utterances']:
+				self._cleanedUtterances[intentName][self._cleanUtterance(utterance)].append(utterance)
+
+
+	def _mapUtteranceSlots(self, utterance: str, slots: list):
+		utteranceSlotMapping = defaultdict(list)
+		slotNames = re.findall(r'{(.*?):=>(.*?)}', utterance)
+		for slot in slots:
+			for value, slotName in slotNames:
+				if slot['name'] == slotName:
+					utteranceSlotMapping[slot['type']].append(value)
+					continue
+		return utteranceSlotMapping
+
+
+	def _initUtteranceSlots(self):
+		for intentName, intents in self.intents.items():
+			for utterance in intents['utterances']:
+				self._utteranceSlots[intentName] = self._mapUtteranceSlots(utterance, intents['slots'])
 
 
 	@property
 	def slots(self) -> dict:
-		slots = dict()
-		if self._dialogTemplate:
-			for slot in self._dialogTemplate['slotTypes']:
-				slots[slot['name']] = slot
-		return slots
+		return self._slots
 
 
 	@property
 	def intents(self) -> dict:
-		intents = dict()
-		if self._dialogTemplate:
-			for intent in self._dialogTemplate['intents']:
-				intents[intent['name']] = intent
-		return intents
+		return self._intents
 
 
 	@property
-	def shortUtterances(self) -> dict:
-		def upperRepl(match: Match) -> str:
-			return match.group(1).upper()
-
-		utterancesDict: dict = dict()
-		for intentName, intents in self.intents.items():
-			utterancesDict[intentName] = defaultdict(list)
-			for utterance in intents['utterances']:
-				# make utterance lower case, slot name upper case, remove everything but characters and numbers
-				# and make sure there is only one whitespace between two words
-				shortUtterance = utterance.lower()
-				if self._verbosity:
-					shortUtterance = re.sub(r'{.*?:=>(.*?)}', upperRepl, shortUtterance)
-				shortUtterance = re.sub(r'[^a-zA-Z1-9 ]', '', shortUtterance)
-				shortUtterance = ' '.join(shortUtterance.split())
-				utterancesDict[intentName][shortUtterance].append(utterance)
-		return utterancesDict
+	def cleanedUtterances(self) -> dict:
+		return self._cleanedUtterances
 
 
 	@property
 	def utteranceSlots(self) -> dict:
-		utteranceSlotDict: dict = dict()
-		for intentName, intents in self.intents.items():
-			utteranceSlotDict[intentName] = defaultdict(list)
-			for utterance in intents['utterances']:
-				slotNames = re.findall(r'{(.*?):=>(.*?)}', utterance)
-				for slot in intents['slots']:
-					for value, slotName in slotNames:
-						if slot['name'] == slotName:
-							utteranceSlotDict[intentName][slot['type']].append(value)
-		return utteranceSlotDict
+		return self._utteranceSlots

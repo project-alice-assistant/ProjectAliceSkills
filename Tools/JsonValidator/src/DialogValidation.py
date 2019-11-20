@@ -160,11 +160,11 @@ class DialogValidation(Validation):
 			jsonPath = self._validModule['utterances'][file.name]['duplicates']
 			# get data and check whether it is valid
 			data = self.validateSyntax(file)
-			for intentName, shortUtterances in DialogTemplate(data, verbosity).shortUtterances.items():
-				for shortUtterance, utterances in shortUtterances.items():
+			for intentName, cleanedUtterances in DialogTemplate(data, verbosity).cleanedUtterances.items():
+				for cleanedUtterance, utterances in cleanedUtterances.items():
 					if len(utterances) > 1:
 						self._error = True
-						jsonPath[intentName][shortUtterance] = utterances
+						jsonPath[intentName][cleanedUtterance] = utterances
 
 
 	def validate(self, verbosity: int = 0) -> bool:
