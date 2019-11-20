@@ -4,7 +4,8 @@
 		"module",
 		"icon",
 		"description",
-		"slotTypes"
+		"slotTypes",
+		"intents"
 	],
 	"properties": {
 		"module": {

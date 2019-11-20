@@ -19,12 +19,12 @@ class DialogTemplate:
 
 
 	def _initSlots(self):
-		for slot in self._dialogTemplate['slotTypes']:
+		for slot in self._dialogTemplate.get('slotTypes', dict()):
 			self._slots[slot['name']] = slot
 
 
 	def _initIntents(self):
-		for intent in self._dialogTemplate['intents']:
+		for intent in self._dialogTemplate.get('intents', dict()):
 			self._intents[intent['name']] = intent
 
 
