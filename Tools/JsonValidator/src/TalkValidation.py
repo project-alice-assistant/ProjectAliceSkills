@@ -20,21 +20,24 @@ class TalkValidation(Validation):
 
 
 	def validateTypes(self):
-		# english is the master language
-		enSlots = self.validateSyntax(self._modulePath/'talks/en.json')
-
-		# check whether the same slots appear in all files[file.name]
+		# check whether the same slots appear in all files
 		for file in self.jsonFiles:
-			# get data and check whether it is valid
-			data = self.validateSyntax(file)
-			errors = [k for k, v in enSlots.items() if k not in data]
+			errors = [talkType for talkType in self._files['en'] if talkType not in self._files[file.stem]]
 			if errors:
-				self.indentPrint(2, f'missing types in {file.parent.name}/{file.name}:')
+				self.saveIndentedError(2, f'missing types in {file.parent.name}/{file.name}:')
 				self.printErrorList(errors, 4)
 				self._error = True
 
 
+	def loadFiles(self):
+		for file in self.jsonFiles:
+			data = self.validateSyntax(file)
+			self._files[file.stem] = data
+
+
 	def validate(self, verbosity: int = 0) -> bool:
-		self.validateJsonSchemas()
-		self.validateTypes()
+		self.loadFiles()
+		if self._files['en']:
+			self.validateJsonSchemas()
+			self.validateTypes()
 		return self._error

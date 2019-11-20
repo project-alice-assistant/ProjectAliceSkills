@@ -69,7 +69,7 @@ class DialogValidation(Validation):
 		allSlots = dict()
 		for module in self.getRequiredModules():
 			# get data and check whether it is valid
-			path = module / 'dialogTemplate' / language
+			path = module / 'dialogTemplate' / f'{language}.json'
 			if path.is_file():
 				data = self._files[path.stem]
 				allSlots.update(DialogTemplate(data).slots)
@@ -77,21 +77,19 @@ class DialogValidation(Validation):
 
 
 	@staticmethod
-	def searchMissingSlotValues(values: list, allSlots: dict) -> list:
-		found = []
-		for value in values:
-			uValue = unidecode(value).lower()
-			for slot in allSlots['values']:
-				allValues = [unidecode(slot['value']).lower()]
-				if allSlots['useSynonyms'] and 'synonyms' in slot:
-					allValues.extend([unidecode(x).lower() for x in slot['synonyms']])
+	def searchMissingSlotValues(values: list, slot: dict) -> list:
+		if slot['automaticallyExtensible']:
+			return list()
 
-				if uValue in allValues or allSlots['automaticallyExtensible']:
-					found.append(value)
-		return [x for x in values if x not in found]
+		allValues = list()
+		for slotValue in slot['values']:
+			allValues.append(unidecode(slotValue['value']).lower())
+			allValues.extend([unidecode(x).lower() for x in slotValue.get('synonyms', list())])
+
+		return [value for value in values if unidecode(value).lower() not in allValues]
 
 
-	def validateIntentSlot(self, allSlots: dict, file: Path, slot: str, values: list, intentName: str) -> Union[list,str]:
+	def validateIntentSlot(self, language: str, slot: str, values: list) -> Union[list,str]:
 		if self.isSnipsBuiltinSlot(slot):
 			return
 		
@@ -99,25 +97,21 @@ class DialogValidation(Validation):
 			#TODO search if slot value is in there aswell
 			return
 
-		if slot in allSlots[file]:
-			return self.searchMissingSlotValues(values, allSlots[file][slot])
+		allSlots = self.getAllSlots(language)
+		if slot in allSlots:
+			return self.searchMissingSlotValues(values, allSlots[slot])
 
 		return slot
 
-	def validateIntentSlots(self) -> None:
-		allSlots = dict()
-		# get slots from all json files of a module
-		for file in self.jsonFiles:
-			allSlots[file] = self.getAllSlots(file.name)
 
-		# check whether the same slots appear in all files
+	def validateIntentSlots(self) -> None:
 		for file in self.jsonFiles:
 			missingSlotValues = dict()
 			missingSlots = list()
 			data = self._files[file.stem]
 			for intentName, slots in DialogTemplate(data).utteranceSlots.items():
 				for slot, values in slots.items():
-					result = self.validateIntentSlot(allSlots, file, slot, values, intentName)
+					result = self.validateIntentSlot(file.stem, slot, values)
 					if isinstance(result, str):
 						missingSlots.append(result)
 						self._error = True
@@ -126,14 +120,14 @@ class DialogValidation(Validation):
 						self._error = True
 			
 			if missingSlots:
-				self.indentPrint(2, f'missing slots in {file.parent.name}/{file.name}:')
-				self.indentPrint(4, intentName)
+				self.saveIndentedError(2, f'missing slots in {file.parent.name}/{file.name}:')
+				self.saveIndentedError(4, intentName)
 				self.printErrorList(missingSlots, 4)
 			
 			if missingSlotValues:
-				self.indentPrint(2, f'missing slot values in {file.parent.name}/{file.name}:')
+				self.saveIndentedError(2, f'missing slot values in {file.parent.name}/{file.name}:')
 				for slot, missingValues in sorted(missingSlotValues.items()):
-					self.indentPrint(8, f'intent: {intentName}, slot: {slot}')
+					self.saveIndentedError(8, f'intent: {intentName}, slot: {slot}')
 					self.printErrorList(missingValues, 8)
 			
 		
@@ -147,7 +141,7 @@ class DialogValidation(Validation):
 			data = self._files[file.stem]
 			missingIntents = [k for k in allIntents if k not in DialogTemplate(data).intents]
 			if missingIntents:
-				self.indentPrint(2, f'missing intent translation in {file.parent.name}/{file.name}:')
+				self.saveIndentedError(2, f'missing intent translation in {file.parent.name}/{file.name}:')
 				self.printErrorList(missingIntents, 4)
 				self._error = True
 
@@ -161,7 +155,7 @@ class DialogValidation(Validation):
 			data = self._files[file.stem]
 			missingSlots = [k for k in allSlots if k not in DialogTemplate(data).slots]
 			if missingSlots:
-				self.indentPrint(2, f'missing slot translation in {file.parent.name}/{file.name}:')
+				self.saveIndentedError(2, f'missing slot translation in {file.parent.name}/{file.name}:')
 				self.printErrorList(missingSlots, 4)
 				self._error = True
 
@@ -175,8 +169,8 @@ class DialogValidation(Validation):
 					if len(utterances) > 1:
 						if not error:
 							error = True
-							self.indentPrint(2, f'duplicates in {file.parent.name}/{file.name}:')
-						self.indentPrint(4, intentName)
+							self.saveIndentedError(2, f'duplicates in {file.parent.name}/{file.name}:')
+						self.saveIndentedError(4, intentName)
 						self.printErrorList(utterances, 4)
 
 			self._error = self._error or error
@@ -186,6 +180,7 @@ class DialogValidation(Validation):
 		for file in self.jsonFiles:
 			data = self.validateSyntax(file)
 			self._files[file.stem] = data
+
 
 	def validate(self, verbosity: int = 0) -> bool:
 		self.loadFiles()

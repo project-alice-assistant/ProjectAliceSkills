@@ -32,7 +32,7 @@ class InstallValidation(Validation):
 				errors.append(error.message)
 
 		if errors:
-			self.indentPrint(2, f'schema errors in {file.name}:')
+			self.saveIndentedError(2, f'schema errors in {file.name}:')
 			self.printErrorList(errors, 4)
 
 
