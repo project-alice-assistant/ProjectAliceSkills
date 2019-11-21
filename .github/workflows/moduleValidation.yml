@@ -25,11 +25,13 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install alice-sk
-    - name: Changed Files Exporter
-      uses: FuturaTrepadeira/changed-files@v1
-      with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
     - name: validate all json files
       if: always()
       run: |
-        printenv
+        #echo 'created:' ${{ FILES_CREATED }} 'updated:' ${{ FILES_UPDATED }} 'deleted:' ${{ FILES_DELETED }}
+        alice-sk validate --paths PublishedModules/*/*/ --token ${{ secrets.GITHUB_TOKEN }}
+    - name: test static typing
+      if: always()
+      run: |
+        pip install mypy
+        ./.ci/mypy.sh
