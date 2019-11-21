@@ -1,6 +1,9 @@
 name: Python package
 
-on: [push]
+on: 
+  pull_request:
+    paths:
+    - 'PublishedModules/**' 
 
 jobs:
   build:
@@ -29,10 +32,4 @@ jobs:
     - name: validate all json files
       if: always()
       run: |
-        #echo 'created:' ${{ FILES_CREATED }} 'updated:' ${{ FILES_UPDATED }} 'deleted:' ${{ FILES_DELETED }}
-        alice-sk validate --paths PublishedModules/*/*/ --token ${{ secrets.GITHUB_TOKEN }}
-    - name: test static typing
-      if: always()
-      run: |
-        pip install mypy
-        ./.ci/mypy.sh
+        printenv
