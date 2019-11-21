@@ -1,5 +1,6 @@
 from pathlib import Path
 from typing import Optional
+import requests
 
 import click
 
@@ -11,10 +12,12 @@ from src.Validation import Validation
 
 class Validator:
 
-	def __init__(self, verbosity: int = 0):
+	def __init__(self, verbosity: int = 0, username: str = 'ProjectAlice', token: str = None):
 		self._dirPath = Path(__file__).resolve().parent.parent
 		self._modulePath = self._dirPath.parent.parent
 		self._verbosity = verbosity
+		self._username = username
+		self._token = token
 
 
 	@staticmethod
@@ -24,10 +27,15 @@ class Validator:
 
 	def validate(self):
 		err = 0
+		dialog = DialogValidation(self._username, self._token)
+		installer = InstallValidation()
+		talk = TalkValidation()
+		
 		for module in self._modulePath.glob('PublishedModules/*/*'):
-			dialog = DialogValidation(module)
-			installer = InstallValidation(module)
-			talk = TalkValidation(module)
+			dialog.reset(module)
+			installer.reset(module)
+			talk.reset(module)
+			
 			dialog.validate(self._verbosity)
 			installer.validate()
 			talk.validate()

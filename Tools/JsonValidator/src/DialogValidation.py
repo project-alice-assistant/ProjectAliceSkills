@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 from typing import Generator, Optional, Tuple, Union
 from unidecode import unidecode
+import requests
 
 from snips_nlu_parsers import get_all_builtin_entities
 from src.DialogTemplate import DialogTemplate
@@ -9,6 +10,34 @@ from src.Validation import Validation
 
 
 class DialogValidation(Validation):
+
+	def __init__(self, username: str = None, token: str = None):
+		self._coreDialogTemplates = dict()
+		self._branch = 'master'
+		super().__init__(username, token)
+
+
+	def getCoreModules(self, language: str):
+		# only load language once
+		if language in self._coreDialogTemplates:
+			return
+
+		self._coreDialogTemplates[language] = list()
+		url = f'https://api.github.com/repositories/193512918/contents/PublishedModules/ProjectAlice?ref={self._branch}'
+		modulesRequest = requests.get(url, auth=self._githubAuth)
+		modulesRequest.raise_for_status()
+		modules = modulesRequest.json()
+		for module in modules:
+			try:
+				moduleName = module['name']
+				url = f'https://raw.githubusercontent.com/project-alice-powered-by-snips/ProjectAliceModules/{self._branch}/PublishedModules/ProjectAlice/{moduleName}/dialogTemplate/{language}.json'
+				moduleRequest = requests.get(url, auth=self._githubAuth)
+				moduleRequest.raise_for_status()
+				self._coreDialogTemplates[language].append(moduleRequest.json())
+			# TODO use better exceptions
+			except Exception:
+				continue
+
 
 	@property
 	def jsonSchema(self) -> dict:
@@ -27,12 +56,6 @@ class DialogValidation(Validation):
 		return slot in get_all_builtin_entities()
 
 
-	#TODO either hard code or retrieve from github
-	def isAliceBuiltinSlot(self, slot: str) -> bool:
-		#return slot in
-		return False
-
-
 	@staticmethod
 	def installerJsonFiles(modulePath: Path) -> Generator[Path, None, None]:
 		return modulePath.glob('*.install')
@@ -45,30 +68,34 @@ class DialogValidation(Validation):
 		return None
 
 
-	# TODO might not exist when validating single module -> get from github
 	def getRequiredModules(self, modulePath: Path = None) -> set:
 		modulePath = Path(modulePath) if modulePath else self._modulePath
 		modules = {modulePath}
-		for installer in self.installerJsonFiles(modulePath):
-			data = self.validateSyntax(installer)
-			if data and 'module' in data['conditions']:
-				for module in data['conditions']['module']:
-					if module['name'] != modulePath.name:
-						path = self.searchModule(module['name'])
-						pathSet = {path} if path else set()
-						modules = modules.union(pathSet, self.getRequiredModules(path))
+		# TODO get from github same for .install files
+		#for installer in self.installerJsonFiles(modulePath):
+		#	data = self.validateSyntax(installer)
+		#	if data and 'module' in data['conditions']:
+		#		for module in data['conditions']['module']:
+		#			if module['name'] != modulePath.name:
+		#				path = self.searchModule(module['name'])
+		#				pathSet = {path} if path else set()
+		#				modules = modules.union(pathSet, self.getRequiredModules(path))
 		return modules
 
-
-	# TODO might not exist when validating single module -> get from github
-	#def getCoreModules(self) -> Generator[Path, None, None]:
-	#	return (self._basePath/'PublishedModules/ProjectAlice').glob('*')
 
 
 	def getAllSlots(self, language: str) -> dict:
 		allSlots = dict()
+		try:
+			self.getCoreModules(language)
+		# TODO use better exceptions
+		except Exception:
+			pass
+
+		for dialogTemplate in self._coreDialogTemplates[language]:
+			allSlots.update(DialogTemplate(dialogTemplate).slots)
+
 		for module in self.getRequiredModules():
-			# get data and check whether it is valid
 			path = module / 'dialogTemplate' / f'{language}.json'
 			if path.is_file():
 				data = self._files[path.stem]
@@ -91,10 +118,6 @@ class DialogValidation(Validation):
 
 	def validateIntentSlot(self, language: str, slot: str, values: list) -> Union[list,str]:
 		if self.isSnipsBuiltinSlot(slot):
-			return
-		
-		if self.isAliceBuiltinSlot(slot):
-			#TODO search if slot value is in there aswell
 			return
 
 		allSlots = self.getAllSlots(language)
@@ -151,7 +174,6 @@ class DialogValidation(Validation):
 
 		# check whether the same slots appear in all files
 		for file in self.jsonFiles:
-
 			data = self._files[file.stem]
 			missingSlots = [k for k in allSlots if k not in DialogTemplate(data).slots]
 			if missingSlots:

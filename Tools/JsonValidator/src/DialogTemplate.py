@@ -46,14 +46,14 @@ class DialogTemplate:
 				self._cleanedUtterances[intentName][self._cleanUtterance(utterance)].append(utterance)
 
 
-	def _mapUtteranceSlots(self, utterance: str, slots: list):
+	def _mapUtteranceSlots(self, utterance: str, slots: list) -> defaultdict:
 		utteranceSlotMapping = defaultdict(list)
 		slotNames = re.findall(r'{(.*?):=>(.*?)}', utterance)
 		for slot in slots:
-			for value, slotName in slotNames:
+			for slotValue, slotName in slotNames:
 				if slot['name'] == slotName:
-					utteranceSlotMapping[slot['type']].append(value)
-					continue
+					utteranceSlotMapping[slot['type']].append(slotValue)
+
 		return utteranceSlotMapping
 
 

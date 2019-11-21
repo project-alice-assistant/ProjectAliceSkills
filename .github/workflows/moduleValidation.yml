@@ -25,7 +25,7 @@ jobs:
     - name: validate all json files
       if: always()
       run: |
-        python3 Tools/JsonValidator/JsonValidator.py --all
+        python3 Tools/JsonValidator/JsonValidator.py --token ${{ secrets.GITHUB_TOKEN }}
     - name: test static typing
       if: always()
       run: |
