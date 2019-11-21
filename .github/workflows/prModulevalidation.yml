@@ -25,5 +25,4 @@ jobs:
     - name: validate all json files
       if: always()
       run: |
-        #echo 'created:' ${{ FILES_CREATED }} 'updated:' ${{ FILES_UPDATED }} 'deleted:' ${{ FILES_DELETED }}
         printenv
