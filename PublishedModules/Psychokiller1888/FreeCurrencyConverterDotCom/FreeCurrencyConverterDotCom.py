@@ -14,8 +14,8 @@ class FreeCurrencyConverterDotCom(Module):
 	"""
 
 	def __init__(self):
-		self._apiKey = self.getConfig('apiKey')
 		super().__init__()
+		self._apiKey = self.getConfig('apiKey')
 
 
 	@IntentHandler('ConvertCurrency')
