@@ -5,6 +5,7 @@ import requests
 from core.ProjectAliceExceptions import ModuleStartDelayed, ModuleStartingFailed
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
+from core.commons import constants
 from core.dialog.model.DialogSession import DialogSession
 from .libraries.phue import Bridge, PhueException, PhueRegistrationException
 
@@ -74,15 +75,7 @@ class PhilipsHue(Module):
 					self.delayed = True
 					raise ModuleStartDelayed(self.name)
 
-				try:
-					self._bridge.register_app()
-				except PhueRegistrationException:
-					self.logWarning('Alice not registerd on bridge')
-					self.delayed = True
-					raise ModuleStartDelayed(self.name)
-				except PhueException as e:
-					raise ModuleStartingFailed(moduleName=self.name, error=f'Error connecting to bridge: {e}')
-
+				self._setBridgeDefaults()
 				return self.supportedIntents
 			else:
 				self.logInfo(f'Philips Hue bridge IP not set')
@@ -140,8 +133,9 @@ class PhilipsHue(Module):
 
 	def _setBridgeDefaults(self):
 		for group in self._bridge.groups:
-			if 'group for' in group.name.lower():
+			if not group or 'group for' in group.name.lower():
 				continue
+
 			if group.name.lower() == 'house':
 				self._house = group
 			else:
@@ -207,17 +201,15 @@ class PhilipsHue(Module):
 	def _getRooms(self, session: DialogSession) -> list:
 		rooms = [slot.value['value'].lower() for slot in session.slotsAsObjects.get('Room', list())]
 		if not rooms:
-			room = session.customData.get('room', session.siteId).lower()
-			if room == 'default':
-				room = self.ConfigManager.getAliceConfigByName('room').lower()
-			rooms = [room]
+			rooms = [constants.DEFAULT_SITE_ID.lower()]
 
 		return rooms if self._validateRooms(session, rooms) else list()
 
 
 	def _validateRooms(self, session: DialogSession, rooms: list) -> bool:
+		print(self._groups)
 		for room in rooms:
-			if room not in self._groups and room != 'everywhere':
+			if room not in self._groups and room != constants.EVERYWHERE:
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk(text='roomUnknown', replace=[room]))
 				return False
 		return True
@@ -226,8 +218,9 @@ class PhilipsHue(Module):
 	def lightOnIntent(self, session: DialogSession, **_kwargs):
 		partOfTheDay = self.Commons.partOfTheDay().lower()
 
-		for room in self._getRooms(session):
-			if room == 'everywhere':
+		rooms = self._getRooms(session)
+		for room in rooms:
+			if room == constants.EVERYWHERE:
 				self._bridge.set_group(0, 'on', True)
 				break
 			elif partOfTheDay in self._scenes or self._bridge.run_scene(group_name=self._groups[room].name, scene_name=self._scenes[partOfTheDay].name):
@@ -236,19 +229,22 @@ class PhilipsHue(Module):
 			for light in self._groups[room].lights:
 				light.on = True
 
-		self.endDialog(session.sessionId, text=self.randomTalk('confirm'))
+		if rooms:
+			self.endDialog(session.sessionId, text=self.randomTalk('confirm'))
 
 
 	def lightOffIntent(self, session: DialogSession, **_kwargs):
-		for room in self._getRooms(session):
-			if room == 'everywhere':
+		rooms = self._getRooms(session)
+		for room in rooms:
+			if room == constants.EVERYWHERE:
 				self._bridge.set_group(0, 'on', False)
 				break
 
 			for light in self._groups[room].lights:
 				light.on = False
 
-		self.endDialog(session.sessionId, text=self.randomTalk('confirm'))
+		if rooms:
+			self.endDialog(session.sessionId, text=self.randomTalk('confirm'))
 
 
 	def lightSceneIntent(self, session: DialogSession, **_kwargs):
@@ -285,14 +281,16 @@ class PhilipsHue(Module):
 				self.endDialog(sessionId, text=self.randomTalk('sceneNotInThisRoom'))
 				return
 
-		self.endDialog(sessionId, text=self.randomTalk('confirm'))
+		if rooms:
+			self.endDialog(sessionId, text=self.randomTalk('confirm'))
 
 
 	def manageLightsIntent(self, session: DialogSession, **_kwargs):
 		partOfTheDay = self.Commons.partOfTheDay().lower()
 
-		for room in self._getRooms(session):
-			if room == 'everywhere':
+		rooms = self._getRooms(session)
+		for room in rooms:
+			if room == constants.EVERYWHERE:
 				self._bridge.set_group(0, 'on', not self._bridge.get_group(0, 'on'))
 				break
 
@@ -300,13 +298,14 @@ class PhilipsHue(Module):
 			if group.on:
 				group.on = False
 				continue
-			elif (partOfTheDay in self._scenes or self._bridge.run_scene(group_name=group.name, scene_name=self._scenes[partOfTheDay].name)):
+			elif partOfTheDay in self._scenes or self._bridge.run_scene(group_name=group.name, scene_name=self._scenes[partOfTheDay].name):
 				continue
 
 			for light in group.lights:
 				light.on = True
 
-		self.endDialog(session.sessionId, text=self.randomTalk('confirm'))
+		if rooms:
+			self.endDialog(session.sessionId, text=self.randomTalk('confirm'))
 
 
 	def dimLightsIntent(self, session: DialogSession, **_kwargs):
@@ -325,15 +324,17 @@ class PhilipsHue(Module):
 		percentage = self.Commons.clamp(session.slotValue('Percent'), 0, 100)
 		brightness = int(round(254 / 100 * percentage))
 
-		for room in self._getRooms(session):
-			if room == 'everywhere':
+		rooms = self._getRooms(session)
+		for room in rooms:
+			if room == constants.EVERYWHERE:
 				self._bridge.set_group(0, 'brightness', brightness)
 				break
 
 			for light in self._groups[room].lights:
 				light.brightness = brightness
 
-		self.endDialog(session.sessionId, text=self.randomTalk('confirm'))
+		if rooms:
+			self.endDialog(session.sessionId, text=self.randomTalk('confirm'))
 
 
 	def runScene(self, scene, group=None):

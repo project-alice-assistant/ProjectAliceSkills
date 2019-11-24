@@ -250,7 +250,7 @@ class Light(object):
 			value = 2000
 
 		colortemp_mireds = int(round(1e6 / value))
-		logger.debug("{0:d} K is {1} mireds".format(value, colortemp_mireds))
+		logger.debug(f'{value:d} K is {colortemp_mireds} mireds')
 		self.colortemp = colortemp_mireds
 
 
@@ -341,7 +341,7 @@ class Sensor(object):
 		self._uniqueid = None
 		self._manufacturername = None
 		self._state = SensorState(bridge, sensor_id)
-		self._config = {}
+		self._config = dict()
 		self._recycle = None
 
 
@@ -492,8 +492,7 @@ class Group(Light):
 		# transition time...
 		if self.transitiontime is not None:
 			kwargs['transitiontime'] = self.transitiontime
-			logger.debug("Setting with transitiontime = {0} ds = {1} s".format(
-				self.transitiontime, float(self.transitiontime) / 10))
+			logger.debug(f'Setting with transitiontime = {self.transitiontime} ds = {float(self.transitiontime) / 10} s')
 
 			if (args[0] == 'on' and args[1] is False) or (
 					kwargs.get('on', True) is False):
@@ -511,8 +510,7 @@ class Group(Light):
 	def name(self, value):
 		old_name = self.name
 		self._name = value
-		logger.debug("Renaming light group from '{0}' to '{1}'".format(
-			old_name, value))
+		logger.debug(f"Renaming light group from '{old_name}' to '{value}'")
 		self._set('name', self._name)
 
 
@@ -527,8 +525,7 @@ class Group(Light):
 	@lights.setter
 	def lights(self, value):
 		""" Change the lights that are in this group"""
-		logger.debug("Setting lights in group {0} to {1}".format(
-			self.group_id, str(value)))
+		logger.debug(f'Setting lights in group {self.group_id} to {value}')
 		self._set('lights', value)
 
 
@@ -575,12 +572,7 @@ class Scene(object):
 
 	def __repr__(self):
 		# like default python repr function, but add scene name
-		return '<{0}.{1} id="{2}" name="{3}" lights={4}>'.format(
-			self.__class__.__module__,
-			self.__class__.__name__,
-			self.scene_id,
-			self.name,
-			self.lights)
+		return f'<{self.__class__.__module__}.{self.__class__.__name__} id="{self.scene_id}" name="{self.name}" lights={self.lights}>'
 
 
 class Bridge(object):
@@ -605,7 +597,7 @@ class Bridge(object):
 	"""
 
 
-	def __init__(self, config_file_path, ip = None, username = None):
+	def __init__(self, config_file_path = None, ip = None, username = None):
 		""" Initialization function.
 
 		Parameters:
@@ -620,10 +612,10 @@ class Bridge(object):
 
 		self.ip = ip
 		self.username = username
-		self.lights_by_id = {}
-		self.lights_by_name = {}
-		self.sensors_by_id = {}
-		self.sensors_by_name = {}
+		self.lights_by_id = dict()
+		self.lights_by_name = dict()
+		self.sensors_by_id = dict()
+		self.sensors_by_name = dict()
 		self._name = None
 
 
@@ -672,7 +664,7 @@ class Bridge(object):
 
 	def register_app(self):
 		""" Register this computer with the Hue bridge hardware and save the resulting access token """
-		registration_request = {"devicetype": "python_hue"}
+		registration_request = {'devicetype': 'python_hue'}
 		response = self.request('POST', '/api', registration_request)
 		for line in response:
 			for key in line:
@@ -695,8 +687,8 @@ class Bridge(object):
 		logger.info('Attempting to connect to the bridge...')
 		# If the ip and username were provided at class init
 		if self.ip is not None and self.username is not None:
-			logger.info('Using ip: ' + self.ip)
-			logger.info('Using username: ' + self.username)
+			logger.info(f'Using ip: {self.ip}')
+			logger.info(f'Using username: {self.username}')
 			return True
 
 		if self.ip is None or self.username is None:
@@ -734,7 +726,7 @@ class Bridge(object):
 		"""Returns a collection containing the lights, either by name or id (use 'id' or 'name' as the mode)
 		The returned collection can be either a list (default), or a dict.
 		Set mode='id' for a dict by light ID, or mode='name' for a dict by light name.   """
-		if self.lights_by_id == {}:
+		if self.lights_by_id == dict():
 			lights = self.request('GET', '/api/' + self.username + '/lights/')
 			for light in lights:
 				self.lights_by_id[int(light)] = Light(self, int(light))
@@ -745,7 +737,7 @@ class Bridge(object):
 			return self.lights_by_name
 		if mode == 'list':
 			# return ligts in sorted id order, dicts have no natural order
-			return [self.lights_by_id[id] for id in sorted(self.lights_by_id)]
+			return [self.lights_by_id[i] for i in sorted(self.lights_by_id)]
 
 
 	def get_sensor_id_by_name(self, name):
@@ -761,7 +753,7 @@ class Bridge(object):
 		"""Returns a collection containing the sensors, either by name or id (use 'id' or 'name' as the mode)
 		The returned collection can be either a list (default), or a dict.
 		Set mode='id' for a dict by sensor ID, or mode='name' for a dict by sensor name.   """
-		if self.sensors_by_id == {}:
+		if self.sensors_by_id == dict():
 			sensors = self.request('GET', '/api/' + self.username + '/sensors/')
 			for sensor in sensors:
 				self.sensors_by_id[int(sensor)] = Sensor(self, int(sensor))
@@ -777,7 +769,7 @@ class Bridge(object):
 	def __getitem__(self, key):
 		""" Lights are accessibly by indexing the bridge either with
 		an integer index or string name. """
-		if self.lights_by_id == {}:
+		if self.lights_by_id == dict():
 			self.get_light_objects()
 
 		try:
@@ -847,7 +839,7 @@ class Bridge(object):
 		light_id_array = light_id
 		if light_id:
 			light_id_array = [light_id]
-		result = []
+		result = list()
 		for light in light_id_array:
 			logger.debug(str(data))
 			if parameter == 'name':
@@ -861,8 +853,7 @@ class Bridge(object):
 				result.append(self.request('PUT', '/api/' + self.username + '/lights/' + str(
 					converted_light) + '/state', data))
 			if 'error' in list(result[-1][0].keys()):
-				logger.warning("ERROR: {0} for light {1}".format(
-					result[-1][0]['error']['description'], light))
+				logger.warning(f"ERROR: {result[-1][0]['error']['description']} for light {light}")
 
 		logger.debug(result)
 		return result
@@ -919,7 +910,7 @@ class Bridge(object):
 		data = self.request('GET', '/api/' + self.username + '/sensors/' + str(sensor_id))
 
 		if isinstance(data, list):
-			logger.debug("Unable to read sensor with ID {0}: {1}".format(sensor_id, repr(data)))
+			logger.debug(f'Unable to read sensor with ID {sensor_id}: {repr(data)}')
 			return None
 
 		if parameter is None:
@@ -942,8 +933,7 @@ class Bridge(object):
 		logger.debug(str(data))
 		result = self.request('PUT', '/api/' + self.username + '/sensors/' + str(sensor_id), data)
 		if 'error' in list(result[0].keys()):
-			logger.warning("ERROR: {0} for sensor {1}".format(
-				result[0]['error']['description'], sensor_id))
+			logger.warning(f"ERROR: {result[0]['error']['description']} for sensor {sensor_id}")
 
 		logger.debug(result)
 		return result
@@ -988,8 +978,7 @@ class Bridge(object):
 		logger.debug(str(data))
 		result = self.request('PUT', '/api/' + self.username + '/sensors/' + str(sensor_id) + "/" + structure, data)
 		if 'error' in list(result[0].keys()):
-			logger.warning("ERROR: {0} for sensor {1}".format(
-				result[0]['error']['description'], sensor_id))
+			logger.warning("ERROR: {result[0]['error']['description']} for sensor {sensor_id}")
 
 		logger.debug(result)
 		return result
@@ -999,7 +988,7 @@ class Bridge(object):
 		try:
 			return self.request('DELETE', '/api/' + self.username + '/scenes/' + str(scene_id))
 		except:
-			logger.debug("Unable to delete scene with ID {0}".format(scene_id))
+			logger.debug(f'Unable to delete scene with ID {scene_id}')
 
 
 	def delete_sensor(self, sensor_id):
@@ -1009,7 +998,7 @@ class Bridge(object):
 			del self.sensors_by_id[sensor_id]
 			return self.request('DELETE', '/api/' + self.username + '/sensors/' + str(sensor_id))
 		except:
-			logger.debug("Unable to delete nonexistent sensor with ID {0}".format(sensor_id))
+			logger.debug(f'Unable to delete nonexistent sensor with ID {sensor_id}')
 
 
 	# Groups of lights #####
@@ -1070,7 +1059,7 @@ class Bridge(object):
 
 		if isinstance(group_id, int) or group_id:
 			group_id_array = [group_id]
-		result = []
+		result = list()
 
 		group = 'unknown'
 		for group in group_id_array:
@@ -1158,11 +1147,11 @@ class Bridge(object):
 		groups = [x for x in self.groups if x.name == group_name]
 		scenes = [x for x in self.scenes if x.name == scene_name]
 		if len(groups) != 1:
-			logger.warning("run_scene: More than 1 group found by name {}".format(group_name))
+			logger.warning(f'run_scene: More than 1 group found by name {group_name}')
 			return False
 		group = groups[0]
 		if len(scenes) == 0:
-			logger.warning("run_scene: No scene found {}".format(scene_name))
+			logger.warning(f'run_scene: No scene found {scene_name}')
 			return False
 		if len(scenes) == 1:
 			self.activate_scene(group.group_id, scenes[0].scene_id, transition_time)
@@ -1174,8 +1163,7 @@ class Bridge(object):
 			if group_lights == scene.lights:
 				self.activate_scene(group.group_id, scene.scene_id, transition_time)
 				return True
-		logger.warning("run_scene: did not find a scene: {} "
-		               "that shared lights with group {}".format(scene_name, group_name))
+		logger.warning(f'run_scene: did not find a scene: {scene_name} that shared lights with group {group_name}')
 		return False
 
 
