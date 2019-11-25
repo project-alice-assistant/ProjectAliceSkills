@@ -13,7 +13,7 @@ class Wikipedia(Module):
 	"""
 
 	@staticmethod
-	def _extractSlots(session: DialogSession) -> str:
+	def _extractSearchWord(session: DialogSession) -> str:
 		if 'Letters' in session.slots:
 			return ''.join([slot.value['value'] for slot in session.slotsAsObjects['Letters']])
 		return session.slots.get('What', session.slots.get('RandomWord'))
