@@ -3,7 +3,9 @@ from wikipedia import wikipedia
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.dialog.model.DialogSession import DialogSession
-from core.util.Decorators import AnyExcept, Online, IntentHandler
+from core.util.Decorators import IntentHandler
+from core.util.ContextManagers import Online
+from core.ProjectAliceExceptions import OfflineError
 
 
 class Wikipedia(Module):
@@ -29,21 +31,9 @@ class Wikipedia(Module):
 		)
 
 
-	def noMatchHandler(self, session: DialogSession, **_kwargs):
-		self._whatToSearch(session, 'noMatch')
-
-
-	def ambiguousHandler(self, session: DialogSession, **_kwargs):
-		self._whatToSearch(session, 'ambiguous')
-
-
 	@IntentHandler('DoSearch')
 	@IntentHandler('UserRandomAnswer', isProtected=True, requiredState='whatToSearch')
 	@IntentHandler('SpellWord', isProtected=True, requiredState='whatToSearch')
-	@AnyExcept(printStack=True)
-	@AnyExcept(exceptions=wikipedia.WikipediaException, exceptHandler=noMatchHandler)
-	@AnyExcept(exceptions=wikipedia.DisambiguationError, exceptHandler=ambiguousHandler)
-	@Online
 	def searchIntent(self, session: DialogSession, **_kwargs):
 		search = self._extractSearchWord(session)
 		if not search:
@@ -51,7 +41,20 @@ class Wikipedia(Module):
 			return
 
 		wikipedia.set_lang(self.LanguageManager.activeLanguage)
-		result = wikipedia.summary(search, sentences=3)
+
+		try:
+			with Online():
+				result = wikipedia.summary(search, sentences=3)
+		except OfflineError:
+			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('offline', module='system'))
+		except wikipedia.DisambiguationError as e:
+			self.logWarning(msg=e)
+			self._whatToSearch(session, 'ambiguous')
+		except wikipedia.WikipediaException as e:
+			self.logWarning(msg=e)
+			self._whatToSearch(session, 'noMatch')
+		except Exception as e:
+			self.logWarning(msg=e, printStack=True)
 
 		if not result:
 			self._whatToSearch(session, 'noMatch')
