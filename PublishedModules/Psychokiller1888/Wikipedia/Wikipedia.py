@@ -55,8 +55,8 @@ class Wikipedia(Module):
 			self._whatToSearch(session, 'noMatch')
 		except Exception as e:
 			self.logWarning(msg=e, printStack=True)
-
-		if not result:
-			self._whatToSearch(session, 'noMatch')
 		else:
-			self.endDialog(sessionId=session.sessionId, text=result)
+			if not result:
+				self._whatToSearch(session, 'noMatch')
+			else:
+				self.endDialog(sessionId=session.sessionId, text=result)
