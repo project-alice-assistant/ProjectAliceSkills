@@ -1,13 +1,11 @@
 import time
 
-import requests
-
 from core.ProjectAliceExceptions import ModuleStartDelayed, ModuleStartingFailed
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.commons import constants
 from core.dialog.model.DialogSession import DialogSession
-from .libraries.phue import Bridge, PhueException, PhueRegistrationException
+from .models.PhueAPI import Bridge, LinkButtonNotPressed, NoPhueIP, PhueRegistrationError, UnauthorizedUser
 
 
 class PhilipsHue(Module):
@@ -42,82 +40,53 @@ class PhilipsHue(Module):
 
 		# noinspection PyTypeChecker
 		self._bridge: Bridge = None
-		self._groups = dict()
-		self._scenes = dict()
 		self._bridgeConnectTries = 0
 		self._stateBackup = dict()
 
-		self._house = None
-
 		super().__init__(self._INTENTS)
 
-		self._hueConfigFile = self.getResource(self.name, 'philipsHueConf.conf')
+		self._hueConfigFile = self.getResource(self.name, 'phueAPI.conf')
 		if not self._hueConfigFile.exists():
-			self.logInfo('No philipsHueConf.conf file in PhilipsHue module directory')
+			self.logInfo('No phueAPI.conf file in PhilipsHue module directory')
 
 
 	def onStart(self) -> dict:
 		super().onStart()
 
-		self._bridge = Bridge(ip=self.getConfig('phueBridgeIp'), config_file_path=self._hueConfigFile)
+		self._bridge = Bridge(ip=self.getConfig('phueBridgeIp'), confFile=self._hueConfigFile)
 
 		if not self.delayed:
-			if self.getConfig('phueBridgeIp'):
-				if not self._isPHUEBridge(self.getConfig('phueBridgeIp')):
-					self.logWarning('Configured Philips Hue bridge IP is not a bridge')
-					self.updateConfig('phueBridgeIp', '')
-					self.delayed = True
-					raise ModuleStartDelayed(self.name)
-
-				if not self._bridge.connect():
-					self.logWarning("Couldn't connect to bridge")
-					self.updateConfig('phueBridgeIp', '')
-					self.delayed = True
-					raise ModuleStartDelayed(self.name)
-
-				self._setBridgeDefaults()
-				return self.supportedIntents
-			else:
-				self.logInfo(f'Philips Hue bridge IP not set')
-				self.delayed = True
-				raise ModuleStartDelayed(self.name)
-		else:
-			if self.getAliceConfig('stayCompletlyOffline'):
-				raise ModuleStartingFailed(moduleName=self.name, error='Bridge IP not set and stay completly offline set to True, cannot auto discover Philips Hue bridge')
-			elif not self.InternetManager.online:
-				raise ModuleStartingFailed(moduleName=self.name, error='Bridge IP not set and currently offline, cannot auto discover Philips Hue bridge')
 			try:
-				request = requests.get('https://www.meethue.com/api/nupnp')
-				for ip in request.json():
-					if self._isPHUEBridge(ip['internalipaddress']):
-						self._bridge.ip = ip['internalipaddress']
-						break
+				if self._bridge.connect(autodiscover=not self.getAliceConfig('stayCompletlyOffline')):
+					self.logInfo('Connected to Philips Hue bridge')
+					return self.supportedIntents
 
-				if not self._bridge.ip:
-					raise ModuleStartingFailed(moduleName=self.name, error='No compatible bridge found on network')
-			except Exception as e:
-				raise ModuleStartingFailed(moduleName=self.name, error=f'Something went wrong trying to autodiscover the bridge: {e}')
-
-			self.ThreadManager.newThread(name='PHUERegister', target=self._registerOnBridge)
-
-		return self.supportedIntents
+			except UnauthorizedUser:
+				try:
+					self._bridge.register()
+				except LinkButtonNotPressed:
+					self.logInfo('User is not authorized')
+					self.delayed = True
+					raise ModuleStartDelayed(self.name)
+				return self.supportedIntents
+			except NoPhueIP:
+				raise ModuleStartingFailed(moduleName=self.name, error='Bridge IP not set and stay completly offline set to True, cannot auto discover Philips Hue bridge')
+		else:
+			if not self.ThreadManager.isThreadAlive('PHUERegister'):
+				self.ThreadManager.newThread(name='PHUERegister', target=self._registerOnBridge)
 
 
 	def _registerOnBridge(self):
 		try:
-			self._bridge.register_app()
+			self._bridge.register()
 			self._bridgeConnectTries = 0
 
-			if not self.getConfig('phueBridgeIp'):
-				self.updateConfig('phueBridgeIp', self._bridge.ip)
-				self.ThreadManager.doLater(
-					interval=3,
-					func=self.say,
-					args=[self.randomTalk('pressBridgeButtonConfirmation')]
-				)
-
-			self._setBridgeDefaults()
-		except PhueRegistrationException:
+			self.ThreadManager.doLater(
+				interval=3,
+				func=self.say,
+				args=[self.randomTalk('pressBridgeButtonConfirmation')]
+			)
+		except LinkButtonNotPressed:
 			if self._bridgeConnectTries < 3:
 				self.say(text=self.randomTalk('pressBridgeButton'))
 				self._bridgeConnectTries += 1
@@ -127,55 +96,8 @@ class PhilipsHue(Module):
 			else:
 				self.ThreadManager.doLater(interval=3, func=self.say, args=[self.randomTalk('pressBridgeButtonTimeout')])
 				raise ModuleStartingFailed(moduleName=self.name, error=f"Couldn't reach bridge")
-		except PhueException as e:
+		except PhueRegistrationError as e:
 			raise ModuleStartingFailed(moduleName=self.name, error=f'Error connecting to bridge: {e}')
-
-
-	def _setBridgeDefaults(self):
-		for group in self._bridge.groups:
-			if not group or 'group for' in group.name.lower():
-				continue
-
-			if group.name.lower() == 'house':
-				self._house = group
-			else:
-				self._groups[group.name.lower()] = group
-
-		for scene in self._bridge.scenes:
-			self._scenes[scene.name.lower()] = scene
-
-		if self._house is None:
-			self.logWarning('Coulnd\'t find any group named "House", creating one...')
-			self._bridge.create_group(name='House', lights=[self._bridge.get_light()])
-
-
-	@staticmethod
-	def _isPHUEBridge(ip: str) -> bool:
-		try:
-			resp = requests.get(f'http://{ip}/api/config', timeout=2)
-			data = resp.json()
-
-			if 'swversion' in data and 'bridgeid' in data:
-				return True
-
-			return False
-		except Exception:
-			return False
-
-
-	@property
-	def house(self):
-		return self._house
-
-
-	@property
-	def groups(self):
-		return self._groups
-
-
-	@property
-	def scenes(self):
-		return self._scenes
 
 
 	def onBooted(self):
@@ -185,17 +107,17 @@ class PhilipsHue(Module):
 
 
 	def onSleep(self):
-		self._bridge.set_group(0, 'on', False)
+		self._bridge.group(0).off()
 
 
 	def onFullHour(self):
-		partOfTheDay = self.Commons.partOfTheDay().lower()
-		if partOfTheDay not in self._scenes:
+		partOfTheDay = self.Commons.partOfTheDay()
+		if partOfTheDay not in self._bridge.scenesByName:
 			return
 
-		for group in self._groups.values():
-			if group.on:
-				self._bridge.run_scene(group_name=group.name, scene_name=self._scenes[partOfTheDay].name)
+		for group in self._bridge.groups.values():
+			if group.isOn:
+				group.scene(sceneName=partOfTheDay)
 
 
 	def _getRooms(self, session: DialogSession) -> list:
@@ -207,23 +129,22 @@ class PhilipsHue(Module):
 
 
 	def _validateRooms(self, session: DialogSession, rooms: list) -> bool:
-		print(self._groups)
 		for room in rooms:
-			if room not in self._groups and room != constants.EVERYWHERE:
+			if room not in self._bridge.groups and room != constants.EVERYWHERE:
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk(text='roomUnknown', replace=[room]))
 				return False
 		return True
 
 
 	def lightOnIntent(self, session: DialogSession, **_kwargs):
-		partOfTheDay = self.Commons.partOfTheDay().lower()
+		partOfTheDay = self.Commons.partOfTheDay()
 
 		rooms = self._getRooms(session)
 		for room in rooms:
 			if room == constants.EVERYWHERE:
-				self._bridge.set_group(0, 'on', True)
+				self._bridge.group(0).on()
 				break
-			elif partOfTheDay in self._scenes or self._bridge.run_scene(group_name=self._groups[room].name, scene_name=self._scenes[partOfTheDay].name):
+			elif partOfTheDay in self._bridge.scenesByName or self._bridge.run_scene(group_name=self._groups[room].name, scene_name=self._scenes[partOfTheDay].name):
 				continue
 
 			for light in self._groups[room].lights:
@@ -237,7 +158,7 @@ class PhilipsHue(Module):
 		rooms = self._getRooms(session)
 		for room in rooms:
 			if room == constants.EVERYWHERE:
-				self._bridge.set_group(0, 'on', False)
+				self._bridge.group(0).off()
 				break
 
 			for light in self._groups[room].lights:
@@ -272,7 +193,7 @@ class PhilipsHue(Module):
 				}
 			)
 			return
-		elif scene not in self._scenes:
+		elif scene not in self._bridge.scenesByName:
 			self.endDialog(sessionId=sessionId, text=self.randomTalk(text='sceneUnknown', replace=[scene]))
 			return
 
@@ -291,7 +212,8 @@ class PhilipsHue(Module):
 		rooms = self._getRooms(session)
 		for room in rooms:
 			if room == constants.EVERYWHERE:
-				self._bridge.set_group(0, 'on', not self._bridge.get_group(0, 'on'))
+				group = self._bridge.group(0)
+				group.off() if group.isOn else group.off()
 				break
 
 			group = self._groups[room]
@@ -327,7 +249,7 @@ class PhilipsHue(Module):
 		rooms = self._getRooms(session)
 		for room in rooms:
 			if room == constants.EVERYWHERE:
-				self._bridge.set_group(0, 'brightness', brightness)
+				self._bridge.group(0).brightness = brightness
 				break
 
 			for light in self._groups[room].lights:
@@ -342,7 +264,8 @@ class PhilipsHue(Module):
 			name = group if isinstance(group, str) else group.name
 			self._bridge.run_scene(group_name=name, scene_name=scene)
 			return
-		if self._house:
+
+		else:
 			self._bridge.run_scene(group_name='House', scene_name=scene)
 			return
 
@@ -350,9 +273,5 @@ class PhilipsHue(Module):
 			self._bridge.run_scene(group_name=g.name, scene_name=scene)
 
 
-	def lightsOff(self, group=0):
-		if group == 0:
-			self._bridge.set_group(group, 'on', False)
-		else:
-			for light in self._groups[group].lights:
-				light.on = False
+	def lightsOff(self, group: int = 0):
+		self._bridge.group(group).off()
