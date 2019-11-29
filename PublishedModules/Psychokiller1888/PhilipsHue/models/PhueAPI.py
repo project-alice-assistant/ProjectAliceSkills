@@ -1,12 +1,12 @@
 from __future__ import annotations
 
 import json
-from dataclasses import dataclass
 from json import JSONDecodeError
 from pathlib import Path
 from typing import Optional
 
 import requests
+from dataclasses import dataclass, field
 from requests import RequestException, Response
 
 from core.base.model.ProjectAliceObject import ProjectAliceObject
@@ -80,6 +80,11 @@ class Bridge(ProjectAliceObject):
 		return self._groups
 
 
+	@property
+	def groupsByName(self) -> dict:
+		return {group.name: group for group in self._groups.values()}
+
+
 	def group(self, groupId: int = None, groupName: str = None) -> Group:
 		if groupId is None and groupName is None:
 			raise SelectorError('Cannot get group without id and/or name')
@@ -102,7 +107,7 @@ class Bridge(ProjectAliceObject):
 
 	@property
 	def scenesByName(self) -> dict:
-		return {scene.name: scene for name, scene in self._scenes}
+		return {scene.name: scene for name, scene in self._scenes.items()}
 
 
 	def scene(self, sceneId: str = None, sceneName: str = None) -> Scene:
@@ -266,6 +271,8 @@ class Bridge(ProjectAliceObject):
 		# First add group 0, which is a special group containing all the lights
 		group = Group()
 		group.init(0, self)
+		group.name = 'Everywhere'
+		group.state = {'all_on': False, 'any_on': False}
 		self._groups[0] = group
 
 		req = self.sendAuthRequest(url='/groups')
@@ -298,13 +305,13 @@ class Bridge(ProjectAliceObject):
 
 			if data['type'] == 'GroupScene':
 				try:
-					self.group(data['group']).myScenes.append(sceneId)
+					self.group(int(data['group'])).myScenes.append(sceneId)
 				except NoSuchGroup:
 					pass
 			elif data['type'] == 'LightScene' and data['name'] != 'Last on state':
 				for lightId in data['lights']:
 					try:
-						self.light(lightId).myScenes.append(sceneId)
+						self.light(int(lightId)).myScenes.append(sceneId)
 					except NoSuchLight:
 						pass
 
@@ -336,7 +343,7 @@ class Light:
 	productid: str = ''
 	id: int = None
 	bridge: Bridge = None
-	myScenes: list = None
+	myScenes: list = field(default_factory=list)
 
 
 	def init(self, lightId: int, bridgeInstance: Bridge):
@@ -488,18 +495,22 @@ class Light:
 @dataclass
 class Group:
 	name: str = None
-	lights: list = None
-	sensors: list = None
+	lights: list = field(default_factory=list)
+	sensors: list = field(default_factory=list)
 	type: str = None
-	state: dict = None
+	state: dict = field(default_factory=dict)
 	recycle: bool = False
-	action: dict = None
+	action: dict = field(default_factory=dict)
 	clazz: str = None
-	stream: dict = None
-	locations: dict = None
+	stream: dict = field(default_factory=dict)
+	locations: dict = field(default_factory=dict)
 	id: int = None
 	bridge: Bridge = None
-	myScenes: list = None
+	myScenes: list = field(default_factory=list)
+
+
+	def __str__(self) -> str:
+		return f'Group id {self.id} named "{self.name}" with {len(self.lights)} lights and {len(self.sensors)} sensors attributed'
 
 
 	def init(self, groupId: int, bridgeInstance: Bridge):
@@ -517,12 +528,12 @@ class Group:
 
 	@property
 	def isOn(self) -> bool:
-		return self.state['on']
+		return self.state['any_on']
 
 
 	@property
 	def isOff(self) -> bool:
-		return not self.state['on']
+		return not self.state['any_on']
 
 
 	def alert(self, state: str = 'lselect'):

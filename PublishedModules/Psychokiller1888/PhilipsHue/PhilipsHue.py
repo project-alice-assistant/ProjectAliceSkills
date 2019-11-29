@@ -111,17 +111,20 @@ class PhilipsHue(Module):
 
 
 	def onFullHour(self):
-		partOfTheDay = self.Commons.partOfTheDay()
+		partOfTheDay = self.Commons.partOfTheDay().capitalize()
 		if partOfTheDay not in self._bridge.scenesByName:
 			return
 
 		for group in self._bridge.groups.values():
-			if group.isOn:
-				group.scene(sceneName=partOfTheDay)
+			try:
+				if group.isOn:
+					group.scene(sceneName=partOfTheDay)
+			except NoSuchSceneInGroup:
+				self.logInfo(f'Scene {partOfTheDay} not found for group {group.name}, you should consider adding it')
 
 
 	def _getRooms(self, session: DialogSession) -> list:
-		rooms = [slot.value['value'].lower() for slot in session.slotsAsObjects.get('Room', list())]
+		rooms = [slot.value['value'].capitalize() for slot in session.slotsAsObjects.get('Room', list())]
 		if not rooms:
 			rooms = [constants.DEFAULT_SITE_ID.lower()]
 
@@ -129,15 +132,18 @@ class PhilipsHue(Module):
 
 
 	def _validateRooms(self, session: DialogSession, rooms: list) -> bool:
+		if constants.EVERYWHERE in rooms:
+			return True
+
 		for room in rooms:
-			if room not in self._bridge.groups and room != constants.EVERYWHERE:
+			if room not in self._bridge.groupsByName:
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk(text='roomUnknown', replace=[room]))
 				return False
 		return True
 
 
 	def lightOnIntent(self, session: DialogSession, **_kwargs):
-		partOfTheDay = self.Commons.partOfTheDay()
+		partOfTheDay = self.Commons.partOfTheDay().capitalize()
 
 		rooms = self._getRooms(session)
 		for room in rooms:
@@ -215,7 +221,7 @@ class PhilipsHue(Module):
 
 
 	def manageLightsIntent(self, session: DialogSession, **_kwargs):
-		partOfTheDay = self.Commons.partOfTheDay().lower()
+		partOfTheDay = self.Commons.partOfTheDay().capitalize()
 
 		rooms = self._getRooms(session)
 		for room in rooms:
@@ -232,7 +238,7 @@ class PhilipsHue(Module):
 
 				try:
 					group.scene(sceneName=partOfTheDay)
-				except NoSuchSceneInGroup:
+				except (NoSuchScene, NoSuchSceneInGroup):
 					for lightId in group.lights:
 						self._bridge.light(lightId).on() if self._bridge.light(lightId).isOff else self._bridge.light(lightId).off()
 			except NoSuchGroup:
