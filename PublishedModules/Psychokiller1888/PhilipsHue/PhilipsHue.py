@@ -5,7 +5,7 @@ from core.base.model.Intent import Intent
 from core.base.model.Module import Module
 from core.commons import constants
 from core.dialog.model.DialogSession import DialogSession
-from .models.PhueAPI import Bridge, LinkButtonNotPressed, NoPhueIP, PhueRegistrationError, UnauthorizedUser
+from .models.PhueAPI import Bridge, LinkButtonNotPressed, NoPhueIP, NoSuchGroup, NoSuchLight, NoSuchScene, NoSuchSceneInGroup, PhueRegistrationError, UnauthorizedUser
 
 
 class PhilipsHue(Module):
@@ -141,15 +141,20 @@ class PhilipsHue(Module):
 
 		rooms = self._getRooms(session)
 		for room in rooms:
-			try:
-				if room == constants.EVERYWHERE:
+			if room == constants.EVERYWHERE:
+				try:
 					self._bridge.group(0).scene(sceneName=partOfTheDay)
 					break
-				elif partOfTheDay in self._bridge.scenesByName or self._bridge.run_scene(group_name=self._groups[room].name, scene_name=self._scenes[partOfTheDay].name):
-					continue
-
-				for light in self._groups[room].lights:
-					light.on = True
+				except NoSuchSceneInGroup:
+					self._bridge.group(0).on()
+			else:
+				try:
+					self._bridge.group(groupName=room).scene(sceneName=partOfTheDay)
+					break
+				except NoSuchSceneInGroup:
+					self._bridge.group(groupName=room).on()
+				except NoSuchGroup:
+					self.logWarning(f'Requested group "{room}" does not exist on the Philips Hue bridge')
 
 		if rooms:
 			self.endDialog(session.sessionId, text=self.randomTalk('confirm'))
@@ -162,21 +167,18 @@ class PhilipsHue(Module):
 				self._bridge.group(0).off()
 				break
 
-			for light in self._groups[room].lights:
-				light.on = False
+			try:
+				self._bridge.group(groupName=room).off()
+			except NoSuchGroup:
+				self.logWarning(f'Requested group "{room}" does not exist on the Philips Hue bridge')
 
 		if rooms:
 			self.endDialog(session.sessionId, text=self.randomTalk('confirm'))
 
 
 	def lightSceneIntent(self, session: DialogSession, **_kwargs):
-		sessionId = session.sessionId
-		customData = session.customData
-
-		if 'scene' in customData:
-			scene = customData['scene']
-		elif len(session.slotsAsObjects.get('Scene', list())) > 1:
-			self.endDialog(sessionId, text=self.randomTalk('cantSpecifyMoreThanOneScene'))
+		if len(session.slotsAsObjects.get('Scene', list())) > 1:
+			self.endDialog(session.sessionId, text=self.randomTalk('cantSpecifyMoreThanOneScene'))
 			return
 		else:
 			scene = session.slotValue('Scene').lower()
@@ -184,27 +186,32 @@ class PhilipsHue(Module):
 		rooms = self._getRooms(session)
 		if not scene:
 			self.continueDialog(
-				sessionId=sessionId,
+				sessionId=session.sessionId,
 				text=self.randomTalk('whatScenery'),
 				intentFilter=[self._INTENT_USER_ANSWER],
-				previousIntent=self._INTENT_LIGHT_SCENE,
-				customData={
-					'module': self.name,
-					'room'  : rooms
-				}
+				currentDialogState='whatScenery'
 			)
 			return
 		elif scene not in self._bridge.scenesByName:
-			self.endDialog(sessionId=sessionId, text=self.randomTalk(text='sceneUnknown', replace=[scene]))
+			self.endDialog(sessionId=session.sessionId, text=self.randomTalk(text='sceneUnknown', replace=[scene]))
 			return
 
+		done = False
 		for room in rooms:
-			if not self._bridge.run_scene(group_name=self._groups[room].name, scene_name=self._scenes[scene].name):
-				self.endDialog(sessionId, text=self.randomTalk('sceneNotInThisRoom'))
-				return
+			try:
+				self._bridge.group(groupName=room).scene(sceneName=scene)
+				done = True
+			except NoSuchSceneInGroup:
+				self.logInfo(f'Requested scene "{scene}" for group "{room}" does not exist on the Philips Hue bridge')
+			except NoSuchGroup:
+				self.logWarning(f'Requested group "{room}" does not exist on the Philips Hue bridge')
+
+		if not done:
+			self.endDialog(session.sessionId, text=self.randomTalk('sceneNotInThisRoom'))
+			return
 
 		if rooms:
-			self.endDialog(sessionId, text=self.randomTalk('confirm'))
+			self.endDialog(session.sessionId, text=self.randomTalk('confirm'))
 
 
 	def manageLightsIntent(self, session: DialogSession, **_kwargs):
@@ -217,15 +224,21 @@ class PhilipsHue(Module):
 				group.off() if group.isOn else group.off()
 				break
 
-			group = self._groups[room]
-			if group.on:
-				group.on = False
-				continue
-			elif partOfTheDay in self._scenes or self._bridge.run_scene(group_name=group.name, scene_name=self._scenes[partOfTheDay].name):
-				continue
+			try:
+				group = self._bridge.group(groupName=room)
+				if group.isOn:
+					group.off()
+					continue
 
-			for light in group.lights:
-				light.on = True
+				try:
+					group.scene(sceneName=partOfTheDay)
+				except NoSuchSceneInGroup:
+					for lightId in group.lights:
+						self._bridge.light(lightId).on() if self._bridge.light(lightId).isOff else self._bridge.light(lightId).off()
+			except NoSuchGroup:
+				self.logWarning(f'Requested group "{room}" does not exist on the Philips Hue bridge')
+			except NoSuchLight:
+				pass
 
 		if rooms:
 			self.endDialog(session.sessionId, text=self.randomTalk('confirm'))
@@ -237,10 +250,7 @@ class PhilipsHue(Module):
 				sessionId=session.sessionId,
 				text=self.randomTalk('whatPercentage'),
 				intentFilter=[self._INTENT_ANSWER_PERCENT],
-				previousIntent=self._INTENT_DIM_LIGHTS,
-				customData={
-					'module': self.name
-				}
+				currentDialogState='whatPercentage'
 			)
 			return
 
@@ -253,25 +263,28 @@ class PhilipsHue(Module):
 				self._bridge.group(0).brightness = brightness
 				break
 
-			for light in self._groups[room].lights:
-				light.brightness = brightness
+			try:
+				for lightId in self._bridge.group(groupName=room).lights:
+					self._bridge.light(lightId).brightness = brightness
+			except NoSuchGroup:
+				self.logWarning(f'Requested group "{room}" does not exist on the Philips Hue bridge')
 
 		if rooms:
 			self.endDialog(session.sessionId, text=self.randomTalk('confirm'))
 
 
-	def runScene(self, scene, group=None):
-		if group:
-			name = group if isinstance(group, str) else group.name
-			self._bridge.run_scene(group_name=name, scene_name=scene)
-			return
-
-		else:
-			self._bridge.run_scene(group_name='House', scene_name=scene)
-			return
-
-		for g in self._groups:
-			self._bridge.run_scene(group_name=g.name, scene_name=scene)
+	def runScene(self, scene: str, group: str = None):
+		try:
+			if group:
+				self._bridge.group(groupName=group).scene(sceneName=scene)
+				return
+			else:
+				self._bridge.group(0).scene(sceneName=scene)
+				return
+		except NoSuchGroup:
+			self.logWarning(f'Requested group "{group}" does not exist on the Philips Hue bridge')
+		except NoSuchScene:
+			self.logWarning(f'Requested scene "{scene}" does not exist on the Philips Hue bridge')
 
 
 	def lightsOff(self, group: int = 0):

@@ -1,12 +1,12 @@
 from __future__ import annotations
 
 import json
+from dataclasses import dataclass
 from json import JSONDecodeError
 from pathlib import Path
 from typing import Optional
 
 import requests
-from dataclasses import dataclass
 from requests import RequestException, Response
 
 from core.base.model.ProjectAliceObject import ProjectAliceObject
@@ -513,6 +513,16 @@ class Group:
 
 	def off(self):
 		self.request(url=f'/{self.id}/action', method='PUT', data={'on': False})
+
+
+	@property
+	def isOn(self) -> bool:
+		return self.state['on']
+
+
+	@property
+	def isOff(self) -> bool:
+		return not self.state['on']
 
 
 	def alert(self, state: str = 'lselect'):
