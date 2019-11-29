@@ -141,14 +141,15 @@ class PhilipsHue(Module):
 
 		rooms = self._getRooms(session)
 		for room in rooms:
-			if room == constants.EVERYWHERE:
-				self._bridge.group(0).on()
-				break
-			elif partOfTheDay in self._bridge.scenesByName or self._bridge.run_scene(group_name=self._groups[room].name, scene_name=self._scenes[partOfTheDay].name):
-				continue
+			try:
+				if room == constants.EVERYWHERE:
+					self._bridge.group(0).scene(sceneName=partOfTheDay)
+					break
+				elif partOfTheDay in self._bridge.scenesByName or self._bridge.run_scene(group_name=self._groups[room].name, scene_name=self._scenes[partOfTheDay].name):
+					continue
 
-			for light in self._groups[room].lights:
-				light.on = True
+				for light in self._groups[room].lights:
+					light.on = True
 
 		if rooms:
 			self.endDialog(session.sessionId, text=self.randomTalk('confirm'))

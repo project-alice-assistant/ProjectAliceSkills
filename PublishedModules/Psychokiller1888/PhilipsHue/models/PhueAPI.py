@@ -23,6 +23,8 @@ class SelectorError(Exception): pass
 class NoSuchLight(Exception): pass
 class NoSuchGroup(Exception): pass
 class NoSuchScene(Exception): pass
+class NoSuchSceneInGroup(Exception): pass
+class NoSuchSceneInLight(Exception): pass
 class LightNotReachable(Exception): pass
 
 
@@ -291,6 +293,21 @@ class Bridge(ProjectAliceObject):
 			scene.init(sceneId, self)
 			self._scenes[sceneId] = scene
 
+			if not 'type' in data:
+				continue
+
+			if data['type'] == 'GroupScene':
+				try:
+					self.group(data['group']).myScenes.append(sceneId)
+				except NoSuchGroup:
+					pass
+			elif data['type'] == 'LightScene' and data['name'] != 'Last on state':
+				for lightId in data['lights']:
+					try:
+						self.light(lightId).myScenes.append(sceneId)
+					except NoSuchLight:
+						pass
+
 
 	@staticmethod
 	def errorReturned(answer: dict) -> bool:
@@ -319,6 +336,7 @@ class Light:
 	productid: str = ''
 	id: int = None
 	bridge: Bridge = None
+	myScenes: list = None
 
 
 	def init(self, lightId: int, bridgeInstance: Bridge):
@@ -481,6 +499,7 @@ class Group:
 	locations: dict = None
 	id: int = None
 	bridge: Bridge = None
+	myScenes: list = None
 
 
 	def init(self, groupId: int, bridgeInstance: Bridge):
@@ -558,12 +577,23 @@ class Group:
 
 		if sceneId is None:
 			for scene in self.bridge.scenes.values():
-				if scene.name == sceneName:
-					self.request(url=f'/{self.id}/action', method='PUT', data={'scene': scene.id})
+				if scene.name != sceneName:
+					continue
+
+				if scene.id not in self.myScenes:
+					raise NoSuchSceneInGroup
+
+				self.request(url=f'/{self.id}/action', method='PUT', data={'scene': scene.id})
+				return
+
 			raise NoSuchScene
 		else:
 			if sceneId not in self.bridge.scenes:
 				raise NoSuchScene
+
+			if sceneId not in self.myScenes:
+				raise NoSuchSceneInGroup
+
 			self.request(url=f'/{self.id}/action', method='PUT', data={'scene': sceneId})
 
 
