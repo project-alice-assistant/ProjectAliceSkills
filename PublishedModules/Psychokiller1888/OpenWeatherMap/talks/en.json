@@ -1,0 +1,10 @@
+{
+	"currentWeather": [
+		"Currently in {0} it's {1}° and {2}",
+		"Right now in {0} it's {1}° and {2}",
+		"It's {1}° and {2} right now in {0}"
+	],
+	"forecast": [
+		"{} in {} it'll be {} with a high of {} and a low {}"
+	]
+}
