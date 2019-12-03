@@ -2,7 +2,7 @@
 	"name": "OpenWeatherMap",
 	"version": "0.0.1",
 	"author": "Psychokiller1888",
-	"maintainers": [],
+	"maintainers": ["maxbachmann"],
 	"desc": "Weather forecast from openweathermap.com",
 	"aliceMinVersion": "1.0.0-a4",
 	"systemRequirements": [],

@@ -7,21 +7,9 @@ from core.util.Decorators import IntentHandler
 
 
 class OpenWeatherMap(Module):
-	_INTENT_ANSWER_CITY = Intent('AnswerCity')
-
-	def __init__(self):
-		self._INTENTS = {
-			self._INTENT_ANSWER_CITY
-		}
-
-		self._INTENT_ANSWER_CITY.dialogMapping = {
-			'answeringCity': self.getWeather
-		}
-
-		super().__init__(self._INTENTS)
-
 
 	@IntentHandler('GetWeather')
+	@IntentHandler('AnswerCity', requiredState='answeringCity')
 	def getWeather(self, session: DialogSession, **_kwargs):
 		city = session.slotRawValue('city') or self.getConfig('baseLocation')
 
@@ -31,7 +19,7 @@ class OpenWeatherMap(Module):
 				self.continueDialog(
 					sessionId=session.sessionId,
 					text=self.randomTalk('notFound').format(city),
-					intentFilter=[self._INTENT_ANSWER_CITY],
+					intentFilter=[Intent('AnswerCity')],
 					slot='city',
 					currentDialogState='answeringCity'
 				)
