@@ -13693,62 +13693,60 @@
 					"value": "Zwolle"
 				}
 			]
+		}
+	],
+	"intents": [
+		{
+			"name": "GetWeather",
+			"description": "User's asking for the current weather of a weather forecast",
+			"enabledByDefault": true,
+			"utterances": [
+				"what's the weather",
+				"tell me what's the weather",
+				"can you tell me the weather please",
+				"i'd like to know how's the weather",
+				"how is it looking outside",
+				"tell me the current weather in {Paris:=>City}",
+				"how's the weather in {Berlin:=>City}",
+				"tell me the actual weather in {Bern:=>City}",
+				"how is the weather in {Moscow:=>City}",
+				"current weather conditions in {New York:=>City} please",
+				"how does it look in {London:=>City}"
+			],
+			"slots": [
+				{
+					"name": "City",
+					"description": null,
+					"required": false,
+					"type": "CityNames",
+					"missingQuestion": ""
+				}
+			]
 		},
 		{
-			"intents": [
+			"name": "AnswerCity",
+			"description": "User's answering with a city name",
+			"enabledByDefault": false,
+			"utterances": [
+				"{London:=>City}",
+				"in {Paris:=>City}",
+				"{Zurich:=>City} please",
+				"in {Munich:=>City} please",
+				"in {Glasgow:=>City}",
+				"{Bern:=>City}",
+				"{Lausanne:=>City}",
+				"{New York:=>City}",
+				"{Washington:=>City}",
+				"{Hamburg:=>City}",
+				"{Marseille:=>City}"
+			],
+			"slots": [
 				{
-					"name": "GetWeather",
-					"description": "User's asking for the current weather of a weather forecast",
-					"enabledByDefault": true,
-					"utterances": [
-						"what's the weather",
-						"tell me what's the weather",
-						"can you tell me the weather please",
-						"i'd like to know how's the weather",
-						"how is it looking outside",
-						"tell me the current weather in {Paris:=>City}",
-						"how's the weather in {Berlin:=>City}",
-						"tell me the actual weather in {Bern:=>City}",
-						"how is the weather in {Moscow:=>City}",
-						"current weather conditions in {New York:=>City} please",
-						"how does it look in {London:=>City}"
-					],
-					"slots": [
-						{
-							"name": "City",
-							"description": null,
-							"required": false,
-							"type": "CityNames",
-							"missingQuestion": ""
-						}
-					]
-				},
-				{
-					"name": "AnswerCity",
-					"description": "User's answering with a city name",
-					"enabledByDefault": false,
-					"utterances": [
-						"{London:=>City}",
-						"in {Paris:=>City}",
-						"{Zurich:=>City} please",
-						"in {Munich:=>City} please",
-						"in {Glasgow:=>City}",
-						"{Bern:=>City}",
-						"{Lausanne:=>City}",
-						"{New York:=>City}",
-						"{Washington:=>City}",
-						"{Hamburg:=>City}",
-						"{Marseille:=>City}"
-					],
-					"slots": [
-						{
-							"name": "City",
-							"description": null,
-							"required": false,
-							"type": "CityNames",
-							"missingQuestion": ""
-						}
-					]
+					"name": "City",
+					"description": null,
+					"required": false,
+					"type": "CityNames",
+					"missingQuestion": ""
 				}
 			]
 		}
