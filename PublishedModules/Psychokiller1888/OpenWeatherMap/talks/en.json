@@ -6,5 +6,11 @@
 	],
 	"forecast": [
 		"{} in {} it'll be {} with a high of {} and a low {}"
+	],
+	"notFound": [
+		"I'm sorry, I couldn't find any weather data for {}. Tell me what city you are looking the weather for"
+	],
+	"noApiKey": [
+		"You haven't specified your API key in the open weather map module. Please do it and I will be able to answer you!"
 	]
 }

@@ -11,6 +11,14 @@ class OpenWeatherMap(Module):
 	@IntentHandler('GetWeather')
 	@IntentHandler('AnswerCity', requiredState='answeringCity')
 	def getWeather(self, session: DialogSession, **_kwargs):
+
+		if not self.getConfig('apiKey'):
+			self.endDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk('noApiKey')
+			)
+			return
+
 		city = session.slotRawValue('city') or self.getConfig('baseLocation')
 
 		if 'when' not in session.slots:
@@ -18,7 +26,7 @@ class OpenWeatherMap(Module):
 			if not data:
 				self.continueDialog(
 					sessionId=session.sessionId,
-					text=self.randomTalk('notFound').format(city),
+					text=self.randomTalk('notFound', replace=[city]),
 					intentFilter=[Intent('AnswerCity')],
 					slot='city',
 					currentDialogState='answeringCity'
@@ -26,11 +34,13 @@ class OpenWeatherMap(Module):
 			else:
 				self.endDialog(
 					sessionId=session.sessionId,
-					text=self.randomTalk('currentWeather').format(
-						city,
-						round(float(data['main']['temp']), 1),
-						data['weather'][0]['description']
-					)
+					text=self.randomTalk('currentWeather',
+					                     replace=[
+						                     city,
+						                     round(float(data['main']['temp']), 1),
+						                     data['weather'][0]['description']
+					                     ]
+					                     )
 				)
 		else:
 			# TODO
