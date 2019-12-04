@@ -6,11 +6,11 @@
 
 	function refresh() {
 		$.get('http://api.openweathermap.org/data/2.5/weather?q=' + LOCATION + '&appid=' + APIKEY + '&units=' + UNITS_NAME).done(function(answer) {
-			console.log(answer);
 			$('#CurrentWeather > #temperature').html(answer['main']['temp'] + '°' + UNITS);
+			$('#CurrentWeather > #location').attr('title', LOCATION);
 
+			$('#myWeatherIcon').remove();
 			let $icon = $('<img src="http://openweathermap.org/img/wn/' + answer['weather'][0]['icon'] + '.png" alt="icon" id="myWeatherIcon">');
-			$('#weatherIcon').remove($('#myWeatherIcon'));
 			$('#weatherIcon').append($icon);
 		})
 	}
