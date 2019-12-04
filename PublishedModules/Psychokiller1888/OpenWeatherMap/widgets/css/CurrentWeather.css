@@ -1,0 +1,11 @@
+.CurrentWeather > .weather {
+	display: flex;
+	flex-grow: 1;
+	justify-content: center;
+	justify-items: center;
+}
+
+.CurrentWeather > .location {
+	font-style: italic;
+	display: flex;
+}
