@@ -11,3 +11,12 @@
 	width: 100%;
 	font-size: 1.5em;
 }
+
+.CurrentWeather .weather-fetch-failed {
+	width: 100%;
+	text-align: center;
+	font-size: 2em;
+	height: 50px;
+	margin-top: 5px;
+	min-height: 50px;
+}

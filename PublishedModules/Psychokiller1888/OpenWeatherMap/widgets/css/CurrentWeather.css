@@ -17,6 +17,7 @@
 	text-align: left;
 	font-size: 100%;
 	overflow-x: hidden;
+	white-space: nowrap;
 }
 
 .CurrentWeather > .temperature {

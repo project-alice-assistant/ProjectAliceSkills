@@ -5,14 +5,17 @@
 	let UNITS_NAME = '';
 
 	function refresh() {
+		let $icon = '';
 		$.get('http://api.openweathermap.org/data/2.5/weather?q=' + LOCATION + '&appid=' + APIKEY + '&units=' + UNITS_NAME).done(function(answer) {
 			$('#CurrentWeather > #temperature').html(answer['main']['temp'] + '°' + UNITS);
 			$('#CurrentWeather > #location').attr('title', LOCATION);
-
 			$('#myWeatherIcon').remove();
-			let $icon = $('<img src="http://openweathermap.org/img/wn/' + answer['weather'][0]['icon'] + '.png" alt="icon" id="myWeatherIcon">');
+			$icon = $('<img src="http://openweathermap.org/img/wn/' + answer['weather'][0]['icon'] + '.png" alt="icon" id="myWeatherIcon">');
+		}).fail(function() {
+			$icon = $('<i class="fas fa-exclamation-triangle weather-fetch-failed"></i>');
+		}).always(function() {
 			$('#weatherIcon').append($icon);
-		})
+		});
 	}
 
 	$.ajax({
