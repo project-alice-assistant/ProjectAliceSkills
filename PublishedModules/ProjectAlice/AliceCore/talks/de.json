@@ -244,7 +244,7 @@
 		"<s>Da du der Administrator bist benötigen wir mehr Sicherheit!</s><s>Bitte gib mir einen Pincode aus 4 Ziffern.</s><s>Merke ihn dir gut, du wirst ihn für mein Interface benötigen!</s>"
 	],
 	"addUserPin": [
-		"<s>Lass uns einen Pin erstellen um deinen Zugang zu sichern.</s><s>Bitte sage mir 4 Ziffern als Code.</s><s>Merke ihn dir gut, du erhälst durch ihn Zugriff auf einige spezielle Funktionen!</s>"
+		"<s>Lass uns einen Pin erstellen um deinen Zugang zu sichern.</s><s>Bitte sage mir 4 Ziffern als Code.</s><s>Merke ihn dir gut, du erhältst durch ihn Zugriff auf einige spezielle Funktionen!</s>"
 	],
 	"addPinInvalid": [
 		"Dein PIN Code muss aus 4 Ziffern bestehen, bitte versuche es nochmal.",
