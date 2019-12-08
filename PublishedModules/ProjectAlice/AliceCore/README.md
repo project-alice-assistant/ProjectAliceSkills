@@ -8,16 +8,10 @@ wget http://modules.projectalice.ch/AliceCore \
 -O ~/ProjectAlice/system/moduleInstallTickets/AliceCore.install
 ```
 
-##### > Alice CLI method
-```bash
-./alice add module ProjectAlice AliceCore
-```
-
-
 ### Description
 AliceCore is the official module that handles all core intents
 
-- Version: 1.0.20
+- Version: 1.0.21
 - Author: ProjectAlice
 - Maintainers:
   - Psycho, Jierka, maxbachmann
