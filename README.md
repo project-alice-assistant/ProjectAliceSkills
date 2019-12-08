@@ -1,3 +1,4 @@
+![](https://github.com/project-alice-assistant/ProjectAliceModules/workflows/Modules%20Validation/badge.svg)
 [![Build Status](https://travis-ci.org/project-alice-powered-by-snips/ProjectAliceModules.svg?branch=master)](https://travis-ci.org/project-alice-powered-by-snips/ProjectAliceModules) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/8c37d708cde34cb998b45ff5d6e92d43)](https://www.codacy.com/manual/ProjectAlice/ProjectAliceModules?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=project-alice-powered-by-snips/ProjectAliceModules&amp;utm_campaign=Badge_Grade) ![GitHub](https://img.shields.io/github/license/Psychokiller1888/ProjectAliceModules) [![Maintainability](https://api.codeclimate.com/v1/badges/1c61965accf480b5d5ef/maintainability)](https://codeclimate.com/github/project-alice-powered-by-snips/ProjectAliceModules/maintainability)
 
 # ProjectAliceModules (alpha3)
