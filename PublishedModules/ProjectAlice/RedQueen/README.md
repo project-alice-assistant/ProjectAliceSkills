@@ -8,15 +8,10 @@ wget http://modules.projectalice.ch/RedQueen \
 -O ~/ProjectAlice/system/moduleInstallTickets/RedQueen.install
 ```
 
-##### > Alice CLI method
-```bash
-./alice add module ProjectAlice RedQueen
-```
-
 ### Desc
 Red Queen is the official Project Alice personality module
 
-- Version: 1.0.10
+- Version: 1.0.11
 - Author: ProjectAlice
 - Maintainers:
   - Psycho, Jierka, maxbachmann
