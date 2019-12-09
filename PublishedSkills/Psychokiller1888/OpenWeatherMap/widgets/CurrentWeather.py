@@ -14,8 +14,8 @@ class CurrentWeather(Widget):
 
 	def baseData(self) -> dict:
 		return {
-			'location': self.myModule.getConfig('baseLocation').title(),
-			'units': 'C' if self.myModule.getConfig('units') == 'metric' else 'F' if self.myModule.getConfig('units') == 'imperial' else 'K',
-			'unitsName': self.myModule.getConfig('units'),
-			'apiKey': self.myModule.getConfig('apiKey')
+			'location': self.skillInstance.getConfig('baseLocation').title(),
+			'units': 'C' if self.skillInstance.getConfig('units') == 'metric' else 'F' if self.skillInstance.getConfig('units') == 'imperial' else 'K',
+			'unitsName': self.skillInstance.getConfig('units'),
+			'apiKey': self.skillInstance.getConfig('apiKey')
 		}
