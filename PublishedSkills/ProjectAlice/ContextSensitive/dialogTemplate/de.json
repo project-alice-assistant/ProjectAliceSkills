@@ -1,0 +1,77 @@
+{
+	"skill": "ContextSensitive",
+	"icon": "restart",
+	"description": "Provides commands for context sensitive dialog",
+	"slotTypes": [],
+	"intents": [
+		{
+			"name": "DeleteThis",
+			"description": "In a context sensitive dialog, this is used to make the assistant forget something that it has stored",
+			"enabledByDefault": true,
+			"utterances": [
+				"Bitte erinnere dich nicht daran",
+				"Erinnere dich bitte nicht daran",
+				"Entfern das bitte",
+				"Bitte entferne das",
+				"Bitte erinnere dich nicht mehr daran",
+				"Vergiss das bitte",
+				"Vergiss das",
+				"Lösche das bitte",
+				"Bitte lösche das",
+				"Bitte vergiss das alles",
+				"Bitte vergiss das hier",
+				"Erinnere dich nicht mehr daran",
+				"Erinnere dich nicht daran",
+				"Lösch das",
+				"Vergiss das Ganze"
+			],
+			"slots": []
+		},
+		{
+			"name": "RepeatThis",
+			"description": "",
+			"enabledByDefault": true,
+			"utterances": [
+				"Was hast du gesagt",
+				"Was hast du gerade gesagt",
+				"Tut mir leid, was hast du gesagt",
+				"Ich habe es micht gehört",
+				"Ich habe es micht verstanden",
+				"Tut mir leid, was hast du gerade gesagt",
+				"Könntest du es noch einmal sagen",
+				"Tut mir leid, dass ich es nicht gehört habe",
+				"Ich habe das nicht verstanden",
+				"Wiederhole das",
+				"Bitte wiederhol das",
+				"Wiederhole das bitte",
+				"Könntest du wiederholen, was du gerade gesagt hast?",
+				"Kannst du bitte wiederholen, was du gerade gesagt hast",
+				"Sag es bitte noch einmal",
+				"Bitte sag es noch einmal",
+				"Sag es noch einmal",
+				"Wiederhole es",
+				"Wiederhole, was du gerade gesagt hast",
+				"Bitte wiederhole, was du gerade gesagt hast",
+				"Kannst du das bitte wiederholen",
+				"Könntest du das bitte wiederholen"
+			],
+			"slots": []
+		},
+		{
+			"name": "EditThis",
+			"description": "",
+			"enabledByDefault": true,
+			"utterances": [
+				"Bitte bearbeite das",
+				"Ändere das bitte",
+				"Kannst du das bitte bearbeiten",
+				"Können wir das ändern",
+				"Bitte ersetze das",
+				"Das muss geändert werden",
+				"Ändere das",
+				"Ich möchte, dass du das bearbeitest."
+			],
+			"slots": []
+		}
+	]
+}

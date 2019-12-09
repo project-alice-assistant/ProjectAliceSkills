@@ -1,0 +1,17 @@
+{
+	"name": "Speller",
+	"version": "1.0.6",
+	"author": "Psychokiller1888",
+	"maintainers": ["maxbachmann"],
+	"desc": "Ask alice how to spell any word!",
+	"aliceMinVersion": "1.0.0-a4",
+	"pipRequirements": [],
+	"systemRequirements": [],
+	"conditions": {
+		"lang": [
+			"en",
+			"fr"
+		],
+		"asrArbitraryCapture": true
+	}
+}

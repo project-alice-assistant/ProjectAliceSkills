@@ -1,0 +1,12 @@
+{
+	"okTakesTime": {
+		"default": [
+			"J'ai trouvé le nouvel appareil et je suis en train de le configurer. Saches que ça prendra un peu de temps. Je te préviendrai lorsque ce sera prêt."
+		]
+	},
+	"skillReady": {
+		"default": [
+			"Le nouvel appareil est prêt!"
+		]
+	}
+}

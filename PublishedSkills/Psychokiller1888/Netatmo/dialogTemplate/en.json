@@ -1,0 +1,7 @@
+{
+	"skill": "Netatmo",
+	"icon": "time",
+	"description": "Get readings from your netatmo hardware",
+	"slotTypes": [],
+	"intents": []
+}

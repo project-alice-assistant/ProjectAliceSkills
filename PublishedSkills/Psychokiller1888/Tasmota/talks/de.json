@@ -1,0 +1,12 @@
+{
+	"okTakesTime": {
+		"default": [
+			"Ich habe das neue Gerät gefunden und konfiguriere es. Dies benötigt eine Weile. Ich werde dich informieren, wenn das Gerät bereit ist."
+		]
+	},
+	"skillReady": {
+		"default": [
+			"Das neue Gerät ist bereit!"
+		]
+	}
+}

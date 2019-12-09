@@ -1,0 +1,83 @@
+{
+	"skill": "Wikipedia",
+	"icon": "box",
+	"description": "Ermöglicht es dir Informationen über ein bestimmtes Thema auf Wikipedia zu finden",
+	"slotTypes": [
+		{
+			"name": "SearchEngine",
+			"matchingStrictness": null,
+			"automaticallyExtensible": true,
+			"useSynonyms": true,
+			"values": [
+				{
+					"value": "wikipedia",
+					"synonyms": [
+						"wiki"
+					]
+				}
+			]
+		}
+	],
+	"intents": [
+		{
+			"name": "DoSearch",
+			"description": "",
+			"enabledByDefault": true,
+			"utterances": [
+				"ich brauche online informationen über {Finnland:=>What}",
+				"gib mir informationen von {wikipedia:=>Engine} über {Barrack Obama:=>What}",
+				"kannst du bitte über {Nukleare Waffen:=>What} auf {wikipedia:=>Engine} suchen",
+				"gib mir informationen über {planets:=>What} online",
+				"finde infos über {Mars:=>What}",
+				"ich brauche informationen über {Katzen:=>What}",
+				"kannst du bitte informationen über {Amerika:=>What} auf {wikipedia:=>Engine} suchen",
+				"hol informationen über {Trump:=>What} bitte",
+				"kannst du mir online informationen geben",
+				"gib mir online infos",
+				"bitte gib mir informationen aus dem Netz",
+				"finde online informationen bitte",
+				"kann ich ein paar online infos haben",
+				"kannst du was für mich nachschauen",
+				"ich brauche online informationen",
+				"ich brauche online informationen bitte",
+				"ich brauche informationen bitte",
+				"ich brauche ein paar informationen bitte",
+				"kannst du ein paar infos auf {wikipedia:=>Engine} finden",
+				"bitte finde ein paar infos",
+				"finde ein paar online informationen",
+				"finde ein paar informationen auf {wikipedia:=>Engine}",
+				"can you get me some informations online",
+				"ich muss eine online suche machen",
+				"ich muss eine online suche tätigen",
+				"mach eine suche auf {wikipedia:=>Engine}",
+				"bitte suche auf {wikipedia:=>Engine}",
+				"kannst du was nachschauen auf {wikipedia:=>Engine}",
+				"kannst du was auf{wikipedia:=>Engine} nachschauen",
+				"könntest du ein paar informationen online raussuchen",
+				"kannst ein paar infos online suchen",
+				"ich bräuchte dringend ein paar online informationen",
+				"schau was auf {wikipedia:=>Engine} nach",
+				"kuck bei {wikipedia:=>Engine} nach {Goethe:=>What}",
+				"was für infos von {wikipedia:=>Engine} hast du über {Mäuse:=>What}",
+				"gib mir mal ein paar fakten über {Ritter:=>What}",
+				"bitte schau nach informationen über {Snickers:=>What} auf {wikipedia:=>Engine}"
+			],
+			"slots": [
+				{
+					"name": "Engine",
+					"description": null,
+					"required": false,
+					"type": "SearchEngine",
+					"missingQuestion": ""
+				},
+				{
+					"name": "What",
+					"description": null,
+					"required": false,
+					"type": "RandomWords",
+					"missingQuestion": ""
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,7 @@
+{
+	"skill": "AliceSatellite",
+	"icon": "air",
+	"description": "This skill allows interaction with the Alice satellites",
+	"slotTypes": [],
+	"intents": []
+}

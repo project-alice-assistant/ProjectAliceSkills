@@ -1,0 +1,16 @@
+{
+	"name": "IcanhazdadjokeDotCom",
+	"version": "1.0.22",
+	"author": "Psychokiller1888",
+	"maintainers": ["maxbachmann", "Jierka"],
+	"desc": "Get a random dad joke on demand!",
+	"aliceMinVersion": "1.0.0-a4",
+	"systemRequirements": [],
+	"pipRequirements": [],
+	"conditions": {
+		"lang": [
+			"en"
+		],
+		"online": true
+	}
+}

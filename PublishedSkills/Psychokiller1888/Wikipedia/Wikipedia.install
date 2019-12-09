@@ -1,0 +1,21 @@
+{
+	"name": "Wikipedia",
+	"version": "1.0.42",
+	"author": "Psychokiller1888",
+	"maintainers": ["Jierka", "maxbachmann"],
+	"desc": "Allows one to find informations about a topic on wikipedia",
+	"aliceMinVersion": "1.0.0-a4",
+	"systemRequirements": [],
+	"pipRequirements": [
+		"wikipedia",
+		"BeautifulSoup4==4.6.3"
+	],
+	"conditions": {
+		"lang": [
+			"en",
+			"fr",
+			"de"
+		],
+		"online": true
+	}
+}

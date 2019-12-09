@@ -1,0 +1,27 @@
+# RandomUselessFacts
+
+### Download
+
+##### > WGET method
+```bash
+wget http://modules.projectalice.ch/RandomUselessFacts \
+-O ~/ProjectAlice/system/skillInstallTickets/RandomUselessFacts.install
+```
+
+##### > Alice CLI method
+```bash
+./alice add skill Psychokiller1888 RandomUselessFacts
+```
+
+### Description
+Gets you the daily random useless fact or a random one
+
+- Version: 1.0.48
+- Author: Psychokiller1888
+- Maintainers:
+  - maxbachmann
+- Alice minimum Version: 1.0.0-a4
+- Conditions:
+  - en
+  - de
+- Requirements: N/A

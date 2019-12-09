@@ -1,0 +1,9240 @@
+{
+	"skill": "BringShoppingList",
+	"icon": "store",
+	"description": "Verwalte deine Bring! Einkaufsliste",
+	"slotTypes": [
+		{
+			"name": "buyable",
+			"matchingStrictness": null,
+			"automaticallyExtensible": true,
+			"useSynonyms": true,
+			"values": [
+				{
+					"value": "wheat"
+				},
+				{
+					"value": "Hawaiian pizza"
+				},
+				{
+					"value": "falafel"
+				},
+				{
+					"value": "Foie gras"
+				},
+				{
+					"value": "millet"
+				},
+				{
+					"value": "tofu"
+				},
+				{
+					"value": "hummus"
+				},
+				{
+					"value": "tahini"
+				},
+				{
+					"value": "malt"
+				},
+				{
+					"value": "baklava"
+				},
+				{
+					"value": "sashimi"
+				},
+				{
+					"value": "Haggis"
+				},
+				{
+					"value": "Burrito"
+				},
+				{
+					"value": "oysters"
+				},
+				{
+					"value": "borscht"
+				},
+				{
+					"value": "gumbo"
+				},
+				{
+					"value": "macaron"
+				},
+				{
+					"value": "bagel"
+				},
+				{
+					"value": "samosa"
+				},
+				{
+					"value": "Corned beef"
+				},
+				{
+					"value": "chop suey"
+				},
+				{
+					"value": "bánh mì"
+				},
+				{
+					"value": "Soylent"
+				},
+				{
+					"value": "empanada"
+				},
+				{
+					"value": "cookie"
+				},
+				{
+					"value": "manna"
+				},
+				{
+					"value": "mirepoix"
+				},
+				{
+					"value": "Farro"
+				},
+				{
+					"value": "Dal"
+				},
+				{
+					"value": "Gazpacho"
+				},
+				{
+					"value": "Chicago-style pizza"
+				},
+				{
+					"value": "goulash"
+				},
+				{
+					"value": "Macaroon"
+				},
+				{
+					"value": "guacamole"
+				},
+				{
+					"value": "pilaf"
+				},
+				{
+					"value": "biscuit"
+				},
+				{
+					"value": "brioche"
+				},
+				{
+					"value": "Dosa"
+				},
+				{
+					"value": "Haleem"
+				},
+				{
+					"value": "pancake"
+				},
+				{
+					"value": "calzone"
+				},
+				{
+					"value": "clotted cream"
+				},
+				{
+					"value": "Quorn"
+				},
+				{
+					"value": "Hardtack"
+				},
+				{
+					"value": "dashi"
+				},
+				{
+					"value": "Shirataki noodles"
+				},
+				{
+					"value": "mille-feuille"
+				},
+				{
+					"value": "black garlic"
+				},
+				{
+					"value": "rye bread"
+				},
+				{
+					"value": "Digestive biscuit"
+				},
+				{
+					"value": "apple pie"
+				},
+				{
+					"value": "beef Stroganoff"
+				},
+				{
+					"value": "Graham cracker"
+				},
+				{
+					"value": "Baozi"
+				},
+				{
+					"value": "aspic"
+				},
+				{
+					"value": "Scone"
+				},
+				{
+					"value": "bouillabaisse"
+				},
+				{
+					"value": "fruit preserves"
+				},
+				{
+					"value": "instant noodle"
+				},
+				{
+					"value": "glutinous rice"
+				},
+				{
+					"value": "Börek"
+				},
+				{
+					"value": "scampi"
+				},
+				{
+					"value": "fondue"
+				},
+				{
+					"value": "Focaccia"
+				},
+				{
+					"value": "Pozole"
+				},
+				{
+					"value": "Hushpuppy"
+				},
+				{
+					"value": "marmalade"
+				},
+				{
+					"value": "Papadum"
+				},
+				{
+					"value": "paratha"
+				},
+				{
+					"value": "Yakisoba"
+				},
+				{
+					"value": "Dolma"
+				},
+				{
+					"value": "macaroni"
+				},
+				{
+					"value": "Pelmeni"
+				},
+				{
+					"value": "Aunt Jemima"
+				},
+				{
+					"value": "Fortune cookie"
+				},
+				{
+					"value": "Lo mein"
+				},
+				{
+					"value": "Crumpet"
+				},
+				{
+					"value": "broth"
+				},
+				{
+					"value": "bannock"
+				},
+				{
+					"value": "Semla"
+				},
+				{
+					"value": "Torta"
+				},
+				{
+					"value": "pumpernickel"
+				},
+				{
+					"value": "laksa"
+				},
+				{
+					"value": "leavening agent"
+				},
+				{
+					"value": "kibbeh"
+				},
+				{
+					"value": "coconut water"
+				},
+				{
+					"value": "Danish pastry"
+				},
+				{
+					"value": "Chicken McNuggets"
+				},
+				{
+					"value": "Cronut"
+				},
+				{
+					"value": "rolled oats"
+				},
+				{
+					"value": "Sope"
+				},
+				{
+					"value": "profiterole"
+				},
+				{
+					"value": "tomato sauce"
+				},
+				{
+					"value": "Capicola"
+				},
+				{
+					"value": "Menudo"
+				},
+				{
+					"value": "Pirozhki"
+				},
+				{
+					"value": "ganache"
+				},
+				{
+					"value": "Elote"
+				},
+				{
+					"value": "infant formula"
+				},
+				{
+					"value": "rusk"
+				},
+				{
+					"value": "ital"
+				},
+				{
+					"value": "challah"
+				},
+				{
+					"value": "bisque"
+				},
+				{
+					"value": "muffin"
+				},
+				{
+					"value": "red bean paste"
+				},
+				{
+					"value": "Succotash"
+				},
+				{
+					"value": "Corn tortilla"
+				},
+				{
+					"value": "stock"
+				},
+				{
+					"value": "Consommé"
+				},
+				{
+					"value": "pork pie"
+				},
+				{
+					"value": "yeast extract"
+				},
+				{
+					"value": "minestrone"
+				},
+				{
+					"value": "Sultana"
+				},
+				{
+					"value": "puff pastry"
+				},
+				{
+					"value": "Kompot"
+				},
+				{
+					"value": "terrine"
+				},
+				{
+					"value": "clam chowder"
+				},
+				{
+					"value": "English muffin"
+				},
+				{
+					"value": "Jajangmyeon"
+				},
+				{
+					"value": "oden"
+				},
+				{
+					"value": "Bouillon cube"
+				},
+				{
+					"value": "ciabatta"
+				},
+				{
+					"value": "shortbread"
+				},
+				{
+					"value": "Biscotti"
+				},
+				{
+					"value": "Fattoush"
+				},
+				{
+					"value": "Vienna sausage"
+				},
+				{
+					"value": "galette"
+				},
+				{
+					"value": "Blini"
+				},
+				{
+					"value": "buckwheat kasha"
+				},
+				{
+					"value": "Easter egg"
+				},
+				{
+					"value": "Montreal-style smoked meat"
+				},
+				{
+					"value": "Sancocho"
+				},
+				{
+					"value": "okroshka"
+				},
+				{
+					"value": "Mie goreng"
+				},
+				{
+					"value": "bacalhau"
+				},
+				{
+					"value": "Cornbread"
+				},
+				{
+					"value": "Nutraloaf"
+				},
+				{
+					"value": "Dandan noodles"
+				},
+				{
+					"value": "strudel"
+				},
+				{
+					"value": "Ladyfinger"
+				},
+				{
+					"value": "Soda bread"
+				},
+				{
+					"value": "frybread"
+				},
+				{
+					"value": "phyllo"
+				},
+				{
+					"value": "Pâtisserie"
+				},
+				{
+					"value": "Bún bò Huế"
+				},
+				{
+					"value": "shoofly pie"
+				},
+				{
+					"value": "Proofing"
+				},
+				{
+					"value": "Montreal-style bagel"
+				},
+				{
+					"value": "meat pie"
+				},
+				{
+					"value": "Ham hock"
+				},
+				{
+					"value": "Banana bread"
+				},
+				{
+					"value": "lardon"
+				},
+				{
+					"value": "bun"
+				},
+				{
+					"value": "Coney Island hot dog"
+				},
+				{
+					"value": "Mulligatawny"
+				},
+				{
+					"value": "Pease pudding"
+				},
+				{
+					"value": "shortcrust pastry"
+				},
+				{
+					"value": "Tarte flambée"
+				},
+				{
+					"value": "Johnnycake"
+				},
+				{
+					"value": "Babka"
+				},
+				{
+					"value": "Speculoos"
+				},
+				{
+					"value": "Bear claw"
+				},
+				{
+					"value": "tapenade"
+				},
+				{
+					"value": "Schmaltz"
+				},
+				{
+					"value": "shortcake"
+				},
+				{
+					"value": "unleavened bread"
+				},
+				{
+					"value": "Frog legs"
+				},
+				{
+					"value": "Mince pie"
+				},
+				{
+					"value": "Botargo"
+				},
+				{
+					"value": "king cake"
+				},
+				{
+					"value": "Saltine cracker"
+				},
+				{
+					"value": "biscuit"
+				},
+				{
+					"value": "Sopaipilla"
+				},
+				{
+					"value": "Puri"
+				},
+				{
+					"value": "Jamaican patty"
+				},
+				{
+					"value": "viennoiserie"
+				},
+				{
+					"value": "Chocolate-coated marshmallow treats"
+				},
+				{
+					"value": "sprouted bread"
+				},
+				{
+					"value": "andouillette"
+				},
+				{
+					"value": "key lime pie"
+				},
+				{
+					"value": "pigs in blankets"
+				},
+				{
+					"value": "panettone"
+				},
+				{
+					"value": "rice noodle roll"
+				},
+				{
+					"value": "Bakewell tart"
+				},
+				{
+					"value": "Mantou"
+				},
+				{
+					"value": "Bouillon"
+				},
+				{
+					"value": "Piadina"
+				},
+				{
+					"value": "ajvar"
+				},
+				{
+					"value": "Wonder Bread"
+				},
+				{
+					"value": "Salo"
+				},
+				{
+					"value": "cinnamon roll"
+				},
+				{
+					"value": "Corn on the cob"
+				},
+				{
+					"value": "Roti canai"
+				},
+				{
+					"value": "Cream pie"
+				},
+				{
+					"value": "Tourtière"
+				},
+				{
+					"value": "Bigos"
+				},
+				{
+					"value": "Rugelach"
+				},
+				{
+					"value": "Chankonabe"
+				},
+				{
+					"value": "Nihari"
+				},
+				{
+					"value": "Banoffee pie"
+				},
+				{
+					"value": "brown bread"
+				},
+				{
+					"value": "Chess pie"
+				},
+				{
+					"value": "Bánh xèo"
+				},
+				{
+					"value": "Crouton"
+				},
+				{
+					"value": "vol-au-vent"
+				},
+				{
+					"value": "Gim"
+				},
+				{
+					"value": "Funyuns"
+				},
+				{
+					"value": "Soured milk"
+				},
+				{
+					"value": "Shin Ramyun"
+				},
+				{
+					"value": "Panzanella"
+				},
+				{
+					"value": "ice cream sandwich"
+				},
+				{
+					"value": "Panzarotti"
+				},
+				{
+					"value": "Kaiserschmarrn"
+				},
+				{
+					"value": "Schweinshaxe"
+				},
+				{
+					"value": "Quick bread"
+				},
+				{
+					"value": "cha siu bao"
+				},
+				{
+					"value": "Æbleskiver"
+				},
+				{
+					"value": "bread crumbs"
+				},
+				{
+					"value": "white bread"
+				},
+				{
+					"value": "Pizza capricciosa"
+				},
+				{
+					"value": "pork tenderloin"
+				},
+				{
+					"value": "Anpan"
+				},
+				{
+					"value": "Bialy"
+				},
+				{
+					"value": "Marshmallow creme"
+				},
+				{
+					"value": "Pot pie"
+				},
+				{
+					"value": "chicken soup"
+				},
+				{
+					"value": "pollock roe"
+				},
+				{
+					"value": "Monjayaki"
+				},
+				{
+					"value": "Shchi"
+				},
+				{
+					"value": "damper"
+				},
+				{
+					"value": "Melonpan"
+				},
+				{
+					"value": "Syrniki"
+				},
+				{
+					"value": "Dutch baby pancake"
+				},
+				{
+					"value": "whole wheat bread"
+				},
+				{
+					"value": "Hot cross bun"
+				},
+				{
+					"value": "Chermoula"
+				},
+				{
+					"value": "Crêpe Suzette"
+				},
+				{
+					"value": "Meat pie"
+				},
+				{
+					"value": "Treacle tart"
+				},
+				{
+					"value": "Dürüm"
+				},
+				{
+					"value": "Bak kut teh"
+				},
+				{
+					"value": "apple sauce"
+				},
+				{
+					"value": "Saltine cracker challenge"
+				},
+				{
+					"value": "Pizzelle"
+				},
+				{
+					"value": "Bolillo"
+				},
+				{
+					"value": "Appam"
+				},
+				{
+					"value": "Poffertjes"
+				},
+				{
+					"value": "pumpkin pie"
+				},
+				{
+					"value": "budae-jjigae"
+				},
+				{
+					"value": "Salmorejo"
+				},
+				{
+					"value": "apple butter"
+				},
+				{
+					"value": "Egusi"
+				},
+				{
+					"value": "rhubarb pie"
+				},
+				{
+					"value": "fried spider"
+				},
+				{
+					"value": "Tiger bread"
+				},
+				{
+					"value": "Farinata"
+				},
+				{
+					"value": "Murtabak"
+				},
+				{
+					"value": "Pizza cheese"
+				},
+				{
+					"value": "solyanka"
+				},
+				{
+					"value": "Eccles cake"
+				},
+				{
+					"value": "Bánh cuốn"
+				},
+				{
+					"value": "apple strudel"
+				},
+				{
+					"value": "Animal cracker"
+				},
+				{
+					"value": "Trencher"
+				},
+				{
+					"value": "Pecan pie"
+				},
+				{
+					"value": "Liver"
+				},
+				{
+					"value": "Pastel"
+				},
+				{
+					"value": "Potage"
+				},
+				{
+					"value": "crisp bread"
+				},
+				{
+					"value": "Bedfordshire clanger"
+				},
+				{
+					"value": "coconut cream"
+				},
+				{
+					"value": "Roti prata"
+				},
+				{
+					"value": "Scotch pie"
+				},
+				{
+					"value": "Gari"
+				},
+				{
+					"value": "Streusel"
+				},
+				{
+					"value": "Simit"
+				},
+				{
+					"value": "deep-fried pizza"
+				},
+				{
+					"value": "Kulcha"
+				},
+				{
+					"value": "Sinigang"
+				},
+				{
+					"value": "Gugelhupf"
+				},
+				{
+					"value": "Tomato purée"
+				},
+				{
+					"value": "Uttapam"
+				},
+				{
+					"value": "hotteok"
+				},
+				{
+					"value": "Kremna rezina"
+				},
+				{
+					"value": "fougasse"
+				},
+				{
+					"value": "palatschinke"
+				},
+				{
+					"value": "steak and kidney pie"
+				},
+				{
+					"value": "Cream cracker"
+				},
+				{
+					"value": "Hasty pudding"
+				},
+				{
+					"value": "Gözleme"
+				},
+				{
+					"value": "Tarator"
+				},
+				{
+					"value": "Flapjack"
+				},
+				{
+					"value": "Tomato pie"
+				},
+				{
+					"value": "Chiburekki"
+				},
+				{
+					"value": "Monkey bread"
+				},
+				{
+					"value": "Korean noodles"
+				},
+				{
+					"value": "kringle"
+				},
+				{
+					"value": "Pan dulce"
+				},
+				{
+					"value": "Bridie"
+				},
+				{
+					"value": "Buddha Jumps Over the Wall"
+				},
+				{
+					"value": "Kuchen"
+				},
+				{
+					"value": "chili dog"
+				},
+				{
+					"value": "cheese bun"
+				},
+				{
+					"value": "Hamantash"
+				},
+				{
+					"value": "Pie floater"
+				},
+				{
+					"value": "Sweetheart cake"
+				},
+				{
+					"value": "nut roll"
+				},
+				{
+					"value": "Le Pain Quotidien"
+				},
+				{
+					"value": "Tom kha kai"
+				},
+				{
+					"value": "Obatzda"
+				},
+				{
+					"value": "Siopao"
+				},
+				{
+					"value": "Wonton noodles"
+				},
+				{
+					"value": "Pistou"
+				},
+				{
+					"value": "Vatrushka"
+				},
+				{
+					"value": "Solomon Gundy"
+				},
+				{
+					"value": "Taboon bread"
+				},
+				{
+					"value": "Welsh cake"
+				},
+				{
+					"value": "Jjigae"
+				},
+				{
+					"value": "Pissaladière"
+				},
+				{
+					"value": "Lardy cake"
+				},
+				{
+					"value": "Cazuela"
+				},
+				{
+					"value": "Chorba"
+				},
+				{
+					"value": "Thukpa"
+				},
+				{
+					"value": "Tarhana"
+				},
+				{
+					"value": "Bean pie"
+				},
+				{
+					"value": "Lemon and egg sauce"
+				},
+				{
+					"value": "pineapple cake"
+				},
+				{
+					"value": "Kadhi"
+				},
+				{
+					"value": "Rasam"
+				},
+				{
+					"value": "Singapore style noodles"
+				},
+				{
+					"value": "Barmbrack"
+				},
+				{
+					"value": "soto"
+				},
+				{
+					"value": "Pre-ferment"
+				},
+				{
+					"value": "Beer cheese"
+				},
+				{
+					"value": "Fasolada"
+				},
+				{
+					"value": "Bara brith"
+				},
+				{
+					"value": "Sandwich wrap"
+				},
+				{
+					"value": "mollete"
+				},
+				{
+					"value": "Monofloral honey"
+				},
+				{
+					"value": "Cemita"
+				},
+				{
+					"value": "pineapple bun"
+				},
+				{
+					"value": "Saimin"
+				},
+				{
+					"value": "Mud pie"
+				},
+				{
+					"value": "Coca"
+				},
+				{
+					"value": "coco bread"
+				},
+				{
+					"value": "Bougatsa"
+				},
+				{
+					"value": "Ma'amoul"
+				},
+				{
+					"value": "zwieback"
+				},
+				{
+					"value": "Hokkien mee"
+				},
+				{
+					"value": "Blood soup"
+				},
+				{
+					"value": "Pandesal"
+				},
+				{
+					"value": "Yaka mein"
+				},
+				{
+					"value": "Cocido madrileño"
+				},
+				{
+					"value": "Neapolitan sauce"
+				},
+				{
+					"value": "Pannenkoeken"
+				},
+				{
+					"value": "bakpia"
+				},
+				{
+					"value": "Hot dog bun"
+				},
+				{
+					"value": "pastizz"
+				},
+				{
+					"value": "curry puff"
+				},
+				{
+					"value": "Sugar pie"
+				},
+				{
+					"value": "Wedding soup"
+				},
+				{
+					"value": "Shirred eggs"
+				},
+				{
+					"value": "Pan de muerto"
+				},
+				{
+					"value": "Khubz"
+				},
+				{
+					"value": "cretons"
+				},
+				{
+					"value": "Gooey butter cake"
+				},
+				{
+					"value": "Sop"
+				},
+				{
+					"value": "Lecsó"
+				},
+				{
+					"value": "Banitsa"
+				},
+				{
+					"value": "Cachapa"
+				},
+				{
+					"value": "Showbread"
+				},
+				{
+					"value": "Toaster Strudel"
+				},
+				{
+					"value": "Fried bread"
+				},
+				{
+					"value": "barm cake"
+				},
+				{
+					"value": "Poğaça"
+				},
+				{
+					"value": "Breakfast burrito"
+				},
+				{
+					"value": "King's Hawaiian"
+				},
+				{
+					"value": "Chinese bakery product"
+				},
+				{
+					"value": "Barbari bread"
+				},
+				{
+					"value": "Fig roll"
+				},
+				{
+					"value": "Crostata"
+				},
+				{
+					"value": "Bosintang"
+				},
+				{
+					"value": "Bun rieu"
+				},
+				{
+					"value": "Toaster pastry"
+				},
+				{
+					"value": "coffee cake"
+				},
+				{
+					"value": "Fatayer"
+				},
+				{
+					"value": "Ribollita"
+				},
+				{
+					"value": "Sangak"
+				},
+				{
+					"value": "Bakewell pudding"
+				},
+				{
+					"value": "Batchoy"
+				},
+				{
+					"value": "Harira"
+				},
+				{
+					"value": "Nikuman"
+				},
+				{
+					"value": "Graham bread"
+				},
+				{
+					"value": "teacake"
+				},
+				{
+					"value": "Rosca de reyes"
+				},
+				{
+					"value": "peanut soup"
+				},
+				{
+					"value": "Guk"
+				},
+				{
+					"value": "Pandoro"
+				},
+				{
+					"value": "Mohinga"
+				},
+				{
+					"value": "Yong Tau Foo"
+				},
+				{
+					"value": "kifli"
+				},
+				{
+					"value": "zefir"
+				},
+				{
+					"value": "Heinz Sandwich Spread"
+				},
+				{
+					"value": "Hot water crust pastry"
+				},
+				{
+					"value": "bark bread"
+				},
+				{
+					"value": "Pullman loaf"
+				},
+				{
+					"value": "Sushi pizza"
+				},
+				{
+					"value": "Siri paya"
+				},
+				{
+					"value": "fried noodles"
+				},
+				{
+					"value": "Staling"
+				},
+				{
+					"value": "pain de mie"
+				},
+				{
+					"value": "tompouce"
+				},
+				{
+					"value": "pain aux raisins"
+				},
+				{
+					"value": "jeon"
+				},
+				{
+					"value": "Taralli"
+				},
+				{
+					"value": "Yaki udon"
+				},
+				{
+					"value": "Seolleongtang"
+				},
+				{
+					"value": "Rugbrød"
+				},
+				{
+					"value": "Fesikh"
+				},
+				{
+					"value": "Water biscuit"
+				},
+				{
+					"value": "dried shrimp"
+				},
+				{
+					"value": "Manjar blanco"
+				},
+				{
+					"value": "Pisto"
+				},
+				{
+					"value": "Butter pie"
+				},
+				{
+					"value": "Piperade"
+				},
+				{
+					"value": "Acquacotta"
+				},
+				{
+					"value": "Bing"
+				},
+				{
+					"value": "Steak pie"
+				},
+				{
+					"value": "cherry pie"
+				},
+				{
+					"value": "Sopa de mondongo"
+				},
+				{
+					"value": "Horsebread"
+				},
+				{
+					"value": "Curry bread"
+				},
+				{
+					"value": "Bread bowl"
+				},
+				{
+					"value": "flaky pastry"
+				},
+				{
+					"value": "Gibanica"
+				},
+				{
+					"value": "Khuushuur"
+				},
+				{
+					"value": "Cuban pastry"
+				},
+				{
+					"value": "Vienna bread"
+				},
+				{
+					"value": "steak burger"
+				},
+				{
+					"value": "Germknödel"
+				},
+				{
+					"value": "Chenpi"
+				},
+				{
+					"value": "Take 5"
+				},
+				{
+					"value": "tomato soup"
+				},
+				{
+					"value": "Pickled onion"
+				},
+				{
+					"value": "ukha"
+				},
+				{
+					"value": "Tlacoyo"
+				},
+				{
+					"value": "oyster cracker"
+				},
+				{
+					"value": "tripe soup"
+				},
+				{
+					"value": "Paska"
+				},
+				{
+					"value": "Fit-fit"
+				},
+				{
+					"value": "Vinegret"
+				},
+				{
+					"value": "Bún thịt nướng"
+				},
+				{
+					"value": "Corn chowder"
+				},
+				{
+					"value": "rice cracker"
+				},
+				{
+					"value": "Staffordshire oatcake"
+				},
+				{
+					"value": "Farl"
+				},
+				{
+					"value": "Fabada asturiana"
+				},
+				{
+					"value": "Wrap roti"
+				},
+				{
+					"value": "Bolani"
+				},
+				{
+					"value": "Stottie cake"
+				},
+				{
+					"value": "Pain d'épices"
+				},
+				{
+					"value": "Mee siam"
+				},
+				{
+					"value": "Coconut cake"
+				},
+				{
+					"value": "Manchester tart"
+				},
+				{
+					"value": "Portuguese sweet bread"
+				},
+				{
+					"value": "Kuy teav"
+				},
+				{
+					"value": "Chorleywood bread process"
+				},
+				{
+					"value": "Bread sauce"
+				},
+				{
+					"value": "Baursaki"
+				},
+				{
+					"value": "butter cookie"
+				},
+				{
+					"value": "Spoonbread"
+				},
+				{
+					"value": "Ajoblanco"
+				},
+				{
+					"value": "Tarta de Santiago"
+				},
+				{
+					"value": "Ambuyat"
+				},
+				{
+					"value": "barley bread"
+				},
+				{
+					"value": "Sundubu jjigae"
+				},
+				{
+					"value": "Chelsea bun"
+				},
+				{
+					"value": "Soto ayam"
+				},
+				{
+					"value": "samgye-tang"
+				},
+				{
+					"value": "Bouneschlupp"
+				},
+				{
+					"value": "Fried onion"
+				},
+				{
+					"value": "Natchitoches meat pie"
+				},
+				{
+					"value": "Bublik"
+				},
+				{
+					"value": "Bacon and egg pie"
+				},
+				{
+					"value": "Bruttiboni"
+				},
+				{
+					"value": "Ají Panca"
+				},
+				{
+					"value": "Pizza pugliese"
+				},
+				{
+					"value": "tiropita"
+				},
+				{
+					"value": "Ficelle"
+				},
+				{
+					"value": "shaobing"
+				},
+				{
+					"value": "Buttery"
+				},
+				{
+					"value": "Lahoh"
+				},
+				{
+					"value": "Milhoja"
+				},
+				{
+					"value": "Motsunabe"
+				},
+				{
+					"value": "Seafood pizza"
+				},
+				{
+					"value": "Hortobágyi palacsinta"
+				},
+				{
+					"value": "Soup Number Five"
+				},
+				{
+					"value": "Beer bread"
+				},
+				{
+					"value": "Bienenstich"
+				},
+				{
+					"value": "Bhatoora"
+				},
+				{
+					"value": "Afghan bread"
+				},
+				{
+					"value": "Prekmurska gibanica"
+				},
+				{
+					"value": "Buldak"
+				},
+				{
+					"value": "Laobing"
+				},
+				{
+					"value": "Mandazi"
+				},
+				{
+					"value": "Luchi"
+				},
+				{
+					"value": "Tandoor bread"
+				},
+				{
+					"value": "Bammy"
+				},
+				{
+					"value": "Tunnbröd"
+				},
+				{
+					"value": "Benedictine"
+				},
+				{
+					"value": "Pain de campagne"
+				},
+				{
+					"value": "Olla podrida"
+				},
+				{
+					"value": "Honey bun"
+				},
+				{
+					"value": "Tteokguk"
+				},
+				{
+					"value": "Anadama bread"
+				},
+				{
+					"value": "Bánh bao"
+				},
+				{
+					"value": "Nut roast"
+				},
+				{
+					"value": "Msemen"
+				},
+				{
+					"value": "pineapple tart"
+				},
+				{
+					"value": "Plain loaf"
+				},
+				{
+					"value": "Czernina"
+				},
+				{
+					"value": "Qutab"
+				},
+				{
+					"value": "Marillenknödel"
+				},
+				{
+					"value": "Franzbrötchen"
+				},
+				{
+					"value": "Pizza strips"
+				},
+				{
+					"value": "Prosphora"
+				},
+				{
+					"value": "Rumali Roti"
+				},
+				{
+					"value": "Pulla"
+				},
+				{
+					"value": "Collard liquor"
+				},
+				{
+					"value": "Rice bread"
+				},
+				{
+					"value": "Michetta"
+				},
+				{
+					"value": "Pionono"
+				},
+				{
+					"value": "Corsned"
+				},
+				{
+					"value": "Meatball pizza"
+				},
+				{
+					"value": "Krûdkoeke"
+				},
+				{
+					"value": "leek soup"
+				},
+				{
+					"value": "Paskha"
+				},
+				{
+					"value": "Klobasnek"
+				},
+				{
+					"value": "lye roll"
+				},
+				{
+					"value": "Crossing the bridge noodles"
+				},
+				{
+					"value": "Chakhchoukha"
+				},
+				{
+					"value": "Hiyashi chūka"
+				},
+				{
+					"value": "Gâteau Basque"
+				},
+				{
+					"value": "Vetkoek"
+				},
+				{
+					"value": "Taftan"
+				},
+				{
+					"value": "Zeeuwse bolus"
+				},
+				{
+					"value": "Papanași"
+				},
+				{
+					"value": "Okinawa soba"
+				},
+				{
+					"value": "Cacık"
+				},
+				{
+					"value": "Derby pie"
+				},
+				{
+					"value": "Rabbit pie"
+				},
+				{
+					"value": "Caldo gallego"
+				},
+				{
+					"value": "vlaai"
+				},
+				{
+					"value": "Kimchi jjigae"
+				},
+				{
+					"value": "Bhakri"
+				},
+				{
+					"value": "Cozonac"
+				},
+				{
+					"value": "sweet potato pie"
+				},
+				{
+					"value": "Bizcocho"
+				},
+				{
+					"value": "Finnish bread"
+				},
+				{
+					"value": "Salt-rising bread"
+				},
+				{
+					"value": "Flatkaka"
+				},
+				{
+					"value": "Jachnun"
+				},
+				{
+					"value": "Blueberry pie"
+				},
+				{
+					"value": "Game pie"
+				},
+				{
+					"value": "Touton"
+				},
+				{
+					"value": "Ginataan"
+				},
+				{
+					"value": "Aush"
+				},
+				{
+					"value": "Flipper pie"
+				},
+				{
+					"value": "zōni"
+				},
+				{
+					"value": "Zosui"
+				},
+				{
+					"value": "Plăcintă"
+				},
+				{
+					"value": "Zwiebelkuchen"
+				},
+				{
+					"value": "oladyi"
+				},
+				{
+					"value": "Cottage loaf"
+				},
+				{
+					"value": "Persian"
+				},
+				{
+					"value": "Pork chop bun"
+				},
+				{
+					"value": "Yukgaejang"
+				},
+				{
+					"value": "Sponge and dough"
+				},
+				{
+					"value": "Nasi uduk"
+				},
+				{
+					"value": "Malawach"
+				},
+				{
+					"value": "Biber salçası"
+				},
+				{
+					"value": "Kharcho"
+				},
+				{
+					"value": "Hochzeitssuppe"
+				},
+				{
+					"value": "Confiture de lait"
+				},
+				{
+					"value": "Amish Friendship Bread"
+				},
+				{
+					"value": "15 bean soup"
+				},
+				{
+					"value": "Pecorino Sardo"
+				},
+				{
+					"value": "schnecke"
+				},
+				{
+					"value": "Lender's Bagels"
+				},
+				{
+					"value": "Suncake"
+				},
+				{
+					"value": "Chicken and mushroom pie"
+				},
+				{
+					"value": "Covrigi"
+				},
+				{
+					"value": "Borodinsky bread"
+				},
+				{
+					"value": "Blaa"
+				},
+				{
+					"value": "Leverpostej"
+				},
+				{
+					"value": "Memela"
+				},
+				{
+					"value": "Paste"
+				},
+				{
+					"value": "Cocido Montañés"
+				},
+				{
+					"value": "Cream Stew"
+				},
+				{
+					"value": "Portable soup"
+				},
+				{
+					"value": "Cozido à portuguesa"
+				},
+				{
+					"value": "Bumbleberry pie"
+				},
+				{
+					"value": "creamed coconut"
+				},
+				{
+					"value": "Bethmännchen"
+				},
+				{
+					"value": "Haejangguk"
+				},
+				{
+					"value": "Nimono"
+				},
+				{
+					"value": "Scaccia"
+				},
+				{
+					"value": "Saladitos"
+				},
+				{
+					"value": "Asian soup"
+				},
+				{
+					"value": "Sinseollo"
+				},
+				{
+					"value": "Pandebono"
+				},
+				{
+					"value": "Soldiers"
+				},
+				{
+					"value": "Piaya"
+				},
+				{
+					"value": "Coussin de Lyon"
+				},
+				{
+					"value": "Tinola"
+				},
+				{
+					"value": "Ash Reshteh"
+				},
+				{
+					"value": "Sloosh"
+				},
+				{
+					"value": "Serabi"
+				},
+				{
+					"value": "Custard pie"
+				},
+				{
+					"value": "Cheesymite scroll"
+				},
+				{
+					"value": "Bazlama"
+				},
+				{
+					"value": "Bagel toast"
+				},
+				{
+					"value": "Parker House roll"
+				},
+				{
+					"value": "sushki"
+				},
+				{
+					"value": "Tequeño"
+				},
+				{
+					"value": "Lekvar"
+				},
+				{
+					"value": "Maccu"
+				},
+				{
+					"value": "katuk"
+				},
+				{
+					"value": "Bossche bol"
+				},
+				{
+					"value": "Spring pancake"
+				},
+				{
+					"value": "Pizza bagel"
+				},
+				{
+					"value": "Banbury cake"
+				},
+				{
+					"value": "National loaf"
+				},
+				{
+					"value": "Colomba di Pasqua"
+				},
+				{
+					"value": "Jolada Rotti/ Jawari Roti"
+				},
+				{
+					"value": "Utap"
+				},
+				{
+					"value": "Khao poon"
+				},
+				{
+					"value": "Piki"
+				},
+				{
+					"value": "Kalach"
+				},
+				{
+					"value": "Pastrmajlija"
+				},
+				{
+					"value": "Sausage bread"
+				},
+				{
+					"value": "Punsch-roll"
+				},
+				{
+					"value": "buttermilk pie"
+				},
+				{
+					"value": "Squab pie"
+				},
+				{
+					"value": "Himbasha"
+				},
+				{
+					"value": "Baati"
+				},
+				{
+					"value": "Escudella i carn d'olla"
+				},
+				{
+					"value": "Cream bun"
+				},
+				{
+					"value": "Crempog"
+				},
+				{
+					"value": "Bookbinder Soup"
+				},
+				{
+					"value": "Canja de galinha"
+				},
+				{
+					"value": "beef bun"
+				},
+				{
+					"value": "Cocktail bun"
+				},
+				{
+					"value": "Apam balik"
+				},
+				{
+					"value": "Bolo do caco"
+				},
+				{
+					"value": "Dongchimi"
+				},
+				{
+					"value": "saffron bun"
+				},
+				{
+					"value": "Nam ngiao"
+				},
+				{
+					"value": "gomguk"
+				},
+				{
+					"value": "Fruit butter"
+				},
+				{
+					"value": "powidl"
+				},
+				{
+					"value": "Folar"
+				},
+				{
+					"value": "Bath bun"
+				},
+				{
+					"value": "Beaten biscuit"
+				},
+				{
+					"value": "Rawon"
+				},
+				{
+					"value": "Bun kebab"
+				},
+				{
+					"value": "Cup-a-Soup"
+				},
+				{
+					"value": "Sutarfeni"
+				},
+				{
+					"value": "Rose hip soup"
+				},
+				{
+					"value": "Hard dough bread"
+				},
+				{
+					"value": "Curry beef triangle"
+				},
+				{
+					"value": "doenjang-jjigae"
+				},
+				{
+					"value": "pâté chaud"
+				},
+				{
+					"value": "Ciorbă"
+				},
+				{
+					"value": "No-knead bread"
+				},
+				{
+					"value": "Kinh Do Corporation"
+				},
+				{
+					"value": "Marry girl cake"
+				},
+				{
+					"value": "Chorley cake"
+				},
+				{
+					"value": "Sheftalia"
+				},
+				{
+					"value": "Fa gao"
+				},
+				{
+					"value": "Bulkie roll"
+				},
+				{
+					"value": "Buko pie"
+				},
+				{
+					"value": "Kulich"
+				},
+				{
+					"value": "chocolate spread"
+				},
+				{
+					"value": "Mekitsa"
+				},
+				{
+					"value": "Miyeok guk"
+				},
+				{
+					"value": "coconut chutney"
+				},
+				{
+					"value": "cabbage soup"
+				},
+				{
+					"value": "Garbure"
+				},
+				{
+					"value": "Chifle"
+				},
+				{
+					"value": "strawberry pie"
+				},
+				{
+					"value": "Tonjiru"
+				},
+				{
+					"value": "Briouat"
+				},
+				{
+					"value": "Hae mee"
+				},
+				{
+					"value": "Cream horn"
+				},
+				{
+					"value": "Jiuniang"
+				},
+				{
+					"value": "Undhiyu"
+				},
+				{
+					"value": "Hirayachi"
+				},
+				{
+					"value": "Rosół"
+				},
+				{
+					"value": "Olive no Hana"
+				},
+				{
+					"value": "Schneeball"
+				},
+				{
+					"value": "Raisin bread"
+				},
+				{
+					"value": "Bouillon"
+				},
+				{
+					"value": "black bun"
+				},
+				{
+					"value": "Christmas wafer"
+				},
+				{
+					"value": "strawberry rhubarb pie"
+				},
+				{
+					"value": "Baghrir"
+				},
+				{
+					"value": "Fleischkuekle"
+				},
+				{
+					"value": "Nordic bread culture"
+				},
+				{
+					"value": "Punschkrapfen"
+				},
+				{
+					"value": "Rold Gold"
+				},
+				{
+					"value": "Mouna"
+				},
+				{
+					"value": "Pan loaf"
+				},
+				{
+					"value": "Caldo de pollo"
+				},
+				{
+					"value": "Azerbaijani pakhlava"
+				},
+				{
+					"value": "Corned beef pie"
+				},
+				{
+					"value": "Chinese pancake"
+				},
+				{
+					"value": "Ploye"
+				},
+				{
+					"value": "Soto mie"
+				},
+				{
+					"value": "Quesito"
+				},
+				{
+					"value": "Flatbrød"
+				},
+				{
+					"value": "cardamom bread"
+				},
+				{
+					"value": "Kiritanpo"
+				},
+				{
+					"value": "Bread soup"
+				},
+				{
+					"value": "Antidoron"
+				},
+				{
+					"value": "Sesame seed candy"
+				},
+				{
+					"value": "Flia"
+				},
+				{
+					"value": "Tavče Gravče"
+				},
+				{
+					"value": "Rat na"
+				},
+				{
+					"value": "Qottab"
+				},
+				{
+					"value": "Sel roti"
+				},
+				{
+					"value": "Miguelitos"
+				},
+				{
+					"value": "Kommissbrot"
+				},
+				{
+					"value": "Dotorimuk"
+				},
+				{
+					"value": "Ajdovi žganci"
+				},
+				{
+					"value": "Istrian stew"
+				},
+				{
+					"value": "Pretzelmaker"
+				},
+				{
+					"value": "Bacon soup"
+				},
+				{
+					"value": "Çäkçäk"
+				},
+				{
+					"value": "Podpłomyk"
+				},
+				{
+					"value": "Straight dough"
+				},
+				{
+					"value": "Pigeon pie"
+				},
+				{
+					"value": "Öçpoçmaq"
+				},
+				{
+					"value": "Pumpkin soup"
+				},
+				{
+					"value": "Rosolnyk"
+				},
+				{
+					"value": "Japanese peanut"
+				},
+				{
+					"value": "Nokul"
+				},
+				{
+					"value": "Laufabrauð"
+				},
+				{
+					"value": "Bob Andy pie"
+				},
+				{
+					"value": "milk-cream strudel"
+				},
+				{
+					"value": "Gustavus Adolphus Pastry"
+				},
+				{
+					"value": "Swikee"
+				},
+				{
+					"value": "Hodge-Podge"
+				},
+				{
+					"value": "Fugu chiri"
+				},
+				{
+					"value": "Kasseropita"
+				},
+				{
+					"value": "Bush coconut"
+				},
+				{
+					"value": "Korovai"
+				},
+				{
+					"value": "Flapper pie"
+				},
+				{
+					"value": "Koloocheh and Masgati"
+				},
+				{
+					"value": "Suaasat"
+				},
+				{
+					"value": "borș"
+				},
+				{
+					"value": "Mantecadas"
+				},
+				{
+					"value": "Pathiri"
+				},
+				{
+					"value": "Kubdari"
+				},
+				{
+					"value": "Pletzel"
+				},
+				{
+					"value": "Mannish water"
+				},
+				{
+					"value": "Heong Peng"
+				},
+				{
+					"value": "Iced bun"
+				},
+				{
+					"value": "Twist bread"
+				},
+				{
+					"value": "Sunbeam Bread"
+				},
+				{
+					"value": "Matevž"
+				},
+				{
+					"value": "Boston bun"
+				},
+				{
+					"value": "gamja-tang"
+				},
+				{
+					"value": "Ričet"
+				},
+				{
+					"value": "Gata"
+				},
+				{
+					"value": "Remonce"
+				},
+				{
+					"value": "Kitchener bun"
+				},
+				{
+					"value": "Manduguk"
+				},
+				{
+					"value": "Manchet"
+				},
+				{
+					"value": "Runeberg's torte"
+				},
+				{
+					"value": "Gazpachuelo"
+				},
+				{
+					"value": "Mlinci"
+				},
+				{
+					"value": "Cholermus"
+				},
+				{
+					"value": "Makroudh"
+				},
+				{
+					"value": "Dripping cake"
+				},
+				{
+					"value": "London Cheesecake"
+				},
+				{
+					"value": "Flädle"
+				},
+				{
+					"value": "Balep korkun"
+				},
+				{
+					"value": "meat glaze"
+				},
+				{
+					"value": "Prawn soup"
+				},
+				{
+					"value": "Jeongol"
+				},
+				{
+					"value": "Bakpia Pathok"
+				},
+				{
+					"value": "Homity pie"
+				},
+				{
+					"value": "2007 Vietnam food scare"
+				},
+				{
+					"value": "Sopa de pata"
+				},
+				{
+					"value": "Currant bun"
+				},
+				{
+					"value": "Bún mắm"
+				},
+				{
+					"value": "Tsoureki"
+				},
+				{
+					"value": "soup joumou"
+				},
+				{
+					"value": "Pesaha Appam"
+				},
+				{
+					"value": "Gulyásleves"
+				},
+				{
+					"value": "Sea-pie"
+				},
+				{
+					"value": "Belokranjska povitica"
+				},
+				{
+					"value": "Almogrote"
+				},
+				{
+					"value": "Zuppa toscana"
+				},
+				{
+					"value": "Bollo"
+				},
+				{
+					"value": "Razzleberry"
+				},
+				{
+					"value": "hornazo"
+				},
+				{
+					"value": "Kołacz"
+				},
+				{
+					"value": "Binignit"
+				},
+				{
+					"value": "Tortell"
+				},
+				{
+					"value": "Aish Merahrah"
+				},
+				{
+					"value": "Broa"
+				},
+				{
+					"value": "Matnakash"
+				},
+				{
+					"value": "Pasulj"
+				},
+				{
+					"value": "Singing hinny"
+				},
+				{
+					"value": "Tongseng"
+				},
+				{
+					"value": "Sticky bun"
+				},
+				{
+					"value": "Bulla cake"
+				},
+				{
+					"value": "Pappa al pomodoro"
+				},
+				{
+					"value": "Ngome"
+				},
+				{
+					"value": "Pets de sœurs"
+				},
+				{
+					"value": "Thalipeeth"
+				},
+				{
+					"value": "Daktyla"
+				},
+				{
+					"value": "Gundel pancake"
+				},
+				{
+					"value": "Hertzoggie"
+				},
+				{
+					"value": "peanut butter bun"
+				},
+				{
+					"value": "Canjica"
+				},
+				{
+					"value": "Pistolet"
+				},
+				{
+					"value": "Belyash"
+				},
+				{
+					"value": "Proja"
+				},
+				{
+					"value": "Herman cake"
+				},
+				{
+					"value": "Penny bun"
+				},
+				{
+					"value": "rijstevlaai"
+				},
+				{
+					"value": "Ragout fin"
+				},
+				{
+					"value": "Pomegranate soup"
+				},
+				{
+					"value": "Roti tissue"
+				},
+				{
+					"value": "Partan bree"
+				},
+				{
+					"value": "Ohn no khao swè"
+				},
+				{
+					"value": "Mother's Pride"
+				},
+				{
+					"value": "Chataamari"
+				},
+				{
+					"value": "Canadian White"
+				},
+				{
+					"value": "Galbitang"
+				},
+				{
+					"value": "Uštipci"
+				},
+				{
+					"value": "Blackberry pie"
+				},
+				{
+					"value": "Jumiles"
+				},
+				{
+					"value": "Geng"
+				},
+				{
+					"value": "Desem"
+				},
+				{
+					"value": "Garlic knot"
+				},
+				{
+					"value": "Kruidnoten"
+				},
+				{
+					"value": "Ohaw"
+				},
+				{
+					"value": "Sou"
+				},
+				{
+					"value": "Hōtō"
+				},
+				{
+					"value": "Houska"
+				},
+				{
+					"value": "Laping"
+				},
+				{
+					"value": "Flaons"
+				},
+				{
+					"value": "Carac"
+				},
+				{
+					"value": "Lazarakia"
+				},
+				{
+					"value": "Adobe bread"
+				},
+				{
+					"value": "Serradura"
+				},
+				{
+					"value": "Ogbono soup"
+				},
+				{
+					"value": "Paper wrapped cake"
+				},
+				{
+					"value": "Tortilla de rescoldo"
+				},
+				{
+					"value": "Allerheiligenstriezel"
+				},
+				{
+					"value": "Lörtsy"
+				},
+				{
+					"value": "Empal gentong"
+				},
+				{
+					"value": "Meat and potato pie"
+				},
+				{
+					"value": "Thomas'"
+				},
+				{
+					"value": "Haitian patty"
+				},
+				{
+					"value": "Maids of honour tart"
+				},
+				{
+					"value": "Taco soup"
+				},
+				{
+					"value": "potée"
+				},
+				{
+					"value": "Banket"
+				},
+				{
+					"value": "Caldo de siete mares"
+				},
+				{
+					"value": "ChaSan"
+				},
+				{
+					"value": "Curry pie"
+				},
+				{
+					"value": "Guagua de pan"
+				},
+				{
+					"value": "Filone"
+				},
+				{
+					"value": "sausage bun"
+				},
+				{
+					"value": "Ching bo leung"
+				},
+				{
+					"value": "Caparrones"
+				},
+				{
+					"value": "Alexandertorte"
+				},
+				{
+					"value": "Jodenkoek"
+				},
+				{
+					"value": "piti"
+				},
+				{
+					"value": "Chikhirtma"
+				},
+				{
+					"value": "Knieküchle"
+				},
+				{
+					"value": "Siemieniotka"
+				},
+				{
+					"value": "Leipziger Lerche"
+				},
+				{
+					"value": "Bánh pía"
+				},
+				{
+					"value": "Couque de Dinant"
+				},
+				{
+					"value": "Bath Oliver"
+				},
+				{
+					"value": "Masan"
+				},
+				{
+					"value": "Snickers pie"
+				},
+				{
+					"value": "Thenthuk"
+				},
+				{
+					"value": "Mofletta"
+				},
+				{
+					"value": "Roze koek"
+				},
+				{
+					"value": "Belekoy"
+				},
+				{
+					"value": "Jókai Bean Soup"
+				},
+				{
+					"value": "Buridda"
+				},
+				{
+					"value": "Ginestrata"
+				},
+				{
+					"value": "Obi Non"
+				},
+				{
+					"value": "Kompyang"
+				},
+				{
+					"value": "Cow cod soup"
+				},
+				{
+					"value": "Fish-shaped pastry"
+				},
+				{
+					"value": "Phitti"
+				},
+				{
+					"value": "Khanom bueang"
+				},
+				{
+					"value": "Pain à la grecque"
+				},
+				{
+					"value": "Hagebuttenmark"
+				},
+				{
+					"value": "Rönttönen"
+				},
+				{
+					"value": "Etli ekmek"
+				},
+				{
+					"value": "Spanisch Brötli"
+				},
+				{
+					"value": "Marraqueta"
+				},
+				{
+					"value": "Fatoot"
+				},
+				{
+					"value": "Pan de yuca"
+				},
+				{
+					"value": "Lukhmi"
+				},
+				{
+					"value": "Lobster stew"
+				},
+				{
+					"value": "Smulpaj"
+				},
+				{
+					"value": "Bosnian Pot"
+				},
+				{
+					"value": "Kueh Pie Tee"
+				},
+				{
+					"value": "Steamed bread"
+				},
+				{
+					"value": "Peabutter"
+				},
+				{
+					"value": "Ollada"
+				},
+				{
+					"value": "Hefekranz"
+				},
+				{
+					"value": "Wodzionka"
+				},
+				{
+					"value": "Magiritsa"
+				},
+				{
+					"value": "Pickle soup"
+				},
+				{
+					"value": "Garmugia"
+				},
+				{
+					"value": "Fish soup bee hoon"
+				},
+				{
+					"value": "Toast'em Pop Ups"
+				},
+				{
+					"value": "Sopa de Gato"
+				},
+				{
+					"value": "Fried pie"
+				},
+				{
+					"value": "Flies graveyard"
+				},
+				{
+					"value": "Moorkop"
+				},
+				{
+					"value": "Pane di Altamura"
+				},
+				{
+					"value": "Schaumrolle"
+				},
+				{
+					"value": "kueh tutu"
+				},
+				{
+					"value": "Krentjebrij"
+				},
+				{
+					"value": "Lotus seed bun"
+				},
+				{
+					"value": "Biskotso"
+				},
+				{
+					"value": "Sanchuisanda"
+				},
+				{
+					"value": "Khebz"
+				},
+				{
+					"value": "Borlengo"
+				},
+				{
+					"value": "Holsum Bread"
+				},
+				{
+					"value": "Leaf protein concentrate"
+				},
+				{
+					"value": "Ruisreikäleipä"
+				},
+				{
+					"value": "Fabes con almejas"
+				},
+				{
+					"value": "Grape pie"
+				},
+				{
+					"value": "London bun"
+				},
+				{
+					"value": "Tapalapa bread"
+				},
+				{
+					"value": "Zelnik"
+				},
+				{
+					"value": "Muffin Break"
+				},
+				{
+					"value": "Fazuelos"
+				},
+				{
+					"value": "Torta de gazpacho"
+				},
+				{
+					"value": "Shaker Lemon Pie"
+				},
+				{
+					"value": "SuperPretzel"
+				},
+				{
+					"value": "Pancake breakfast"
+				},
+				{
+					"value": "Skolebrød"
+				},
+				{
+					"value": "Boyoz"
+				},
+				{
+					"value": "Big Katsu"
+				},
+				{
+					"value": "Tingmo"
+				},
+				{
+					"value": "Hulatang"
+				},
+				{
+					"value": "Kitcha"
+				},
+				{
+					"value": "Egg tong sui"
+				},
+				{
+					"value": "Belgian bun"
+				},
+				{
+					"value": "Soup alla Canavese"
+				},
+				{
+					"value": "Cheese and onion pie"
+				},
+				{
+					"value": "Khichra"
+				},
+				{
+					"value": "Munini-imo"
+				},
+				{
+					"value": "Sup Kambing"
+				},
+				{
+					"value": "Feu"
+				},
+				{
+					"value": "Pashti"
+				},
+				{
+					"value": "Malooga"
+				},
+				{
+					"value": "Bar-le-duc jelly"
+				},
+				{
+					"value": "Gopchang jeongol"
+				},
+				{
+					"value": "Mein gon"
+				},
+				{
+					"value": "Rava dosa"
+				},
+				{
+					"value": "Colston bun"
+				},
+				{
+					"value": "Purée Mongole"
+				},
+				{
+					"value": "Kuymak"
+				},
+				{
+					"value": "Halguane"
+				},
+				{
+					"value": "Sour soup"
+				},
+				{
+					"value": "Juka"
+				},
+				{
+					"value": "Tone Bread"
+				},
+				{
+					"value": "Imoni"
+				},
+				{
+					"value": "Chocolate sandwich"
+				},
+				{
+					"value": "Međimurska gibanica"
+				},
+				{
+					"value": "Gyeongju bread"
+				},
+				{
+					"value": "Bagnun"
+				},
+				{
+					"value": "Sklandrausis"
+				},
+				{
+					"value": "Tekwan"
+				},
+				{
+					"value": "Scovardă"
+				},
+				{
+					"value": "lattice"
+				},
+				{
+					"value": "Pastel de Camiguín"
+				},
+				{
+					"value": "Salmon pie"
+				},
+				{
+					"value": "Peach bun"
+				},
+				{
+					"value": "Bob chorba"
+				},
+				{
+					"value": "Tohax"
+				},
+				{
+					"value": "IJzerkoekje"
+				},
+				{
+					"value": "Caldo tlalpeño"
+				},
+				{
+					"value": "Mie ayam"
+				},
+				{
+					"value": "Nunt"
+				},
+				{
+					"value": "Plantain soup"
+				},
+				{
+					"value": "Sorullos"
+				},
+				{
+					"value": "Potbrood"
+				},
+				{
+					"value": "Fläskpannkaka"
+				},
+				{
+					"value": "Chickpea bread"
+				},
+				{
+					"value": "Banga"
+				},
+				{
+					"value": "peg bread"
+				},
+				{
+					"value": "Panfocaccia"
+				},
+				{
+					"value": "jaecheop-guk"
+				},
+				{
+					"value": "Crackling bread"
+				},
+				{
+					"value": "Chè bà ba"
+				},
+				{
+					"value": "Benne Dose"
+				},
+				{
+					"value": "Shambar"
+				},
+				{
+					"value": "Şöbiyet"
+				},
+				{
+					"value": "Bappir"
+				},
+				{
+					"value": "Žemlovka"
+				},
+				{
+					"value": "Huff paste"
+				},
+				{
+					"value": "Sayur asem"
+				},
+				{
+					"value": "Oille"
+				},
+				{
+					"value": "Croline"
+				},
+				{
+					"value": "Spiced bun"
+				},
+				{
+					"value": "Vánočka"
+				},
+				{
+					"value": "Scali bread"
+				},
+				{
+					"value": "obara"
+				},
+				{
+					"value": "Alphitomancy"
+				},
+				{
+					"value": "Kwati"
+				},
+				{
+					"value": "Cuchuco"
+				},
+				{
+					"value": "Zoque"
+				},
+				{
+					"value": "Gogi guksu"
+				},
+				{
+					"value": "Alicot"
+				},
+				{
+					"value": "Puftaloon"
+				},
+				{
+					"value": "Boûkète"
+				},
+				{
+					"value": "Nièr beurre"
+				},
+				{
+					"value": "Mandelkubb"
+				},
+				{
+					"value": "Haddekuche"
+				},
+				{
+					"value": "Sesame seed cake"
+				},
+				{
+					"value": "Dutch carnival cake"
+				},
+				{
+					"value": "Tomato omelette"
+				},
+				{
+					"value": "Parker's"
+				},
+				{
+					"value": "Isi ewu"
+				},
+				{
+					"value": "Harihari-nabe"
+				},
+				{
+					"value": "Pane sciocco"
+				},
+				{
+					"value": "Kol böreği"
+				},
+				{
+					"value": "Zuppa alla modenese"
+				},
+				{
+					"value": "Coppia Ferrarese"
+				},
+				{
+					"value": "Talo"
+				},
+				{
+					"value": "Mandoca"
+				},
+				{
+					"value": "Clover"
+				},
+				{
+					"value": "Rab cake"
+				},
+				{
+					"value": "Cabell d'àngel"
+				},
+				{
+					"value": "Stutenkerl"
+				},
+				{
+					"value": "Scuffler"
+				},
+				{
+					"value": "Allinson"
+				},
+				{
+					"value": "Maraca pie"
+				},
+				{
+					"value": "Nature's Pride"
+				},
+				{
+					"value": "Chakna"
+				},
+				{
+					"value": "Bread warmer"
+				},
+				{
+					"value": "Kneippbrød"
+				},
+				{
+					"value": "Samlor Kako"
+				},
+				{
+					"value": "Pretzel Flipz"
+				},
+				{
+					"value": "Penia"
+				},
+				{
+					"value": "Pan de Pascua"
+				},
+				{
+					"value": "Krishna Pauroti"
+				},
+				{
+					"value": "Vori vori"
+				},
+				{
+					"value": "Jacob's Oddities"
+				},
+				{
+					"value": "Cooper's"
+				},
+				{
+					"value": "Calentao"
+				},
+				{
+					"value": "Premium Plus"
+				},
+				{
+					"value": "Konro"
+				},
+				{
+					"value": "Rupjmaize"
+				},
+				{
+					"value": "Porra antequerana"
+				},
+				{
+					"value": "Bacone"
+				},
+				{
+					"value": "Maltese bread"
+				},
+				{
+					"value": "Birnbrot"
+				},
+				{
+					"value": "Trenza"
+				},
+				{
+					"value": "Pain brié"
+				},
+				{
+					"value": "Buccellato"
+				},
+				{
+					"value": "Couque suisse"
+				},
+				{
+					"value": "Killie pie"
+				},
+				{
+					"value": "Keledoş"
+				},
+				{
+					"value": "Inipit"
+				},
+				{
+					"value": "Kalathappam"
+				},
+				{
+					"value": "Pesarattu"
+				},
+				{
+					"value": "Pira caldo"
+				},
+				{
+					"value": "Pisca Andina"
+				},
+				{
+					"value": "Griddle scone"
+				},
+				{
+					"value": "Soup all'Imperatrice"
+				},
+				{
+					"value": "Amiedi"
+				},
+				{
+					"value": "Pumpkin bread"
+				},
+				{
+					"value": "Cold borsch"
+				},
+				{
+					"value": "Harput meatballs"
+				},
+				{
+					"value": "Ficelle picarde"
+				},
+				{
+					"value": "soyo"
+				},
+				{
+					"value": "Kroštule"
+				},
+				{
+					"value": "Yurla"
+				},
+				{
+					"value": "Sungeoguk"
+				},
+				{
+					"value": "Rivels"
+				},
+				{
+					"value": "Samlar machu"
+				},
+				{
+					"value": "Tu"
+				},
+				{
+					"value": "Sulu köfte"
+				},
+				{
+					"value": "Sarburma"
+				},
+				{
+					"value": "Merita Breads"
+				},
+				{
+					"value": "Noppe"
+				},
+				{
+					"value": "Dabby-Doughs"
+				},
+				{
+					"value": "chalbori-ppang"
+				},
+				{
+					"value": "Borş de burechiuşe"
+				},
+				{
+					"value": "Khapse"
+				},
+				{
+					"value": "Lady Arundel's Manchet"
+				},
+				{
+					"value": "Onion sauce"
+				},
+				{
+					"value": "Tortita negra"
+				},
+				{
+					"value": "Tian mo"
+				},
+				{
+					"value": "Pan Desuyo!"
+				},
+				{
+					"value": "Crème Ninon"
+				},
+				{
+					"value": "Arpacaş"
+				},
+				{
+					"value": "Breddy"
+				},
+				{
+					"value": "Bint al-sahn"
+				},
+				{
+					"value": "Pan de coco"
+				},
+				{
+					"value": "Colaci"
+				},
+				{
+					"value": "Cocido lebaniego"
+				},
+				{
+					"value": "Cougnou"
+				},
+				{
+					"value": "Tacacá"
+				},
+				{
+					"value": "Memiljeon"
+				},
+				{
+					"value": "Caldillo de perro"
+				},
+				{
+					"value": "Kalács"
+				},
+				{
+					"value": "Speyer Brezelfest"
+				},
+				{
+					"value": "Diyabath"
+				},
+				{
+					"value": "Khrushchev dough"
+				},
+				{
+					"value": "Shamishi"
+				},
+				{
+					"value": "Molagoottal"
+				},
+				{
+					"value": "Changua"
+				},
+				{
+					"value": "Devizes pie"
+				},
+				{
+					"value": "Grant loaf"
+				},
+				{
+					"value": "Steckrübeneintopf"
+				},
+				{
+					"value": "Ovelgönne bread roll"
+				},
+				{
+					"value": "Bokeo"
+				},
+				{
+					"value": "Kerststol"
+				},
+				{
+					"value": "Apohtin"
+				},
+				{
+					"value": "Ciorbă de perișoare"
+				},
+				{
+					"value": "Oritang"
+				},
+				{
+					"value": "Blachindla"
+				},
+				{
+					"value": "Crustless bread"
+				},
+				{
+					"value": "Mohnflesserl"
+				},
+				{
+					"value": "Pancake pen"
+				},
+				{
+					"value": "Pastry heart"
+				},
+				{
+					"value": "Panbrioche"
+				},
+				{
+					"value": "Revithia"
+				},
+				{
+					"value": "Theeyal"
+				},
+				{
+					"value": "Mealie bread"
+				},
+				{
+					"value": "Sgabeo"
+				},
+				{
+					"value": "Cocol"
+				},
+				{
+					"value": "Cookie Cake Pie"
+				},
+				{
+					"value": "Funkaso"
+				},
+				{
+					"value": "Georgian bread"
+				},
+				{
+					"value": "Southern Illinois chowder"
+				},
+				{
+					"value": "Tomato compote"
+				},
+				{
+					"value": "Tsamarella"
+				},
+				{
+					"value": "Åpent Bakeri"
+				},
+				{
+					"value": "Zuppa pavese"
+				},
+				{
+					"value": "Jenny Lind Soup"
+				},
+				{
+					"value": "Oghwevwri"
+				},
+				{
+					"value": "Naengguk"
+				},
+				{
+					"value": "De-Thuk"
+				},
+				{
+					"value": "Velhote"
+				},
+				{
+					"value": "Pho Ta"
+				},
+				{
+					"value": "Hallulla"
+				},
+				{
+					"value": "Spritzkuchen"
+				},
+				{
+					"value": "Picatostes"
+				},
+				{
+					"value": "Conch soup"
+				},
+				{
+					"value": "Schuxen"
+				},
+				{
+					"value": "Tong Sui Shop"
+				},
+				{
+					"value": "baeksuk"
+				},
+				{
+					"value": "Kandil simidi"
+				},
+				{
+					"value": "Caldo de costilla"
+				},
+				{
+					"value": "Guernsey Gâche"
+				},
+				{
+					"value": "Pan bati"
+				},
+				{
+					"value": "Birnenhonig"
+				},
+				{
+					"value": "Sabaayad"
+				},
+				{
+					"value": "Boroña"
+				},
+				{
+					"value": "ginger pickle"
+				},
+				{
+					"value": "Hellimli"
+				},
+				{
+					"value": "Gobhi paratha"
+				},
+				{
+					"value": "Gundain"
+				},
+				{
+					"value": "Gyabrag"
+				},
+				{
+					"value": "Nantong Xiting Cracker"
+				},
+				{
+					"value": "Meatball soup"
+				},
+				{
+					"value": "Prežganka"
+				},
+				{
+					"value": "Bakery Reiss"
+				},
+				{
+					"value": "Artesa"
+				},
+				{
+					"value": "apple soup"
+				},
+				{
+					"value": "beef"
+				},
+				{
+					"value": "shawarma"
+				},
+				{
+					"value": "lamb"
+				},
+				{
+					"value": "steak"
+				},
+				{
+					"value": "veal"
+				},
+				{
+					"value": "dog meat"
+				},
+				{
+					"value": "pork"
+				},
+				{
+					"value": "horse meat"
+				},
+				{
+					"value": "red meat"
+				},
+				{
+					"value": "whale meat"
+				},
+				{
+					"value": "Jerky"
+				},
+				{
+					"value": "bushmeat"
+				},
+				{
+					"value": "In vitro meat"
+				},
+				{
+					"value": "chicken"
+				},
+				{
+					"value": "goat meat"
+				},
+				{
+					"value": "white meat"
+				},
+				{
+					"value": "cat meat"
+				},
+				{
+					"value": "kangaroo meat"
+				},
+				{
+					"value": "salmon"
+				},
+				{
+					"value": "Jhatka"
+				},
+				{
+					"value": "Steak frites"
+				},
+				{
+					"value": "primal cut"
+				},
+				{
+					"value": "smoked meat"
+				},
+				{
+					"value": "turkey meat"
+				},
+				{
+					"value": "duck meat"
+				},
+				{
+					"value": "Squab"
+				},
+				{
+					"value": "Kutha meat"
+				},
+				{
+					"value": "elephant meat"
+				},
+				{
+					"value": "Shank"
+				},
+				{
+					"value": "dried meat"
+				},
+				{
+					"value": "meat on the bone"
+				},
+				{
+					"value": "bat"
+				},
+				{
+					"value": "Iguana meat"
+				},
+				{
+					"value": "Ambelopoulia"
+				},
+				{
+					"value": "salt"
+				},
+				{
+					"value": "olive oil"
+				},
+				{
+					"value": "Nori"
+				},
+				{
+					"value": "soybean oil"
+				},
+				{
+					"value": "bean sprout"
+				},
+				{
+					"value": "aquafaba"
+				},
+				{
+					"value": "octopus"
+				},
+				{
+					"value": "tarako"
+				},
+				{
+					"value": "karashi"
+				},
+				{
+					"value": "Salpicon"
+				},
+				{
+					"value": "Coconut milk powder"
+				},
+				{
+					"value": "Gelling sugar"
+				},
+				{
+					"value": "peanut paste"
+				},
+				{
+					"value": "Anti-degradant"
+				},
+				{
+					"value": "chocolate"
+				},
+				{
+					"value": "sugar"
+				},
+				{
+					"value": "couscous"
+				},
+				{
+					"value": "milk"
+				},
+				{
+					"value": "kosher foods"
+				},
+				{
+					"value": "century egg"
+				},
+				{
+					"value": "meat"
+				},
+				{
+					"value": "Dragonfruit"
+				},
+				{
+					"value": "biryani"
+				},
+				{
+					"value": "sauerkraut"
+				},
+				{
+					"value": "seafood"
+				},
+				{
+					"value": "sandwich"
+				},
+				{
+					"value": "nut"
+				},
+				{
+					"value": "vegetable"
+				},
+				{
+					"value": "flour"
+				},
+				{
+					"value": "junk food"
+				},
+				{
+					"value": "pesto"
+				},
+				{
+					"value": "pastry"
+				},
+				{
+					"value": "egg",
+					"synonyms": [
+						"eggs"
+					]
+				},
+				{
+					"value": "balut"
+				},
+				{
+					"value": "food grain"
+				},
+				{
+					"value": "staple food"
+				},
+				{
+					"value": "Turkish delight"
+				},
+				{
+					"value": "pickled cucumber"
+				},
+				{
+					"value": "dumpling"
+				},
+				{
+					"value": "pemmican"
+				},
+				{
+					"value": "Rib eye steak"
+				},
+				{
+					"value": "quiche"
+				},
+				{
+					"value": "tri-tip"
+				},
+				{
+					"value": "hazelnut"
+				},
+				{
+					"value": "frozen food"
+				},
+				{
+					"value": "French toast"
+				},
+				{
+					"value": "Inulin"
+				},
+				{
+					"value": "antipasto"
+				},
+				{
+					"value": "Rocky Mountain oysters"
+				},
+				{
+					"value": "omelette"
+				},
+				{
+					"value": "curry powder"
+				},
+				{
+					"value": "chicharrón"
+				},
+				{
+					"value": "Étouffée"
+				},
+				{
+					"value": "soufflé"
+				},
+				{
+					"value": "Scotch egg"
+				},
+				{
+					"value": "bruschetta"
+				},
+				{
+					"value": "cooking oil"
+				},
+				{
+					"value": "chicken fried steak"
+				},
+				{
+					"value": "egg white"
+				},
+				{
+					"value": "drink"
+				},
+				{
+					"value": "boiled egg"
+				},
+				{
+					"value": "chalupa"
+				},
+				{
+					"value": "Short ribs"
+				},
+				{
+					"value": "Top sirloin"
+				},
+				{
+					"value": "condiment"
+				},
+				{
+					"value": "fodder"
+				},
+				{
+					"value": "Delmonico steak"
+				},
+				{
+					"value": "delicacy"
+				},
+				{
+					"value": "snack food"
+				},
+				{
+					"value": "garri"
+				},
+				{
+					"value": "whole grain"
+				},
+				{
+					"value": "deviled egg"
+				},
+				{
+					"value": "Drunken noodles"
+				},
+				{
+					"value": "Confit byaldi"
+				},
+				{
+					"value": "breakfast cereal"
+				},
+				{
+					"value": "Carne asada"
+				},
+				{
+					"value": "Round steak"
+				},
+				{
+					"value": "shashlik"
+				},
+				{
+					"value": "egg yolk"
+				},
+				{
+					"value": "Russian dressing"
+				},
+				{
+					"value": "egg roll"
+				},
+				{
+					"value": "Flat iron steak"
+				},
+				{
+					"value": "space food"
+				},
+				{
+					"value": "Cuban espresso"
+				},
+				{
+					"value": "Callaloo"
+				},
+				{
+					"value": "Brunswick stew"
+				},
+				{
+					"value": "Spam musubi"
+				},
+				{
+					"value": "sausage roll"
+				},
+				{
+					"value": "butter tart"
+				},
+				{
+					"value": "Salt water taffy"
+				},
+				{
+					"value": "Philippine adobo"
+				},
+				{
+					"value": "Phanaeng curry"
+				},
+				{
+					"value": "rotisserie"
+				},
+				{
+					"value": "pu pu platter"
+				},
+				{
+					"value": "runza"
+				},
+				{
+					"value": "Pimento cheese"
+				},
+				{
+					"value": "fritter"
+				},
+				{
+					"value": "Fairy bread"
+				},
+				{
+					"value": "fried egg"
+				},
+				{
+					"value": "minced meat"
+				},
+				{
+					"value": "convenience food"
+				},
+				{
+					"value": "shave ice"
+				},
+				{
+					"value": "scrambled eggs"
+				},
+				{
+					"value": "garnish"
+				},
+				{
+					"value": "omurice"
+				},
+				{
+					"value": "Upma"
+				},
+				{
+					"value": "Hyderabadi haleem"
+				},
+				{
+					"value": "chicken and waffles"
+				},
+				{
+					"value": "Mandi"
+				},
+				{
+					"value": "phall"
+				},
+				{
+					"value": "cracker"
+				},
+				{
+					"value": "Hoppin' John"
+				},
+				{
+					"value": "Cream of Wheat"
+				},
+				{
+					"value": "Dove"
+				},
+				{
+					"value": "gordita"
+				},
+				{
+					"value": "famine food"
+				},
+				{
+					"value": "Japanese noodles"
+				},
+				{
+					"value": "Jalfrezi"
+				},
+				{
+					"value": "Prawn cracker"
+				},
+				{
+					"value": "Frito pie"
+				},
+				{
+					"value": "wafer"
+				},
+				{
+					"value": "St. Louis-style pizza"
+				},
+				{
+					"value": "Candy corn"
+				},
+				{
+					"value": "cabbage roll"
+				},
+				{
+					"value": "tamagoyaki"
+				},
+				{
+					"value": "Italian beef"
+				},
+				{
+					"value": "Pie and mash"
+				},
+				{
+					"value": "animal feed"
+				},
+				{
+					"value": "Jujube"
+				},
+				{
+					"value": "Mike and Ike"
+				},
+				{
+					"value": "Green goddess dressing"
+				},
+				{
+					"value": "cavatappi"
+				},
+				{
+					"value": "mushy peas"
+				},
+				{
+					"value": "Saucisson"
+				},
+				{
+					"value": "dutchie"
+				},
+				{
+					"value": "bunny chow"
+				},
+				{
+					"value": "meat analogue"
+				},
+				{
+					"value": "Kissel"
+				},
+				{
+					"value": "Goetta"
+				},
+				{
+					"value": "escalope"
+				},
+				{
+					"value": "Birria"
+				},
+				{
+					"value": "Ube halaya"
+				},
+				{
+					"value": "Muhammara"
+				},
+				{
+					"value": "blooming onion"
+				},
+				{
+					"value": "tea egg"
+				},
+				{
+					"value": "Spiedie"
+				},
+				{
+					"value": "Gummi candy"
+				},
+				{
+					"value": "French dip sandwich"
+				},
+				{
+					"value": "Chipped beef"
+				},
+				{
+					"value": "bandeja paisa"
+				},
+				{
+					"value": "Harees"
+				},
+				{
+					"value": "Carne asada fries"
+				},
+				{
+					"value": "Pottage"
+				},
+				{
+					"value": "Peeps"
+				},
+				{
+					"value": "Pasteles"
+				},
+				{
+					"value": "Ptasie mleczko"
+				},
+				{
+					"value": "palak paneer"
+				},
+				{
+					"value": "pepperoni roll"
+				},
+				{
+					"value": "baby food"
+				},
+				{
+					"value": "Egg in the basket"
+				},
+				{
+					"value": "Wagon Wheels"
+				},
+				{
+					"value": "Angel Delight"
+				},
+				{
+					"value": "garlic bread"
+				},
+				{
+					"value": "Medianoche"
+				},
+				{
+					"value": "Faloodeh"
+				},
+				{
+					"value": "Devils on horseback"
+				},
+				{
+					"value": "Horseshoe sandwich"
+				},
+				{
+					"value": "brain"
+				},
+				{
+					"value": "Freezie"
+				},
+				{
+					"value": "tikka"
+				},
+				{
+					"value": "liquorice allsorts"
+				},
+				{
+					"value": "patty melt"
+				},
+				{
+					"value": "honeycomb toffee"
+				},
+				{
+					"value": "bacon and cabbage"
+				},
+				{
+					"value": "spread"
+				},
+				{
+					"value": "pav bhaji"
+				},
+				{
+					"value": "Lokma"
+				},
+				{
+					"value": "Blade steak"
+				},
+				{
+					"value": "Garibaldi biscuit"
+				},
+				{
+					"value": "pap"
+				},
+				{
+					"value": "Jelly Babies"
+				},
+				{
+					"value": "groom's cake"
+				},
+				{
+					"value": "protein bar"
+				},
+				{
+					"value": "Natural foods"
+				},
+				{
+					"value": "tablet"
+				},
+				{
+					"value": "pandan cake"
+				},
+				{
+					"value": "Kachori"
+				},
+				{
+					"value": "edible plant stem"
+				},
+				{
+					"value": "Maxwell Street Polish"
+				},
+				{
+					"value": "Tavern sandwich"
+				},
+				{
+					"value": "Jhalmuri"
+				},
+				{
+					"value": "Rumaki"
+				},
+				{
+					"value": "Fla-Vor-Ice"
+				},
+				{
+					"value": "Arroz con gandules"
+				},
+				{
+					"value": "Sabich"
+				},
+				{
+					"value": "Lahpet"
+				},
+				{
+					"value": "Quzi"
+				},
+				{
+					"value": "Kottu"
+				},
+				{
+					"value": "popover"
+				},
+				{
+					"value": "Gringas"
+				},
+				{
+					"value": "glaze"
+				},
+				{
+					"value": "Tanghulu"
+				},
+				{
+					"value": "kati roll"
+				},
+				{
+					"value": "St. Paul sandwich"
+				},
+				{
+					"value": "Creamed corn"
+				},
+				{
+					"value": "brine"
+				},
+				{
+					"value": "oyster omelette"
+				},
+				{
+					"value": "Shami kebab"
+				},
+				{
+					"value": "perpetual stew"
+				},
+				{
+					"value": "Sarson da saag"
+				},
+				{
+					"value": "Sno Balls"
+				},
+				{
+					"value": "Fatteh"
+				},
+				{
+					"value": "Dhansak"
+				},
+				{
+					"value": "Beef Manhattan"
+				},
+				{
+					"value": "dim sim"
+				},
+				{
+					"value": "Kotlet schabowy"
+				},
+				{
+					"value": "Mangú"
+				},
+				{
+					"value": "Tapa"
+				},
+				{
+					"value": "White hot"
+				},
+				{
+					"value": "icebox cake"
+				},
+				{
+					"value": "mulligan stew"
+				},
+				{
+					"value": "Tuna casserole"
+				},
+				{
+					"value": "Triple Cooked Chips"
+				},
+				{
+					"value": "Sausage sizzle"
+				},
+				{
+					"value": "Bibingka"
+				},
+				{
+					"value": "custard cream"
+				},
+				{
+					"value": "Sauce vierge"
+				},
+				{
+					"value": "kama"
+				},
+				{
+					"value": "Maple taffy"
+				},
+				{
+					"value": "rotini"
+				},
+				{
+					"value": "Penuche"
+				},
+				{
+					"value": "Potato cake"
+				},
+				{
+					"value": "Dahi vada"
+				},
+				{
+					"value": "Quad City-style pizza"
+				},
+				{
+					"value": "Russian tea cake"
+				},
+				{
+					"value": "curd snack"
+				},
+				{
+					"value": "tuile"
+				},
+				{
+					"value": "Churchkhela"
+				},
+				{
+					"value": "Sadza"
+				},
+				{
+					"value": "HobNob"
+				},
+				{
+					"value": "Aiyu jelly"
+				},
+				{
+					"value": "Ayam bakar"
+				},
+				{
+					"value": "marron glacé"
+				},
+				{
+					"value": "gastrique"
+				},
+				{
+					"value": "Alambre"
+				},
+				{
+					"value": "comfit"
+				},
+				{
+					"value": "Pasanda"
+				},
+				{
+					"value": "Tea sandwich"
+				},
+				{
+					"value": "Choco Taco"
+				},
+				{
+					"value": "Polish Boy"
+				},
+				{
+					"value": "Mee pok"
+				},
+				{
+					"value": "rock cake"
+				},
+				{
+					"value": "Kuku"
+				},
+				{
+					"value": "haslet"
+				},
+				{
+					"value": "Sloppy joe"
+				},
+				{
+					"value": "Bistek"
+				},
+				{
+					"value": "Gaz"
+				},
+				{
+					"value": "curry ketchup"
+				},
+				{
+					"value": "Gajar ka halwa"
+				},
+				{
+					"value": "dish"
+				},
+				{
+					"value": "Lay's WOW chips"
+				},
+				{
+					"value": "Gulkand"
+				},
+				{
+					"value": "half-smoke"
+				},
+				{
+					"value": "Divinity"
+				},
+				{
+					"value": "Petha"
+				},
+				{
+					"value": "piragua"
+				},
+				{
+					"value": "Pitha"
+				},
+				{
+					"value": "Thandai"
+				},
+				{
+					"value": "Kaya toast"
+				},
+				{
+					"value": "All-Bran"
+				},
+				{
+					"value": "Double ka meetha"
+				},
+				{
+					"value": "Pineapple Lumps"
+				},
+				{
+					"value": "Nice biscuit"
+				},
+				{
+					"value": "bánh"
+				},
+				{
+					"value": "Chai tow kway"
+				},
+				{
+					"value": "shoulder tender"
+				},
+				{
+					"value": "chikki"
+				},
+				{
+					"value": "slugburger"
+				},
+				{
+					"value": "Mattar paneer"
+				},
+				{
+					"value": "Baobing"
+				},
+				{
+					"value": "Clabber"
+				},
+				{
+					"value": "Phat phrik khing"
+				},
+				{
+					"value": "Celebrations"
+				},
+				{
+					"value": "jibarito"
+				},
+				{
+					"value": "Angel cake"
+				},
+				{
+					"value": "Rice and peas"
+				},
+				{
+					"value": "Manwich"
+				},
+				{
+					"value": "green bean casserole"
+				},
+				{
+					"value": "Mysore pak"
+				},
+				{
+					"value": "pièce montée"
+				},
+				{
+					"value": "Moin moin"
+				},
+				{
+					"value": "Miang kham"
+				},
+				{
+					"value": "Zingers"
+				},
+				{
+					"value": "sate kambing"
+				},
+				{
+					"value": "Gumdrop"
+				},
+				{
+					"value": "sago pudding"
+				},
+				{
+					"value": "trofie"
+				},
+				{
+					"value": "spoon sweets"
+				},
+				{
+					"value": "Carciofi alla giudia"
+				},
+				{
+					"value": "Potatoes O'Brien"
+				},
+				{
+					"value": "Melona"
+				},
+				{
+					"value": "Bonfire toffee"
+				},
+				{
+					"value": "chicken fried bacon"
+				},
+				{
+					"value": "Arizona cheese crisp"
+				},
+				{
+					"value": "Baleada"
+				},
+				{
+					"value": "Mitarashi dango"
+				},
+				{
+					"value": "Es teler"
+				},
+				{
+					"value": "Sev"
+				},
+				{
+					"value": "rainbow cookie"
+				},
+				{
+					"value": "modak"
+				},
+				{
+					"value": "savoury"
+				},
+				{
+					"value": "bombe glacée"
+				},
+				{
+					"value": "Bicol Express"
+				},
+				{
+					"value": "Rabri"
+				},
+				{
+					"value": "Amaretti di Saronno"
+				},
+				{
+					"value": "Chakapuli"
+				},
+				{
+					"value": "vegetarian hot dog"
+				},
+				{
+					"value": "Tejuino"
+				},
+				{
+					"value": "Murabba"
+				},
+				{
+					"value": "circus peanuts"
+				},
+				{
+					"value": "Dariole"
+				},
+				{
+					"value": "Pongal"
+				},
+				{
+					"value": "pizza al taglio"
+				},
+				{
+					"value": "corned beef sandwich"
+				},
+				{
+					"value": "Sandesh"
+				},
+				{
+					"value": "Nun's puffs"
+				},
+				{
+					"value": "garlic fingers"
+				},
+				{
+					"value": "mush"
+				},
+				{
+					"value": "Jjolmyeon"
+				},
+				{
+					"value": "pfeffernüsse"
+				},
+				{
+					"value": "Holige"
+				},
+				{
+					"value": "Seattle-style hot dog"
+				},
+				{
+					"value": "Bierock"
+				},
+				{
+					"value": "Sugus"
+				},
+				{
+					"value": "Puppy chow"
+				},
+				{
+					"value": "Kibbeh nayyeh"
+				},
+				{
+					"value": "breakfast roll"
+				},
+				{
+					"value": "Placenta cake"
+				},
+				{
+					"value": "Myśliwska"
+				},
+				{
+					"value": "Rocky road"
+				},
+				{
+					"value": "Curry goat"
+				},
+				{
+					"value": "Bamia"
+				},
+				{
+					"value": "Pootharekulu"
+				},
+				{
+					"value": "Booyah"
+				},
+				{
+					"value": "Queso flameado"
+				},
+				{
+					"value": "pastila"
+				},
+				{
+					"value": "Champorado"
+				},
+				{
+					"value": "Shrimp Creole"
+				},
+				{
+					"value": "jelly doughnut"
+				},
+				{
+					"value": "Kue"
+				},
+				{
+					"value": "Treacle sponge pudding"
+				},
+				{
+					"value": "Sincronizada"
+				},
+				{
+					"value": "Hummingbird cake"
+				},
+				{
+					"value": "Murukku"
+				},
+				{
+					"value": "Almond Roca"
+				},
+				{
+					"value": "Puff Puff"
+				},
+				{
+					"value": "pork tenderloin sandwich"
+				},
+				{
+					"value": "Dahi puri"
+				},
+				{
+					"value": "beurre monté"
+				},
+				{
+					"value": "Kalakand"
+				},
+				{
+					"value": "Mint chocolate"
+				},
+				{
+					"value": "Ayam goreng"
+				},
+				{
+					"value": "Mi krop"
+				},
+				{
+					"value": "Ngo hiang"
+				},
+				{
+					"value": "Huevos motuleños"
+				},
+				{
+					"value": "Alcapurria"
+				},
+				{
+					"value": "Khanom chin"
+				},
+				{
+					"value": "pithivier"
+				},
+				{
+					"value": "Mukhwas"
+				},
+				{
+					"value": "Queen of Puddings"
+				},
+				{
+					"value": "Jaffas"
+				},
+				{
+					"value": "Dabeli"
+				},
+				{
+					"value": "Torta ahogada"
+				},
+				{
+					"value": "maple butter"
+				},
+				{
+					"value": "Flummery"
+				},
+				{
+					"value": "sausage sandwich"
+				},
+				{
+					"value": "Budino"
+				},
+				{
+					"value": "Tapai"
+				},
+				{
+					"value": "cauliflower cheese"
+				},
+				{
+					"value": "Pot de crème"
+				},
+				{
+					"value": "Hedgehog slice"
+				},
+				{
+					"value": "Burger Rings"
+				},
+				{
+					"value": "Rappie pie"
+				},
+				{
+					"value": "graham cracker crust"
+				},
+				{
+					"value": "Berger Cookies"
+				},
+				{
+					"value": "Khakhra"
+				},
+				{
+					"value": "Waakye"
+				},
+				{
+					"value": "malt loaf"
+				},
+				{
+					"value": "Philadelphia Pepper Pot"
+				},
+				{
+					"value": "Tipsy cake"
+				},
+				{
+					"value": "cuberdon"
+				},
+				{
+					"value": "Kolak"
+				},
+				{
+					"value": "Pashmak"
+				},
+				{
+					"value": "Murgh Musallam"
+				},
+				{
+					"value": "edible underwear"
+				},
+				{
+					"value": "spoom"
+				},
+				{
+					"value": "Shahi paneer"
+				},
+				{
+					"value": "Dhindo"
+				},
+				{
+					"value": "sealed crustless sandwich"
+				},
+				{
+					"value": "choc ice"
+				},
+				{
+					"value": "Pathia"
+				},
+				{
+					"value": "Tagliolini"
+				},
+				{
+					"value": "Cocido"
+				},
+				{
+					"value": "Imarti"
+				},
+				{
+					"value": "Rainbow sherbet"
+				},
+				{
+					"value": "Ayam penyet"
+				},
+				{
+					"value": "corn fritter"
+				},
+				{
+					"value": "Ham and Eggs"
+				},
+				{
+					"value": "bánh tét"
+				},
+				{
+					"value": "cheese roll"
+				},
+				{
+					"value": "Chocolate-covered raisin"
+				},
+				{
+					"value": "Crudos"
+				},
+				{
+					"value": "Jil jil jigarthanda"
+				},
+				{
+					"value": "apple dumpling"
+				},
+				{
+					"value": "Polkagris"
+				},
+				{
+					"value": "Gosht"
+				},
+				{
+					"value": "chicken tabaka"
+				},
+				{
+					"value": "Chancaca"
+				},
+				{
+					"value": "ice cream bar"
+				},
+				{
+					"value": "Booza"
+				},
+				{
+					"value": "Varenye"
+				},
+				{
+					"value": "Rubaboo"
+				},
+				{
+					"value": "food paste"
+				},
+				{
+					"value": "Clapshot"
+				},
+				{
+					"value": "lemon drop"
+				},
+				{
+					"value": "Sevpuri"
+				},
+				{
+					"value": "Malva Pudding"
+				},
+				{
+					"value": "Attiéké"
+				},
+				{
+					"value": "Tirokafteri"
+				},
+				{
+					"value": "Louis dressing"
+				},
+				{
+					"value": "Pakhala"
+				},
+				{
+					"value": "Guyana Pepperpot"
+				},
+				{
+					"value": "cheese dog"
+				},
+				{
+					"value": "maple bar"
+				},
+				{
+					"value": "paneer tikka"
+				},
+				{
+					"value": "Khaman"
+				},
+				{
+					"value": "hot wiener"
+				},
+				{
+					"value": "Ghevar"
+				},
+				{
+					"value": "Shrewsbury cake"
+				},
+				{
+					"value": "Malapua"
+				},
+				{
+					"value": "Wasanbon"
+				},
+				{
+					"value": "Litti"
+				},
+				{
+					"value": "Peda"
+				},
+				{
+					"value": "gypsy tart"
+				},
+				{
+					"value": "Panjiri"
+				},
+				{
+					"value": "Bresse chicken"
+				},
+				{
+					"value": "Is It Really Better Than Sex? Cake"
+				},
+				{
+					"value": "Sno-ball"
+				},
+				{
+					"value": "rum cake"
+				},
+				{
+					"value": "Kaju barfi"
+				},
+				{
+					"value": "Tunde ke kabab"
+				},
+				{
+					"value": "Ranch steak"
+				},
+				{
+					"value": "Turon"
+				},
+				{
+					"value": "Bakarkhani"
+				},
+				{
+					"value": "Burmese tofu"
+				},
+				{
+					"value": "Wheatena"
+				},
+				{
+					"value": "Karah Parshad"
+				},
+				{
+					"value": "pocket sandwich"
+				},
+				{
+					"value": "Nam chim"
+				},
+				{
+					"value": "red tortoise cake"
+				},
+				{
+					"value": "es campur"
+				},
+				{
+					"value": "chicken patty"
+				},
+				{
+					"value": "Norman Tart"
+				},
+				{
+					"value": "Tiffin"
+				},
+				{
+					"value": "ammonia cookie"
+				},
+				{
+					"value": "Jam Roly-Poly"
+				},
+				{
+					"value": "Country Captain"
+				},
+				{
+					"value": "Sohan"
+				},
+				{
+					"value": "Kaeng pa"
+				},
+				{
+					"value": "screwball"
+				},
+				{
+					"value": "Devilled kidneys"
+				},
+				{
+					"value": "Caramel corn"
+				},
+				{
+					"value": "Siomay"
+				},
+				{
+					"value": "Seven layer dip"
+				},
+				{
+					"value": "Coda alla vaccinara"
+				},
+				{
+					"value": "Sonofabitch stew"
+				},
+				{
+					"value": "Grattachecca"
+				},
+				{
+					"value": "Kutsinta"
+				},
+				{
+					"value": "Checca sauce"
+				},
+				{
+					"value": "Rice and curry"
+				},
+				{
+					"value": "kelp noodles"
+				},
+				{
+					"value": "Bikaneri Bhujia"
+				},
+				{
+					"value": "lettuce sandwich"
+				},
+				{
+					"value": "Cağ kebabı"
+				},
+				{
+					"value": "Spanische Windtorte"
+				},
+				{
+					"value": "Friand"
+				},
+				{
+					"value": "gujia"
+				},
+				{
+					"value": "Ketoprak Jakarta"
+				},
+				{
+					"value": "Khow suey"
+				},
+				{
+					"value": "Prince Polo"
+				},
+				{
+					"value": "prawn roll"
+				},
+				{
+					"value": "Lemper"
+				},
+				{
+					"value": "Sans rival"
+				},
+				{
+					"value": "Chakli"
+				},
+				{
+					"value": "Melktert"
+				},
+				{
+					"value": "Taro dumpling"
+				},
+				{
+					"value": "Qubani ka meetha"
+				},
+				{
+					"value": "Dabu-dabu"
+				},
+				{
+					"value": "hamdog"
+				},
+				{
+					"value": "Haliva"
+				},
+				{
+					"value": "Rollatini"
+				},
+				{
+					"value": "flamenquín"
+				},
+				{
+					"value": "banana boat"
+				},
+				{
+					"value": "Jal-jeera"
+				},
+				{
+					"value": "Mezzelune"
+				},
+				{
+					"value": "Watalappam"
+				},
+				{
+					"value": "Viennese Whirls"
+				},
+				{
+					"value": "Bacalhau à Brás"
+				},
+				{
+					"value": "British Rail sandwich"
+				},
+				{
+					"value": "batagor"
+				},
+				{
+					"value": "Misal Pav"
+				},
+				{
+					"value": "chili burger"
+				},
+				{
+					"value": "Botok"
+				},
+				{
+					"value": "Cockle bread"
+				},
+				{
+					"value": "Taro cake"
+				},
+				{
+					"value": "Paleta"
+				},
+				{
+					"value": "Boondi"
+				},
+				{
+					"value": "bánh lá"
+				},
+				{
+					"value": "Maypo"
+				},
+				{
+					"value": "Fasnacht"
+				},
+				{
+					"value": "lolly cake"
+				},
+				{
+					"value": "Lekor"
+				},
+				{
+					"value": "Oysters en brochette"
+				},
+				{
+					"value": "date and walnut loaf"
+				},
+				{
+					"value": "Rasabali"
+				},
+				{
+					"value": "Gosh-e Fil"
+				},
+				{
+					"value": "Arroz a la cubana"
+				},
+				{
+					"value": "Arroz a la valenciana"
+				},
+				{
+					"value": "Cham cham"
+				},
+				{
+					"value": "Chhenapoda"
+				},
+				{
+					"value": "sandwich loaf"
+				},
+				{
+					"value": "hakuto jelly"
+				},
+				{
+					"value": "Cap cai"
+				},
+				{
+					"value": "Lap lap"
+				},
+				{
+					"value": "Ginger snap"
+				},
+				{
+					"value": "Banana custard"
+				},
+				{
+					"value": "Kuzumochi"
+				},
+				{
+					"value": "Almond bark"
+				},
+				{
+					"value": "Kachumber"
+				},
+				{
+					"value": "Mandelbrodt"
+				},
+				{
+					"value": "Afghan biscuit"
+				},
+				{
+					"value": "Rava idli"
+				},
+				{
+					"value": "Ragi rotti"
+				},
+				{
+					"value": "neenish tart"
+				},
+				{
+					"value": "paneer tikka masala"
+				},
+				{
+					"value": "Pinchitos"
+				},
+				{
+					"value": "Rice and gravy"
+				},
+				{
+					"value": "Makdous"
+				},
+				{
+					"value": "Chhena jalebi"
+				},
+				{
+					"value": "Donkey Burger"
+				},
+				{
+					"value": "Tahu goreng"
+				},
+				{
+					"value": "Maconochie"
+				},
+				{
+					"value": "empalme"
+				},
+				{
+					"value": "saffron rice"
+				},
+				{
+					"value": "Bizcochito"
+				},
+				{
+					"value": "Mustacciuoli"
+				},
+				{
+					"value": "Denver sandwich"
+				},
+				{
+					"value": "Thalassery biryani"
+				},
+				{
+					"value": "pistolette"
+				},
+				{
+					"value": "Cavallucci"
+				},
+				{
+					"value": "putu mayam"
+				},
+				{
+					"value": "Peda"
+				},
+				{
+					"value": "Sour cream doughnut"
+				},
+				{
+					"value": "Frazzles"
+				},
+				{
+					"value": "knedle"
+				},
+				{
+					"value": "Thit Kho Tau"
+				},
+				{
+					"value": "Panocha"
+				},
+				{
+					"value": "Rengginang"
+				},
+				{
+					"value": "Lane cake"
+				},
+				{
+					"value": "Nem Nướng̣"
+				},
+				{
+					"value": "pudding corn"
+				},
+				{
+					"value": "Waldorf pudding"
+				},
+				{
+					"value": "Lou mei"
+				},
+				{
+					"value": "Betutu"
+				},
+				{
+					"value": "chocolate fish"
+				},
+				{
+					"value": "Calf's liver and bacon"
+				},
+				{
+					"value": "Thekua"
+				},
+				{
+					"value": "pan mee"
+				},
+				{
+					"value": "bánh bò"
+				},
+				{
+					"value": "Tangsuyuk"
+				},
+				{
+					"value": "Minties"
+				},
+				{
+					"value": "Quaker Instant Oatmeal"
+				},
+				{
+					"value": "Crawfish pie"
+				},
+				{
+					"value": "Biscuit Tortoni"
+				},
+				{
+					"value": "Khao tom"
+				},
+				{
+					"value": "casoncelli"
+				},
+				{
+					"value": "Snow cream"
+				},
+				{
+					"value": "Xiaochi"
+				},
+				{
+					"value": "Kutti pi"
+				},
+				{
+					"value": "Clam dip"
+				},
+				{
+					"value": "Ripper"
+				},
+				{
+					"value": "Krupuk kulit"
+				},
+				{
+					"value": "Bulalo"
+				},
+				{
+					"value": "Aam papad"
+				},
+				{
+					"value": "Shishbarak"
+				},
+				{
+					"value": "Lard na"
+				},
+				{
+					"value": "Katmer"
+				},
+				{
+					"value": "Kousa Mahshi"
+				},
+				{
+					"value": "Kalitsounia"
+				},
+				{
+					"value": "Ražnjići"
+				},
+				{
+					"value": "Sev mamra"
+				},
+				{
+					"value": "Farsan"
+				},
+				{
+					"value": "Vegetable tarkari"
+				},
+				{
+					"value": "Oblaat"
+				},
+				{
+					"value": "mother-in-law"
+				},
+				{
+					"value": "Goody"
+				},
+				{
+					"value": "bridge mix"
+				},
+				{
+					"value": "Waterblommetjiebredie"
+				},
+				{
+					"value": "Hinava"
+				},
+				{
+					"value": "White boiled shrimp"
+				},
+				{
+					"value": "Veda bread"
+				},
+				{
+					"value": "pepperette"
+				},
+				{
+					"value": "Lekach"
+				},
+				{
+					"value": "Flummadiddle"
+				},
+				{
+					"value": "Tongdak"
+				},
+				{
+					"value": "nasi kebuli"
+				},
+				{
+					"value": "Chorrillana"
+				},
+				{
+					"value": "Jerusalem mixed grill"
+				},
+				{
+					"value": "Peaches and cream"
+				},
+				{
+					"value": "Krofne"
+				},
+				{
+					"value": "coyota"
+				},
+				{
+					"value": "Paila marina"
+				},
+				{
+					"value": "Stegt flæsk"
+				},
+				{
+					"value": "Avena"
+				},
+				{
+					"value": "croxetti"
+				},
+				{
+					"value": "Chacarero"
+				},
+				{
+					"value": "Skirts and kidneys"
+				},
+				{
+					"value": "Mì Quảng"
+				},
+				{
+					"value": "Alcohol-infused whipped cream"
+				},
+				{
+					"value": "Jewish Apple Cake"
+				},
+				{
+					"value": "Šampita"
+				},
+				{
+					"value": "Pichelsteiner"
+				},
+				{
+					"value": "Popeseye steak"
+				},
+				{
+					"value": "Khaja"
+				},
+				{
+					"value": "Maja blanca"
+				},
+				{
+					"value": "Khoresht"
+				},
+				{
+					"value": "Oil Down"
+				},
+				{
+					"value": "Jumble"
+				},
+				{
+					"value": "bacon roll"
+				},
+				{
+					"value": "jam sandwich"
+				},
+				{
+					"value": "munguza"
+				},
+				{
+					"value": "Thin Mints"
+				},
+				{
+					"value": "Sohan Halwa"
+				},
+				{
+					"value": "pork jelly"
+				},
+				{
+					"value": "Eggs Neptune"
+				},
+				{
+					"value": "Ciarduna"
+				},
+				{
+					"value": "Beguni"
+				},
+				{
+					"value": "Kaeng khae"
+				},
+				{
+					"value": "Mitha Dahi"
+				},
+				{
+					"value": "hot hamburger plate"
+				},
+				{
+					"value": "Pepes"
+				},
+				{
+					"value": "chocolate-coated peanut"
+				},
+				{
+					"value": "Torta alla Monferrina"
+				},
+				{
+					"value": "Sabudana Khichadi"
+				},
+				{
+					"value": "Nasi ambeng"
+				},
+				{
+					"value": "Guajolota"
+				},
+				{
+					"value": "Rica-rica"
+				},
+				{
+					"value": "Russian candy"
+				},
+				{
+					"value": "tochitură"
+				},
+				{
+					"value": "mellorine"
+				},
+				{
+					"value": "Mechado"
+				},
+				{
+					"value": "Chocolate-covered coffee bean"
+				},
+				{
+					"value": "Persimmon pudding"
+				},
+				{
+					"value": "Xacuti"
+				},
+				{
+					"value": "Iga penyet"
+				},
+				{
+					"value": "Cucurucho"
+				},
+				{
+					"value": "Crab puff"
+				},
+				{
+					"value": "Kuchmachi"
+				},
+				{
+					"value": "Pestil"
+				},
+				{
+					"value": "Tomato bredie"
+				},
+				{
+					"value": "Scotcheroos"
+				},
+				{
+					"value": "Carciofi alla romana"
+				},
+				{
+					"value": "Knoephla"
+				},
+				{
+					"value": "Nasi liwet"
+				},
+				{
+					"value": "Italian hot dog"
+				},
+				{
+					"value": "Tea loaf"
+				},
+				{
+					"value": "Caraway seed cake"
+				},
+				{
+					"value": "Arany galuska"
+				},
+				{
+					"value": "Maple liqueur"
+				},
+				{
+					"value": "Latik"
+				},
+				{
+					"value": "Semur"
+				},
+				{
+					"value": "Sowans"
+				},
+				{
+					"value": "Pkhali"
+				},
+				{
+					"value": "Kelewele"
+				},
+				{
+					"value": "Baye baye"
+				},
+				{
+					"value": "Akki rotti"
+				},
+				{
+					"value": "Fried cauliflower"
+				},
+				{
+					"value": "Telur pindang"
+				},
+				{
+					"value": "Tortillita de camarones"
+				},
+				{
+					"value": "Pie and peas"
+				},
+				{
+					"value": "Hot milk cake"
+				},
+				{
+					"value": "Guasanas"
+				},
+				{
+					"value": "Fruit Tingles"
+				},
+				{
+					"value": "chuchvara"
+				},
+				{
+					"value": "Rfissa"
+				},
+				{
+					"value": "Ragi mudde"
+				},
+				{
+					"value": "rustico"
+				},
+				{
+					"value": "bourbon ball"
+				},
+				{
+					"value": "es doger"
+				},
+				{
+					"value": "Chinese bhel"
+				},
+				{
+					"value": "Sagamite"
+				},
+				{
+					"value": "Bal Mithai"
+				},
+				{
+					"value": "Cudighi"
+				},
+				{
+					"value": "Apas"
+				},
+				{
+					"value": "Es kacang hijau"
+				},
+				{
+					"value": "dak-bokkeum-tang"
+				},
+				{
+					"value": "basundi"
+				},
+				{
+					"value": "Mattha"
+				},
+				{
+					"value": "Mafalde"
+				},
+				{
+					"value": "Pieds paquets"
+				},
+				{
+					"value": "lasagnette"
+				},
+				{
+					"value": "Kedjenou"
+				},
+				{
+					"value": "Kyopolou"
+				},
+				{
+					"value": "Sfouf"
+				},
+				{
+					"value": "Tah Chin"
+				},
+				{
+					"value": "50/50 burger"
+				},
+				{
+					"value": "Ginanggang"
+				},
+				{
+					"value": "Flaouna"
+				},
+				{
+					"value": "Kue cubit"
+				},
+				{
+					"value": "Fish cracker"
+				},
+				{
+					"value": "party ring"
+				},
+				{
+					"value": "Zarda"
+				},
+				{
+					"value": "Kubaneh"
+				},
+				{
+					"value": "bigilla"
+				},
+				{
+					"value": "bichon au citron"
+				},
+				{
+					"value": "Bubur pedas"
+				},
+				{
+					"value": "Kek Lapis Sarawak"
+				},
+				{
+					"value": "balchão"
+				},
+				{
+					"value": "Zippuli"
+				},
+				{
+					"value": "Scialatelli"
+				},
+				{
+					"value": "Pulihora"
+				},
+				{
+					"value": "Happy Faces"
+				},
+				{
+					"value": "Handvo"
+				},
+				{
+					"value": "Chocolate-covered potato chips"
+				},
+				{
+					"value": "Empire biscuit"
+				},
+				{
+					"value": "corn cookie"
+				},
+				{
+					"value": "Flump"
+				},
+				{
+					"value": "Poriyal"
+				},
+				{
+					"value": "Chongyang Cake"
+				},
+				{
+					"value": "Torta Tre Monti"
+				},
+				{
+					"value": "Krechek"
+				},
+				{
+					"value": "Mykyrokka"
+				},
+				{
+					"value": "Sevai"
+				},
+				{
+					"value": "Crispy pata"
+				},
+				{
+					"value": "Patra"
+				},
+				{
+					"value": "Ducana"
+				},
+				{
+					"value": "Laal maans"
+				},
+				{
+					"value": "Kurnik"
+				},
+				{
+					"value": "Genoa cake"
+				},
+				{
+					"value": "Fritelli"
+				},
+				{
+					"value": "Stack cake"
+				},
+				{
+					"value": "Gogoşi"
+				},
+				{
+					"value": "Lor mee"
+				},
+				{
+					"value": "Mirchi ka salan"
+				},
+				{
+					"value": "Mas riha"
+				},
+				{
+					"value": "Msabbaha"
+				},
+				{
+					"value": "Liverpool Tart"
+				},
+				{
+					"value": "Lobiani"
+				},
+				{
+					"value": "Nankhatai"
+				},
+				{
+					"value": "Far far"
+				},
+				{
+					"value": "Sakkarpara"
+				},
+				{
+					"value": "Barbajada"
+				},
+				{
+					"value": "chhena gaja"
+				},
+				{
+					"value": "Kuzhambu"
+				},
+				{
+					"value": "Indian ice cream"
+				},
+				{
+					"value": "guoba"
+				},
+				{
+					"value": "White Christmas"
+				},
+				{
+					"value": "silvana"
+				},
+				{
+					"value": "Nicuatole"
+				},
+				{
+					"value": "Kombdi vade"
+				},
+				{
+					"value": "Kabuni"
+				},
+				{
+					"value": "Sohan Asali"
+				},
+				{
+					"value": "Bolo Rei"
+				},
+				{
+					"value": "Guernsey Bean Jar"
+				},
+				{
+					"value": "Bar One"
+				},
+				{
+					"value": "Singju"
+				},
+				{
+					"value": "Wingko"
+				},
+				{
+					"value": "Khandvi"
+				},
+				{
+					"value": "Brandy snaps"
+				},
+				{
+					"value": "Bhala"
+				},
+				{
+					"value": "Alinazik kebab"
+				},
+				{
+					"value": "Baxin"
+				},
+				{
+					"value": "Pantua"
+				},
+				{
+					"value": "Amandine"
+				},
+				{
+					"value": "Francesinha poveira"
+				},
+				{
+					"value": "Ribbon candy"
+				},
+				{
+					"value": "Pancit Malabon"
+				},
+				{
+					"value": "chocolate biscuit"
+				},
+				{
+					"value": "cocada amarela"
+				},
+				{
+					"value": "Langcha"
+				},
+				{
+					"value": "Baicoli"
+				},
+				{
+					"value": "Tin roof pie"
+				},
+				{
+					"value": "Chakhokhbili"
+				},
+				{
+					"value": "Kazy"
+				},
+				{
+					"value": "Selat solo"
+				},
+				{
+					"value": "Fried eggplant"
+				},
+				{
+					"value": "Kleicha"
+				},
+				{
+					"value": "7-Bone Roast"
+				},
+				{
+					"value": "Flæskesteg"
+				},
+				{
+					"value": "buchimgae"
+				},
+				{
+					"value": "kuih cucur"
+				},
+				{
+					"value": "Kouign patatez"
+				},
+				{
+					"value": "Suet cake"
+				},
+				{
+					"value": "Maruya"
+				},
+				{
+					"value": "Bundevara"
+				},
+				{
+					"value": "bagel dog"
+				},
+				{
+					"value": "Bahulu"
+				},
+				{
+					"value": "Yocrunch"
+				},
+				{
+					"value": "Jeera rice"
+				},
+				{
+					"value": "Eromba"
+				},
+				{
+					"value": "Soor ploom"
+				},
+				{
+					"value": "ghoriba"
+				},
+				{
+					"value": "Fuži"
+				},
+				{
+					"value": "Şekerpare"
+				},
+				{
+					"value": "Frank 'n Stuff"
+				},
+				{
+					"value": "Pyaaj Kachori"
+				},
+				{
+					"value": "Bukayo"
+				},
+				{
+					"value": "Hot water corn bread"
+				},
+				{
+					"value": "Sha Phaley"
+				},
+				{
+					"value": "Kreple"
+				},
+				{
+					"value": "Manjar branco"
+				},
+				{
+					"value": "Maíz con hielo"
+				},
+				{
+					"value": "Palaver sauce"
+				},
+				{
+					"value": "Gondi dumpling"
+				},
+				{
+					"value": "Blessed thistle with lamb"
+				},
+				{
+					"value": "Bisi Bele Bath"
+				},
+				{
+					"value": "Sarsiado"
+				},
+				{
+					"value": "Toobs"
+				},
+				{
+					"value": "Mücver"
+				},
+				{
+					"value": "Mocotó"
+				},
+				{
+					"value": "Kakinada khaja"
+				},
+				{
+					"value": "Entomatada"
+				},
+				{
+					"value": "Chhena kheeri"
+				},
+				{
+					"value": "Guatitas"
+				},
+				{
+					"value": "Uunijuusto"
+				},
+				{
+					"value": "Pashofa"
+				},
+				{
+					"value": "Opor ayam"
+				},
+				{
+					"value": "Umngqusho"
+				},
+				{
+					"value": "Tongue toast"
+				},
+				{
+					"value": "Magaj"
+				},
+				{
+					"value": "Chikuzenni"
+				},
+				{
+					"value": "Mie aceh"
+				},
+				{
+					"value": "Baghara baingan"
+				},
+				{
+					"value": "gomme"
+				},
+				{
+					"value": "Lepet"
+				},
+				{
+					"value": "Tinginys"
+				},
+				{
+					"value": "gizzada"
+				},
+				{
+					"value": "Idrijski žlikrofi"
+				},
+				{
+					"value": "Adhirasam"
+				},
+				{
+					"value": "Milmyeon"
+				},
+				{
+					"value": "huckabuck"
+				},
+				{
+					"value": "Pīrādziņi"
+				},
+				{
+					"value": "bánh da lợn"
+				},
+				{
+					"value": "Crown Pilot Crackers"
+				},
+				{
+					"value": "compote"
+				},
+				{
+					"value": "Carapulcra"
+				},
+				{
+					"value": "Bolo de rolo"
+				},
+				{
+					"value": "Htamanè"
+				},
+				{
+					"value": "Burasa"
+				},
+				{
+					"value": "Helmipuuro"
+				},
+				{
+					"value": "Pinangat"
+				},
+				{
+					"value": "Pohay"
+				},
+				{
+					"value": "Hanımgöbeği"
+				},
+				{
+					"value": "Mataz"
+				},
+				{
+					"value": "Machha Jhola"
+				},
+				{
+					"value": "Es buah"
+				},
+				{
+					"value": "Yugwa"
+				},
+				{
+					"value": "Bündner Nusstorte"
+				},
+				{
+					"value": "Moustalevria"
+				},
+				{
+					"value": "Food physical chemistry"
+				},
+				{
+					"value": "Papo-de-anjo"
+				},
+				{
+					"value": "Queijadinha"
+				},
+				{
+					"value": "Ostropel"
+				},
+				{
+					"value": "Hojuela"
+				},
+				{
+					"value": "Mie koclok"
+				},
+				{
+					"value": "Bakauke"
+				},
+				{
+					"value": "Empal gepuk"
+				},
+				{
+					"value": "Pecel Lele"
+				},
+				{
+					"value": "Maple leaf cream cookies"
+				},
+				{
+					"value": "Janchi guksu"
+				},
+				{
+					"value": "cachopo"
+				},
+				{
+					"value": "cupcone"
+				},
+				{
+					"value": "Chatang"
+				},
+				{
+					"value": "Mie kocok"
+				},
+				{
+					"value": "Vegetable sandwich"
+				},
+				{
+					"value": "Unnakai"
+				},
+				{
+					"value": "Taro ball"
+				},
+				{
+					"value": "Mathri"
+				},
+				{
+					"value": "high energy biscuits"
+				},
+				{
+					"value": "Garlic chutney"
+				},
+				{
+					"value": "Fahsa"
+				},
+				{
+					"value": "Koottu"
+				},
+				{
+					"value": "Milho Frito"
+				},
+				{
+					"value": "Chèvre chaud"
+				},
+				{
+					"value": "Vichy Pastilles"
+				},
+				{
+					"value": "Confederate cush"
+				},
+				{
+					"value": "fried mushrooms"
+				},
+				{
+					"value": "Allahabadi cake"
+				},
+				{
+					"value": "Shikashika"
+				},
+				{
+					"value": "alfa romeo"
+				},
+				{
+					"value": "Moravian spice cookies"
+				},
+				{
+					"value": "Gulai Ayam"
+				},
+				{
+					"value": "Sarva Pindi"
+				},
+				{
+					"value": "Pastisset"
+				},
+				{
+					"value": "Lamban"
+				},
+				{
+					"value": "Singori"
+				},
+				{
+					"value": "fritter roll"
+				},
+				{
+					"value": "Opor"
+				},
+				{
+					"value": "Kuih kochi"
+				},
+				{
+					"value": "danja"
+				},
+				{
+					"value": "Chocolate marquise"
+				},
+				{
+					"value": "Bengal potatoes"
+				},
+				{
+					"value": "Cốm"
+				},
+				{
+					"value": "date square"
+				},
+				{
+					"value": "Locrio"
+				},
+				{
+					"value": "lawar"
+				},
+				{
+					"value": "Kheer sagar"
+				},
+				{
+					"value": "acorn noodle soup"
+				},
+				{
+					"value": "Mirza-Qasemi"
+				},
+				{
+					"value": "Fideo"
+				},
+				{
+					"value": "Cencioni"
+				},
+				{
+					"value": "Ghugni"
+				},
+				{
+					"value": "Kesari bhath"
+				},
+				{
+					"value": "Sauerbraten"
+				},
+				{
+					"value": "Pickled radish"
+				},
+				{
+					"value": "Vitréais"
+				},
+				{
+					"value": "Occhi di Lupo"
+				},
+				{
+					"value": "Shlishkes"
+				},
+				{
+					"value": "Wacky cake"
+				},
+				{
+					"value": "Malabar matthi curry"
+				},
+				{
+					"value": "Lakhamari"
+				},
+				{
+					"value": "Orama"
+				},
+				{
+					"value": "Kinema"
+				},
+				{
+					"value": "Punjung"
+				},
+				{
+					"value": "Keripik sanjay"
+				},
+				{
+					"value": "Ayam Taliwang"
+				},
+				{
+					"value": "Sloppy giuseppe"
+				},
+				{
+					"value": "Magiun of Topoloveni"
+				},
+				{
+					"value": "casunziei"
+				},
+				{
+					"value": "zarangollo"
+				},
+				{
+					"value": "Bülbülyuvası"
+				},
+				{
+					"value": "Khao chae"
+				},
+				{
+					"value": "sacchettoni"
+				},
+				{
+					"value": "Sate Padang"
+				},
+				{
+					"value": "Awameh"
+				},
+				{
+					"value": "Wet walnuts"
+				},
+				{
+					"value": "Sate Lilit"
+				},
+				{
+					"value": "Macroom Oatmeal"
+				},
+				{
+					"value": "Ka'í Ladrillo"
+				},
+				{
+					"value": "jjinppang"
+				},
+				{
+					"value": "Rafanata"
+				},
+				{
+					"value": "Magenbrot"
+				},
+				{
+					"value": "Ciulama"
+				},
+				{
+					"value": "Tokwa’t baboy"
+				},
+				{
+					"value": "Kadboli"
+				},
+				{
+					"value": "mak-guksu"
+				},
+				{
+					"value": "Chili parotha"
+				},
+				{
+					"value": "Fillet of Beef Prince Albert"
+				},
+				{
+					"value": "Bagara khana"
+				},
+				{
+					"value": "Knieperkohl"
+				},
+				{
+					"value": "Paniki"
+				},
+				{
+					"value": "fudge doughnut"
+				},
+				{
+					"value": "Ground nut soup"
+				},
+				{
+					"value": "Pantruca"
+				},
+				{
+					"value": "Mayfair salad dressing"
+				},
+				{
+					"value": "Asocena"
+				},
+				{
+					"value": "Kuih jala"
+				},
+				{
+					"value": "Habichuelas con dulce"
+				},
+				{
+					"value": "teja"
+				},
+				{
+					"value": "dak-ttongjip"
+				},
+				{
+					"value": "Mie kangkung"
+				},
+				{
+					"value": "Chashni"
+				},
+				{
+					"value": "Wotou"
+				},
+				{
+					"value": "jatjuk"
+				},
+				{
+					"value": "Sooth"
+				},
+				{
+					"value": "Aborrajado"
+				},
+				{
+					"value": "Nasi pecel"
+				},
+				{
+					"value": "Biscotti Regina"
+				},
+				{
+					"value": "Pathar-ka-Gosht"
+				},
+				{
+					"value": "Ada"
+				},
+				{
+					"value": "Kairi ka do pyaza"
+				},
+				{
+					"value": "Mini Cinnamon Churros"
+				},
+				{
+					"value": "Shekarpareh"
+				},
+				{
+					"value": "Frittole"
+				},
+				{
+					"value": "Koozh"
+				},
+				{
+					"value": "Tostada"
+				},
+				{
+					"value": "Seco"
+				},
+				{
+					"value": "Conkies"
+				},
+				{
+					"value": "Meghli"
+				},
+				{
+					"value": "Modeling chocolate"
+				},
+				{
+					"value": "Ground biscuit"
+				},
+				{
+					"value": "pebete"
+				},
+				{
+					"value": "Kadhi chawal"
+				},
+				{
+					"value": "Cornish fairing"
+				},
+				{
+					"value": "Kuih pinjaram"
+				},
+				{
+					"value": "Grit"
+				},
+				{
+					"value": "puri bhaji"
+				},
+				{
+					"value": "thong yip"
+				},
+				{
+					"value": "Spongarda"
+				},
+				{
+					"value": "Unni appam"
+				},
+				{
+					"value": "Song gao"
+				},
+				{
+					"value": "Nasi tumpang"
+				},
+				{
+					"value": "Cokodok"
+				},
+				{
+					"value": "pecan log roll"
+				},
+				{
+					"value": "Fánk"
+				},
+				{
+					"value": "Dakjuk"
+				},
+				{
+					"value": "Ceylon"
+				},
+				{
+					"value": "Kozhakkattai"
+				},
+				{
+					"value": "yuja-cheong"
+				},
+				{
+					"value": "Bolo de Arroz"
+				},
+				{
+					"value": "Kuih sepit"
+				},
+				{
+					"value": "Mas huni"
+				},
+				{
+					"value": "Huangqiao Sesame Cake"
+				},
+				{
+					"value": "Kevum"
+				},
+				{
+					"value": "Churri"
+				},
+				{
+					"value": "Baik kut kyee kaik"
+				},
+				{
+					"value": "Cocoloşi"
+				},
+				{
+					"value": "Hoosh"
+				},
+				{
+					"value": "fruit pudding"
+				},
+				{
+					"value": "colțunași"
+				},
+				{
+					"value": "Frangollo"
+				},
+				{
+					"value": "Zhoixo"
+				},
+				{
+					"value": "Besan barfi"
+				},
+				{
+					"value": "Kyay oh"
+				},
+				{
+					"value": "Walnut stuffed figs"
+				},
+				{
+					"value": "Potatonik"
+				},
+				{
+					"value": "Reshteh khoshkar"
+				},
+				{
+					"value": "Bánh khoai mì"
+				},
+				{
+					"value": "Yaprak sarma"
+				},
+				{
+					"value": "Muthia"
+				},
+				{
+					"value": "Foglie d'ulivo"
+				},
+				{
+					"value": "Squid cocktail"
+				},
+				{
+					"value": "Katogo"
+				},
+				{
+					"value": "date shake"
+				},
+				{
+					"value": "Goat roti"
+				},
+				{
+					"value": "Nasi timbel"
+				},
+				{
+					"value": "Finikia"
+				},
+				{
+					"value": "Kwetiau goreng"
+				},
+				{
+					"value": "Bánh cốm"
+				},
+				{
+					"value": "Saang mein"
+				},
+				{
+					"value": "Pancit estacion"
+				},
+				{
+					"value": "Sakinalu"
+				},
+				{
+					"value": "Aila"
+				},
+				{
+					"value": "Daun ubi tumbuk"
+				},
+				{
+					"value": "Illipe"
+				},
+				{
+					"value": "Kakara pitha"
+				},
+				{
+					"value": "Bacon Deluxe"
+				},
+				{
+					"value": "Morcón"
+				},
+				{
+					"value": "Honey dill"
+				},
+				{
+					"value": "Mangalore bajji"
+				},
+				{
+					"value": "Quetschentaart"
+				},
+				{
+					"value": "King Kong milk candy"
+				},
+				{
+					"value": "Churmuri"
+				},
+				{
+					"value": "carrot chips"
+				},
+				{
+					"value": "Redcurrant sauce"
+				},
+				{
+					"value": "Sambali"
+				},
+				{
+					"value": "Multekrem"
+				},
+				{
+					"value": "Assidat zgougou"
+				},
+				{
+					"value": "choc-top"
+				},
+				{
+					"value": "Injipuli"
+				},
+				{
+					"value": "pattie"
+				},
+				{
+					"value": "Cascaron"
+				},
+				{
+					"value": "Pevarini"
+				},
+				{
+					"value": "Ruske kape"
+				},
+				{
+					"value": "Tangy Fruits"
+				},
+				{
+					"value": "Viscount"
+				},
+				{
+					"value": "Noghl"
+				},
+				{
+					"value": "Youtazi"
+				},
+				{
+					"value": "Asham"
+				},
+				{
+					"value": "Skomakarlåda"
+				},
+				{
+					"value": "Sorshe Ilish"
+				},
+				{
+					"value": "Kalburabastı"
+				},
+				{
+					"value": "Tilgul"
+				},
+				{
+					"value": "Snack and a half"
+				},
+				{
+					"value": "Pink Wafer"
+				},
+				{
+					"value": "Obusuma"
+				},
+				{
+					"value": "Khichu"
+				},
+				{
+					"value": "Bêtise de Cambrai"
+				},
+				{
+					"value": "Yan Du Xian"
+				},
+				{
+					"value": "Rosquillo"
+				},
+				{
+					"value": "Kichel"
+				},
+				{
+					"value": "Linongot"
+				},
+				{
+					"value": "Grater cake"
+				},
+				{
+					"value": "Pilgrim"
+				},
+				{
+					"value": "Mala Mogodu"
+				},
+				{
+					"value": "Lincoln biscuit"
+				},
+				{
+					"value": "Khauk swè thoke"
+				},
+				{
+					"value": "Keşkül"
+				},
+				{
+					"value": "Cuccidati"
+				},
+				{
+					"value": "Anarsa"
+				},
+				{
+					"value": "Geplak"
+				},
+				{
+					"value": "Dalcha"
+				},
+				{
+					"value": "Chakuli pitha"
+				},
+				{
+					"value": "Canestrelli"
+				},
+				{
+					"value": "Hoşmerim"
+				},
+				{
+					"value": "gwapyeon"
+				},
+				{
+					"value": "Curacha"
+				},
+				{
+					"value": "Chuak"
+				},
+				{
+					"value": "Mee Bandung Muar"
+				},
+				{
+					"value": "Napolitains"
+				},
+				{
+					"value": "Easter biscuit"
+				},
+				{
+					"value": "pillus"
+				},
+				{
+					"value": "Chitranna"
+				},
+				{
+					"value": "tripoline"
+				},
+				{
+					"value": "Gionbō"
+				},
+				{
+					"value": "Cameo Creme"
+				},
+				{
+					"value": "Acem köftesi"
+				},
+				{
+					"value": "Bulgarian yogurt"
+				},
+				{
+					"value": "tuna bun"
+				},
+				{
+					"value": "Nevzine dessert"
+				},
+				{
+					"value": "Bichak"
+				},
+				{
+					"value": "Kalu dodol"
+				},
+				{
+					"value": "kkul-tarae"
+				},
+				{
+					"value": "Cantiq"
+				},
+				{
+					"value": "Chingudi Jhola"
+				},
+				{
+					"value": "Churma"
+				},
+				{
+					"value": "barley gruel"
+				},
+				{
+					"value": "serranito"
+				},
+				{
+					"value": "Joynagarer moa"
+				},
+				{
+					"value": "Or lam"
+				},
+				{
+					"value": "Skilpadjies"
+				},
+				{
+					"value": "Eggplant Papucaki"
+				},
+				{
+					"value": "Kaipen"
+				},
+				{
+					"value": "Enduri Pitha"
+				},
+				{
+					"value": "chipsi mayai"
+				},
+				{
+					"value": "Manda Pitha"
+				},
+				{
+					"value": "mieum"
+				},
+				{
+					"value": "Lemon duck"
+				},
+				{
+					"value": "Pesek zman"
+				},
+				{
+					"value": "Namak para"
+				},
+				{
+					"value": "ogokbap"
+				},
+				{
+					"value": "peppermint bark"
+				},
+				{
+					"value": "JingBaJian"
+				},
+				{
+					"value": "Malai laddu"
+				},
+				{
+					"value": "Pachi Pulusu"
+				},
+				{
+					"value": "Flanby"
+				},
+				{
+					"value": "Mix-in"
+				},
+				{
+					"value": "Tareco"
+				},
+				{
+					"value": "Kuih jelurut"
+				},
+				{
+					"value": "Lemon delicious pudding"
+				},
+				{
+					"value": "Miruhulee boava"
+				},
+				{
+					"value": "Machas a la parmesana"
+				},
+				{
+					"value": "Chatti Pathiri"
+				},
+				{
+					"value": "Dhondas"
+				},
+				{
+					"value": "Brændende kærlighed"
+				},
+				{
+					"value": "Chocolate bullets"
+				},
+				{
+					"value": "Funšterc"
+				},
+				{
+					"value": "Olho-de-sogra"
+				},
+				{
+					"value": "Awwamaat"
+				},
+				{
+					"value": "Sabudana vada"
+				},
+				{
+					"value": "Santula"
+				},
+				{
+					"value": "Ktzitzot Khubeza"
+				},
+				{
+					"value": "Tahinopita"
+				},
+				{
+					"value": "Karadantu"
+				},
+				{
+					"value": "Poffert"
+				},
+				{
+					"value": "Munthiri Kothu"
+				},
+				{
+					"value": "Gujarati Kadhi"
+				},
+				{
+					"value": "Ros omelette"
+				},
+				{
+					"value": "Nam khaeng sai"
+				},
+				{
+					"value": "Aluwa"
+				},
+				{
+					"value": "Linguettine"
+				},
+				{
+					"value": "Veg kolhapuri"
+				},
+				{
+					"value": "Ozark pudding"
+				},
+				{
+					"value": "Makhan malai"
+				},
+				{
+					"value": "Kab yob"
+				},
+				{
+					"value": "Pumpkin dessert"
+				},
+				{
+					"value": "Hapanvelli"
+				},
+				{
+					"value": "Valdiviano"
+				},
+				{
+					"value": "Abnabat"
+				},
+				{
+					"value": "Kalvdans"
+				},
+				{
+					"value": "Crab in oyster sauce"
+				},
+				{
+					"value": "Kuih kelupis"
+				},
+				{
+					"value": "whisky sauce"
+				},
+				{
+					"value": "Curau"
+				},
+				{
+					"value": "Cow Chocolate"
+				},
+				{
+					"value": "Tilslørte bondepiker"
+				},
+				{
+					"value": "Kentucky jam cake"
+				},
+				{
+					"value": "Tamate ka kut"
+				},
+				{
+					"value": "Chickpea noghl"
+				},
+				{
+					"value": "Libje lebje basta"
+				},
+				{
+					"value": "Redonkadonk"
+				},
+				{
+					"value": "garak-guksu"
+				},
+				{
+					"value": "rhubarb tart"
+				},
+				{
+					"value": "Jatguksu"
+				},
+				{
+					"value": "Hyderabadi Marag"
+				},
+				{
+					"value": "Muskazine"
+				},
+				{
+					"value": "Corn poppy with lamb"
+				},
+				{
+					"value": "Torta Bertolina"
+				},
+				{
+					"value": "Hovis biscuit"
+				},
+				{
+					"value": "Chotpoti"
+				},
+				{
+					"value": "lanterne"
+				},
+				{
+					"value": "Chocolate almonds"
+				},
+				{
+					"value": "Garudiya"
+				},
+				{
+					"value": "Tirit"
+				},
+				{
+					"value": "Ariselu"
+				},
+				{
+					"value": "Wine cake"
+				},
+				{
+					"value": "Cerealine"
+				},
+				{
+					"value": "Cajuzinho"
+				},
+				{
+					"value": "Papas chorreadas"
+				},
+				{
+					"value": "Kuih cincin"
+				},
+				{
+					"value": "Rupjmaizes kārtojums"
+				},
+				{
+					"value": "Blue cake"
+				},
+				{
+					"value": "Traou Mad"
+				},
+				{
+					"value": "Sekuwa"
+				},
+				{
+					"value": "corn burrito"
+				},
+				{
+					"value": "Drokpa Katsa"
+				},
+				{
+					"value": "Puliyogare"
+				},
+				{
+					"value": "Tecula mecula"
+				},
+				{
+					"value": "Maria-mole"
+				},
+				{
+					"value": "Porotos con riendas"
+				},
+				{
+					"value": "Duck soup noodles"
+				},
+				{
+					"value": "gukhwa-ppang"
+				},
+				{
+					"value": "Laba congee"
+				},
+				{
+					"value": "Caşcaval pane"
+				},
+				{
+					"value": "tortelli cremaschi"
+				},
+				{
+					"value": "Berner Honiglebkuchen"
+				},
+				{
+					"value": "Kẹo dừa"
+				},
+				{
+					"value": "Krispie"
+				},
+				{
+					"value": "Steamed plate cake"
+				},
+				{
+					"value": "Angoori"
+				},
+				{
+					"value": "Malida"
+				},
+				{
+					"value": "jelly slice"
+				},
+				{
+					"value": "Kuih wajid"
+				},
+				{
+					"value": "Sikhae"
+				},
+				{
+					"value": "Khanom thuai"
+				},
+				{
+					"value": "Crab in Padang sauce"
+				},
+				{
+					"value": "Kluay buat chee"
+				},
+				{
+					"value": "Prusurate"
+				},
+				{
+					"value": "Fennel with lamb"
+				},
+				{
+					"value": "Kya zan hinga"
+				},
+				{
+					"value": "Neyyappam"
+				},
+				{
+					"value": "Vakfıkebir ekmeği"
+				},
+				{
+					"value": "Bánh in"
+				},
+				{
+					"value": "Krumiri"
+				},
+				{
+					"value": "Mirik meatball"
+				},
+				{
+					"value": "Chakodi"
+				},
+				{
+					"value": "Cinnamon toothpicks"
+				},
+				{
+					"value": "Koottukari"
+				},
+				{
+					"value": "Circassian chicken"
+				},
+				{
+					"value": "Konfyt"
+				},
+				{
+					"value": "sagnarelli"
+				},
+				{
+					"value": "Tilkut"
+				},
+				{
+					"value": "Colocasia with lamb"
+				},
+				{
+					"value": "Hyōrokumochi"
+				},
+				{
+					"value": "Phoenicia dessert"
+				},
+				{
+					"value": "lipie"
+				},
+				{
+					"value": "gyeran-ppang"
+				},
+				{
+					"value": "Saray helva"
+				},
+				{
+					"value": "Berner Haselnusslebkuchen"
+				},
+				{
+					"value": "Pol Pani"
+				},
+				{
+					"value": "Tahinli pide"
+				},
+				{
+					"value": "Tepsi Baytinijan"
+				},
+				{
+					"value": "Tala huwa gosht"
+				},
+				{
+					"value": "Kuih semperit"
+				},
+				{
+					"value": "Gyaho"
+				},
+				{
+					"value": "Fenia"
+				},
+				{
+					"value": "Eshabwe"
+				},
+				{
+					"value": "Konkonte"
+				},
+				{
+					"value": "Nasi gurih"
+				},
+				{
+					"value": "Khobz Mbesses"
+				},
+				{
+					"value": "Rabokki"
+				},
+				{
+					"value": "chakka prathaman"
+				},
+				{
+					"value": "Tunis cake"
+				},
+				{
+					"value": "Creier pane"
+				},
+				{
+					"value": "Chhundo"
+				},
+				{
+					"value": "cherpumple"
+				},
+				{
+					"value": "Tortello amaro di Castel Goffredo"
+				},
+				{
+					"value": "Makka Poha"
+				},
+				{
+					"value": "patjuk"
+				},
+				{
+					"value": "Rose Cookies"
+				},
+				{
+					"value": "Talakaya Kura"
+				},
+				{
+					"value": "Frucht Quark"
+				},
+				{
+					"value": "Kömbe"
+				},
+				{
+					"value": "Arisa Pitha"
+				},
+				{
+					"value": "Htamin jin"
+				},
+				{
+					"value": "Shekerbura"
+				},
+				{
+					"value": "Mugoyo"
+				},
+				{
+					"value": "Fatost"
+				},
+				{
+					"value": "caramel tart"
+				},
+				{
+					"value": "Kamarcut"
+				},
+				{
+					"value": "Palathalikalu"
+				},
+				{
+					"value": "Honey Puffs"
+				},
+				{
+					"value": "Yeolmu kimchi"
+				},
+				{
+					"value": "Murta con membrillo"
+				},
+				{
+					"value": "Colaz"
+				},
+				{
+					"value": "Kornigou"
+				},
+				{
+					"value": "Lofenalac"
+				},
+				{
+					"value": "Vizier's fingers"
+				},
+				{
+					"value": "Alu Potala Rasa"
+				},
+				{
+					"value": "Rambak petis"
+				},
+				{
+					"value": "Pleah sach ko"
+				},
+				{
+					"value": "Mató de Pedralbes"
+				},
+				{
+					"value": "Dahi machha"
+				},
+				{
+					"value": "Kamasutra"
+				},
+				{
+					"value": "sandbakelse"
+				},
+				{
+					"value": "Spiced rice"
+				},
+				{
+					"value": "Mathapuli"
+				},
+				{
+					"value": "Zürcher Murren"
+				},
+				{
+					"value": "Poornalu"
+				},
+				{
+					"value": "Poolaki"
+				},
+				{
+					"value": "Dal biji"
+				},
+				{
+					"value": "papza mogu"
+				},
+				{
+					"value": "Tollatsch"
+				},
+				{
+					"value": "Mjukkaka"
+				},
+				{
+					"value": "Palm flour jelly ball"
+				},
+				{
+					"value": "Pită de Pecica"
+				},
+				{
+					"value": "Kora Khai"
+				},
+				{
+					"value": "Thennai Kozhakkattai"
+				},
+				{
+					"value": "Anise of Flavigny"
+				},
+				{
+					"value": "Chhena Jhili"
+				},
+				{
+					"value": "Kuih lidah"
+				},
+				{
+					"value": "Ginisang monggo"
+				},
+				{
+					"value": "Golichina Mamsam"
+				},
+				{
+					"value": "Močnik"
+				},
+				{
+					"value": "Ponganalu"
+				},
+				{
+					"value": "Ploatz"
+				},
+				{
+					"value": "Jim Jum"
+				},
+				{
+					"value": "Pinca"
+				},
+				{
+					"value": "gaepi-tteok"
+				},
+				{
+					"value": "Chandrakanti"
+				},
+				{
+					"value": "Echicha"
+				},
+				{
+					"value": "Khoya paneer"
+				},
+				{
+					"value": "Chabrot"
+				},
+				{
+					"value": "Sher Berinj"
+				},
+				{
+					"value": "Yeotgangjeong"
+				},
+				{
+					"value": "Bhoonja"
+				},
+				{
+					"value": "Sigyet khauk swè"
+				},
+				{
+					"value": "Tensoba"
+				},
+				{
+					"value": "Kemal Pasha dessert"
+				},
+				{
+					"value": "Fah-fah"
+				},
+				{
+					"value": "Potatoes"
+				},
+				{
+					"value": "Onions"
+				},
+				{
+					"value": "Cheese"
+				},
+				{
+					"value": "Apple",
+					"synonyms": [
+						"Apples"
+					]
+				},
+				{
+					"value": "Banana",
+					"synonyms": [
+						"Bananas"
+					]
+				},
+				{
+					"value": "Meat"
+				},
+				{
+					"value": "Steak"
+				},
+				{
+					"value": "Flour"
+				},
+				{
+					"value": "Sugar"
+				},
+				{
+					"value": "Salt"
+				},
+				{
+					"value": "Pepper"
+				},
+				{
+					"value": "Coffee"
+				},
+				{
+					"value": "Water"
+				},
+				{
+					"value": "Milk"
+				},
+				{
+					"value": "Beer"
+				},
+				{
+					"value": "Wine"
+				},
+				{
+					"value": "White Wine"
+				},
+				{
+					"value": "Red Wine"
+				},
+				{
+					"value": "Carrots"
+				},
+				{
+					"value": "Leek"
+				},
+				{
+					"value": "Bananas"
+				},
+				{
+					"value": "Apples"
+				},
+				{
+					"value": "Peach"
+				},
+				{
+					"value": "Strawberry"
+				},
+				{
+					"value": "Raspberry"
+				},
+				{
+					"value": "Asparagus"
+				},
+				{
+					"value": "Broccoli"
+				},
+				{
+					"value": "Cauliflower"
+				},
+				{
+					"value": "Celery"
+				},
+				{
+					"value": "Corn"
+				},
+				{
+					"value": "Cucumbers"
+				},
+				{
+					"value": "Lettuce"
+				},
+				{
+					"value": "Mushrooms"
+				},
+				{
+					"value": "Peppers"
+				},
+				{
+					"value": "Spinach"
+				},
+				{
+					"value": "Squash"
+				},
+				{
+					"value": "Zucchini"
+				},
+				{
+					"value": "Tomatoes"
+				},
+				{
+					"value": "Avocados"
+				},
+				{
+					"value": "Berries"
+				},
+				{
+					"value": "Cherries"
+				},
+				{
+					"value": "Grapefruit"
+				},
+				{
+					"value": "Grapes"
+				},
+				{
+					"value": "Kiwis"
+				},
+				{
+					"value": "Lemons"
+				},
+				{
+					"value": "Limes"
+				},
+				{
+					"value": "Melon"
+				},
+				{
+					"value": "Oranges"
+				},
+				{
+					"value": "Peaches"
+				},
+				{
+					"value": "Nectarines"
+				},
+				{
+					"value": "Pears"
+				},
+				{
+					"value": "Plums"
+				},
+				{
+					"value": "Bagels"
+				},
+				{
+					"value": "Chip dip"
+				},
+				{
+					"value": "English muffins"
+				},
+				{
+					"value": "Eggs"
+				},
+				{
+					"value": "Fruit juice"
+				},
+				{
+					"value": "Hummus"
+				},
+				{
+					"value": "Ready-bake breads"
+				},
+				{
+					"value": "Tofu"
+				},
+				{
+					"value": "Tortillas"
+				},
+				{
+					"value": "Breakfasts"
+				},
+				{
+					"value": "Burritos"
+				},
+				{
+					"value": "Fish sticks"
+				},
+				{
+					"value": "Ice cream"
+				},
+				{
+					"value": "Sorbet"
+				},
+				{
+					"value": "Juice concentrate"
+				},
+				{
+					"value": "Pizza"
+				},
+				{
+					"value": "Pizza Rolls"
+				},
+				{
+					"value": "Popsicles"
+				},
+				{
+					"value": "Fries"
+				},
+				{
+					"value": "Tater tots"
+				},
+				{
+					"value": "Vegetables"
+				},
+				{
+					"value": "Veggie burgers"
+				},
+				{
+					"value": "Gravy"
+				},
+				{
+					"value": "Honey"
+				},
+				{
+					"value": "Hot sauce"
+				},
+				{
+					"value": "Jam"
+				},
+				{
+					"value": "Jelly"
+				},
+				{
+					"value": "Ketchup"
+				},
+				{
+					"value": "Mustard"
+				},
+				{
+					"value": "Mayonnaise"
+				},
+				{
+					"value": "Pasta sauce"
+				},
+				{
+					"value": "Relish"
+				},
+				{
+					"value": "Salad dressing"
+				},
+				{
+					"value": "Salsa"
+				},
+				{
+					"value": "Soy sauce"
+				},
+				{
+					"value": "Steak sauce"
+				},
+				{
+					"value": "Syrup"
+				},
+				{
+					"value": "Worcestershire sauce"
+				},
+				{
+					"value": "Bouillon cubes"
+				},
+				{
+					"value": "Cereal"
+				},
+				{
+					"value": "Filters"
+				},
+				{
+					"value": "Instant potatoes"
+				},
+				{
+					"value": "Lime juice"
+				},
+				{
+					"value": "Mac & cheese"
+				},
+				{
+					"value": "Olive oil"
+				},
+				{
+					"value": "Pancake mix"
+				},
+				{
+					"value": "Waffle mix"
+				},
+				{
+					"value": "Pasta"
+				},
+				{
+					"value": "Peanut butter"
+				},
+				{
+					"value": "Pickles"
+				},
+				{
+					"value": "Rice"
+				},
+				{
+					"value": "Tea"
+				},
+				{
+					"value": "Vegetable oil"
+				},
+				{
+					"value": "Vinegar"
+				},
+				{
+					"value": "Applesauce"
+				},
+				{
+					"value": "Baked beans"
+				},
+				{
+					"value": "Chili"
+				},
+				{
+					"value": "Fruit"
+				},
+				{
+					"value": "Olives"
+				},
+				{
+					"value": "Tinned meats"
+				},
+				{
+					"value": "Tuna"
+				},
+				{
+					"value": "Chicken"
+				},
+				{
+					"value": "Soups"
+				},
+				{
+					"value": "Veggies"
+				},
+				{
+					"value": "Basil"
+				},
+				{
+					"value": "Black pepper"
+				},
+				{
+					"value": "Cilantro"
+				},
+				{
+					"value": "Cinnamon"
+				},
+				{
+					"value": "Garlic"
+				},
+				{
+					"value": "Ginger"
+				},
+				{
+					"value": "Mint"
+				},
+				{
+					"value": "Oregano"
+				},
+				{
+					"value": "Paprika"
+				},
+				{
+					"value": "Parsley"
+				},
+				{
+					"value": "Red pepper"
+				},
+				{
+					"value": "Spice mix"
+				},
+				{
+					"value": "Vanilla extract"
+				},
+				{
+					"value": "Butter"
+				},
+				{
+					"value": "Margarine"
+				},
+				{
+					"value": "Cottage cheese"
+				},
+				{
+					"value": "Half & half"
+				},
+				{
+					"value": "Sour cream"
+				},
+				{
+					"value": "Whipped cream"
+				},
+				{
+					"value": "Yogurt"
+				},
+				{
+					"value": "Blue cheese"
+				},
+				{
+					"value": "Cheddar"
+				},
+				{
+					"value": "Cream cheese"
+				},
+				{
+					"value": "Feta"
+				},
+				{
+					"value": "Goat cheese"
+				},
+				{
+					"value": "Mozzarella"
+				},
+				{
+					"value": "Parmesan"
+				},
+				{
+					"value": "Provolone"
+				},
+				{
+					"value": "Ricotta"
+				},
+				{
+					"value": "Sandwich slices"
+				},
+				{
+					"value": "Swiss Cheese"
+				},
+				{
+					"value": "Bacon"
+				},
+				{
+					"value": "Sausage"
+				},
+				{
+					"value": "Beef"
+				},
+				{
+					"value": "Ground beef"
+				},
+				{
+					"value": "Turkey"
+				},
+				{
+					"value": "Ham"
+				},
+				{
+					"value": "Pork"
+				},
+				{
+					"value": "Hot dogs"
+				},
+				{
+					"value": "Lunchmeat"
+				},
+				{
+					"value": "Seafood"
+				},
+				{
+					"value": "Catfish"
+				},
+				{
+					"value": "Crab"
+				},
+				{
+					"value": "Lobster"
+				},
+				{
+					"value": "Mussels"
+				},
+				{
+					"value": "Oysters"
+				},
+				{
+					"value": "Salmon"
+				},
+				{
+					"value": "Shrimp"
+				},
+				{
+					"value": "Tilapia"
+				},
+				{
+					"value": "Beverages"
+				},
+				{
+					"value": "Club soda"
+				},
+				{
+					"value": "Tonic"
+				},
+				{
+					"value": "Champagne"
+				},
+				{
+					"value": "Gin"
+				},
+				{
+					"value": "Juice"
+				},
+				{
+					"value": "Mixers"
+				},
+				{
+					"value": "Red wine"
+				},
+				{
+					"value": "White wine"
+				},
+				{
+					"value": "Rum"
+				},
+				{
+					"value": "Saké"
+				},
+				{
+					"value": "Soda pop"
+				},
+				{
+					"value": "Sports drink"
+				},
+				{
+					"value": "Whiskey"
+				},
+				{
+					"value": "Vodka"
+				},
+				{
+					"value": "Croissants"
+				},
+				{
+					"value": "Buns"
+				},
+				{
+					"value": "Cake"
+				},
+				{
+					"value": "Cookies"
+				},
+				{
+					"value": "Donuts"
+				},
+				{
+					"value": "Pastries"
+				},
+				{
+					"value": "Fresh bread"
+				},
+				{
+					"value": "Sliced bread"
+				},
+				{
+					"value": "Pie"
+				},
+				{
+					"value": "Pita bread"
+				},
+				{
+					"value": "Baking powder"
+				},
+				{
+					"value": "Soda"
+				},
+				{
+					"value": "Bread crumbs"
+				},
+				{
+					"value": "Cake mix"
+				},
+				{
+					"value": "Brownie mix"
+				},
+				{
+					"value": "Cake icing"
+				},
+				{
+					"value": "Cake Decorations"
+				},
+				{
+					"value": "Chocolate chips"
+				},
+				{
+					"value": "Cocoa"
+				},
+				{
+					"value": "Shortening"
+				},
+				{
+					"value": "Sugar substitute"
+				},
+				{
+					"value": "Yeast"
+				},
+				{
+					"value": "Snacks"
+				},
+				{
+					"value": "Candy"
+				},
+				{
+					"value": "Gum"
+				},
+				{
+					"value": "Crackers"
+				},
+				{
+					"value": "Dried fruit"
+				},
+				{
+					"value": "Granola bars"
+				},
+				{
+					"value": "Granola Mix"
+				},
+				{
+					"value": "Nuts"
+				},
+				{
+					"value": "Seeds"
+				},
+				{
+					"value": "Oatmeal"
+				},
+				{
+					"value": "Popcorn"
+				},
+				{
+					"value": "Potato chips"
+				},
+				{
+					"value": "Corn chips"
+				},
+				{
+					"value": "Pretzels"
+				},
+				{
+					"value": "Baby food"
+				},
+				{
+					"value": "Diapers"
+				},
+				{
+					"value": "Formula"
+				},
+				{
+					"value": "Lotion"
+				},
+				{
+					"value": "Baby wash"
+				},
+				{
+					"value": "Wipes"
+				},
+				{
+					"value": "Cat food"
+				},
+				{
+					"value": "Cat Treats"
+				},
+				{
+					"value": "Cat litter"
+				},
+				{
+					"value": "Dog food"
+				},
+				{
+					"value": "Dog Treats"
+				},
+				{
+					"value": "Flea treatment"
+				},
+				{
+					"value": "Pet shampoo"
+				},
+				{
+					"value": "Antiperspirant"
+				},
+				{
+					"value": "Deodorant"
+				},
+				{
+					"value": "Bath soap"
+				},
+				{
+					"value": "Hand soap"
+				},
+				{
+					"value": "Condoms"
+				},
+				{
+					"value": "Cosmetics"
+				},
+				{
+					"value": "Cotton swabs"
+				},
+				{
+					"value": "Cotton Balls"
+				},
+				{
+					"value": "Facial cleanser"
+				},
+				{
+					"value": "Facial tissue"
+				},
+				{
+					"value": "Feminine products"
+				},
+				{
+					"value": "Floss"
+				},
+				{
+					"value": "Hair gel"
+				},
+				{
+					"value": "Hair Spray"
+				},
+				{
+					"value": "Lip balm"
+				},
+				{
+					"value": "Moisturizing lotion"
+				},
+				{
+					"value": "Mouthwash"
+				},
+				{
+					"value": "Razors"
+				},
+				{
+					"value": "Shaving cream"
+				},
+				{
+					"value": "Shampoo"
+				},
+				{
+					"value": "Conditioner"
+				},
+				{
+					"value": "Sunblock"
+				},
+				{
+					"value": "Toilet paper"
+				},
+				{
+					"value": "Toothpaste"
+				},
+				{
+					"value": "Vitamins"
+				},
+				{
+					"value": "Supplements"
+				},
+				{
+					"value": "Medicine"
+				},
+				{
+					"value": "Antibiotics"
+				},
+				{
+					"value": "Antidiarrheal"
+				},
+				{
+					"value": "Aspirin"
+				},
+				{
+					"value": "Antacid"
+				},
+				{
+					"value": "Band-aids"
+				},
+				{
+					"value": "Pain reliever"
+				},
+				{
+					"value": "Prescription pick-up"
+				},
+				{
+					"value": "Aluminum foil"
+				},
+				{
+					"value": "Napkins"
+				},
+				{
+					"value": "Non-stick spray"
+				},
+				{
+					"value": "Paper towels"
+				},
+				{
+					"value": "Plastic wrap"
+				},
+				{
+					"value": "Sandwich bags"
+				},
+				{
+					"value": "Freezer bags"
+				},
+				{
+					"value": "Wax paper"
+				},
+				{
+					"value": "Air freshener"
+				},
+				{
+					"value": "Bathroom cleaner"
+				},
+				{
+					"value": "Bleach"
+				},
+				{
+					"value": "Detergent"
+				},
+				{
+					"value": "Dish soap"
+				},
+				{
+					"value": "Dishwasher soap"
+				},
+				{
+					"value": "Garbage bags"
+				},
+				{
+					"value": "Glass cleaner"
+				},
+				{
+					"value": "Mop head"
+				},
+				{
+					"value": "Vacuum bags"
+				},
+				{
+					"value": "Sponges"
+				},
+				{
+					"value": "Scrubbers"
+				},
+				{
+					"value": "Office supplies"
+				},
+				{
+					"value": "CDs"
+				},
+				{
+					"value": "DVDs"
+				},
+				{
+					"value": "Notepad"
+				},
+				{
+					"value": "Envelopes"
+				},
+				{
+					"value": "Glue"
+				},
+				{
+					"value": "Tape"
+				},
+				{
+					"value": "Printer paper"
+				},
+				{
+					"value": "Pens"
+				},
+				{
+					"value": "Pencils"
+				},
+				{
+					"value": "Postage stamps"
+				},
+				{
+					"value": "Automotive"
+				},
+				{
+					"value": "Batteries"
+				},
+				{
+					"value": "Charcoal"
+				},
+				{
+					"value": "Propane"
+				},
+				{
+					"value": "Flowers"
+				},
+				{
+					"value": "Greeting card"
+				},
+				{
+					"value": "Insect repellent"
+				},
+				{
+					"value": "Light bulbs"
+				},
+				{
+					"value": "Newspaper"
+				},
+				{
+					"value": "Magazine"
+				},
+				{
+					"value": "Cigarettes"
+				},
+				{
+					"value": "Artichoke"
+				},
+				{
+					"value": "Arugula"
+				},
+				{
+					"value": "Avocado"
+				},
+				{
+					"value": "Bamboo shoots"
+				},
+				{
+					"value": "Beets"
+				},
+				{
+					"value": "Bell peppers"
+				},
+				{
+					"value": "Bok choy"
+				},
+				{
+					"value": "Brussels sprouts"
+				},
+				{
+					"value": "Cabbage"
+				},
+				{
+					"value": "Cassava"
+				},
+				{
+					"value": "Chard"
+				},
+				{
+					"value": "Collard greens"
+				},
+				{
+					"value": "Crisphead lettuce"
+				},
+				{
+					"value": "Cucumber"
+				},
+				{
+					"value": "Daikon"
+				},
+				{
+					"value": "Eggplant"
+				},
+				{
+					"value": "Endive"
+				},
+				{
+					"value": "Hot peppers"
+				},
+				{
+					"value": "Jicama"
+				},
+				{
+					"value": "Kale"
+				},
+				{
+					"value": "Kohlrabi"
+				},
+				{
+					"value": "Leaf lettuce"
+				},
+				{
+					"value": "Nopales"
+				},
+				{
+					"value": "Okra"
+				},
+				{
+					"value": "Peas"
+				},
+				{
+					"value": "Radishes"
+				},
+				{
+					"value": "Radicchio"
+				},
+				{
+					"value": "Romaine lettuce"
+				},
+				{
+					"value": "Shallots"
+				},
+				{
+					"value": "Leeks"
+				},
+				{
+					"value": "Sprouts"
+				},
+				{
+					"value": "Sweet potatoes"
+				},
+				{
+					"value": "Taro"
+				},
+				{
+					"value": "Tomatillo"
+				},
+				{
+					"value": "Turnips"
+				},
+				{
+					"value": "Parsnips"
+				},
+				{
+					"value": "Water chestnuts"
+				},
+				{
+					"value": "Watercress"
+				},
+				{
+					"value": "Almonds"
+				},
+				{
+					"value": "Brazil nuts"
+				},
+				{
+					"value": "Cashews"
+				},
+				{
+					"value": "Chestnuts"
+				},
+				{
+					"value": "Macadamia"
+				},
+				{
+					"value": "Peanuts"
+				},
+				{
+					"value": "Pecans"
+				},
+				{
+					"value": "Pine nuts"
+				},
+				{
+					"value": "Pistachios"
+				},
+				{
+					"value": "Walnuts"
+				},
+				{
+					"value": "Flax"
+				},
+				{
+					"value": "Lotus"
+				},
+				{
+					"value": "Pumpkin"
+				},
+				{
+					"value": "Sunflower"
+				},
+				{
+					"value": "Apricots"
+				},
+				{
+					"value": "Blackberries"
+				},
+				{
+					"value": "Blueberries"
+				},
+				{
+					"value": "Cantelope"
+				},
+				{
+					"value": "Cranberries"
+				},
+				{
+					"value": "Dates"
+				},
+				{
+					"value": "Figs"
+				},
+				{
+					"value": "Guava"
+				},
+				{
+					"value": "Honeydew"
+				},
+				{
+					"value": "Muskmelon"
+				},
+				{
+					"value": "Kumquats"
+				},
+				{
+					"value": "Lychee"
+				},
+				{
+					"value": "Mango"
+				},
+				{
+					"value": "Mangosteen"
+				},
+				{
+					"value": "Papaya"
+				},
+				{
+					"value": "Pineapple"
+				},
+				{
+					"value": "Plantains"
+				},
+				{
+					"value": "Pomegranate"
+				},
+				{
+					"value": "Quince"
+				},
+				{
+					"value": "Raspberries"
+				},
+				{
+					"value": "Rhubarb"
+				},
+				{
+					"value": "Strawberries"
+				},
+				{
+					"value": "Watermelon"
+				},
+				{
+					"value": "Beans"
+				},
+				{
+					"value": "Black beans"
+				},
+				{
+					"value": "Black-eyed peas"
+				},
+				{
+					"value": "Chickpeas"
+				},
+				{
+					"value": "Edamame"
+				},
+				{
+					"value": "Fava beans"
+				},
+				{
+					"value": "Kidney beans"
+				},
+				{
+					"value": "Lentils"
+				},
+				{
+					"value": "Lima beans"
+				},
+				{
+					"value": "Mung beans"
+				},
+				{
+					"value": "Navy beans"
+				},
+				{
+					"value": "Pinto beans"
+				},
+				{
+					"value": "Red beans"
+				},
+				{
+					"value": "Split peas"
+				},
+				{
+					"value": "White beans"
+				},
+				{
+					"value": "Grains"
+				},
+				{
+					"value": "Amaranth"
+				},
+				{
+					"value": "Barley"
+				},
+				{
+					"value": "Brown rice"
+				},
+				{
+					"value": "Buckwheat"
+				},
+				{
+					"value": "Bulgar"
+				},
+				{
+					"value": "Cornmeal"
+				},
+				{
+					"value": "Couscous"
+				},
+				{
+					"value": "Millet"
+				},
+				{
+					"value": "Quinoa"
+				},
+				{
+					"value": "Sorghum"
+				},
+				{
+					"value": "Wheat gluten"
+				},
+				{
+					"value": "Seitan"
+				},
+				{
+					"value": "White rice"
+				},
+				{
+					"value": "Wild rice"
+				},
+				{
+					"value": "Allspice"
+				},
+				{
+					"value": "Anise"
+				},
+				{
+					"value": "Bay leaf"
+				},
+				{
+					"value": "Cayenne pepper"
+				},
+				{
+					"value": "Celery seed"
+				},
+				{
+					"value": "Chives"
+				},
+				{
+					"value": "Chili powder"
+				},
+				{
+					"value": "Clove"
+				},
+				{
+					"value": "Coriander"
+				},
+				{
+					"value": "Cumin"
+				},
+				{
+					"value": "Dill"
+				},
+				{
+					"value": "Fennel"
+				},
+				{
+					"value": "Lavender"
+				},
+				{
+					"value": "Lemongrass"
+				},
+				{
+					"value": "Marjoram"
+				},
+				{
+					"value": "Nutmeg"
+				},
+				{
+					"value": "Peppermint"
+				},
+				{
+					"value": "Poppy seed"
+				},
+				{
+					"value": "Rosemary"
+				},
+				{
+					"value": "Saffron"
+				},
+				{
+					"value": "Sage"
+				},
+				{
+					"value": "Spearmint"
+				},
+				{
+					"value": "Tarragon"
+				},
+				{
+					"value": "Thyme"
+				},
+				{
+					"value": "Tumeric"
+				},
+				{
+					"value": "Vanilla"
+				},
+				{
+					"value": "Canned foods"
+				},
+				{
+					"value": "Agave nectar"
+				},
+				{
+					"value": "BBQ sauce"
+				},
+				{
+					"value": "Brown rice syrup"
+				},
+				{
+					"value": "Harissa"
+				},
+				{
+					"value": "Maple syrup"
+				},
+				{
+					"value": "Mayo product"
+				},
+				{
+					"value": "Ponzu"
+				},
+				{
+					"value": "Sriracha"
+				},
+				{
+					"value": "Stir fry sauce"
+				},
+				{
+					"value": "Tomato sauce"
+				},
+				{
+					"value": "Vegegarian Worcestershire"
+				},
+				{
+					"value": "Electrolyte water"
+				},
+				{
+					"value": "Juices"
+				},
+				{
+					"value": "Kombucha"
+				},
+				{
+					"value": "Liquor"
+				},
+				{
+					"value": "Almond butter"
+				},
+				{
+					"value": "Almond milk"
+				},
+				{
+					"value": "Soy butter"
+				},
+				{
+					"value": "Cream"
+				},
+				{
+					"value": "Soy creamer"
+				},
+				{
+					"value": "Soy margarine"
+				},
+				{
+					"value": "Soy milk"
+				},
+				{
+					"value": "Rice milk"
+				},
+				{
+					"value": "Swiss"
+				},
+				{
+					"value": "Whipped topping"
+				},
+				{
+					"value": "Soy yogurt"
+				},
+				{
+					"value": "Frozen"
+				},
+				{
+					"value": "Phyllo"
+				},
+				{
+					"value": "Puff pastry"
+				},
+				{
+					"value": "Prepared meals"
+				},
+				{
+					"value": "Veggie breakfasts"
+				},
+				{
+					"value": "Veggie burritos"
+				},
+				{
+					"value": "Veggie pizzas"
+				},
+				{
+					"value": "Chai"
+				},
+				{
+					"value": "Free-range eggs"
+				},
+				{
+					"value": "Egg substitute"
+				},
+				{
+					"value": "Lemon juice"
+				},
+				{
+					"value": "Nutritional yeast"
+				},
+				{
+					"value": "Tahini"
+				},
+				{
+					"value": "Tempeh"
+				},
+				{
+					"value": "Veggie dogs"
+				},
+				{
+					"value": "Lime"
+				},
+				{
+					"value": "Melons"
+				},
+				{
+					"value": "Cola",
+					"synonyms": [
+						"Coke",
+						"Coca Cola"
+					]
+				},
+				{
+					"value": "Milka chocolate"
+				}
+			]
+		}
+	],
+	"intents": [
+		{
+			"name": "addItem_bringshop",
+			"description": "Add something to the shopping list",
+			"enabledByDefault": true,
+			"utterances": [
+				"Please add {Bread:=>shopItem} to my shopping list",
+				"add {Bread:=>shopItem} to my shopping list",
+				"can you add {Bread:=>shopItem} to my shopping list",
+				"write {Bread:=>shopItem} on my shopping list"
+			],
+			"slots": [
+				{
+					"name": "shopItem",
+					"description": null,
+					"required": false,
+					"type": "buyable",
+					"missingQuestion": ""
+				}
+			]
+		},
+		{
+			"name": "whatItem_bringshop",
+			"description": "specify what item should be added/removed/check from the list",
+			"enabledByDefault": false,
+			"utterances": [
+				"{Bread:=>shopItem}",
+				"{Bread:=>shopItem} and {Bread:=>shopItem}",
+				"{Bread:=>shopItem} {Banana:=>shopItem} {Water:=>shopItem}"
+			],
+			"slots": [
+				{
+					"name": "shopItem",
+					"description": null,
+					"required": false,
+					"type": "buyable",
+					"missingQuestion": ""
+				}
+			]
+		},
+		{
+			"name": "deleteItem_bringshop",
+			"description": "Delete something from the shopping list",
+			"enabledByDefault": true,
+			"utterances": [
+				"Please remove {Bread:=>shopItem} from my shopping list",
+				"take {Bread:=>shopItem} off my shopping list",
+				"delete {Bread:=>shopItem} from my shopping list",
+				"there's no more need for {Bread:=>shopItem} on my shopping list"
+			],
+			"slots": [
+				{
+					"name": "shopItem",
+					"description": null,
+					"required": false,
+					"type": "buyable",
+					"missingQuestion": ""
+				}
+			]
+		},
+		{
+			"name": "readList_bringshop",
+			"description": "Read the shopping list",
+			"enabledByDefault": true,
+			"utterances": [
+				"what is written on my shopping list?",
+				"what's on my shopping list?",
+				"please tell me what I have on my shopping list",
+				"can you tell me what's on my shopping list"
+			],
+			"slots": []
+		},
+		{
+			"name": "checkList_bringshop",
+			"description": "Check if an Item is on the shopping list",
+			"enabledByDefault": true,
+			"utterances": [
+				"Is {Bread:=>shopItem} on my shopping list?",
+				"Do I have {Bananas:=>shopItem} on my shooping list?",
+				"Did I already add {Coke:=>shopItem} to my shooping list?"
+			],
+			"slots": [
+				{
+					"name": "shopItem",
+					"description": null,
+					"required": false,
+					"type": "buyable",
+					"missingQuestion": ""
+				}
+			]
+		},
+		{
+			"name": "deleteList_bringshop",
+			"description": "delete the complete shopping list",
+			"enabledByDefault": true,
+			"utterances": [
+				"Please delete the complete shopping list",
+				"delete my shopping list",
+				"drop the complete shopping list would you",
+				"remove everything on my shopping list please"
+			],
+			"slots": []
+		}
+	]
+}
