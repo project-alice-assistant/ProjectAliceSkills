@@ -38,7 +38,6 @@ class Telemetry(Module):
 
 
 	def telemetryIntent(self, session: DialogSession):
-		slots = session.slots
 		siteId = session.slotValue('Room') or session.siteId
 		telemetryType = session.slotValue('TelemetryType')
 
