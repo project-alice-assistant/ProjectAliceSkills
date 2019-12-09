@@ -41,7 +41,7 @@ class YoutubeJukebox(Module):
 	@IntentHandler('SearchMusic')
 	@AnyExcept(exceptions=RequestException, text='noServer', printStack=True)
 	@Online
-	def searchMusicIntent(self, session: DialogSession, **_kwargs):
+	def searchMusicIntent(self, session: DialogSession):
 		wildcardQuery = self.getWildcard(session)
 
 		self.endSession(sessionId=session.sessionId)

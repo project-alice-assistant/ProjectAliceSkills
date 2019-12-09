@@ -16,12 +16,12 @@ wget http://modules.projectalice.ch/IcanhazdadjokeDotCom \
 ### Description
 Get a random dad joke on demand
 
-- Version: 1.0.20
+- Version: 1.0.21
 - Author: Psycho
 - Maintainers:
   - Jierka
   - maxbachmann
-- Alice minimum Version: 1.0.0-a3
+- Alice minimum Version: 1.0.0-a4
 - Conditions:
   - en
 - Requirements: N/A

@@ -17,7 +17,7 @@ class RandomUselessFacts(Module):
 	@IntentHandler('GetUselessFact')
 	@AnyExcept(exceptions=(RequestException, KeyError), text='error', printStack=True)
 	@Online
-	def uselessFactIntent(self, session: DialogSession, **_kwargs):
+	def uselessFactIntent(self, session: DialogSession):
 		ttype = session.slotValue('type') or 'random'
 
 		response = requests.get(url=f'https://uselessfacts.jsph.pl/{ttype}.json?language={self.activeLanguage()}')

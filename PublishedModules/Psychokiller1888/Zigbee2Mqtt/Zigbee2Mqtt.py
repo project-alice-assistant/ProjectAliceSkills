@@ -24,7 +24,7 @@ class Zigbee2Mqtt(Module):
 		super().__init__(self._SUPPORTED_INTENTS)
 
 
-	def bridgeStateReport(self, session: DialogSession, **_kwargs):
+	def bridgeStateReport(self, session: DialogSession):
 		if 'online' in session.payload:
 			self._online = True
 			self.logInfo('Now online')
@@ -33,7 +33,7 @@ class Zigbee2Mqtt(Module):
 			self.logInfo('Now offline')
 
 
-	def handleMessage(self, session: DialogSession, **_kwargs):
+	def handleMessage(self, session: DialogSession):
 		print(session.payload)
 
 

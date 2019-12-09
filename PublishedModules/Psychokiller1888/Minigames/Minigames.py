@@ -71,14 +71,14 @@ class Minigames(Module):
 			self._minigame.started = False
 
 
-	def minigameIntent(self, session: DialogSession, intent: str) -> Optional[bool]:
+	def minigameIntent(self, session: DialogSession) -> Optional[bool]:
 		if session.currentState != MiniGame.MiniGame.PLAYING_MINIGAME_STATE:
 			return False
 
-		self._minigame.onMessage(intent, session)
+		self._minigame.onMessage(session.intentName, session)
 
 
-	def answerAnotherGame(self, session: DialogSession, **_kwargs):
+	def answerAnotherGame(self, session: DialogSession):
 		if not self.Commons.isYes(session):
 			self.endDialog(
 				sessionId=session.sessionId,
@@ -93,10 +93,9 @@ class Minigames(Module):
 				)
 			else:
 				self._minigame.start()
-		return
 
 
-	def playGameIntent(self, intent: str, session: DialogSession) -> bool:
+	def playGameIntent(self, session: DialogSession):
 		sessionId = session.sessionId
 		slots = session.slots
 
@@ -122,5 +121,4 @@ class Minigames(Module):
 				self._minigame.start(session)
 
 		elif self._minigame is not None:
-			self._minigame.onMessage(intent, session)
-		return True
+			self._minigame.onMessage(session.intentName, session)

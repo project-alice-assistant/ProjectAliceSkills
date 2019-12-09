@@ -15,10 +15,10 @@ wget http://modules.projectalice.ch/InternationalSpaceStation -O ~/ProjectAlice/
 ### Description
 Inquire information about the international space station
 
-- Version: 1.0.20
+- Version: 1.0.21
 - Author: mjlill
 - Maintainers: maxbachmann, Jierka, Psycho
-- Alice minimum Version: 1.0.0-a3
+- Alice minimum Version: 1.0.0-a4
 - Conditions:
   - en
   - de

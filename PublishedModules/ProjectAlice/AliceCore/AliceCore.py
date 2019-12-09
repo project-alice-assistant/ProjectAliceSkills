@@ -96,7 +96,7 @@ class AliceCore(Module):
 		super().__init__(self._INTENTS, authOnlyIntents=self._AUTH_ONLY_INTENTS)
 
 
-	def authUser(self, session: DialogSession, **_kwargs):
+	def authUser(self, session: DialogSession):
 		if 'Number' not in session.slotsAsObjects:
 			self.continueDialog(
 				sessionId=session.sessionId,
@@ -130,7 +130,7 @@ class AliceCore(Module):
 		self.ThreadManager.getEvent('authUser').clear()
 
 
-	def addNewUser(self, session: DialogSession, **_kwargs):
+	def addNewUser(self, session: DialogSession):
 		self.continueDialog(
 			sessionId=session.sessionId,
 			text=self.randomTalk('addUserWhatsTheName'),
@@ -139,7 +139,7 @@ class AliceCore(Module):
 		)
 
 
-	def askCreateWakeword(self, session: DialogSession, **_kwargs):
+	def askCreateWakeword(self, session: DialogSession):
 		if 'pinCode' in session.customData:
 			if self.Commons.isYes(session):
 				self.UserManager.addNewUser(name=session.customData['username'], access=session.customData['accessLevel'], pinCode=session.customData['pinCode'])
@@ -160,7 +160,7 @@ class AliceCore(Module):
 		)
 
 
-	def addUserPinCode(self, session: DialogSession, **_kwargs):
+	def addUserPinCode(self, session: DialogSession):
 		if 'Number' not in session.slotsAsObjects:
 			self.continueDialog(
 				sessionId=session.sessionId,
@@ -191,7 +191,7 @@ class AliceCore(Module):
 			)
 
 
-	def confirmWakewordTrimming(self, session: DialogSession, **_kwargs):
+	def confirmWakewordTrimming(self, session: DialogSession):
 		if session.slotValue('WakewordCaptureResult') == 'more':
 			self.WakewordManager.trimMore()
 
@@ -272,7 +272,7 @@ class AliceCore(Module):
 		self.endDialog(sessionId=session.sessionId, text=self.randomTalk('cancellingWakewordCapture'))
 
 
-	def confirmWakeword(self, session: DialogSession, **_kwargs):
+	def confirmWakeword(self, session: DialogSession):
 		i = 0  # Failsafe...
 		while self.WakewordManager.state != WakewordManagerState.CONFIRMING:
 			i += 1
@@ -315,7 +315,7 @@ class AliceCore(Module):
 		)
 
 
-	def createWakeword(self, session: DialogSession, **_kwargs):
+	def createWakeword(self, session: DialogSession):
 		if self.Commons.isYes(session):
 			self.WakewordManager.newWakeword(username=session.customData['username'])
 			self.ThreadManager.newEvent('AddingWakeword').set()
@@ -333,7 +333,7 @@ class AliceCore(Module):
 			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('addWakewordDenied'))
 
 
-	def checkUsername(self, session: DialogSession, **_kwargs):
+	def checkUsername(self, session: DialogSession):
 		if not self.Commons.isYes(session):
 			self.continueDialog(
 				sessionId=session.sessionId,
@@ -402,7 +402,7 @@ class AliceCore(Module):
 		)
 
 
-	def stopListenIntent(self, session: DialogSession, **_kwargs):
+	def stopListenIntent(self, session: DialogSession):
 		duration = self.Commons.getDuration(session)
 		if duration:
 			self.ThreadManager.doLater(interval=duration, func=self.unmuteSite, args=[session.siteId])
@@ -414,7 +414,7 @@ class AliceCore(Module):
 		self.endDialog(sessionId=session.sessionId)
 
 
-	def addDeviceIntent(self, session: DialogSession, **_kwargs):
+	def addDeviceIntent(self, session: DialogSession):
 		if self.DeviceManager.isBusy():
 			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('busy'))
 			return
@@ -484,7 +484,7 @@ class AliceCore(Module):
 			)
 
 
-	def confirmReboot(self, session: DialogSession, **_kwargs):
+	def confirmReboot(self, session: DialogSession):
 		self.continueDialog(
 			sessionId=session.sessionId,
 			text=self.randomTalk('confirmReboot'),
@@ -493,7 +493,7 @@ class AliceCore(Module):
 		)
 
 
-	def confirmModuleReboot(self, session: DialogSession, **_kwargs):
+	def confirmModuleReboot(self, session: DialogSession):
 		if self.Commons.isYes(session):
 			self.continueDialog(
 				sessionId=session.sessionId,
@@ -505,7 +505,7 @@ class AliceCore(Module):
 			self.endDialog(session.sessionId, self.randomTalk('abortReboot'))
 
 
-	def reboot(self, session: DialogSession, **_kwargs):
+	def reboot(self, session: DialogSession):
 		value = 'greetAndRebootModules' if self.Commons.isYes(session) else 'greet'
 
 		self.ConfigManager.updateAliceConfiguration('onReboot', value)
@@ -688,7 +688,7 @@ class AliceCore(Module):
 		self.say(text=self.randomTalk('bundleUpdateFailed'))
 
 
-	def deviceGreetingIntent(self, session: DialogSession, **_kwargs):
+	def deviceGreetingIntent(self, session: DialogSession):
 		uid = session.payload.get('uid')
 		siteId = session.payload.get('siteId')
 		if not uid or not siteId:
@@ -705,7 +705,7 @@ class AliceCore(Module):
 
 
 	@Online(text='noAssistantUpdateOffline')
-	def aliceUpdateIntent(self, session: DialogSession, **_kwargs):
+	def aliceUpdateIntent(self, session: DialogSession):
 		self.publish('hermes/leds/systemUpdate')
 		updateTypes = {
 			'all': 1,
@@ -738,7 +738,7 @@ class AliceCore(Module):
 				self.ThreadManager.doLater(interval=2, func=self.SamkillaManager.sync)
 
 
-	def globalStopIntent(self, session: DialogSession, **_kwargs):
+	def globalStopIntent(self, session: DialogSession):
 		self.endDialog(sessionId=session.sessionId, text=self.randomTalk('confirmGlobalStop'))
 
 

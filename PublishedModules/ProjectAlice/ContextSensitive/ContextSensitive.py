@@ -17,7 +17,7 @@ class ContextSensitive(Module):
 
 
 	@IntentHandler('DeleteThis', isProtected=True)
-	def deleteThisIntent(self, session: DialogSession, **_kwargs):
+	def deleteThisIntent(self, session: DialogSession):
 		for module in self.ModuleManager.activeModules.values():
 			try:
 				if module['instance'].onContextSensitiveDelete(session.sessionId):
@@ -28,7 +28,7 @@ class ContextSensitive(Module):
 
 
 	@IntentHandler('EditThis', isProtected=True)
-	def editThisIntent(self, session: DialogSession, **_kwargs):
+	def editThisIntent(self, session: DialogSession):
 		for module in self.ModuleManager.activeModules.values():
 			try:
 				if module['instance'].onContextSensitiveEdit(session.sessionId):
@@ -39,7 +39,7 @@ class ContextSensitive(Module):
 
 
 	@IntentHandler('RepeatThis', isProtected=True)
-	def repeatThisIntent(self, session: DialogSession, **_kwargs):
+	def repeatThisIntent(self, session: DialogSession):
 		self.endDialog(session.sessionId, text=self.getLastChat(siteId=session.siteId))
 
 

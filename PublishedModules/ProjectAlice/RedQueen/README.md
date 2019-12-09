@@ -15,7 +15,7 @@ Red Queen is the official Project Alice personality module
 - Author: ProjectAlice
 - Maintainers:
   - Psycho, Jierka, maxbachmann
-- Alice minimum Version: 1.0.0-a3
+- Alice minimum Version: 1.0.0-a4
 - Conditions:
   - EN
   - FR

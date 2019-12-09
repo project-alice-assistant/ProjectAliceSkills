@@ -29,7 +29,7 @@ class FreeCurrencyConverterDotCom(Module):
 
 	@AnyExcept(exceptions=(RequestException, KeyError), text='noServer', printStack=True)
 	@Online
-	def convertCurrencyIntent(self, session: DialogSession, **_kwargs):
+	def convertCurrencyIntent(self, session: DialogSession):
 		amount = session.slots.get('Amount', session.customData.get('Amount', 1))
 
 		toCurrency = session.slots.get('ToCurrency',

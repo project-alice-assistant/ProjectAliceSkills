@@ -186,22 +186,22 @@ class RedQueen(Module):
 		return True
 
 
-	def whoIntent(self, session: DialogSession, **_kwargs):
+	def whoIntent(self, session: DialogSession):
 		self.endDialog(sessionId=session.sessionId, text=self.randomTalk('aliceInfos'), siteId=session.siteId)
 
 
-	def morningIntent(self, session: DialogSession, **_kwargs):
+	def morningIntent(self, session: DialogSession):
 		self.ModuleManager.moduleBroadcast('onWakeup')
 		time.sleep(0.5)
 		self.endDialog(sessionId=session.sessionId, text=self.randomTalk('goodMorning'), siteId=session.siteId)
 
 
-	def nightIntent(self, session: DialogSession, **_kwargs):
+	def nightIntent(self, session: DialogSession):
 		self.endDialog(sessionId=session.sessionId, text=self.randomTalk('goodNight'), siteId=session.siteId)
 		self.ModuleManager.moduleBroadcast('onSleep')
 
 
-	def userStateIntent(self, session: DialogSession, **_kwargs):
+	def userStateIntent(self, session: DialogSession):
 		slots = session.slotsAsObjects
 		if 'State' not in slots.keys():
 			self.logError('No state provided for changing user state')

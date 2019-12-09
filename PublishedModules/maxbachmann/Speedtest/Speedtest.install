@@ -1,10 +1,10 @@
 {
 	"name": "Speedtest",
-	"version": "0.0.70",
+	"version": "1.0.0",
 	"author": "maxbachmann",
 	"maintainers": ["Psychokiller1888"],
 	"desc": "run internet speed test",
-	"aliceMinVersion": "1.0.0-a3",
+	"aliceMinVersion": "1.0.0-a4",
 	"systemRequirements": [],
 	"pipRequirements": ["speedtest-cli"],
 	"conditions": {

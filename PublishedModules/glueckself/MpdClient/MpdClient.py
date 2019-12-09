@@ -67,7 +67,7 @@ class MpdClient(Module):
 
 
 	@IntentHandler('mpdPlay')
-	def playIntent(self, session: DialogSession, **_kwargs):
+	def playIntent(self, session: DialogSession):
 		if not self._mpdConnected:
 			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('notConnected'))
 		elif self._playbackStatus:
@@ -78,7 +78,7 @@ class MpdClient(Module):
 
 
 	@IntentHandler('mpdStop')
-	def stopIntent(self, session: DialogSession, **_kwargs):
+	def stopIntent(self, session: DialogSession):
 		# note that _playbackStatus can also be None when disconnected.
 		# while it shouldn't reach this line in that case, better to be on the safe side
 		if not self._mpdConnected:
@@ -91,7 +91,7 @@ class MpdClient(Module):
 
 
 	@IntentHandler('mpdNext')
-	def nextIntent(self, session: DialogSession, **_kwargs):
+	def nextIntent(self, session: DialogSession):
 		# TODO maybe say the title here if not playing
 		if not self._mpdConnected:
 			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('notConnected'))
@@ -101,7 +101,7 @@ class MpdClient(Module):
 
 
 	@IntentHandler('mpdPrev')
-	def prevIntent(self, session: DialogSession, **_kwargs):
+	def prevIntent(self, session: DialogSession):
 		# TODO maybe say the title here if not playing
 		if not self._mpdConnected:
 			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('notConnected'))

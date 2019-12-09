@@ -10,7 +10,7 @@ class OpenWeatherMap(Module):
 
 	@IntentHandler('GetWeather')
 	@IntentHandler('AnswerCity', requiredState='answeringCity')
-	def getWeather(self, session: DialogSession, **_kwargs):
+	def getWeather(self, session: DialogSession):
 
 		if not self.getConfig('apiKey'):
 			self.endDialog(

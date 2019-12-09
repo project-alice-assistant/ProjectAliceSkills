@@ -16,12 +16,12 @@ wget http://modules.projectalice.ch/DateDayTimeYear \
 ### Description
 Ask for the time, date, day and year
 
-- Version: 1.0.16
+- Version: 1.0.17
 - Author: Psycho
 - Maintainers:
   - maxbachmann
   - SkyHyperV
-- Alice minimum version: 1.0.0-a3
+- Alice minimum version: 1.0.0-a4
 - Conditions:
   - en
   - fr

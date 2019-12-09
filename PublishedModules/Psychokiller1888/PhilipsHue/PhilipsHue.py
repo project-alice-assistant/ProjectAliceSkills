@@ -142,7 +142,7 @@ class PhilipsHue(Module):
 		return True
 
 
-	def lightOnIntent(self, session: DialogSession, **_kwargs):
+	def lightOnIntent(self, session: DialogSession):
 		partOfTheDay = self.Commons.partOfTheDay().capitalize()
 
 		rooms = self._getRooms(session)
@@ -166,7 +166,7 @@ class PhilipsHue(Module):
 			self.endDialog(session.sessionId, text=self.randomTalk('confirm'))
 
 
-	def lightOffIntent(self, session: DialogSession, **_kwargs):
+	def lightOffIntent(self, session: DialogSession):
 		rooms = self._getRooms(session)
 		for room in rooms:
 			if room == constants.EVERYWHERE:
@@ -182,7 +182,7 @@ class PhilipsHue(Module):
 			self.endDialog(session.sessionId, text=self.randomTalk('confirm'))
 
 
-	def lightSceneIntent(self, session: DialogSession, **_kwargs):
+	def lightSceneIntent(self, session: DialogSession):
 		if len(session.slotsAsObjects.get('Scene', list())) > 1:
 			self.endDialog(session.sessionId, text=self.randomTalk('cantSpecifyMoreThanOneScene'))
 			return
@@ -220,7 +220,7 @@ class PhilipsHue(Module):
 			self.endDialog(session.sessionId, text=self.randomTalk('confirm'))
 
 
-	def manageLightsIntent(self, session: DialogSession, **_kwargs):
+	def manageLightsIntent(self, session: DialogSession):
 		partOfTheDay = self.Commons.partOfTheDay().capitalize()
 
 		rooms = self._getRooms(session)
@@ -250,7 +250,7 @@ class PhilipsHue(Module):
 			self.endDialog(session.sessionId, text=self.randomTalk('confirm'))
 
 
-	def dimLightsIntent(self, session: DialogSession, **_kwargs):
+	def dimLightsIntent(self, session: DialogSession):
 		if 'Percent' not in session.slots:
 			self.continueDialog(
 				sessionId=session.sessionId,
