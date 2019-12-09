@@ -1,5 +1,4 @@
 import importlib
-from typing import Optional
 
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
@@ -50,11 +49,7 @@ class Minigames(Module):
 
 				self._minigames[game] = minigame
 
-				minigameIntentList = list()
-				for intent in minigame.intents:
-					minigameIntentList.append((intent, self.minigameIntent))
-
-				self._INTENTS = [*self._INTENTS, *minigameIntentList]
+				self._INTENTS.extend([(intent, self.minigameIntent) for intent in minigame.intents])
 			except Exception as e:
 				self.logError(f'Something went wrong loading the minigame "{game}": {e}')
 

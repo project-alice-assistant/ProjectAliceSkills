@@ -15,7 +15,7 @@ wget http://modules.projectalice.ch/Speller -O ~/ProjectAlice/system/moduleInsta
 ### Description
 Ask alice how to spell any word!
 
-- Version: 1.0.4
+- Version: 1.0.5
 - Author: Psychokiller1888
 - Maintainers: maxbachmann
 - Alice minimum Version: 1.0.0-a4

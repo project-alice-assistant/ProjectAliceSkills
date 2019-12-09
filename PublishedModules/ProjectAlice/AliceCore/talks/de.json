@@ -196,6 +196,9 @@
 	"requireTasmotaModule": [
 		"Es tut mir leid, aber dafür muss das Tasmota-Modul aktiviert sein."
 	],
+	"requireZigbeeModule": [
+		"Entschuldigung, aber hierfür benötige ich ein aktives ZigBee Modul."
+	],
 	"whatHardware": [
 		"Welche Art von Gerät möchtest du hinzufügen?",
 		"Sicher, welche Art von Gerät?"
@@ -236,6 +239,24 @@
 	],
 	"addAdminUser": [
 		"Willkommen bem Projekt Alice! Es scheint noch kein Benutzer definiert zu sein, lass uns das nachholen! Bitte, sag mir deinen Namen.."
+	],
+	"addAdminPin": [
+		"<s>Da du der Administrator bist benötigen wir mehr Sicherheit!</s><s>Bitte gib mir einen Pincode aus 4 Ziffern.</s><s>Merke ihn dir gut, du wirst ihn für mein Interface benötigen!</s>"
+	],
+	"addUserPin": [
+		"<s>Lass uns einen Pin erstellen um deinen Zugang zu sichern.</s><s>Bitte sage mir 4 Ziffern als Code.</s><s>Merke ihn dir gut, du erhältst durch ihn Zugriff auf einige spezielle Funktionen!</s>"
+	],
+	"addPinInvalid": [
+		"Dein PIN Code muss aus 4 Ziffern bestehen, bitte versuche es nochmal.",
+		"Bitte nenne mir 4 Ziffern. Deine Pin kann ich so nicht übernehmen."
+	],
+	"addPinConfirm" : [
+		"{} {} {} {}? Ist das korrekt?",
+		"{} {} {} {}? Habe ich dich richtig verstanden?"
+	],
+	"addWrongPin": [
+		"Ok, mein Fehler, wie war die Pin?",
+		"Es tut mir leid, sag mir die Pin bitte nochmal."
 	],
 	"confirmUsername": [
 		"Habe ich dich richtig verstanden? Dein Name ist {}?"

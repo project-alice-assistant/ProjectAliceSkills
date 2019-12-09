@@ -15,7 +15,7 @@ wget http://modules.projectalice.ch/Netatmo -O ~/ProjectAlice/system/moduleInsta
 ### Description
 Get readings from your netatmo hardware
 
-- Version: 1.0.6
+- Version: 1.0.7
 - Author: Psychokiller1888
 - Maintainers: maxbachmann
 - Alice minimum Version: 1.0.0-a3
@@ -42,11 +42,11 @@ Get readings from your netatmo hardware
 `username`:
  - type: `str`
  - desc: `Your Netatmo account username`
- 
+
 `password`:
  - type: `str`
  - desc: `Your Netatmo account password`
- 
+
 `WindAlertFromKmh`:
  - type: `int`
  - desc: `An event is broadcasted when this limit is reached`
