@@ -1,5 +1,5 @@
 {
-	"module": "Telemetry",
+	"skill": "Telemetry",
 	"icon": "temperature",
 	"description": "Access your stored telemetry data",
 	"slotTypes": [

@@ -1,5 +1,5 @@
 {
-	"module": "DateDayTimeYear",
+	"skill": "DateDayTimeYear",
 	"icon": "time",
 	"description": "User's asking for the time, the date, the day or the year",
 	"slotTypes": [],

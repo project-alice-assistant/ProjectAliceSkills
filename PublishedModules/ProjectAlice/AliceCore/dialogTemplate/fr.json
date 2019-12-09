@@ -1,5 +1,5 @@
 {
-	"module": "AliceCore",
+	"skill": "AliceCore",
 	"icon": "settings",
 	"description": "Contient les discussions qui permettent de gérer l'administration globale d'Alice",
 	"slotTypes": [
@@ -170,10 +170,9 @@
 					]
 				},
 				{
-					"value": "modules",
+					"value": "skills",
 					"synonyms": [
 						"module",
-						"skills",
 						"skill"
 					]
 				}

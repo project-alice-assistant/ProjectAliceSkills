@@ -1,5 +1,5 @@
 {
-	"module": "Calculator",
+	"skill": "Calculator",
 	"icon": "calculator",
 	"description": "Skill der beim berechnen hilft. Unterstützt Addition, Subtraktion, Division, Potenz, Quadratwurzel, Modulo, Sinus, Cosinus, Tangens",
 	"slotTypes": [

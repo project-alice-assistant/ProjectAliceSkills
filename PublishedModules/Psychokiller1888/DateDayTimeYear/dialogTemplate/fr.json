@@ -1,5 +1,5 @@
 {
-	"module": "DateDayTimeYear",
+	"skill": "DateDayTimeYear",
 	"icon": "time",
 	"description": "L'utilisateur peut demander l'heure, la date, le jour et l'année en cours",
 	"slotTypes": [],

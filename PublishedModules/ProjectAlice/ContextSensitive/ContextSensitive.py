@@ -2,12 +2,12 @@ from collections import deque
 from typing import Deque, Dict
 
 from core.base.model.Intent import Intent
-from core.base.model.Module import Module
+from core.base.model.AliceSkill import AliceSkill
 from core.dialog.model.DialogSession import DialogSession
 from core.util.Decorators import IntentHandler
 
 
-class ContextSensitive(Module):
+class ContextSensitive(AliceSkill):
 	_INTENT_ANSWER_YES_OR_NO = Intent('AnswerYesOrNo', isProtected=True)
 
 	def __init__(self):
@@ -18,9 +18,9 @@ class ContextSensitive(Module):
 
 	@IntentHandler('DeleteThis', isProtected=True)
 	def deleteThisIntent(self, session: DialogSession):
-		for module in self.ModuleManager.activeModules.values():
+		for skill in self.SkillManager.activeSkills.values():
 			try:
-				if module['instance'].onContextSensitiveDelete(session.sessionId):
+				if skill['instance'].onContextSensitiveDelete(session.sessionId):
 					self.endSession(sessionId=session.sessionId)
 					return
 			except Exception:
@@ -29,9 +29,9 @@ class ContextSensitive(Module):
 
 	@IntentHandler('EditThis', isProtected=True)
 	def editThisIntent(self, session: DialogSession):
-		for module in self.ModuleManager.activeModules.values():
+		for skill in self.SkillManager.activeSkills.values():
 			try:
-				if module['instance'].onContextSensitiveEdit(session.sessionId):
+				if skill['instance'].onContextSensitiveEdit(session.sessionId):
 					self.endSession(sessionId=session.sessionId)
 					return
 			except:

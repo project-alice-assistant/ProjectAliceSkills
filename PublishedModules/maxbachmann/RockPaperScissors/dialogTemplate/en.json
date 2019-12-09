@@ -1,5 +1,5 @@
 {
-	"module": "RockPaperScissors",
+	"skill": "RockPaperScissors",
 	"icon": "lamp",
 	"description": "Play rock paper scissors",
 	"slotTypes": [],

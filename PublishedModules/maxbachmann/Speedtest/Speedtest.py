@@ -1,12 +1,12 @@
 import speedtest
 from speedtest import SpeedtestException
 
-from core.base.model.Module import Module
+from core.base.model.AliceSkill import AliceSkill
 from core.dialog.model.DialogSession import DialogSession
 from core.util.Decorators import AnyExcept, IntentHandler, Online
 
 
-class Speedtest(Module):
+class Speedtest(AliceSkill):
 	"""
 	Author: maxbachmann
 	Description: run internet speed test

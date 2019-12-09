@@ -1,5 +1,5 @@
 {
-	"module": "FindMyPhone",
+	"skill": "FindMyPhone",
 	"icon": "direction",
 	"description": "Utilise le service IFTTT pour appeller le téléphone souhaiter",
 	"slotTypes": [],

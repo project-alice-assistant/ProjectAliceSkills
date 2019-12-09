@@ -1,11 +1,11 @@
 import math
 
-from core.base.model.Module import Module
+from core.base.model.AliceSkill import AliceSkill
 from core.dialog.model.DialogSession import DialogSession
 from core.util.Decorators import IntentHandler
 
 
-class Calculator(Module):
+class Calculator(AliceSkill):
 	"""
 	Author: Psychokiller1888
 	Description: Do some calculation with alice

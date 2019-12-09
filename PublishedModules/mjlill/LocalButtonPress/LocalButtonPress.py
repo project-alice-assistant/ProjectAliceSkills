@@ -1,12 +1,12 @@
 import RPi.GPIO as GPIO
 
 from core.base.model.Intent import Intent
-from core.base.model.Module import Module
+from core.base.model.AliceSkill import AliceSkill
 from core.dialog.model.DialogSession import DialogSession
 from core.util.Decorators import IntentHandler
 
 
-class LocalButtonPress(Module):
+class LocalButtonPress(AliceSkill):
 	"""
 	Author: mjlill
 	Description: Press an imaginary button on or off

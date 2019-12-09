@@ -5,16 +5,16 @@
 ##### > WGET method
 ```bash
 wget http://modules.projectalice.ch/Customisation \
--O ~/ProjectAlice/system/moduleInstallTickets/Customisation.install
+-O ~/ProjectAlice/system/skillInstallTickets/Customisation.install
 ```
 
 ##### > Alice CLI method
 ```bash
-./alice add module ProjectAlice Customisation
+./alice add skill ProjectAlice Customisation
 ```
 
 ### Description
-Customisation is the official customisation module. Use it to customize your experience
+Customisation is the official customisation skill. Use it to customize your experience
 
 - Version: 1.0.8
 - Author: ProjectAlice

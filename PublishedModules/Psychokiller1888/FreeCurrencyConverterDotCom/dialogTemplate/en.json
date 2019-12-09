@@ -1,5 +1,5 @@
 {
-	"module": "FreeCurrencyConverterDotCom",
+	"skill": "FreeCurrencyConverterDotCom",
 	"icon": "calculator",
 	"description": "User converts world currencies",
 	"slotTypes": [

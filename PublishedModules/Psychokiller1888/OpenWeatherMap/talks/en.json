@@ -11,6 +11,6 @@
 		"I'm sorry, I couldn't find any weather data for {}. Tell me what city you are looking the weather for"
 	],
 	"noApiKey": [
-		"You haven't specified your API key in the open weather map module. Please do it and I will be able to answer you!"
+		"You haven't specified your API key in the open weather map skill. Please do it and I will be able to answer you!"
 	]
 }

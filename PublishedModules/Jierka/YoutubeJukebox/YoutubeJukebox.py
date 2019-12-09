@@ -7,12 +7,12 @@ import requests
 import youtube_dl
 from requests import RequestException
 
-from core.base.model.Module import Module
+from core.base.model.AliceSkill import AliceSkill
 from core.dialog.model.DialogSession import DialogSession
 from core.util.Decorators import AnyExcept, IntentHandler, Online
 
 
-class YoutubeJukebox(Module):
+class YoutubeJukebox(AliceSkill):
 	"""
 	Author: Jierka
 	Description: Allows to play music from youtube

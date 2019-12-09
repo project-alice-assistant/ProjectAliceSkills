@@ -1,5 +1,5 @@
 {
-	"module": "PhilipsHue",
+	"skill": "PhilipsHue",
 	"icon": "lights",
 	"description": "Handle your Philips Hue lights from anywhere",
 	"slotTypes": [

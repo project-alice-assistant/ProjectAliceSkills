@@ -1,14 +1,14 @@
 import re
 
-from core.base.model.Module import Module
+from core.base.model.AliceSkill import AliceSkill
 from core.device.model.TasmotaConfigs import TasmotaConfigs
 from core.dialog.model.DialogSession import DialogSession
 
 
-class Tasmota(Module):
+class Tasmota(AliceSkill):
 	"""
 	Author: Psychokiller1888
-	Description: This module allows you to not only connect tasmota esp devices, but listen to them
+	Description: This skill allows you to not only connect tasmota esp devices, but listen to them
 	"""
 
 	_CONNECTING = 'projectalice/devices/tasmota/feedback/hello/+'
@@ -24,7 +24,7 @@ class Tasmota(Module):
 		self._connectingRegex = re.compile(self._CONNECTING.replace('+', '(.*)'))
 		self._feedbackRegex = re.compile(self._FEEDBACK.replace('+', '(.*)'))
 
-		self._initializingModule = False
+		self._initializingSkill = False
 		self._confArray = []
 		self._tasmotaConfigs = None
 
@@ -57,14 +57,14 @@ class Tasmota(Module):
 			if 'feedback' in payload:
 				if payload['deviceType'] == 'switch':
 					if payload['feedback'] > 0:
-						self.ModuleManager.moduleBroadcast('onButtonPressed', args=[siteId])
+						self.SkillManager.skillBroadcast('onButtonPressed', args=[siteId])
 					else:
-						self.ModuleManager.moduleBroadcast('onButtonReleased', args=[siteId])
+						self.SkillManager.skillBroadcast('onButtonReleased', args=[siteId])
 				elif payload['deviceType'] == 'pir':
 					if payload['feedback'] > 0:
-						self.ModuleManager.moduleBroadcast('onMotionDetected', args=[siteId])
+						self.SkillManager.skillBroadcast('onMotionDetected', args=[siteId])
 					else:
-						self.ModuleManager.moduleBroadcast('onMotionStopped', args=[siteId])
+						self.SkillManager.skillBroadcast('onMotionStopped', args=[siteId])
 
 
 	def _initConf(self, identifier: str, deviceBrand: str, deviceType: str):

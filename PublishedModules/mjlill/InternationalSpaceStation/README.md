@@ -4,12 +4,12 @@
 
 ##### > WGET method
 ```bash
-wget http://modules.projectalice.ch/InternationalSpaceStation -O ~/ProjectAlice/system/moduleInstallTickets/InternationalSpaceStation.install
+wget http://modules.projectalice.ch/InternationalSpaceStation -O ~/ProjectAlice/system/skillInstallTickets/InternationalSpaceStation.install
 ```
 
 ##### > Alice CLI method
 ```bash
-./alice add module mjlill InternationalSpaceStation
+./alice add skill mjlill InternationalSpaceStation
 ```
 
 ### Description

@@ -1,17 +1,17 @@
 # Zigbee2Mqtt
 
-This module assumes you have already flashed your zigbee dongle. For more info on how to: https://www.zigbee2mqtt.io/getting_started/flashing_the_cc2531.html
+This skill assumes you have already flashed your zigbee dongle. For more info on how to: https://www.zigbee2mqtt.io/getting_started/flashing_the_cc2531.html
 
 ### Download
 
 ##### > WGET method
 ```bash
-wget http://modules.projectalice.ch/Zigbee2Mqtt -O ~/ProjectAlice/system/moduleInstallTickets/Zigbee2Mqtt.install
+wget http://modules.projectalice.ch/Zigbee2Mqtt -O ~/ProjectAlice/system/skillInstallTickets/Zigbee2Mqtt.install
 ```
 
 ##### > Alice CLI method
 ```bash
-./alice add module Psychokiller1888 Zigbee2Mqtt
+./alice add skill Psychokiller1888 Zigbee2Mqtt
 ```
 
 ### Description

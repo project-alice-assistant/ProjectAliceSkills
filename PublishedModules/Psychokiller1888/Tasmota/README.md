@@ -5,16 +5,16 @@
 ##### > WGET method
 ```bash
 wget http://modules.projectalice.ch/Tasmota \
--O ~/ProjectAlice/system/moduleInstallTickets/Tasmota.install
+-O ~/ProjectAlice/system/skillInstallTickets/Tasmota.install
 ```
 
 ##### > Alice CLI method
 ```bash
-./alice add module Psychokiller1888 Tasmota
+./alice add skill Psychokiller1888 Tasmota
 ```
 
 ### Description
-This module allows you to not only connect tasmota esp devices, but listen to them
+This skill allows you to not only connect tasmota esp devices, but listen to them
 
 - Version: 1.0.35
 - Author: Psychokiller1888

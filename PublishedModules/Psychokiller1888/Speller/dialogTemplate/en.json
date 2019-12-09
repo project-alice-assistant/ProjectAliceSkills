@@ -1,5 +1,5 @@
 {
-	"module": "Speller",
+	"skill": "Speller",
 	"icon": "assistant",
 	"description": "Ask alice how to spell any word!",
 	"slotTypes": [],

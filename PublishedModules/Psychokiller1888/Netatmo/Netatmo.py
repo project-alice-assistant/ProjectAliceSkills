@@ -3,12 +3,12 @@ from typing import Tuple, Generator
 
 import lnetatmo
 
-from core.ProjectAliceExceptions import ModuleStartingFailed
-from core.base.model.Module import Module
+from core.ProjectAliceExceptions import SkillStartingFailed
+from core.base.model.AliceSkill import AliceSkill
 from core.util.model.TelemetryType import TelemetryType
 
 
-class Netatmo(Module):
+class Netatmo(AliceSkill):
 	"""
 	Author: Psychokiller1888
 	Description: Get readings from your netatmo hardware
@@ -39,15 +39,15 @@ class Netatmo(Module):
 	def onStart(self) -> list:
 		super().onStart()
 		if not self.getConfig('password'):
-			raise ModuleStartingFailed(moduleName=self.name, error='No credentials provided')
+			raise SkillStartingFailed(skillName=self.name, error='No credentials provided')
 
 		if not self._auth():
-			raise ModuleStartingFailed(moduleName=self.name, error='Authentication failed')
+			raise SkillStartingFailed(skillName=self.name, error='Authentication failed')
 
 		try:
 			self._weatherData = lnetatmo.WeatherStationData(self._netatmoAuth)
 		except lnetatmo.NoDevice:
-			raise ModuleStartingFailed(moduleName=self.name, error='No Netatmo device found')
+			raise SkillStartingFailed(skillName=self.name, error='No Netatmo device found')
 
 		return self.supportedIntents
 
@@ -65,7 +65,7 @@ class Netatmo(Module):
 			self._authTries += 1
 			if self._authTries >= 3:
 				self.logWarning('Tried to auth 3 times, giving up now')
-				raise ModuleStartingFailed
+				raise SkillStartingFailed
 			else:
 				time.sleep(1)
 				return self._auth()

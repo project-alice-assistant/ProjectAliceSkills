@@ -25,20 +25,20 @@ class RollADice(MiniGame):
 		super().start(session)
 
 		SuperManager.getInstance().mqttManager.playSound(
-			soundFile=os.path.join(SuperManager.getInstance().commons.rootDir(), 'modules', 'Minigames', 'sounds', 'rollADice'),
+			soundFile=os.path.join(SuperManager.getInstance().commons.rootDir(), 'skills', 'Minigames', 'sounds', 'rollADice'),
 			sessionId='rollADice',
 			siteId=session.siteId,
 			absolutePath=True
 		)
 
-		redQueen = SuperManager.getInstance().moduleManager.getModuleInstance('RedQueen')
+		redQueen = SuperManager.getInstance().skillManager.getSkillInstance('RedQueen')
 		redQueen.changeRedQueenStat('happiness', 5)
 
 		SuperManager.getInstance().mqttManager.endDialog(
 			sessionId=session.sessionId,
 			text=SuperManager.getInstance().talkManager.randomTalk(
 				talk='rollADiceResult',
-				module='Minigames'
+				skill='Minigames'
 			).format(random.randint(1, 6))
 		)
 

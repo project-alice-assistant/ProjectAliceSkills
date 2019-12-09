@@ -1,7 +1,7 @@
 {
-	"module": "Calculator",
+	"skill": "Calculator",
 	"icon": "calculator",
-	"description": "Module qui vous aide à calculer. Supporte l'addition, la soustraction, la division, les puissances, les racines carrés, le modulo (reste de la division euclidienne), le sinus, le cosinus et la tangente",
+	"description": "Skill qui vous aide à calculer. Supporte l'addition, la soustraction, la division, les puissances, les racines carrés, le modulo (reste de la division euclidienne), le sinus, le cosinus et la tangente",
 	"slotTypes": [
 		{
 			"name": "MathsFunction",

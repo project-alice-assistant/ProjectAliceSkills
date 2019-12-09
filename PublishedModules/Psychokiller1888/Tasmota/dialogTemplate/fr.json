@@ -1,7 +1,7 @@
 {
-	"module": "Tasmota",
+	"skill": "Tasmota",
 	"icon": "time",
-	"description": "This module allows you to not only connect tasmota esp devices, but listen to them",
+	"description": "This skill allows you to not only connect tasmota esp devices, but listen to them",
 	"slotTypes": [
 		{
 			"name": "DummySlot",

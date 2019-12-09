@@ -1,5 +1,5 @@
 {
-	"module": "RockPaperScissors",
+	"skill": "RockPaperScissors",
 	"icon": "lamp",
 	"description": "Jouer à pierre feuille ciseaux",
 	"slotTypes": [],

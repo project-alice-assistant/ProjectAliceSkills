@@ -6,7 +6,7 @@
 		"Psycho",
 		"maxbachmann"
 	],
-	"desc": "Red Queen is the official Project Alice personality module",
+	"desc": "Red Queen is the official Project Alice personality skill",
 	"aliceMinVersion": "1.0.0-a4",
 	"systemRequirements": [],
 	"pipRequirements": [],

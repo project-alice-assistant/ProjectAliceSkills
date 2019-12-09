@@ -1,5 +1,5 @@
 {
-	"module": "Minigames",
+	"skill": "Minigames",
 	"icon": "time",
 	"description": "Play a collection of many little games with alice",
 	"slotTypes": [

@@ -13,7 +13,7 @@
 			"fr",
 			"de"
 		],
-		"module": [
+		"skill": [
 			{
 				"name": "Ifttt",
 				"url": "http://modules.projectalice.ch/ifttt"

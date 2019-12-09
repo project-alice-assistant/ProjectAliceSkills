@@ -1,5 +1,5 @@
 {
-	"module": "AliceCore",
+	"skill": "AliceCore",
 	"icon": "settings",
 	"description": "Contains intents that manage root stuff of Project Alice",
 	"slotTypes": [
@@ -165,10 +165,11 @@
 					]
 				},
 				{
-					"value": "modules",
+					"value": "skills",
 					"synonyms": [
-						"module",
-						"skills"
+						"modul",
+						"skill",
+						"module"
 					]
 				}
 			]

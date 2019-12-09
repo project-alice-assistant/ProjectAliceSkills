@@ -1,14 +1,14 @@
 import time
 
-from core.ProjectAliceExceptions import ModuleStartDelayed, ModuleStartingFailed
+from core.ProjectAliceExceptions import SkillStartDelayed, SkillStartingFailed
 from core.base.model.Intent import Intent
-from core.base.model.Module import Module
+from core.base.model.AliceSkill import AliceSkill
 from core.commons import constants
 from core.dialog.model.DialogSession import DialogSession
 from .models.PhueAPI import Bridge, LinkButtonNotPressed, NoPhueIP, NoSuchGroup, NoSuchLight, NoSuchScene, NoSuchSceneInGroup, PhueRegistrationError, UnauthorizedUser
 
 
-class PhilipsHue(Module):
+class PhilipsHue(AliceSkill):
 
 	_INTENT_LIGHT_ON = Intent('PowerOnLights')
 	_INTENT_LIGHT_OFF = Intent('PowerOffLights')
@@ -47,7 +47,7 @@ class PhilipsHue(Module):
 
 		self._hueConfigFile = self.getResource(self.name, 'phueAPI.conf')
 		if not self._hueConfigFile.exists():
-			self.logInfo('No phueAPI.conf file in PhilipsHue module directory')
+			self.logInfo('No phueAPI.conf file in PhilipsHue skill directory')
 
 
 	def onStart(self) -> dict:
@@ -67,10 +67,10 @@ class PhilipsHue(Module):
 				except LinkButtonNotPressed:
 					self.logInfo('User is not authorized')
 					self.delayed = True
-					raise ModuleStartDelayed(self.name)
+					raise SkillStartDelayed(self.name)
 				return self.supportedIntents
 			except NoPhueIP:
-				raise ModuleStartingFailed(moduleName=self.name, error='Bridge IP not set and stay completly offline set to True, cannot auto discover Philips Hue bridge')
+				raise SkillStartingFailed(skillName=self.name, error='Bridge IP not set and stay completly offline set to True, cannot auto discover Philips Hue bridge')
 		else:
 			if not self.ThreadManager.isThreadAlive('PHUERegister'):
 				self.ThreadManager.newThread(name='PHUERegister', target=self._registerOnBridge)
@@ -95,9 +95,9 @@ class PhilipsHue(Module):
 				self._registerOnBridge()
 			else:
 				self.ThreadManager.doLater(interval=3, func=self.say, args=[self.randomTalk('pressBridgeButtonTimeout')])
-				raise ModuleStartingFailed(moduleName=self.name, error=f"Couldn't reach bridge")
+				raise SkillStartingFailed(skillName=self.name, error=f"Couldn't reach bridge")
 		except PhueRegistrationError as e:
-			raise ModuleStartingFailed(moduleName=self.name, error=f'Error connecting to bridge: {e}')
+			raise SkillStartingFailed(skillName=self.name, error=f'Error connecting to bridge: {e}')
 
 
 	def onBooted(self):

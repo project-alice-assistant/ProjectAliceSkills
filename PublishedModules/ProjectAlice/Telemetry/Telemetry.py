@@ -1,10 +1,10 @@
 from core.base.model.Intent import Intent
-from core.base.model.Module import Module
+from core.base.model.AliceSkill import AliceSkill
 from core.dialog.model.DialogSession import DialogSession
 from core.util.model.TelemetryType import TelemetryType
 
 
-class Telemetry(Module):
+class Telemetry(AliceSkill):
 	"""
 	Author: Psychokiller1888
 	Description: Access your stored telemetry data

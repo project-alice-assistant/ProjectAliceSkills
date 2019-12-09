@@ -1,7 +1,7 @@
 {
-	"module": "AliceSatellite",
+	"skill": "AliceSatellite",
 	"icon": "air",
-	"description": "This module allows interaction with the Alice satellites",
+	"description": "This skill allows interaction with the Alice satellites",
 	"slotTypes": [],
 	"intents": []
 }

@@ -1,10 +1,10 @@
 from core.base.model.Intent import Intent
-from core.base.model.Module import Module
+from core.base.model.AliceSkill import AliceSkill
 from core.dialog.model.DialogSession import DialogSession
 from core.util.Decorators import IntentHandler
 
 
-class Speller(Module):
+class Speller(AliceSkill):
 	"""
 	Author: Psychokiller1888
 	Description: Ask alice how to spell any word!

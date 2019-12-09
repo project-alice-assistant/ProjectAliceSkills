@@ -5,12 +5,12 @@
 ##### > WGET method
 ```bash
 wget http://modules.projectalice.ch/FreeCurrencyConverterDotCom \
--O ~/ProjectAlice/system/moduleInstallTickets/FreeCurrencyConverterDotCom.install
+-O ~/ProjectAlice/system/skillInstallTickets/FreeCurrencyConverterDotCom.install
 ```
 
 ##### > Alice CLI method
 ```bash
-./alice add module Psychokiller1888 FreeCurrencyConverterDotCom
+./alice add skill Psychokiller1888 FreeCurrencyConverterDotCom
 ```
 
 ### Description

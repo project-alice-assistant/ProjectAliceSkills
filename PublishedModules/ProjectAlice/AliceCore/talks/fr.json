@@ -1,7 +1,7 @@
 {
-	"newModule": {
+	"newSkill": {
 		"default": [
-			"Un nouveau module de type {} essaie de se connecter, est-ce que tu veux l'ajouter à mes appareils?"
+			"Un nouveau skill de type {} essaie de se connecter, est-ce que tu veux l'ajouter à mes appareils?"
 		]
 	},
 	"confirmUnregister": {
@@ -78,12 +78,12 @@
 			"Désolée, le changement de langue a échoué"
 		]
 	},
-	"noActiveModule": {
+	"noActiveSkill": {
 		"default": [
-			"Désolée, il n'y a pas de module pour gérer cette requête"
+			"Désolée, il n'y a pas de skill pour gérer cette requête"
 		],
 		"short": [
-			"Aucun module actif"
+			"Aucun skill actif"
 		]
 	},
 	"noProjectIdSet": {
@@ -129,10 +129,10 @@
 			"Redémarrer prend du temps, es-tu sûr?"
 		]
 	},
-	"askRebootModules": {
+	"askRebootSkills": {
 		"default": [
-			"Veux tu aussi redémarrer mes modules?",
-			"Dois-je aussi redémarrer mes modules externes?"
+			"Veux tu aussi redémarrer mes skills?",
+			"Dois-je aussi redémarrer mes skills externes?"
 		]
 	},
 	"confirmRebooting": {
@@ -147,9 +147,9 @@
 			"Re-bonjour! Je viens de redémarrer"
 		]
 	},
-	"confirmRebootingModules": {
+	"confirmRebootingSkills": {
 		"default": [
-			"Re! Je redémarre maintenant tous mes modules externes comme demandé"
+			"Re! Je redémarre maintenant tous mes skills externes comme demandé"
 		]
 	},
 	"abortReboot": {
@@ -247,13 +247,13 @@
 			"Ok, j'attend la connexion du nouvelle appareil pendant 5 minutes, tu peux le brancher maintenant"
 		]
 	},
-	"requireTasmotaModule": {
+	"requireTasmotaSkill": {
 		"default": [
-			"Je suis désolée, mais pour ça le module Tasmota doit être actif"
+			"Je suis désolée, mais pour ça le skill Tasmota doit être actif"
 		]
 	},
-	"requireZigbeeModule": [
-		"Je suis désolée, mais pour ça le module zigbee doit être actif"
+	"requireZigbeeSkill": [
+		"Je suis désolée, mais pour ça le skill zigbee doit être actif"
 	],
 	"whatHardware": {
 		"default": [

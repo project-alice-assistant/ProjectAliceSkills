@@ -1,5 +1,5 @@
 {
-	"module": "RandomUselessFacts",
+	"skill": "RandomUselessFacts",
 	"icon": "star",
 	"description": "Gets you the daily random useless fact or a random one",
 	"slotTypes": [

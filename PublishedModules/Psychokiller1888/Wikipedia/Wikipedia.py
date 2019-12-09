@@ -1,14 +1,14 @@
 from wikipedia import wikipedia
 
 from core.base.model.Intent import Intent
-from core.base.model.Module import Module
+from core.base.model.AliceSkill import AliceSkill
 from core.dialog.model.DialogSession import DialogSession
 from core.util.Decorators import IntentHandler
 from core.util.ContextManagers import Online
 from core.ProjectAliceExceptions import OfflineError
 
 
-class Wikipedia(Module):
+class Wikipedia(AliceSkill):
 	"""
 	Author: Psychokiller1888
 	Description: Allows one to find informations about a topic on wikipedia
@@ -46,7 +46,7 @@ class Wikipedia(Module):
 			with Online():
 				result = wikipedia.summary(search, sentences=3)
 		except OfflineError:
-			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('offline', module='system'))
+			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('offline', skill='system'))
 		except wikipedia.DisambiguationError as e:
 			self.logWarning(msg=e)
 			self._whatToSearch(session, 'ambiguous')

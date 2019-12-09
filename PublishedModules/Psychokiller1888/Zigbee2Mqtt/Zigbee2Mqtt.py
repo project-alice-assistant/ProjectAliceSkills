@@ -1,11 +1,11 @@
 import subprocess
 
 from core.base.model.Intent import Intent
-from core.base.model.Module import Module
+from core.base.model.AliceSkill import AliceSkill
 from core.dialog.model.DialogSession import DialogSession
 
 
-class Zigbee2Mqtt(Module):
+class Zigbee2Mqtt(AliceSkill):
 	"""
 	Author: Psychokiller1888
 	Description: Have your zigbee devices communicate with alice directly over mqtt

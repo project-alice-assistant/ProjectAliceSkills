@@ -4,12 +4,12 @@
 
 ##### > WGET method
 ```bash
-wget http://modules.projectalice.ch/Netatmo -O ~/ProjectAlice/system/moduleInstallTickets/Netatmo.install
+wget http://modules.projectalice.ch/Netatmo -O ~/ProjectAlice/system/skillInstallTickets/Netatmo.install
 ```
 
 ##### > Alice CLI method
 ```bash
-./alice add module Psychokiller1888 Netatmo
+./alice add skill Psychokiller1888 Netatmo
 ```
 
 ### Description

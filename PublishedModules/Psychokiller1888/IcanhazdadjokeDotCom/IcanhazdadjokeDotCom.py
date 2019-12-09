@@ -1,12 +1,12 @@
 import requests
 from requests.exceptions import RequestException
 
-from core.base.model.Module import Module
+from core.base.model.AliceSkill import AliceSkill
 from core.dialog.model.DialogSession import DialogSession
 from core.util.Decorators import AnyExcept, IntentHandler, Online
 
 
-class IcanhazdadjokeDotCom(Module):
+class IcanhazdadjokeDotCom(AliceSkill):
 
 	@IntentHandler('TellAJoke')
 	@AnyExcept(exceptions=RequestException, text='noJoke', printStack=True)

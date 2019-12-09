@@ -7,7 +7,7 @@
 		"Jierka",
 		"maxbachmann"
 	],
-	"desc": "A module for anyone to override Project Alice default behavior",
+	"desc": "A skill for anyone to override Project Alice default behavior",
 	"aliceMinVersion": "1.0.0-a4",
 	"systemRequirements": [],
 	"pipRequirements": [],

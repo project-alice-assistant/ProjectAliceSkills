@@ -6,14 +6,14 @@ import random
 import shutil
 from random import randint
 
-from core.ProjectAliceExceptions import ModuleStartingFailed
+from core.ProjectAliceExceptions import SkillStartingFailed
 from core.base.model.Intent import Intent
-from core.base.model.Module import Module
+from core.base.model.AliceSkill import AliceSkill
 from core.commons import constants
 from core.dialog.model.DialogSession import DialogSession
 
 
-class RedQueen(Module):
+class RedQueen(AliceSkill):
 	_INTENT_WHO_ARE_YOU = Intent('WhoAreYou')
 	_INTENT_GOOD_MORNING = Intent('GoodMorning', isProtected=True)
 	_INTENT_GOOD_NIGHT = Intent('GoodNight', isProtected=True)
@@ -50,7 +50,7 @@ class RedQueen(Module):
 				self._saveRedQueenIdentity()
 			else:
 				self.logInfo('Cannot find Red Queen identity template')
-				raise ModuleStartingFailed(moduleName=self.name)
+				raise SkillStartingFailed(skillName=self.name)
 		else:
 			self.logInfo('Found existing Red Queen identity')
 			with open(self._getRedQueenIdentityFileName(), 'r') as f:
@@ -146,7 +146,7 @@ class RedQueen(Module):
 
 
 	def politnessUsed(self, text: str) -> bool:
-		forms = self.LanguageManager.getStrings(key='politness', module=self.name)
+		forms = self.LanguageManager.getStrings(key='politness', skill=self.name)
 
 		for form in forms:
 			if form not in text:
@@ -191,28 +191,28 @@ class RedQueen(Module):
 
 
 	def morningIntent(self, session: DialogSession):
-		self.ModuleManager.moduleBroadcast('onWakeup')
+		self.SkillManager.skillBroadcast('onWakeup')
 		time.sleep(0.5)
 		self.endDialog(sessionId=session.sessionId, text=self.randomTalk('goodMorning'), siteId=session.siteId)
 
 
 	def nightIntent(self, session: DialogSession):
 		self.endDialog(sessionId=session.sessionId, text=self.randomTalk('goodNight'), siteId=session.siteId)
-		self.ModuleManager.moduleBroadcast('onSleep')
+		self.SkillManager.skillBroadcast('onSleep')
 
 
 	def userStateIntent(self, session: DialogSession):
 		slots = session.slotsAsObjects
 		if 'State' not in slots.keys():
 			self.logError('No state provided for changing user state')
-			self.endDialog(sessionId=session.sessionId, text=self.TalkManager.randomTalk('error', module='system'), siteId=session.siteId)
+			self.endDialog(sessionId=session.sessionId, text=self.TalkManager.randomTalk('error', skill='system'), siteId=session.siteId)
 			return
 
 		if 'Who' in slots.keys():
 			pass
 		else:
 			try:
-				self.ModuleManager.moduleBroadcast(slots['State'][0].value['value'])
+				self.SkillManager.skillBroadcast(slots['State'][0].value['value'])
 			except:
 				self.logWarning(f"Unsupported user state \"{slots['State'][0].value['value']}\"")
 

@@ -1,8 +1,8 @@
-from core.base.model.Module import Module
+from core.base.model.AliceSkill import AliceSkill
 
 
-class Customisation(Module):
+class Customisation(AliceSkill):
 	"""
-		You can use this class to override anything any module do. Want something happening when you are going bed? Override onGoingBed!
+		You can use this class to override anything any skill do. Want something happening when you are going bed? Override onGoingBed!
 	"""
 	MODULE_NAME = 'Customisation'

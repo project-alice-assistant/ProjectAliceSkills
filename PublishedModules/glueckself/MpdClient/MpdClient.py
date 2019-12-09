@@ -1,5 +1,5 @@
 from core.base.model.Intent import Intent
-from core.base.model.Module import Module
+from core.base.model.AliceSkill import AliceSkill
 from core.dialog.model.DialogSession import DialogSession
 from core.util.Decorators import IntentHandler
 
@@ -12,7 +12,7 @@ from .libraries import mpdhelper
 # e.g. "play some music" when already playing -> "music is already playing"
 # false matches?
 
-class MpdClient(Module):
+class MpdClient(AliceSkill):
 	"""
 	Author: glueckself
 	Description: Control an MPD server

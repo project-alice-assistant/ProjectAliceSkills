@@ -1,5 +1,5 @@
 {
-	"module": "RandomUselessFacts",
+	"skill": "RandomUselessFacts",
 	"icon": "star",
 	"description": "Sagt den täglichen zufälligen sinnlosen Fakt, oder einen zufälligen",
 	"slotTypes": [

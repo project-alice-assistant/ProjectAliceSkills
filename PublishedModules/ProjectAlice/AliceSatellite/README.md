@@ -5,16 +5,16 @@
 ##### > WGET method
 ```bash
 wget http://modules.projectalice.ch/AliceSatellite \
--O ~/ProjectAlice/system/moduleInstallTickets/AliceSatellite.install
+-O ~/ProjectAlice/system/skillInstallTickets/AliceSatellite.install
 ```
 
 ##### > Alice CLI method
 ```bash
-./alice add module ProjectAlice AliceSatellite
+./alice add skill ProjectAlice AliceSatellite
 ```
 
 ### Description
-AliceSatellite is the official module to support Project Alice satellites
+AliceSatellite is the official skill to support Project Alice satellites
 
 - Version: 1.0.8
 - Author: ProjectAlice

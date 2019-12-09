@@ -1,5 +1,5 @@
 {
-	"module": "Calculator",
+	"skill": "Calculator",
 	"icon": "calculator",
 	"description": "Skill to help you calculate. Supports addition, subtraction, division, powers, square root, modulo, sine, cosine, tangente",
 	"slotTypes": [

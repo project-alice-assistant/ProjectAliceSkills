@@ -31,7 +31,7 @@ class GuessTheNumber(MiniGame):
 	def start(self, session: DialogSession):
 		super().start(session)
 
-		redQueen = SuperManager.getInstance().moduleManager.getModuleInstance('RedQueen')
+		redQueen = SuperManager.getInstance().skillManager.getSkillInstance('RedQueen')
 		redQueen.changeRedQueenStat('happiness', 10)
 
 		self._number = random.randint(1, 10000)
@@ -40,7 +40,7 @@ class GuessTheNumber(MiniGame):
 
 		SuperManager.getInstance().mqttManager.continueDialog(
 			sessionId=session.sessionId,
-			text=SuperManager.getInstance().talkManager.randomTalk(talk='guessTheNumberStart', module='Minigames'),
+			text=SuperManager.getInstance().talkManager.randomTalk(talk='guessTheNumberStart', skill='Minigames'),
 			intentFilter=[self._INTENT_ANSWER_NUMBER],
 			previousIntent=self._INTENT_PLAY_GAME
 		)
@@ -57,10 +57,10 @@ class GuessTheNumber(MiniGame):
 
 			score = round(time.time() - self._start)
 			m, s = divmod(score, 60)
-			scoreFormatted = SuperManager.getInstance().languageManager.getTranslations(module='Minigames', key='minutesAndSeconds')[0].format(round(m), round(s))
+			scoreFormatted = SuperManager.getInstance().languageManager.getTranslations(skill='Minigames', key='minutesAndSeconds')[0].format(round(m), round(s))
 
 			SuperManager.getInstance().mqttManager.playSound(
-				soundFile=os.path.join(SuperManager.getInstance().commons.rootDir(), 'modules', 'Minigames', 'sounds', 'applause'),
+				soundFile=os.path.join(SuperManager.getInstance().commons.rootDir(), 'skills', 'Minigames', 'sounds', 'applause'),
 				siteId=session.siteId,
 				absolutePath=True
 			)
@@ -71,7 +71,7 @@ class GuessTheNumber(MiniGame):
 			)
 
 			textType = 'guessTheNumberScore'
-			if session.user != 'unknown' and SuperManager.getInstance().moduleManager.getModuleInstance('Minigames').checkAndStoreScore(user=session.user, score=score, biggerIsBetter=False):
+			if session.user != 'unknown' and SuperManager.getInstance().skillManager.getSkillInstance('Minigames').checkAndStoreScore(user=session.user, score=score, biggerIsBetter=False):
 				textType = 'guessTheNumberNewHighscore'
 
 			SuperManager.getInstance().mqttManager.say(

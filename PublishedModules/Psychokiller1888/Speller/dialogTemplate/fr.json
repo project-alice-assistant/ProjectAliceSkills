@@ -1,5 +1,5 @@
 {
-	"module": "Speller",
+	"skill": "Speller",
 	"icon": "assistant",
 	"description": "Demande à Alice d'épeller un mot",
 	"slotTypes": [],

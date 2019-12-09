@@ -4,12 +4,12 @@
 
 ##### > WGET method
 ```bash
-wget http://modules.projectalice.ch/FindMyPhone -O ~/ProjectAlice/system/moduleInstallTickets/FindMyPhone.install
+wget http://modules.projectalice.ch/FindMyPhone -O ~/ProjectAlice/system/skillInstallTickets/FindMyPhone.install
 ```
 
 ##### > Alice CLI method
 ```bash
-./alice add module Psychokiller1888 FindMyPhone
+./alice add skill Psychokiller1888 FindMyPhone
 ```
 
 ### Description
@@ -23,6 +23,6 @@ Using ifttt one can ask alice to find his phone. sets the ring tone at max volum
   - en
   - fr
   - de
-  - Module: Psychokiller1888/Ifttt
+  - Skill: Psychokiller1888/Ifttt
   - Online
 - Requirements: N/A

@@ -1,5 +1,5 @@
 {
-	"module": "ContextSensitive",
+	"skill": "ContextSensitive",
 	"icon": "restart",
 	"description": "Fourni des commandes pour gérer le contexte au sein d'une discussion",
 	"slotTypes": [],

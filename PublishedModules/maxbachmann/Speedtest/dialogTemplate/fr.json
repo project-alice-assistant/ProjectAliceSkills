@@ -1,5 +1,5 @@
 {
-	"module": "Speedtest",
+	"skill": "Speedtest",
 	"icon": "lamp",
 	"description": "run internet speed test",
 	"slotTypes": [],

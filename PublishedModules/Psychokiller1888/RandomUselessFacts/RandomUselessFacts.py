@@ -3,12 +3,12 @@ import html
 import requests
 from requests.exceptions import RequestException
 
-from core.base.model.Module import Module
+from core.base.model.AliceSkill import AliceSkill
 from core.dialog.model.DialogSession import DialogSession
 from core.util.Decorators import AnyExcept, IntentHandler, Online
 
 
-class RandomUselessFacts(Module):
+class RandomUselessFacts(AliceSkill):
 	"""
 	Author: Psychokiller1888
 	Description: Gets you the daily random useless fact or a random one

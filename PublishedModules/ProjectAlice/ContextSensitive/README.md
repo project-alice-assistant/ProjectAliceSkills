@@ -5,16 +5,16 @@
 ##### > WGET method
 ```bash
 wget http://modules.projectalice.ch/ContextSensitive \
--O ~/ProjectAlice/system/moduleInstallTickets/ContextSensitive.install
+-O ~/ProjectAlice/system/skillInstallTickets/ContextSensitive.install
 ```
 
 ##### > Alice CLI method
 ```bash
-./alice add module ProjectAlice ContextSensitive
+./alice add skill ProjectAlice ContextSensitive
 ```
 
 ### Description
-ContextSensitive is the official context sensitive module. It handle intents like "Delete this", "Forget about that"
+ContextSensitive is the official context sensitive skill. It handle intents like "Delete this", "Forget about that"
 
 - Version: 1.0.10
 - Author: ProjectAlice

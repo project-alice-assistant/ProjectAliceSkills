@@ -1,5 +1,5 @@
 {
-	"module": "Zigbee2Mqtt",
+	"skill": "Zigbee2Mqtt",
 	"icon": "temperature",
 	"description": "Dummy",
 	"slotTypes": [],

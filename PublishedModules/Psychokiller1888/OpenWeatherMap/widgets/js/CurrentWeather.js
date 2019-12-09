@@ -21,7 +21,7 @@
 	$.ajax({
 		url: '/home/widget/',
 		data: JSON.stringify({
-			module: 'OpenWeatherMap',
+			skill: 'OpenWeatherMap',
 			widget: 'CurrentWeather',
 			func: 'baseData',
 			param: ''

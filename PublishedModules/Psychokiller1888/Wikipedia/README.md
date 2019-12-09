@@ -5,12 +5,12 @@
 ##### > WGET method
 ```bash
 wget http://modules.projectalice.ch/Wikipedia \
--O ~/ProjectAlice/system/moduleInstallTickets/Wikipedia.install
+-O ~/ProjectAlice/system/skillInstallTickets/Wikipedia.install
 ```
 
 ##### > Alice CLI method
 ```bash
-./alice add module Psychokiller1888 Wikipedia
+./alice add skill Psychokiller1888 Wikipedia
 ```
 
 ### Description

@@ -2,14 +2,14 @@ from typing import Tuple
 
 from BringApi.BringApi import BringApi
 
-from core.ProjectAliceExceptions import ModuleStartingFailed
+from core.ProjectAliceExceptions import SkillStartingFailed
 from core.base.model.Intent import Intent
-from core.base.model.Module import Module
+from core.base.model.AliceSkill import AliceSkill
 from core.dialog.model.DialogSession import DialogSession
 from core.util.Decorators import AnyExcept, Online
 
 
-class BringShoppingList(Module):
+class BringShoppingList(AliceSkill):
 	"""
 	Author: philipp2310
 	Description: maintaines a Bring! shopping list
@@ -83,7 +83,7 @@ class BringShoppingList(Module):
 		try:
 			self._bring = self.bring()
 		except BringApi.AuthentificationFailed:
-			raise ModuleStartingFailed(self._name, 'Please check your account login and password')
+			raise SkillStartingFailed(self._name, 'Please check your account login and password')
 
 
 	def _deleteCompleteList(self):

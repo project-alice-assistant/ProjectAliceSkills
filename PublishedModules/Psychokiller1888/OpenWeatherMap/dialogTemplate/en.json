@@ -1,5 +1,5 @@
 {
-	"module": "OpenWeatherMap",
+	"skill": "OpenWeatherMap",
 	"icon": "rain",
 	"description": "Access OpenWeatherMap weather data",
 	"slotTypes": [

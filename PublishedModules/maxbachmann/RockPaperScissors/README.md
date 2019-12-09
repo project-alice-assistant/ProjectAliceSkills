@@ -4,12 +4,12 @@
 
 ##### > WGET method
 ```bash
-wget http://modules.projectalice.ch/RockPaperScissors -O ~/ProjectAlice/system/moduleInstallTickets/RockPaperScissors.install
+wget http://modules.projectalice.ch/RockPaperScissors -O ~/ProjectAlice/system/skillInstallTickets/RockPaperScissors.install
 ```
 
 ##### > Alice CLI method
 ```bash
-./alice add module maxbachmann RockPaperScissors
+./alice add skill maxbachmann RockPaperScissors
 ```
 
 ### Description

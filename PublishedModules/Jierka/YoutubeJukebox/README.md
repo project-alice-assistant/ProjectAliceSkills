@@ -5,12 +5,12 @@
 ##### > WGET method
 ```bash
 wget http://modules.projectalice.ch/YoutubeJukebox \
--O ~/ProjectAlice/system/moduleInstallTickets/YoutubeJukebox.install
+-O ~/ProjectAlice/system/skillInstallTickets/YoutubeJukebox.install
 ```
 
 ##### > Alice CLI method
 ```bash
-./alice add module Jierka YoutubeJukebox
+./alice add skill Jierka YoutubeJukebox
 ```
 
 ### Description

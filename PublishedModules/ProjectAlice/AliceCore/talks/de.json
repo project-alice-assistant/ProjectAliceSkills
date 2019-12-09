@@ -1,5 +1,5 @@
 {
-	"newModule": [
+	"newSkill": [
 		"Ein neues Modul des Typs {} versucht sich zu verbinden, möchtest du es zu deinen Geräten hinzufügen?"
 	],
 	"confirmUnregister": [
@@ -54,7 +54,7 @@
 		"Es tut mir leid, aber ich konnte die Sprache nicht wechseln",
 		"Sorry, die Sprachumschaltung ist aus irgendeinem Grund fehlgeschlagen."
 	],
-	"noActiveModule": {
+	"noActiveSkill": {
 		"default": [
 			"Sorry, du hast kein aktives Modul, um diese Anfrage zu bearbeiten."
 		],
@@ -97,9 +97,9 @@
 		"Bist du sicher, dass du einen Neustart durchführen willst??",
 		"Der Neustart dauert eine Weile, bist du sicher?"
 	],
-	"askRebootModules": [
-		"Möchtest du auch meine externen Module neu starten?",
-		"Soll ich auch meine externen Module neu starten?"
+	"askRebootSkills": [
+		"Möchtest du auch meine externen Skill neu starten?",
+		"Soll ich auch meine externen Skill neu starten?"
 	],
 	"confirmRebooting": [
 		"Ok, starte jetzt neu",
@@ -109,9 +109,9 @@
 		"Wie gefordert habe ich gerade neu gestartet",
 		"Hallo noch mal! Ich habe gerade neu gestartet.!"
 	],
-	"confirmRebootingModules": [
-		"Ich habe gerade neu gestartet, ich führe jetzt einen Neustart aller externen Module durch.",
-		"Hallo noch mal! Wie gefordert starte ich jetzt alle externen Module neu"
+	"confirmRebootingSkills": [
+		"Ich habe gerade neu gestartet, ich führe jetzt einen Neustart aller externen Skill durch.",
+		"Hallo noch mal! Wie gefordert starte ich jetzt alle externen Skill neu"
 	],
 	"abortReboot": {
 		"default": [
@@ -193,10 +193,10 @@
 	"confirmDeviceAddingMode": [
 		"Ok, ich warte für die nächsten 5 Minuten auf das neue Gerät, du kannst es jetzt einschalten."
 	],
-	"requireTasmotaModule": [
+	"requireTasmotaSkill": [
 		"Es tut mir leid, aber dafür muss das Tasmota-Modul aktiviert sein."
 	],
-	"requireZigbeeModule": [
+	"requireZigbeeSkill": [
 		"Entschuldigung, aber hierfür benötige ich ein aktives ZigBee Modul."
 	],
 	"whatHardware": [

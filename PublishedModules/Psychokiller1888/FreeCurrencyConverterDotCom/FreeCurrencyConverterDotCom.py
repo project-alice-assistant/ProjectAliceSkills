@@ -2,12 +2,12 @@ import requests
 from requests.exceptions import RequestException
 
 from core.base.model.Intent import Intent
-from core.base.model.Module import Module
+from core.base.model.AliceSkill import AliceSkill
 from core.dialog.model.DialogSession import DialogSession
 from core.util.Decorators import AnyExcept, Online, IntentHandler
 
 
-class FreeCurrencyConverterDotCom(Module):
+class FreeCurrencyConverterDotCom(AliceSkill):
 	"""
 	Author: Psychokiller1888
 	Description: Let's you convert world currencies
@@ -34,9 +34,9 @@ class FreeCurrencyConverterDotCom(Module):
 			self.continueDialog(
 				sessionId=session.sessionId,
 				intentFilter=[Intent('AnswerCurrency')],
-				text=self.TalkManager.randomTalk(module=self.name, talk='fromWhatCurrency'),
+				text=self.TalkManager.randomTalk(skill=self.name, talk='fromWhatCurrency'),
 				customData={
-					'module'    : self.name,
+					'skill'    : self.name,
 					'amount'    : amount,
 					'toCurrency': toCurrency
 				}
@@ -44,7 +44,7 @@ class FreeCurrencyConverterDotCom(Module):
 			return
 
 		if not self._apiKey:
-			self.logWarning(msg="please create a api key at https://www.currencyconverterapi.com/ and add it to the module config")
+			self.logWarning(msg="please create a api key at https://www.currencyconverterapi.com/ and add it to the skill config")
 			self.endDialog(session.sessionId, text=self.randomTalk('noApiKey'))
 			return
 

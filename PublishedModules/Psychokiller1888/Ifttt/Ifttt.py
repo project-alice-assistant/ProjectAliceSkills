@@ -1,7 +1,7 @@
 import requests
 from enum import Enum
 
-from core.base.model.Module import Module
+from core.base.model.AliceSkill import AliceSkill
 
 
 class IftttException(Enum):
@@ -12,7 +12,7 @@ class IftttException(Enum):
 	OK = 200
 
 
-class Ifttt(Module):
+class Ifttt(AliceSkill):
 	"""
 	Author: Psychokiller1888
 	Description: Use ifttt services

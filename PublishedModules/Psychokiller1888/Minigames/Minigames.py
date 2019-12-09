@@ -1,12 +1,12 @@
 import importlib
 
 from core.base.model.Intent import Intent
-from core.base.model.Module import Module
+from core.base.model.AliceSkill import AliceSkill
 from core.dialog.model.DialogSession import DialogSession
 from .model import MiniGame
 
 
-class Minigames(Module):
+class Minigames(AliceSkill):
 	"""
 	Author: Psychokiller1888
 	Description: Play a collection of many little games with alice
@@ -43,7 +43,7 @@ class Minigames(Module):
 
 		for game in self._SUPPORTED_GAMES:
 			try:
-				lib = importlib.import_module(f'modules.Minigames.model.{game}')
+				lib = importlib.import_module(f'skills.Minigames.model.{game}')
 				klass = getattr(lib, game)
 				minigame = klass()
 

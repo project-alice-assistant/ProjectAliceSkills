@@ -1,5 +1,5 @@
 {
-	"module": "Wikipedia",
+	"skill": "Wikipedia",
 	"icon": "box",
 	"description": "Ermöglicht es dir Informationen über ein bestimmtes Thema auf Wikipedia zu finden",
 	"slotTypes": [

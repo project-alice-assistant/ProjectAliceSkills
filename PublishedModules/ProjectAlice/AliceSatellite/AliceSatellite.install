@@ -7,7 +7,7 @@
 		"Jierka",
 		"maxbachmann"
 	],
-	"desc": "AliceSatellite is the official module to support Project Alice satellites",
+	"desc": "AliceSatellite is the official skill to support Project Alice satellites",
 	"aliceMinVersion": "1.0.0-a4",
 	"systemRequirements": [],
 	"pipRequirements": [],

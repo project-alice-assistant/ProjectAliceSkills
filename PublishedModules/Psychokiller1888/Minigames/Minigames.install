@@ -12,7 +12,7 @@
 			"en",
 			"de"
 		],
-		"notModule": [
+		"notSkill": [
 		    "maxbachmann/RockPaperScissors"
 		]
 	}

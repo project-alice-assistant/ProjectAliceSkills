@@ -1,5 +1,5 @@
 {
-	"module": "InternationalSpaceStation",
+	"skill": "InternationalSpaceStation",
 	"icon": "lamp",
 	"description": "Inquire information about the ISS",
 	"slotTypes": [],

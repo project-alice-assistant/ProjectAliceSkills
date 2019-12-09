@@ -3,7 +3,7 @@ from datetime import datetime
 
 from babel.dates import format_date
 
-from core.base.model.Module import Module
+from core.base.model.AliceSkill import AliceSkill
 from core.dialog.model.DialogSession import DialogSession
 from core.util.Decorators import IntentHandler
 
@@ -183,7 +183,7 @@ class DayTimeFr(DayTime):
 		return answer
 
 
-class DateDayTimeYear(Module):
+class DateDayTimeYear(AliceSkill):
 
 	@IntentHandler('GetTime')
 	def timeIntent(self, session: DialogSession, **_kwargs):

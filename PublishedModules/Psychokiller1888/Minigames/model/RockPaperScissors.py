@@ -29,7 +29,7 @@ class RockPaperScissors(MiniGame):
 
 		SuperManager.getInstance().mqttManager.continueDialog(
 			sessionId=session.sessionId,
-			text=SuperManager.getInstance().talkManager.randomTalk(talk='rockPaperScissorsStart', module='Minigames'),
+			text=SuperManager.getInstance().talkManager.randomTalk(talk='rockPaperScissorsStart', skill='Minigames'),
 			intentFilter=[self._INTENT_ANSWER_ROCK_PAPER_OR_SCISSORS],
 			previousIntent=self._INTENT_PLAY_GAME
 		)
@@ -41,12 +41,12 @@ class RockPaperScissors(MiniGame):
 			me = random.choice(choices)
 
 			SuperManager.getInstance().mqttManager.playSound(
-				soundFile=os.path.join(SuperManager.getInstance().commons.rootDir(), 'modules', 'Minigames', 'sounds', 'drum_suspens'),
+				soundFile=os.path.join(SuperManager.getInstance().commons.rootDir(), 'skills', 'Minigames', 'sounds', 'drum_suspens'),
 				siteId=session.siteId,
 				absolutePath=True
 			)
 
-			redQueen = SuperManager.getInstance().moduleManager.getModuleInstance('RedQueen')
+			redQueen = SuperManager.getInstance().skillManager.getSkillInstance('RedQueen')
 			redQueen.changeRedQueenStat('happiness', 5)
 			player = session.slotValue('RockPaperOrScissors')
 			# tie
@@ -66,8 +66,8 @@ class RockPaperScissors(MiniGame):
 				sessionId=session.sessionId,
 				text=SuperManager.getInstance().talkManager.randomTalk(
 					talk=result,
-					module='Minigames'
-				).format(SuperManager.getInstance().languageManager.getTranslations(module='Minigames', key=me, toLang=SuperManager.getInstance().languageManager.activeLanguage)[0]),
+					skill='Minigames'
+				).format(SuperManager.getInstance().languageManager.getTranslations(skill='Minigames', key=me, toLang=SuperManager.getInstance().languageManager.activeLanguage)[0]),
 				intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
 				previousIntent=self._INTENT_PLAY_GAME,
 				customData={

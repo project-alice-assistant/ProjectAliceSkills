@@ -2,11 +2,11 @@
 ### Download
 ##### > WGET method
 ```bash
-wget http://modules.projectalice.ch/MpdClient -O ~/ProjectAlice/system/moduleInstallTickets/MpdClient.install
+wget http://modules.projectalice.ch/MpdClient -O ~/ProjectAlice/system/skillInstallTickets/MpdClient.install
 ```
 ##### > Alice CLI method
 ```bash
-./alice add module glueckself MpdClient
+./alice add skill glueckself MpdClient
 ```
 ### Description
 Control an MPD server

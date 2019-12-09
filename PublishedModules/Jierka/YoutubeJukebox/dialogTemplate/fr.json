@@ -1,5 +1,5 @@
 {
-	"module": "YoutubeJukebox",
+	"skill": "YoutubeJukebox",
 	"icon": "music",
 	"description": "Permet de jouer de la musique via Youtube",
 	"slotTypes": [

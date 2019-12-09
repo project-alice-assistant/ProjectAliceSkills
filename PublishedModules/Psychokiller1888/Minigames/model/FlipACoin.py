@@ -23,7 +23,7 @@ class FlipACoin(MiniGame):
 
 		self.MqttManager.continueDialog(
 			sessionId=session.sessionId,
-			text=self.TalkManager.randomTalk(talk='flipACoinStart', module='Minigames'),
+			text=self.TalkManager.randomTalk(talk='flipACoinStart', skill='Minigames'),
 			intentFilter=[self._INTENT_ANSWER_HEADS_OR_TAIL],
 			currentDialogState=self.PLAYING_MINIGAME_STATE
 		)
@@ -34,13 +34,13 @@ class FlipACoin(MiniGame):
 			coin = random.choice(['heads', 'tails'])
 
 			SuperManager.getInstance().mqttManager.playSound(
-				soundFile=os.path.join(SuperManager.getInstance().commons.rootDir(), 'modules', 'Minigames', 'sounds', 'coinflip'),
+				soundFile=os.path.join(SuperManager.getInstance().commons.rootDir(), 'skills', 'Minigames', 'sounds', 'coinflip'),
 				sessionId='coinflip',
 				siteId=session.siteId,
 				absolutePath=True
 			)
 
-			redQueen = SuperManager.getInstance().moduleManager.getModuleInstance('RedQueen')
+			redQueen = SuperManager.getInstance().skillManager.getSkillInstance('RedQueen')
 			redQueen.changeRedQueenStat('happiness', 5)
 
 			if session.slotValue('HeadsOrTails') == coin:
@@ -55,8 +55,8 @@ class FlipACoin(MiniGame):
 				sessionId=session.sessionId,
 				text=self.TalkManager.randomTalk(
 					talk=result,
-					module='Minigames'
-				).format(text=self.LanguageManager.getTranslations(module='Minigames', key=coin, toLang=SuperManager.getInstance().languageManager.activeLanguage)[0]),
+					skill='Minigames'
+				).format(text=self.LanguageManager.getTranslations(skill='Minigames', key=coin, toLang=SuperManager.getInstance().languageManager.activeLanguage)[0]),
 				intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
 				currentDialogState=self.ANSWERING_PLAY_AGAIN_STATE
 			)

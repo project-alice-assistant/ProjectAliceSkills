@@ -5,11 +5,11 @@
 ##### > WGET method
 ```bash
 wget http://modules.projectalice.ch/RedQueen \
--O ~/ProjectAlice/system/moduleInstallTickets/RedQueen.install
+-O ~/ProjectAlice/system/skillInstallTickets/RedQueen.install
 ```
 
 ### Desc
-Red Queen is the official Project Alice personality module
+Red Queen is the official Project Alice personality skill
 
 - Version: 1.0.11
 - Author: ProjectAlice

@@ -5,12 +5,12 @@
 ##### > WGET method
 ```bash
 wget http://modules.projectalice.ch/PhilipsHue \
--O ~/ProjectAlice/system/moduleInstallTickets/PhilipsHue.install
+-O ~/ProjectAlice/system/skillInstallTickets/PhilipsHue.install
 ```
 
 ##### > Alice CLI method
 ```bash
-./alice add module Psychokiller1888 PhilipsHue
+./alice add skill Psychokiller1888 PhilipsHue
 ```
 
 ### Desc

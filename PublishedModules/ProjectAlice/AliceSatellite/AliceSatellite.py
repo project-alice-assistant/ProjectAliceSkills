@@ -1,9 +1,9 @@
 from core.base.SuperManager import SuperManager
-from core.base.model.Module import Module
+from core.base.model.AliceSkill import AliceSkill
 from core.dialog.model.DialogSession import DialogSession
 
 
-class AliceSatellite(Module):
+class AliceSatellite(AliceSkill):
 	_FEEDBACK_SENSORS = 'projectalice/devices/alice/sensorsFeedback'
 	_DEVICE_DISCONNECTION = 'projectalice/devices/alice/disconnection'
 
@@ -24,7 +24,7 @@ class AliceSatellite(Module):
 
 	def onBooted(self):
 		confManager = SuperManager.getInstance().configManager
-		if confManager.configAliceExists('onReboot') and confManager.getAliceConfigByName('onReboot') == 'greetAndRebootModules':
+		if confManager.configAliceExists('onReboot') and confManager.getAliceConfigByName('onReboot') == 'greetAndRebootSkillss':
 			self.restartDevice()
 
 

@@ -5,11 +5,11 @@
 ##### > WGET method
 ```bash
 wget http://modules.projectalice.ch/AliceCore \
--O ~/ProjectAlice/system/moduleInstallTickets/AliceCore.install
+-O ~/ProjectAlice/system/skillInstallTickets/AliceCore.install
 ```
 
 ### Description
-AliceCore is the official module that handles all core intents
+AliceCore is the official skill that handles all core intents
 
 - Version: 1.0.21
 - Author: ProjectAlice

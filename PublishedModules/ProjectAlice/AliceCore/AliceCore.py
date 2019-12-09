@@ -4,10 +4,10 @@ from pathlib import Path
 
 import tempfile
 
-from core.ProjectAliceExceptions import ModuleStartDelayed
+from core.ProjectAliceExceptions import SkillStartDelayed
 from core.base.SuperManager import SuperManager
 from core.base.model.Intent import Intent
-from core.base.model.Module import Module
+from core.base.model.AliceSkill import AliceSkill
 from core.commons import constants
 from core.dialog.model.DialogSession import DialogSession
 from core.interface.views.AdminAuth import AdminAuth
@@ -16,7 +16,7 @@ from core.util.Decorators import Online
 from core.voice.WakewordManager import WakewordManagerState
 
 
-class AliceCore(Module):
+class AliceCore(AliceSkill):
 	_INTENT_MODULE_GREETING = 'projectalice/devices/greeting'
 	_INTENT_GLOBAL_STOP = Intent('GlobalStop')
 	_INTENT_ANSWER_YES_OR_NO = Intent('AnswerYesOrNo', isProtected=True)
@@ -67,8 +67,8 @@ class AliceCore(Module):
 		}
 
 		self._INTENT_ANSWER_YES_OR_NO.dialogMapping = {
-			'confirmingReboot': self.confirmModuleReboot,
-			'confirmingModuleReboot': self.reboot,
+			'confirmingReboot': self.confirmSkillReboot,
+			'confirmingSkillReboot': self.reboot,
 			'confirmingUsername': self.checkUsername,
 			'confirmingWakewordCreation': self.createWakeword,
 			'confirmingRecaptureAfterFailure': self.tryFixAndRecapture,
@@ -100,7 +100,7 @@ class AliceCore(Module):
 		if 'Number' not in session.slotsAsObjects:
 			self.continueDialog(
 				sessionId=session.sessionId,
-				text=self.TalkManager.randomTalk('notUnderstood', module='system'),
+				text=self.TalkManager.randomTalk('notUnderstood', skill='system'),
 				intentFilter=[self._INTENT_ANSWER_NUMBER],
 				currentDialogState='userAuth'
 			)
@@ -164,7 +164,7 @@ class AliceCore(Module):
 		if 'Number' not in session.slotsAsObjects:
 			self.continueDialog(
 				sessionId=session.sessionId,
-				text=self.TalkManager.randomTalk('notUnderstood', module='system'),
+				text=self.TalkManager.randomTalk('notUnderstood', skill='system'),
 				intentFilter=[self._INTENT_ANSWER_NUMBER],
 				currentDialogState='addingPinCode'
 			)
@@ -385,7 +385,7 @@ class AliceCore(Module):
 		if session.slotRawValue('Name') == constants.UNKNOWN_WORD:
 			self.continueDialog(
 				sessionId=session.sessionId,
-				text=self.TalkManager.randomTalk('notUnderstood', module='system'),
+				text=self.TalkManager.randomTalk('notUnderstood', skill='system'),
 				intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
 				currentDialogState='addingUser'
 			)
@@ -407,9 +407,9 @@ class AliceCore(Module):
 		if duration:
 			self.ThreadManager.doLater(interval=duration, func=self.unmuteSite, args=[session.siteId])
 
-		aliceModule = self.ModuleManager.getModuleInstance('AliceSatellite')
-		if aliceModule:
-			aliceModule.notifyDevice('projectalice/devices/stopListen', siteId=session.siteId)
+		aliceSkill = self.SkillManager.getSkillInstance('AliceSatellite')
+		if aliceSkill:
+			aliceSkill.notifyDevice('projectalice/devices/stopListen', siteId=session.siteId)
 
 		self.endDialog(sessionId=session.sessionId)
 
@@ -450,8 +450,8 @@ class AliceCore(Module):
 			return
 
 		if hardware == 'esp':
-			if not self.ModuleManager.isModuleActive('Tasmota'):
-				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('requireTasmotaModule'))
+			if not self.SkillManager.isSkillActive('Tasmota'):
+				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('requireTasmotaSkill'))
 
 			elif self.DeviceManager.isBusy():
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('busy'))
@@ -460,8 +460,8 @@ class AliceCore(Module):
 				self.ThreadManager.doLater(interval=1, func=self.say, args=[self.randomTalk('espFailed'), session.siteId])
 
 		elif hardware == 'zigbee':
-			if not self.ModuleManager.isModuleActive('Zigbee2Mqtt'):
-				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('requireZigbeeModule'))
+			if not self.SkillManager.isSkillActive('Zigbee2Mqtt'):
+				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('requireZigbeeSkill'))
 				return
 
 			if self.DeviceManager.isBusy():
@@ -493,20 +493,20 @@ class AliceCore(Module):
 		)
 
 
-	def confirmModuleReboot(self, session: DialogSession):
+	def confirmSkillReboot(self, session: DialogSession):
 		if self.Commons.isYes(session):
 			self.continueDialog(
 				sessionId=session.sessionId,
-				text=self.randomTalk('askRebootModules'),
+				text=self.randomTalk('askRebootSkills'),
 				intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
-				currentDialogState='confirmingModuleReboot'
+				currentDialogState='confirmingSkillReboot'
 			)
 		else:
 			self.endDialog(session.sessionId, self.randomTalk('abortReboot'))
 
 
 	def reboot(self, session: DialogSession):
-		value = 'greetAndRebootModules' if self.Commons.isYes(session) else 'greet'
+		value = 'greetAndRebootSkills' if self.Commons.isYes(session) else 'greet'
 
 		self.ConfigManager.updateAliceConfiguration('onReboot', value)
 		self.endDialog(session.sessionId, self.randomTalk('confirmRebooting'))
@@ -552,7 +552,7 @@ class AliceCore(Module):
 		if not self.UserManager.users:
 			if not self.delayed:
 				self.logWarning('No user found in database')
-				raise ModuleStartDelayed(self.name)
+				raise SkillStartDelayed(self.name)
 			self._addFirstUser()
 
 		return self.supportedIntents
@@ -651,8 +651,8 @@ class AliceCore(Module):
 		if onReboot:
 			if onReboot == 'greet':
 				self.ThreadManager.doLater(interval=3, func=self.say, args=[self.randomTalk('confirmRebooted'), 'all'])
-			elif onReboot == 'greetAndRebootModules':
-				self.ThreadManager.doLater(interval=3, func=self.say, args=[self.randomTalk('confirmRebootingModules'), 'all'])
+			elif onReboot == 'greetAndRebootSkills':
+				self.ThreadManager.doLater(interval=3, func=self.say, args=[self.randomTalk('confirmRebootingSkills'), 'all'])
 			else:
 				self.logWarning('onReboot config has an unknown value')
 
@@ -711,7 +711,7 @@ class AliceCore(Module):
 			'all': 1,
 			'alice': 2,
 			'assistant': 3,
-			'modules': 4
+			'skills': 4
 		}
 		update = updateTypes.get(session.slots.get('WhatToUpdate', 'all'), 5)
 
@@ -720,9 +720,9 @@ class AliceCore(Module):
 			self.logInfo('Updating system')
 			self.ThreadManager.doLater(interval=2, func=self.systemUpdate)
 
-		if update in {1, 4}:  # All or modules
-			self.logInfo('Updating modules')
-			self.ModuleManager.checkForModuleUpdates()
+		if update in {1, 4}:  # All or skills
+			self.logInfo('Updating skills')
+			self.SkillManager.checkForSkillUpdates()
 
 		if update in {1, 2}:  # All or Alice
 			self.logInfo('Updating Alice')
@@ -743,7 +743,7 @@ class AliceCore(Module):
 
 
 	def unmuteSite(self, siteId):
-		self.ModuleManager.getModuleInstance('AliceSatellite').notifyDevice('projectalice/devices/startListen', siteId=siteId)
+		self.SkillManager.getSkillInstance('AliceSatellite').notifyDevice('projectalice/devices/startListen', siteId=siteId)
 		self.ThreadManager.doLater(interval=1, func=self.say, args=[self.randomTalk('listeningAgain'), siteId])
 
 

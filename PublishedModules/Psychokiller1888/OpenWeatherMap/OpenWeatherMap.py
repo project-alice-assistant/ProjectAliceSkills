@@ -1,12 +1,12 @@
 import requests
 
 from core.base.model.Intent import Intent
-from core.base.model.Module import Module
+from core.base.model.AliceSkill import AliceSkill
 from core.dialog.model.DialogSession import DialogSession
 from core.util.Decorators import IntentHandler
 
 
-class OpenWeatherMap(Module):
+class OpenWeatherMap(AliceSkill):
 
 	@IntentHandler('GetWeather')
 	@IntentHandler('AnswerCity', requiredState='answeringCity')

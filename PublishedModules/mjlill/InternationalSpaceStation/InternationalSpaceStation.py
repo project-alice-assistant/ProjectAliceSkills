@@ -1,12 +1,12 @@
 import requests
 from requests.exceptions import RequestException
 
-from core.base.model.Module import Module
+from core.base.model.AliceSkill import AliceSkill
 from core.dialog.model.DialogSession import DialogSession
 from core.util.Decorators import AnyExcept, IntentHandler, Online
 
 
-class InternationalSpaceStation(Module):
+class InternationalSpaceStation(AliceSkill):
 	"""
 	Author: mjlill
 	Description: Inquire information about the international space station
@@ -37,7 +37,7 @@ class InternationalSpaceStation(Module):
 			# add correct article to ocean name since it has to say "is is over Germany" but "it is over the Atlantic Ocean"
 			place = "{} {}".format(
 				self.LanguageManager.getTranslations(
-					module='InternationalSpaceStation',
+					skill='InternationalSpaceStation',
 					key='oceanArticle',
 					toLang=self.LanguageManager.activeLanguage
 				)[0],
