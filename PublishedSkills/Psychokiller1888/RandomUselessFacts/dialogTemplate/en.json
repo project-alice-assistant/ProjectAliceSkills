@@ -1,0 +1,55 @@
+{
+	"skill": "RandomUselessFacts",
+	"icon": "star",
+	"description": "Gets you the daily random useless fact or a random one",
+	"slotTypes": [
+		{
+			"name": "UselessFactsType",
+			"matchingStrictness": null,
+			"automaticallyExtensible": false,
+			"useSynonyms": true,
+			"values": [
+				{
+					"value": "today",
+					"synonyms": [
+						"today's",
+						"this day",
+						"this day's",
+						"of the day"
+					]
+				},
+				{
+					"value": "random",
+					"synonyms": []
+				}
+			]
+		}
+	],
+	"intents": [
+		{
+			"name": "GetUselessFact",
+			"description": "User is asking for a useless fact",
+			"enabledByDefault": true,
+			"utterances": [
+				"shoot me a {random=>Type} useless fact",
+				"i'm in need of a {random=>Type} useless fact",
+				"please give me {this day's=>Type} useless fact",
+				"let me hear the useless fact {of the day=>Type}",
+				"i need you to give me a useless fact",
+				"tell me a useless fact please",
+				"get me a {random=>Type} useless fact please",
+				"please fetch me a useless fact",
+				"give me a useless fact"
+			],
+			"slots": [
+				{
+					"name": "Type",
+					"description": "Either today's or random",
+					"required": false,
+					"type": "UselessFactsType",
+					"missingQuestion": ""
+				}
+			]
+		}
+	]
+}

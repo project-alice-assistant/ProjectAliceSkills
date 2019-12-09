@@ -5,7 +5,7 @@ from pathlib import Path
 class StringCleaner:
 
 	def __init__(self):
-		self._modules = Path('../../PublishedModules')
+		self._skills = Path('../../PublishedSkills')
 		self._core = Path('../../../ProjectAlice/core')
 
 		self._langFR = dict()
@@ -14,7 +14,7 @@ class StringCleaner:
 
 
 	def loadLangFiles(self):
-		for p in self._modules.rglob('en.json'):
+		for p in self._skills.rglob('en.json'):
 			if p.parent.stem != 'talks':
 				continue
 			with p.open() as fp:
@@ -22,7 +22,7 @@ class StringCleaner:
 				d = {key: p.parent for key in fileContent}
 				self._languageStrings = {**self._languageStrings, **d}
 
-		for p in self._modules.rglob('fr.json'):
+		for p in self._skills.rglob('fr.json'):
 			if p.parent.stem != 'talks':
 				continue
 			with p.open() as fp:
@@ -30,7 +30,7 @@ class StringCleaner:
 				d = {key: p.parent for key in fileContent}
 				self._langFR = {**self._languageStrings, **d}
 
-		for p in self._modules.rglob('de.json'):
+		for p in self._skills.rglob('de.json'):
 			if p.parent.stem != 'talks':
 				continue
 			with p.open() as fp:
@@ -43,7 +43,7 @@ class StringCleaner:
 		deprecated = dict()
 		for key, file in self._languageStrings.items():
 			try:
-				for p in self._modules.rglob('*.py'):
+				for p in self._skills.rglob('*.py'):
 					with p.open() as fp:
 						content = fp.read()
 						if f"'{key}'" in content and f'"{key}"' not in content:

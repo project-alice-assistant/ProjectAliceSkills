@@ -1,0 +1,61 @@
+{
+	"skill": "Wikipedia",
+	"icon": "box",
+	"description": "Permet de trouver des informations sur un sujet depuis Wikipédia",
+	"slotTypes": [
+		{
+			"name": "SearchEngine",
+			"matchingStrictness": null,
+			"automaticallyExtensible": true,
+			"useSynonyms": true,
+			"values": [
+				{
+					"value": "wikipedia",
+					"synonyms": [
+						"wiki"
+					]
+				}
+			]
+		}
+	],
+	"intents": [
+		{
+			"name": "DoSearch",
+			"description": "",
+			"enabledByDefault": true,
+			"utterances": [
+				"j'ai besoin d'informations en ligne à propos de {finland:=>What}",
+				"vérifie sur {wikipedia:=>Engine} à propos {barrack obama:=>What}",
+				"peux-tu faire une recherche sur {nuclear weapons:=>What} sur {wikipedia:=>Engine} s'il te plaît",
+				"donne moi des infos à sur les {planètes:=>What}",
+				"trouve des informations en ligne sur {mars:=>What}",
+				"j'ai besoin d'infos à propos des {chats:=>What}",
+				"peux-tu me trouver des infos à propos de l'{Amérique:=>What} sur {wikipedia:=>Engine}",
+				"peux-tu me trouver des infos sur internet",
+				"peux-tu me trouver des infos en ligne",
+				"trouve des infos en ligne",
+				"trouve des infos sur internet",
+				"trouve moi des infos sur internet",
+				"j'ai besoin d'une information",
+				"cherche sur internet",
+				"trouve sur le net"		
+			],
+			"slots": [
+				{
+					"name": "Engine",
+					"description": null,
+					"required": false,
+					"type": "SearchEngine",
+					"missingQuestion": ""
+				},
+				{
+					"name": "What",
+					"description": null,
+					"required": false,
+					"type": "RandomWords",
+					"missingQuestion": ""
+				}
+			]
+		}
+	]
+}

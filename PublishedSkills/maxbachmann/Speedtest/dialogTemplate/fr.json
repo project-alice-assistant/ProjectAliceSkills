@@ -1,0 +1,25 @@
+{
+	"skill": "Speedtest",
+	"icon": "lamp",
+	"description": "run internet speed test",
+	"slotTypes": [],
+	"intents": [
+		{
+			"name": "Speedtest",
+			"description": "L'utilisateur veut faire un test de vitesse internet",
+			"enabledByDefault": true,
+			"utterances": [
+				"lance un test de vitesse internet",
+				"lance un speed test",
+				"fait un test de ma connexion s'il te plait",
+				"fait un speedtest s'il te plait",
+				"peux tu faire un speed test s'il te plait",
+				"j'ai besoin de connaitre la vitesse de ma connexion",
+				"quelle est la vitesse de ma connexion internet",
+				"donne moi la vitesse de ma connexion internet s'il te plait",
+				"lance un test de ma connexion s'il te plait"
+			],
+			"slots": []
+		}
+	]
+}

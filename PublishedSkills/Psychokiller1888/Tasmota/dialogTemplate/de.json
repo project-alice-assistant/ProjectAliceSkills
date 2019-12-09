@@ -1,0 +1,41 @@
+{
+	"skill": "Tasmota",
+	"icon": "time",
+	"description": "Mit diesem Modul können Sie tasmota esp-Geräte nicht nur anschließen, sondern ihnen auch zuhören.",
+	"slotTypes": [
+		{
+			"name": "DummySlot",
+			"matchingStrictness": null,
+			"automaticallyExtensible": false,
+			"useSynonyms": true,
+			"values": [
+				{
+					"value": "foo",
+					"synonyms": [
+						"bar"
+					]
+				}
+			]
+		}
+	],
+	"intents": [
+		{
+			"name": "Dummy",
+			"description": "ENTFERNE diesen dummy intent",
+			"enabledByDefault": true,
+			"utterances": [
+				"dummy {foo:=>DummySlotName}",
+				"bar"
+			],
+			"slots": [
+				{
+					"name": "DummySlotName",
+					"description": "dummy",
+					"required": false,
+					"type": "DummySlot",
+					"missingQuestion": ""
+				}
+			]
+		}
+	]
+}

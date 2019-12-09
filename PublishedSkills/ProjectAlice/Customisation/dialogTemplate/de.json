@@ -1,0 +1,7 @@
+{
+	"skill": "Customisation",
+	"icon": "drink",
+	"description": "Deine eigenen benutzerdefinierten intents",
+	"slotTypes": [],
+	"intents": []
+}

@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 ERROR=0
-# iterate over all authors in PublishedModules
-for author in PublishedModules/*; do
+# iterate over all authors in PublishedSkills
+for author in PublishedSkills/*; do
 	GREEN='\033[0;32m'
 	RED='\033[0;31m'
 	NC='\033[0m' # No Color
 	echo "${author##*/}"
-	# iterate over all modules of an author
-	for module in ${author}/*; do
+	# iterate over all skills of an author
+	for skill in ${author}/*; do
 		OUTPUT=''
 		AMOUNT=0
 
@@ -22,13 +22,13 @@ for author in PublishedModules/*; do
 				ERROR=$ERR
 			fi
 		# use process substitution, so while is not executed in subshell
-		done < <(find "$module" -name "*.py")
+		done < <(find "$skill" -name "*.py")
 
 		# when no error print success, else print the error output of mypi
 		if [ $ERR -eq 0 ]; then
-			printf "  ${module##*/}: ${GREEN}Success: no issues found in ${AMOUNT} source file${NC}\n"
+			printf "  ${skill##*/}: ${GREEN}Success: no issues found in ${AMOUNT} source file${NC}\n"
 		else
-			printf "  ${module##*/}: ${RED}${OUTPUT}${NC}\n"
+			printf "  ${skill##*/}: ${RED}${OUTPUT}${NC}\n"
 		fi
 	done
 done

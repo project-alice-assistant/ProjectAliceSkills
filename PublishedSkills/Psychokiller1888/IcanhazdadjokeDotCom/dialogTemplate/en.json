@@ -1,0 +1,39 @@
+{
+	"skill": "IcanhazdadjokeDotCom",
+	"icon": "drink",
+	"description": "Get some random dad jokes",
+	"slotTypes": [],
+	"intents": [
+		{
+			"name": "TellAJoke",
+			"description": "User asks for a joke",
+			"enabledByDefault": true,
+			"utterances": [
+				"another joke",
+				"another joke please",
+				"cheer us up",
+				"make us laugh",
+				"tell us another joke",
+				"tell us a joke",
+				"please say something funny",
+				"say something funny please",
+				"say something funny to me please",
+				"say something funny to me",
+				"please entertain me",
+				"tell me a joke please",
+				"please tell me a joke",
+				"please make me laugh",
+				"make me laugh please",
+				"cheer me up please",
+				"please cheer me up",
+				"cheer me up",
+				"make me laugh",
+				"tell me something funny",
+				"tell me a joke",
+				"entertain me please",
+				"entertain me"
+			],
+			"slots": []
+		}
+	]
+}

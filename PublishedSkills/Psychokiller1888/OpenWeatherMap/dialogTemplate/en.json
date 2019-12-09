@@ -1,0 +1,13754 @@
+{
+	"skill": "OpenWeatherMap",
+	"icon": "rain",
+	"description": "Access OpenWeatherMap weather data",
+	"slotTypes": [
+		{
+			"name": "CityNames",
+			"matchingStrictness": null,
+			"automaticallyExtensible": false,
+			"useSynonyms": false,
+			"values": [
+				{
+					"value": "Aziziya"
+				},
+				{
+					"value": "100 Mile House"
+				},
+				{
+					"value": "6th of October City"
+				},
+				{
+					"value": "A Coruña"
+				},
+				{
+					"value": "Aachen"
+				},
+				{
+					"value": "Aalborg"
+				},
+				{
+					"value": "Aamby Valley City"
+				},
+				{
+					"value": "Aarau"
+				},
+				{
+					"value": "Aarberg"
+				},
+				{
+					"value": "Aarburg"
+				},
+				{
+					"value": "Aarhus"
+				},
+				{
+					"value": "Aarschot"
+				},
+				{
+					"value": "Abbeville"
+				},
+				{
+					"value": "Abbotsford"
+				},
+				{
+					"value": "Abbottabad"
+				},
+				{
+					"value": "Aberaeron"
+				},
+				{
+					"value": "Aberdare"
+				},
+				{
+					"value": "Aberdeen"
+				},
+				{
+					"value": "Aberdyfi"
+				},
+				{
+					"value": "Abertillery"
+				},
+				{
+					"value": "Aberystwyth"
+				},
+				{
+					"value": "Abilene"
+				},
+				{
+					"value": "Abu Dhabi"
+				},
+				{
+					"value": "Acapulco"
+				},
+				{
+					"value": "Accra"
+				},
+				{
+					"value": "Accrington"
+				},
+				{
+					"value": "Acre"
+				},
+				{
+					"value": "Acton"
+				},
+				{
+					"value": "Acton Ontario"
+				},
+				{
+					"value": "Ada"
+				},
+				{
+					"value": "Adak"
+				},
+				{
+					"value": "Adana"
+				},
+				{
+					"value": "Addlestone"
+				},
+				{
+					"value": "Adelaide"
+				},
+				{
+					"value": "Aden"
+				},
+				{
+					"value": "Adliswil"
+				},
+				{
+					"value": "Adoni"
+				},
+				{
+					"value": "Aesch"
+				},
+				{
+					"value": "Affoltern am Albis"
+				},
+				{
+					"value": "Agde"
+				},
+				{
+					"value": "Agen"
+				},
+				{
+					"value": "Agios Nikolaos"
+				},
+				{
+					"value": "Agno"
+				},
+				{
+					"value": "Agoura Hills"
+				},
+				{
+					"value": "Agra"
+				},
+				{
+					"value": "Agrigento"
+				},
+				{
+					"value": "Ahmedabad"
+				},
+				{
+					"value": "Ahvaz"
+				},
+				{
+					"value": "Aigle"
+				},
+				{
+					"value": "Aiken"
+				},
+				{
+					"value": "Airdrie"
+				},
+				{
+					"value": "Airlie Beach"
+				},
+				{
+					"value": "Aix-en-Provence"
+				},
+				{
+					"value": "Aix-les-Bains"
+				},
+				{
+					"value": "Ajaccio"
+				},
+				{
+					"value": "Ajax"
+				},
+				{
+					"value": "Ajman"
+				},
+				{
+					"value": "Akureyri"
+				},
+				{
+					"value": "Al Ain"
+				},
+				{
+					"value": "Al Wakrah"
+				},
+				{
+					"value": "Alameda"
+				},
+				{
+					"value": "Alamogordo"
+				},
+				{
+					"value": "Alamosa"
+				},
+				{
+					"value": "Alang"
+				},
+				{
+					"value": "Alanya"
+				},
+				{
+					"value": "Albany"
+				},
+				{
+					"value": "Albi"
+				},
+				{
+					"value": "Albuquerque"
+				},
+				{
+					"value": "Albury"
+				},
+				{
+					"value": "Alcalá de Henares"
+				},
+				{
+					"value": "Alcester"
+				},
+				{
+					"value": "Aldeburgh"
+				},
+				{
+					"value": "Aldershot"
+				},
+				{
+					"value": "Aldridge"
+				},
+				{
+					"value": "Alençon"
+				},
+				{
+					"value": "Aleppo"
+				},
+				{
+					"value": "Alès"
+				},
+				{
+					"value": "Alexandria"
+				},
+				{
+					"value": "Aley"
+				},
+				{
+					"value": "Alfortville"
+				},
+				{
+					"value": "Alfreton"
+				},
+				{
+					"value": "Algiers"
+				},
+				{
+					"value": "Algonquin"
+				},
+				{
+					"value": "Alhambra"
+				},
+				{
+					"value": "Alicante"
+				},
+				{
+					"value": "Alice Eastern Cape"
+				},
+				{
+					"value": "Alice Springs"
+				},
+				{
+					"value": "Aliso Viejo"
+				},
+				{
+					"value": "Allahabad"
+				},
+				{
+					"value": "Allen"
+				},
+				{
+					"value": "Allendale New Jersey"
+				},
+				{
+					"value": "Alliston"
+				},
+				{
+					"value": "Alloa"
+				},
+				{
+					"value": "Allora"
+				},
+				{
+					"value": "Allschwil"
+				},
+				{
+					"value": "Allston"
+				},
+				{
+					"value": "Almaty"
+				},
+				{
+					"value": "Almere"
+				},
+				{
+					"value": "Almería"
+				},
+				{
+					"value": "Almonte Ontario"
+				},
+				{
+					"value": "Alofi"
+				},
+				{
+					"value": "Alost"
+				},
+				{
+					"value": "Alpine"
+				},
+				{
+					"value": "Alston"
+				},
+				{
+					"value": "Altdorf"
+				},
+				{
+					"value": "Alton"
+				},
+				{
+					"value": "Altona"
+				},
+				{
+					"value": "Altrincham"
+				},
+				{
+					"value": "Altstätten"
+				},
+				{
+					"value": "Amaravati"
+				},
+				{
+					"value": "Amarillo"
+				},
+				{
+					"value": "Ambleside"
+				},
+				{
+					"value": "Ambur"
+				},
+				{
+					"value": "Amersfoort"
+				},
+				{
+					"value": "Amersham"
+				},
+				{
+					"value": "Ames"
+				},
+				{
+					"value": "Amesbury"
+				},
+				{
+					"value": "Amherst"
+				},
+				{
+					"value": "Amherstburg"
+				},
+				{
+					"value": "Amiens"
+				},
+				{
+					"value": "Amityville"
+				},
+				{
+					"value": "Amman"
+				},
+				{
+					"value": "Amreli"
+				},
+				{
+					"value": "Amriswil"
+				},
+				{
+					"value": "Amritsar"
+				},
+				{
+					"value": "Amstelveen"
+				},
+				{
+					"value": "Amsterdam"
+				},
+				{
+					"value": "An Najaf"
+				},
+				{
+					"value": "Anacortes"
+				},
+				{
+					"value": "Anadyr"
+				},
+				{
+					"value": "Anaheim"
+				},
+				{
+					"value": "Anand"
+				},
+				{
+					"value": "Ancaster"
+				},
+				{
+					"value": "Anchorage"
+				},
+				{
+					"value": "Ancona"
+				},
+				{
+					"value": "Andenne"
+				},
+				{
+					"value": "Anderson"
+				},
+				{
+					"value": "Andover"
+				},
+				{
+					"value": "Angel Fire"
+				},
+				{
+					"value": "Angels Camp"
+				},
+				{
+					"value": "Angers"
+				},
+				{
+					"value": "Angkor"
+				},
+				{
+					"value": "Anglet"
+				},
+				{
+					"value": "Angoulême"
+				},
+				{
+					"value": "Ani"
+				},
+				{
+					"value": "Ankara"
+				},
+				{
+					"value": "Ankleshwar"
+				},
+				{
+					"value": "Annan Dumfries and Galloway"
+				},
+				{
+					"value": "Annandale-on-Hudson"
+				},
+				{
+					"value": "Annapolis"
+				},
+				{
+					"value": "Annapolis Royal"
+				},
+				{
+					"value": "Annecy"
+				},
+				{
+					"value": "Annemasse"
+				},
+				{
+					"value": "Anstruther"
+				},
+				{
+					"value": "Antakya"
+				},
+				{
+					"value": "Antalya"
+				},
+				{
+					"value": "Antibes"
+				},
+				{
+					"value": "Antigonish"
+				},
+				{
+					"value": "Antigua Guatemala"
+				},
+				{
+					"value": "Antioch"
+				},
+				{
+					"value": "Antoing"
+				},
+				{
+					"value": "Antony"
+				},
+				{
+					"value": "Antrim"
+				},
+				{
+					"value": "Anuradhapura"
+				},
+				{
+					"value": "Anvers"
+				},
+				{
+					"value": "Aomori"
+				},
+				{
+					"value": "Apia"
+				},
+				{
+					"value": "Appenzell"
+				},
+				{
+					"value": "Appin"
+				},
+				{
+					"value": "Apple Valley"
+				},
+				{
+					"value": "Appleton"
+				},
+				{
+					"value": "Aqaba"
+				},
+				{
+					"value": "Arbon"
+				},
+				{
+					"value": "Arbroath"
+				},
+				{
+					"value": "Arcadia"
+				},
+				{
+					"value": "Arcata"
+				},
+				{
+					"value": "Arcot"
+				},
+				{
+					"value": "Ardwick"
+				},
+				{
+					"value": "Argenteuil"
+				},
+				{
+					"value": "Argos"
+				},
+				{
+					"value": "Argostoli"
+				},
+				{
+					"value": "Arkhangelsk"
+				},
+				{
+					"value": "Arles"
+				},
+				{
+					"value": "Arlesheim"
+				},
+				{
+					"value": "Arlington"
+				},
+				{
+					"value": "Arlon"
+				},
+				{
+					"value": "Armagh"
+				},
+				{
+					"value": "Armentières"
+				},
+				{
+					"value": "Armidale"
+				},
+				{
+					"value": "Armstrong"
+				},
+				{
+					"value": "Arnhem"
+				},
+				{
+					"value": "Arnold"
+				},
+				{
+					"value": "Arnprior"
+				},
+				{
+					"value": "Arosa"
+				},
+				{
+					"value": "Ar-Raqqah"
+				},
+				{
+					"value": "Arras"
+				},
+				{
+					"value": "Arth"
+				},
+				{
+					"value": "Arugam"
+				},
+				{
+					"value": "Arundel"
+				},
+				{
+					"value": "Arusha"
+				},
+				{
+					"value": "Arvada"
+				},
+				{
+					"value": "Asbury Park"
+				},
+				{
+					"value": "Ascona"
+				},
+				{
+					"value": "Ascot"
+				},
+				{
+					"value": "Ashbourne"
+				},
+				{
+					"value": "Ashburton"
+				},
+				{
+					"value": "Ashby-de-la-Zouch"
+				},
+				{
+					"value": "Ashcroft"
+				},
+				{
+					"value": "Ashdod"
+				},
+				{
+					"value": "Ashford"
+				},
+				{
+					"value": "Ashington"
+				},
+				{
+					"value": "Ashkelon"
+				},
+				{
+					"value": "Ashton-under-Lyne"
+				},
+				{
+					"value": "Asmara"
+				},
+				{
+					"value": "Asnières-sur-Seine"
+				},
+				{
+					"value": "Aspen"
+				},
+				{
+					"value": "Assur"
+				},
+				{
+					"value": "Astana"
+				},
+				{
+					"value": "Aston"
+				},
+				{
+					"value": "Astoria"
+				},
+				{
+					"value": "Astrakhan"
+				},
+				{
+					"value": "Aswan"
+				},
+				{
+					"value": "Ath"
+				},
+				{
+					"value": "Athabasca"
+				},
+				{
+					"value": "Athens"
+				},
+				{
+					"value": "Atherstone"
+				},
+				{
+					"value": "Atherton"
+				},
+				{
+					"value": "Athis-Mons"
+				},
+				{
+					"value": "Athlone"
+				},
+				{
+					"value": "Athol"
+				},
+				{
+					"value": "Athy"
+				},
+				{
+					"value": "Atlanta"
+				},
+				{
+					"value": "Atlantic City"
+				},
+				{
+					"value": "Aubagne"
+				},
+				{
+					"value": "Aubange"
+				},
+				{
+					"value": "Aubervilliers"
+				},
+				{
+					"value": "Aubonne"
+				},
+				{
+					"value": "Auburn"
+				},
+				{
+					"value": "Auburn Hills"
+				},
+				{
+					"value": "Auch"
+				},
+				{
+					"value": "Auchterarder"
+				},
+				{
+					"value": "Auckland"
+				},
+				{
+					"value": "Audenarde"
+				},
+				{
+					"value": "Augusta"
+				},
+				{
+					"value": "Aulnay-sous-Bois"
+				},
+				{
+					"value": "Aurangabad"
+				},
+				{
+					"value": "Aurillac"
+				},
+				{
+					"value": "Aurora"
+				},
+				{
+					"value": "Aurukun"
+				},
+				{
+					"value": "Austin"
+				},
+				{
+					"value": "Autlán de Navarro"
+				},
+				{
+					"value": "Auxerre"
+				},
+				{
+					"value": "Avenches"
+				},
+				{
+					"value": "Avenel"
+				},
+				{
+					"value": "Aviemore"
+				},
+				{
+					"value": "Avignon"
+				},
+				{
+					"value": "Ávila"
+				},
+				{
+					"value": "Awjila"
+				},
+				{
+					"value": "Axminster"
+				},
+				{
+					"value": "Axum"
+				},
+				{
+					"value": "Aylmer Ontario"
+				},
+				{
+					"value": "Azusa"
+				},
+				{
+					"value": "Baalbek"
+				},
+				{
+					"value": "Baar"
+				},
+				{
+					"value": "Bacchus Marsh"
+				},
+				{
+					"value": "Bacup"
+				},
+				{
+					"value": "Bad Hersfeld"
+				},
+				{
+					"value": "Bad Nauheim"
+				},
+				{
+					"value": "Bad Saulgau"
+				},
+				{
+					"value": "Bad Zurzach"
+				},
+				{
+					"value": "Badajoz"
+				},
+				{
+					"value": "Baden"
+				},
+				{
+					"value": "Baden-Baden"
+				},
+				{
+					"value": "Bagneux"
+				},
+				{
+					"value": "Bagnolet"
+				},
+				{
+					"value": "Bahía de los Ángeles"
+				},
+				{
+					"value": "Baie Verte Newfoundland and Labrador"
+				},
+				{
+					"value": "Baie-Mahault"
+				},
+				{
+					"value": "Baikonur"
+				},
+				{
+					"value": "Bainbridge Island"
+				},
+				{
+					"value": "Baker Lake"
+				},
+				{
+					"value": "Bakersfield"
+				},
+				{
+					"value": "Baku"
+				},
+				{
+					"value": "Bal Harbour"
+				},
+				{
+					"value": "Bala"
+				},
+				{
+					"value": "Bala Cynwyd"
+				},
+				{
+					"value": "Balchik"
+				},
+				{
+					"value": "Balkh"
+				},
+				{
+					"value": "Ballarat"
+				},
+				{
+					"value": "Ballerup"
+				},
+				{
+					"value": "Ballina"
+				},
+				{
+					"value": "Ballycastle"
+				},
+				{
+					"value": "Ballymena"
+				},
+				{
+					"value": "Ballyshannon"
+				},
+				{
+					"value": "Baltimore"
+				},
+				{
+					"value": "Banbridge"
+				},
+				{
+					"value": "Bancroft"
+				},
+				{
+					"value": "Bandar Abbas"
+				},
+				{
+					"value": "Bandar Seri Begawan"
+				},
+				{
+					"value": "Bandon"
+				},
+				{
+					"value": "Banff"
+				},
+				{
+					"value": "Bangkok"
+				},
+				{
+					"value": "Bangor"
+				},
+				{
+					"value": "Bangui"
+				},
+				{
+					"value": "Banja Luka"
+				},
+				{
+					"value": "Banjul"
+				},
+				{
+					"value": "Banská Štiavnica"
+				},
+				{
+					"value": "Bansko"
+				},
+				{
+					"value": "Banstead"
+				},
+				{
+					"value": "Baqubah"
+				},
+				{
+					"value": "Bar"
+				},
+				{
+					"value": "Barcelona"
+				},
+				{
+					"value": "Bardejov"
+				},
+				{
+					"value": "Bareilly"
+				},
+				{
+					"value": "Barentsburg"
+				},
+				{
+					"value": "Bari"
+				},
+				{
+					"value": "Barking"
+				},
+				{
+					"value": "Barnard Castle"
+				},
+				{
+					"value": "Barnaul"
+				},
+				{
+					"value": "Barnsley"
+				},
+				{
+					"value": "Barnstable"
+				},
+				{
+					"value": "Barnstaple"
+				},
+				{
+					"value": "Barrie"
+				},
+				{
+					"value": "Barriere British Columbia"
+				},
+				{
+					"value": "Barrow-in-Furness"
+				},
+				{
+					"value": "Barry"
+				},
+				{
+					"value": "Barstow"
+				},
+				{
+					"value": "Basel"
+				},
+				{
+					"value": "Basildon"
+				},
+				{
+					"value": "Basingstoke"
+				},
+				{
+					"value": "Basra"
+				},
+				{
+					"value": "Bassersdorf"
+				},
+				{
+					"value": "Basseterre"
+				},
+				{
+					"value": "Bastia"
+				},
+				{
+					"value": "Bastogne"
+				},
+				{
+					"value": "Batalha"
+				},
+				{
+					"value": "Batemans Bay"
+				},
+				{
+					"value": "Bath"
+				},
+				{
+					"value": "Bathgate"
+				},
+				{
+					"value": "Bathinda"
+				},
+				{
+					"value": "Bathurst"
+				},
+				{
+					"value": "Batley"
+				},
+				{
+					"value": "Batman"
+				},
+				{
+					"value": "Baton Rouge"
+				},
+				{
+					"value": "Battle"
+				},
+				{
+					"value": "Bay City"
+				},
+				{
+					"value": "Bay Village"
+				},
+				{
+					"value": "Bayan Lepas"
+				},
+				{
+					"value": "Bayonne"
+				},
+				{
+					"value": "Bayswater"
+				},
+				{
+					"value": "Beaconsfield"
+				},
+				{
+					"value": "Bearsden"
+				},
+				{
+					"value": "Beaudesert"
+				},
+				{
+					"value": "Beaufort"
+				},
+				{
+					"value": "Beaumaris"
+				},
+				{
+					"value": "Beaumont"
+				},
+				{
+					"value": "Beaune"
+				},
+				{
+					"value": "Beauraing"
+				},
+				{
+					"value": "Beauvais"
+				},
+				{
+					"value": "Beaverton"
+				},
+				{
+					"value": "Bebington"
+				},
+				{
+					"value": "Beccles"
+				},
+				{
+					"value": "Beckley"
+				},
+				{
+					"value": "Bedlington"
+				},
+				{
+					"value": "Bedworth"
+				},
+				{
+					"value": "Beelitz"
+				},
+				{
+					"value": "Beersheba"
+				},
+				{
+					"value": "Beeston Nottinghamshire"
+				},
+				{
+					"value": "Bega"
+				},
+				{
+					"value": "Bègles"
+				},
+				{
+					"value": "Begusarai"
+				},
+				{
+					"value": "Beijing"
+				},
+				{
+					"value": "Beit She'an"
+				},
+				{
+					"value": "Beith"
+				},
+				{
+					"value": "Belfast"
+				},
+				{
+					"value": "Belfort"
+				},
+				{
+					"value": "Belgorod"
+				},
+				{
+					"value": "Belgrade"
+				},
+				{
+					"value": "Belize City"
+				},
+				{
+					"value": "Bella Coola British Columbia"
+				},
+				{
+					"value": "Belleville"
+				},
+				{
+					"value": "Bellevue"
+				},
+				{
+					"value": "Bellflower"
+				},
+				{
+					"value": "Bellingen"
+				},
+				{
+					"value": "Bellingham"
+				},
+				{
+					"value": "Bellinzona"
+				},
+				{
+					"value": "Bells Beach"
+				},
+				{
+					"value": "Bellshill"
+				},
+				{
+					"value": "Belmont"
+				},
+				{
+					"value": "Belmopan"
+				},
+				{
+					"value": "Belo Horizonte"
+				},
+				{
+					"value": "Belp"
+				},
+				{
+					"value": "Belper"
+				},
+				{
+					"value": "Bemidji"
+				},
+				{
+					"value": "Bend"
+				},
+				{
+					"value": "Bendigo"
+				},
+				{
+					"value": "Benghazi"
+				},
+				{
+					"value": "Benicia"
+				},
+				{
+					"value": "Benidorm"
+				},
+				{
+					"value": "Benin City"
+				},
+				{
+					"value": "Benoni"
+				},
+				{
+					"value": "Benton Harbor"
+				},
+				{
+					"value": "Bentonville"
+				},
+				{
+					"value": "Berane"
+				},
+				{
+					"value": "Berdychiv"
+				},
+				{
+					"value": "Berga"
+				},
+				{
+					"value": "Bergamo"
+				},
+				{
+					"value": "Bergen"
+				},
+				{
+					"value": "Bergenfield New Jersey"
+				},
+				{
+					"value": "Bergerac"
+				},
+				{
+					"value": "Beringen"
+				},
+				{
+					"value": "Berkeley"
+				},
+				{
+					"value": "Berlin"
+				},
+				{
+					"value": "Bern"
+				},
+				{
+					"value": "Bernardsville"
+				},
+				{
+					"value": "Beromünster"
+				},
+				{
+					"value": "Berrima"
+				},
+				{
+					"value": "Berwick-upon-Tweed"
+				},
+				{
+					"value": "Besançon"
+				},
+				{
+					"value": "Bethel"
+				},
+				{
+					"value": "Bethlehem"
+				},
+				{
+					"value": "Bethnal Green"
+				},
+				{
+					"value": "Béthune"
+				},
+				{
+					"value": "Betoota"
+				},
+				{
+					"value": "Betws-y-Coed"
+				},
+				{
+					"value": "Beverley"
+				},
+				{
+					"value": "Beverly Hills"
+				},
+				{
+					"value": "Bewdley"
+				},
+				{
+					"value": "Bexhill-on-Sea"
+				},
+				{
+					"value": "Béziers"
+				},
+				{
+					"value": "Bezons"
+				},
+				{
+					"value": "Bharuch"
+				},
+				{
+					"value": "Bhavnagar"
+				},
+				{
+					"value": "Bhisho"
+				},
+				{
+					"value": "Bhubaneswar"
+				},
+				{
+					"value": "Bhuj"
+				},
+				{
+					"value": "Bialystok"
+				},
+				{
+					"value": "Biarritz"
+				},
+				{
+					"value": "Biasca"
+				},
+				{
+					"value": "Bicester"
+				},
+				{
+					"value": "Bideford"
+				},
+				{
+					"value": "Biel/Bienne"
+				},
+				{
+					"value": "Bielefeld"
+				},
+				{
+					"value": "Big Bear Lake"
+				},
+				{
+					"value": "Big Spring"
+				},
+				{
+					"value": "Biggleswade"
+				},
+				{
+					"value": "Bilbao"
+				},
+				{
+					"value": "Billericay"
+				},
+				{
+					"value": "Billingham"
+				},
+				{
+					"value": "Billund"
+				},
+				{
+					"value": "Biloxi"
+				},
+				{
+					"value": "Bilston"
+				},
+				{
+					"value": "Bilzen"
+				},
+				{
+					"value": "Binche"
+				},
+				{
+					"value": "Bingley"
+				},
+				{
+					"value": "Binningen"
+				},
+				{
+					"value": "Birán"
+				},
+				{
+					"value": "Birdsville"
+				},
+				{
+					"value": "Birka"
+				},
+				{
+					"value": "Birkenhead"
+				},
+				{
+					"value": "Birobidzhan"
+				},
+				{
+					"value": "Birsfelden"
+				},
+				{
+					"value": "Bisbee"
+				},
+				{
+					"value": "Bischofszell"
+				},
+				{
+					"value": "Bishkek"
+				},
+				{
+					"value": "Bishop"
+				},
+				{
+					"value": "Bishop Auckland"
+				},
+				{
+					"value": "Bishopbriggs"
+				},
+				{
+					"value": "Bishop's Stortford"
+				},
+				{
+					"value": "Bishop's Waltham"
+				},
+				{
+					"value": "Bismarck"
+				},
+				{
+					"value": "Bissau"
+				},
+				{
+					"value": "Bitola"
+				},
+				{
+					"value": "Blackall"
+				},
+				{
+					"value": "Blackburn"
+				},
+				{
+					"value": "Blackpool"
+				},
+				{
+					"value": "Blackwood"
+				},
+				{
+					"value": "Blaenau Ffestiniog"
+				},
+				{
+					"value": "Blaenavon"
+				},
+				{
+					"value": "Blagnac"
+				},
+				{
+					"value": "Blaine"
+				},
+				{
+					"value": "Blair Atholl"
+				},
+				{
+					"value": "Blandford Forum"
+				},
+				{
+					"value": "Blankenberge"
+				},
+				{
+					"value": "Blantyre South Lanarkshire"
+				},
+				{
+					"value": "Bled"
+				},
+				{
+					"value": "Bletchley"
+				},
+				{
+					"value": "Blind River"
+				},
+				{
+					"value": "Bloemfontein"
+				},
+				{
+					"value": "Blois"
+				},
+				{
+					"value": "Bloomingdale"
+				},
+				{
+					"value": "Bloomington"
+				},
+				{
+					"value": "Bluemont"
+				},
+				{
+					"value": "Blyth"
+				},
+				{
+					"value": "Blythe"
+				},
+				{
+					"value": "Bobigny"
+				},
+				{
+					"value": "Bodmin"
+				},
+				{
+					"value": "Bognor Regis"
+				},
+				{
+					"value": "Bois-Colombes"
+				},
+				{
+					"value": "Boise"
+				},
+				{
+					"value": "Bo-Kaap"
+				},
+				{
+					"value": "Boksburg"
+				},
+				{
+					"value": "Bol"
+				},
+				{
+					"value": "Bolingbrook"
+				},
+				{
+					"value": "Bologna"
+				},
+				{
+					"value": "Bolsover"
+				},
+				{
+					"value": "Bolton"
+				},
+				{
+					"value": "Bolton Ontario"
+				},
+				{
+					"value": "Bolzano"
+				},
+				{
+					"value": "Bonavista Newfoundland and Labrador"
+				},
+				{
+					"value": "Bondi"
+				},
+				{
+					"value": "Bondy"
+				},
+				{
+					"value": "Bo'ness"
+				},
+				{
+					"value": "Bonnie Doon"
+				},
+				{
+					"value": "Boonesborough"
+				},
+				{
+					"value": "Bootle"
+				},
+				{
+					"value": "Boquete Chiriquí"
+				},
+				{
+					"value": "Bordeaux"
+				},
+				{
+					"value": "Bordon"
+				},
+				{
+					"value": "Borehamwood"
+				},
+				{
+					"value": "Boston"
+				},
+				{
+					"value": "Bothell"
+				},
+				{
+					"value": "Boudry"
+				},
+				{
+					"value": "Bouillon"
+				},
+				{
+					"value": "Boulder"
+				},
+				{
+					"value": "Boulogne-Billancourt"
+				},
+				{
+					"value": "Boulogne-sur-Mer"
+				},
+				{
+					"value": "Bourg-en-Bresse"
+				},
+				{
+					"value": "Bourges"
+				},
+				{
+					"value": "Bourgoin-Jallieu"
+				},
+				{
+					"value": "Bourg-Saint-Pierre"
+				},
+				{
+					"value": "Bourke"
+				},
+				{
+					"value": "Bourne"
+				},
+				{
+					"value": "Bournemouth"
+				},
+				{
+					"value": "Bowling Green"
+				},
+				{
+					"value": "Bowmanville"
+				},
+				{
+					"value": "Bowness-on-Windermere"
+				},
+				{
+					"value": "Bowral"
+				},
+				{
+					"value": "Boynton Beach"
+				},
+				{
+					"value": "Bozeman"
+				},
+				{
+					"value": "Brackley"
+				},
+				{
+					"value": "Bracknell"
+				},
+				{
+					"value": "Bradenton"
+				},
+				{
+					"value": "Bradford"
+				},
+				{
+					"value": "Bradford on Avon"
+				},
+				{
+					"value": "Braine-le-Comte"
+				},
+				{
+					"value": "Brainerd"
+				},
+				{
+					"value": "Braintree"
+				},
+				{
+					"value": "Brandon"
+				},
+				{
+					"value": "Branson"
+				},
+				{
+					"value": "Bratislava"
+				},
+				{
+					"value": "Braunau am Inn"
+				},
+				{
+					"value": "Brazzaville"
+				},
+				{
+					"value": "Brea"
+				},
+				{
+					"value": "Brechin"
+				},
+				{
+					"value": "Breclav"
+				},
+				{
+					"value": "Breda"
+				},
+				{
+					"value": "Brée"
+				},
+				{
+					"value": "Bregenz"
+				},
+				{
+					"value": "Breisach"
+				},
+				{
+					"value": "Bremen"
+				},
+				{
+					"value": "Bremerton"
+				},
+				{
+					"value": "Bremgarten"
+				},
+				{
+					"value": "Brentwood"
+				},
+				{
+					"value": "Brescia"
+				},
+				{
+					"value": "Brest"
+				},
+				{
+					"value": "Brétigny-sur-Orge"
+				},
+				{
+					"value": "Brevard"
+				},
+				{
+					"value": "Brewarrina"
+				},
+				{
+					"value": "Brian Head"
+				},
+				{
+					"value": "Bridge of Allan"
+				},
+				{
+					"value": "Bridgend"
+				},
+				{
+					"value": "Bridgetown"
+				},
+				{
+					"value": "Bridgewater"
+				},
+				{
+					"value": "Bridgnorth"
+				},
+				{
+					"value": "Bridgwater"
+				},
+				{
+					"value": "Bridlington"
+				},
+				{
+					"value": "Bridport"
+				},
+				{
+					"value": "Brierley Hill"
+				},
+				{
+					"value": "Brigantine"
+				},
+				{
+					"value": "Brigg"
+				},
+				{
+					"value": "Brig-Glis"
+				},
+				{
+					"value": "Brighouse"
+				},
+				{
+					"value": "Bright"
+				},
+				{
+					"value": "Brighton"
+				},
+				{
+					"value": "Brighton and Hove"
+				},
+				{
+					"value": "Brindisi"
+				},
+				{
+					"value": "Brisbane"
+				},
+				{
+					"value": "Bristol"
+				},
+				{
+					"value": "Brive-la-Gaillarde"
+				},
+				{
+					"value": "Brixham"
+				},
+				{
+					"value": "Broad Ripple Village"
+				},
+				{
+					"value": "Broadstairs"
+				},
+				{
+					"value": "Brockton"
+				},
+				{
+					"value": "Broken Arrow"
+				},
+				{
+					"value": "Broken Hill"
+				},
+				{
+					"value": "Brompton"
+				},
+				{
+					"value": "Bromsgrove"
+				},
+				{
+					"value": "Bron"
+				},
+				{
+					"value": "Bronxville"
+				},
+				{
+					"value": "Brookhaven"
+				},
+				{
+					"value": "Brookings"
+				},
+				{
+					"value": "Brooklyn"
+				},
+				{
+					"value": "Broome"
+				},
+				{
+					"value": "Broomfield"
+				},
+				{
+					"value": "Brownhills"
+				},
+				{
+					"value": "Brownsville"
+				},
+				{
+					"value": "Broxbourne"
+				},
+				{
+					"value": "Bruay-la-Buissière"
+				},
+				{
+					"value": "Bruges"
+				},
+				{
+					"value": "Brugg"
+				},
+				{
+					"value": "Brunoy"
+				},
+				{
+					"value": "Brunswick"
+				},
+				{
+					"value": "Brussels"
+				},
+				{
+					"value": "Bruton"
+				},
+				{
+					"value": "Bruxelles"
+				},
+				{
+					"value": "Buchs"
+				},
+				{
+					"value": "Buckhurst Hill"
+				},
+				{
+					"value": "Buckie"
+				},
+				{
+					"value": "Buckley"
+				},
+				{
+					"value": "Buda"
+				},
+				{
+					"value": "Budapest"
+				},
+				{
+					"value": "Bude"
+				},
+				{
+					"value": "Budleigh Salterton"
+				},
+				{
+					"value": "Budva"
+				},
+				{
+					"value": "Buena Park"
+				},
+				{
+					"value": "Buenos Aires"
+				},
+				{
+					"value": "Bujumbura"
+				},
+				{
+					"value": "Bukhara"
+				},
+				{
+					"value": "Bukit Batok"
+				},
+				{
+					"value": "Bülach"
+				},
+				{
+					"value": "Bulawayo"
+				},
+				{
+					"value": "Bulle"
+				},
+				{
+					"value": "Bullhead City"
+				},
+				{
+					"value": "Bundaberg"
+				},
+				{
+					"value": "Bundoran"
+				},
+				{
+					"value": "Burbank"
+				},
+				{
+					"value": "Büren a.A."
+				},
+				{
+					"value": "Burford"
+				},
+				{
+					"value": "Burgas"
+				},
+				{
+					"value": "Burgdorf"
+				},
+				{
+					"value": "Burgess Hill"
+				},
+				{
+					"value": "Burgos"
+				},
+				{
+					"value": "Burien"
+				},
+				{
+					"value": "Burlingame"
+				},
+				{
+					"value": "Burlington"
+				},
+				{
+					"value": "Burnaby"
+				},
+				{
+					"value": "Burnage"
+				},
+				{
+					"value": "Burnham-on-Sea"
+				},
+				{
+					"value": "Burnt Pine"
+				},
+				{
+					"value": "Burntisland"
+				},
+				{
+					"value": "Burntwood"
+				},
+				{
+					"value": "Burra"
+				},
+				{
+					"value": "Bursa"
+				},
+				{
+					"value": "Burslem"
+				},
+				{
+					"value": "Burton upon Trent"
+				},
+				{
+					"value": "Bury"
+				},
+				{
+					"value": "Bushey"
+				},
+				{
+					"value": "Busselton"
+				},
+				{
+					"value": "Bussigny"
+				},
+				{
+					"value": "Bussy-Saint-Georges"
+				},
+				{
+					"value": "Butte"
+				},
+				{
+					"value": "Butterworth"
+				},
+				{
+					"value": "Buxton"
+				},
+				{
+					"value": "Bydgoszcz"
+				},
+				{
+					"value": "Byron Bay"
+				},
+				{
+					"value": "Byzantium"
+				},
+				{
+					"value": "Cabo San Lucas"
+				},
+				{
+					"value": "Caboolture"
+				},
+				{
+					"value": "Cabramurra"
+				},
+				{
+					"value": "Cáceres"
+				},
+				{
+					"value": "Cachan"
+				},
+				{
+					"value": "Cache Creek"
+				},
+				{
+					"value": "Cádiz"
+				},
+				{
+					"value": "Caen"
+				},
+				{
+					"value": "Caernarfon"
+				},
+				{
+					"value": "Caerphilly"
+				},
+				{
+					"value": "Cagliari"
+				},
+				{
+					"value": "Cagnes-sur-Mer"
+				},
+				{
+					"value": "Cairns"
+				},
+				{
+					"value": "Cairo"
+				},
+				{
+					"value": "Calabasas"
+				},
+				{
+					"value": "Calais"
+				},
+				{
+					"value": "Caldicot"
+				},
+				{
+					"value": "Caldwell"
+				},
+				{
+					"value": "Caledon"
+				},
+				{
+					"value": "Calexico"
+				},
+				{
+					"value": "Cali"
+				},
+				{
+					"value": "California City"
+				},
+				{
+					"value": "Callander"
+				},
+				{
+					"value": "Calne"
+				},
+				{
+					"value": "Caloundra"
+				},
+				{
+					"value": "Caluire-et-Cuire"
+				},
+				{
+					"value": "Camberley"
+				},
+				{
+					"value": "Camborne"
+				},
+				{
+					"value": "Cambrai"
+				},
+				{
+					"value": "Cambridge"
+				},
+				{
+					"value": "Cambuslang"
+				},
+				{
+					"value": "Camden"
+				},
+				{
+					"value": "Camden Town"
+				},
+				{
+					"value": "Camelford"
+				},
+				{
+					"value": "Campbell"
+				},
+				{
+					"value": "Campbell River"
+				},
+				{
+					"value": "Campbellton"
+				},
+				{
+					"value": "Campbeltown"
+				},
+				{
+					"value": "Campinas"
+				},
+				{
+					"value": "Camps Bay"
+				},
+				{
+					"value": "Canberra"
+				},
+				{
+					"value": "Canmore"
+				},
+				{
+					"value": "Cannes"
+				},
+				{
+					"value": "Canning Town"
+				},
+				{
+					"value": "Cannock"
+				},
+				{
+					"value": "Cannon Beach"
+				},
+				{
+					"value": "Cañon City"
+				},
+				{
+					"value": "Canterbury"
+				},
+				{
+					"value": "Canton"
+				},
+				{
+					"value": "Canvey Island"
+				},
+				{
+					"value": "Cape Coral"
+				},
+				{
+					"value": "Cape Girardeau"
+				},
+				{
+					"value": "Cape May"
+				},
+				{
+					"value": "Cape Town"
+				},
+				{
+					"value": "Cape Tribulation"
+				},
+				{
+					"value": "Carbondale"
+				},
+				{
+					"value": "Carcassonne"
+				},
+				{
+					"value": "Cardiff"
+				},
+				{
+					"value": "Cardigan"
+				},
+				{
+					"value": "Cardston"
+				},
+				{
+					"value": "Carlisle"
+				},
+				{
+					"value": "Carlsbad"
+				},
+				{
+					"value": "Carlstadt New Jersey"
+				},
+				{
+					"value": "Carmacks Yukon"
+				},
+				{
+					"value": "Carmel"
+				},
+				{
+					"value": "Carmel-by-the-Sea"
+				},
+				{
+					"value": "Carnarvon"
+				},
+				{
+					"value": "Carnforth"
+				},
+				{
+					"value": "Carnoustie"
+				},
+				{
+					"value": "Carol Stream"
+				},
+				{
+					"value": "Carouge"
+				},
+				{
+					"value": "Carpentras"
+				},
+				{
+					"value": "Carrickfergus"
+				},
+				{
+					"value": "Carrick-on-Shannon"
+				},
+				{
+					"value": "Carrollton"
+				},
+				{
+					"value": "Carson"
+				},
+				{
+					"value": "Cartagena"
+				},
+				{
+					"value": "Casa Grande"
+				},
+				{
+					"value": "Casablanca"
+				},
+				{
+					"value": "Cascais"
+				},
+				{
+					"value": "Cashel"
+				},
+				{
+					"value": "Casino"
+				},
+				{
+					"value": "Casper"
+				},
+				{
+					"value": "Castanheira de Pera"
+				},
+				{
+					"value": "Castellammare di Stabia"
+				},
+				{
+					"value": "Castle Cary"
+				},
+				{
+					"value": "Castle Douglas"
+				},
+				{
+					"value": "Castleford"
+				},
+				{
+					"value": "Castlegar"
+				},
+				{
+					"value": "Castletown"
+				},
+				{
+					"value": "Castres"
+				},
+				{
+					"value": "Castries"
+				},
+				{
+					"value": "Catania"
+				},
+				{
+					"value": "Caterham"
+				},
+				{
+					"value": "Catford"
+				},
+				{
+					"value": "Catskill"
+				},
+				{
+					"value": "Catterick Garrison"
+				},
+				{
+					"value": "Cavaillon"
+				},
+				{
+					"value": "Cayenne"
+				},
+				{
+					"value": "Cedar City"
+				},
+				{
+					"value": "Cedar Rapids"
+				},
+				{
+					"value": "Ceduna"
+				},
+				{
+					"value": "Cenon"
+				},
+				{
+					"value": "Centennial"
+				},
+				{
+					"value": "Centurion"
+				},
+				{
+					"value": "Cergy"
+				},
+				{
+					"value": "Cerritos"
+				},
+				{
+					"value": "Chadderton"
+				},
+				{
+					"value": "Chafford Hundred"
+				},
+				{
+					"value": "Chagrin Falls"
+				},
+				{
+					"value": "Châlons-en-Champagne"
+				},
+				{
+					"value": "Chalon-sur-Saône"
+				},
+				{
+					"value": "Cham"
+				},
+				{
+					"value": "Chambéry"
+				},
+				{
+					"value": "Champaign"
+				},
+				{
+					"value": "Champigny-sur-Marne"
+				},
+				{
+					"value": "Champs-sur-Marne"
+				},
+				{
+					"value": "Chandler"
+				},
+				{
+					"value": "Chania"
+				},
+				{
+					"value": "Chanute"
+				},
+				{
+					"value": "Chapel-en-le-Frith"
+				},
+				{
+					"value": "Chard"
+				},
+				{
+					"value": "Charenton-le-Pont"
+				},
+				{
+					"value": "Charkhi Dadri"
+				},
+				{
+					"value": "Charleroi"
+				},
+				{
+					"value": "Charleston"
+				},
+				{
+					"value": "Charlestown"
+				},
+				{
+					"value": "Charleville"
+				},
+				{
+					"value": "Charleville-Mézières"
+				},
+				{
+					"value": "Charlotte Amalie"
+				},
+				{
+					"value": "Charlottetown"
+				},
+				{
+					"value": "Charters Towers"
+				},
+				{
+					"value": "Chartres"
+				},
+				{
+					"value": "Châteauroux"
+				},
+				{
+					"value": "Châtelet"
+				},
+				{
+					"value": "Châtellerault"
+				},
+				{
+					"value": "Châtel-Saint-Denis"
+				},
+				{
+					"value": "Châtenay-Malabry"
+				},
+				{
+					"value": "Chatham"
+				},
+				{
+					"value": "Chatham-Kent"
+				},
+				{
+					"value": "Châtillon"
+				},
+				{
+					"value": "Chatou"
+				},
+				{
+					"value": "Chattanooga"
+				},
+				{
+					"value": "Chaumont"
+				},
+				{
+					"value": "Cheadle"
+				},
+				{
+					"value": "Cheadle Hulme"
+				},
+				{
+					"value": "Chefchaouen"
+				},
+				{
+					"value": "Chelles"
+				},
+				{
+					"value": "Chelmsford"
+				},
+				{
+					"value": "Cheltenham"
+				},
+				{
+					"value": "Chelyabinsk"
+				},
+				{
+					"value": "Chêne-Bougeries"
+				},
+				{
+					"value": "Cheongju"
+				},
+				{
+					"value": "Chepstow"
+				},
+				{
+					"value": "Cherbourg-Octeville"
+				},
+				{
+					"value": "Chertsey"
+				},
+				{
+					"value": "Chesham"
+				},
+				{
+					"value": "Cheshunt"
+				},
+				{
+					"value": "Chester"
+				},
+				{
+					"value": "Chester Nova Scotia"
+				},
+				{
+					"value": "Chester-le-Street"
+				},
+				{
+					"value": "Chevy Chase"
+				},
+				{
+					"value": "Chiasso"
+				},
+				{
+					"value": "Chicago"
+				},
+				{
+					"value": "Chichester"
+				},
+				{
+					"value": "Chico"
+				},
+				{
+					"value": "Chièvres"
+				},
+				{
+					"value": "Chigwell"
+				},
+				{
+					"value": "Chihuahua"
+				},
+				{
+					"value": "Chillagoe"
+				},
+				{
+					"value": "Chillicothe"
+				},
+				{
+					"value": "Chilliwack"
+				},
+				{
+					"value": "Chimay"
+				},
+				{
+					"value": "Chinatown"
+				},
+				{
+					"value": "Chinchilla"
+				},
+				{
+					"value": "Chingford"
+				},
+				{
+					"value": "Chino"
+				},
+				{
+					"value": "Chino Hills"
+				},
+				{
+					"value": "Chiny"
+				},
+				{
+					"value": "Chippenham"
+				},
+				{
+					"value": "Chipping Norton"
+				},
+				{
+					"value": "Chipping Ongar"
+				},
+				{
+					"value": "Chi?inau"
+				},
+				{
+					"value": "Choisy-le-Roi"
+				},
+				{
+					"value": "Cholet"
+				},
+				{
+					"value": "Chorley"
+				},
+				{
+					"value": "Chornobyl"
+				},
+				{
+					"value": "Christchurch"
+				},
+				{
+					"value": "Christiansted"
+				},
+				{
+					"value": "Chula Vista"
+				},
+				{
+					"value": "Chur"
+				},
+				{
+					"value": "Church Stretton"
+				},
+				{
+					"value": "Churchill"
+				},
+				{
+					"value": "Cienfuegos"
+				},
+				{
+					"value": "Ciney"
+				},
+				{
+					"value": "City of London"
+				},
+				{
+					"value": "Cizre"
+				},
+				{
+					"value": "Clacton-on-Sea"
+				},
+				{
+					"value": "Clamart"
+				},
+				{
+					"value": "Clapham"
+				},
+				{
+					"value": "Claremont"
+				},
+				{
+					"value": "Clarksdale"
+				},
+				{
+					"value": "Clarksville"
+				},
+				{
+					"value": "Clay Cross"
+				},
+				{
+					"value": "Clearwater"
+				},
+				{
+					"value": "Cleckheaton"
+				},
+				{
+					"value": "Cleethorpes"
+				},
+				{
+					"value": "Clemson"
+				},
+				{
+					"value": "Clermont"
+				},
+				{
+					"value": "Clermont-Ferrand"
+				},
+				{
+					"value": "Clevedon"
+				},
+				{
+					"value": "Cleveland"
+				},
+				{
+					"value": "Clichy"
+				},
+				{
+					"value": "Clichy-sous-Bois"
+				},
+				{
+					"value": "Clifton"
+				},
+				{
+					"value": "Clinton"
+				},
+				{
+					"value": "Clinton Massachusetts"
+				},
+				{
+					"value": "Clitheroe"
+				},
+				{
+					"value": "Cloncurry"
+				},
+				{
+					"value": "Clondalkin"
+				},
+				{
+					"value": "Clones County Monaghan"
+				},
+				{
+					"value": "Closter"
+				},
+				{
+					"value": "Cloudcroft"
+				},
+				{
+					"value": "Clovis"
+				},
+				{
+					"value": "Clydebank"
+				},
+				{
+					"value": "Coalville"
+				},
+				{
+					"value": "Coalwood"
+				},
+				{
+					"value": "Coatbridge"
+				},
+				{
+					"value": "Cobar"
+				},
+				{
+					"value": "Cobourg"
+				},
+				{
+					"value": "Cochrane"
+				},
+				{
+					"value": "Cockburn Town"
+				},
+				{
+					"value": "Cockermouth"
+				},
+				{
+					"value": "Cocoa Beach"
+				},
+				{
+					"value": "Cody"
+				},
+				{
+					"value": "Coeur d'Alene"
+				},
+				{
+					"value": "Coffs Harbour"
+				},
+				{
+					"value": "Coimbra"
+				},
+				{
+					"value": "Colchester"
+				},
+				{
+					"value": "Cold Spring"
+				},
+				{
+					"value": "Coldstream"
+				},
+				{
+					"value": "Coleshill"
+				},
+				{
+					"value": "College Park"
+				},
+				{
+					"value": "College Station"
+				},
+				{
+					"value": "Colma"
+				},
+				{
+					"value": "Colmar"
+				},
+				{
+					"value": "Colne"
+				},
+				{
+					"value": "Cologne"
+				},
+				{
+					"value": "Colombes"
+				},
+				{
+					"value": "Colombo"
+				},
+				{
+					"value": "Colomiers"
+				},
+				{
+					"value": "Colorado Springs"
+				},
+				{
+					"value": "Columbia"
+				},
+				{
+					"value": "Columbus"
+				},
+				{
+					"value": "Colusa"
+				},
+				{
+					"value": "Colwyn Bay"
+				},
+				{
+					"value": "Combs-la-Ville"
+				},
+				{
+					"value": "Comines-Warneton"
+				},
+				{
+					"value": "Commerce City"
+				},
+				{
+					"value": "Como"
+				},
+				{
+					"value": "Comox British Columbia"
+				},
+				{
+					"value": "Compiègne"
+				},
+				{
+					"value": "Compton"
+				},
+				{
+					"value": "Conakry"
+				},
+				{
+					"value": "Conception Bay South"
+				},
+				{
+					"value": "Concord"
+				},
+				{
+					"value": "Conflans-Sainte-Honorine"
+				},
+				{
+					"value": "Congleton"
+				},
+				{
+					"value": "Connah's Quay"
+				},
+				{
+					"value": "Conroe"
+				},
+				{
+					"value": "Consett"
+				},
+				{
+					"value": "Constantia"
+				},
+				{
+					"value": "Constantinople"
+				},
+				{
+					"value": "Conthey"
+				},
+				{
+					"value": "Coober Pedy"
+				},
+				{
+					"value": "Cookeville"
+				},
+				{
+					"value": "Cooktown"
+				},
+				{
+					"value": "Cooma"
+				},
+				{
+					"value": "Cooperstown"
+				},
+				{
+					"value": "Coos Bay"
+				},
+				{
+					"value": "Copenhagen"
+				},
+				{
+					"value": "Coppet"
+				},
+				{
+					"value": "Coquitlam"
+				},
+				{
+					"value": "Coral Springs"
+				},
+				{
+					"value": "Corbeil-Essonnes"
+				},
+				{
+					"value": "Corbridge"
+				},
+				{
+					"value": "Corby"
+				},
+				{
+					"value": "Córdoba"
+				},
+				{
+					"value": "Corinth"
+				},
+				{
+					"value": "Cork"
+				},
+				{
+					"value": "Cormeilles-en-Parisis"
+				},
+				{
+					"value": "Cornwall"
+				},
+				{
+					"value": "Corona"
+				},
+				{
+					"value": "Coronado"
+				},
+				{
+					"value": "Corpus Christi"
+				},
+				{
+					"value": "Corsham"
+				},
+				{
+					"value": "Corsier-sur-Vevey"
+				},
+				{
+					"value": "Corvallis"
+				},
+				{
+					"value": "Cossonay"
+				},
+				{
+					"value": "Costa Mesa"
+				},
+				{
+					"value": "Coudekerque-Branche"
+				},
+				{
+					"value": "Courbevoie"
+				},
+				{
+					"value": "Courtenay"
+				},
+				{
+					"value": "Courtrai"
+				},
+				{
+					"value": "Couvin"
+				},
+				{
+					"value": "Coventry"
+				},
+				{
+					"value": "Cowes"
+				},
+				{
+					"value": "Cowra"
+				},
+				{
+					"value": "Cradock Eastern Cape"
+				},
+				{
+					"value": "Crail"
+				},
+				{
+					"value": "Cramlington"
+				},
+				{
+					"value": "Cranbrook"
+				},
+				{
+					"value": "Cranston"
+				},
+				{
+					"value": "Crawley"
+				},
+				{
+					"value": "Crediton"
+				},
+				{
+					"value": "Creil"
+				},
+				{
+					"value": "Crenshaw"
+				},
+				{
+					"value": "Crescent City"
+				},
+				{
+					"value": "Cresskill New Jersey"
+				},
+				{
+					"value": "Creston"
+				},
+				{
+					"value": "Créteil"
+				},
+				{
+					"value": "Crewe"
+				},
+				{
+					"value": "Criccieth"
+				},
+				{
+					"value": "Crickhowell"
+				},
+				{
+					"value": "Crissier"
+				},
+				{
+					"value": "Croglio"
+				},
+				{
+					"value": "Croix"
+				},
+				{
+					"value": "Cromer"
+				},
+				{
+					"value": "Crosby"
+				},
+				{
+					"value": "Crowborough"
+				},
+				{
+					"value": "Crowthorne"
+				},
+				{
+					"value": "Crumlin"
+				},
+				{
+					"value": "Cruz Bay"
+				},
+				{
+					"value": "Crystal Beach Ontario"
+				},
+				{
+					"value": "Ctesiphon"
+				},
+				{
+					"value": "Cuckfield"
+				},
+				{
+					"value": "Cudrefin"
+				},
+				{
+					"value": "Cuenca"
+				},
+				{
+					"value": "Culiacán"
+				},
+				{
+					"value": "Cully"
+				},
+				{
+					"value": "Culver City"
+				},
+				{
+					"value": "Cumbernauld"
+				},
+				{
+					"value": "Cumming"
+				},
+				{
+					"value": "Cumnock"
+				},
+				{
+					"value": "Cunnamulla"
+				},
+				{
+					"value": "Cupar"
+				},
+				{
+					"value": "Cupertino"
+				},
+				{
+					"value": "Curitiba"
+				},
+				{
+					"value": "Cusco"
+				},
+				{
+					"value": "Cuttack"
+				},
+				{
+					"value": "Cwmbran"
+				},
+				{
+					"value": "Cypress"
+				},
+				{
+					"value": "Cyzicus"
+				},
+				{
+					"value": "Czestochowa"
+				},
+				{
+					"value": "Dabiq"
+				},
+				{
+					"value": "Daegu"
+				},
+				{
+					"value": "Dagenham"
+				},
+				{
+					"value": "Dakar"
+				},
+				{
+					"value": "Dalby"
+				},
+				{
+					"value": "Dalkeith"
+				},
+				{
+					"value": "Dallas"
+				},
+				{
+					"value": "Dalston"
+				},
+				{
+					"value": "Dalton"
+				},
+				{
+					"value": "Daly City"
+				},
+				{
+					"value": "Damascus"
+				},
+				{
+					"value": "Dammam"
+				},
+				{
+					"value": "Dammarie-les-Lys"
+				},
+				{
+					"value": "Damme"
+				},
+				{
+					"value": "Dampier"
+				},
+				{
+					"value": "Dana Point"
+				},
+				{
+					"value": "Danbury"
+				},
+				{
+					"value": "Danville"
+				},
+				{
+					"value": "Dar es Salaam"
+				},
+				{
+					"value": "Daraa"
+				},
+				{
+					"value": "Darlington"
+				},
+				{
+					"value": "Dartford"
+				},
+				{
+					"value": "Dartmouth"
+				},
+				{
+					"value": "Darwen"
+				},
+				{
+					"value": "Darwin"
+				},
+				{
+					"value": "Daugavpils"
+				},
+				{
+					"value": "Dauphin Island"
+				},
+				{
+					"value": "Daventry"
+				},
+				{
+					"value": "Davis"
+				},
+				{
+					"value": "Davos"
+				},
+				{
+					"value": "Davyhulme"
+				},
+				{
+					"value": "Dawlish"
+				},
+				{
+					"value": "Dawson City"
+				},
+				{
+					"value": "Dawson Creek"
+				},
+				{
+					"value": "Dax"
+				},
+				{
+					"value": "Daylesford"
+				},
+				{
+					"value": "Dayton"
+				},
+				{
+					"value": "Daytona Beach"
+				},
+				{
+					"value": "De Valls Bluff"
+				},
+				{
+					"value": "Deadwood"
+				},
+				{
+					"value": "Deal"
+				},
+				{
+					"value": "Dearborn"
+				},
+				{
+					"value": "Dease Lake"
+				},
+				{
+					"value": "Debar"
+				},
+				{
+					"value": "Decatur"
+				},
+				{
+					"value": "Décines-Charpieu"
+				},
+				{
+					"value": "Deep River"
+				},
+				{
+					"value": "Deer Lake Newfoundland and Labrador"
+				},
+				{
+					"value": "Deerfield"
+				},
+				{
+					"value": "Deerfield Beach"
+				},
+				{
+					"value": "Deinze"
+				},
+				{
+					"value": "Deir ez-Zor"
+				},
+				{
+					"value": "Del Mar"
+				},
+				{
+					"value": "Del Rio"
+				},
+				{
+					"value": "Delémont"
+				},
+				{
+					"value": "Delft"
+				},
+				{
+					"value": "Delhi"
+				},
+				{
+					"value": "Deline"
+				},
+				{
+					"value": "Delray"
+				},
+				{
+					"value": "Delray Beach"
+				},
+				{
+					"value": "Delta British Columbia"
+				},
+				{
+					"value": "Denain"
+				},
+				{
+					"value": "Deniliquin"
+				},
+				{
+					"value": "Denison"
+				},
+				{
+					"value": "Denny"
+				},
+				{
+					"value": "Denton"
+				},
+				{
+					"value": "Denver"
+				},
+				{
+					"value": "Derbent"
+				},
+				{
+					"value": "Derby"
+				},
+				{
+					"value": "Dereham"
+				},
+				{
+					"value": "Derry"
+				},
+				{
+					"value": "Derventa"
+				},
+				{
+					"value": "Des Moines"
+				},
+				{
+					"value": "Des Plaines"
+				},
+				{
+					"value": "Destin"
+				},
+				{
+					"value": "Detroit"
+				},
+				{
+					"value": "Deuil-la-Barre"
+				},
+				{
+					"value": "Devizes"
+				},
+				{
+					"value": "Devprayag"
+				},
+				{
+					"value": "Dewsbury"
+				},
+				{
+					"value": "Dhahran"
+				},
+				{
+					"value": "Dhaka"
+				},
+				{
+					"value": "Dhanbad"
+				},
+				{
+					"value": "Dharamsala"
+				},
+				{
+					"value": "Dharmapuri"
+				},
+				{
+					"value": "Diamond Bar"
+				},
+				{
+					"value": "Didcot"
+				},
+				{
+					"value": "Didsbury"
+				},
+				{
+					"value": "Dieppe"
+				},
+				{
+					"value": "Diessenhofen"
+				},
+				{
+					"value": "Diest"
+				},
+				{
+					"value": "Dietikon"
+				},
+				{
+					"value": "Differdange"
+				},
+				{
+					"value": "Digby"
+				},
+				{
+					"value": "Dijon"
+				},
+				{
+					"value": "Dildo Newfoundland and Labrador"
+				},
+				{
+					"value": "Dili"
+				},
+				{
+					"value": "Dilsen-Stokkem"
+				},
+				{
+					"value": "Dinant"
+				},
+				{
+					"value": "Dingwall"
+				},
+				{
+					"value": "Diomede"
+				},
+				{
+					"value": "Diss"
+				},
+				{
+					"value": "Distomo"
+				},
+				{
+					"value": "Dixmude"
+				},
+				{
+					"value": "Dixville Notch"
+				},
+				{
+					"value": "Diyarbakir"
+				},
+				{
+					"value": "Djibouti"
+				},
+				{
+					"value": "Dodge City"
+				},
+				{
+					"value": "Dole"
+				},
+				{
+					"value": "Dolgellau"
+				},
+				{
+					"value": "Doncaster"
+				},
+				{
+					"value": "Donegal"
+				},
+				{
+					"value": "Donetsk"
+				},
+				{
+					"value": "Doral"
+				},
+				{
+					"value": "Dorchester"
+				},
+				{
+					"value": "Dorrigo"
+				},
+				{
+					"value": "Dortmund"
+				},
+				{
+					"value": "Dothan"
+				},
+				{
+					"value": "Douai"
+				},
+				{
+					"value": "Douala"
+				},
+				{
+					"value": "Douglas"
+				},
+				{
+					"value": "Dover"
+				},
+				{
+					"value": "Downey"
+				},
+				{
+					"value": "Downpatrick"
+				},
+				{
+					"value": "Drachten"
+				},
+				{
+					"value": "Draguignan"
+				},
+				{
+					"value": "Drancy"
+				},
+				{
+					"value": "Draveil"
+				},
+				{
+					"value": "Drayton Valley"
+				},
+				{
+					"value": "Dreux"
+				},
+				{
+					"value": "Drogheda"
+				},
+				{
+					"value": "Droitwich Spa"
+				},
+				{
+					"value": "Dronfield"
+				},
+				{
+					"value": "Drouin"
+				},
+				{
+					"value": "Dryden Ontario"
+				},
+				{
+					"value": "Dubai"
+				},
+				{
+					"value": "Dubbo"
+				},
+				{
+					"value": "Dübendorf"
+				},
+				{
+					"value": "Dublin"
+				},
+				{
+					"value": "Dubuque"
+				},
+				{
+					"value": "Dudelange"
+				},
+				{
+					"value": "Dudley"
+				},
+				{
+					"value": "Dufftown"
+				},
+				{
+					"value": "Dukinfield"
+				},
+				{
+					"value": "Duluth"
+				},
+				{
+					"value": "Dumbarton"
+				},
+				{
+					"value": "Dumfries"
+				},
+				{
+					"value": "Dún Laoghaire"
+				},
+				{
+					"value": "Dunbar"
+				},
+				{
+					"value": "Dunblane"
+				},
+				{
+					"value": "Duncan"
+				},
+				{
+					"value": "Dundalk"
+				},
+				{
+					"value": "Dundas"
+				},
+				{
+					"value": "Dundee"
+				},
+				{
+					"value": "Dunedin"
+				},
+				{
+					"value": "Dunellen"
+				},
+				{
+					"value": "Dunfermline"
+				},
+				{
+					"value": "Dungannon"
+				},
+				{
+					"value": "Dungarvan"
+				},
+				{
+					"value": "Dunkeld"
+				},
+				{
+					"value": "Dunkirk"
+				},
+				{
+					"value": "Dunnville Ontario"
+				},
+				{
+					"value": "Dunoon"
+				},
+				{
+					"value": "Duns"
+				},
+				{
+					"value": "Durango"
+				},
+				{
+					"value": "Durban"
+				},
+				{
+					"value": "Durbuy"
+				},
+				{
+					"value": "Durham"
+				},
+				{
+					"value": "Durrës"
+				},
+				{
+					"value": "Dushanbe"
+				},
+				{
+					"value": "Düsseldorf"
+				},
+				{
+					"value": "Easington County Durham"
+				},
+				{
+					"value": "East Dulwich"
+				},
+				{
+					"value": "East Finchley"
+				},
+				{
+					"value": "East Greenwich"
+				},
+				{
+					"value": "East Grinstead"
+				},
+				{
+					"value": "East Ham"
+				},
+				{
+					"value": "East Kilbride"
+				},
+				{
+					"value": "East Lansing"
+				},
+				{
+					"value": "East London"
+				},
+				{
+					"value": "East Orange"
+				},
+				{
+					"value": "East St. Louis"
+				},
+				{
+					"value": "Eastbourne"
+				},
+				{
+					"value": "Eastleigh"
+				},
+				{
+					"value": "Easton"
+				},
+				{
+					"value": "Eastwood"
+				},
+				{
+					"value": "Eau Claire"
+				},
+				{
+					"value": "Eaubonne"
+				},
+				{
+					"value": "Ebbw Vale"
+				},
+				{
+					"value": "Ebikon"
+				},
+				{
+					"value": "Eccles"
+				},
+				{
+					"value": "Échallens"
+				},
+				{
+					"value": "Échirolles"
+				},
+				{
+					"value": "Echternach"
+				},
+				{
+					"value": "Echuca"
+				},
+				{
+					"value": "Ecublens"
+				},
+				{
+					"value": "Eden"
+				},
+				{
+					"value": "Eden Prairie"
+				},
+				{
+					"value": "Edenbridge"
+				},
+				{
+					"value": "Edgbaston"
+				},
+				{
+					"value": "Edinburg"
+				},
+				{
+					"value": "Edinburgh"
+				},
+				{
+					"value": "Edirne"
+				},
+				{
+					"value": "Edmonton"
+				},
+				{
+					"value": "Edmundston"
+				},
+				{
+					"value": "Edson"
+				},
+				{
+					"value": "Eeklo"
+				},
+				{
+					"value": "Egham"
+				},
+				{
+					"value": "Eglisau"
+				},
+				{
+					"value": "Eilat"
+				},
+				{
+					"value": "Eindhoven"
+				},
+				{
+					"value": "Einsiedeln"
+				},
+				{
+					"value": "Eisenach"
+				},
+				{
+					"value": "Eisleben"
+				},
+				{
+					"value": "El Alamein"
+				},
+				{
+					"value": "El Alto"
+				},
+				{
+					"value": "El Cajon"
+				},
+				{
+					"value": "El Centro"
+				},
+				{
+					"value": "El Cerrito"
+				},
+				{
+					"value": "El Monte"
+				},
+				{
+					"value": "El Paso"
+				},
+				{
+					"value": "El Segundo"
+				},
+				{
+					"value": "Élancourt"
+				},
+				{
+					"value": "Elche"
+				},
+				{
+					"value": "Eleusis"
+				},
+				{
+					"value": "Elgg"
+				},
+				{
+					"value": "Elgin"
+				},
+				{
+					"value": "Elizabeth"
+				},
+				{
+					"value": "Elizabethtown"
+				},
+				{
+					"value": "Elk Grove"
+				},
+				{
+					"value": "Elk River"
+				},
+				{
+					"value": "Elkhart"
+				},
+				{
+					"value": "Elko"
+				},
+				{
+					"value": "Elland"
+				},
+				{
+					"value": "Ellensburg"
+				},
+				{
+					"value": "Ellesmere Port"
+				},
+				{
+					"value": "Ellesmere Shropshire"
+				},
+				{
+					"value": "Ellon"
+				},
+				{
+					"value": "Elmsford"
+				},
+				{
+					"value": "Elmwood Park"
+				},
+				{
+					"value": "Elstree"
+				},
+				{
+					"value": "Eltham"
+				},
+				{
+					"value": "Ely"
+				},
+				{
+					"value": "Emerald"
+				},
+				{
+					"value": "Emerson"
+				},
+				{
+					"value": "Emeryville"
+				},
+				{
+					"value": "Emmen"
+				},
+				{
+					"value": "Emsworth"
+				},
+				{
+					"value": "Encinitas"
+				},
+				{
+					"value": "Enfield Town"
+				},
+				{
+					"value": "Enghien"
+				},
+				{
+					"value": "Englewood"
+				},
+				{
+					"value": "Englewood Cliffs New Jersey"
+				},
+				{
+					"value": "Enniskillen"
+				},
+				{
+					"value": "Ensenada"
+				},
+				{
+					"value": "Entebbe"
+				},
+				{
+					"value": "Enugu"
+				},
+				{
+					"value": "Épernay"
+				},
+				{
+					"value": "Épinal"
+				},
+				{
+					"value": "Épinay-sur-Seine"
+				},
+				{
+					"value": "Epping"
+				},
+				{
+					"value": "Epsom"
+				},
+				{
+					"value": "Erbil"
+				},
+				{
+					"value": "Erdington"
+				},
+				{
+					"value": "Eretria"
+				},
+				{
+					"value": "Erfurt"
+				},
+				{
+					"value": "Ericeira"
+				},
+				{
+					"value": "Erlach"
+				},
+				{
+					"value": "Ermont"
+				},
+				{
+					"value": "Erzurum"
+				},
+				{
+					"value": "Esbjerg"
+				},
+				{
+					"value": "Esch-sur-Alzette"
+				},
+				{
+					"value": "Escondido"
+				},
+				{
+					"value": "Esher"
+				},
+				{
+					"value": "Eskisehir"
+				},
+				{
+					"value": "Esperance"
+				},
+				{
+					"value": "Espoo"
+				},
+				{
+					"value": "Essaouira"
+				},
+				{
+					"value": "Essex"
+				},
+				{
+					"value": "Estavayer-le-Lac"
+				},
+				{
+					"value": "Estcourt Station Maine"
+				},
+				{
+					"value": "Esterhazy"
+				},
+				{
+					"value": "Esztergom"
+				},
+				{
+					"value": "Étampes"
+				},
+				{
+					"value": "Eton"
+				},
+				{
+					"value": "Eucla"
+				},
+				{
+					"value": "Eupen"
+				},
+				{
+					"value": "Eureka Springs"
+				},
+				{
+					"value": "Evanston"
+				},
+				{
+					"value": "Evansville"
+				},
+				{
+					"value": "Everett"
+				},
+				{
+					"value": "Evesham"
+				},
+				{
+					"value": "Évreux"
+				},
+				{
+					"value": "Évry"
+				},
+				{
+					"value": "Ewell"
+				},
+				{
+					"value": "Exeter"
+				},
+				{
+					"value": "Exmouth"
+				},
+				{
+					"value": "Fairbanks"
+				},
+				{
+					"value": "Fairfield"
+				},
+				{
+					"value": "Fairford"
+				},
+				{
+					"value": "Fairview"
+				},
+				{
+					"value": "Faisalabad"
+				},
+				{
+					"value": "Faiyum"
+				},
+				{
+					"value": "Fakenham"
+				},
+				{
+					"value": "Falkirk"
+				},
+				{
+					"value": "Falkland"
+				},
+				{
+					"value": "Fall River"
+				},
+				{
+					"value": "Fallowfield"
+				},
+				{
+					"value": "Falls Creek"
+				},
+				{
+					"value": "Fallujah"
+				},
+				{
+					"value": "Falmouth"
+				},
+				{
+					"value": "Far Hills"
+				},
+				{
+					"value": "Fareham"
+				},
+				{
+					"value": "Fargo"
+				},
+				{
+					"value": "Faridabad"
+				},
+				{
+					"value": "Faringdon"
+				},
+				{
+					"value": "Farmington"
+				},
+				{
+					"value": "Farnborough"
+				},
+				{
+					"value": "Farnham"
+				},
+				{
+					"value": "Farnworth"
+				},
+				{
+					"value": "Faro"
+				},
+				{
+					"value": "Fatehpur Sikri"
+				},
+				{
+					"value": "Fátima"
+				},
+				{
+					"value": "Faversham"
+				},
+				{
+					"value": "Fayetteville"
+				},
+				{
+					"value": "Featherstone"
+				},
+				{
+					"value": "Federal Way"
+				},
+				{
+					"value": "Felixstowe"
+				},
+				{
+					"value": "Fergus Ontario"
+				},
+				{
+					"value": "Ferguson"
+				},
+				{
+					"value": "Ferndale"
+				},
+				{
+					"value": "Ferrara"
+				},
+				{
+					"value": "Fes"
+				},
+				{
+					"value": "Figueiró dos Vinhos Municipality"
+				},
+				{
+					"value": "Filey"
+				},
+				{
+					"value": "Filton"
+				},
+				{
+					"value": "Finchley"
+				},
+				{
+					"value": "Fira"
+				},
+				{
+					"value": "Fitzroy Crossing"
+				},
+				{
+					"value": "Flagstaff"
+				},
+				{
+					"value": "Flawil"
+				},
+				{
+					"value": "Fleet"
+				},
+				{
+					"value": "Fleetwood"
+				},
+				{
+					"value": "Flemington"
+				},
+				{
+					"value": "Fleurus"
+				},
+				{
+					"value": "Fleury-les-Aubrais"
+				},
+				{
+					"value": "Flin Flon"
+				},
+				{
+					"value": "Flint"
+				},
+				{
+					"value": "Flitwick"
+				},
+				{
+					"value": "Florence"
+				},
+				{
+					"value": "Florenville"
+				},
+				{
+					"value": "Florham Park"
+				},
+				{
+					"value": "Flying Fish Cove"
+				},
+				{
+					"value": "Foggy Bottom"
+				},
+				{
+					"value": "Fogo Island"
+				},
+				{
+					"value": "Folkestone"
+				},
+				{
+					"value": "Folsom"
+				},
+				{
+					"value": "Fond du Lac"
+				},
+				{
+					"value": "Fontaine"
+				},
+				{
+					"value": "Fontaine-l'Évêque"
+				},
+				{
+					"value": "Fontana"
+				},
+				{
+					"value": "Fontenay-aux-Roses"
+				},
+				{
+					"value": "Fontenay-sous-Bois"
+				},
+				{
+					"value": "Forbach"
+				},
+				{
+					"value": "Forbes"
+				},
+				{
+					"value": "Forest Gate"
+				},
+				{
+					"value": "Forfar"
+				},
+				{
+					"value": "Forks"
+				},
+				{
+					"value": "Forlì"
+				},
+				{
+					"value": "Formby"
+				},
+				{
+					"value": "Forres"
+				},
+				{
+					"value": "Forster"
+				},
+				{
+					"value": "Fort Bragg"
+				},
+				{
+					"value": "Fort Campbell"
+				},
+				{
+					"value": "Fort Collins"
+				},
+				{
+					"value": "Fort Erie"
+				},
+				{
+					"value": "Fort George G. Meade"
+				},
+				{
+					"value": "Fort Langley British Columbia"
+				},
+				{
+					"value": "Fort Lauderdale"
+				},
+				{
+					"value": "Fort Myers"
+				},
+				{
+					"value": "Fort Pierce"
+				},
+				{
+					"value": "Fort Polk"
+				},
+				{
+					"value": "Fort Riley"
+				},
+				{
+					"value": "Fort Smith"
+				},
+				{
+					"value": "Fort St. John"
+				},
+				{
+					"value": "Fort Walton Beach"
+				},
+				{
+					"value": "Fort Wayne"
+				},
+				{
+					"value": "Fort William"
+				},
+				{
+					"value": "Fort Worth"
+				},
+				{
+					"value": "Fortaleza"
+				},
+				{
+					"value": "Fort-de-France"
+				},
+				{
+					"value": "Fosses-la-Ville"
+				},
+				{
+					"value": "Foster City"
+				},
+				{
+					"value": "Fountain Valley"
+				},
+				{
+					"value": "Fountainbridge"
+				},
+				{
+					"value": "Fowey"
+				},
+				{
+					"value": "Framlingham"
+				},
+				{
+					"value": "Franconville"
+				},
+				{
+					"value": "Frankfort"
+				},
+				{
+					"value": "Franklin"
+				},
+				{
+					"value": "Franklin Lakes New Jersey"
+				},
+				{
+					"value": "Franschhoek"
+				},
+				{
+					"value": "Fraserburgh"
+				},
+				{
+					"value": "Frauenfeld"
+				},
+				{
+					"value": "Frederick"
+				},
+				{
+					"value": "Fredericksburg"
+				},
+				{
+					"value": "Fredericton"
+				},
+				{
+					"value": "Frederiksberg"
+				},
+				{
+					"value": "Freetown"
+				},
+				{
+					"value": "Freienbach"
+				},
+				{
+					"value": "Fréjus"
+				},
+				{
+					"value": "Fremont"
+				},
+				{
+					"value": "French River"
+				},
+				{
+					"value": "Fresnes"
+				},
+				{
+					"value": "Fresno"
+				},
+				{
+					"value": "Fribourg"
+				},
+				{
+					"value": "Friedberg"
+				},
+				{
+					"value": "Friedrichshafen"
+				},
+				{
+					"value": "Frinton-on-Sea"
+				},
+				{
+					"value": "Frisco"
+				},
+				{
+					"value": "Frodsham"
+				},
+				{
+					"value": "Frome"
+				},
+				{
+					"value": "Frontignan"
+				},
+				{
+					"value": "Fulda"
+				},
+				{
+					"value": "Fulham"
+				},
+				{
+					"value": "Fullerton"
+				},
+				{
+					"value": "Furnes"
+				},
+				{
+					"value": "Gabrovo"
+				},
+				{
+					"value": "Gadsden"
+				},
+				{
+					"value": "Gaffney"
+				},
+				{
+					"value": "Gagny"
+				},
+				{
+					"value": "Gagra"
+				},
+				{
+					"value": "Gainesville"
+				},
+				{
+					"value": "Gainsborough"
+				},
+				{
+					"value": "Gaithersburg"
+				},
+				{
+					"value": "Galashiels"
+				},
+				{
+					"value": "Galena"
+				},
+				{
+					"value": "Galle"
+				},
+				{
+					"value": "Gallipolis"
+				},
+				{
+					"value": "Gallup"
+				},
+				{
+					"value": "Galveston"
+				},
+				{
+					"value": "Galway"
+				},
+				{
+					"value": "Gananoque"
+				},
+				{
+					"value": "Gand"
+				},
+				{
+					"value": "Gander"
+				},
+				{
+					"value": "Gandhidham"
+				},
+				{
+					"value": "Gandhinagar"
+				},
+				{
+					"value": "Ganja"
+				},
+				{
+					"value": "Gansbaai"
+				},
+				{
+					"value": "Gap"
+				},
+				{
+					"value": "Garden City"
+				},
+				{
+					"value": "Garden Grove"
+				},
+				{
+					"value": "Gardena"
+				},
+				{
+					"value": "Garforth"
+				},
+				{
+					"value": "Garges-lès-Gonesse"
+				},
+				{
+					"value": "Garland"
+				},
+				{
+					"value": "Gastonia"
+				},
+				{
+					"value": "Gateshead"
+				},
+				{
+					"value": "Gatlinburg"
+				},
+				{
+					"value": "Gawler"
+				},
+				{
+					"value": "Gaya"
+				},
+				{
+					"value": "Gaza City"
+				},
+				{
+					"value": "Gaziantep"
+				},
+				{
+					"value": "Gdynia"
+				},
+				{
+					"value": "Geel"
+				},
+				{
+					"value": "Geelong"
+				},
+				{
+					"value": "Gelnhausen"
+				},
+				{
+					"value": "Gembloux"
+				},
+				{
+					"value": "Genappe"
+				},
+				{
+					"value": "Geneva"
+				},
+				{
+					"value": "Genk"
+				},
+				{
+					"value": "Gennevilliers"
+				},
+				{
+					"value": "Genoa"
+				},
+				{
+					"value": "George"
+				},
+				{
+					"value": "George Town"
+				},
+				{
+					"value": "Georgetown"
+				},
+				{
+					"value": "Gevgelija"
+				},
+				{
+					"value": "Ghadames"
+				},
+				{
+					"value": "Ghent"
+				},
+				{
+					"value": "Gibsons British Columbia"
+				},
+				{
+					"value": "Giffnock"
+				},
+				{
+					"value": "Gif-sur-Yvette"
+				},
+				{
+					"value": "Gig Harbor"
+				},
+				{
+					"value": "Gijón"
+				},
+				{
+					"value": "Gillam"
+				},
+				{
+					"value": "Gillette"
+				},
+				{
+					"value": "Gillingham"
+				},
+				{
+					"value": "Gillsburg"
+				},
+				{
+					"value": "Gilroy"
+				},
+				{
+					"value": "Gimli"
+				},
+				{
+					"value": "Girona"
+				},
+				{
+					"value": "Girvan"
+				},
+				{
+					"value": "Gisborne"
+				},
+				{
+					"value": "Gistel"
+				},
+				{
+					"value": "Giza"
+				},
+				{
+					"value": "Gjoa Haven"
+				},
+				{
+					"value": "Gland"
+				},
+				{
+					"value": "Glarus"
+				},
+				{
+					"value": "Glarus Nord"
+				},
+				{
+					"value": "Glasgow"
+				},
+				{
+					"value": "Glastonbury"
+				},
+				{
+					"value": "Glen Ellyn"
+				},
+				{
+					"value": "Glen Innes"
+				},
+				{
+					"value": "Glen Rock New Jersey"
+				},
+				{
+					"value": "Glendale"
+				},
+				{
+					"value": "Glendora"
+				},
+				{
+					"value": "Glenrothes"
+				},
+				{
+					"value": "Glenwood Springs"
+				},
+				{
+					"value": "Glossop"
+				},
+				{
+					"value": "Gloucester"
+				},
+				{
+					"value": "Godalming"
+				},
+				{
+					"value": "Goderich"
+				},
+				{
+					"value": "Godmanchester"
+				},
+				{
+					"value": "Góis Municipality"
+				},
+				{
+					"value": "Gold Coast"
+				},
+				{
+					"value": "Gold River"
+				},
+				{
+					"value": "Golden"
+				},
+				{
+					"value": "Goldsboro"
+				},
+				{
+					"value": "Goleta"
+				},
+				{
+					"value": "Goma"
+				},
+				{
+					"value": "Gondar"
+				},
+				{
+					"value": "Gonesse"
+				},
+				{
+					"value": "Goole"
+				},
+				{
+					"value": "Gorakhpur"
+				},
+				{
+					"value": "Gordola"
+				},
+				{
+					"value": "Gori"
+				},
+				{
+					"value": "Gospic"
+				},
+				{
+					"value": "Gosport"
+				},
+				{
+					"value": "Gossau"
+				},
+				{
+					"value": "Göttingen"
+				},
+				{
+					"value": "Gourock"
+				},
+				{
+					"value": "Goussainville"
+				},
+				{
+					"value": "Goyang"
+				},
+				{
+					"value": "Graaff-Reinet"
+				},
+				{
+					"value": "Gradignan"
+				},
+				{
+					"value": "Grahamstown"
+				},
+				{
+					"value": "Grammont"
+				},
+				{
+					"value": "Granada"
+				},
+				{
+					"value": "Grand Bend"
+				},
+				{
+					"value": "Grand Falls New Brunswick"
+				},
+				{
+					"value": "Grand Falls-Windsor"
+				},
+				{
+					"value": "Grand Forks"
+				},
+				{
+					"value": "Grand Junction"
+				},
+				{
+					"value": "Grand Prairie"
+				},
+				{
+					"value": "Grand Rapids"
+				},
+				{
+					"value": "Grandcour"
+				},
+				{
+					"value": "Grande-Synthe"
+				},
+				{
+					"value": "Grandson"
+				},
+				{
+					"value": "Grangemouth"
+				},
+				{
+					"value": "Grange-over-Sands"
+				},
+				{
+					"value": "Grantham"
+				},
+				{
+					"value": "Grapevine"
+				},
+				{
+					"value": "Grass Valley"
+				},
+				{
+					"value": "Grasse"
+				},
+				{
+					"value": "Gravenhurst"
+				},
+				{
+					"value": "Gravesend"
+				},
+				{
+					"value": "Grays"
+				},
+				{
+					"value": "Great Bookham"
+				},
+				{
+					"value": "Great Dunmow"
+				},
+				{
+					"value": "Great Falls"
+				},
+				{
+					"value": "Great Neck"
+				},
+				{
+					"value": "Great Yarmouth"
+				},
+				{
+					"value": "Greater Napanee"
+				},
+				{
+					"value": "Greater Sudbury"
+				},
+				{
+					"value": "Greece"
+				},
+				{
+					"value": "Greeley"
+				},
+				{
+					"value": "Green Bay"
+				},
+				{
+					"value": "Greenburgh"
+				},
+				{
+					"value": "Greenock"
+				},
+				{
+					"value": "Greensboro"
+				},
+				{
+					"value": "Greenstone"
+				},
+				{
+					"value": "Greenville"
+				},
+				{
+					"value": "Greenwich"
+				},
+				{
+					"value": "Greenwood British Columbia"
+				},
+				{
+					"value": "Greenwood Lake"
+				},
+				{
+					"value": "Greifensee"
+				},
+				{
+					"value": "Grenchen"
+				},
+				{
+					"value": "Grenoble"
+				},
+				{
+					"value": "Griffith"
+				},
+				{
+					"value": "Grigny"
+				},
+				{
+					"value": "Grimsby"
+				},
+				{
+					"value": "Grise Fiord"
+				},
+				{
+					"value": "Grodno"
+				},
+				{
+					"value": "Groningen"
+				},
+				{
+					"value": "Gros Islet"
+				},
+				{
+					"value": "Grozny"
+				},
+				{
+					"value": "Grüningen"
+				},
+				{
+					"value": "Gruyères"
+				},
+				{
+					"value": "Guatapé"
+				},
+				{
+					"value": "Guatemala City"
+				},
+				{
+					"value": "Guayaquil"
+				},
+				{
+					"value": "Guimarães"
+				},
+				{
+					"value": "Guisborough"
+				},
+				{
+					"value": "Gulbarga"
+				},
+				{
+					"value": "Gulf Shores"
+				},
+				{
+					"value": "Gundagai"
+				},
+				{
+					"value": "Gunnedah"
+				},
+				{
+					"value": "Gunnison"
+				},
+				{
+					"value": "Guntur"
+				},
+				{
+					"value": "Gurgaon"
+				},
+				{
+					"value": "Guttenberg"
+				},
+				{
+					"value": "Guyancourt"
+				},
+				{
+					"value": "Gweedore"
+				},
+				{
+					"value": "Gyeongju"
+				},
+				{
+					"value": "Gympie"
+				},
+				{
+					"value": "Haarlem"
+				},
+				{
+					"value": "Hackettstown"
+				},
+				{
+					"value": "Haddington"
+				},
+				{
+					"value": "Hafnarfjörður"
+				},
+				{
+					"value": "Hagerstown"
+				},
+				{
+					"value": "Haguenau"
+				},
+				{
+					"value": "Hahndorf"
+				},
+				{
+					"value": "Haifa"
+				},
+				{
+					"value": "Hailsham"
+				},
+				{
+					"value": "Hal"
+				},
+				{
+					"value": "Halen"
+				},
+				{
+					"value": "Halesowen"
+				},
+				{
+					"value": "Half Moon Bay"
+				},
+				{
+					"value": "Halicarnassus"
+				},
+				{
+					"value": "Halifax"
+				},
+				{
+					"value": "Halle"
+				},
+				{
+					"value": "Halls Creek"
+				},
+				{
+					"value": "Halluin"
+				},
+				{
+					"value": "Halmstad"
+				},
+				{
+					"value": "Halol"
+				},
+				{
+					"value": "Halton Hills"
+				},
+				{
+					"value": "Haltwhistle"
+				},
+				{
+					"value": "Hama"
+				},
+				{
+					"value": "Hamadan"
+				},
+				{
+					"value": "Hamburg"
+				},
+				{
+					"value": "Hämeenlinna"
+				},
+				{
+					"value": "Hamilton"
+				},
+				{
+					"value": "Hamina"
+				},
+				{
+					"value": "Hamlin"
+				},
+				{
+					"value": "Hammond"
+				},
+				{
+					"value": "Hammonton New Jersey"
+				},
+				{
+					"value": "Hamont-Achel"
+				},
+				{
+					"value": "Hampstead"
+				},
+				{
+					"value": "Handforth"
+				},
+				{
+					"value": "Hanford"
+				},
+				{
+					"value": "Hanga Roa"
+				},
+				{
+					"value": "Hanko"
+				},
+				{
+					"value": "Hanley"
+				},
+				{
+					"value": "Hanna"
+				},
+				{
+					"value": "Hannut"
+				},
+				{
+					"value": "Hanover"
+				},
+				{
+					"value": "Hanover Ontario"
+				},
+				{
+					"value": "Happy Valley-Goose Bay"
+				},
+				{
+					"value": "Harar"
+				},
+				{
+					"value": "Harare"
+				},
+				{
+					"value": "Harelbeke"
+				},
+				{
+					"value": "Haridwar"
+				},
+				{
+					"value": "Harlech"
+				},
+				{
+					"value": "Harlesden"
+				},
+				{
+					"value": "Harlingen"
+				},
+				{
+					"value": "Harlow"
+				},
+				{
+					"value": "Harpenden"
+				},
+				{
+					"value": "Harrison"
+				},
+				{
+					"value": "Harrison Hot Springs"
+				},
+				{
+					"value": "Harrogate"
+				},
+				{
+					"value": "Harstad"
+				},
+				{
+					"value": "Hartford"
+				},
+				{
+					"value": "Hartlepool"
+				},
+				{
+					"value": "Harwich"
+				},
+				{
+					"value": "Hasbrouck Heights New Jersey"
+				},
+				{
+					"value": "Haslemere"
+				},
+				{
+					"value": "Haslingden"
+				},
+				{
+					"value": "Hasselt"
+				},
+				{
+					"value": "Hastings"
+				},
+				{
+					"value": "Hatch"
+				},
+				{
+					"value": "Hatfield"
+				},
+				{
+					"value": "Hattiesburg"
+				},
+				{
+					"value": "Havana"
+				},
+				{
+					"value": "Havant"
+				},
+				{
+					"value": "Haverhill"
+				},
+				{
+					"value": "Hawick"
+				},
+				{
+					"value": "Hawija"
+				},
+				{
+					"value": "Haworth"
+				},
+				{
+					"value": "Hay"
+				},
+				{
+					"value": "Hay River"
+				},
+				{
+					"value": "Hayes"
+				},
+				{
+					"value": "Hayward"
+				},
+				{
+					"value": "Haywards Heath"
+				},
+				{
+					"value": "Hazebrouck"
+				},
+				{
+					"value": "Healdsburg"
+				},
+				{
+					"value": "Hearst"
+				},
+				{
+					"value": "Heart's Content Newfoundland and Labrador"
+				},
+				{
+					"value": "Heathfield"
+				},
+				{
+					"value": "Hebden Bridge"
+				},
+				{
+					"value": "Hebron"
+				},
+				{
+					"value": "Heckmondwike"
+				},
+				{
+					"value": "Hedeby"
+				},
+				{
+					"value": "Hedon"
+				},
+				{
+					"value": "Heilbronn"
+				},
+				{
+					"value": "Helena"
+				},
+				{
+					"value": "Helensburgh"
+				},
+				{
+					"value": "Helsingør"
+				},
+				{
+					"value": "Helsinki"
+				},
+				{
+					"value": "Helston"
+				},
+				{
+					"value": "Hemel Hempstead"
+				},
+				{
+					"value": "Hemet"
+				},
+				{
+					"value": "Hemsworth"
+				},
+				{
+					"value": "Henderson"
+				},
+				{
+					"value": "Hendersonville"
+				},
+				{
+					"value": "Hendon"
+				},
+				{
+					"value": "Hénin-Beaumont"
+				},
+				{
+					"value": "Henley-in-Arden"
+				},
+				{
+					"value": "Henley-on-Thames"
+				},
+				{
+					"value": "Heppenheim"
+				},
+				{
+					"value": "Heraklion"
+				},
+				{
+					"value": "Herat"
+				},
+				{
+					"value": "Herblay"
+				},
+				{
+					"value": "Herceg Novi"
+				},
+				{
+					"value": "Herck-la-Ville"
+				},
+				{
+					"value": "Herculaneum"
+				},
+				{
+					"value": "Hereford"
+				},
+				{
+					"value": "Herentals"
+				},
+				{
+					"value": "Herisau"
+				},
+				{
+					"value": "Hermance"
+				},
+				{
+					"value": "Hermannsburg"
+				},
+				{
+					"value": "Hermanus"
+				},
+				{
+					"value": "Hermosa Beach"
+				},
+				{
+					"value": "Hermosillo"
+				},
+				{
+					"value": "Herne Bay"
+				},
+				{
+					"value": "Herne Hill"
+				},
+				{
+					"value": "Hérouville-Saint-Clair"
+				},
+				{
+					"value": "Herstal"
+				},
+				{
+					"value": "Herve"
+				},
+				{
+					"value": "Herzliya"
+				},
+				{
+					"value": "Hesperia"
+				},
+				{
+					"value": "Hessle"
+				},
+				{
+					"value": "Heswall"
+				},
+				{
+					"value": "Heywood Greater Manchester"
+				},
+				{
+					"value": "Hialeah"
+				},
+				{
+					"value": "Hibbing"
+				},
+				{
+					"value": "Hickory"
+				},
+				{
+					"value": "Hidden Hills"
+				},
+				{
+					"value": "High Level"
+				},
+				{
+					"value": "High Point"
+				},
+				{
+					"value": "High River"
+				},
+				{
+					"value": "High Wycombe"
+				},
+				{
+					"value": "Highbury"
+				},
+				{
+					"value": "Highland Park"
+				},
+				{
+					"value": "Hillbrow"
+				},
+				{
+					"value": "Hillsboro"
+				},
+				{
+					"value": "Hillsdale New Jersey"
+				},
+				{
+					"value": "Hilo"
+				},
+				{
+					"value": "Himarë"
+				},
+				{
+					"value": "Hinckley"
+				},
+				{
+					"value": "Hinton"
+				},
+				{
+					"value": "Hinwil"
+				},
+				{
+					"value": "Hitchin"
+				},
+				{
+					"value": "Hobart"
+				},
+				{
+					"value": "Hockley"
+				},
+				{
+					"value": "Hoddesdon"
+				},
+				{
+					"value": "Hofuf"
+				},
+				{
+					"value": "Ho-Ho-Kus"
+				},
+				{
+					"value": "Holbeach"
+				},
+				{
+					"value": "Holland"
+				},
+				{
+					"value": "Hollister"
+				},
+				{
+					"value": "Holmfirth"
+				},
+				{
+					"value": "Holt"
+				},
+				{
+					"value": "Holyhead"
+				},
+				{
+					"value": "Holyoke"
+				},
+				{
+					"value": "Holywell"
+				},
+				{
+					"value": "Homer"
+				},
+				{
+					"value": "Homestead"
+				},
+				{
+					"value": "Honiara"
+				},
+				{
+					"value": "Honiton"
+				},
+				{
+					"value": "Hood River"
+				},
+				{
+					"value": "Hoofddorp"
+				},
+				{
+					"value": "Hoogstraten"
+				},
+				{
+					"value": "Hoosick Falls"
+				},
+				{
+					"value": "Hope"
+				},
+				{
+					"value": "Hopkinsville"
+				},
+				{
+					"value": "Horgen"
+				},
+				{
+					"value": "Horley"
+				},
+				{
+					"value": "Horncastle"
+				},
+				{
+					"value": "Hornchurch"
+				},
+				{
+					"value": "Hornsea"
+				},
+				{
+					"value": "Hornsey"
+				},
+				{
+					"value": "Horsforth"
+				},
+				{
+					"value": "Horsham"
+				},
+				{
+					"value": "Horw"
+				},
+				{
+					"value": "Hot Springs"
+				},
+				{
+					"value": "Houffalize"
+				},
+				{
+					"value": "Houghton Regis"
+				},
+				{
+					"value": "Houilles"
+				},
+				{
+					"value": "Houlton"
+				},
+				{
+					"value": "Hounslow"
+				},
+				{
+					"value": "Houston"
+				},
+				{
+					"value": "Hout Bay"
+				},
+				{
+					"value": "Hove"
+				},
+				{
+					"value": "Howden"
+				},
+				{
+					"value": "Hoxton"
+				},
+				{
+					"value": "Hoylake"
+				},
+				{
+					"value": "Hradec Králové"
+				},
+				{
+					"value": "Hubli"
+				},
+				{
+					"value": "Hucknall"
+				},
+				{
+					"value": "Huddersfield"
+				},
+				{
+					"value": "Hudson"
+				},
+				{
+					"value": "Huelva"
+				},
+				{
+					"value": "Huesca"
+				},
+				{
+					"value": "Humpty Doo"
+				},
+				{
+					"value": "Hungerford"
+				},
+				{
+					"value": "Hunstanton"
+				},
+				{
+					"value": "Huntington"
+				},
+				{
+					"value": "Huntington Beach"
+				},
+				{
+					"value": "Huntly"
+				},
+				{
+					"value": "Hunts Point"
+				},
+				{
+					"value": "Huntsville"
+				},
+				{
+					"value": "Hurghada"
+				},
+				{
+					"value": "Husum"
+				},
+				{
+					"value": "Huttwil"
+				},
+				{
+					"value": "Huy"
+				},
+				{
+					"value": "Huyton"
+				},
+				{
+					"value": "Hvar"
+				},
+				{
+					"value": "Hyde"
+				},
+				{
+					"value": "Hyde Park"
+				},
+				{
+					"value": "Hyères"
+				},
+				{
+					"value": "Hythe"
+				},
+				{
+					"value": "Hyvinkää"
+				},
+				{
+					"value": "Ibadan"
+				},
+				{
+					"value": "Ibiza Town"
+				},
+				{
+					"value": "Idaho Falls"
+				},
+				{
+					"value": "Idlib"
+				},
+				{
+					"value": "Ife"
+				},
+				{
+					"value": "Igloolik"
+				},
+				{
+					"value": "Ilanz"
+				},
+				{
+					"value": "Ilford"
+				},
+				{
+					"value": "Ilfracombe"
+				},
+				{
+					"value": "Ilkeston"
+				},
+				{
+					"value": "Ilkley"
+				},
+				{
+					"value": "Illkirch-Graffenstaden"
+				},
+				{
+					"value": "Illnau-Effretikon"
+				},
+				{
+					"value": "Immingham"
+				},
+				{
+					"value": "Imotski"
+				},
+				{
+					"value": "Imphal"
+				},
+				{
+					"value": "Indian Creek"
+				},
+				{
+					"value": "Indianapolis"
+				},
+				{
+					"value": "Indio"
+				},
+				{
+					"value": "Indore"
+				},
+				{
+					"value": "Inglewood"
+				},
+				{
+					"value": "Innisfail"
+				},
+				{
+					"value": "Innisfil"
+				},
+				{
+					"value": "Innsbruck"
+				},
+				{
+					"value": "Interlaken"
+				},
+				{
+					"value": "Inuvik"
+				},
+				{
+					"value": "Inveraray"
+				},
+				{
+					"value": "Invercargill"
+				},
+				{
+					"value": "Inverell"
+				},
+				{
+					"value": "Invergordon"
+				},
+				{
+					"value": "Inverkeithing"
+				},
+				{
+					"value": "Invermere"
+				},
+				{
+					"value": "Inverness"
+				},
+				{
+					"value": "Inverurie"
+				},
+				{
+					"value": "Iowa City"
+				},
+				{
+					"value": "Ipoh"
+				},
+				{
+					"value": "Iqaluit"
+				},
+				{
+					"value": "Iquitos"
+				},
+				{
+					"value": "Irkutsk"
+				},
+				{
+					"value": "Irmo"
+				},
+				{
+					"value": "Irthlingborough"
+				},
+				{
+					"value": "Irvine"
+				},
+				{
+					"value": "Irving"
+				},
+				{
+					"value": "Isfahan"
+				},
+				{
+					"value": "Isleworth"
+				},
+				{
+					"value": "Issy-les-Moulineaux"
+				},
+				{
+					"value": "Istanbul"
+				},
+				{
+					"value": "Istres"
+				},
+				{
+					"value": "Itanagar"
+				},
+				{
+					"value": "Ittigen"
+				},
+				{
+					"value": "Ivano-Frankivsk"
+				},
+				{
+					"value": "Ivry-sur-Seine"
+				},
+				{
+					"value": "Izegem"
+				},
+				{
+					"value": "Izhevsk"
+				},
+				{
+					"value": "Jabalpur"
+				},
+				{
+					"value": "Jackson"
+				},
+				{
+					"value": "Jacksonville"
+				},
+				{
+					"value": "Jaffa"
+				},
+				{
+					"value": "Jaffna"
+				},
+				{
+					"value": "Jaisalmer"
+				},
+				{
+					"value": "Jakarta"
+				},
+				{
+					"value": "Jakobstad"
+				},
+				{
+					"value": "Jalalabad"
+				},
+				{
+					"value": "Jalandhar"
+				},
+				{
+					"value": "Jamestown"
+				},
+				{
+					"value": "Jamnagar"
+				},
+				{
+					"value": "Janesville"
+				},
+				{
+					"value": "Jarrow"
+				},
+				{
+					"value": "Jebel Ali"
+				},
+				{
+					"value": "Jedburgh"
+				},
+				{
+					"value": "Jefferson City"
+				},
+				{
+					"value": "Jeffreys Bay"
+				},
+				{
+					"value": "Jena"
+				},
+				{
+					"value": "Jeonju"
+				},
+				{
+					"value": "Jerash"
+				},
+				{
+					"value": "Jerez de la Frontera"
+				},
+				{
+					"value": "Jericho"
+				},
+				{
+					"value": "Jersey City"
+				},
+				{
+					"value": "Jerusalem"
+				},
+				{
+					"value": "Jhansi"
+				},
+				{
+					"value": "Jindabyne"
+				},
+				{
+					"value": "Jodhpur"
+				},
+				{
+					"value": "Jodoigne"
+				},
+				{
+					"value": "Johannesburg"
+				},
+				{
+					"value": "Johns Creek"
+				},
+				{
+					"value": "Johnson City"
+				},
+				{
+					"value": "Johnstone"
+				},
+				{
+					"value": "Johor Bahru"
+				},
+				{
+					"value": "Jonesboro"
+				},
+				{
+					"value": "Jönköping"
+				},
+				{
+					"value": "Joplin"
+				},
+				{
+					"value": "Joué-lès-Tours"
+				},
+				{
+					"value": "Juazeiro"
+				},
+				{
+					"value": "Juba"
+				},
+				{
+					"value": "Jubail"
+				},
+				{
+					"value": "Juliette"
+				},
+				{
+					"value": "Junagadh"
+				},
+				{
+					"value": "Jyväskylä"
+				},
+				{
+					"value": "Kaesong"
+				},
+				{
+					"value": "Kagoshima"
+				},
+				{
+					"value": "Kaikoura"
+				},
+				{
+					"value": "Kaiserstuhl"
+				},
+				{
+					"value": "Kajaani"
+				},
+				{
+					"value": "Kakinada"
+				},
+				{
+					"value": "Kalabaka"
+				},
+				{
+					"value": "Kalamazoo"
+				},
+				{
+					"value": "Kalbarri"
+				},
+				{
+					"value": "Kalgoorlie"
+				},
+				{
+					"value": "Kaliningrad"
+				},
+				{
+					"value": "Kalispell"
+				},
+				{
+					"value": "Kalmar"
+				},
+				{
+					"value": "Kaluga"
+				},
+				{
+					"value": "Kamloops"
+				},
+				{
+					"value": "Kampala"
+				},
+				{
+					"value": "Kanab"
+				},
+				{
+					"value": "Kandahar"
+				},
+				{
+					"value": "Kandla"
+				},
+				{
+					"value": "Kandy"
+				},
+				{
+					"value": "Kannapolis"
+				},
+				{
+					"value": "Kanpur"
+				},
+				{
+					"value": "Kansas City"
+				},
+				{
+					"value": "Kaohsiung City"
+				},
+				{
+					"value": "Kapuskasing"
+				},
+				{
+					"value": "Karaganda"
+				},
+				{
+					"value": "Karakorum"
+				},
+				{
+					"value": "Karbala"
+				},
+				{
+					"value": "Karlovy Vary"
+				},
+				{
+					"value": "Karlskrona"
+				},
+				{
+					"value": "Karlsruhe"
+				},
+				{
+					"value": "Karratha"
+				},
+				{
+					"value": "Kaskaskia"
+				},
+				{
+					"value": "Kaštela"
+				},
+				{
+					"value": "Katherine"
+				},
+				{
+					"value": "Kathmandu"
+				},
+				{
+					"value": "Katoomba"
+				},
+				{
+					"value": "Katowice"
+				},
+				{
+					"value": "Kaunas"
+				},
+				{
+					"value": "Kauniainen"
+				},
+				{
+					"value": "Kavala"
+				},
+				{
+					"value": "Kayseri"
+				},
+				{
+					"value": "Kazan"
+				},
+				{
+					"value": "Kazanlak"
+				},
+				{
+					"value": "Kearney"
+				},
+				{
+					"value": "Keene"
+				},
+				{
+					"value": "Keflavík"
+				},
+				{
+					"value": "Keighley"
+				},
+				{
+					"value": "Keith"
+				},
+				{
+					"value": "Kelowna"
+				},
+				{
+					"value": "Kelso"
+				},
+				{
+					"value": "Kemi"
+				},
+				{
+					"value": "Kempsey"
+				},
+				{
+					"value": "Kempton Park"
+				},
+				{
+					"value": "Kendal"
+				},
+				{
+					"value": "Kennesaw"
+				},
+				{
+					"value": "Kennewick"
+				},
+				{
+					"value": "Kennington"
+				},
+				{
+					"value": "Keno City"
+				},
+				{
+					"value": "Kenora"
+				},
+				{
+					"value": "Kenosha"
+				},
+				{
+					"value": "Kent"
+				},
+				{
+					"value": "Kentville"
+				},
+				{
+					"value": "Kerman"
+				},
+				{
+					"value": "Kermanshah"
+				},
+				{
+					"value": "Kerrville"
+				},
+				{
+					"value": "Keswick"
+				},
+				{
+					"value": "Ketchikan"
+				},
+				{
+					"value": "Ketchum"
+				},
+				{
+					"value": "Kettering"
+				},
+				{
+					"value": "Key Biscayne"
+				},
+				{
+					"value": "Key West"
+				},
+				{
+					"value": "Keynsham"
+				},
+				{
+					"value": "Khabarovsk"
+				},
+				{
+					"value": "Khanbaliq"
+				},
+				{
+					"value": "Kharkiv"
+				},
+				{
+					"value": "Khartoum"
+				},
+				{
+					"value": "Khiva"
+				},
+				{
+					"value": "Khulna"
+				},
+				{
+					"value": "Kiama"
+				},
+				{
+					"value": "Kidderminster"
+				},
+				{
+					"value": "Kiel"
+				},
+				{
+					"value": "Kielce"
+				},
+				{
+					"value": "Kilburn"
+				},
+				{
+					"value": "Kilkeel"
+				},
+				{
+					"value": "Kilkenny"
+				},
+				{
+					"value": "Killarney"
+				},
+				{
+					"value": "Killeen"
+				},
+				{
+					"value": "Kilmarnock"
+				},
+				{
+					"value": "Kilmore"
+				},
+				{
+					"value": "Kilwinning"
+				},
+				{
+					"value": "Kimberley"
+				},
+				{
+					"value": "Kincardine"
+				},
+				{
+					"value": "Kingaroy"
+				},
+				{
+					"value": "Kinglake"
+				},
+				{
+					"value": "Kingman"
+				},
+				{
+					"value": "Kingsport"
+				},
+				{
+					"value": "Kingston"
+				},
+				{
+					"value": "Kingston upon Hull"
+				},
+				{
+					"value": "Kingston upon Thames"
+				},
+				{
+					"value": "Kingsville"
+				},
+				{
+					"value": "Kingswood South Gloucestershire"
+				},
+				{
+					"value": "Kingussie"
+				},
+				{
+					"value": "Kinross"
+				},
+				{
+					"value": "Kinsale"
+				},
+				{
+					"value": "Kinston"
+				},
+				{
+					"value": "Kipling"
+				},
+				{
+					"value": "Kirkby"
+				},
+				{
+					"value": "Kirkby Lonsdale"
+				},
+				{
+					"value": "Kirkcaldy"
+				},
+				{
+					"value": "Kirkcudbright"
+				},
+				{
+					"value": "Kirkham"
+				},
+				{
+					"value": "Kirkintilloch"
+				},
+				{
+					"value": "Kirkland"
+				},
+				{
+					"value": "Kirkuk"
+				},
+				{
+					"value": "Kirkwall"
+				},
+				{
+					"value": "Kirriemuir"
+				},
+				{
+					"value": "Kiryas Joel"
+				},
+				{
+					"value": "Kisangani"
+				},
+				{
+					"value": "Kish Island"
+				},
+				{
+					"value": "Kishangarh"
+				},
+				{
+					"value": "Kissimmee"
+				},
+				{
+					"value": "Kitchener"
+				},
+				{
+					"value": "Klaipeda"
+				},
+				{
+					"value": "Klamath Falls"
+				},
+				{
+					"value": "Klerksdorp"
+				},
+				{
+					"value": "Klingnau"
+				},
+				{
+					"value": "Klosterneuburg"
+				},
+				{
+					"value": "Kloten"
+				},
+				{
+					"value": "Knaresborough"
+				},
+				{
+					"value": "Knebworth"
+				},
+				{
+					"value": "Knin"
+				},
+				{
+					"value": "Knoxville"
+				},
+				{
+					"value": "Knutsford"
+				},
+				{
+					"value": "Knysna"
+				},
+				{
+					"value": "Kobe"
+				},
+				{
+					"value": "Kochi"
+				},
+				{
+					"value": "Kodiak"
+				},
+				{
+					"value": "Kokkola"
+				},
+				{
+					"value": "Kokomo"
+				},
+				{
+					"value": "Kolhapur"
+				},
+				{
+					"value": "Kolkata"
+				},
+				{
+					"value": "Kollam"
+				},
+				{
+					"value": "Kolmanskop"
+				},
+				{
+					"value": "Komárno"
+				},
+				{
+					"value": "Königsberg"
+				},
+				{
+					"value": "Köniz"
+				},
+				{
+					"value": "Konstanz"
+				},
+				{
+					"value": "Kópavogur"
+				},
+				{
+					"value": "Koper"
+				},
+				{
+					"value": "Korçë"
+				},
+				{
+					"value": "Kortrijk"
+				},
+				{
+					"value": "Košice"
+				},
+				{
+					"value": "Kotka"
+				},
+				{
+					"value": "Kotor"
+				},
+				{
+					"value": "Kourou"
+				},
+				{
+					"value": "Kouvola"
+				},
+				{
+					"value": "Kozhikode"
+				},
+				{
+					"value": "Kraków"
+				},
+				{
+					"value": "Kralendijk"
+				},
+				{
+					"value": "Krasnodar"
+				},
+				{
+					"value": "Krasnoyarsk"
+				},
+				{
+					"value": "Kreuzlingen"
+				},
+				{
+					"value": "Kriens"
+				},
+				{
+					"value": "Kristiansand"
+				},
+				{
+					"value": "Kronberg im Taunus"
+				},
+				{
+					"value": "Kronstadt"
+				},
+				{
+					"value": "Krugersdorp"
+				},
+				{
+					"value": "Krujë"
+				},
+				{
+					"value": "Kufa"
+				},
+				{
+					"value": "Kugluktuk"
+				},
+				{
+					"value": "Kukës"
+				},
+				{
+					"value": "Kumasi"
+				},
+				{
+					"value": "Kununurra"
+				},
+				{
+					"value": "Kuranda"
+				},
+				{
+					"value": "Kuressaare"
+				},
+				{
+					"value": "Kursk"
+				},
+				{
+					"value": "Küsnacht"
+				},
+				{
+					"value": "Kutaisi"
+				},
+				{
+					"value": "Kuusamo"
+				},
+				{
+					"value": "Kuwait City"
+				},
+				{
+					"value": "La Cañada Flintridge"
+				},
+				{
+					"value": "La Celle-Saint-Cloud"
+				},
+				{
+					"value": "La Chaux-de-Fonds"
+				},
+				{
+					"value": "La Ciotat"
+				},
+				{
+					"value": "La Courneuve"
+				},
+				{
+					"value": "La Crescenta-Montrose"
+				},
+				{
+					"value": "La Crosse"
+				},
+				{
+					"value": "La Garde"
+				},
+				{
+					"value": "La Garenne-Colombes"
+				},
+				{
+					"value": "La Jolla"
+				},
+				{
+					"value": "La Louvière"
+				},
+				{
+					"value": "La Madeleine"
+				},
+				{
+					"value": "La Neuveville"
+				},
+				{
+					"value": "La Paz"
+				},
+				{
+					"value": "La Plata"
+				},
+				{
+					"value": "La Possession"
+				},
+				{
+					"value": "La Quinta"
+				},
+				{
+					"value": "La Roche-en-Ardenne"
+				},
+				{
+					"value": "La Rochelle"
+				},
+				{
+					"value": "La Roche-sur-Yon"
+				},
+				{
+					"value": "La Ronge"
+				},
+				{
+					"value": "La Sarraz"
+				},
+				{
+					"value": "La Seyne-sur-Mer"
+				},
+				{
+					"value": "La Teste-de-Buch"
+				},
+				{
+					"value": "La Tour-de-Peilz"
+				},
+				{
+					"value": "La Tour-de-Trême"
+				},
+				{
+					"value": "La Valette-du-Var"
+				},
+				{
+					"value": "Laayoune"
+				},
+				{
+					"value": "Labrador City"
+				},
+				{
+					"value": "Lac La Biche"
+				},
+				{
+					"value": "Lachen"
+				},
+				{
+					"value": "Ladysmith"
+				},
+				{
+					"value": "Lafayette"
+				},
+				{
+					"value": "Lagny-sur-Marne"
+				},
+				{
+					"value": "Lagoa"
+				},
+				{
+					"value": "Lagos"
+				},
+				{
+					"value": "Laguna Beach"
+				},
+				{
+					"value": "Laguna Niguel"
+				},
+				{
+					"value": "Lake Buena Vista"
+				},
+				{
+					"value": "Lake Charles"
+				},
+				{
+					"value": "Lake City"
+				},
+				{
+					"value": "Lake Elsinore"
+				},
+				{
+					"value": "Lake Forest"
+				},
+				{
+					"value": "Lake Havasu City"
+				},
+				{
+					"value": "Lake Oswego"
+				},
+				{
+					"value": "Lake Placid"
+				},
+				{
+					"value": "Lake Success"
+				},
+				{
+					"value": "Lake Zurich"
+				},
+				{
+					"value": "Lakeland"
+				},
+				{
+					"value": "Lakeshore"
+				},
+				{
+					"value": "Lakewood"
+				},
+				{
+					"value": "Lalibela"
+				},
+				{
+					"value": "Lambersart"
+				},
+				{
+					"value": "Lamu"
+				},
+				{
+					"value": "Lanark"
+				},
+				{
+					"value": "Lancaster"
+				},
+				{
+					"value": "Lancy"
+				},
+				{
+					"value": "Landen"
+				},
+				{
+					"value": "Lander"
+				},
+				{
+					"value": "Lanester"
+				},
+				{
+					"value": "Langenthal"
+				},
+				{
+					"value": "Langholm"
+				},
+				{
+					"value": "Langley British Columbia"
+				},
+				{
+					"value": "Lansing"
+				},
+				{
+					"value": "Laon"
+				},
+				{
+					"value": "Laramie"
+				},
+				{
+					"value": "Larchmont"
+				},
+				{
+					"value": "Laredo"
+				},
+				{
+					"value": "Largs"
+				},
+				{
+					"value": "Larissa"
+				},
+				{
+					"value": "Larkhall"
+				},
+				{
+					"value": "Larne"
+				},
+				{
+					"value": "Las Cruces"
+				},
+				{
+					"value": "Las Palmas de Gran Canaria"
+				},
+				{
+					"value": "Las Vegas"
+				},
+				{
+					"value": "LaSalle"
+				},
+				{
+					"value": "Latakia"
+				},
+				{
+					"value": "Lauder"
+				},
+				{
+					"value": "Lauderhill"
+				},
+				{
+					"value": "Laufen"
+				},
+				{
+					"value": "Laufenburg"
+				},
+				{
+					"value": "Launceston"
+				},
+				{
+					"value": "Laupen"
+				},
+				{
+					"value": "Laurel"
+				},
+				{
+					"value": "Laurium"
+				},
+				{
+					"value": "Lausanne"
+				},
+				{
+					"value": "Laval"
+				},
+				{
+					"value": "Laverton"
+				},
+				{
+					"value": "Lawrence"
+				},
+				{
+					"value": "Lawrenceville"
+				},
+				{
+					"value": "Laxey"
+				},
+				{
+					"value": "Le Blanc-Mesnil"
+				},
+				{
+					"value": "Le Bouscat"
+				},
+				{
+					"value": "Le Cannet"
+				},
+				{
+					"value": "Le Chesnay"
+				},
+				{
+					"value": "Le Creusot"
+				},
+				{
+					"value": "Le Gosier"
+				},
+				{
+					"value": "Le Grand-Quevilly"
+				},
+				{
+					"value": "Le Grand-Saconnex"
+				},
+				{
+					"value": "Le Havre"
+				},
+				{
+					"value": "Le Kremlin-Bicêtre"
+				},
+				{
+					"value": "Le Lamentin"
+				},
+				{
+					"value": "Le Landeron"
+				},
+				{
+					"value": "Le Locle"
+				},
+				{
+					"value": "Le Mans"
+				},
+				{
+					"value": "Le Mée-sur-Seine"
+				},
+				{
+					"value": "Le Moule"
+				},
+				{
+					"value": "Le Perreux-sur-Marne"
+				},
+				{
+					"value": "Le Petit-Quevilly"
+				},
+				{
+					"value": "Le Plessis-Robinson"
+				},
+				{
+					"value": "Le Port"
+				},
+				{
+					"value": "Le Robert"
+				},
+				{
+					"value": "Le Rœulx"
+				},
+				{
+					"value": "Le Tampon"
+				},
+				{
+					"value": "Leadville"
+				},
+				{
+					"value": "Leatherhead"
+				},
+				{
+					"value": "Léau"
+				},
+				{
+					"value": "Leavenworth"
+				},
+				{
+					"value": "Lebanon"
+				},
+				{
+					"value": "Lecce"
+				},
+				{
+					"value": "Ledbury"
+				},
+				{
+					"value": "Leeds"
+				},
+				{
+					"value": "Lee's Summit"
+				},
+				{
+					"value": "Leeton"
+				},
+				{
+					"value": "Leeuwarden"
+				},
+				{
+					"value": "Leicester"
+				},
+				{
+					"value": "Leiden"
+				},
+				{
+					"value": "Leigh"
+				},
+				{
+					"value": "Leigh-on-Sea"
+				},
+				{
+					"value": "Leighton Buzzard"
+				},
+				{
+					"value": "Leiria"
+				},
+				{
+					"value": "Lens"
+				},
+				{
+					"value": "Lenzburg"
+				},
+				{
+					"value": "Leominster"
+				},
+				{
+					"value": "León"
+				},
+				{
+					"value": "Lerwick"
+				},
+				{
+					"value": "Les Abymes"
+				},
+				{
+					"value": "Les Clées"
+				},
+				{
+					"value": "Les Lilas"
+				},
+				{
+					"value": "Les Mureaux"
+				},
+				{
+					"value": "Les Pavillons-sous-Bois"
+				},
+				{
+					"value": "Les Ulis"
+				},
+				{
+					"value": "Lessines"
+				},
+				{
+					"value": "Letchworth Garden City"
+				},
+				{
+					"value": "Lethbridge"
+				},
+				{
+					"value": "Leuk"
+				},
+				{
+					"value": "Leuven"
+				},
+				{
+					"value": "Leuze-en-Hainaut"
+				},
+				{
+					"value": "Levallois-Perret"
+				},
+				{
+					"value": "Leven Fife"
+				},
+				{
+					"value": "Lewiston"
+				},
+				{
+					"value": "Lexington"
+				},
+				{
+					"value": "Leyland"
+				},
+				{
+					"value": "Lezhë"
+				},
+				{
+					"value": "L'Haÿ-les-Roses"
+				},
+				{
+					"value": "Liberec"
+				},
+				{
+					"value": "Liberia"
+				},
+				{
+					"value": "Libertyville"
+				},
+				{
+					"value": "Libourne"
+				},
+				{
+					"value": "Libreville"
+				},
+				{
+					"value": "Lichfield"
+				},
+				{
+					"value": "Lichtensteig"
+				},
+				{
+					"value": "Liège"
+				},
+				{
+					"value": "Lierre"
+				},
+				{
+					"value": "Liestal"
+				},
+				{
+					"value": "Liévin"
+				},
+				{
+					"value": "Lightning Ridge"
+				},
+				{
+					"value": "Lille"
+				},
+				{
+					"value": "Lillooet"
+				},
+				{
+					"value": "Lilongwe"
+				},
+				{
+					"value": "Lima"
+				},
+				{
+					"value": "Limbourg"
+				},
+				{
+					"value": "Limerick"
+				},
+				{
+					"value": "Limoges"
+				},
+				{
+					"value": "Lincoln"
+				},
+				{
+					"value": "Lindos"
+				},
+				{
+					"value": "Linlithgow"
+				},
+				{
+					"value": "Linz"
+				},
+				{
+					"value": "Lions Bay"
+				},
+				{
+					"value": "Lisbon"
+				},
+				{
+					"value": "Lisburn"
+				},
+				{
+					"value": "Lisieux"
+				},
+				{
+					"value": "Liskeard"
+				},
+				{
+					"value": "Lisle"
+				},
+				{
+					"value": "Listowel Ontario"
+				},
+				{
+					"value": "Litochoro"
+				},
+				{
+					"value": "Little Switzerland"
+				},
+				{
+					"value": "Littlehampton"
+				},
+				{
+					"value": "Littleton"
+				},
+				{
+					"value": "Livermore"
+				},
+				{
+					"value": "Liverpool"
+				},
+				{
+					"value": "Livingston"
+				},
+				{
+					"value": "Livonia"
+				},
+				{
+					"value": "Livorno"
+				},
+				{
+					"value": "Livry-Gargan"
+				},
+				{
+					"value": "Llandeilo"
+				},
+				{
+					"value": "Llandrindod Wells"
+				},
+				{
+					"value": "Llanelli"
+				},
+				{
+					"value": "Llangollen"
+				},
+				{
+					"value": "Llanidloes"
+				},
+				{
+					"value": "Llantrisant"
+				},
+				{
+					"value": "Lleida"
+				},
+				{
+					"value": "Locarno"
+				},
+				{
+					"value": "Lochgilphead"
+				},
+				{
+					"value": "Lockerbie"
+				},
+				{
+					"value": "Lod"
+				},
+				{
+					"value": "Lodi"
+				},
+				{
+					"value": "Lódz"
+				},
+				{
+					"value": "Logan"
+				},
+				{
+					"value": "Lokeren"
+				},
+				{
+					"value": "Loma Linda"
+				},
+				{
+					"value": "Lomé"
+				},
+				{
+					"value": "Lommel"
+				},
+				{
+					"value": "Lompoc"
+				},
+				{
+					"value": "London"
+				},
+				{
+					"value": "Long Branch"
+				},
+				{
+					"value": "Long Eaton"
+				},
+				{
+					"value": "Long Valley"
+				},
+				{
+					"value": "Longjumeau"
+				},
+				{
+					"value": "Longmont"
+				},
+				{
+					"value": "Longreach"
+				},
+				{
+					"value": "Longsight"
+				},
+				{
+					"value": "Longview"
+				},
+				{
+					"value": "Longyearbyen"
+				},
+				{
+					"value": "Looe"
+				},
+				{
+					"value": "Loos"
+				},
+				{
+					"value": "Looz"
+				},
+				{
+					"value": "Lo-Reninge"
+				},
+				{
+					"value": "Loreto"
+				},
+				{
+					"value": "Lorient"
+				},
+				{
+					"value": "Lorne"
+				},
+				{
+					"value": "Los Altos Hills"
+				},
+				{
+					"value": "Los Angeles"
+				},
+				{
+					"value": "Los Gatos"
+				},
+				{
+					"value": "Los Lunas"
+				},
+				{
+					"value": "Losone"
+				},
+				{
+					"value": "Lossiemouth"
+				},
+				{
+					"value": "Loughton"
+				},
+				{
+					"value": "Louis Trichardt"
+				},
+				{
+					"value": "Louisville"
+				},
+				{
+					"value": "Louth"
+				},
+				{
+					"value": "Louvain"
+				},
+				{
+					"value": "Lovech"
+				},
+				{
+					"value": "Loveland"
+				},
+				{
+					"value": "Lowell"
+				},
+				{
+					"value": "Lowestoft"
+				},
+				{
+					"value": "Luanda"
+				},
+				{
+					"value": "Luang Prabang"
+				},
+				{
+					"value": "Lubbock"
+				},
+				{
+					"value": "Lubec"
+				},
+				{
+					"value": "Lublin"
+				},
+				{
+					"value": "Lucerne"
+				},
+				{
+					"value": "Ludlow"
+				},
+				{
+					"value": "Lugano"
+				},
+				{
+					"value": "Lugo"
+				},
+				{
+					"value": "Luhansk"
+				},
+				{
+					"value": "Luleå"
+				},
+				{
+					"value": "Lumsden"
+				},
+				{
+					"value": "Lunel"
+				},
+				{
+					"value": "Lunenburg"
+				},
+				{
+					"value": "Lusail"
+				},
+				{
+					"value": "Lusaka"
+				},
+				{
+					"value": "Lutherstadt Wittenberg"
+				},
+				{
+					"value": "Luton"
+				},
+				{
+					"value": "Lutry"
+				},
+				{
+					"value": "Lutterworth"
+				},
+				{
+					"value": "Luxembourg"
+				},
+				{
+					"value": "Luxor"
+				},
+				{
+					"value": "Lviv"
+				},
+				{
+					"value": "Lydenburg"
+				},
+				{
+					"value": "Lydney"
+				},
+				{
+					"value": "Lyme Regis"
+				},
+				{
+					"value": "Lymington"
+				},
+				{
+					"value": "Lynbrook"
+				},
+				{
+					"value": "Lynchburg"
+				},
+				{
+					"value": "Lynn"
+				},
+				{
+					"value": "Lynton"
+				},
+				{
+					"value": "Lynwood"
+				},
+				{
+					"value": "Lyon"
+				},
+				{
+					"value": "Lyss"
+				},
+				{
+					"value": "Lytham St Annes"
+				},
+				{
+					"value": "Lytton"
+				},
+				{
+					"value": "Maaseik"
+				},
+				{
+					"value": "Maastricht"
+				},
+				{
+					"value": "Macclesfield"
+				},
+				{
+					"value": "Machilipatnam"
+				},
+				{
+					"value": "Mackay"
+				},
+				{
+					"value": "Macon"
+				},
+				{
+					"value": "Mâcon"
+				},
+				{
+					"value": "Madera"
+				},
+				{
+					"value": "Madison"
+				},
+				{
+					"value": "Madras"
+				},
+				{
+					"value": "Madrid"
+				},
+				{
+					"value": "Maesteg"
+				},
+				{
+					"value": "Magadan"
+				},
+				{
+					"value": "Magdeburg"
+				},
+				{
+					"value": "Maghull"
+				},
+				{
+					"value": "Magnitogorsk"
+				},
+				{
+					"value": "Mahabalipuram"
+				},
+				{
+					"value": "Mahikeng"
+				},
+				{
+					"value": "Maidenhead"
+				},
+				{
+					"value": "Maienfeld"
+				},
+				{
+					"value": "Maisons-Alfort"
+				},
+				{
+					"value": "Maisons-Laffitte"
+				},
+				{
+					"value": "Maitland"
+				},
+				{
+					"value": "Makarska"
+				},
+				{
+					"value": "Makassar"
+				},
+				{
+					"value": "Makhachkala"
+				},
+				{
+					"value": "Malabo"
+				},
+				{
+					"value": "Málaga"
+				},
+				{
+					"value": "Malakoff"
+				},
+				{
+					"value": "Malden"
+				},
+				{
+					"value": "Maldon"
+				},
+				{
+					"value": "Malé"
+				},
+				{
+					"value": "Maleny"
+				},
+				{
+					"value": "Malia"
+				},
+				{
+					"value": "Malibu"
+				},
+				{
+					"value": "Malines"
+				},
+				{
+					"value": "Mallaig"
+				},
+				{
+					"value": "Malmedy"
+				},
+				{
+					"value": "Malmesbury"
+				},
+				{
+					"value": "Malton"
+				},
+				{
+					"value": "Malvern"
+				},
+				{
+					"value": "Mammoth Hot Springs"
+				},
+				{
+					"value": "Mammoth Lakes"
+				},
+				{
+					"value": "Managua"
+				},
+				{
+					"value": "Manama"
+				},
+				{
+					"value": "Manaus"
+				},
+				{
+					"value": "Manchester"
+				},
+				{
+					"value": "Mandalay"
+				},
+				{
+					"value": "Mandelieu-la-Napoule"
+				},
+				{
+					"value": "Mandvi"
+				},
+				{
+					"value": "Mangalore"
+				},
+				{
+					"value": "Manhattan"
+				},
+				{
+					"value": "Manhattan Beach"
+				},
+				{
+					"value": "Manitou Springs"
+				},
+				{
+					"value": "Mankato"
+				},
+				{
+					"value": "Männedorf"
+				},
+				{
+					"value": "Manosque"
+				},
+				{
+					"value": "Mansfield"
+				},
+				{
+					"value": "Mantes-la-Jolie"
+				},
+				{
+					"value": "Maputo"
+				},
+				{
+					"value": "Maracaibo"
+				},
+				{
+					"value": "Marathon"
+				},
+				{
+					"value": "Marbella"
+				},
+				{
+					"value": "Marble Bar"
+				},
+				{
+					"value": "Marburg"
+				},
+				{
+					"value": "Marche-en-Famenne"
+				},
+				{
+					"value": "Marco Island"
+				},
+				{
+					"value": "Marcq-en-Barœul"
+				},
+				{
+					"value": "Mareeba"
+				},
+				{
+					"value": "Marfa"
+				},
+				{
+					"value": "Margaret River"
+				},
+				{
+					"value": "Margate"
+				},
+				{
+					"value": "Ma'rib"
+				},
+				{
+					"value": "Maribor"
+				},
+				{
+					"value": "Mariehamn"
+				},
+				{
+					"value": "Marietta"
+				},
+				{
+					"value": "Marignane"
+				},
+				{
+					"value": "Marikina"
+				},
+				{
+					"value": "Mariupol"
+				},
+				{
+					"value": "Market Drayton"
+				},
+				{
+					"value": "Market Harborough"
+				},
+				{
+					"value": "Market Rasen"
+				},
+				{
+					"value": "Markham"
+				},
+				{
+					"value": "Marlborough"
+				},
+				{
+					"value": "Marlow"
+				},
+				{
+					"value": "Maroochydore"
+				},
+				{
+					"value": "Marquette"
+				},
+				{
+					"value": "Marrakesh"
+				},
+				{
+					"value": "Marseille"
+				},
+				{
+					"value": "Marshall"
+				},
+				{
+					"value": "Martigny"
+				},
+				{
+					"value": "Martigues"
+				},
+				{
+					"value": "Martinez"
+				},
+				{
+					"value": "Martinsburg"
+				},
+				{
+					"value": "Maryhill"
+				},
+				{
+					"value": "Marylebone"
+				},
+				{
+					"value": "Maryport"
+				},
+				{
+					"value": "Marysville"
+				},
+				{
+					"value": "Maseru"
+				},
+				{
+					"value": "Mashhad"
+				},
+				{
+					"value": "Massy"
+				},
+				{
+					"value": "Masterton"
+				},
+				{
+					"value": "Masvingo"
+				},
+				{
+					"value": "Masyaf"
+				},
+				{
+					"value": "Matamoros"
+				},
+				{
+					"value": "Matawan"
+				},
+				{
+					"value": "Matlock"
+				},
+				{
+					"value": "Matoury"
+				},
+				{
+					"value": "Mattawa"
+				},
+				{
+					"value": "Maubeuge"
+				},
+				{
+					"value": "Mayadin"
+				},
+				{
+					"value": "Mayo"
+				},
+				{
+					"value": "Mazar-i-Sharif"
+				},
+				{
+					"value": "McAllen"
+				},
+				{
+					"value": "McFarland"
+				},
+				{
+					"value": "McKinney"
+				},
+				{
+					"value": "McMinnville"
+				},
+				{
+					"value": "Meaford"
+				},
+				{
+					"value": "Meaux"
+				},
+				{
+					"value": "Mecca"
+				},
+				{
+					"value": "Mechelen"
+				},
+				{
+					"value": "Medford"
+				},
+				{
+					"value": "Medina"
+				},
+				{
+					"value": "Mediolanum"
+				},
+				{
+					"value": "Megalopolis"
+				},
+				{
+					"value": "Megara"
+				},
+				{
+					"value": "Mehsana"
+				},
+				{
+					"value": "Meilen"
+				},
+				{
+					"value": "Meiringen"
+				},
+				{
+					"value": "Meknes"
+				},
+				{
+					"value": "Melbourne"
+				},
+				{
+					"value": "Melfort"
+				},
+				{
+					"value": "Melilla"
+				},
+				{
+					"value": "Melksham"
+				},
+				{
+					"value": "Mellingen"
+				},
+				{
+					"value": "Melton"
+				},
+				{
+					"value": "Melton Mowbray"
+				},
+				{
+					"value": "Melun"
+				},
+				{
+					"value": "Memphis"
+				},
+				{
+					"value": "Mena"
+				},
+				{
+					"value": "Mendoza"
+				},
+				{
+					"value": "Mendrisio"
+				},
+				{
+					"value": "Menin"
+				},
+				{
+					"value": "Menlo Park"
+				},
+				{
+					"value": "Menton"
+				},
+				{
+					"value": "Merced"
+				},
+				{
+					"value": "Mérida"
+				},
+				{
+					"value": "Meriden West Midlands"
+				},
+				{
+					"value": "Meridian"
+				},
+				{
+					"value": "Mérignac"
+				},
+				{
+					"value": "Merritt"
+				},
+				{
+					"value": "Mersin"
+				},
+				{
+					"value": "Merthyr Tydfil"
+				},
+				{
+					"value": "Mesa"
+				},
+				{
+					"value": "Mesquite"
+				},
+				{
+					"value": "Messina"
+				},
+				{
+					"value": "Messines"
+				},
+				{
+					"value": "Metkovic"
+				},
+				{
+					"value": "Metuchen"
+				},
+				{
+					"value": "Metz"
+				},
+				{
+					"value": "Meudon"
+				},
+				{
+					"value": "Mexborough"
+				},
+				{
+					"value": "Mexico City"
+				},
+				{
+					"value": "Meyrin"
+				},
+				{
+					"value": "Meyzieu"
+				},
+				{
+					"value": "Miami Gardens"
+				},
+				{
+					"value": "Miami Shores"
+				},
+				{
+					"value": "Michalovce"
+				},
+				{
+					"value": "Michigan City"
+				},
+				{
+					"value": "Middlesbrough"
+				},
+				{
+					"value": "Middleton"
+				},
+				{
+					"value": "Middleton Nova Scotia"
+				},
+				{
+					"value": "Middletown"
+				},
+				{
+					"value": "Middlewich"
+				},
+				{
+					"value": "Midhurst"
+				},
+				{
+					"value": "Midland"
+				},
+				{
+					"value": "Midrand"
+				},
+				{
+					"value": "Midsomer Norton"
+				},
+				{
+					"value": "Mijas"
+				},
+				{
+					"value": "Milan"
+				},
+				{
+					"value": "Mildenhall"
+				},
+				{
+					"value": "Mildura"
+				},
+				{
+					"value": "Miletus"
+				},
+				{
+					"value": "Milford"
+				},
+				{
+					"value": "Milford Haven"
+				},
+				{
+					"value": "Mill Valley"
+				},
+				{
+					"value": "Millau"
+				},
+				{
+					"value": "Millbrook"
+				},
+				{
+					"value": "Milngavie"
+				},
+				{
+					"value": "Milnthorpe"
+				},
+				{
+					"value": "Milpitas"
+				},
+				{
+					"value": "Miltenberg"
+				},
+				{
+					"value": "Milton"
+				},
+				{
+					"value": "Milton Keynes"
+				},
+				{
+					"value": "Minehead"
+				},
+				{
+					"value": "Mineola"
+				},
+				{
+					"value": "Minnetonka"
+				},
+				{
+					"value": "Minot"
+				},
+				{
+					"value": "Minsk"
+				},
+				{
+					"value": "Minto New Brunswick"
+				},
+				{
+					"value": "Miramar"
+				},
+				{
+					"value": "Miramas"
+				},
+				{
+					"value": "Mirfield"
+				},
+				{
+					"value": "Mission Viejo"
+				},
+				{
+					"value": "Mississauga"
+				},
+				{
+					"value": "Missoula"
+				},
+				{
+					"value": "Missouri City"
+				},
+				{
+					"value": "Mitrovica"
+				},
+				{
+					"value": "Moab"
+				},
+				{
+					"value": "Moama"
+				},
+				{
+					"value": "Mobile"
+				},
+				{
+					"value": "Modena"
+				},
+				{
+					"value": "Modesto"
+				},
+				{
+					"value": "Moe"
+				},
+				{
+					"value": "Mogadishu"
+				},
+				{
+					"value": "Möhlin"
+				},
+				{
+					"value": "Mold"
+				},
+				{
+					"value": "Molesey"
+				},
+				{
+					"value": "Moline"
+				},
+				{
+					"value": "Mölndal"
+				},
+				{
+					"value": "Mombasa"
+				},
+				{
+					"value": "Moncton"
+				},
+				{
+					"value": "Monmouth"
+				},
+				{
+					"value": "Monowi"
+				},
+				{
+					"value": "Monroe"
+				},
+				{
+					"value": "Monroeville"
+				},
+				{
+					"value": "Monrovia"
+				},
+				{
+					"value": "Mons"
+				},
+				{
+					"value": "Mons-en-Barœul"
+				},
+				{
+					"value": "Montaigu-Zichem"
+				},
+				{
+					"value": "Montauban"
+				},
+				{
+					"value": "Montbéliard"
+				},
+				{
+					"value": "Mont-de-Marsan"
+				},
+				{
+					"value": "Montego Bay"
+				},
+				{
+					"value": "Montélimar"
+				},
+				{
+					"value": "Monterey"
+				},
+				{
+					"value": "Monterrey"
+				},
+				{
+					"value": "Montevideo"
+				},
+				{
+					"value": "Montfermeil"
+				},
+				{
+					"value": "Montgeron"
+				},
+				{
+					"value": "Montgomery"
+				},
+				{
+					"value": "Monthey"
+				},
+				{
+					"value": "Montigny-le-Bretonneux"
+				},
+				{
+					"value": "Montigny-lès-Metz"
+				},
+				{
+					"value": "Montluçon"
+				},
+				{
+					"value": "Montmorency"
+				},
+				{
+					"value": "Montpellier"
+				},
+				{
+					"value": "Montreuil"
+				},
+				{
+					"value": "Montreux"
+				},
+				{
+					"value": "Montrose"
+				},
+				{
+					"value": "Montrouge"
+				},
+				{
+					"value": "Montvale"
+				},
+				{
+					"value": "Monza"
+				},
+				{
+					"value": "Moomba"
+				},
+				{
+					"value": "Moore"
+				},
+				{
+					"value": "Mooresville"
+				},
+				{
+					"value": "Moorpark"
+				},
+				{
+					"value": "Moose Jaw"
+				},
+				{
+					"value": "Moosonee"
+				},
+				{
+					"value": "Moraga"
+				},
+				{
+					"value": "Moranbah"
+				},
+				{
+					"value": "Morbi"
+				},
+				{
+					"value": "Morcote"
+				},
+				{
+					"value": "Morecambe"
+				},
+				{
+					"value": "Moree"
+				},
+				{
+					"value": "Moreno Valley"
+				},
+				{
+					"value": "Moreton-in-Marsh"
+				},
+				{
+					"value": "Morgan Hill"
+				},
+				{
+					"value": "Morgantown"
+				},
+				{
+					"value": "Morges"
+				},
+				{
+					"value": "Moroni"
+				},
+				{
+					"value": "Morpeth"
+				},
+				{
+					"value": "Morristown"
+				},
+				{
+					"value": "Morro Bay"
+				},
+				{
+					"value": "Morsang-sur-Orge"
+				},
+				{
+					"value": "Mortsel"
+				},
+				{
+					"value": "Moruya"
+				},
+				{
+					"value": "Morwell"
+				},
+				{
+					"value": "Moscow"
+				},
+				{
+					"value": "Moses Lake"
+				},
+				{
+					"value": "Moss Side"
+				},
+				{
+					"value": "Moss Vale"
+				},
+				{
+					"value": "Mossel Bay"
+				},
+				{
+					"value": "Mossley"
+				},
+				{
+					"value": "Mostar"
+				},
+				{
+					"value": "Mosul"
+				},
+				{
+					"value": "Motherwell"
+				},
+				{
+					"value": "Moudon"
+				},
+				{
+					"value": "Mount Airy"
+				},
+				{
+					"value": "Mount Buller"
+				},
+				{
+					"value": "Mount Eliza"
+				},
+				{
+					"value": "Mount Florida"
+				},
+				{
+					"value": "Mount Gambier"
+				},
+				{
+					"value": "Mount Hagen"
+				},
+				{
+					"value": "Mount Isa"
+				},
+				{
+					"value": "Mount Morgan"
+				},
+				{
+					"value": "Mount Rainier"
+				},
+				{
+					"value": "Mount Vernon"
+				},
+				{
+					"value": "Mountain View"
+				},
+				{
+					"value": "Mountainside"
+				},
+				{
+					"value": "Mouscron"
+				},
+				{
+					"value": "Moutier"
+				},
+				{
+					"value": "Mthatha"
+				},
+				{
+					"value": "Much Wenlock"
+				},
+				{
+					"value": "Mudgee"
+				},
+				{
+					"value": "Muizenberg"
+				},
+				{
+					"value": "Mulhouse"
+				},
+				{
+					"value": "Mullumbimby"
+				},
+				{
+					"value": "Mumbai"
+				},
+				{
+					"value": "Münchenbuchsee"
+				},
+				{
+					"value": "Münchenstein"
+				},
+				{
+					"value": "Muncie"
+				},
+				{
+					"value": "Mundelein"
+				},
+				{
+					"value": "Mundra"
+				},
+				{
+					"value": "Munich"
+				},
+				{
+					"value": "Münsingen"
+				},
+				{
+					"value": "Murcia"
+				},
+				{
+					"value": "Muret"
+				},
+				{
+					"value": "Murfreesboro"
+				},
+				{
+					"value": "Muri bei Bern"
+				},
+				{
+					"value": "Murmansk"
+				},
+				{
+					"value": "Murray Hill"
+				},
+				{
+					"value": "Murrieta"
+				},
+				{
+					"value": "Murten"
+				},
+				{
+					"value": "Murwillumbah"
+				},
+				{
+					"value": "Muscle Shoals"
+				},
+				{
+					"value": "Muskegon"
+				},
+				{
+					"value": "Muskogee"
+				},
+				{
+					"value": "Musselburgh"
+				},
+				{
+					"value": "Muswellbrook"
+				},
+				{
+					"value": "Mutitjulu"
+				},
+				{
+					"value": "Muttenz"
+				},
+				{
+					"value": "Mykolaiv"
+				},
+				{
+					"value": "Myrtle Beach"
+				},
+				{
+					"value": "Mysore"
+				},
+				{
+					"value": "Mytholmroyd"
+				},
+				{
+					"value": "Mytilene"
+				},
+				{
+					"value": "Naalehu"
+				},
+				{
+					"value": "Naantali"
+				},
+				{
+					"value": "Nablus"
+				},
+				{
+					"value": "Nacogdoches"
+				},
+				{
+					"value": "Nadi"
+				},
+				{
+					"value": "Nadiad"
+				},
+				{
+					"value": "Nagano"
+				},
+				{
+					"value": "Nagercoil"
+				},
+				{
+					"value": "Nagpur"
+				},
+				{
+					"value": "Naha"
+				},
+				{
+					"value": "Nahant"
+				},
+				{
+					"value": "Nailsea"
+				},
+				{
+					"value": "Nailsworth"
+				},
+				{
+					"value": "Nain"
+				},
+				{
+					"value": "Nairn"
+				},
+				{
+					"value": "Nambour"
+				},
+				{
+					"value": "Nampa"
+				},
+				{
+					"value": "Namur"
+				},
+				{
+					"value": "Nanaimo"
+				},
+				{
+					"value": "Nancy"
+				},
+				{
+					"value": "Nanterre"
+				},
+				{
+					"value": "Nantes"
+				},
+				{
+					"value": "Nantwich"
+				},
+				{
+					"value": "Napa"
+				},
+				{
+					"value": "Naperville"
+				},
+				{
+					"value": "Napier"
+				},
+				{
+					"value": "Naples"
+				},
+				{
+					"value": "Naqada"
+				},
+				{
+					"value": "Nara"
+				},
+				{
+					"value": "Narbonne"
+				},
+				{
+					"value": "Narni"
+				},
+				{
+					"value": "Narrabri"
+				},
+				{
+					"value": "Narrandera"
+				},
+				{
+					"value": "Narva"
+				},
+				{
+					"value": "Narvik"
+				},
+				{
+					"value": "Nashua"
+				},
+				{
+					"value": "Nashville"
+				},
+				{
+					"value": "Nassau"
+				},
+				{
+					"value": "Natchez"
+				},
+				{
+					"value": "Natchitoches"
+				},
+				{
+					"value": "Nauplion"
+				},
+				{
+					"value": "Nauvoo"
+				},
+				{
+					"value": "Navsari"
+				},
+				{
+					"value": "Nazaré"
+				},
+				{
+					"value": "Nazareth"
+				},
+				{
+					"value": "N'Djamena"
+				},
+				{
+					"value": "Neasden"
+				},
+				{
+					"value": "Neath"
+				},
+				{
+					"value": "Needles"
+				},
+				{
+					"value": "Nelson"
+				},
+				{
+					"value": "Nelspruit"
+				},
+				{
+					"value": "Nesebar"
+				},
+				{
+					"value": "Netanya"
+				},
+				{
+					"value": "Neuchâtel"
+				},
+				{
+					"value": "Neufchâteau"
+				},
+				{
+					"value": "Neuhausen am Rheinfall"
+				},
+				{
+					"value": "Neuilly-Plaisance"
+				},
+				{
+					"value": "Neuilly-sur-Marne"
+				},
+				{
+					"value": "Neuilly-sur-Seine"
+				},
+				{
+					"value": "Neunkirch"
+				},
+				{
+					"value": "Neustadt Ontario"
+				},
+				{
+					"value": "Nevada City"
+				},
+				{
+					"value": "Nevers"
+				},
+				{
+					"value": "New Bedford"
+				},
+				{
+					"value": "New Bern"
+				},
+				{
+					"value": "New Braunfels"
+				},
+				{
+					"value": "New Brunswick"
+				},
+				{
+					"value": "New Castle"
+				},
+				{
+					"value": "New Cross"
+				},
+				{
+					"value": "New Delhi"
+				},
+				{
+					"value": "New Glasgow"
+				},
+				{
+					"value": "New Haven"
+				},
+				{
+					"value": "New London"
+				},
+				{
+					"value": "New Malden"
+				},
+				{
+					"value": "New Orleans"
+				},
+				{
+					"value": "New Plymouth"
+				},
+				{
+					"value": "New Providence"
+				},
+				{
+					"value": "New Rochelle"
+				},
+				{
+					"value": "New Romney"
+				},
+				{
+					"value": "New Smyrna Beach"
+				},
+				{
+					"value": "New Westminster"
+				},
+				{
+					"value": "New York City"
+				},
+				{
+					"value": "Newark"
+				},
+				{
+					"value": "Newburgh  New York"
+				},
+				{
+					"value": "Newbury"
+				},
+				{
+					"value": "Newburyport"
+				},
+				{
+					"value": "Newcastle"
+				},
+				{
+					"value": "Newcastle upon Tyne"
+				},
+				{
+					"value": "Newhaven"
+				},
+				{
+					"value": "Newman"
+				},
+				{
+					"value": "Newmarket"
+				},
+				{
+					"value": "Newport"
+				},
+				{
+					"value": "Newport Beach"
+				},
+				{
+					"value": "Newport Pagnell"
+				},
+				{
+					"value": "Newquay"
+				},
+				{
+					"value": "Newry"
+				},
+				{
+					"value": "Newton Abbot"
+				},
+				{
+					"value": "Newton Stewart"
+				},
+				{
+					"value": "Newton-le-Willows"
+				},
+				{
+					"value": "Newtownards"
+				},
+				{
+					"value": "Nhulunbuy"
+				},
+				{
+					"value": "Niagara Falls"
+				},
+				{
+					"value": "Niagara-on-the-Lake"
+				},
+				{
+					"value": "Niamey"
+				},
+				{
+					"value": "Nicaea"
+				},
+				{
+					"value": "Nice"
+				},
+				{
+					"value": "Nicomedia"
+				},
+				{
+					"value": "Nidau"
+				},
+				{
+					"value": "Niederkorn"
+				},
+				{
+					"value": "Nieuport"
+				},
+				{
+					"value": "Nijmegen"
+				},
+				{
+					"value": "Nikopol"
+				},
+				{
+					"value": "Nimbin"
+				},
+				{
+					"value": "Nîmes"
+				},
+				{
+					"value": "Nine Mile"
+				},
+				{
+					"value": "Ninove"
+				},
+				{
+					"value": "Niort"
+				},
+				{
+					"value": "Nipton"
+				},
+				{
+					"value": "Niš"
+				},
+				{
+					"value": "Nishapur"
+				},
+				{
+					"value": "Nivelles"
+				},
+				{
+					"value": "Nizhny Novgorod"
+				},
+				{
+					"value": "Nogales"
+				},
+				{
+					"value": "Nogent-sur-Marne"
+				},
+				{
+					"value": "Noisy-le-Grand"
+				},
+				{
+					"value": "Noisy-le-Sec"
+				},
+				{
+					"value": "Nokia"
+				},
+				{
+					"value": "Nome"
+				},
+				{
+					"value": "Norilsk"
+				},
+				{
+					"value": "Norman"
+				},
+				{
+					"value": "Norman Wells"
+				},
+				{
+					"value": "Normanton"
+				},
+				{
+					"value": "Norrköping"
+				},
+				{
+					"value": "North Andover"
+				},
+				{
+					"value": "North Battleford"
+				},
+				{
+					"value": "North Bay"
+				},
+				{
+					"value": "North Bend Washington"
+				},
+				{
+					"value": "North Berwick"
+				},
+				{
+					"value": "North End"
+				},
+				{
+					"value": "North Las Vegas"
+				},
+				{
+					"value": "North Palm Beach"
+				},
+				{
+					"value": "North Platte"
+				},
+				{
+					"value": "North Pole"
+				},
+				{
+					"value": "North Shields"
+				},
+				{
+					"value": "North Vancouver"
+				},
+				{
+					"value": "Northallerton"
+				},
+				{
+					"value": "Northam"
+				},
+				{
+					"value": "Northfleet"
+				},
+				{
+					"value": "Northolt"
+				},
+				{
+					"value": "Northport"
+				},
+				{
+					"value": "Northwich"
+				},
+				{
+					"value": "Northwood"
+				},
+				{
+					"value": "Norwalk"
+				},
+				{
+					"value": "Norway House"
+				},
+				{
+					"value": "Norwich"
+				},
+				{
+					"value": "Nottingham"
+				},
+				{
+					"value": "Nouakchott"
+				},
+				{
+					"value": "Nova Gorica"
+				},
+				{
+					"value": "Novalja"
+				},
+				{
+					"value": "Novato"
+				},
+				{
+					"value": "Novi Sad"
+				},
+				{
+					"value": "Novo Mesto"
+				},
+				{
+					"value": "Novorossiysk"
+				},
+				{
+					"value": "Novosibirsk"
+				},
+				{
+					"value": "Nowra"
+				},
+				{
+					"value": "Nuku'alofa"
+				},
+				{
+					"value": "Nuneaton"
+				},
+				{
+					"value": "Nuremberg"
+				},
+				{
+					"value": "Nuuk"
+				},
+				{
+					"value": "Nuwara Eliya"
+				},
+				{
+					"value": "Ny-Ålesund"
+				},
+				{
+					"value": "Nyon"
+				},
+				{
+					"value": "Oak Bay"
+				},
+				{
+					"value": "Oak Park"
+				},
+				{
+					"value": "Oak Ridge"
+				},
+				{
+					"value": "Oakville"
+				},
+				{
+					"value": "Oamaru"
+				},
+				{
+					"value": "Oban"
+				},
+				{
+					"value": "Oberon"
+				},
+				{
+					"value": "Oberstdorf"
+				},
+				{
+					"value": "Oberwil"
+				},
+				{
+					"value": "Óbidos"
+				},
+				{
+					"value": "Ocala"
+				},
+				{
+					"value": "Ocean City"
+				},
+				{
+					"value": "Ocean Grove"
+				},
+				{
+					"value": "Oceanside"
+				},
+				{
+					"value": "Odense"
+				},
+				{
+					"value": "Odessa"
+				},
+				{
+					"value": "Oftringen"
+				},
+				{
+					"value": "Ogden"
+				},
+				{
+					"value": "Ohrid"
+				},
+				{
+					"value": "Ojai"
+				},
+				{
+					"value": "Okehampton"
+				},
+				{
+					"value": "Oklahoma City"
+				},
+				{
+					"value": "Okotoks"
+				},
+				{
+					"value": "Olathe"
+				},
+				{
+					"value": "Old Delhi"
+				},
+				{
+					"value": "Oldbury"
+				},
+				{
+					"value": "Oldham"
+				},
+				{
+					"value": "Olds"
+				},
+				{
+					"value": "Oliver"
+				},
+				{
+					"value": "Ollantaytambo"
+				},
+				{
+					"value": "Olney"
+				},
+				{
+					"value": "Olomouc"
+				},
+				{
+					"value": "Olsztyn"
+				},
+				{
+					"value": "Olten"
+				},
+				{
+					"value": "Olympia"
+				},
+				{
+					"value": "Omagh"
+				},
+				{
+					"value": "Omiš"
+				},
+				{
+					"value": "Omsk"
+				},
+				{
+					"value": "Onex"
+				},
+				{
+					"value": "Oodnadatta"
+				},
+				{
+					"value": "Ooty"
+				},
+				{
+					"value": "Opfikon"
+				},
+				{
+					"value": "Orange"
+				},
+				{
+					"value": "Orange Walk Town"
+				},
+				{
+					"value": "Orania Northern Cape"
+				},
+				{
+					"value": "Oranjestad"
+				},
+				{
+					"value": "Orbe"
+				},
+				{
+					"value": "Orchard Park  New York"
+				},
+				{
+					"value": "Orem"
+				},
+				{
+					"value": "Orenburg"
+				},
+				{
+					"value": "Orlando"
+				},
+				{
+					"value": "Orléans"
+				},
+				{
+					"value": "Orly"
+				},
+				{
+					"value": "Ormskirk"
+				},
+				{
+					"value": "Örnsköldsvik"
+				},
+				{
+					"value": "Oroville"
+				},
+				{
+					"value": "Orpington"
+				},
+				{
+					"value": "Orsières"
+				},
+				{
+					"value": "Orvault"
+				},
+				{
+					"value": "Osh"
+				},
+				{
+					"value": "Oshawa"
+				},
+				{
+					"value": "Oshkosh"
+				},
+				{
+					"value": "Oslo"
+				},
+				{
+					"value": "Osoyoos"
+				},
+				{
+					"value": "Ossining"
+				},
+				{
+					"value": "Ostende"
+				},
+				{
+					"value": "Ostermundigen"
+				},
+				{
+					"value": "Ostrava"
+				},
+				{
+					"value": "Oswestry"
+				},
+				{
+					"value": "Oswiecim"
+				},
+				{
+					"value": "Otley"
+				},
+				{
+					"value": "Ottawa"
+				},
+				{
+					"value": "Ottery St Mary"
+				},
+				{
+					"value": "Ottignies-Louvain-la-Neuve"
+				},
+				{
+					"value": "Ottumwa"
+				},
+				{
+					"value": "Oudenburg"
+				},
+				{
+					"value": "Oudtshoorn"
+				},
+				{
+					"value": "Oullins"
+				},
+				{
+					"value": "Oulu"
+				},
+				{
+					"value": "Oundle"
+				},
+				{
+					"value": "Ouray"
+				},
+				{
+					"value": "Overland Park"
+				},
+				{
+					"value": "Oviedo"
+				},
+				{
+					"value": "Owensboro"
+				},
+				{
+					"value": "Oxford"
+				},
+				{
+					"value": "Oxnard"
+				},
+				{
+					"value": "Oxted"
+				},
+				{
+					"value": "Oyonnax"
+				},
+				{
+					"value": "Ozyorsk"
+				},
+				{
+					"value": "Paarl"
+				},
+				{
+					"value": "Pacific Grove"
+				},
+				{
+					"value": "Pacifica"
+				},
+				{
+					"value": "Paderborn"
+				},
+				{
+					"value": "Padstow"
+				},
+				{
+					"value": "Padua"
+				},
+				{
+					"value": "Paducah"
+				},
+				{
+					"value": "Page"
+				},
+				{
+					"value": "Pago Pago"
+				},
+				{
+					"value": "Paide"
+				},
+				{
+					"value": "Paignton"
+				},
+				{
+					"value": "Painswick"
+				},
+				{
+					"value": "Paisley"
+				},
+				{
+					"value": "Pakrac"
+				},
+				{
+					"value": "Palaiseau"
+				},
+				{
+					"value": "Palakkad"
+				},
+				{
+					"value": "Palanpur"
+				},
+				{
+					"value": "Paldiski"
+				},
+				{
+					"value": "Palermo"
+				},
+				{
+					"value": "Palestine"
+				},
+				{
+					"value": "Palisades Park"
+				},
+				{
+					"value": "Palm Beach Gardens"
+				},
+				{
+					"value": "Palm Desert"
+				},
+				{
+					"value": "Palm Springs"
+				},
+				{
+					"value": "Palma"
+				},
+				{
+					"value": "Palmdale"
+				},
+				{
+					"value": "Palmers Green"
+				},
+				{
+					"value": "Palmerston North"
+				},
+				{
+					"value": "Palo Alto"
+				},
+				{
+					"value": "Pamplona"
+				},
+				{
+					"value": "Panama City"
+				},
+				{
+					"value": "Panama City Beach"
+				},
+				{
+					"value": "Panjim"
+				},
+				{
+					"value": "Pantin"
+				},
+				{
+					"value": "Paphos"
+				},
+				{
+					"value": "Paramaribo"
+				},
+				{
+					"value": "Parga"
+				},
+				{
+					"value": "Paris"
+				},
+				{
+					"value": "Park City"
+				},
+				{
+					"value": "Park Ridge"
+				},
+				{
+					"value": "Parkes"
+				},
+				{
+					"value": "Parksville"
+				},
+				{
+					"value": "Parma"
+				},
+				{
+					"value": "Parry Sound"
+				},
+				{
+					"value": "Pasadena"
+				},
+				{
+					"value": "Pasco"
+				},
+				{
+					"value": "Paso Robles"
+				},
+				{
+					"value": "Passaic City New Jersey"
+				},
+				{
+					"value": "Pataliputra"
+				},
+				{
+					"value": "Patan"
+				},
+				{
+					"value": "Paterson New Jersey"
+				},
+				{
+					"value": "Patiala"
+				},
+				{
+					"value": "Patna"
+				},
+				{
+					"value": "Patras"
+				},
+				{
+					"value": "Pattaya"
+				},
+				{
+					"value": "Pau"
+				},
+				{
+					"value": "Pawhuska"
+				},
+				{
+					"value": "Pawtucket"
+				},
+				{
+					"value": "Payerne"
+				},
+				{
+					"value": "Pazin"
+				},
+				{
+					"value": "Peacehaven"
+				},
+				{
+					"value": "Peachland British Columbia"
+				},
+				{
+					"value": "Pearland"
+				},
+				{
+					"value": "Peebles"
+				},
+				{
+					"value": "Peer"
+				},
+				{
+					"value": "Peggy's Cove"
+				},
+				{
+					"value": "Pejë"
+				},
+				{
+					"value": "Pelham"
+				},
+				{
+					"value": "Pemberton"
+				},
+				{
+					"value": "Pembroke Dock"
+				},
+				{
+					"value": "Pembroke Pines"
+				},
+				{
+					"value": "Penang Island"
+				},
+				{
+					"value": "Penarth"
+				},
+				{
+					"value": "Penetanguishene"
+				},
+				{
+					"value": "Penistone"
+				},
+				{
+					"value": "Penrith"
+				},
+				{
+					"value": "Pensacola"
+				},
+				{
+					"value": "Penticton"
+				},
+				{
+					"value": "Penzance"
+				},
+				{
+					"value": "Peoria"
+				},
+				{
+					"value": "Périgueux"
+				},
+				{
+					"value": "Perm"
+				},
+				{
+					"value": "Perpignan"
+				},
+				{
+					"value": "Perris"
+				},
+				{
+					"value": "Pershore"
+				},
+				{
+					"value": "Perth"
+				},
+				{
+					"value": "Perth Amboy"
+				},
+				{
+					"value": "Perth Ontario"
+				},
+				{
+					"value": "Perugia"
+				},
+				{
+					"value": "Péruwelz"
+				},
+				{
+					"value": "Pescara"
+				},
+				{
+					"value": "Peseux"
+				},
+				{
+					"value": "Peshawar"
+				},
+				{
+					"value": "Peshkopi"
+				},
+				{
+					"value": "Pessac"
+				},
+				{
+					"value": "Petah Tikva"
+				},
+				{
+					"value": "Petaling Jaya"
+				},
+				{
+					"value": "Petaluma"
+				},
+				{
+					"value": "Petawawa"
+				},
+				{
+					"value": "Peterborough"
+				},
+				{
+					"value": "Peterlee"
+				},
+				{
+					"value": "Petersfield"
+				},
+				{
+					"value": "Petit-Bourg"
+				},
+				{
+					"value": "Petra"
+				},
+				{
+					"value": "Petrinja"
+				},
+				{
+					"value": "Petrolia"
+				},
+				{
+					"value": "Petropavlovsk-Kamchatsky"
+				},
+				{
+					"value": "Petrozavodsk"
+				},
+				{
+					"value": "Petworth"
+				},
+				{
+					"value": "Pfäffikon"
+				},
+				{
+					"value": "Phalaborwa"
+				},
+				{
+					"value": "Philippeville"
+				},
+				{
+					"value": "Philipsburg"
+				},
+				{
+					"value": "Phillipsburg"
+				},
+				{
+					"value": "Phnom Penh"
+				},
+				{
+					"value": "Phoenix"
+				},
+				{
+					"value": "Piacenza"
+				},
+				{
+					"value": "Pickering"
+				},
+				{
+					"value": "Picton"
+				},
+				{
+					"value": "Picton Ontario"
+				},
+				{
+					"value": "Pictou"
+				},
+				{
+					"value": "Piedmont"
+				},
+				{
+					"value": "Pierre"
+				},
+				{
+					"value": "Pierrefitte-sur-Seine"
+				},
+				{
+					"value": "Pieštany"
+				},
+				{
+					"value": "Pietermaritzburg"
+				},
+				{
+					"value": "Pigeon Forge"
+				},
+				{
+					"value": "Pike Road"
+				},
+				{
+					"value": "Pikeville"
+				},
+				{
+					"value": "Pincher Creek"
+				},
+				{
+					"value": "Pine Bluff"
+				},
+				{
+					"value": "Pinecrest"
+				},
+				{
+					"value": "Pinetop-Lakeside"
+				},
+				{
+					"value": "Pinetown"
+				},
+				{
+					"value": "Pineville"
+				},
+				{
+					"value": "Pinner"
+				},
+				{
+					"value": "Piqua"
+				},
+				{
+					"value": "Piraeus"
+				},
+				{
+					"value": "Piran"
+				},
+				{
+					"value": "Pirot"
+				},
+				{
+					"value": "Pisa"
+				},
+				{
+					"value": "Pismo Beach"
+				},
+				{
+					"value": "Pitt Meadows"
+				},
+				{
+					"value": "Pittsburg"
+				},
+				{
+					"value": "Pittsfield"
+				},
+				{
+					"value": "Placentia Newfoundland and Labrador"
+				},
+				{
+					"value": "Placerville"
+				},
+				{
+					"value": "Plainfield"
+				},
+				{
+					"value": "Plaisir"
+				},
+				{
+					"value": "Plaistow"
+				},
+				{
+					"value": "Plan-les-Ouates"
+				},
+				{
+					"value": "Plano"
+				},
+				{
+					"value": "Plattsburgh"
+				},
+				{
+					"value": "Pleasanton"
+				},
+				{
+					"value": "Plettenberg Bay"
+				},
+				{
+					"value": "Plovdiv"
+				},
+				{
+					"value": "Plumstead"
+				},
+				{
+					"value": "Plymouth"
+				},
+				{
+					"value": "Plzen"
+				},
+				{
+					"value": "Pocatello"
+				},
+				{
+					"value": "Pocklington"
+				},
+				{
+					"value": "Podgorica"
+				},
+				{
+					"value": "Point Pleasant"
+				},
+				{
+					"value": "Point Roberts"
+				},
+				{
+					"value": "Poissy"
+				},
+				{
+					"value": "Poitiers"
+				},
+				{
+					"value": "Pokhara"
+				},
+				{
+					"value": "Polokwane"
+				},
+				{
+					"value": "Poltava"
+				},
+				{
+					"value": "Pomona"
+				},
+				{
+					"value": "Pompano Beach"
+				},
+				{
+					"value": "Ponce"
+				},
+				{
+					"value": "Pond Inlet"
+				},
+				{
+					"value": "Pondicherry"
+				},
+				{
+					"value": "Ponta Delgada"
+				},
+				{
+					"value": "Pontault-Combault"
+				},
+				{
+					"value": "Ponte Vedra Beach"
+				},
+				{
+					"value": "Pontiac"
+				},
+				{
+					"value": "Pontoise"
+				},
+				{
+					"value": "Pontypool"
+				},
+				{
+					"value": "Pontypridd"
+				},
+				{
+					"value": "Poole"
+				},
+				{
+					"value": "Poperinge"
+				},
+				{
+					"value": "Porbandar"
+				},
+				{
+					"value": "Porec"
+				},
+				{
+					"value": "Poros"
+				},
+				{
+					"value": "Porrentruy"
+				},
+				{
+					"value": "Port Alberni"
+				},
+				{
+					"value": "Port Alfred"
+				},
+				{
+					"value": "Port Angeles"
+				},
+				{
+					"value": "Port Antonio"
+				},
+				{
+					"value": "Port Arthur"
+				},
+				{
+					"value": "Port Dover Ontario"
+				},
+				{
+					"value": "Port Elizabeth"
+				},
+				{
+					"value": "Port Fairy"
+				},
+				{
+					"value": "Port Glasgow"
+				},
+				{
+					"value": "Port Hedland"
+				},
+				{
+					"value": "Port Hope"
+				},
+				{
+					"value": "Port Huron"
+				},
+				{
+					"value": "Port Jefferson"
+				},
+				{
+					"value": "Port Laoise"
+				},
+				{
+					"value": "Port Lincoln"
+				},
+				{
+					"value": "Port Louis"
+				},
+				{
+					"value": "Port Macquarie"
+				},
+				{
+					"value": "Port Moody"
+				},
+				{
+					"value": "Port Moresby"
+				},
+				{
+					"value": "Port of Spain"
+				},
+				{
+					"value": "Port Perry"
+				},
+				{
+					"value": "Port Pirie"
+				},
+				{
+					"value": "Port Renfrew"
+				},
+				{
+					"value": "Port Said"
+				},
+				{
+					"value": "Port St. Lucie"
+				},
+				{
+					"value": "Port Sudan"
+				},
+				{
+					"value": "Port Talbot"
+				},
+				{
+					"value": "Port Townsend"
+				},
+				{
+					"value": "Port Vila"
+				},
+				{
+					"value": "Portchester"
+				},
+				{
+					"value": "Porthcawl"
+				},
+				{
+					"value": "Porthleven"
+				},
+				{
+					"value": "Portishead"
+				},
+				{
+					"value": "Portland"
+				},
+				{
+					"value": "Porto"
+				},
+				{
+					"value": "Porto Alegre"
+				},
+				{
+					"value": "Portree"
+				},
+				{
+					"value": "Portrush"
+				},
+				{
+					"value": "Portsmouth"
+				},
+				{
+					"value": "Portstewart"
+				},
+				{
+					"value": "Portugal Cove-St. Philip's"
+				},
+				{
+					"value": "Porvoo"
+				},
+				{
+					"value": "Potchefstroom"
+				},
+				{
+					"value": "Potosí"
+				},
+				{
+					"value": "Potsdam"
+				},
+				{
+					"value": "Potters Bar"
+				},
+				{
+					"value": "Poughkeepsie"
+				},
+				{
+					"value": "Poway"
+				},
+				{
+					"value": "Poznan"
+				},
+				{
+					"value": "Prague"
+				},
+				{
+					"value": "Pratteln"
+				},
+				{
+					"value": "praz-fr, praz"
+				},
+				{
+					"value": "Prescot"
+				},
+				{
+					"value": "Prescott"
+				},
+				{
+					"value": "Presque Isle"
+				},
+				{
+					"value": "Prestatyn"
+				},
+				{
+					"value": "Preston"
+				},
+				{
+					"value": "Prestwich"
+				},
+				{
+					"value": "Preveza"
+				},
+				{
+					"value": "Prilly"
+				},
+				{
+					"value": "Primm"
+				},
+				{
+					"value": "Prince Albert"
+				},
+				{
+					"value": "Prince George"
+				},
+				{
+					"value": "Princes Risborough"
+				},
+				{
+					"value": "Princeton"
+				},
+				{
+					"value": "Pripyat"
+				},
+				{
+					"value": "Prishtina"
+				},
+				{
+					"value": "Proserpine"
+				},
+				{
+					"value": "Provo"
+				},
+				{
+					"value": "Prudhoe"
+				},
+				{
+					"value": "Przemysl"
+				},
+				{
+					"value": "Pskov"
+				},
+				{
+					"value": "Puckapunyal"
+				},
+				{
+					"value": "Pudsey"
+				},
+				{
+					"value": "Puebla City"
+				},
+				{
+					"value": "Pueblo"
+				},
+				{
+					"value": "Puerto Peñasco"
+				},
+				{
+					"value": "Puerto Williams"
+				},
+				{
+					"value": "Pukekohe"
+				},
+				{
+					"value": "Pula"
+				},
+				{
+					"value": "Pully"
+				},
+				{
+					"value": "Pune"
+				},
+				{
+					"value": "Punta Arenas"
+				},
+				{
+					"value": "Punta del Este"
+				},
+				{
+					"value": "Punta Gorda"
+				},
+				{
+					"value": "Puri"
+				},
+				{
+					"value": "Purley"
+				},
+				{
+					"value": "Puteaux"
+				},
+				{
+					"value": "Putney"
+				},
+				{
+					"value": "Puyallup"
+				},
+				{
+					"value": "Pwllheli"
+				},
+				{
+					"value": "Pylos"
+				},
+				{
+					"value": "Pyongyang"
+				},
+				{
+					"value": "Qamishli"
+				},
+				{
+					"value": "Qatif"
+				},
+				{
+					"value": "Qom"
+				},
+				{
+					"value": "Qualicum Beach"
+				},
+				{
+					"value": "Queenstown"
+				},
+				{
+					"value": "Quesnel"
+				},
+				{
+					"value": "Quetta"
+				},
+				{
+					"value": "Quilpie"
+				},
+				{
+					"value": "Quimper"
+				},
+				{
+					"value": "Quincy"
+				},
+				{
+					"value": "Rabat"
+				},
+				{
+					"value": "Rabaul"
+				},
+				{
+					"value": "Rabigh"
+				},
+				{
+					"value": "Racine"
+				},
+				{
+					"value": "Radcliffe"
+				},
+				{
+					"value": "Radium Hot Springs"
+				},
+				{
+					"value": "Rainham"
+				},
+				{
+					"value": "Rainy River"
+				},
+				{
+					"value": "Raipur"
+				},
+				{
+					"value": "Rajgir"
+				},
+				{
+					"value": "Rajkot"
+				},
+				{
+					"value": "Rajpipla"
+				},
+				{
+					"value": "Rakvere"
+				},
+				{
+					"value": "Raleigh"
+				},
+				{
+					"value": "Ramadi"
+				},
+				{
+					"value": "Ramallah"
+				},
+				{
+					"value": "Ramat Gan"
+				},
+				{
+					"value": "Rambouillet"
+				},
+				{
+					"value": "Ramla"
+				},
+				{
+					"value": "Ramsbottom"
+				},
+				{
+					"value": "Ramsey Isle of Man"
+				},
+				{
+					"value": "Ramsgate"
+				},
+				{
+					"value": "Rancho Cucamonga"
+				},
+				{
+					"value": "Rancho Mirage"
+				},
+				{
+					"value": "Rancho Palos Verdes"
+				},
+				{
+					"value": "Rancho Santa Margarita"
+				},
+				{
+					"value": "Randburg"
+				},
+				{
+					"value": "Rankin Inlet"
+				},
+				{
+					"value": "Rapid City"
+				},
+				{
+					"value": "Rapperswil-Jona"
+				},
+				{
+					"value": "Raritan"
+				},
+				{
+					"value": "Rason"
+				},
+				{
+					"value": "Rauma"
+				},
+				{
+					"value": "Ravenna"
+				},
+				{
+					"value": "Rawalpindi"
+				},
+				{
+					"value": "Rawtenstall"
+				},
+				{
+					"value": "Rayleigh"
+				},
+				{
+					"value": "Razgrad"
+				},
+				{
+					"value": "Red Lake"
+				},
+				{
+					"value": "Redcar"
+				},
+				{
+					"value": "Redditch"
+				},
+				{
+					"value": "Redhill"
+				},
+				{
+					"value": "Redlands"
+				},
+				{
+					"value": "Redmond"
+				},
+				{
+					"value": "Redruth"
+				},
+				{
+					"value": "Redwood City"
+				},
+				{
+					"value": "Redwood Shores"
+				},
+				{
+					"value": "Regensberg"
+				},
+				{
+					"value": "Regensdorf"
+				},
+				{
+					"value": "Reggio Calabria"
+				},
+				{
+					"value": "Reggio Emilia"
+				},
+				{
+					"value": "Regina"
+				},
+				{
+					"value": "Rehoboth Beach"
+				},
+				{
+					"value": "Reigate"
+				},
+				{
+					"value": "Reims"
+				},
+				{
+					"value": "Reinach"
+				},
+				{
+					"value": "Renaix"
+				},
+				{
+					"value": "Renens"
+				},
+				{
+					"value": "Renfrew"
+				},
+				{
+					"value": "Renmark"
+				},
+				{
+					"value": "Rennes"
+				},
+				{
+					"value": "Reno"
+				},
+				{
+					"value": "Renton"
+				},
+				{
+					"value": "Resolute"
+				},
+				{
+					"value": "Retford"
+				},
+				{
+					"value": "Revelstoke"
+				},
+				{
+					"value": "Rexburg"
+				},
+				{
+					"value": "Reykjavík"
+				},
+				{
+					"value": "Rezé"
+				},
+				{
+					"value": "Rheinau"
+				},
+				{
+					"value": "Rheineck"
+				},
+				{
+					"value": "Rheinfelden"
+				},
+				{
+					"value": "Rhodes"
+				},
+				{
+					"value": "Rhondda"
+				},
+				{
+					"value": "Rhyl"
+				},
+				{
+					"value": "Rhymney"
+				},
+				{
+					"value": "Richards Bay"
+				},
+				{
+					"value": "Richardson"
+				},
+				{
+					"value": "Richland"
+				},
+				{
+					"value": "Richmond"
+				},
+				{
+					"value": "Richterswil"
+				},
+				{
+					"value": "Rickmansworth"
+				},
+				{
+					"value": "Ridgecrest"
+				},
+				{
+					"value": "Ridgefield"
+				},
+				{
+					"value": "Riehen"
+				},
+				{
+					"value": "Rillieux-la-Pape"
+				},
+				{
+					"value": "Rimini"
+				},
+				{
+					"value": "Rio de Janeiro"
+				},
+				{
+					"value": "Rio Rancho"
+				},
+				{
+					"value": "Ripley"
+				},
+				{
+					"value": "Ripley Derbyshire"
+				},
+				{
+					"value": "Ripon"
+				},
+				{
+					"value": "Risch"
+				},
+				{
+					"value": "Rishikesh"
+				},
+				{
+					"value": "Rishon LeZion"
+				},
+				{
+					"value": "Ris-Orangis"
+				},
+				{
+					"value": "Riva San Vitale"
+				},
+				{
+					"value": "Riverside"
+				},
+				{
+					"value": "Road Town"
+				},
+				{
+					"value": "Roanne"
+				},
+				{
+					"value": "Robin Hood's Bay"
+				},
+				{
+					"value": "Rochdale"
+				},
+				{
+					"value": "Rochefort"
+				},
+				{
+					"value": "Rochester"
+				},
+				{
+					"value": "Rochester Hills"
+				},
+				{
+					"value": "Rochford"
+				},
+				{
+					"value": "Rock Hill"
+				},
+				{
+					"value": "Rockaway Beach"
+				},
+				{
+					"value": "Rockhampton"
+				},
+				{
+					"value": "Rockville"
+				},
+				{
+					"value": "Rockville Centre"
+				},
+				{
+					"value": "Rocky Mount"
+				},
+				{
+					"value": "Rocky Mountain House"
+				},
+				{
+					"value": "Rodez"
+				},
+				{
+					"value": "Rogers"
+				},
+				{
+					"value": "Rogersville"
+				},
+				{
+					"value": "Roissy-en-Brie"
+				},
+				{
+					"value": "Rolle"
+				},
+				{
+					"value": "Roma"
+				},
+				{
+					"value": "Romainmôtier"
+				},
+				{
+					"value": "Romainville"
+				},
+				{
+					"value": "Romanshorn"
+				},
+				{
+					"value": "Romans-sur-Isère"
+				},
+				{
+					"value": "Rome"
+				},
+				{
+					"value": "Romeoville"
+				},
+				{
+					"value": "Romford"
+				},
+				{
+					"value": "Romont"
+				},
+				{
+					"value": "Romsey"
+				},
+				{
+					"value": "Ronda"
+				},
+				{
+					"value": "Rorschach"
+				},
+				{
+					"value": "Rosario"
+				},
+				{
+					"value": "Rosarito Beach"
+				},
+				{
+					"value": "Roscrea"
+				},
+				{
+					"value": "Roseau"
+				},
+				{
+					"value": "Rosebery"
+				},
+				{
+					"value": "Roseburg"
+				},
+				{
+					"value": "Roseland"
+				},
+				{
+					"value": "Rosemead"
+				},
+				{
+					"value": "Rosetta"
+				},
+				{
+					"value": "Roseville"
+				},
+				{
+					"value": "Rosh HaAyin"
+				},
+				{
+					"value": "Roskilde"
+				},
+				{
+					"value": "Roslindale"
+				},
+				{
+					"value": "Roslyn"
+				},
+				{
+					"value": "Rosny-sous-Bois"
+				},
+				{
+					"value": "Ross River Yukon"
+				},
+				{
+					"value": "Ross-on-Wye"
+				},
+				{
+					"value": "Rostock"
+				},
+				{
+					"value": "Rostov"
+				},
+				{
+					"value": "Rostov-on-Don"
+				},
+				{
+					"value": "Roswell"
+				},
+				{
+					"value": "Rosyth"
+				},
+				{
+					"value": "Rotenburg an der Fulda"
+				},
+				{
+					"value": "Rotherham"
+				},
+				{
+					"value": "Rothesay"
+				},
+				{
+					"value": "Rothwell West Yorkshire"
+				},
+				{
+					"value": "Rotterdam"
+				},
+				{
+					"value": "Rottweil"
+				},
+				{
+					"value": "Roubaix"
+				},
+				{
+					"value": "Rouen"
+				},
+				{
+					"value": "Roulers"
+				},
+				{
+					"value": "Round Rock"
+				},
+				{
+					"value": "Rourkela"
+				},
+				{
+					"value": "Rouses Point"
+				},
+				{
+					"value": "Rovaniemi"
+				},
+				{
+					"value": "Rovinj"
+				},
+				{
+					"value": "Rowland Heights"
+				},
+				{
+					"value": "Rowley Regis"
+				},
+				{
+					"value": "Roxby Downs"
+				},
+				{
+					"value": "Royal Leamington Spa"
+				},
+				{
+					"value": "Royal Oak"
+				},
+				{
+					"value": "Royal Tunbridge Wells"
+				},
+				{
+					"value": "Royal Wootton Bassett"
+				},
+				{
+					"value": "Royston"
+				},
+				{
+					"value": "Rüdesheim am Rhein"
+				},
+				{
+					"value": "Rue"
+				},
+				{
+					"value": "Rueil-Malmaison"
+				},
+				{
+					"value": "Rugby"
+				},
+				{
+					"value": "Rugeley"
+				},
+				{
+					"value": "Runcorn"
+				},
+				{
+					"value": "Ruse"
+				},
+				{
+					"value": "Rushden"
+				},
+				{
+					"value": "Rusholme"
+				},
+				{
+					"value": "Rustenburg"
+				},
+				{
+					"value": "Rutherglen"
+				},
+				{
+					"value": "Ruthin"
+				},
+				{
+					"value": "Rüti"
+				},
+				{
+					"value": "Ružomberok"
+				},
+				{
+					"value": "Ryde"
+				},
+				{
+					"value": "Rye"
+				},
+				{
+					"value": "Rzeszów"
+				},
+				{
+					"value": "Saarbrücken"
+				},
+				{
+					"value": "Sabadell"
+				},
+				{
+					"value": "Sabha"
+				},
+				{
+					"value": "Sachs Harbour"
+				},
+				{
+					"value": "Sackets Harbor"
+				},
+				{
+					"value": "Sackville New Brunswick"
+				},
+				{
+					"value": "Saddle River"
+				},
+				{
+					"value": "Safed"
+				},
+				{
+					"value": "Saffron Walden"
+				},
+				{
+					"value": "Sagres"
+				},
+				{
+					"value": "Saillon"
+				},
+				{
+					"value": "Saint Boniface"
+				},
+				{
+					"value": "Saint Catherine"
+				},
+				{
+					"value": "Saint John"
+				},
+				{
+					"value": "Saint Paul"
+				},
+				{
+					"value": "Saint Peter Port"
+				},
+				{
+					"value": "Saint-André"
+				},
+				{
+					"value": "Saint-Benoît"
+				},
+				{
+					"value": "Saint-Brieuc"
+				},
+				{
+					"value": "Saint-Chamond"
+				},
+				{
+					"value": "Saint-Cloud"
+				},
+				{
+					"value": "Saint-Denis"
+				},
+				{
+					"value": "Saint-Dié-des-Vosges"
+				},
+				{
+					"value": "Saint-Dizier"
+				},
+				{
+					"value": "Sainte-Anne"
+				},
+				{
+					"value": "Sainte-Foy-lès-Lyon"
+				},
+				{
+					"value": "Sainte-Geneviève-des-Bois"
+				},
+				{
+					"value": "Sainte-Marie"
+				},
+				{
+					"value": "Sainte-Rose"
+				},
+				{
+					"value": "Saintes"
+				},
+				{
+					"value": "Sainte-Suzanne"
+				},
+				{
+					"value": "Saint-Étienne"
+				},
+				{
+					"value": "Saint-Étienne-du-Rouvray"
+				},
+				{
+					"value": "Saint-Genis-Laval"
+				},
+				{
+					"value": "Saint-Germain-en-Laye"
+				},
+				{
+					"value": "Saint-Ghislain"
+				},
+				{
+					"value": "Saint-Gratien"
+				},
+				{
+					"value": "Saint-Herblain"
+				},
+				{
+					"value": "Saint-Hubert"
+				},
+				{
+					"value": "Saint-Joseph"
+				},
+				{
+					"value": "Saint-Laurent-du-Maroni"
+				},
+				{
+					"value": "Saint-Laurent-du-Var"
+				},
+				{
+					"value": "Saint-Leu"
+				},
+				{
+					"value": "Saint-Louis"
+				},
+				{
+					"value": "Saint-Malo"
+				},
+				{
+					"value": "Saint-Mandé"
+				},
+				{
+					"value": "Saint-Martin-d'Hères"
+				},
+				{
+					"value": "Saint-Maur-des-Fossés"
+				},
+				{
+					"value": "Saint-Maurice"
+				},
+				{
+					"value": "Saint-Médard-en-Jalles"
+				},
+				{
+					"value": "Saint-Michel-sur-Orge"
+				},
+				{
+					"value": "Saint-Nazaire"
+				},
+				{
+					"value": "Saint-Nicolas"
+				},
+				{
+					"value": "Saint-Ouen"
+				},
+				{
+					"value": "Saint-Ouen-l'Aumône"
+				},
+				{
+					"value": "Saint-Paul"
+				},
+				{
+					"value": "Saint-Pierre"
+				},
+				{
+					"value": "Saint-Prex"
+				},
+				{
+					"value": "Saint-Priest"
+				},
+				{
+					"value": "Saint-Quentin"
+				},
+				{
+					"value": "Saint-Raphaël"
+				},
+				{
+					"value": "Saint-Sébastien-sur-Loire"
+				},
+				{
+					"value": "Saint-Trond"
+				},
+				{
+					"value": "Saint-Ursanne"
+				},
+				{
+					"value": "Saint-Vith"
+				},
+				{
+					"value": "Sakakah"
+				},
+				{
+					"value": "Sakib"
+				},
+				{
+					"value": "Salalah"
+				},
+				{
+					"value": "Salamanca"
+				},
+				{
+					"value": "Salcombe"
+				},
+				{
+					"value": "Sale"
+				},
+				{
+					"value": "Salem"
+				},
+				{
+					"value": "Salerno"
+				},
+				{
+					"value": "Salford"
+				},
+				{
+					"value": "Salina"
+				},
+				{
+					"value": "Salinas"
+				},
+				{
+					"value": "Salisbury"
+				},
+				{
+					"value": "Salmon Arm"
+				},
+				{
+					"value": "Salo"
+				},
+				{
+					"value": "Salon-de-Provence"
+				},
+				{
+					"value": "Salt Lake City"
+				},
+				{
+					"value": "Salta"
+				},
+				{
+					"value": "Saltash"
+				},
+				{
+					"value": "Saltburn-by-the-Sea"
+				},
+				{
+					"value": "Salzburg"
+				},
+				{
+					"value": "Samara"
+				},
+				{
+					"value": "Samarra"
+				},
+				{
+					"value": "Sammamish"
+				},
+				{
+					"value": "Samobor"
+				},
+				{
+					"value": "Samsun"
+				},
+				{
+					"value": "San Angelo"
+				},
+				{
+					"value": "San Antonio"
+				},
+				{
+					"value": "San Bruno"
+				},
+				{
+					"value": "San Carlos"
+				},
+				{
+					"value": "San Carlos de Bariloche"
+				},
+				{
+					"value": "San Clemente"
+				},
+				{
+					"value": "San Francisco"
+				},
+				{
+					"value": "San Gabriel"
+				},
+				{
+					"value": "San Jose"
+				},
+				{
+					"value": "San José"
+				},
+				{
+					"value": "San José del Cabo"
+				},
+				{
+					"value": "San Juan"
+				},
+				{
+					"value": "San Leandro"
+				},
+				{
+					"value": "San Luis Obispo"
+				},
+				{
+					"value": "San Marcos"
+				},
+				{
+					"value": "San Marino"
+				},
+				{
+					"value": "San Mateo"
+				},
+				{
+					"value": "San Pedro Sula"
+				},
+				{
+					"value": "San Rafael"
+				},
+				{
+					"value": "San Ramon"
+				},
+				{
+					"value": "San Salvador"
+				},
+				{
+					"value": "San Sebastián"
+				},
+				{
+					"value": "Sana'a"
+				},
+				{
+					"value": "Sanand"
+				},
+				{
+					"value": "Sandakan"
+				},
+				{
+					"value": "Sandbach"
+				},
+				{
+					"value": "Sandhurst"
+				},
+				{
+					"value": "Sandown"
+				},
+				{
+					"value": "Sandpoint"
+				},
+				{
+					"value": "Sandton"
+				},
+				{
+					"value": "Sandusky Ohio"
+				},
+				{
+					"value": "Sandwich"
+				},
+				{
+					"value": "Sandy"
+				},
+				{
+					"value": "Sandy Springs"
+				},
+				{
+					"value": "Sanford"
+				},
+				{
+					"value": "Sanliurfa"
+				},
+				{
+					"value": "Sannois"
+				},
+				{
+					"value": "Santa Ana"
+				},
+				{
+					"value": "Santa Clarita"
+				},
+				{
+					"value": "Santa Cruz"
+				},
+				{
+					"value": "Santa Cruz de Tenerife"
+				},
+				{
+					"value": "Santa Maria"
+				},
+				{
+					"value": "Santa Monica"
+				},
+				{
+					"value": "Santa Rosa"
+				},
+				{
+					"value": "Santander"
+				},
+				{
+					"value": "Santiago de Compostela"
+				},
+				{
+					"value": "Santiago de Cuba"
+				},
+				{
+					"value": "Santiago de los Caballeros"
+				},
+				{
+					"value": "Santo Domingo"
+				},
+				{
+					"value": "São Paulo"
+				},
+				{
+					"value": "São Tomé"
+				},
+				{
+					"value": "Sarandë"
+				},
+				{
+					"value": "Sarasota"
+				},
+				{
+					"value": "Saratoga"
+				},
+				{
+					"value": "Saratov"
+				},
+				{
+					"value": "Sarcelles"
+				},
+				{
+					"value": "Sargans"
+				},
+				{
+					"value": "Sarnen"
+				},
+				{
+					"value": "Sarnia"
+				},
+				{
+					"value": "Sarreguemines"
+				},
+				{
+					"value": "Sartrouville"
+				},
+				{
+					"value": "Saskatoon"
+				},
+				{
+					"value": "Sassnitz"
+				},
+				{
+					"value": "Sault Ste. Marie"
+				},
+				{
+					"value": "Saumur"
+				},
+				{
+					"value": "Sausalito"
+				},
+				{
+					"value": "Savannah"
+				},
+				{
+					"value": "Savigny-le-Temple"
+				},
+				{
+					"value": "Savigny-sur-Orge"
+				},
+				{
+					"value": "Savonlinna"
+				},
+				{
+					"value": "Sawbridgeworth"
+				},
+				{
+					"value": "Saxonwold"
+				},
+				{
+					"value": "Scarborough"
+				},
+				{
+					"value": "Schaffhausen"
+				},
+				{
+					"value": "Schengen"
+				},
+				{
+					"value": "Schiltigheim"
+				},
+				{
+					"value": "Schleswig"
+				},
+				{
+					"value": "Schlieren"
+				},
+				{
+					"value": "Schwerin"
+				},
+				{
+					"value": "Schwyz"
+				},
+				{
+					"value": "Scone"
+				},
+				{
+					"value": "Scottsdale"
+				},
+				{
+					"value": "Scunthorpe"
+				},
+				{
+					"value": "Sea Point"
+				},
+				{
+					"value": "Seaford"
+				},
+				{
+					"value": "Seaham"
+				},
+				{
+					"value": "Seal Beach"
+				},
+				{
+					"value": "SeaTac"
+				},
+				{
+					"value": "Seaton"
+				},
+				{
+					"value": "Seattle"
+				},
+				{
+					"value": "Sebastopol"
+				},
+				{
+					"value": "Sechelt British Columbia"
+				},
+				{
+					"value": "Secunda Mpumalanga"
+				},
+				{
+					"value": "Secunderabad"
+				},
+				{
+					"value": "Sedbergh"
+				},
+				{
+					"value": "Sedgefield"
+				},
+				{
+					"value": "Segovia"
+				},
+				{
+					"value": "Seinäjoki"
+				},
+				{
+					"value": "Selby"
+				},
+				{
+					"value": "Selma"
+				},
+				{
+					"value": "Seltjarnarnes"
+				},
+				{
+					"value": "Semarang"
+				},
+				{
+					"value": "Sembrancher"
+				},
+				{
+					"value": "Sempach"
+				},
+				{
+					"value": "Senj"
+				},
+				{
+					"value": "Sens"
+				},
+				{
+					"value": "Sequim"
+				},
+				{
+					"value": "Seraing"
+				},
+				{
+					"value": "Sète"
+				},
+				{
+					"value": "Settle"
+				},
+				{
+					"value": "Setúbal"
+				},
+				{
+					"value": "Sevastopol"
+				},
+				{
+					"value": "Sevenoaks"
+				},
+				{
+					"value": "Seville"
+				},
+				{
+					"value": "Sevran"
+				},
+				{
+					"value": "Sèvres"
+				},
+				{
+					"value": "Seward"
+				},
+				{
+					"value": "Seymour"
+				},
+				{
+					"value": "Shaftesbury"
+				},
+				{
+					"value": "Shanghai"
+				},
+				{
+					"value": "Shanklin"
+				},
+				{
+					"value": "Shannon"
+				},
+				{
+					"value": "Sharjah"
+				},
+				{
+					"value": "Sharm el-Sheikh"
+				},
+				{
+					"value": "Shaw and Crompton"
+				},
+				{
+					"value": "Sheboygan"
+				},
+				{
+					"value": "Shediac"
+				},
+				{
+					"value": "Sheerness"
+				},
+				{
+					"value": "Sheffield"
+				},
+				{
+					"value": "Shelburne Nova Scotia"
+				},
+				{
+					"value": "Shepperton"
+				},
+				{
+					"value": "Shepton Mallet"
+				},
+				{
+					"value": "Sherborne"
+				},
+				{
+					"value": "Sheridan"
+				},
+				{
+					"value": "Sheringham"
+				},
+				{
+					"value": "Sherman"
+				},
+				{
+					"value": "'s-Hertogenbosch"
+				},
+				{
+					"value": "Shildon"
+				},
+				{
+					"value": "Shimo-Kitazawa"
+				},
+				{
+					"value": "Shipley"
+				},
+				{
+					"value": "Shiraz"
+				},
+				{
+					"value": "Shirebrook"
+				},
+				{
+					"value": "Shkodër"
+				},
+				{
+					"value": "Shoeburyness"
+				},
+				{
+					"value": "Shoreditch"
+				},
+				{
+					"value": "Shoreham-by-Sea"
+				},
+				{
+					"value": "Shoreline"
+				},
+				{
+					"value": "Shravanabelagola"
+				},
+				{
+					"value": "Shreveport"
+				},
+				{
+					"value": "Shymkent"
+				},
+				{
+					"value": "Sialkot"
+				},
+				{
+					"value": "Sibu"
+				},
+				{
+					"value": "Sidcup"
+				},
+				{
+					"value": "Sidhpur"
+				},
+				{
+					"value": "Sidmouth"
+				},
+				{
+					"value": "Sidney"
+				},
+				{
+					"value": "Siem Reap"
+				},
+				{
+					"value": "Siena"
+				},
+				{
+					"value": "Sierra Vista"
+				},
+				{
+					"value": "Sierre"
+				},
+				{
+					"value": "Sihanoukville"
+				},
+				{
+					"value": "Siliguri"
+				},
+				{
+					"value": "Silistra"
+				},
+				{
+					"value": "Sillamäe"
+				},
+				{
+					"value": "Simcoe"
+				},
+				{
+					"value": "Simferopol"
+				},
+				{
+					"value": "Simi Valley"
+				},
+				{
+					"value": "Simon's Town"
+				},
+				{
+					"value": "Singapore"
+				},
+				{
+					"value": "Singleton"
+				},
+				{
+					"value": "Sinjar"
+				},
+				{
+					"value": "Sintra"
+				},
+				{
+					"value": "Sint-Truiden"
+				},
+				{
+					"value": "Sion"
+				},
+				{
+					"value": "Sioux Falls"
+				},
+				{
+					"value": "Sirte"
+				},
+				{
+					"value": "Sitamarhi"
+				},
+				{
+					"value": "Sitia"
+				},
+				{
+					"value": "Sitka"
+				},
+				{
+					"value": "Sittingbourne"
+				},
+				{
+					"value": "Sivasagar"
+				},
+				{
+					"value": "Six-Fours-les-Plages"
+				},
+				{
+					"value": "Skagen"
+				},
+				{
+					"value": "Skegness"
+				},
+				{
+					"value": "Skelmersdale"
+				},
+				{
+					"value": "Skibbereen"
+				},
+				{
+					"value": "Skipton"
+				},
+				{
+					"value": "Škofja Loka"
+				},
+				{
+					"value": "Skopje"
+				},
+				{
+					"value": "Skowhegan"
+				},
+				{
+					"value": "Slave Lake"
+				},
+				{
+					"value": "Sleaford"
+				},
+				{
+					"value": "Sligo"
+				},
+				{
+					"value": "Slough"
+				},
+				{
+					"value": "Smethwick"
+				},
+				{
+					"value": "Smithers"
+				},
+				{
+					"value": "Smolensk"
+				},
+				{
+					"value": "Smolyan"
+				},
+				{
+					"value": "Smyrna"
+				},
+				{
+					"value": "Snodland"
+				},
+				{
+					"value": "Snoqualmie"
+				},
+				{
+					"value": "Sochi"
+				},
+				{
+					"value": "Sofia"
+				},
+				{
+					"value": "Soignies"
+				},
+				{
+					"value": "Soissons"
+				},
+				{
+					"value": "Solihull"
+				},
+				{
+					"value": "Solothurn"
+				},
+				{
+					"value": "Solvang"
+				},
+				{
+					"value": "Somerset West"
+				},
+				{
+					"value": "Somerton"
+				},
+				{
+					"value": "Sonoma"
+				},
+				{
+					"value": "Sonora"
+				},
+				{
+					"value": "Sooke"
+				},
+				{
+					"value": "Sophiatown"
+				},
+				{
+					"value": "Sopot"
+				},
+				{
+					"value": "Sotteville-lès-Rouen"
+				},
+				{
+					"value": "Soufrière"
+				},
+				{
+					"value": "South Bend"
+				},
+				{
+					"value": "South Benfleet"
+				},
+				{
+					"value": "South Boston"
+				},
+				{
+					"value": "South Lake Tahoe"
+				},
+				{
+					"value": "South Pass City"
+				},
+				{
+					"value": "South San Francisco"
+				},
+				{
+					"value": "South Shields"
+				},
+				{
+					"value": "Southam"
+				},
+				{
+					"value": "Southampton"
+				},
+				{
+					"value": "Southend-on-Sea"
+				},
+				{
+					"value": "Southfield"
+				},
+				{
+					"value": "Southport"
+				},
+				{
+					"value": "Southsea"
+				},
+				{
+					"value": "Southwold"
+				},
+				{
+					"value": "Sowerby Bridge"
+				},
+				{
+					"value": "Sozopol"
+				},
+				{
+					"value": "Spa"
+				},
+				{
+					"value": "Spalding"
+				},
+				{
+					"value": "Spanish Town"
+				},
+				{
+					"value": "Spartanburg"
+				},
+				{
+					"value": "Sparti"
+				},
+				{
+					"value": "Spennymoor"
+				},
+				{
+					"value": "Spetses"
+				},
+				{
+					"value": "Spiez"
+				},
+				{
+					"value": "Splügen"
+				},
+				{
+					"value": "Spreitenbach"
+				},
+				{
+					"value": "Springdale"
+				},
+				{
+					"value": "Springfield"
+				},
+				{
+					"value": "Springhill Nova Scotia"
+				},
+				{
+					"value": "Squaw Valley"
+				},
+				{
+					"value": "St Albans"
+				},
+				{
+					"value": "St Andrews"
+				},
+				{
+					"value": "St Asaph"
+				},
+				{
+					"value": "St Austell"
+				},
+				{
+					"value": "St George"
+				},
+				{
+					"value": "St Helens"
+				},
+				{
+					"value": "St Ives"
+				},
+				{
+					"value": "St Leonards-on-Sea"
+				},
+				{
+					"value": "St Neots"
+				},
+				{
+					"value": "St Pancras"
+				},
+				{
+					"value": "St. Andrews"
+				},
+				{
+					"value": "St. Anthony"
+				},
+				{
+					"value": "St. Augustine"
+				},
+				{
+					"value": "St. Catharines"
+				},
+				{
+					"value": "St. Charles"
+				},
+				{
+					"value": "St. Gallen"
+				},
+				{
+					"value": "St. George"
+				},
+				{
+					"value": "St. George's"
+				},
+				{
+					"value": "St. John's"
+				},
+				{
+					"value": "St. Joseph"
+				},
+				{
+					"value": "St. Louis"
+				},
+				{
+					"value": "St. Moritz"
+				},
+				{
+					"value": "St. Paul"
+				},
+				{
+					"value": "St. Stephen New Brunswick"
+				},
+				{
+					"value": "Stäfa"
+				},
+				{
+					"value": "Staines-upon-Thames"
+				},
+				{
+					"value": "Stains"
+				},
+				{
+					"value": "Stalybridge"
+				},
+				{
+					"value": "Stamford"
+				},
+				{
+					"value": "Stanford-le-Hope"
+				},
+				{
+					"value": "Stanley"
+				},
+				{
+					"value": "Stanmore"
+				},
+				{
+					"value": "Stans"
+				},
+				{
+					"value": "Stanthorpe"
+				},
+				{
+					"value": "Starkville"
+				},
+				{
+					"value": "Stavanger"
+				},
+				{
+					"value": "Staveley"
+				},
+				{
+					"value": "Stavelot"
+				},
+				{
+					"value": "Steamboat Springs"
+				},
+				{
+					"value": "Steckborn"
+				},
+				{
+					"value": "Steffisburg"
+				},
+				{
+					"value": "Stein am Rhein"
+				},
+				{
+					"value": "Steinhausen"
+				},
+				{
+					"value": "Stellenbosch"
+				},
+				{
+					"value": "Stepanakert"
+				},
+				{
+					"value": "Stepney"
+				},
+				{
+					"value": "Steubenville"
+				},
+				{
+					"value": "Stevenage"
+				},
+				{
+					"value": "Stewart British Columbia"
+				},
+				{
+					"value": "Steyning"
+				},
+				{
+					"value": "Stillwater"
+				},
+				{
+					"value": "Stirling"
+				},
+				{
+					"value": "Stockholm"
+				},
+				{
+					"value": "Stockport"
+				},
+				{
+					"value": "Stockton"
+				},
+				{
+					"value": "Stockton-on-Tees"
+				},
+				{
+					"value": "Stockwell"
+				},
+				{
+					"value": "Stoke Newington"
+				},
+				{
+					"value": "Stoke-on-Trent"
+				},
+				{
+					"value": "Stone"
+				},
+				{
+					"value": "Stone Mountain"
+				},
+				{
+					"value": "Stone Town"
+				},
+				{
+					"value": "Stonehaven"
+				},
+				{
+					"value": "Stonehouse Gloucestershire"
+				},
+				{
+					"value": "Stoney Creek"
+				},
+				{
+					"value": "Stonington"
+				},
+				{
+					"value": "Stony Stratford"
+				},
+				{
+					"value": "Stornoway"
+				},
+				{
+					"value": "Storrs"
+				},
+				{
+					"value": "Stourbridge"
+				},
+				{
+					"value": "Stowmarket"
+				},
+				{
+					"value": "Stow-on-the-Wold"
+				},
+				{
+					"value": "Strabane"
+				},
+				{
+					"value": "Stralsund"
+				},
+				{
+					"value": "Stranraer"
+				},
+				{
+					"value": "Strasbourg"
+				},
+				{
+					"value": "Strasburg"
+				},
+				{
+					"value": "Stratford"
+				},
+				{
+					"value": "Stratford-upon-Avon"
+				},
+				{
+					"value": "Strathmore"
+				},
+				{
+					"value": "Stretford"
+				},
+				{
+					"value": "Stromness"
+				},
+				{
+					"value": "Strood"
+				},
+				{
+					"value": "Stuart"
+				},
+				{
+					"value": "Sturminster Newton"
+				},
+				{
+					"value": "Stuttgart"
+				},
+				{
+					"value": "Sucy-en-Brie"
+				},
+				{
+					"value": "Sudbury"
+				},
+				{
+					"value": "Suez"
+				},
+				{
+					"value": "Suffield"
+				},
+				{
+					"value": "Sugar Land"
+				},
+				{
+					"value": "Suhr"
+				},
+				{
+					"value": "Sukhumi"
+				},
+				{
+					"value": "Summerland"
+				},
+				{
+					"value": "Sumter"
+				},
+				{
+					"value": "Sun City North West"
+				},
+				{
+					"value": "Sun Valley"
+				},
+				{
+					"value": "Sunbury"
+				},
+				{
+					"value": "Sunbury-on-Thames"
+				},
+				{
+					"value": "Sunderland"
+				},
+				{
+					"value": "Sunnyvale"
+				},
+				{
+					"value": "Sunrise"
+				},
+				{
+					"value": "Surat"
+				},
+				{
+					"value": "Suresnes"
+				},
+				{
+					"value": "Surrey"
+				},
+				{
+					"value": "Sursee"
+				},
+				{
+					"value": "Susa"
+				},
+				{
+					"value": "Susanville"
+				},
+				{
+					"value": "Sutton"
+				},
+				{
+					"value": "Sutton Coldfield"
+				},
+				{
+					"value": "Sutton-in-Ashfield"
+				},
+				{
+					"value": "Suva"
+				},
+				{
+					"value": "Sveta Nedelja Zagreb County"
+				},
+				{
+					"value": "Svishtov"
+				},
+				{
+					"value": "Swadlincote"
+				},
+				{
+					"value": "Swaffham"
+				},
+				{
+					"value": "Swakopmund"
+				},
+				{
+					"value": "Swanage"
+				},
+				{
+					"value": "Swanley"
+				},
+				{
+					"value": "Swansea"
+				},
+				{
+					"value": "Swellendam"
+				},
+				{
+					"value": "Swindon"
+				},
+				{
+					"value": "Swinton"
+				},
+				{
+					"value": "Sydney"
+				},
+				{
+					"value": "Sykesville"
+				},
+				{
+					"value": "Sylvan Lake"
+				},
+				{
+					"value": "Syracuse"
+				},
+				{
+					"value": "Szczecin"
+				},
+				{
+					"value": "Szeged"
+				},
+				{
+					"value": "Székesfehérvár"
+				},
+				{
+					"value": "Ta' Qali"
+				},
+				{
+					"value": "Tabriz"
+				},
+				{
+					"value": "Tacoma"
+				},
+				{
+					"value": "Tadcaster"
+				},
+				{
+					"value": "Ta'if"
+				},
+				{
+					"value": "Taipei"
+				},
+				{
+					"value": "Tal Afar"
+				},
+				{
+					"value": "Talence"
+				},
+				{
+					"value": "Tallahassee"
+				},
+				{
+					"value": "Tallinn"
+				},
+				{
+					"value": "Taloyoak"
+				},
+				{
+					"value": "Tampa"
+				},
+				{
+					"value": "Tampere"
+				},
+				{
+					"value": "Tamworth"
+				},
+				{
+					"value": "Tangier"
+				},
+				{
+					"value": "Taos"
+				},
+				{
+					"value": "Taranto"
+				},
+				{
+					"value": "Tarbes"
+				},
+				{
+					"value": "Tarpon Springs"
+				},
+				{
+					"value": "Tarragona"
+				},
+				{
+					"value": "Tarsus"
+				},
+				{
+					"value": "Tartu"
+				},
+				{
+					"value": "Tartus"
+				},
+				{
+					"value": "Tashkent"
+				},
+				{
+					"value": "Tatamagouche"
+				},
+				{
+					"value": "Taupo"
+				},
+				{
+					"value": "Tauranga"
+				},
+				{
+					"value": "Taverny"
+				},
+				{
+					"value": "Tavistock"
+				},
+				{
+					"value": "Tbilisi"
+				},
+				{
+					"value": "Te Awamutu"
+				},
+				{
+					"value": "Tecate"
+				},
+				{
+					"value": "Tecumseh"
+				},
+				{
+					"value": "Teddington"
+				},
+				{
+					"value": "Tegucigalpa"
+				},
+				{
+					"value": "Tehachapi"
+				},
+				{
+					"value": "Tehran"
+				},
+				{
+					"value": "Teignmouth"
+				},
+				{
+					"value": "Tel Aviv"
+				},
+				{
+					"value": "Telford"
+				},
+				{
+					"value": "Temagami"
+				},
+				{
+					"value": "Temecula"
+				},
+				{
+					"value": "Temiskaming Shores"
+				},
+				{
+					"value": "Tempe"
+				},
+				{
+					"value": "Temple"
+				},
+				{
+					"value": "Tenafly"
+				},
+				{
+					"value": "Tenby"
+				},
+				{
+					"value": "Tennant Creek"
+				},
+				{
+					"value": "Tenterden"
+				},
+				{
+					"value": "Tenterfield"
+				},
+				{
+					"value": "Tequila"
+				},
+				{
+					"value": "Termonde"
+				},
+				{
+					"value": "Terni"
+				},
+				{
+					"value": "Terrace"
+				},
+				{
+					"value": "Terre Haute"
+				},
+				{
+					"value": "Tetbury"
+				},
+				{
+					"value": "Tetovo"
+				},
+				{
+					"value": "Tewkesbury"
+				},
+				{
+					"value": "Texarkana"
+				},
+				{
+					"value": "Thalwil"
+				},
+				{
+					"value": "Thane"
+				},
+				{
+					"value": "Thanjavur"
+				},
+				{
+					"value": "Thatcham"
+				},
+				{
+					"value": "The Blue Mountains"
+				},
+				{
+					"value": "The Bottom"
+				},
+				{
+					"value": "The Dalles"
+				},
+				{
+					"value": "The Hague"
+				},
+				{
+					"value": "The Pas"
+				},
+				{
+					"value": "Thebes"
+				},
+				{
+					"value": "Thessaloniki"
+				},
+				{
+					"value": "Thetford"
+				},
+				{
+					"value": "Thiais"
+				},
+				{
+					"value": "Thimphu"
+				},
+				{
+					"value": "Thionville"
+				},
+				{
+					"value": "Thiruvananthapuram"
+				},
+				{
+					"value": "Thônex"
+				},
+				{
+					"value": "Thonon-les-Bains"
+				},
+				{
+					"value": "Thoothukudi"
+				},
+				{
+					"value": "Thornaby-on-Tees"
+				},
+				{
+					"value": "Thornton Heath"
+				},
+				{
+					"value": "Thourout"
+				},
+				{
+					"value": "Thousand Oaks"
+				},
+				{
+					"value": "Three Hills"
+				},
+				{
+					"value": "Thrissur"
+				},
+				{
+					"value": "Thuin"
+				},
+				{
+					"value": "Thun"
+				},
+				{
+					"value": "Thunder Bay"
+				},
+				{
+					"value": "Thurso"
+				},
+				{
+					"value": "Thusis"
+				},
+				{
+					"value": "Tiberias"
+				},
+				{
+					"value": "Tidworth"
+				},
+				{
+					"value": "Tiel"
+				},
+				{
+					"value": "Tielt"
+				},
+				{
+					"value": "Tiger Bay"
+				},
+				{
+					"value": "Tijuana"
+				},
+				{
+					"value": "Tikrit"
+				},
+				{
+					"value": "Tilbury"
+				},
+				{
+					"value": "Tilt Cove"
+				},
+				{
+					"value": "Timaru"
+				},
+				{
+					"value": "Timbuktu"
+				},
+				{
+					"value": "Timmins"
+				},
+				{
+					"value": "Tipton"
+				},
+				{
+					"value": "Tiraspol"
+				},
+				{
+					"value": "Tirlemont"
+				},
+				{
+					"value": "Tirunelveli"
+				},
+				{
+					"value": "Tirupur"
+				},
+				{
+					"value": "Titel"
+				},
+				{
+					"value": "Tivat"
+				},
+				{
+					"value": "Tiverton"
+				},
+				{
+					"value": "Tobruk"
+				},
+				{
+					"value": "Todmorden"
+				},
+				{
+					"value": "Tofino"
+				},
+				{
+					"value": "Toledo"
+				},
+				{
+					"value": "Tolyatti"
+				},
+				{
+					"value": "Tom Price"
+				},
+				{
+					"value": "Tombstone"
+				},
+				{
+					"value": "Tomsk"
+				},
+				{
+					"value": "Tonbridge"
+				},
+				{
+					"value": "Tongres"
+				},
+				{
+					"value": "Toowoomba"
+				},
+				{
+					"value": "Topeka"
+				},
+				{
+					"value": "Torcy"
+				},
+				{
+					"value": "Tornio"
+				},
+				{
+					"value": "Toronto"
+				},
+				{
+					"value": "Torquay"
+				},
+				{
+					"value": "Torrance"
+				},
+				{
+					"value": "Tórshavn"
+				},
+				{
+					"value": "Torun"
+				},
+				{
+					"value": "Totnes"
+				},
+				{
+					"value": "Tottenham"
+				},
+				{
+					"value": "Toulon"
+				},
+				{
+					"value": "Toulouse"
+				},
+				{
+					"value": "Tourcoing"
+				},
+				{
+					"value": "Tournai"
+				},
+				{
+					"value": "Tournefeuille"
+				},
+				{
+					"value": "Tours"
+				},
+				{
+					"value": "Towcester"
+				},
+				{
+					"value": "Townsville"
+				},
+				{
+					"value": "Trabzon"
+				},
+				{
+					"value": "Tracy"
+				},
+				{
+					"value": "Trail"
+				},
+				{
+					"value": "Tranent"
+				},
+				{
+					"value": "Trappes"
+				},
+				{
+					"value": "Traverse City"
+				},
+				{
+					"value": "Tredegar"
+				},
+				{
+					"value": "Tregaron"
+				},
+				{
+					"value": "Tremblay-en-France"
+				},
+				{
+					"value": "Trenchtown"
+				},
+				{
+					"value": "Trento"
+				},
+				{
+					"value": "Trenton"
+				},
+				{
+					"value": "Trichy"
+				},
+				{
+					"value": "Trier"
+				},
+				{
+					"value": "Trieste"
+				},
+				{
+					"value": "Trincomalee"
+				},
+				{
+					"value": "Trinidad"
+				},
+				{
+					"value": "Tripoli"
+				},
+				{
+					"value": "Troezen"
+				},
+				{
+					"value": "Tromsø"
+				},
+				{
+					"value": "Trondheim"
+				},
+				{
+					"value": "Troon"
+				},
+				{
+					"value": "Troy"
+				},
+				{
+					"value": "Troyes"
+				},
+				{
+					"value": "Truckee"
+				},
+				{
+					"value": "Trujillo"
+				},
+				{
+					"value": "Truro"
+				},
+				{
+					"value": "Truth or Consequences"
+				},
+				{
+					"value": "Tskhinvali"
+				},
+				{
+					"value": "Tubize"
+				},
+				{
+					"value": "Tuktoyaktuk"
+				},
+				{
+					"value": "Tula"
+				},
+				{
+					"value": "Tullamore"
+				},
+				{
+					"value": "Tully"
+				},
+				{
+					"value": "Tulsa"
+				},
+				{
+					"value": "Tunstall Staffordshire"
+				},
+				{
+					"value": "Tupelo"
+				},
+				{
+					"value": "Turin"
+				},
+				{
+					"value": "Turku"
+				},
+				{
+					"value": "Turlock"
+				},
+				{
+					"value": "Turnhout"
+				},
+				{
+					"value": "Tuscaloosa"
+				},
+				{
+					"value": "Tustin"
+				},
+				{
+					"value": "Tver"
+				},
+				{
+					"value": "Tweed Heads"
+				},
+				{
+					"value": "Twentynine Palms"
+				},
+				{
+					"value": "Twickenham"
+				},
+				{
+					"value": "Twillingate"
+				},
+				{
+					"value": "Twin Falls"
+				},
+				{
+					"value": "Tybee Island"
+				},
+				{
+					"value": "Tyler"
+				},
+				{
+					"value": "Tynemouth"
+				},
+				{
+					"value": "Tyre"
+				},
+				{
+					"value": "Tyumen"
+				},
+				{
+					"value": "Tywyn"
+				},
+				{
+					"value": "Ubud"
+				},
+				{
+					"value": "Uckfield"
+				},
+				{
+					"value": "Ucluelet"
+				},
+				{
+					"value": "Udaipur"
+				},
+				{
+					"value": "Uddevalla"
+				},
+				{
+					"value": "Ufa"
+				},
+				{
+					"value": "Ujjain"
+				},
+				{
+					"value": "Ukiah"
+				},
+				{
+					"value": "Ulan-Ude"
+				},
+				{
+					"value": "Ulm"
+				},
+				{
+					"value": "Ulukhaktok"
+				},
+				{
+					"value": "Ulundi"
+				},
+				{
+					"value": "Ulverston"
+				},
+				{
+					"value": "Ulyanovsk"
+				},
+				{
+					"value": "Umag"
+				},
+				{
+					"value": "Unalaska Alaska"
+				},
+				{
+					"value": "Union City"
+				},
+				{
+					"value": "Uniondale"
+				},
+				{
+					"value": "Universal City"
+				},
+				{
+					"value": "Unterseen"
+				},
+				{
+					"value": "Upington"
+				},
+				{
+					"value": "Upminster"
+				},
+				{
+					"value": "Upper Saddle River"
+				},
+				{
+					"value": "Uppingham"
+				},
+				{
+					"value": "Uppsala"
+				},
+				{
+					"value": "Ur"
+				},
+				{
+					"value": "Uran"
+				},
+				{
+					"value": "Urbana"
+				},
+				{
+					"value": "Urbino"
+				},
+				{
+					"value": "Urdorf"
+				},
+				{
+					"value": "Urmia"
+				},
+				{
+					"value": "Urmston"
+				},
+				{
+					"value": "Ushuaia"
+				},
+				{
+					"value": "Usk"
+				},
+				{
+					"value": "Uster"
+				},
+				{
+					"value": "Utqiagvik"
+				},
+				{
+					"value": "Utrecht"
+				},
+				{
+					"value": "Uttoxeter"
+				},
+				{
+					"value": "Uusikaupunki"
+				},
+				{
+					"value": "Uvalde"
+				},
+				{
+					"value": "Uznach"
+				},
+				{
+					"value": "Uzwil"
+				},
+				{
+					"value": "Vaasa"
+				},
+				{
+					"value": "Vacaville"
+				},
+				{
+					"value": "Vadnagar"
+				},
+				{
+					"value": "Vadodara"
+				},
+				{
+					"value": "Valangin"
+				},
+				{
+					"value": "Val-de-Travers"
+				},
+				{
+					"value": "Valdez"
+				},
+				{
+					"value": "Valence"
+				},
+				{
+					"value": "Valencia"
+				},
+				{
+					"value": "Valenciennes"
+				},
+				{
+					"value": "Valkeakoski"
+				},
+				{
+					"value": "Valladolid"
+				},
+				{
+					"value": "Vallauris"
+				},
+				{
+					"value": "Vallejo"
+				},
+				{
+					"value": "Valletta"
+				},
+				{
+					"value": "Valleyview"
+				},
+				{
+					"value": "Vällingby"
+				},
+				{
+					"value": "Valparaiso"
+				},
+				{
+					"value": "Valparaíso"
+				},
+				{
+					"value": "Valsad"
+				},
+				{
+					"value": "Van"
+				},
+				{
+					"value": "Vancouver"
+				},
+				{
+					"value": "Vanderbijlpark"
+				},
+				{
+					"value": "Vanderhoof British Columbia"
+				},
+				{
+					"value": "Vandoeuvre-lès-Nancy"
+				},
+				{
+					"value": "Vannes"
+				},
+				{
+					"value": "Vantaa"
+				},
+				{
+					"value": "Vanves"
+				},
+				{
+					"value": "Varadero"
+				},
+				{
+					"value": "Varanasi"
+				},
+				{
+					"value": "Varese"
+				},
+				{
+					"value": "Varna"
+				},
+				{
+					"value": "Vatican City"
+				},
+				{
+					"value": "Vaughan"
+				},
+				{
+					"value": "Vaulx-en-Velin"
+				},
+				{
+					"value": "Veliko Tarnovo"
+				},
+				{
+					"value": "Veliky Novgorod"
+				},
+				{
+					"value": "Vélizy-Villacoublay"
+				},
+				{
+					"value": "Venice"
+				},
+				{
+					"value": "Vénissieux"
+				},
+				{
+					"value": "Ventnor"
+				},
+				{
+					"value": "Ventura"
+				},
+				{
+					"value": "Veraval"
+				},
+				{
+					"value": "Vereeniging"
+				},
+				{
+					"value": "Verkhoyansk"
+				},
+				{
+					"value": "Vermilion"
+				},
+				{
+					"value": "Vernier"
+				},
+				{
+					"value": "Vernon"
+				},
+				{
+					"value": "Vernon Hills"
+				},
+				{
+					"value": "Vero Beach"
+				},
+				{
+					"value": "Verona"
+				},
+				{
+					"value": "Versailles"
+				},
+				{
+					"value": "Versoix"
+				},
+				{
+					"value": "Vertou"
+				},
+				{
+					"value": "Verviers"
+				},
+				{
+					"value": "Vevey"
+				},
+				{
+					"value": "Veyrier"
+				},
+				{
+					"value": "Viandar de la Vera"
+				},
+				{
+					"value": "Vianden"
+				},
+				{
+					"value": "Vicenza"
+				},
+				{
+					"value": "Vichy"
+				},
+				{
+					"value": "Vicksburg"
+				},
+				{
+					"value": "Victoria"
+				},
+				{
+					"value": "Victorville"
+				},
+				{
+					"value": "Vidor"
+				},
+				{
+					"value": "Vienna"
+				},
+				{
+					"value": "Vienne"
+				},
+				{
+					"value": "Vientiane"
+				},
+				{
+					"value": "Vierzon"
+				},
+				{
+					"value": "Vigneux-sur-Seine"
+				},
+				{
+					"value": "Vigo"
+				},
+				{
+					"value": "Vijayawada"
+				},
+				{
+					"value": "Vila Nova de Milfontes"
+				},
+				{
+					"value": "Vilamoura"
+				},
+				{
+					"value": "Viljandi"
+				},
+				{
+					"value": "Villars-sur-Glâne"
+				},
+				{
+					"value": "Villefranche-sur-Saône"
+				},
+				{
+					"value": "Villejuif"
+				},
+				{
+					"value": "Villemomble"
+				},
+				{
+					"value": "Villenave-d'Ornon"
+				},
+				{
+					"value": "Villeneuve"
+				},
+				{
+					"value": "Villeneuve-d'Ascq"
+				},
+				{
+					"value": "Villeneuve-la-Garenne"
+				},
+				{
+					"value": "Villeneuve-Saint-Georges"
+				},
+				{
+					"value": "Villeneuve-sur-Lot"
+				},
+				{
+					"value": "Villeparisis"
+				},
+				{
+					"value": "Villepinte"
+				},
+				{
+					"value": "Villeurbanne"
+				},
+				{
+					"value": "Villiers-le-Bel"
+				},
+				{
+					"value": "Villiers-sur-Marne"
+				},
+				{
+					"value": "Vilnius"
+				},
+				{
+					"value": "Vilvorde"
+				},
+				{
+					"value": "Viña del Mar"
+				},
+				{
+					"value": "Vincennes"
+				},
+				{
+					"value": "Vineland"
+				},
+				{
+					"value": "Virton"
+				},
+				{
+					"value": "Viry-Châtillon"
+				},
+				{
+					"value": "Visakhapatnam"
+				},
+				{
+					"value": "Visalia"
+				},
+				{
+					"value": "Visby"
+				},
+				{
+					"value": "Visé"
+				},
+				{
+					"value": "Visp"
+				},
+				{
+					"value": "Vista"
+				},
+				{
+					"value": "Vitebsk"
+				},
+				{
+					"value": "Vitoria-Gasteiz"
+				},
+				{
+					"value": "Vitrolles"
+				},
+				{
+					"value": "Vitry-sur-Seine"
+				},
+				{
+					"value": "Vladimir"
+				},
+				{
+					"value": "Vladivostok"
+				},
+				{
+					"value": "Vlorë"
+				},
+				{
+					"value": "Volgograd"
+				},
+				{
+					"value": "Volketswil"
+				},
+				{
+					"value": "Volos"
+				},
+				{
+					"value": "Vorkuta"
+				},
+				{
+					"value": "Voronezh"
+				},
+				{
+					"value": "Võru"
+				},
+				{
+					"value": "Vouliagmeni"
+				},
+				{
+					"value": "Vukovar"
+				},
+				{
+					"value": "Vulcan"
+				},
+				{
+					"value": "Vyborg"
+				},
+				{
+					"value": "Wabush"
+				},
+				{
+					"value": "Waco"
+				},
+				{
+					"value": "Wadebridge"
+				},
+				{
+					"value": "Wädenswil"
+				},
+				{
+					"value": "Wagga Wagga"
+				},
+				{
+					"value": "Wake Forest"
+				},
+				{
+					"value": "Wakefield"
+				},
+				{
+					"value": "Walcourt"
+				},
+				{
+					"value": "Waldenburg"
+				},
+				{
+					"value": "Walenstadt"
+				},
+				{
+					"value": "Walgett"
+				},
+				{
+					"value": "Walhalla"
+				},
+				{
+					"value": "Walkden"
+				},
+				{
+					"value": "Walla Walla"
+				},
+				{
+					"value": "Wallan"
+				},
+				{
+					"value": "Wallasey"
+				},
+				{
+					"value": "Wallingford"
+				},
+				{
+					"value": "Wallington"
+				},
+				{
+					"value": "Wallisellen"
+				},
+				{
+					"value": "Wallsend"
+				},
+				{
+					"value": "Walnut"
+				},
+				{
+					"value": "Walsall"
+				},
+				{
+					"value": "Waltham Abbey"
+				},
+				{
+					"value": "Waltham Cross"
+				},
+				{
+					"value": "Walthamstow"
+				},
+				{
+					"value": "Walton"
+				},
+				{
+					"value": "Walton-on-Thames"
+				},
+				{
+					"value": "Walton-on-the-Naze"
+				},
+				{
+					"value": "Walvis Bay"
+				},
+				{
+					"value": "Wangen an der Aare"
+				},
+				{
+					"value": "Wantage"
+				},
+				{
+					"value": "Wappingers Falls"
+				},
+				{
+					"value": "Warangal"
+				},
+				{
+					"value": "Ware"
+				},
+				{
+					"value": "Waregem"
+				},
+				{
+					"value": "Wareham"
+				},
+				{
+					"value": "Waremme"
+				},
+				{
+					"value": "Warminster"
+				},
+				{
+					"value": "Warner Robins"
+				},
+				{
+					"value": "Warracknabeal"
+				},
+				{
+					"value": "Warragul"
+				},
+				{
+					"value": "Warren"
+				},
+				{
+					"value": "Warrington"
+				},
+				{
+					"value": "Warrnambool"
+				},
+				{
+					"value": "Warsaw"
+				},
+				{
+					"value": "Warwick"
+				},
+				{
+					"value": "Wasaga Beach"
+				},
+				{
+					"value": "Washington"
+				},
+				{
+					"value": "Washington D.C."
+				},
+				{
+					"value": "Wasilla"
+				},
+				{
+					"value": "Wasquehal"
+				},
+				{
+					"value": "Waterbury"
+				},
+				{
+					"value": "Waterford"
+				},
+				{
+					"value": "Waterloo"
+				},
+				{
+					"value": "Waterlooville"
+				},
+				{
+					"value": "Watertown"
+				},
+				{
+					"value": "Watford"
+				},
+				{
+					"value": "Watkins Glen"
+				},
+				{
+					"value": "Watlington"
+				},
+				{
+					"value": "Watson Lake"
+				},
+				{
+					"value": "Watsonville"
+				},
+				{
+					"value": "Wattrelos"
+				},
+				{
+					"value": "Waukesha"
+				},
+				{
+					"value": "Wausau"
+				},
+				{
+					"value": "Wavre"
+				},
+				{
+					"value": "Waxahachie"
+				},
+				{
+					"value": "Wednesbury"
+				},
+				{
+					"value": "Weed"
+				},
+				{
+					"value": "Weilheim in Oberbayern"
+				},
+				{
+					"value": "Weimar"
+				},
+				{
+					"value": "Weinfelden"
+				},
+				{
+					"value": "Welkom"
+				},
+				{
+					"value": "Welland"
+				},
+				{
+					"value": "Welling"
+				},
+				{
+					"value": "Wellington"
+				},
+				{
+					"value": "Wells"
+				},
+				{
+					"value": "Wells-next-the-Sea"
+				},
+				{
+					"value": "Welshpool"
+				},
+				{
+					"value": "Welwyn Garden City"
+				},
+				{
+					"value": "Wem"
+				},
+				{
+					"value": "Wembley"
+				},
+				{
+					"value": "Wenatchee"
+				},
+				{
+					"value": "Wendover"
+				},
+				{
+					"value": "Wentworth"
+				},
+				{
+					"value": "Werdenberg"
+				},
+				{
+					"value": "Wervik"
+				},
+				{
+					"value": "West Bridgford"
+				},
+				{
+					"value": "West Bromwich"
+				},
+				{
+					"value": "West Covina"
+				},
+				{
+					"value": "West End"
+				},
+				{
+					"value": "West Hampstead"
+				},
+				{
+					"value": "West Hollywood"
+				},
+				{
+					"value": "West Lafayette"
+				},
+				{
+					"value": "West Malling"
+				},
+				{
+					"value": "West New York"
+				},
+				{
+					"value": "West Newbury"
+				},
+				{
+					"value": "West Norwood"
+				},
+				{
+					"value": "West Palm Beach"
+				},
+				{
+					"value": "West Roxbury"
+				},
+				{
+					"value": "Westborough"
+				},
+				{
+					"value": "Westbury"
+				},
+				{
+					"value": "Westcliff-on-Sea"
+				},
+				{
+					"value": "Westerham"
+				},
+				{
+					"value": "Westfield"
+				},
+				{
+					"value": "Westgate-on-Sea"
+				},
+				{
+					"value": "Westhoughton"
+				},
+				{
+					"value": "Westlake Village"
+				},
+				{
+					"value": "Westminster"
+				},
+				{
+					"value": "Westmont"
+				},
+				{
+					"value": "Weston"
+				},
+				{
+					"value": "Weston-super-Mare"
+				},
+				{
+					"value": "Wetherby"
+				},
+				{
+					"value": "Wettingen"
+				},
+				{
+					"value": "Wetzikon"
+				},
+				{
+					"value": "Wetzlar"
+				},
+				{
+					"value": "Wewak"
+				},
+				{
+					"value": "Weybridge"
+				},
+				{
+					"value": "Weymouth"
+				},
+				{
+					"value": "Whangarei"
+				},
+				{
+					"value": "Wheaton"
+				},
+				{
+					"value": "Wheeling"
+				},
+				{
+					"value": "Whistler"
+				},
+				{
+					"value": "Whiston"
+				},
+				{
+					"value": "Whitby"
+				},
+				{
+					"value": "Whitchurch"
+				},
+				{
+					"value": "White Cliffs"
+				},
+				{
+					"value": "White Settlement"
+				},
+				{
+					"value": "Whitechapel"
+				},
+				{
+					"value": "Whitecourt"
+				},
+				{
+					"value": "Whitefield Greater Manchester"
+				},
+				{
+					"value": "Whitefish"
+				},
+				{
+					"value": "Whitehaven"
+				},
+				{
+					"value": "Whitehorse"
+				},
+				{
+					"value": "Whitley Bay"
+				},
+				{
+					"value": "Whitstable"
+				},
+				{
+					"value": "Whittier"
+				},
+				{
+					"value": "Wichita"
+				},
+				{
+					"value": "Wichita Falls"
+				},
+				{
+					"value": "Wick"
+				},
+				{
+					"value": "Wickford"
+				},
+				{
+					"value": "Widnes"
+				},
+				{
+					"value": "Wiedlisbach"
+				},
+				{
+					"value": "Wigan"
+				},
+				{
+					"value": "Wigton"
+				},
+				{
+					"value": "Wigtown"
+				},
+				{
+					"value": "Wil"
+				},
+				{
+					"value": "Wilcannia"
+				},
+				{
+					"value": "Wildwood"
+				},
+				{
+					"value": "Willemstad"
+				},
+				{
+					"value": "Willenhall"
+				},
+				{
+					"value": "Williams Lake"
+				},
+				{
+					"value": "Williamsville"
+				},
+				{
+					"value": "Willimantic"
+				},
+				{
+					"value": "Willisau"
+				},
+				{
+					"value": "Williston"
+				},
+				{
+					"value": "Wilmington"
+				},
+				{
+					"value": "Wilmslow"
+				},
+				{
+					"value": "Wilson"
+				},
+				{
+					"value": "Wilton"
+				},
+				{
+					"value": "Wimbledon"
+				},
+				{
+					"value": "Wimborne Minster"
+				},
+				{
+					"value": "Wincanton"
+				},
+				{
+					"value": "Winchcombe"
+				},
+				{
+					"value": "Winchelsea"
+				},
+				{
+					"value": "Winchester"
+				},
+				{
+					"value": "Windermere"
+				},
+				{
+					"value": "Windlesham"
+				},
+				{
+					"value": "Windsor"
+				},
+				{
+					"value": "Winnemucca"
+				},
+				{
+					"value": "Winnetka"
+				},
+				{
+					"value": "Winona"
+				},
+				{
+					"value": "Winsford"
+				},
+				{
+					"value": "Winslow"
+				},
+				{
+					"value": "Winston-Salem"
+				},
+				{
+					"value": "Winter Park"
+				},
+				{
+					"value": "Winterthur"
+				},
+				{
+					"value": "Winton"
+				},
+				{
+					"value": "Wisbech"
+				},
+				{
+					"value": "Wishaw"
+				},
+				{
+					"value": "Wismar"
+				},
+				{
+					"value": "Witbank"
+				},
+				{
+					"value": "Witham"
+				},
+				{
+					"value": "Withernsea"
+				},
+				{
+					"value": "Witney"
+				},
+				{
+					"value": "Wittenoom"
+				},
+				{
+					"value": "Wivenhoe"
+				},
+				{
+					"value": "Woburn"
+				},
+				{
+					"value": "Wohlen"
+				},
+				{
+					"value": "Woking"
+				},
+				{
+					"value": "Wokingham"
+				},
+				{
+					"value": "Wolfville"
+				},
+				{
+					"value": "Wolverhampton"
+				},
+				{
+					"value": "Wonthaggi"
+				},
+				{
+					"value": "Woodbridge"
+				},
+				{
+					"value": "Woodbridge Ontario"
+				},
+				{
+					"value": "Woodland"
+				},
+				{
+					"value": "Woodside"
+				},
+				{
+					"value": "Woodstock"
+				},
+				{
+					"value": "Worcester"
+				},
+				{
+					"value": "Wörgl"
+				},
+				{
+					"value": "Workington"
+				},
+				{
+					"value": "Worksop"
+				},
+				{
+					"value": "Worsley"
+				},
+				{
+					"value": "Worthing"
+				},
+				{
+					"value": "Wotton-under-Edge"
+				},
+				{
+					"value": "Wroclaw"
+				},
+				{
+					"value": "Wye Kent"
+				},
+				{
+					"value": "Wymondham"
+				},
+				{
+					"value": "Wyndham"
+				},
+				{
+					"value": "Wyong"
+				},
+				{
+					"value": "Yakima"
+				},
+				{
+					"value": "Yakutsk"
+				},
+				{
+					"value": "Yalta"
+				},
+				{
+					"value": "Yamba"
+				},
+				{
+					"value": "Yangon"
+				},
+				{
+					"value": "Yaounde"
+				},
+				{
+					"value": "Yarm"
+				},
+				{
+					"value": "Yarmouth"
+				},
+				{
+					"value": "Yaroslavl"
+				},
+				{
+					"value": "Yass"
+				},
+				{
+					"value": "Yate"
+				},
+				{
+					"value": "Yateley"
+				},
+				{
+					"value": "Yazd"
+				},
+				{
+					"value": "Yekaterinburg"
+				},
+				{
+					"value": "Yeovil"
+				},
+				{
+					"value": "Yeppoon"
+				},
+				{
+					"value": "Yerres"
+				},
+				{
+					"value": "Yorba Linda"
+				},
+				{
+					"value": "York"
+				},
+				{
+					"value": "Yorkton"
+				},
+				{
+					"value": "Young"
+				},
+				{
+					"value": "Youngstown"
+				},
+				{
+					"value": "Ypres"
+				},
+				{
+					"value": "Ypsilanti"
+				},
+				{
+					"value": "Yreka"
+				},
+				{
+					"value": "Ystradgynlais"
+				},
+				{
+					"value": "Yuba City"
+				},
+				{
+					"value": "Yulara"
+				},
+				{
+					"value": "Yuma"
+				},
+				{
+					"value": "Yuzhno-Sakhalinsk"
+				},
+				{
+					"value": "Yverdon-les-Bains"
+				},
+				{
+					"value": "Zajecar"
+				},
+				{
+					"value": "Zakopane"
+				},
+				{
+					"value": "Zanzibar City"
+				},
+				{
+					"value": "Zaragoza"
+				},
+				{
+					"value": "Zeballos"
+				},
+				{
+					"value": "Zermatt"
+				},
+				{
+					"value": "Zofingen"
+				},
+				{
+					"value": "Zollikofen"
+				},
+				{
+					"value": "Zollikon"
+				},
+				{
+					"value": "Zottegem"
+				},
+				{
+					"value": "Zug"
+				},
+				{
+					"value": "Zugdidi"
+				},
+				{
+					"value": "Zürich"
+				},
+				{
+					"value": "Zvolen"
+				},
+				{
+					"value": "Zwolle"
+				}
+			]
+		}
+	],
+	"intents": [
+		{
+			"name": "GetWeather",
+			"description": "User's asking for the current weather of a weather forecast",
+			"enabledByDefault": true,
+			"utterances": [
+				"what's the weather",
+				"tell me what's the weather",
+				"can you tell me the weather please",
+				"i'd like to know how's the weather",
+				"how is it looking outside",
+				"tell me the current weather in {Paris:=>City}",
+				"how's the weather in {Berlin:=>City}",
+				"tell me the actual weather in {Bern:=>City}",
+				"how is the weather in {Moscow:=>City}",
+				"current weather conditions in {New York:=>City} please",
+				"how does it look in {London:=>City}"
+			],
+			"slots": [
+				{
+					"name": "City",
+					"description": null,
+					"required": false,
+					"type": "CityNames",
+					"missingQuestion": ""
+				}
+			]
+		},
+		{
+			"name": "AnswerCity",
+			"description": "User's answering with a city name",
+			"enabledByDefault": false,
+			"utterances": [
+				"{London:=>City}",
+				"in {Paris:=>City}",
+				"{Zurich:=>City} please",
+				"in {Munich:=>City} please",
+				"in {Glasgow:=>City}",
+				"{Bern:=>City}",
+				"{Lausanne:=>City}",
+				"{New York:=>City}",
+				"{Washington:=>City}",
+				"{Hamburg:=>City}",
+				"{Marseille:=>City}"
+			],
+			"slots": [
+				{
+					"name": "City",
+					"description": null,
+					"required": false,
+					"type": "CityNames",
+					"missingQuestion": ""
+				}
+			]
+		}
+	]
+}

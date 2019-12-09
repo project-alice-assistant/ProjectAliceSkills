@@ -1,0 +1,37 @@
+{
+	"skill": "InternationalSpaceStation",
+	"icon": "lamp",
+	"description": "Informatiosn à propos de l'ISS",
+	"slotTypes": [],
+	"intents": [
+		{
+			"name": "Astronauts",
+			"description": "L'utilisateur demande la liste des astronautes",
+			"enabledByDefault": true,
+			"utterances": [
+				"qui se trouve sur la station spatiale internationale",
+				"qui sont les astronautes de l'ISS",
+				"donne moi la liste des astronautes de l'ISS",
+				"s'il te plaît, donne moi la liste des astronautes",
+				"qui est dans l'espace aujourd'hui",
+				"qui sont les astronautes de la station"
+			],
+			"slots": []
+		},
+		{
+			"name": "IssPosition",
+			"description": "L'utilisateur demande la position de la station",
+			"enabledByDefault": true,
+			"utterances": [
+				"où se trouve la station",
+				"où est la station maintenant",
+				"dis moi où est la station actuellement",
+				"donne moi les coordonnées de la station spatiale internationale",
+				"donne moi les coordonnées actuelles de l'ISS",
+				"peux-tu me dire où se trouve la station spatiale",
+				"j'aimerai savoir où est la station sptiale"
+			],
+			"slots": []
+		}
+	]
+}

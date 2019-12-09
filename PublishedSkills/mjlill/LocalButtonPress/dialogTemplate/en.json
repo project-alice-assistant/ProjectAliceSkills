@@ -1,0 +1,44 @@
+{
+	"skill": "LocalButtonPress",
+	"icon": "lamp",
+	"description": "Press an imaginary button on or off",
+	"slotTypes": [],
+	"intents": [
+		{
+			"name": "DoButtonOn",
+			"description": "User is asking for a button press on",
+			"enabledByDefault": true,
+			"utterances": [
+				"press the button on",
+				"button on thank you",
+				"please press the button on",
+				"please press the on button",
+				"would you press the on button",
+				"i need you to press the on button",
+				"press the on button please",
+				"just push the on button",
+				"push the damn button on",
+				"push the damn on button thank you"
+			],
+			"slots": []
+		},
+		{
+			"name": "DoButtonOff",
+			"description": "User is asking for a button press off",
+			"enabledByDefault": true,
+			"utterances": [
+				"press the button off",
+				"button off thank you",
+				"please press the button off",
+				"please press the off button",
+				"would you press the off button",
+				"i need you to press the off button",
+				"press the off button please",
+				"just push the off button",
+				"push the damn button off thank you",
+				"push the damn off button"
+			],
+			"slots": []
+		}
+	]
+}

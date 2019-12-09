@@ -1,0 +1,141 @@
+{
+	"skill": "Calculator",
+	"icon": "calculator",
+	"description": "Skill der beim berechnen hilft. Unterstützt Addition, Subtraktion, Division, Potenz, Quadratwurzel, Modulo, Sinus, Cosinus, Tangens",
+	"slotTypes": [
+		{
+			"name": "MathsFunction",
+			"matchingStrictness": null,
+			"automaticallyExtensible": false,
+			"useSynonyms": true,
+			"values": [
+				{
+					"value": "+",
+					"synonyms": [
+						"plus",
+						"addiere",
+						"addier"
+					]
+				},
+				{
+					"value": "-",
+					"synonyms": [
+						"minus",
+						"entferne",
+						"subtrahiere",
+						"subtrahier"
+					]
+				},
+				{
+					"value": "/",
+					"synonyms": [
+						"geteilt durch",
+						"teile durch",
+						"teil durch"
+					]
+				},
+				{
+					"value": "*",
+					"synonyms": [
+						"mal",
+						"mutipliziere",
+						"multiplizier"
+					]
+				},
+				{
+					"value": "^",
+					"synonyms": [
+						"hoch",
+						"potenziert mit"
+					]
+				},
+				{
+					"value": "square root",
+					"synonyms": [
+						"Quadratwurzel von",
+						"Wurzel von"
+					]
+				},
+				{
+					"value": "modulo",
+					"synonyms": []
+				},
+				{
+					"value": "sine",
+					"synonyms": [
+						"sin",
+						"sinus"
+					]
+				},
+				{
+					"value": "cosine",
+					"synonyms": [
+						"cos",
+						"cosinus"
+					]
+				},
+				{
+					"value": "tangent",
+					"synonyms": [
+						"tan",
+						"tangens"
+					]
+				}
+			]
+		}
+	],
+	"intents": [
+		{
+			"name": "Maths",
+			"description": "",
+			"enabledByDefault": true,
+			"utterances": [
+				"Wie viel ist {115:=>Left} {+:=>Function} {996:=>Right}",
+				"Kannst du {196354:=>Left} {geteilt durch:=>Function} {10359:=>Right} berechnen",
+				"Was ist das Ergebnis von {9999:=>Left} {plus:=>Function} {9999:=>Right}",
+				"Was ist {10359:=>Left} {geteilt durch:=>Function} {15:=>Right}",
+				"berechne {196354:=>Left} {/:=>Function} {10359:=>Right}",
+				"sag mir was {196354:=>Left} {geteilt durch:=>Function} {1:=>Right} ist",
+				"sag mir was {10359:=>Left} {*:=>Function} {96:=>Right} ergibt",
+				"was ist das ergebnis von {221:=>Left} {-:=>Function} {196354:=>Right}",
+				"{subtrahiere:=>Function} {10359:=>Right}",
+				"Wie viel ist {115:=>Left} {+:=>Function} {996:=>Right}, bitte",
+				"Kannst du bitte {196354:=>Left} {geteilt durch:=>Function} {10359:=>Right} berechnen",
+				"Was ist das Ergebnis von {9999:=>Left} {plus:=>Function} {9999:=>Right}, bitte",
+				"Was ist {10359:=>Left} {geteilt durch:=>Function} {15:=>Right}, bitte",
+				"berechne bitte {196354:=>Left} {/:=>Function} {10359:=>Right}",
+				"berechne {196354:=>Left} {/:=>Function} {10359:=>Right}, bitte",
+				"sag mir bitte was {196354:=>Left} {geteilt durch:=>Function} {1:=>Right} ist",
+				"sag mir was {196354:=>Left} {geteilt durch:=>Function} {1:=>Right} ist, bitte",
+				"sag mir was {10359:=>Left} {*:=>Function} {96:=>Right} ergibt, bitte",
+				"sag mir bitte was {10359:=>Left} {*:=>Function} {96:=>Right} ergibt",
+				"was ist das ergebnis von {221:=>Left} {-:=>Function} {196354:=>Right}, bitte",
+				"{subtrahiere:=>Function} {10359:=>Right}, bitte",
+				"bitte {subtrahiere:=>Function} {10359:=>Right}"
+			],
+			"slots": [
+				{
+					"name": "Function",
+					"description": null,
+					"required": false,
+					"type": "MathsFunction",
+					"missingQuestion": ""
+				},
+				{
+					"name": "Right",
+					"description": null,
+					"required": false,
+					"type": "snips/number",
+					"missingQuestion": ""
+				},
+				{
+					"name": "Left",
+					"description": null,
+					"required": false,
+					"type": "snips/number",
+					"missingQuestion": ""
+				}
+			]
+		}
+	]
+}

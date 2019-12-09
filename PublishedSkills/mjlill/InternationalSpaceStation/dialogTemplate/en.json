@@ -1,0 +1,41 @@
+{
+	"skill": "InternationalSpaceStation",
+	"icon": "lamp",
+	"description": "Inquire information about the ISS",
+	"slotTypes": [],
+	"intents": [
+		{
+			"name": "Astronauts",
+			"description": "User is asking for a list of current astronauts",
+			"enabledByDefault": true,
+			"utterances": [
+				"who is on the space station",
+				"who are the astronauts",
+				"please list the astronauts",
+				"please tell me who are the astronauts",
+				"would you tell me who are the astronauts",
+				"I would like the list of astronauts",
+				"who is in space today",
+				"please tell me who is in space today",
+				"who are the space station astronauts",
+				"who are the astronauts on the space station"
+			],
+			"slots": []
+		},
+		{
+			"name": "IssPosition",
+			"description": "User is asking for a current position of the ISS",
+			"enabledByDefault": true,
+			"utterances": [
+				"where is the space station",
+				"where is the space station now",
+				"tell me where the space station is now",
+				"tell me the location of the space station",
+				"tell me the current space station location ",
+				"would you tell me where is the space station",
+				"I would like to know where is the space station"
+			],
+			"slots": []
+		}
+	]
+}

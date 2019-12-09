@@ -1,0 +1,133 @@
+{
+	"skill": "Calculator",
+	"icon": "calculator",
+	"description": "Skill qui vous aide à calculer. Supporte l'addition, la soustraction, la division, les puissances, les racines carrés, le modulo (reste de la division euclidienne), le sinus, le cosinus et la tangente",
+	"slotTypes": [
+		{
+			"name": "MathsFunction",
+			"matchingStrictness": null,
+			"automaticallyExtensible": false,
+			"useSynonyms": true,
+			"values": [
+				{
+					"value": "+",
+					"synonyms": [
+						"plus",
+						"ajoute"
+					]
+				},
+				{
+					"value": "-",
+					"synonyms": [
+						"moins",
+						"enlève",
+						"soustrait",
+						"retire"
+					]
+				},
+				{
+					"value": "/",
+					"synonyms": [
+						"divisé par",
+						"divise par",
+						"que divise"
+					]
+				},
+				{
+					"value": "*",
+					"synonyms": [
+						"fois",
+						"que multiplie",
+						"multiplié par"
+					]
+				},
+				{
+					"value": "^",
+					"synonyms": [
+						"puissance",
+						"à l'exposant",
+						"exposant"
+					]
+				},
+				{
+					"value": "square root",
+					"synonyms": [
+						"racine carré",
+						"racine carrée"
+					]
+				},
+				{
+					"value": "modulo",
+					"synonyms": []
+				},
+				{
+					"value": "sine",
+					"synonyms": [
+						"sine",
+						"sinus"
+					]
+				},
+				{
+					"value": "cosine",
+					"synonyms": [
+						"cosse",
+						"cosinus"
+					]
+				},
+				{
+					"value": "tangent",
+					"synonyms": [
+						"tan",
+						"tangente"
+					]
+				}
+			]
+		}
+	],
+	"intents": [
+		{
+			"name": "Maths",
+			"description": "",
+			"enabledByDefault": true,
+			"utterances": [
+				"combien font {115:=>Left} {+:=>Function} {996:=>Right}",
+				"calcule {196354:=>Left} {divisé par:=>Function} {10359:=>Right}",
+				"quel est le résultat de {9999:=>Left} {plus:=>Function} {9999:=>Right}",
+				"calcule moi {221:=>Left} {-:=>Function} {196354:=>Right}",
+				"que fait {10359:=>Left} {divisé par:=>Function} {15:=>Right}",
+				"que font {10359:=>Left} {que divise:=>Function} {15:=>Right}",
+				"combien vaut {196354:=>Left} {/:=>Function} {10359:=>Right}",
+				"dis moi combien fait {10359:=>Left} {*:=>Function} {96:=>Right}",
+				"{soustrait:=>Function} {10359:=>Right}",
+				"quel est le résultat de {115:=>Left} {+:=>Function} {996:=>Right}",
+				"résultat de {115:=>Left} {+:=>Function} {996:=>Right}",
+				"quel est le résultat de {115:=>Left} {+:=>Function} {996:=>Right}, s'il te plait",
+				"{racine carré:=>Function} de {56:=>Left}",
+				"donne moi le {sinus:=>Function} de {22:=>Left}"
+			],
+			"slots": [
+				{
+					"name": "Function",
+					"description": null,
+					"required": false,
+					"type": "MathsFunction",
+					"missingQuestion": ""
+				},
+				{
+					"name": "Right",
+					"description": null,
+					"required": false,
+					"type": "snips/number",
+					"missingQuestion": ""
+				},
+				{
+					"name": "Left",
+					"description": null,
+					"required": false,
+					"type": "snips/number",
+					"missingQuestion": ""
+				}
+			]
+		}
+	]
+}

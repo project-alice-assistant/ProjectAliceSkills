@@ -1,0 +1,67 @@
+{
+	"skill": "RandomUselessFacts",
+	"icon": "star",
+	"description": "Sagt den täglichen zufälligen sinnlosen Fakt, oder einen zufälligen",
+	"slotTypes": [
+		{
+			"name": "UselessFactsType",
+			"matchingStrictness": null,
+			"automaticallyExtensible": false,
+			"useSynonyms": true,
+			"values": [
+				{
+					"value": "today",
+					"synonyms": [
+						"heute",
+						"dieser Tag",
+						"dieses Tags",
+						"von diesem Tag",
+						"des Tag",
+						"des Tags",
+						"des Tages",
+						"von heute",
+						"heutigen"
+					]
+				},
+				{
+					"value": "random",
+					"synonyms": [
+						"zufällige",
+						"zufälligen"
+					]
+				}
+			]
+		}
+	],
+	"intents": [
+		{
+			"name": "GetUselessFact",
+			"description": "User is asking for a useless fact",
+			"enabledByDefault": true,
+			"utterances": [
+				"Ich benötige einen {zufälligen=>Type} sinnlosen Fakt",
+				"Bitte gib mir den {heutigen=>Type} sinnlosen Fakt",
+				"Lass mich den sinnlosen Fakt {des Tags=>Type} hören",
+				"Ich brauche dich, um mir eine nutzlose Tatsache zu geben",
+				"Ich brauche dich, um mir eine nutzlose Tatsache zu sagen",
+				"Sag mir bitte eine nutzlose Tatsache.",
+				"Sag mir eine nutzlose Tatsache.",
+				"besorgen Sie mir bitte eine {zufällige=>Type} nutzlose Tatsache.",
+				"Bitte holen Sie mir eine nutzlose Tatsache.",
+				"Bitte hol mir eine nutzlose Tatsache.",
+				"Hol mir eine nutzlose Tatsache.",
+				"gib mir eine nutzlose Tatsache.",
+				"Bitte gib mir eine nutzlose Tatsache."
+			],
+			"slots": [
+				{
+					"name": "Type",
+					"description": "Entweder heute oder zufällig",
+					"required": false,
+					"type": "UselessFactsType",
+					"missingQuestion": ""
+				}
+			]
+		}
+	]
+}

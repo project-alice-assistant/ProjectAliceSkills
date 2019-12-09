@@ -1,0 +1,7058 @@
+{
+	"skill": "BringShoppingList",
+	"icon": "store",
+	"description": "Verwalte deine Bring! Einkaufsliste",
+	"slotTypes": [
+		{
+			"name": "buyable",
+			"matchingStrictness": null,
+			"automaticallyExtensible": true,
+			"useSynonyms": true,
+			"values": [
+				{
+					"value": "Rahm"
+				},
+				{
+					"value": "4711"
+				},
+				{
+					"value": "Maggi"
+				},
+				{
+					"value": "Red Bull"
+				},
+				{
+					"value": "TSI"
+				},
+				{
+					"value": "Torx"
+				},
+				{
+					"value": "MondelÄ“z International"
+				},
+				{
+					"value": "Roundup"
+				},
+				{
+					"value": "Aperol"
+				},
+				{
+					"value": "IKEA"
+				},
+				{
+					"value": "Magirus-Deutz"
+				},
+				{
+					"value": "Vaseline"
+				},
+				{
+					"value": "Milka"
+				},
+				{
+					"value": "BSH Hausgeräte"
+				},
+				{
+					"value": "Händlermarke"
+				},
+				{
+					"value": "AMD Radeon"
+				},
+				{
+					"value": "Alcantara"
+				},
+				{
+					"value": "GoPro"
+				},
+				{
+					"value": "Kaufhof"
+				},
+				{
+					"value": "Fritz-kola"
+				},
+				{
+					"value": "Pimmâ€™s"
+				},
+				{
+					"value": "Xetra"
+				},
+				{
+					"value": "Langnese"
+				},
+				{
+					"value": "Natural American Spirit"
+				},
+				{
+					"value": "Simatic"
+				},
+				{
+					"value": "Afri-Cola"
+				},
+				{
+					"value": "Plexiglas"
+				},
+				{
+					"value": "Toll Collect"
+				},
+				{
+					"value": "Multicar"
+				},
+				{
+					"value": "Viton"
+				},
+				{
+					"value": "Handkäse"
+				},
+				{
+					"value": "Corona"
+				},
+				{
+					"value": "Nespresso"
+				},
+				{
+					"value": "AirPlay"
+				},
+				{
+					"value": "Johnnie Walker"
+				},
+				{
+					"value": "Lucky Strike"
+				},
+				{
+					"value": "Häagen-Dazs"
+				},
+				{
+					"value": "Moskwitsch"
+				},
+				{
+					"value": "Monster Energy"
+				},
+				{
+					"value": "Oreo"
+				},
+				{
+					"value": "Dr Pepper"
+				},
+				{
+					"value": "Kinder Schokolade"
+				},
+				{
+					"value": "Effektive Mikroorganismen"
+				},
+				{
+					"value": "Cadbury plc"
+				},
+				{
+					"value": "Ovomaltine"
+				},
+				{
+					"value": "Jim Beam"
+				},
+				{
+					"value": "Junghans"
+				},
+				{
+					"value": "Astra"
+				},
+				{
+					"value": "Inconel"
+				},
+				{
+					"value": "Asbach Uralt"
+				},
+				{
+					"value": "Demeter"
+				},
+				{
+					"value": "Toblerone"
+				},
+				{
+					"value": "Twix"
+				},
+				{
+					"value": "Captain Morgan"
+				},
+				{
+					"value": "Apollinaris"
+				},
+				{
+					"value": "GyroTwister"
+				},
+				{
+					"value": "Persil"
+				},
+				{
+					"value": "Augustiner-Bräu"
+				},
+				{
+					"value": "Praktica"
+				},
+				{
+					"value": "Tiptronic"
+				},
+				{
+					"value": "Chromebook"
+				},
+				{
+					"value": "Knorr"
+				},
+				{
+					"value": "Tiger Balm"
+				},
+				{
+					"value": "Ketwurst"
+				},
+				{
+					"value": "Karlsberg Brauerei"
+				},
+				{
+					"value": "Absolut Vodka"
+				},
+				{
+					"value": "Gatorade"
+				},
+				{
+					"value": "Hybrid Synergy Drive"
+				},
+				{
+					"value": "Swatch"
+				},
+				{
+					"value": "Scho-Ka-Kola"
+				},
+				{
+					"value": "Saxonette"
+				},
+				{
+					"value": "Jever"
+				},
+				{
+					"value": "Almdudler"
+				},
+				{
+					"value": "Sinalco"
+				},
+				{
+					"value": "Robinson Club"
+				},
+				{
+					"value": "Noilly Prat"
+				},
+				{
+					"value": "Evonik Degussa"
+				},
+				{
+					"value": "Walkman"
+				},
+				{
+					"value": "Bombay Sapphire"
+				},
+				{
+					"value": "Efes"
+				},
+				{
+					"value": "Esbit"
+				},
+				{
+					"value": "S.Pellegrino"
+				},
+				{
+					"value": "Caro-Kaffee"
+				},
+				{
+					"value": "Pall Mall"
+				},
+				{
+					"value": "Sternburg"
+				},
+				{
+					"value": "Toffifee"
+				},
+				{
+					"value": "Salamander"
+				},
+				{
+					"value": "Ravensburger"
+				},
+				{
+					"value": "Krating Daeng"
+				},
+				{
+					"value": "Kamps"
+				},
+				{
+					"value": "Southern Comfort"
+				},
+				{
+					"value": "Tolino"
+				},
+				{
+					"value": "Hohner"
+				},
+				{
+					"value": "Kool-Aid"
+				},
+				{
+					"value": "BiFi"
+				},
+				{
+					"value": "Rolfing"
+				},
+				{
+					"value": "Tyskie"
+				},
+				{
+					"value": "Vitamalz"
+				},
+				{
+					"value": "Rivella"
+				},
+				{
+					"value": "Ramazzotti"
+				},
+				{
+					"value": "Joppiesauce"
+				},
+				{
+					"value": "Dremel"
+				},
+				{
+					"value": "Hollister Co."
+				},
+				{
+					"value": "Piko"
+				},
+				{
+					"value": "Pringles"
+				},
+				{
+					"value": "Marc Oâ€™Polo"
+				},
+				{
+					"value": "RC Cola"
+				},
+				{
+					"value": "Napapijri"
+				},
+				{
+					"value": "Sarotti"
+				},
+				{
+					"value": "Evian"
+				},
+				{
+					"value": "Palmin"
+				},
+				{
+					"value": "Was ist was"
+				},
+				{
+					"value": "Baileys"
+				},
+				{
+					"value": "M&Mâ€™s"
+				},
+				{
+					"value": "Gretsch"
+				},
+				{
+					"value": "Flensburger Brauerei"
+				},
+				{
+					"value": "Pyrex"
+				},
+				{
+					"value": "Cordura"
+				},
+				{
+					"value": "Kilkenny"
+				},
+				{
+					"value": "Pilsner Urquell"
+				},
+				{
+					"value": "Tyvek"
+				},
+				{
+					"value": "7 Up"
+				},
+				{
+					"value": "Moser-Roth"
+				},
+				{
+					"value": "Chesterfield"
+				},
+				{
+					"value": "Bionade"
+				},
+				{
+					"value": "Pernod"
+				},
+				{
+					"value": "Gordonâ€™s Gin"
+				},
+				{
+					"value": "Rauch Fruchtsäfte"
+				},
+				{
+					"value": "Einweckglas"
+				},
+				{
+					"value": "Holy Fashion"
+				},
+				{
+					"value": "Hacker-Pschorr"
+				},
+				{
+					"value": "Fernet-Branca"
+				},
+				{
+					"value": "Mobilcom-Debitel"
+				},
+				{
+					"value": "Tic Tac"
+				},
+				{
+					"value": "Maoam"
+				},
+				{
+					"value": "Maraschino"
+				},
+				{
+					"value": "Hasseröder"
+				},
+				{
+					"value": "Cinzano Vermouth"
+				},
+				{
+					"value": "Spreewälder Gurken"
+				},
+				{
+					"value": "Eskimo"
+				},
+				{
+					"value": "Hanuta"
+				},
+				{
+					"value": "Harringtonjacke"
+				},
+				{
+					"value": "Durex"
+				},
+				{
+					"value": "JVC"
+				},
+				{
+					"value": "Tucher Bräu"
+				},
+				{
+					"value": "HP Sauce"
+				},
+				{
+					"value": "Magnetophon"
+				},
+				{
+					"value": "Bitburger Braugruppe"
+				},
+				{
+					"value": "Tanqueray"
+				},
+				{
+					"value": "Natel"
+				},
+				{
+					"value": "Stella Artois"
+				},
+				{
+					"value": "Chivas Regal"
+				},
+				{
+					"value": "Mu-Metall"
+				},
+				{
+					"value": "Lumix"
+				},
+				{
+					"value": "Citizen Watch"
+				},
+				{
+					"value": "Ficken"
+				},
+				{
+					"value": "Cohiba"
+				},
+				{
+					"value": "E-tron"
+				},
+				{
+					"value": "Pop-Tart"
+				},
+				{
+					"value": "Odol"
+				},
+				{
+					"value": "Ariel"
+				},
+				{
+					"value": "Raid"
+				},
+				{
+					"value": "Arboform"
+				},
+				{
+					"value": "Sprite"
+				},
+				{
+					"value": "Erasco"
+				},
+				{
+					"value": "Joop"
+				},
+				{
+					"value": "Penaten-Creme"
+				},
+				{
+					"value": "Galalith"
+				},
+				{
+					"value": "Henninger"
+				},
+				{
+					"value": "Ernte 23"
+				},
+				{
+					"value": "Schiesser"
+				},
+				{
+					"value": "Hipp Holding"
+				},
+				{
+					"value": "Köstritzer Schwarzbierbrauerei"
+				},
+				{
+					"value": "UHU"
+				},
+				{
+					"value": "Kinder Happy Hippo"
+				},
+				{
+					"value": "Staropramen"
+				},
+				{
+					"value": "KTM Fahrrad"
+				},
+				{
+					"value": "Minol"
+				},
+				{
+					"value": "Killepitsch"
+				},
+				{
+					"value": "Red Bull Cola"
+				},
+				{
+					"value": "Mon ChÃ©ri"
+				},
+				{
+					"value": "Crisco"
+				},
+				{
+					"value": "Bowen-Therapie"
+				},
+				{
+					"value": "Actimel"
+				},
+				{
+					"value": "Mosaik"
+				},
+				{
+					"value": "Knuspermüsli"
+				},
+				{
+					"value": "Lübecker Marzipan"
+				},
+				{
+					"value": "Ahoj"
+				},
+				{
+					"value": "Tassimo"
+				},
+				{
+					"value": "GG-45"
+				},
+				{
+					"value": "Nudossi"
+				},
+				{
+					"value": "Austin-Healey"
+				},
+				{
+					"value": "Tiroler Graukäse"
+				},
+				{
+					"value": "Smarties"
+				},
+				{
+					"value": "Wernesgrüner Brauerei"
+				},
+				{
+					"value": "Perrier"
+				},
+				{
+					"value": "CÃ®roc"
+				},
+				{
+					"value": "Infinity"
+				},
+				{
+					"value": "NescafÃ©"
+				},
+				{
+					"value": "Centrino"
+				},
+				{
+					"value": "uvex"
+				},
+				{
+					"value": "Club-Cola"
+				},
+				{
+					"value": "Hardenberg-Wilthen"
+				},
+				{
+					"value": "Foron"
+				},
+				{
+					"value": "Staatl. Fachingen"
+				},
+				{
+					"value": "Wonderbra"
+				},
+				{
+					"value": "Wagner Tiefkühlprodukte"
+				},
+				{
+					"value": "Hyundai Group"
+				},
+				{
+					"value": "Dolomiti"
+				},
+				{
+					"value": "Leffe"
+				},
+				{
+					"value": "Dom PÃ©rignon"
+				},
+				{
+					"value": "Spatenbräu"
+				},
+				{
+					"value": "Merci"
+				},
+				{
+					"value": "Framus"
+				},
+				{
+					"value": "Zerodur"
+				},
+				{
+					"value": "Planar"
+				},
+				{
+					"value": "Jameson"
+				},
+				{
+					"value": "Intel GMA"
+				},
+				{
+					"value": "Bibendum"
+				},
+				{
+					"value": "Brauerei Rapp"
+				},
+				{
+					"value": "HB"
+				},
+				{
+					"value": "Tiger-Bier"
+				},
+				{
+					"value": "Bulthaup"
+				},
+				{
+					"value": "Privatbrauerei Eichbaum"
+				},
+				{
+					"value": "Jupiler"
+				},
+				{
+					"value": "A1 Telekom Austria"
+				},
+				{
+					"value": "Kleiner Feigling"
+				},
+				{
+					"value": "Kodak Kodachrome"
+				},
+				{
+					"value": "Tough Mudder"
+				},
+				{
+					"value": "Strongbow Cider"
+				},
+				{
+					"value": "Vaillant"
+				},
+				{
+					"value": "Minox"
+				},
+				{
+					"value": "AMD Opteron"
+				},
+				{
+					"value": "West"
+				},
+				{
+					"value": "Buffalo Boots"
+				},
+				{
+					"value": "Nil"
+				},
+				{
+					"value": "Cenovis"
+				},
+				{
+					"value": "Neapolitaner-Waffeln"
+				},
+				{
+					"value": "Storch Heinar"
+				},
+				{
+					"value": "Avacon"
+				},
+				{
+					"value": "Jin Ling"
+				},
+				{
+					"value": "Dobro"
+				},
+				{
+					"value": "Würzburger Hofbräu"
+				},
+				{
+					"value": "Uncle Benâ€™s"
+				},
+				{
+					"value": "BÃ©nÃ©dictine"
+				},
+				{
+					"value": "Sonnar"
+				},
+				{
+					"value": "Nabisco"
+				},
+				{
+					"value": "Bazooka"
+				},
+				{
+					"value": "Bum Bum"
+				},
+				{
+					"value": "Newcastle Brown Ale"
+				},
+				{
+					"value": "Flug- und Fahrzeugwerke Altenrhein"
+				},
+				{
+					"value": "Lipton"
+				},
+				{
+					"value": "PEZ"
+				},
+				{
+					"value": "Rockstar"
+				},
+				{
+					"value": "AMD Athlon"
+				},
+				{
+					"value": "Crodino"
+				},
+				{
+					"value": "Kaiserliche Porzellanmanufaktur St. Petersburg"
+				},
+				{
+					"value": "AMD FirePro"
+				},
+				{
+					"value": "Sympatex"
+				},
+				{
+					"value": "Calzedonia"
+				},
+				{
+					"value": "Dinkelacker"
+				},
+				{
+					"value": "Auchentoshan"
+				},
+				{
+					"value": "Fromms"
+				},
+				{
+					"value": "Allgäuer Bergkäse"
+				},
+				{
+					"value": "Knoppers"
+				},
+				{
+					"value": "Philadelphia"
+				},
+				{
+					"value": "Jaroslawski Motorny Sawod"
+				},
+				{
+					"value": "Aromat"
+				},
+				{
+					"value": "Super Bock"
+				},
+				{
+					"value": "Krug"
+				},
+				{
+					"value": "Estrella Damm"
+				},
+				{
+					"value": "Stroh Brewery Company"
+				},
+				{
+					"value": "Hubba Bubba"
+				},
+				{
+					"value": "Glashütter Uhrenbetrieb"
+				},
+				{
+					"value": "Zanussi"
+				},
+				{
+					"value": "Titanal"
+				},
+				{
+					"value": "Wasa"
+				},
+				{
+					"value": "Music Man"
+				},
+				{
+					"value": "Kuemmerling"
+				},
+				{
+					"value": "Ballantineâ€™s"
+				},
+				{
+					"value": "Panasonic"
+				},
+				{
+					"value": "S3 Savage"
+				},
+				{
+					"value": "Duracell"
+				},
+				{
+					"value": "Bremach"
+				},
+				{
+					"value": "Vittel"
+				},
+				{
+					"value": "Agfa Agfacolor"
+				},
+				{
+					"value": "Steinhäger"
+				},
+				{
+					"value": "Gitanes"
+				},
+				{
+					"value": "Pastis 51"
+				},
+				{
+					"value": "Speyburn"
+				},
+				{
+					"value": "Tomatin"
+				},
+				{
+					"value": "Goldpfeil"
+				},
+				{
+					"value": "Moschino"
+				},
+				{
+					"value": "Pit Bull"
+				},
+				{
+					"value": "Freiberger Brauhaus"
+				},
+				{
+					"value": "Squier"
+				},
+				{
+					"value": "Parisienne"
+				},
+				{
+					"value": "Dasani"
+				},
+				{
+					"value": "Herta"
+				},
+				{
+					"value": "Pabst Blue Ribbon"
+				},
+				{
+					"value": "Adreno"
+				},
+				{
+					"value": "Kitkat"
+				},
+				{
+					"value": "VelkopopovickÃ½ Kozel"
+				},
+				{
+					"value": "Dreher"
+				},
+				{
+					"value": "Karlsquell"
+				},
+				{
+					"value": "Bounty"
+				},
+				{
+					"value": "Yota"
+				},
+				{
+					"value": "Innocent"
+				},
+				{
+					"value": "Boonekamp"
+				},
+				{
+					"value": "Kodak Ektachrome"
+				},
+				{
+					"value": "Buitoni"
+				},
+				{
+					"value": "Zimmermann"
+				},
+				{
+					"value": "Brahma"
+				},
+				{
+					"value": "Liptauer"
+				},
+				{
+					"value": "Fix"
+				},
+				{
+					"value": "Voltec-Antrieb"
+				},
+				{
+					"value": "Triple P"
+				},
+				{
+					"value": "Kleincomputer robotron KC 87"
+				},
+				{
+					"value": "Adidas Superstar"
+				},
+				{
+					"value": "After Eight"
+				},
+				{
+					"value": "Fishermanâ€™s Friend"
+				},
+				{
+					"value": "Poljot"
+				},
+				{
+					"value": "Stolichnaya"
+				},
+				{
+					"value": "Hemisphärensynchronisation"
+				},
+				{
+					"value": "Tecnomatix"
+				},
+				{
+					"value": "Memphis"
+				},
+				{
+					"value": "Nappo"
+				},
+				{
+					"value": "The Macallan"
+				},
+				{
+					"value": "Montecristo"
+				},
+				{
+					"value": "Arzberg"
+				},
+				{
+					"value": "Lanvin"
+				},
+				{
+					"value": "Diebels"
+				},
+				{
+					"value": "Nürnberger Lebkuchen"
+				},
+				{
+					"value": "O.b."
+				},
+				{
+					"value": "NestlÃ© Purina PetCare"
+				},
+				{
+					"value": "Kinder Joy"
+				},
+				{
+					"value": "Sechsämtertropfen"
+				},
+				{
+					"value": "RÃ©my Martin"
+				},
+				{
+					"value": "Radio Schleswig-Holstein"
+				},
+				{
+					"value": "Kenzo"
+				},
+				{
+					"value": "George Dickel"
+				},
+				{
+					"value": "Granini"
+				},
+				{
+					"value": "Tessar"
+				},
+				{
+					"value": "Thunderbike"
+				},
+				{
+					"value": "Herrnhuter Stern"
+				},
+				{
+					"value": "EDreams"
+				},
+				{
+					"value": "Posener Martinshörnchen"
+				},
+				{
+					"value": "Caltex"
+				},
+				{
+					"value": "National Rail"
+				},
+				{
+					"value": "Banjo"
+				},
+				{
+					"value": "ATI Rage"
+				},
+				{
+					"value": "Caramac"
+				},
+				{
+					"value": "Ratzeputz"
+				},
+				{
+					"value": "Reynolds 531"
+				},
+				{
+					"value": "UrDinkel"
+				},
+				{
+					"value": "Brezelbäckerei Ditsch"
+				},
+				{
+					"value": "Mobylette"
+				},
+				{
+					"value": "Stuttgarter Hofbräu"
+				},
+				{
+					"value": "Quality Street"
+				},
+				{
+					"value": "H. & J. Brüggen"
+				},
+				{
+					"value": "EnsaÃ¯mada de Mallorca"
+				},
+				{
+					"value": "Winston"
+				},
+				{
+					"value": "Canadian Club"
+				},
+				{
+					"value": "Filinchen"
+				},
+				{
+					"value": "Kingfisher"
+				},
+				{
+					"value": "Joseph Schlitz Brewing Company"
+				},
+				{
+					"value": "Duran"
+				},
+				{
+					"value": "Liquidmetal"
+				},
+				{
+					"value": "Berliner Pilsner"
+				},
+				{
+					"value": "Fa"
+				},
+				{
+					"value": "Schwaben Bräu"
+				},
+				{
+					"value": "Replay"
+				},
+				{
+					"value": "A1 Steak Sauce"
+				},
+				{
+					"value": "XXXX"
+				},
+				{
+					"value": "Birra Moretti"
+				},
+				{
+					"value": "Kompass Karten"
+				},
+				{
+					"value": "Prinzen Rolle"
+				},
+				{
+					"value": "Hanhart"
+				},
+				{
+					"value": "Lakewood Guitars"
+				},
+				{
+					"value": "Furch Guitars"
+				},
+				{
+					"value": "Canada Dry"
+				},
+				{
+					"value": "Linux"
+				},
+				{
+					"value": "Whiskas"
+				},
+				{
+					"value": "Werner & Mertz"
+				},
+				{
+					"value": "Pentacon Six"
+				},
+				{
+					"value": "Brauerei zur Malzmühle"
+				},
+				{
+					"value": "Magners"
+				},
+				{
+					"value": "Thomy"
+				},
+				{
+					"value": "Diamalt"
+				},
+				{
+					"value": "Wunderbar"
+				},
+				{
+					"value": "Koblenzer Brauerei"
+				},
+				{
+					"value": "Jolt Cola"
+				},
+				{
+					"value": "Kabanos"
+				},
+				{
+					"value": "Quick Cola"
+				},
+				{
+					"value": "Vogue"
+				},
+				{
+					"value": "ZacuscÄƒ"
+				},
+				{
+					"value": "Weetabix"
+				},
+				{
+					"value": "Bladnoch"
+				},
+				{
+					"value": "Cailler"
+				},
+				{
+					"value": "Majorica"
+				},
+				{
+					"value": "Löwensenf"
+				},
+				{
+					"value": "Robocoaster"
+				},
+				{
+					"value": "Aquascutum"
+				},
+				{
+					"value": "Südtiroler Apfel g.g.A."
+				},
+				{
+					"value": "Lotec"
+				},
+				{
+					"value": "Braumanufaktur Härke"
+				},
+				{
+					"value": "Jumpman"
+				},
+				{
+					"value": "zementgebundene Holzfasern"
+				},
+				{
+					"value": "Energizer Holdings"
+				},
+				{
+					"value": "Chocomel"
+				},
+				{
+					"value": "Caol Ila"
+				},
+				{
+					"value": "Ricard"
+				},
+				{
+					"value": "Lurex"
+				},
+				{
+					"value": "8Ã—4"
+				},
+				{
+					"value": "Casali"
+				},
+				{
+					"value": "Pago"
+				},
+				{
+					"value": "Klira"
+				},
+				{
+					"value": "Calippo"
+				},
+				{
+					"value": "Puschkin Vodka"
+				},
+				{
+					"value": "Wunderkind"
+				},
+				{
+					"value": "Humber"
+				},
+				{
+					"value": "Rolo"
+				},
+				{
+					"value": "Rama"
+				},
+				{
+					"value": "St. Pauli Girl"
+				},
+				{
+					"value": "Districtus Austriae Controllatus"
+				},
+				{
+					"value": "Corny"
+				},
+				{
+					"value": "Cockspur"
+				},
+				{
+					"value": "Grupo Osborne"
+				},
+				{
+					"value": "Erik and Sons"
+				},
+				{
+					"value": "Sandeman"
+				},
+				{
+					"value": "Privatbrauerei Ernst Barre"
+				},
+				{
+					"value": "Skol"
+				},
+				{
+					"value": "Kitzmann-Bräu"
+				},
+				{
+					"value": "Mapa"
+				},
+				{
+					"value": "Neuhaus"
+				},
+				{
+					"value": "Kiton"
+				},
+				{
+					"value": "CÃ´te dâ€™Or"
+				},
+				{
+					"value": "Capri-Sonne"
+				},
+				{
+					"value": "Branston Pickle"
+				},
+				{
+					"value": "Godin"
+				},
+				{
+					"value": "Oil of Olaz"
+				},
+				{
+					"value": "Puma"
+				},
+				{
+					"value": "Jell-O"
+				},
+				{
+					"value": "Eunos"
+				},
+				{
+					"value": "Hamer Guitars"
+				},
+				{
+					"value": "Classic Malts"
+				},
+				{
+					"value": "PartagÃ¡s"
+				},
+				{
+					"value": "Sandberg Guitars"
+				},
+				{
+					"value": "KarlovaÄ�ko"
+				},
+				{
+					"value": "Pocky"
+				},
+				{
+					"value": "Knockando"
+				},
+				{
+					"value": "Klosterbrauerei Andechs"
+				},
+				{
+					"value": "Dubonnet"
+				},
+				{
+					"value": "5 Gum"
+				},
+				{
+					"value": "Diamond T"
+				},
+				{
+					"value": "Scapa"
+				},
+				{
+					"value": "Tim Tam"
+				},
+				{
+					"value": "PowerBar"
+				},
+				{
+					"value": "C. Jul. Herbertz"
+				},
+				{
+					"value": "Butterfinger"
+				},
+				{
+					"value": "Viceroy"
+				},
+				{
+					"value": "Yorkshire Forced Rhubarb"
+				},
+				{
+					"value": "Ice-Watch"
+				},
+				{
+					"value": "Varilux"
+				},
+				{
+					"value": "Molnija"
+				},
+				{
+					"value": "Vespel"
+				},
+				{
+					"value": "Kodak Kodacolor"
+				},
+				{
+					"value": "SKYY Vodka"
+				},
+				{
+					"value": "Fosterâ€™s Lager"
+				},
+				{
+					"value": "Glen Elgin"
+				},
+				{
+					"value": "Thinsulate"
+				},
+				{
+					"value": "Samick"
+				},
+				{
+					"value": "Zoo & Co."
+				},
+				{
+					"value": "Electro-Voice"
+				},
+				{
+					"value": "SELEX"
+				},
+				{
+					"value": "Bertolli"
+				},
+				{
+					"value": "Bullyland"
+				},
+				{
+					"value": "LefÃ¨vre-Utile"
+				},
+				{
+					"value": "TABAC Original"
+				},
+				{
+					"value": "Tortas de Aceite"
+				},
+				{
+					"value": "Wurzelpeter"
+				},
+				{
+					"value": "Spunk"
+				},
+				{
+					"value": "LTS Lohmann Therapie-Systeme"
+				},
+				{
+					"value": "Glentauchers"
+				},
+				{
+					"value": "Schlauchtuch"
+				},
+				{
+					"value": "CaraPils"
+				},
+				{
+					"value": "Stella"
+				},
+				{
+					"value": "Ceresit"
+				},
+				{
+					"value": "Napoli"
+				},
+				{
+					"value": "Glen Moray"
+				},
+				{
+					"value": "S3 Chrome"
+				},
+				{
+					"value": "Cyber-shot"
+				},
+				{
+					"value": "Znaimer Gurken"
+				},
+				{
+					"value": "Harbin-Bier"
+				},
+				{
+					"value": "Privatbrauerei Herrenhausen"
+				},
+				{
+					"value": "Vimto"
+				},
+				{
+					"value": "Glenkinchie"
+				},
+				{
+					"value": "MegaFon"
+				},
+				{
+					"value": "Brauerei Pinkus Müller"
+				},
+				{
+					"value": "Wikimedia-Bewegung"
+				},
+				{
+					"value": "Mr. Tom"
+				},
+				{
+					"value": "Röstfein"
+				},
+				{
+					"value": "T-Home"
+				},
+				{
+					"value": "Dippels Tieröl"
+				},
+				{
+					"value": "Darmstädter Privatbrauerei"
+				},
+				{
+					"value": "Nemiroff Wodka"
+				},
+				{
+					"value": "Mahou"
+				},
+				{
+					"value": "Premier Percussion"
+				},
+				{
+					"value": "Linkwood"
+				},
+				{
+					"value": "Wild Turkey"
+				},
+				{
+					"value": "Max.mobil."
+				},
+				{
+					"value": "Waechtersbacher Keramik"
+				},
+				{
+					"value": "MAHA"
+				},
+				{
+					"value": "Games for Windows"
+				},
+				{
+					"value": "Winterthur Group"
+				},
+				{
+					"value": "Privatbrauerei Waldhaus"
+				},
+				{
+					"value": "Charvel"
+				},
+				{
+					"value": "Carl Dörr"
+				},
+				{
+					"value": "Twinings"
+				},
+				{
+					"value": "El Rey del Mundo"
+				},
+				{
+					"value": "Zylon"
+				},
+				{
+					"value": "WC-Ente"
+				},
+				{
+					"value": "Apollo-Werke"
+				},
+				{
+					"value": "Dolce Gusto"
+				},
+				{
+					"value": "Tungsram"
+				},
+				{
+					"value": "Juwel"
+				},
+				{
+					"value": "Mythos Brewery"
+				},
+				{
+					"value": "Troller"
+				},
+				{
+					"value": "Burns London"
+				},
+				{
+					"value": "Schierker Feuerstein"
+				},
+				{
+					"value": "Lion"
+				},
+				{
+					"value": "Arriflex"
+				},
+				{
+					"value": "Springbank"
+				},
+				{
+					"value": "Finlandia Vodka"
+				},
+				{
+					"value": "Radenska"
+				},
+				{
+					"value": "De Puta Madre 69"
+				},
+				{
+					"value": "Thomas Pink"
+				},
+				{
+					"value": "áº¼fini"
+				},
+				{
+					"value": "Bruder"
+				},
+				{
+					"value": "Corexit"
+				},
+				{
+					"value": "Four Roses"
+				},
+				{
+					"value": "Glenfarclas"
+				},
+				{
+					"value": "Carambar"
+				},
+				{
+					"value": "PG Tips"
+				},
+				{
+					"value": "ATI Mobility Radeon"
+				},
+				{
+					"value": "Rowntreeâ€™s"
+				},
+				{
+					"value": "Lätta"
+				},
+				{
+					"value": "Hoyer"
+				},
+				{
+					"value": "Outboard Marine Corporation"
+				},
+				{
+					"value": "Jolana"
+				},
+				{
+					"value": "Nesquik"
+				},
+				{
+					"value": "Nvidia GoForce"
+				},
+				{
+					"value": "Pocari Sweat"
+				},
+				{
+					"value": "BRAVIA"
+				},
+				{
+					"value": "Eucerit"
+				},
+				{
+					"value": "Dolcelatte"
+				},
+				{
+					"value": "Mestemacher"
+				},
+				{
+					"value": "Polygamy Porter"
+				},
+				{
+					"value": "Steinberger"
+				},
+				{
+					"value": "Becel"
+				},
+				{
+					"value": "Zenit"
+				},
+				{
+					"value": "Senova"
+				},
+				{
+					"value": "ATI FireGL"
+				},
+				{
+					"value": "Condomi"
+				},
+				{
+					"value": "Euclid Trucks"
+				},
+				{
+					"value": "Gurkha"
+				},
+				{
+					"value": "Sockerdricka"
+				},
+				{
+					"value": "Besson"
+				},
+				{
+					"value": "Glen Scotia"
+				},
+				{
+					"value": "Mattoni"
+				},
+				{
+					"value": "Bubblicious"
+				},
+				{
+					"value": "Modulus Guitars"
+				},
+				{
+					"value": "Watchman"
+				},
+				{
+					"value": "Privatbrauerei Hofmühl"
+				},
+				{
+					"value": "Slawa"
+				},
+				{
+					"value": "Cracker Jack"
+				},
+				{
+					"value": "Pickwick"
+				},
+				{
+					"value": "Venucia"
+				},
+				{
+					"value": "Creme 21"
+				},
+				{
+					"value": "Macieira"
+				},
+				{
+					"value": "NAET"
+				},
+				{
+					"value": "Crown Royal"
+				},
+				{
+					"value": "Montegrappa"
+				},
+				{
+					"value": "Läkerol"
+				},
+				{
+					"value": "Perzina"
+				},
+				{
+					"value": "Skilandis"
+				},
+				{
+					"value": "Pringle of Scotland"
+				},
+				{
+					"value": "Sadowsky"
+				},
+				{
+					"value": "10 vor Wien"
+				},
+				{
+					"value": "Castelmagno"
+				},
+				{
+					"value": "Hi-Tec Sports"
+				},
+				{
+					"value": "Ralston Purina"
+				},
+				{
+					"value": "Hotel Formule 1"
+				},
+				{
+					"value": "Heidegeist"
+				},
+				{
+					"value": "ErÅ‘s Pista"
+				},
+				{
+					"value": "Macduff"
+				},
+				{
+					"value": "Carling"
+				},
+				{
+					"value": "C.P. Company"
+				},
+				{
+					"value": "PrÃ©sident"
+				},
+				{
+					"value": "Mobil 1"
+				},
+				{
+					"value": "Brauerei Aying"
+				},
+				{
+					"value": "Kvint"
+				},
+				{
+					"value": "MahÃ³n-Menorca"
+				},
+				{
+					"value": "Raketa"
+				},
+				{
+					"value": "Flektogon"
+				},
+				{
+					"value": "Wendl & Lung"
+				},
+				{
+					"value": "TREND"
+				},
+				{
+					"value": "BolÃ­var"
+				},
+				{
+					"value": "Taiwan Beer"
+				},
+				{
+					"value": "Adams-Farwell"
+				},
+				{
+					"value": "ABS Pumpen"
+				},
+				{
+					"value": "ZRA 1"
+				},
+				{
+					"value": "Triola"
+				},
+				{
+					"value": "Tecnica"
+				},
+				{
+					"value": "Privatbrauerei Wittingen"
+				},
+				{
+					"value": "Cubatabaco"
+				},
+				{
+					"value": "Contraves"
+				},
+				{
+					"value": "Casciotta dâ€™Urbino"
+				},
+				{
+					"value": "C. G. Conn"
+				},
+				{
+					"value": "Libella"
+				},
+				{
+					"value": "Oxo"
+				},
+				{
+					"value": "Audimas"
+				},
+				{
+					"value": "Schlitzmaske"
+				},
+				{
+					"value": "Bremer Klaben"
+				},
+				{
+					"value": "Vester"
+				},
+				{
+					"value": "Girolamo Luxardo"
+				},
+				{
+					"value": "Urlaub am Bauernhof"
+				},
+				{
+					"value": "Washburn Guitars"
+				},
+				{
+					"value": "Abtshof Magdeburg"
+				},
+				{
+					"value": "SARAR"
+				},
+				{
+					"value": "KMC Music Inc."
+				},
+				{
+					"value": "Country-of-Origin-Effekt"
+				},
+				{
+					"value": "Motometer"
+				},
+				{
+					"value": "Hoyo de Monterrey"
+				},
+				{
+					"value": "Eilenburger Motoren-Werk"
+				},
+				{
+					"value": "Vinea"
+				},
+				{
+					"value": "Aspall"
+				},
+				{
+					"value": "Furuno"
+				},
+				{
+					"value": "Magnet-Schultz"
+				},
+				{
+					"value": "Justicialista"
+				},
+				{
+					"value": "Schlossbrauerei Ellingen"
+				},
+				{
+					"value": "Radegast"
+				},
+				{
+					"value": "Black Velvet"
+				},
+				{
+					"value": "Xellent"
+				},
+				{
+					"value": "Fotokemika Efke"
+				},
+				{
+					"value": "Botran"
+				},
+				{
+					"value": "Lorinser"
+				},
+				{
+					"value": "Virginia Slims"
+				},
+				{
+					"value": "Romeo y Julieta"
+				},
+				{
+					"value": "Aeroxon"
+				},
+				{
+					"value": "Beaumont"
+				},
+				{
+					"value": "Glengyle"
+				},
+				{
+					"value": "Danzka"
+				},
+				{
+					"value": "Distelhäuser Brauerei"
+				},
+				{
+					"value": "Iceberg"
+				},
+				{
+					"value": "Kusmi Tea"
+				},
+				{
+					"value": "H+H International"
+				},
+				{
+					"value": "Warka"
+				},
+				{
+					"value": "Justerini & Brooks"
+				},
+				{
+					"value": "Altmann & Kühne"
+				},
+				{
+					"value": "Lattoflex"
+				},
+				{
+					"value": "Ferrero Küsschen"
+				},
+				{
+					"value": "ARWA"
+				},
+				{
+					"value": "Uebel & Lechleiter"
+				},
+				{
+					"value": "Carib Brewery"
+				},
+				{
+					"value": "Minichamps"
+				},
+				{
+					"value": "Lux"
+				},
+				{
+					"value": "Vat 69"
+				},
+				{
+					"value": "Rippen"
+				},
+				{
+					"value": "Calanda Bräu"
+				},
+				{
+					"value": "Sendust"
+				},
+				{
+					"value": "Savanna"
+				},
+				{
+					"value": "Heritage Guitar"
+				},
+				{
+					"value": "Vincotto"
+				},
+				{
+					"value": "Vivani"
+				},
+				{
+					"value": "Moritz"
+				},
+				{
+					"value": "Ibertren"
+				},
+				{
+					"value": "Berluti"
+				},
+				{
+					"value": "Glenburgie"
+				},
+				{
+					"value": "Marsovin"
+				},
+				{
+					"value": "Glendullan"
+				},
+				{
+					"value": "Bike Friday"
+				},
+				{
+					"value": "Happy Turn"
+				},
+				{
+					"value": "Valentin Blatz Brewing Company"
+				},
+				{
+					"value": "Teaninich"
+				},
+				{
+					"value": "Reeseâ€™s Peanut Butter Cups"
+				},
+				{
+					"value": "Martin Committee"
+				},
+				{
+					"value": "NUK"
+				},
+				{
+					"value": "Craghoppers"
+				},
+				{
+					"value": "Tyrconnell"
+				},
+				{
+					"value": "Moi-mÃªme-MoitiÃ©"
+				},
+				{
+					"value": "Brauerei Ustersbach"
+				},
+				{
+					"value": "Lemon & Paeroa"
+				},
+				{
+					"value": "H. Upmann"
+				},
+				{
+					"value": "ATI FireMV"
+				},
+				{
+					"value": "Doppelstegträger"
+				},
+				{
+					"value": "Zuiko"
+				},
+				{
+					"value": "GuaranÃ¡ Jesus"
+				},
+				{
+					"value": "Larrivee Guitars"
+				},
+				{
+					"value": "IAudio"
+				},
+				{
+					"value": "Velotaxi"
+				},
+				{
+					"value": "Akademiks"
+				},
+				{
+					"value": "Jupiter Instruments"
+				},
+				{
+					"value": "Kvikk Lunsj"
+				},
+				{
+					"value": "Woodford Reserve"
+				},
+				{
+					"value": "Zweihorn"
+				},
+				{
+					"value": "WiLL"
+				},
+				{
+					"value": "Armacor"
+				},
+				{
+					"value": "Kutaisski Awtomobilny Sawod"
+				},
+				{
+					"value": "Adler-Brauerei Coswig"
+				},
+				{
+					"value": "Touch! Generations"
+				},
+				{
+					"value": "SokÃ³Å‚"
+				},
+				{
+					"value": "Elopak"
+				},
+				{
+					"value": "Snickers Workwear"
+				},
+				{
+					"value": "Bostongurka"
+				},
+				{
+					"value": "Sumitomo Drive Technologies"
+				},
+				{
+					"value": "Dayton"
+				},
+				{
+					"value": "Superbit"
+				},
+				{
+					"value": "Grandiosa"
+				},
+				{
+					"value": "Vegas Robaina"
+				},
+				{
+					"value": "Vikuiti"
+				},
+				{
+					"value": "S3 ViRGE"
+				},
+				{
+					"value": "CableDSL"
+				},
+				{
+					"value": "Raschera"
+				},
+				{
+					"value": "Pilsen Callao"
+				},
+				{
+					"value": "Jammie Dodgers"
+				},
+				{
+					"value": "The Speyside"
+				},
+				{
+					"value": "Electrotren"
+				},
+				{
+					"value": "SÅ�kenbicha"
+				},
+				{
+					"value": "Trojan"
+				},
+				{
+					"value": "Emmanuel Delicata"
+				},
+				{
+					"value": "Keli"
+				},
+				{
+					"value": "Bra"
+				},
+				{
+					"value": "Hydrolastic"
+				},
+				{
+					"value": "Brauerei Kesselsdorf"
+				},
+				{
+					"value": "Cruzan Rum"
+				},
+				{
+					"value": "Cola Turka"
+				},
+				{
+					"value": "Disklavier"
+				},
+				{
+					"value": "Eller-Montan"
+				},
+				{
+					"value": "Glenglassaugh"
+				},
+				{
+					"value": "Traubisoda"
+				},
+				{
+					"value": "Pobeda"
+				},
+				{
+					"value": "Limone di Siracusa g.g.A."
+				},
+				{
+					"value": "Strathmill"
+				},
+				{
+					"value": "Fenjal"
+				},
+				{
+					"value": "Phat Farm"
+				},
+				{
+					"value": "SchloÃŸbrauerei Rheder"
+				},
+				{
+					"value": "Lindener Aktien-Brauerei"
+				},
+				{
+					"value": "ATI Radeon Xpress"
+				},
+				{
+					"value": "Mouse Systems"
+				},
+				{
+					"value": "Foturan"
+				},
+				{
+					"value": "Golfino"
+				},
+				{
+					"value": "Kritharaki"
+				},
+				{
+					"value": "Nudel"
+				},
+				{
+					"value": "Lasagne"
+				},
+				{
+					"value": "Tagliatelle"
+				},
+				{
+					"value": "Makkaroni"
+				},
+				{
+					"value": "Nocken"
+				},
+				{
+					"value": "Tortellini"
+				},
+				{
+					"value": "Orecchiette"
+				},
+				{
+					"value": "Pappardelle"
+				},
+				{
+					"value": "Linguine"
+				},
+				{
+					"value": "Fusilli"
+				},
+				{
+					"value": "Strozzapreti"
+				},
+				{
+					"value": "Fettuccine"
+				},
+				{
+					"value": "Bucatini"
+				},
+				{
+					"value": "Trofie"
+				},
+				{
+					"value": "Tagliolini"
+				},
+				{
+					"value": "Tortelloni"
+				},
+				{
+					"value": "Agnolotti"
+				},
+				{
+					"value": "Farfalle"
+				},
+				{
+					"value": "Pizzoccheri"
+				},
+				{
+					"value": "Cannelloni"
+				},
+				{
+					"value": "Garganelli"
+				},
+				{
+					"value": "Nudelsuppe"
+				},
+				{
+					"value": "Conchiglie"
+				},
+				{
+					"value": "Pici"
+				},
+				{
+					"value": "Capellini"
+				},
+				{
+					"value": "Stringozzi"
+				},
+				{
+					"value": "Anellini"
+				},
+				{
+					"value": "Passatelli"
+				},
+				{
+					"value": "Cavatappi"
+				},
+				{
+					"value": "Ptitim"
+				},
+				{
+					"value": "Brezel"
+				},
+				{
+					"value": "Fladenbrot"
+				},
+				{
+					"value": "Dürüm"
+				},
+				{
+					"value": "Tortilla",
+					"synonyms": [
+						"Tortia"
+					]
+				},
+				{
+					"value": "Vollkornbrot"
+				},
+				{
+					"value": "Toastbrot"
+				},
+				{
+					"value": "Zwieback"
+				},
+				{
+					"value": "Waffel"
+				},
+				{
+					"value": "Wrap"
+				},
+				{
+					"value": "Grahambrot"
+				},
+				{
+					"value": "Kommissbrot"
+				},
+				{
+					"value": "Ciabatta"
+				},
+				{
+					"value": "Roggenbrot"
+				},
+				{
+					"value": "Laib"
+				},
+				{
+					"value": "Essenerbrot"
+				},
+				{
+					"value": "WeiÃŸbrot"
+				},
+				{
+					"value": "Kipferl"
+				},
+				{
+					"value": "Pogatschen"
+				},
+				{
+					"value": "Challa"
+				},
+				{
+					"value": "CroÃ»ton"
+				},
+				{
+					"value": "Maisbrot"
+				},
+				{
+					"value": "Bun"
+				},
+				{
+					"value": "Simit"
+				},
+				{
+					"value": "Panettone"
+				},
+				{
+					"value": "BÃ¡nh mÃ¬"
+				},
+				{
+					"value": "Stockbrot"
+				},
+				{
+					"value": "Bubliki"
+				},
+				{
+					"value": "Kartoffelbrot"
+				},
+				{
+					"value": "Biscuit"
+				},
+				{
+					"value": "Grissini"
+				},
+				{
+					"value": "Chubz"
+				},
+				{
+					"value": "Mutschel"
+				},
+				{
+					"value": "PÃ£o de queijo"
+				},
+				{
+					"value": "Mlinci"
+				},
+				{
+					"value": "Tigerbrot"
+				},
+				{
+					"value": "Zopf"
+				},
+				{
+					"value": "LaufabrauÃ°"
+				},
+				{
+					"value": "Anpan"
+				},
+				{
+					"value": "Tunnbröd"
+				},
+				{
+					"value": "Ruisreikäleipä"
+				},
+				{
+					"value": "Pferdebrot"
+				},
+				{
+					"value": "Busch-Brot"
+				},
+				{
+					"value": "Puri"
+				},
+				{
+					"value": "Roti Canai"
+				},
+				{
+					"value": "Ã–lbrot"
+				},
+				{
+					"value": "Kozunak"
+				},
+				{
+					"value": "Altbrot"
+				},
+				{
+					"value": "Malawach"
+				},
+				{
+					"value": "Antidoron"
+				},
+				{
+					"value": "Daktyla"
+				},
+				{
+					"value": "Folar"
+				},
+				{
+					"value": "Basler Brot"
+				},
+				{
+					"value": "Giersch"
+				},
+				{
+					"value": "Wiesen-Sauerampfer"
+				},
+				{
+					"value": "Borretsch"
+				},
+				{
+					"value": "Rucola"
+				},
+				{
+					"value": "Bärlauch"
+				},
+				{
+					"value": "Gemeine Wegwarte"
+				},
+				{
+					"value": "Kohlrabi"
+				},
+				{
+					"value": "Portulak"
+				},
+				{
+					"value": "Stellaria media"
+				},
+				{
+					"value": "Brokkoli"
+				},
+				{
+					"value": "Gemeiner Bocksdorn"
+				},
+				{
+					"value": "Wiesen-Bocksbart"
+				},
+				{
+					"value": "Gartenmelde"
+				},
+				{
+					"value": "Steckrübe"
+				},
+				{
+					"value": "Schalotte"
+				},
+				{
+					"value": "Mairübe"
+				},
+				{
+					"value": "Knollen-Ziest"
+				},
+				{
+					"value": "Römersalat"
+				},
+				{
+					"value": "Gemüsekohl"
+				},
+				{
+					"value": "Hokkaidokürbis"
+				},
+				{
+					"value": "Charentais-Melone"
+				},
+				{
+					"value": "Schnittsalat"
+				},
+				{
+					"value": "Wirsing"
+				},
+				{
+					"value": "Rotkohl"
+				},
+				{
+					"value": "Spitzkohl"
+				},
+				{
+					"value": "Europäischer Queller"
+				},
+				{
+					"value": "Radicchio"
+				},
+				{
+					"value": "Physalis ixocarpa"
+				},
+				{
+					"value": "San-Marzano-Tomate"
+				},
+				{
+					"value": "Gewöhnliches Tellerkraut"
+				},
+				{
+					"value": "Flaschenkürbis"
+				},
+				{
+					"value": "Capsicum annuum"
+				},
+				{
+					"value": "Baumspinat"
+				},
+				{
+					"value": "Adzukibohne"
+				},
+				{
+					"value": "Gemüse-Gänsedistel"
+				},
+				{
+					"value": "Wasserspinat"
+				},
+				{
+					"value": "Palmkohl"
+				},
+				{
+					"value": "Haferwurzel"
+				},
+				{
+					"value": "Cardy"
+				},
+				{
+					"value": "Garten-Schwarzwurzel"
+				},
+				{
+					"value": "Meerfenchel"
+				},
+				{
+					"value": "Knolliger Kälberkropf"
+				},
+				{
+					"value": "Perlzwiebel"
+				},
+				{
+					"value": "Pfanni"
+				},
+				{
+					"value": "Riesen-Kürbis"
+				},
+				{
+					"value": "Indische Lotosblume"
+				},
+				{
+					"value": "Komatsuna"
+				},
+				{
+					"value": "Acmella oleracea"
+				},
+				{
+					"value": "Knolliger Sauerklee"
+				},
+				{
+					"value": "Guarbohne"
+				},
+				{
+					"value": "Zuckerwurzel"
+				},
+				{
+					"value": "Patisson"
+				},
+				{
+					"value": "Poblano"
+				},
+				{
+					"value": "Yambohne"
+				},
+				{
+					"value": "Breitblättriger Senf"
+				},
+				{
+					"value": "Urdbohne"
+				},
+				{
+					"value": "Spaghettikürbis"
+				},
+				{
+					"value": "Röhricht-Brennnessel"
+				},
+				{
+					"value": "Langkapselige Jute"
+				},
+				{
+					"value": "Puntarelle"
+				},
+				{
+					"value": "Schwarzer Winter-Rettich"
+				},
+				{
+					"value": "Kai-lan"
+				},
+				{
+					"value": "Feigenblatt-Kürbis"
+				},
+				{
+					"value": "Andenhorn"
+				},
+				{
+					"value": "Corchorus"
+				},
+				{
+					"value": "Tsa Tsai"
+				},
+				{
+					"value": "Flavr-Savr-Tomate"
+				},
+				{
+					"value": "Olluco"
+				},
+				{
+					"value": "Goabohne"
+				},
+				{
+					"value": "Catjangbohne"
+				},
+				{
+					"value": "SpieÃŸ-Melde"
+				},
+				{
+					"value": "Schwertbohne"
+				},
+				{
+					"value": "Mattenbohne"
+				},
+				{
+					"value": "Helmbohne"
+				},
+				{
+					"value": "Kartoffelvollernter"
+				},
+				{
+					"value": "Kumato"
+				},
+				{
+					"value": "Gem Squash"
+				},
+				{
+					"value": "Knollenbohne"
+				},
+				{
+					"value": "Dioscorea bulbifera"
+				},
+				{
+					"value": "Solanum incanum"
+				},
+				{
+					"value": "Geschwänzte Brennnessel"
+				},
+				{
+					"value": "Tigerella"
+				},
+				{
+					"value": "Macrotyloma uniflorum"
+				},
+				{
+					"value": "Küttiger Rüebli"
+				},
+				{
+					"value": "Turibaum"
+				},
+				{
+					"value": "Erdbohne"
+				},
+				{
+					"value": "Orangensaft"
+				},
+				{
+					"value": "Kirschsaft"
+				},
+				{
+					"value": "Gin"
+				},
+				{
+					"value": "Absinth"
+				},
+				{
+					"value": "CachaÃ§a"
+				},
+				{
+					"value": "RakÄ±"
+				},
+				{
+					"value": "Aquavit"
+				},
+				{
+					"value": "Grappa"
+				},
+				{
+					"value": "Kornbrand"
+				},
+				{
+					"value": "Mezcal"
+				},
+				{
+					"value": "Metaxa"
+				},
+				{
+					"value": "Genever"
+				},
+				{
+					"value": "Branntwein"
+				},
+				{
+					"value": "Schwarzbrennerei"
+				},
+				{
+					"value": "Tresterbrand"
+				},
+				{
+					"value": "Baijiu"
+				},
+				{
+					"value": "Enzian"
+				},
+				{
+					"value": "Tsipouro"
+				},
+				{
+					"value": "Arak"
+				},
+				{
+					"value": "Blend"
+				},
+				{
+					"value": "Aguardiente"
+				},
+				{
+					"value": "Himbeergeist"
+				},
+				{
+					"value": "Potcheen"
+				},
+				{
+					"value": "ÈšuicÄƒ"
+				},
+				{
+					"value": "Queimada"
+				},
+				{
+					"value": "Mount Gay"
+				},
+				{
+					"value": "Waragi"
+				},
+				{
+					"value": "Lakka"
+				},
+				{
+					"value": "Holzbranntwein"
+				},
+				{
+					"value": "Minttu"
+				},
+				{
+					"value": "Sotol"
+				},
+				{
+					"value": "Masticha"
+				},
+				{
+					"value": "Kaoliang"
+				},
+				{
+					"value": "Bohne"
+				},
+				{
+					"value": "Kochbanane"
+				},
+				{
+					"value": "Eisbergsalat"
+				},
+				{
+					"value": "Wurzelgemüse"
+				},
+				{
+					"value": "Speisepilz"
+				},
+				{
+					"value": "Blattgemüse"
+				},
+				{
+					"value": "Fruchtgemüse"
+				},
+				{
+					"value": "Kombu"
+				},
+				{
+					"value": "Zwiebelgemüse"
+				},
+				{
+					"value": "Limette",
+					"synonyms": [
+						"Limetten"
+					]
+				},
+				{
+					"value": "Steinobst"
+				},
+				{
+					"value": "Wodka"
+				},
+				{
+					"value": "Weinbrand"
+				},
+				{
+					"value": "Arrak"
+				},
+				{
+					"value": "Obstbrand"
+				},
+				{
+					"value": "Eau de vie"
+				},
+				{
+					"value": "Whisky"
+				},
+				{
+					"value": "Spirituose"
+				},
+				{
+					"value": "Apfelschaumwein"
+				},
+				{
+					"value": "Cognac"
+				},
+				{
+					"value": "Likör"
+				},
+				{
+					"value": "Verdauungsschnaps"
+				},
+				{
+					"value": "Grog"
+				},
+				{
+					"value": "Alkopop"
+				},
+				{
+					"value": "Pisco"
+				},
+				{
+					"value": "Pulque"
+				},
+				{
+					"value": "Reiswein"
+				},
+				{
+					"value": "Bitter"
+				},
+				{
+					"value": "Palmwein"
+				},
+				{
+					"value": "Makgeolli"
+				},
+				{
+					"value": "Pruno"
+				},
+				{
+					"value": "Zigarrenbrand"
+				},
+				{
+					"value": "Braeburn"
+				},
+				{
+					"value": "Golden Delicious"
+				},
+				{
+					"value": "Speck"
+				},
+				{
+					"value": "Kasseler"
+				},
+				{
+					"value": "Schweinenacken"
+				},
+				{
+					"value": "Frühstücksspeck"
+				},
+				{
+					"value": "Schweinebauch"
+				},
+				{
+					"value": "Presswurst"
+				},
+				{
+					"value": "Schwarte"
+				},
+				{
+					"value": "Salo"
+				},
+				{
+					"value": "Jokbal"
+				},
+				{
+					"value": "Tonic Water"
+				},
+				{
+					"value": "Energydrink"
+				},
+				{
+					"value": "Root Beer"
+				},
+				{
+					"value": "Coca-Cola"
+				},
+				{
+					"value": "Couscous",
+					"synonyms": [
+						"Kuskus"
+					]
+				},
+				{
+					"value": "Schokolade"
+				},
+				{
+					"value": "Gemüse",
+					"synonyms": [
+						"Mischgemüse"
+					]
+				},
+				{
+					"value": "Nussfrucht"
+				},
+				{
+					"value": "Obst"
+				},
+				{
+					"value": "Sauerkraut"
+				},
+				{
+					"value": "Pesto"
+				},
+				{
+					"value": "Tausendjährige Eier"
+				},
+				{
+					"value": "Schnitzel"
+				},
+				{
+					"value": "Sandwich"
+				},
+				{
+					"value": "Getränk"
+				},
+				{
+					"value": "Drachenfrucht"
+				},
+				{
+					"value": "Fleisch"
+				},
+				{
+					"value": "Currypulver"
+				},
+				{
+					"value": "Bruschetta"
+				},
+				{
+					"value": "Schaschlik"
+				},
+				{
+					"value": "Bürgermeisterstück"
+				},
+				{
+					"value": "Omelett"
+				},
+				{
+					"value": "Vollkorn"
+				},
+				{
+					"value": "Sauerbraten"
+				},
+				{
+					"value": "Babynahrung"
+				},
+				{
+					"value": "Hackfleisch"
+				},
+				{
+					"value": "Schwanzstück"
+				},
+				{
+					"value": "Gebäck"
+				},
+				{
+					"value": "Salzgurke"
+				},
+				{
+					"value": "Teigtasche"
+				},
+				{
+					"value": "Spiegelei"
+				},
+				{
+					"value": "Kohlroulade"
+				},
+				{
+					"value": "SoufflÃ©"
+				},
+				{
+					"value": "Balut"
+				},
+				{
+					"value": "gekochtes Ei"
+				},
+				{
+					"value": "Eiklar"
+				},
+				{
+					"value": "Ei",
+					"synonyms": [
+						"Vollei"
+					]
+				},
+				{
+					"value": "Oblate"
+				},
+				{
+					"value": "Querrippe"
+				},
+				{
+					"value": "Schlutzkrapfen"
+				},
+				{
+					"value": "Hirn"
+				},
+				{
+					"value": "Eisbombe"
+				},
+				{
+					"value": "Speiseöle"
+				},
+				{
+					"value": "Fleischersatz"
+				},
+				{
+					"value": "Gummibonbon"
+				},
+				{
+					"value": "Frühstücksflocken"
+				},
+				{
+					"value": "Brotaufstrich"
+				},
+				{
+					"value": "Dotter"
+				},
+				{
+					"value": "SpieÃŸbraten"
+				},
+				{
+					"value": "Magenbrot"
+				},
+				{
+					"value": "Meisenknödel"
+				},
+				{
+					"value": "Eisriegel"
+				},
+				{
+					"value": "BÃªtises de Cambrai"
+				},
+				{
+					"value": "Pastelles"
+				},
+				{
+					"value": "Maisbrei"
+				},
+				{
+					"value": "Muskazine"
+				},
+				{
+					"value": "Olivenöl"
+				},
+				{
+					"value": "Speisesalz"
+				},
+				{
+					"value": "Gelierzucker"
+				},
+				{
+					"value": "Sojaöl"
+				},
+				{
+					"value": "Zucker"
+				},
+				{
+					"value": "Milch"
+				},
+				{
+					"value": "Eier"
+				},
+				{
+					"value": "Sahne"
+				},
+				{
+					"value": "Küchenrolle",
+					"synonyms": [
+						"Küchenrollen"
+					]
+				},
+				{
+					"value": "Cola",
+					"synonyms": [
+						"Coca Cola"
+					]
+				},
+				{
+					"value": "Mehl"
+				},
+				{
+					"value": "Geschenkpapier"
+				},
+				{
+					"value": "Erbsen"
+				},
+				{
+					"value": "Schinken"
+				},
+				{
+					"value": "Ã„pfel",
+					"synonyms": [
+						"Apfel"
+					]
+				},
+				{
+					"value": "Birnen",
+					"synonyms": [
+						"Birne"
+					]
+				},
+				{
+					"value": "Granny Smith"
+				},
+				{
+					"value": "Limo",
+					"synonyms": [
+						"Limonade"
+					]
+				},
+				{
+					"value": "Wasser"
+				},
+				{
+					"value": "Eis"
+				},
+				{
+					"value": "Kirschen"
+				},
+				{
+					"value": "Bier"
+				},
+				{
+					"value": "Wein"
+				},
+				{
+					"value": "Sekt"
+				},
+				{
+					"value": "Rum"
+				},
+				{
+					"value": "Melone"
+				},
+				{
+					"value": "Grillfackeln"
+				},
+				{
+					"value": "Schweinenacken Steak",
+					"synonyms": [
+						"schweinenacken steak",
+						"schweine nacken steak"
+					]
+				},
+				{
+					"value": "Grillkohle"
+				},
+				{
+					"value": "Grillanzünder"
+				},
+				{
+					"value": "Pfifferlinge"
+				},
+				{
+					"value": "Steinpilze"
+				},
+				{
+					"value": "Champignongs"
+				},
+				{
+					"value": "Glühbirne"
+				},
+				{
+					"value": "Batterien"
+				},
+				{
+					"value": "Waschmittel",
+					"synonyms": [
+						"Waschpulver"
+					]
+				},
+				{
+					"value": "Calgon"
+				},
+				{
+					"value": "Klostein"
+				},
+				{
+					"value": "Zahnbürsten",
+					"synonyms": [
+						"Zahnbürste"
+					]
+				},
+				{
+					"value": "Zahnpasta"
+				},
+				{
+					"value": "Pudding"
+				},
+				{
+					"value": "Toast",
+					"synonyms": [
+						"Toastbrot"
+					]
+				},
+				{
+					"value": "Tequila"
+				},
+				{
+					"value": "Salat"
+				},
+				{
+					"value": "Kartoffeln",
+					"synonyms": [
+						"Kartoffel"
+					]
+				},
+				{
+					"value": "Zwiebeln"
+				},
+				{
+					"value": "Karotten"
+				},
+				{
+					"value": "Möhren"
+				},
+				{
+					"value": "Orangen"
+				},
+				{
+					"value": "Apfelsaft"
+				},
+				{
+					"value": "Saft"
+				},
+				{
+					"value": "Popcorn",
+					"synonyms": [
+						"Pop Corn"
+					]
+				},
+				{
+					"value": "Walnüsse"
+				},
+				{
+					"value": "Haselnüsse"
+				},
+				{
+					"value": "Cashew Kerne"
+				},
+				{
+					"value": "Cashews"
+				},
+				{
+					"value": "Pommes",
+					"synonyms": [
+						"Pommes Frites",
+						"Pom Frit"
+					]
+				},
+				{
+					"value": "Pizza"
+				},
+				{
+					"value": "Kroketten"
+				},
+				{
+					"value": "Lasagneplatten"
+				},
+				{
+					"value": "Fischstäbchen"
+				},
+				{
+					"value": "Aufschnitt"
+				},
+				{
+					"value": "Grillfleisch"
+				},
+				{
+					"value": "Lauch"
+				},
+				{
+					"value": "Frühlingszwiebeln"
+				},
+				{
+					"value": "Havanna"
+				},
+				{
+					"value": "Schoko Riegel"
+				},
+				{
+					"value": "Chips"
+				},
+				{
+					"value": "Gummibären"
+				},
+				{
+					"value": "Passierte Tomaten",
+					"synonyms": [
+						"Tomaten passiert"
+					]
+				},
+				{
+					"value": "Tomaten"
+				},
+				{
+					"value": "Kopfsalat"
+				},
+				{
+					"value": "Beerenmix"
+				},
+				{
+					"value": "Spinat"
+				},
+				{
+					"value": "TK Spinat"
+				},
+				{
+					"value": "Brötchen"
+				},
+				{
+					"value": "Baguette"
+				},
+				{
+					"value": "Penne"
+				},
+				{
+					"value": "Spaghetti"
+				},
+				{
+					"value": "Hähnchenschenkel"
+				},
+				{
+					"value": "Hähnchenbrust"
+				},
+				{
+					"value": "Hähnchenfilet"
+				},
+				{
+					"value": "Filet Steak"
+				},
+				{
+					"value": "Himbeeren"
+				},
+				{
+					"value": "Erdbeeren"
+				},
+				{
+					"value": "Erdbeersauce"
+				},
+				{
+					"value": "Schokosauce"
+				},
+				{
+					"value": "WeiÃŸe Schokolade"
+				},
+				{
+					"value": "Zartbitter Schokolade"
+				},
+				{
+					"value": "Vollmilch Schokolade"
+				},
+				{
+					"value": "Kinder Country"
+				},
+				{
+					"value": "Stevia"
+				},
+				{
+					"value": "Butterpilze"
+				},
+				{
+					"value": "Austernpilze"
+				},
+				{
+					"value": "Morcheln"
+				},
+				{
+					"value": "Chinakohl"
+				},
+				{
+					"value": "Feldsalat"
+				},
+				{
+					"value": "Champignons"
+				},
+				{
+					"value": "Bambussprossen"
+				},
+				{
+					"value": "Rhabarber"
+				},
+				{
+					"value": "Mangold"
+				},
+				{
+					"value": "Pak Choi"
+				},
+				{
+					"value": "Schwarzwurzel"
+				},
+				{
+					"value": "Weinsauerkraut"
+				},
+				{
+					"value": "Chicoree"
+				},
+				{
+					"value": "Blattsalat"
+				},
+				{
+					"value": "Radieschen"
+				},
+				{
+					"value": "Schalotten"
+				},
+				{
+					"value": "Staudensellerie"
+				},
+				{
+					"value": "Stangensellerie"
+				},
+				{
+					"value": "Spargel"
+				},
+				{
+					"value": "Zucchini"
+				},
+				{
+					"value": "Blumenkohl"
+				},
+				{
+					"value": "Avocado"
+				},
+				{
+					"value": "Rettich"
+				},
+				{
+					"value": "Knollensellerie"
+				},
+				{
+					"value": "Grünkohl"
+				},
+				{
+					"value": "Grüner Paprika",
+					"synonyms": [
+						"Paprika grün"
+					]
+				},
+				{
+					"value": "Grüner Spargel"
+				},
+				{
+					"value": "Fenchel"
+				},
+				{
+					"value": "Porree",
+					"synonyms": [
+						"Lauch"
+					]
+				},
+				{
+					"value": "Aubergine"
+				},
+				{
+					"value": "Grüne Oliven",
+					"synonyms": [
+						"Oliven grün"
+					]
+				},
+				{
+					"value": "Romanasalat"
+				},
+				{
+					"value": "Kaisergemüse"
+				},
+				{
+					"value": "Endiviensalat"
+				},
+				{
+					"value": "Acerola"
+				},
+				{
+					"value": "Cherrytomaten"
+				},
+				{
+					"value": "Karambole"
+				},
+				{
+					"value": "Tomate"
+				},
+				{
+					"value": "Blaukraut"
+				},
+				{
+					"value": "Rahmspinat",
+					"synonyms": [
+						"Cremespinat",
+						"Spinat mit Rahm"
+					]
+				},
+				{
+					"value": "Acai"
+				},
+				{
+					"value": "Rosenkohl"
+				},
+				{
+					"value": "Rote Zwiebeln"
+				},
+				{
+					"value": "Frühlingszwiebel"
+				},
+				{
+					"value": "Sojasprossen"
+				},
+				{
+					"value": "Schwarze Oliven",
+					"synonyms": [
+						"Oliven schwarz"
+					]
+				},
+				{
+					"value": "WeiÃŸkohl"
+				},
+				{
+					"value": "Kohlrübe"
+				},
+				{
+					"value": "Grüne Bohnen"
+				},
+				{
+					"value": "Gelbe Paprika",
+					"synonyms": [
+						"Paprika gelb"
+					]
+				},
+				{
+					"value": "Brombeeren"
+				},
+				{
+					"value": "Cranberry"
+				},
+				{
+					"value": "Romanesco"
+				},
+				{
+					"value": "Kapern"
+				},
+				{
+					"value": "Brennnessel"
+				},
+				{
+					"value": "Sanddorn"
+				},
+				{
+					"value": "Hokkaido"
+				},
+				{
+					"value": "Rote Johannisbeeren"
+				},
+				{
+					"value": "Petersilie"
+				},
+				{
+					"value": "Petersilienwurzel"
+				},
+				{
+					"value": "Galiamelone"
+				},
+				{
+					"value": "Wassermelone"
+				},
+				{
+					"value": "Gewürzgurken"
+				},
+				{
+					"value": "Grapefruit"
+				},
+				{
+					"value": "Zwiebel",
+					"synonyms": [
+						"Zwiebeln"
+					]
+				},
+				{
+					"value": "Steckrüben"
+				},
+				{
+					"value": "Heidelbeeren"
+				},
+				{
+					"value": "Guave"
+				},
+				{
+					"value": "Rote Paprika",
+					"synonyms": [
+						"Paprika rot"
+					]
+				},
+				{
+					"value": "Schwarze Johannisbeeren"
+				},
+				{
+					"value": "Tomatenmark"
+				},
+				{
+					"value": "Peperoni",
+					"synonyms": [
+						"Pfefferoni"
+					]
+				},
+				{
+					"value": "Papaya"
+				},
+				{
+					"value": "Holunder"
+				},
+				{
+					"value": "Holundersirup"
+				},
+				{
+					"value": "Stachelbeeren"
+				},
+				{
+					"value": "Kiwi"
+				},
+				{
+					"value": "Trüffel"
+				},
+				{
+					"value": "Rote Bete"
+				},
+				{
+					"value": "Sauerkirschen"
+				},
+				{
+					"value": "Aprikose"
+				},
+				{
+					"value": "Pfirsich"
+				},
+				{
+					"value": "Quitte"
+				},
+				{
+					"value": "Chilischote",
+					"synonyms": [
+						"Chili",
+						"Chilis"
+					]
+				},
+				{
+					"value": "Zuckerschoten"
+				},
+				{
+					"value": "Clementine"
+				},
+				{
+					"value": "Obstsalat"
+				},
+				{
+					"value": "Pomelo"
+				},
+				{
+					"value": "Orange"
+				},
+				{
+					"value": "Mandarine"
+				},
+				{
+					"value": "Maulbeeren"
+				},
+				{
+					"value": "Tamarillo"
+				},
+				{
+					"value": "Sojabohne"
+				},
+				{
+					"value": "Ajvar"
+				},
+				{
+					"value": "Honigmelone"
+				},
+				{
+					"value": "Birne",
+					"synonyms": [
+						"Birnen"
+					]
+				},
+				{
+					"value": "Grüne Erbsen"
+				},
+				{
+					"value": "Kakaobohnen"
+				},
+				{
+					"value": "Ananas"
+				},
+				{
+					"value": "Dicke Bohnen"
+				},
+				{
+					"value": "Feige"
+				},
+				{
+					"value": "Pflaumen"
+				},
+				{
+					"value": "Meerrettich"
+				},
+				{
+					"value": "Pastinaken"
+				},
+				{
+					"value": "Kartoffelpüree"
+				},
+				{
+					"value": "Mango"
+				},
+				{
+					"value": "Ingwer"
+				},
+				{
+					"value": "Physalis"
+				},
+				{
+					"value": "SüÃŸkirschen"
+				},
+				{
+					"value": "Weintrauben"
+				},
+				{
+					"value": "Passionsfrucht"
+				},
+				{
+					"value": "Kumquat"
+				},
+				{
+					"value": "Granatapfel"
+				},
+				{
+					"value": "Kaki"
+				},
+				{
+					"value": "Getrocknete Tomaten",
+					"synonyms": [
+						"Tomaten getrocknet"
+					]
+				},
+				{
+					"value": "Litschi"
+				},
+				{
+					"value": "Maiskolben"
+				},
+				{
+					"value": "WeiÃŸe Bohnen"
+				},
+				{
+					"value": "Hagebutten"
+				},
+				{
+					"value": "Topinambur"
+				},
+				{
+					"value": "Mais"
+				},
+				{
+					"value": "Ackerbohnen"
+				},
+				{
+					"value": "Shiitake Pilze"
+				},
+				{
+					"value": "Banane",
+					"synonyms": [
+						"Bananen"
+					]
+				},
+				{
+					"value": "Aronia Beeren"
+				},
+				{
+					"value": "Chlorella"
+				},
+				{
+					"value": "Gerstengras Pulver"
+				},
+				{
+					"value": "SüÃŸkartoffeln"
+				},
+				{
+					"value": "Knoblauch"
+				},
+				{
+					"value": "Maniok"
+				},
+				{
+					"value": "Moringa Pulver"
+				},
+				{
+					"value": "Kidneybohnen"
+				},
+				{
+					"value": "Linsen"
+				},
+				{
+					"value": "Schwarze Bohnen"
+				},
+				{
+					"value": "Kichererbsen"
+				},
+				{
+					"value": "Mungobohnen"
+				},
+				{
+					"value": "rote Linsen"
+				},
+				{
+					"value": "Getrockntete Pflaumen",
+					"synonyms": [
+						"Pflaumen getrocknet"
+					]
+				},
+				{
+					"value": "Datteln"
+				},
+				{
+					"value": "getrocknete Apfelringe",
+					"synonyms": [
+						"Apfelringe getrocknet"
+					]
+				},
+				{
+					"value": "Tamarinde"
+				},
+				{
+					"value": "Trockenobst",
+					"synonyms": [
+						"Obst getrocknet"
+					]
+				},
+				{
+					"value": "Rosinen"
+				},
+				{
+					"value": "Cranberries"
+				},
+				{
+					"value": "Mohn"
+				},
+				{
+					"value": "Kürbiskerne"
+				},
+				{
+					"value": "Paranüsse"
+				},
+				{
+					"value": "Chia"
+				},
+				{
+					"value": "Mandeln"
+				},
+				{
+					"value": "Mandelmus"
+				},
+				{
+					"value": "Pekanüsse"
+				},
+				{
+					"value": "Leinsamenmehl"
+				},
+				{
+					"value": "Pinienkerne"
+				},
+				{
+					"value": "Macadamia"
+				},
+				{
+					"value": "Erdnüsse"
+				},
+				{
+					"value": "Kokosnuss"
+				},
+				{
+					"value": "Sesam"
+				},
+				{
+					"value": "Pistazien"
+				},
+				{
+					"value": "Haselnussmus"
+				},
+				{
+					"value": "Sonnenblumenkerne"
+				},
+				{
+					"value": "Hanfsamen"
+				},
+				{
+					"value": "Erdnussmus"
+				},
+				{
+					"value": "Hummus"
+				},
+				{
+					"value": "Kokosraspel"
+				},
+				{
+					"value": "Cashewnüsse"
+				},
+				{
+					"value": "Cashewmus"
+				},
+				{
+					"value": "Maronen"
+				},
+				{
+					"value": "Kichererbsenmehl"
+				},
+				{
+					"value": "Johannisbrotkernmehl"
+				},
+				{
+					"value": "Hanfmehl"
+				},
+				{
+					"value": "Kakaofasern"
+				},
+				{
+					"value": "Sojaflocken"
+				},
+				{
+					"value": "EiweiÃŸpulver"
+				},
+				{
+					"value": "Kürbiskernmehl"
+				},
+				{
+					"value": "Gluten",
+					"synonyms": [
+						"Weizenkleber"
+					]
+				},
+				{
+					"value": "EiweiÃŸbrötchen"
+				},
+				{
+					"value": "Mandelmehl"
+				},
+				{
+					"value": "Kartoffelfasern"
+				},
+				{
+					"value": "Hefeflocken"
+				},
+				{
+					"value": "SüÃŸlupinenmehl"
+				},
+				{
+					"value": "Kakao"
+				},
+				{
+					"value": "Porridge"
+				},
+				{
+					"value": "Weizenkleie"
+				},
+				{
+					"value": "Chia Brot"
+				},
+				{
+					"value": "EiweiÃŸbrot"
+				},
+				{
+					"value": "Gelatine"
+				},
+				{
+					"value": "Walnussmehl"
+				},
+				{
+					"value": "Sesammehl"
+				},
+				{
+					"value": "Kokosmehl"
+				},
+				{
+					"value": "Dinkelkleie"
+				},
+				{
+					"value": "Eierpfannkuchen"
+				},
+				{
+					"value": "Sojamehl"
+				},
+				{
+					"value": "Sahnetorte"
+				},
+				{
+					"value": "Reisnudeln"
+				},
+				{
+					"value": "Eierschecke"
+				},
+				{
+					"value": "Brandteig"
+				},
+				{
+					"value": "Spätzle",
+					"synonyms": [
+						"Spatzeln",
+						"Eierspatzeln"
+					]
+				},
+				{
+					"value": "Backpulver"
+				},
+				{
+					"value": "Wildreis"
+				},
+				{
+					"value": "Windbeutel"
+				},
+				{
+					"value": "Käsekuchen"
+				},
+				{
+					"value": "Nudeln"
+				},
+				{
+					"value": "Spahettini"
+				},
+				{
+					"value": "Maccaroni"
+				},
+				{
+					"value": "Muschelnudeln"
+				},
+				{
+					"value": "Hörnchen"
+				},
+				{
+					"value": "Pumpernickel"
+				},
+				{
+					"value": "Grissinis"
+				},
+				{
+					"value": "Franzbrötchen"
+				},
+				{
+					"value": "Trockenhefe"
+				},
+				{
+					"value": "Schupfnudeln"
+				},
+				{
+					"value": "Eierkuchen"
+				},
+				{
+					"value": "Sonnenblumenbrot"
+				},
+				{
+					"value": "Dinkelbrötchen"
+				},
+				{
+					"value": "Biskuitteig"
+				},
+				{
+					"value": "Roggenvollkornbrot"
+				},
+				{
+					"value": "Kornspitz"
+				},
+				{
+					"value": "Vollkorntoastbrot"
+				},
+				{
+					"value": "Apfelkuchen"
+				},
+				{
+					"value": "Leinsamenbrot"
+				},
+				{
+					"value": "Reis"
+				},
+				{
+					"value": "Schwarzbrot"
+				},
+				{
+					"value": "Dinkelbrot"
+				},
+				{
+					"value": "Pizzateig"
+				},
+				{
+					"value": "Butterbrezel"
+				},
+				{
+					"value": "Croissant"
+				},
+				{
+					"value": "Dinkelvollkornbrot"
+				},
+				{
+					"value": "Hefeteig"
+				},
+				{
+					"value": "Semmeln"
+				},
+				{
+					"value": "Sandkuchen"
+				},
+				{
+					"value": "Kürbiskernbrötchen"
+				},
+				{
+					"value": "Hefezopf"
+				},
+				{
+					"value": "Mehrkornbrötchen"
+				},
+				{
+					"value": "Mehrkornbrot"
+				},
+				{
+					"value": "Vollkornbrötchen"
+				},
+				{
+					"value": "Stollen"
+				},
+				{
+					"value": "Milchbrötchen"
+				},
+				{
+					"value": "Mürbeteig"
+				},
+				{
+					"value": "Haferkleie"
+				},
+				{
+					"value": "Semmelknödel"
+				},
+				{
+					"value": "Graubrot"
+				},
+				{
+					"value": "Körnerbrötchen"
+				},
+				{
+					"value": "Pita"
+				},
+				{
+					"value": "Mischbrot"
+				},
+				{
+					"value": "Roggenmischbrot"
+				},
+				{
+					"value": "Marmorkuchen"
+				},
+				{
+					"value": "Rosinenbrötchen"
+				},
+				{
+					"value": "Mohnbrötchen"
+				},
+				{
+					"value": "Blätterteig"
+				},
+				{
+					"value": "Paniermehl"
+				},
+				{
+					"value": "Germknödel"
+				},
+				{
+					"value": "Haferflocken"
+				},
+				{
+					"value": "Vollkornhaferflocken"
+				},
+				{
+					"value": "Amaranth"
+				},
+				{
+					"value": "Linzertorte"
+				},
+				{
+					"value": "Roggenbrötchen"
+				},
+				{
+					"value": "Müsli"
+				},
+				{
+					"value": "Brötchen Weizen"
+				},
+				{
+					"value": "Rührkuchenteig"
+				},
+				{
+					"value": "Laugenstange"
+				},
+				{
+					"value": "Vollkornnudeln",
+					"synonyms": [
+						"Vollkorn Nudeln"
+					]
+				},
+				{
+					"value": "Lebkuchen"
+				},
+				{
+					"value": "Langkornreis"
+				},
+				{
+					"value": "Dinkelnudeln"
+				},
+				{
+					"value": "Quinoa",
+					"synonyms": [
+						"Kinoa"
+					]
+				},
+				{
+					"value": "Schokomüsli"
+				},
+				{
+					"value": "Weizenvollkornmehl"
+				},
+				{
+					"value": "Löffelbisquit"
+				},
+				{
+					"value": "Dinkelflocken"
+				},
+				{
+					"value": "Vollkornknäckebrot"
+				},
+				{
+					"value": "Roggenvollkornmehl"
+				},
+				{
+					"value": "Panko"
+				},
+				{
+					"value": "WeizengrieÃŸ"
+				},
+				{
+					"value": "Roggenknäckebrot"
+				},
+				{
+					"value": "Früchtemüsli"
+				},
+				{
+					"value": "Dinkelmehl"
+				},
+				{
+					"value": "Hirse"
+				},
+				{
+					"value": "Roggenmehl"
+				},
+				{
+					"value": "Maismehl"
+				},
+				{
+					"value": "Gerstenmehl"
+				},
+				{
+					"value": "Kamut"
+				},
+				{
+					"value": "Ciabatta Brot"
+				},
+				{
+					"value": "Rumkugel"
+				},
+				{
+					"value": "Bulgur"
+				},
+				{
+					"value": "Salzstangen"
+				},
+				{
+					"value": "Buchweizen"
+				},
+				{
+					"value": "Weizenmehl"
+				},
+				{
+					"value": "Graupen"
+				},
+				{
+					"value": "Polenta"
+				},
+				{
+					"value": "Buchweizenmehl"
+				},
+				{
+					"value": "Vollkornreis"
+				},
+				{
+					"value": "Eiernudeln"
+				},
+				{
+					"value": "Makronen"
+				},
+				{
+					"value": "Hirseflocken"
+				},
+				{
+					"value": "Weizenknäckebrot"
+				},
+				{
+					"value": "Tortenguss"
+				},
+				{
+					"value": "Cornflakes",
+					"synonyms": [
+						"Corn Flakes"
+					]
+				},
+				{
+					"value": "Basmati Reis",
+					"synonyms": [
+						"Basmatireis",
+						"Duftreis"
+					]
+				},
+				{
+					"value": "Mamorkuchen"
+				},
+				{
+					"value": "Reismehl"
+				},
+				{
+					"value": "Kartoffelstärke"
+				},
+				{
+					"value": "Jasminreis"
+				},
+				{
+					"value": "Vanillepuddingpulver",
+					"synonyms": [
+						"Puddingpulver Vanille"
+					]
+				},
+				{
+					"value": "Reiswaffel"
+				},
+				{
+					"value": "Glasnudeln"
+				},
+				{
+					"value": "Maisstärke"
+				},
+				{
+					"value": "Weizenstärke"
+				},
+				{
+					"value": "Baiser"
+				},
+				{
+					"value": "Käse"
+				},
+				{
+					"value": "Mozzarella",
+					"synonyms": [
+						"Mozzarella Käse"
+					]
+				},
+				{
+					"value": "Limburger Käse"
+				},
+				{
+					"value": "Romadur Käse"
+				},
+				{
+					"value": "Schafskäse"
+				},
+				{
+					"value": "Feta",
+					"synonyms": [
+						"Feta Käse"
+					]
+				},
+				{
+					"value": "Brie"
+				},
+				{
+					"value": "Ziegenkäse"
+				},
+				{
+					"value": "Maasdamer",
+					"synonyms": [
+						"Maasdamer Käse"
+					]
+				},
+				{
+					"value": "Roquefort",
+					"synonyms": [
+						"Roquefort Käse"
+					]
+				},
+				{
+					"value": "Blauschimmelkäse"
+				},
+				{
+					"value": "Edamer",
+					"synonyms": [
+						"Edamer Käse"
+					]
+				},
+				{
+					"value": "Emmentaler",
+					"synonyms": [
+						"Emmentaler Käse"
+					]
+				},
+				{
+					"value": "Appenzeller"
+				},
+				{
+					"value": "Gouda",
+					"synonyms": [
+						"Gouda Käse"
+					]
+				},
+				{
+					"value": "Gorgonzola"
+				},
+				{
+					"value": "Butterkäse"
+				},
+				{
+					"value": "Cheddar",
+					"synonyms": [
+						"Cheddar Käse"
+					]
+				},
+				{
+					"value": "Parmesan",
+					"synonyms": [
+						"Parmesan Käse"
+					]
+				},
+				{
+					"value": "Camembert"
+				},
+				{
+					"value": "Bergkäse"
+				},
+				{
+					"value": "Pecorino"
+				},
+				{
+					"value": "Hirtenkäse"
+				},
+				{
+					"value": "Ricotta"
+				},
+				{
+					"value": "Büffelmozzarella"
+				},
+				{
+					"value": "Tilsiter",
+					"synonyms": [
+						"Tilsiter Käse"
+					]
+				},
+				{
+					"value": "Ofenkäse"
+				},
+				{
+					"value": "Frischkäse"
+				},
+				{
+					"value": "Ayran"
+				},
+				{
+					"value": "Schlagsahne",
+					"synonyms": [
+						"Obers",
+						"Schlagobers",
+						"Sahne"
+					]
+				},
+				{
+					"value": "Halloumi"
+				},
+				{
+					"value": "Quark",
+					"synonyms": [
+						"Topfen"
+					]
+				},
+				{
+					"value": "Haselnussmilch"
+				},
+				{
+					"value": "Hüttenkäse"
+				},
+				{
+					"value": "Kefir"
+				},
+				{
+					"value": "Ziegenfrischkäse"
+				},
+				{
+					"value": "Sauerrahm",
+					"synonyms": [
+						"Schmand"
+					]
+				},
+				{
+					"value": "Creme fraiche",
+					"synonyms": [
+						"Creme fresch"
+					]
+				},
+				{
+					"value": "Mascarpone"
+				},
+				{
+					"value": "Buttermilch"
+				},
+				{
+					"value": "griechisches Joghurt"
+				},
+				{
+					"value": "Molke"
+				},
+				{
+					"value": "Joghurt"
+				},
+				{
+					"value": "Schmelzkäse"
+				},
+				{
+					"value": "Sojamilch"
+				},
+				{
+					"value": "Mandelmilch"
+				},
+				{
+					"value": "Kokosmilch"
+				},
+				{
+					"value": "Fruchtjoghurt"
+				},
+				{
+					"value": "Erdbeerjoghurt"
+				},
+				{
+					"value": "Sojajoghurt"
+				},
+				{
+					"value": "Kakaomilch"
+				},
+				{
+					"value": "Milchpulver"
+				},
+				{
+					"value": "Jakobsmuschel"
+				},
+				{
+					"value": "Miesmuscheln"
+				},
+				{
+					"value": "Schweinerücken"
+				},
+				{
+					"value": "Flusskrebs",
+					"synonyms": [
+						"Flusskrebse"
+					]
+				},
+				{
+					"value": "Seeteufel"
+				},
+				{
+					"value": "Tintenfisch"
+				},
+				{
+					"value": "Pangasius"
+				},
+				{
+					"value": "Scholle"
+				},
+				{
+					"value": "Seezunge"
+				},
+				{
+					"value": "Kabeljau",
+					"synonyms": [
+						"Dorsch"
+					]
+				},
+				{
+					"value": "Languste"
+				},
+				{
+					"value": "Seelachs"
+				},
+				{
+					"value": "Kalbsbries"
+				},
+				{
+					"value": "Crevetten"
+				},
+				{
+					"value": "Gambas"
+				},
+				{
+					"value": "Hummer"
+				},
+				{
+					"value": "Zander"
+				},
+				{
+					"value": "Rehkeule"
+				},
+				{
+					"value": "Schellfisch"
+				},
+				{
+					"value": "Saibling"
+				},
+				{
+					"value": "Seehecht"
+				},
+				{
+					"value": "Barsch"
+				},
+				{
+					"value": "Putenbrust"
+				},
+				{
+					"value": "Putensteak"
+				},
+				{
+					"value": "Putenschnitzel"
+				},
+				{
+					"value": "Hase"
+				},
+				{
+					"value": "Wildlachs"
+				},
+				{
+					"value": "Kalbsfilet"
+				},
+				{
+					"value": "Hirsch"
+				},
+				{
+					"value": "Pferdefleisch"
+				},
+				{
+					"value": "Entenleber"
+				},
+				{
+					"value": "Krabben"
+				},
+				{
+					"value": "Heilbutt"
+				},
+				{
+					"value": "Kalbsrücken"
+				},
+				{
+					"value": "Rinderfilet"
+				},
+				{
+					"value": "Roastbeef"
+				},
+				{
+					"value": "Rindertatar"
+				},
+				{
+					"value": "Kalbsschnitzel"
+				},
+				{
+					"value": "Rinderhüfte"
+				},
+				{
+					"value": "Schweinebraten"
+				},
+				{
+					"value": "Schweinegulasch"
+				},
+				{
+					"value": "Schweinekotelett"
+				},
+				{
+					"value": "Schweineschnitzel"
+				},
+				{
+					"value": "Schweinezunge"
+				},
+				{
+					"value": "Lachsschinken"
+				},
+				{
+					"value": "Rohschinken"
+				},
+				{
+					"value": "Karpfen"
+				},
+				{
+					"value": "Thunfisch"
+				},
+				{
+					"value": "Hähnchenleber"
+				},
+				{
+					"value": "Rindergulasch"
+				},
+				{
+					"value": "Kalbsfleisch",
+					"synonyms": [
+						"Kalbfleisch"
+					]
+				},
+				{
+					"value": "geräucherte Forelle",
+					"synonyms": [
+						"Forelle geräuchert"
+					]
+				},
+				{
+					"value": "Schweinefilet"
+				},
+				{
+					"value": "Rippchen"
+				},
+				{
+					"value": "Lammfilet"
+				},
+				{
+					"value": "Putenfschiertes",
+					"synonyms": [
+						"Putenhackfleisch"
+					]
+				},
+				{
+					"value": "Rotbarsch"
+				},
+				{
+					"value": "Forelle"
+				},
+				{
+					"value": "Wildente"
+				},
+				{
+					"value": "Parmaschinken"
+				},
+				{
+					"value": "Rehrücken"
+				},
+				{
+					"value": "Rinderbraten"
+				},
+				{
+					"value": "Rinderleber"
+				},
+				{
+					"value": "Schweineleber"
+				},
+				{
+					"value": "Putenfleisch"
+				},
+				{
+					"value": "Dorade"
+				},
+				{
+					"value": "Putenleber"
+				},
+				{
+					"value": "Gänsebrust"
+				},
+				{
+					"value": "Kaninchen"
+				},
+				{
+					"value": "Corned Beef"
+				},
+				{
+					"value": "Räucherlachs"
+				},
+				{
+					"value": "Rinderzunge"
+				},
+				{
+					"value": "Wildschwein"
+				},
+				{
+					"value": "Gyros"
+				},
+				{
+					"value": "Bierschinken"
+				},
+				{
+					"value": "Lachsforelle"
+				},
+				{
+					"value": "Schweineschulter"
+				},
+				{
+					"value": "Entenbrust"
+				},
+				{
+					"value": "Rindersteak"
+				},
+				{
+					"value": "Hühnerschenkel",
+					"synonyms": [
+						"Hendlhaxen",
+						"Hähnchenschenkel"
+					]
+				},
+				{
+					"value": "Hähnchen",
+					"synonyms": [
+						"Hendl"
+					]
+				},
+				{
+					"value": "Rindssuppenfleisch",
+					"synonyms": [
+						"Suppenfleisch Rind"
+					]
+				},
+				{
+					"value": "Rindssuppenwürfel",
+					"synonyms": [
+						"Suppenfwürfel Rind"
+					]
+				},
+				{
+					"value": "Gemüsesuppenwürfel",
+					"synonyms": [
+						"Suppenfwürfel Gemüse"
+					]
+				},
+				{
+					"value": "Schwertfisch"
+				},
+				{
+					"value": "Gans"
+				},
+				{
+					"value": "Makrele"
+				},
+				{
+					"value": "Gänsekeule"
+				},
+				{
+					"value": "Brathähnchen",
+					"synonyms": [
+						"gebratenes Hendl",
+						"Hendl gebraten",
+						"Hähnchen gebraten"
+					]
+				},
+				{
+					"value": "Bündnerfleisch"
+				},
+				{
+					"value": "Welsfilet"
+				},
+				{
+					"value": "Chicken Wings"
+				},
+				{
+					"value": "Lachs"
+				},
+				{
+					"value": "Rinderfaschiertes",
+					"synonyms": [
+						"Rindsfschiertes",
+						"Faschiertes Rind",
+						"Faschiertes vom Rind",
+						"Rinderhackfleisch",
+						"Hackfleisch Rind"
+					]
+				},
+				{
+					"value": "Lammfleisch"
+				},
+				{
+					"value": "Schweine Nackensteak",
+					"synonyms": [
+						"Nackensteak Schwein"
+					]
+				},
+				{
+					"value": "Sardinen"
+				},
+				{
+					"value": "Stelze",
+					"synonyms": [
+						"Eisbein"
+					]
+				},
+				{
+					"value": "Rumpsteak"
+				},
+				{
+					"value": "Ente"
+				},
+				{
+					"value": "Leberkäse",
+					"synonyms": [
+						"Fleischkas",
+						"Fleischkäse"
+					]
+				},
+				{
+					"value": "Heringsfilet"
+				},
+				{
+					"value": "Lammrücken"
+				},
+				{
+					"value": "Jagdwurst"
+				},
+				{
+					"value": "Geflügelfleischwurst"
+				},
+				{
+					"value": "Suppenhuhn"
+				},
+				{
+					"value": "Matjes"
+				},
+				{
+					"value": "Lammkeule"
+				},
+				{
+					"value": "Schweinehaxe"
+				},
+				{
+					"value": "Mortadella"
+				},
+				{
+					"value": "Lammkotelett"
+				},
+				{
+					"value": "Rindswurst"
+				},
+				{
+					"value": "Aal"
+				},
+				{
+					"value": "WeiÃŸwurst"
+				},
+				{
+					"value": "Gänseleberpastete"
+				},
+				{
+					"value": "Bockwurst"
+				},
+				{
+					"value": "Fleischwurst"
+				},
+				{
+					"value": "Zwiebelmettwurst"
+				},
+				{
+					"value": "Putensalami"
+				},
+				{
+					"value": "Schweinefaschiertes",
+					"synonyms": [
+						"Faschiertes vom Schwein",
+						"Hackfleisch vom Schwein",
+						"Schweinehackfleisch"
+					]
+				},
+				{
+					"value": "Blutwurst"
+				},
+				{
+					"value": "Bratwurst"
+				},
+				{
+					"value": "Cabanossi"
+				},
+				{
+					"value": "Leberwurst"
+				},
+				{
+					"value": "Salami"
+				},
+				{
+					"value": "Schinkenspeck"
+				},
+				{
+					"value": "Gemischtes Faschiertes",
+					"synonyms": [
+						"Faschiertes gemischt",
+						"Hackfleisch gemischt"
+					]
+				},
+				{
+					"value": "Eigelb"
+				},
+				{
+					"value": "PfefferbeiÃŸer"
+				},
+				{
+					"value": "Landjäger"
+				},
+				{
+					"value": "Teewurst"
+				},
+				{
+					"value": "Stremellachs"
+				},
+				{
+					"value": "Frankfurter",
+					"synonyms": [
+						"Wiener Würstchen"
+					]
+				},
+				{
+					"value": "Krakauer Wurst"
+				},
+				{
+					"value": "Serrano Schinken"
+				},
+				{
+					"value": "Eiweiss",
+					"synonyms": [
+						"Eiklar"
+					]
+				},
+				{
+					"value": "Tafelspitz"
+				},
+				{
+					"value": "Kochschinken"
+				},
+				{
+					"value": "Rollmops"
+				},
+				{
+					"value": "Katenschinken"
+				},
+				{
+					"value": "Cevapcici",
+					"synonyms": [
+						"Tschevaptschitschi"
+					]
+				},
+				{
+					"value": "Lyoner"
+				},
+				{
+					"value": "Bauchspeck"
+				},
+				{
+					"value": "Cervelatwurst"
+				},
+				{
+					"value": "Mettenden"
+				},
+				{
+					"value": "Garnelen"
+				},
+				{
+					"value": "Geflügelwurst"
+				},
+				{
+					"value": "Kalbsleberwurst"
+				},
+				{
+					"value": "Putenfrankfurter",
+					"synonyms": [
+						"Geflügelwiener"
+					]
+				},
+				{
+					"value": "Bacon"
+				},
+				{
+					"value": "Rippalen",
+					"synonyms": [
+						"Rippchen",
+						"Spare Ribs"
+					]
+				},
+				{
+					"value": "Dönerfleisch"
+				},
+				{
+					"value": "Rindssuppe",
+					"synonyms": [
+						"Rinderbrühe"
+					]
+				},
+				{
+					"value": "Kalbsleber"
+				},
+				{
+					"value": "Bismarckhering"
+				},
+				{
+					"value": "Kaviar"
+				},
+				{
+					"value": "Köfte"
+				},
+				{
+					"value": "Frikadelle",
+					"synonyms": [
+						"Fleischlaberl",
+						"Fleischleiberl"
+					]
+				},
+				{
+					"value": "Surimi"
+				},
+				{
+					"value": "Brathering"
+				},
+				{
+					"value": "Grützwurst"
+				},
+				{
+					"value": "Cordon bleu"
+				},
+				{
+					"value": "Wiener Schnitzel"
+				},
+				{
+					"value": "Chicken Nuggets"
+				},
+				{
+					"value": "Hühnerschnitzel",
+					"synonyms": [
+						"Hähnchenschnitzel"
+					]
+				},
+				{
+					"value": "Currywurst"
+				},
+				{
+					"value": "Backfisch"
+				},
+				{
+					"value": "Sushi"
+				},
+				{
+					"value": "Remoulade"
+				},
+				{
+					"value": "Kräuterbutter"
+				},
+				{
+					"value": "Margarine"
+				},
+				{
+					"value": "Mayonnaise"
+				},
+				{
+					"value": "Butter"
+				},
+				{
+					"value": "Sesamöl"
+				},
+				{
+					"value": "Erdnussöl"
+				},
+				{
+					"value": "Kürbiskernöl"
+				},
+				{
+					"value": "Leinöl"
+				},
+				{
+					"value": "Rapsöl"
+				},
+				{
+					"value": "Sonnenblumenöl"
+				},
+				{
+					"value": "Pflanzenöl"
+				},
+				{
+					"value": "Walnussöl"
+				},
+				{
+					"value": "Kokosfett"
+				},
+				{
+					"value": "Traubenkernöl"
+				},
+				{
+					"value": "Kakaobutter"
+				},
+				{
+					"value": "Schweineschmalz"
+				},
+				{
+					"value": "Rindertalg"
+				},
+				{
+					"value": "Gänseschmalz"
+				},
+				{
+					"value": "Kokosöl"
+				},
+				{
+					"value": "Weizenkeimöl"
+				},
+				{
+					"value": "Mineralwasser"
+				},
+				{
+					"value": "Kaffee"
+				},
+				{
+					"value": "Tee"
+				},
+				{
+					"value": "Früchtetee"
+				},
+				{
+					"value": "Hagebuttentee"
+				},
+				{
+					"value": "Kräutertee"
+				},
+				{
+					"value": "Pfefferminztee"
+				},
+				{
+					"value": "Magenfeintee"
+				},
+				{
+					"value": "Salbeitee"
+				},
+				{
+					"value": "Entspannungstee",
+					"synonyms": [
+						"Schlaf schön Tee"
+					]
+				},
+				{
+					"value": "Cola Zero",
+					"synonyms": [
+						"Coke Zero"
+					]
+				},
+				{
+					"value": "Ouzo"
+				},
+				{
+					"value": "Weizenkorn"
+				},
+				{
+					"value": "Cognace",
+					"synonyms": [
+						"Weinbrand"
+					]
+				},
+				{
+					"value": "Schnaps"
+				},
+				{
+					"value": "Obstler",
+					"synonyms": [
+						"Obstbrand"
+					]
+				},
+				{
+					"value": "Stroh 80"
+				},
+				{
+					"value": "Weingeist"
+				},
+				{
+					"value": "Grüner tee"
+				},
+				{
+					"value": "Cola light"
+				},
+				{
+					"value": "Limonade"
+				},
+				{
+					"value": "Prosecco"
+				},
+				{
+					"value": "Zitronensaft"
+				},
+				{
+					"value": "Pilsner Bier"
+				},
+				{
+					"value": "Schwarzer Johannisbeersaft"
+				},
+				{
+					"value": "Reismilch ungesüÃŸt"
+				},
+				{
+					"value": "Rosewein"
+				},
+				{
+					"value": "Rotwein"
+				},
+				{
+					"value": "Tomatensaft"
+				},
+				{
+					"value": "Apfelwein"
+				},
+				{
+					"value": "WeiÃŸwein"
+				},
+				{
+					"value": "Alkoholfreies Bier",
+					"synonyms": [
+						"Bier alkoholfrei"
+					]
+				},
+				{
+					"value": "Karottensaft"
+				},
+				{
+					"value": "Radler"
+				},
+				{
+					"value": "WeiÃŸbier",
+					"synonyms": [
+						"Weizenbier"
+					]
+				},
+				{
+					"value": "Champagner"
+				},
+				{
+					"value": "Alkoholfreies Weizenbier",
+					"synonyms": [
+						"Weizenbier alkoholfrei"
+					]
+				},
+				{
+					"value": "Altbier"
+				},
+				{
+					"value": "HeiÃŸe Schokolade"
+				},
+				{
+					"value": "Holundersaft"
+				},
+				{
+					"value": "Hafermilch"
+				},
+				{
+					"value": "Cidre",
+					"synonyms": [
+						"Cider",
+						"Seider"
+					]
+				},
+				{
+					"value": "Apfelsaft gespritzt",
+					"synonyms": [
+						"Apfelschorle"
+					]
+				},
+				{
+					"value": "Gemüsesaft"
+				},
+				{
+					"value": "Tonic",
+					"synonyms": [
+						"Tonic Water"
+					]
+				},
+				{
+					"value": "Fanta",
+					"synonyms": [
+						"Fanta Orange"
+					]
+				},
+				{
+					"value": "Eistee"
+				},
+				{
+					"value": "Fruchtsaft"
+				},
+				{
+					"value": "Spezi",
+					"synonyms": [
+						"Mezzo Mix"
+					]
+				},
+				{
+					"value": "Grapefruitsaft"
+				},
+				{
+					"value": "FederweiÃŸer"
+				},
+				{
+					"value": "Kümmerling",
+					"synonyms": [
+						"Kräuterlikör"
+					]
+				},
+				{
+					"value": "Malzbier"
+				},
+				{
+					"value": "Hugo"
+				},
+				{
+					"value": "Kokoswasser"
+				},
+				{
+					"value": "Sauerkirschsaft"
+				},
+				{
+					"value": "Ananassaft"
+				},
+				{
+					"value": "Multivitaminsaft"
+				},
+				{
+					"value": "Jägermeister"
+				},
+				{
+					"value": "Glühwein"
+				},
+				{
+					"value": "Trinkschokolade"
+				},
+				{
+					"value": "Traubensaft"
+				},
+				{
+					"value": "Ramazotti"
+				},
+				{
+					"value": "Eierlikör"
+				},
+				{
+					"value": "Mönchsfrucht"
+				},
+				{
+					"value": "Eiskaffee"
+				},
+				{
+					"value": "Götterspeise"
+				},
+				{
+					"value": "Erdnussbutter"
+				},
+				{
+					"value": "Joghurteis"
+				},
+				{
+					"value": "Zartbitterschokolade"
+				},
+				{
+					"value": "Schokopudding",
+					"synonyms": [
+						"Schokoladenpudding"
+					]
+				},
+				{
+					"value": "Vanillepudding"
+				},
+				{
+					"value": "Eiscreme",
+					"synonyms": [
+						"Eis"
+					]
+				},
+				{
+					"value": "Schokoladeneis"
+				},
+				{
+					"value": "Sahneies"
+				},
+				{
+					"value": "Wassereis"
+				},
+				{
+					"value": "Sorbet"
+				},
+				{
+					"value": "Tiramisu"
+				},
+				{
+					"value": "Milchschnitte"
+				},
+				{
+					"value": "Müsliriegel"
+				},
+				{
+					"value": "Studentenfutter"
+				},
+				{
+					"value": "Kuvertüre Zartbitter"
+				},
+				{
+					"value": "Nussschokolade"
+				},
+				{
+					"value": "Pflaumenmus"
+				},
+				{
+					"value": "Kuvertüre Vollmilch"
+				},
+				{
+					"value": "Vollmilchschokolade"
+				},
+				{
+					"value": "Konfitüre"
+				},
+				{
+					"value": "Schokokuss"
+				},
+				{
+					"value": "Kinder Bueno"
+				},
+				{
+					"value": "Rafaelo"
+				},
+				{
+					"value": "Mozartkugeln"
+				},
+				{
+					"value": "Marzipan"
+				},
+				{
+					"value": "Schokoriegel"
+				},
+				{
+					"value": "Ahornsirup"
+				},
+				{
+					"value": "Nougat"
+				},
+				{
+					"value": "Apfeldicksaft"
+				},
+				{
+					"value": "Rübensaft"
+				},
+				{
+					"value": "Butterkekse"
+				},
+				{
+					"value": "Dominosteine"
+				},
+				{
+					"value": "Agavendicksaft"
+				},
+				{
+					"value": "Honig"
+				},
+				{
+					"value": "Marmelade"
+				},
+				{
+					"value": "Gummibärchen"
+				},
+				{
+					"value": "Kakaopulver"
+				},
+				{
+					"value": "Zuckerrübensirup"
+				},
+				{
+					"value": "Lakritze"
+				},
+				{
+					"value": "Kaugummi"
+				},
+				{
+					"value": "Kokosblütenzucker"
+				},
+				{
+					"value": "Bonbons",
+					"synonyms": [
+						"Zuckerln",
+						"Zuckerl"
+					]
+				},
+				{
+					"value": "Erythrit"
+				},
+				{
+					"value": "Isomalt"
+				},
+				{
+					"value": "Lactit"
+				},
+				{
+					"value": "Maltit"
+				},
+				{
+					"value": "Xylit"
+				},
+				{
+					"value": "Sorbit"
+				},
+				{
+					"value": "Vanillezucker"
+				},
+				{
+					"value": "Maltodextrin"
+				},
+				{
+					"value": "Traubenzucker"
+				},
+				{
+					"value": "Kandiszucker"
+				},
+				{
+					"value": "Fruchtzucker"
+				},
+				{
+					"value": "Milchzucker"
+				},
+				{
+					"value": "Puderzucker"
+				},
+				{
+					"value": "Rohrzucker"
+				},
+				{
+					"value": "Karamel"
+				},
+				{
+					"value": "Fleischbrühe"
+				},
+				{
+					"value": "Räuchertofu"
+				},
+				{
+					"value": "Eiersalat"
+				},
+				{
+					"value": "Tofu"
+				},
+				{
+					"value": "Ratatouille"
+				},
+				{
+					"value": "Wurstsalat"
+				},
+				{
+					"value": "Hühnersuppe"
+				},
+				{
+					"value": "Hühnerfrikassee"
+				},
+				{
+					"value": "Fleischsalat"
+				},
+				{
+					"value": "Leberknödel"
+				},
+				{
+					"value": "Kartoffelsuppe"
+				},
+				{
+					"value": "Nudelsalat"
+				},
+				{
+					"value": "Tomatensuppe"
+				},
+				{
+					"value": "Rinderroulade"
+				},
+				{
+					"value": "Chili con carne"
+				},
+				{
+					"value": "Erbsensuppe"
+				},
+				{
+					"value": "Krautsalat"
+				},
+				{
+					"value": "Kartoffelsalat"
+				},
+				{
+					"value": "Zwiebelkuchen"
+				},
+				{
+					"value": "Seitan"
+				},
+				{
+					"value": "GrieÃŸbrei"
+				},
+				{
+					"value": "Kartoffelspalten"
+				},
+				{
+					"value": "Risotto"
+				},
+				{
+					"value": "Apfelmus"
+				},
+				{
+					"value": "Kartoffelgratin",
+					"synonyms": [
+						"Kartoffelgratö"
+					]
+				},
+				{
+					"value": "Maultaschen"
+				},
+				{
+					"value": "Bratkartoffeln"
+				},
+				{
+					"value": "Frühlingsrolle"
+				},
+				{
+					"value": "Kartoffelrösti"
+				},
+				{
+					"value": "Milchreis"
+				},
+				{
+					"value": "Kaiserschmarrn"
+				},
+				{
+					"value": "Hamburger"
+				},
+				{
+					"value": "Gnocchi"
+				},
+				{
+					"value": "Kartoffelpuffer"
+				},
+				{
+					"value": "Knödel",
+					"synonyms": [
+						"KlöÃŸe"
+					]
+				},
+				{
+					"value": "Lahmacun"
+				},
+				{
+					"value": "Flammkuchen"
+				},
+				{
+					"value": "Salamipizza"
+				},
+				{
+					"value": "Cheeseburger"
+				},
+				{
+					"value": "Falafel"
+				},
+				{
+					"value": "Nachos"
+				},
+				{
+					"value": "Röstzwiebeln"
+				},
+				{
+					"value": "Linsensuppe"
+				},
+				{
+					"value": "Donut",
+					"synonyms": [
+						"Donuts"
+					]
+				},
+				{
+					"value": "Kartoffelchips"
+				},
+				{
+					"value": "Erdnussflips"
+				},
+				{
+					"value": "Krabbenchips"
+				},
+				{
+					"value": "Essig"
+				},
+				{
+					"value": "Essig Ã–l Dressing"
+				},
+				{
+					"value": "Koriander"
+				},
+				{
+					"value": "Sauce Hollandaise"
+				},
+				{
+					"value": "Apfelessig"
+				},
+				{
+					"value": "WeiÃŸweinessig"
+				},
+				{
+					"value": "Schnittlauch"
+				},
+				{
+					"value": "Weizengras"
+				},
+				{
+					"value": "Basilikum"
+				},
+				{
+					"value": "Guacamole"
+				},
+				{
+					"value": "Sojasauce"
+				},
+				{
+					"value": "Kresse"
+				},
+				{
+					"value": "Liebstöckel"
+				},
+				{
+					"value": "BeifuÃŸ"
+				},
+				{
+					"value": "Rosmarin"
+				},
+				{
+					"value": "Bratensauce"
+				},
+				{
+					"value": "Estragon"
+				},
+				{
+					"value": "Senf"
+				},
+				{
+					"value": "Tzatziki"
+				},
+				{
+					"value": "Sauce Bolognese",
+					"synonyms": [
+						"Bolognese Sauce",
+						"Bolonese"
+					]
+				},
+				{
+					"value": "Kerbel"
+				},
+				{
+					"value": "Tabasco"
+				},
+				{
+					"value": "Tomatensauce"
+				},
+				{
+					"value": "Joghurtdressing"
+				},
+				{
+					"value": "Löwenzahn"
+				},
+				{
+					"value": "Vanilleschote"
+				},
+				{
+					"value": "Pfefferminze"
+				},
+				{
+					"value": "Balsamico",
+					"synonyms": [
+						"Balsamico Essig"
+					]
+				},
+				{
+					"value": "Tahina Sesampaste"
+				},
+				{
+					"value": "Curry"
+				},
+				{
+					"value": "Zitronengras"
+				},
+				{
+					"value": "Oregano"
+				},
+				{
+					"value": "Ketchup"
+				},
+				{
+					"value": "Zimt"
+				},
+				{
+					"value": "Wacholderbeeren"
+				},
+				{
+					"value": "Kreuzkümmel"
+				},
+				{
+					"value": "Dill"
+				},
+				{
+					"value": "Paprikapulver",
+					"synonyms": [
+						"Paprikapulver edelsüÃŸ"
+					]
+				},
+				{
+					"value": "Paprikapulver Rosenscharf"
+				},
+				{
+					"value": "Kümmel"
+				},
+				{
+					"value": "Majoran"
+				},
+				{
+					"value": "Salbei"
+				},
+				{
+					"value": "Kurkuma"
+				},
+				{
+					"value": "Muskat",
+					"synonyms": [
+						"Muskatnuss"
+					]
+				},
+				{
+					"value": "Lorbeer",
+					"synonyms": [
+						"Lorbeerblätter"
+					]
+				},
+				{
+					"value": "Nelken"
+				},
+				{
+					"value": "Bohnenkraut"
+				},
+				{
+					"value": "Bockshornklee"
+				},
+				{
+					"value": "Pfeffer"
+				},
+				{
+					"value": "Anis"
+				},
+				{
+					"value": "Kardamom"
+				},
+				{
+					"value": "Thymian"
+				},
+				{
+					"value": "Toastschinken"
+				},
+				{
+					"value": "Toastkäse"
+				},
+				{
+					"value": "Vollkorn Toastbrot"
+				},
+				{
+					"value": "Glasreiniger"
+				},
+				{
+					"value": "Gartenwerkzeug"
+				},
+				{
+					"value": "Getränke"
+				},
+				{
+					"value": "Faschiertes",
+					"synonyms": [
+						"Hackfleisch"
+					]
+				},
+				{
+					"value": "Labello",
+					"synonyms": [
+						"Lippenpflege",
+						"Lippenbalsam"
+					]
+				},
+				{
+					"value": "Putzmittel"
+				},
+				{
+					"value": "Sämereien"
+				},
+				{
+					"value": "Striezel"
+				},
+				{
+					"value": "Fertigpizza"
+				},
+				{
+					"value": "Giesskanne"
+				},
+				{
+					"value": "Haarspray"
+				},
+				{
+					"value": "Schweinefleisch"
+				},
+				{
+					"value": "Backpapier"
+				},
+				{
+					"value": "Brot"
+				},
+				{
+					"value": "Geschirrsalz"
+				},
+				{
+					"value": "Strohhalme"
+				},
+				{
+					"value": "Italienisches Essen"
+				},
+				{
+					"value": "Makeup Entferner"
+				},
+				{
+					"value": "Rasierklingen"
+				},
+				{
+					"value": "Essiggurken"
+				},
+				{
+					"value": "Gewürze"
+				},
+				{
+					"value": "Ã–l"
+				},
+				{
+					"value": "Gelee"
+				},
+				{
+					"value": "Trauben"
+				},
+				{
+					"value": "Salz"
+				},
+				{
+					"value": "Glühbirnen"
+				},
+				{
+					"value": "Fisch"
+				},
+				{
+					"value": "Geschenk"
+				},
+				{
+					"value": "Blumen"
+				},
+				{
+					"value": "Schwamm",
+					"synonyms": [
+						"Schwämme"
+					]
+				},
+				{
+					"value": "Melanzani",
+					"synonyms": [
+						"Aubergine"
+					]
+				},
+				{
+					"value": "Nüsse"
+				},
+				{
+					"value": "Dip"
+				},
+				{
+					"value": "Suppe"
+				},
+				{
+					"value": "Sonnencreme"
+				},
+				{
+					"value": "Handcreme"
+				},
+				{
+					"value": "Süsswaren",
+					"synonyms": [
+						"Süssigkeiten"
+					]
+				},
+				{
+					"value": "Dosentomaten"
+				},
+				{
+					"value": "Zigaretten"
+				},
+				{
+					"value": "Muscheln"
+				},
+				{
+					"value": "Zahnseide"
+				},
+				{
+					"value": "Paprika"
+				},
+				{
+					"value": "Sirup"
+				},
+				{
+					"value": "Feigen"
+				},
+				{
+					"value": "Rasenmäher"
+				},
+				{
+					"value": "Chinesisches Essen"
+				},
+				{
+					"value": "Beeren"
+				},
+				{
+					"value": "Pflaster"
+				},
+				{
+					"value": "Fischfutter"
+				},
+				{
+					"value": "Kerzen"
+				},
+				{
+					"value": "Waffeln"
+				},
+				{
+					"value": "Vanille Sauce"
+				},
+				{
+					"value": "Smoothie",
+					"synonyms": [
+						"Smoothies"
+					]
+				},
+				{
+					"value": "Rasierschaum"
+				},
+				{
+					"value": "Pinsel"
+				},
+				{
+					"value": "Germ"
+				},
+				{
+					"value": "Kuchen"
+				},
+				{
+					"value": "Tampons"
+				},
+				{
+					"value": "Hühnerbrust"
+				},
+				{
+					"value": "Maroni",
+					"synonyms": [
+						"Kastanien"
+					]
+				},
+				{
+					"value": "Karfiol"
+				},
+				{
+					"value": "Speisestärke"
+				},
+				{
+					"value": "Brezeln"
+				},
+				{
+					"value": "Muffins"
+				},
+				{
+					"value": "Salatsauce"
+				},
+				{
+					"value": "Hundefutter"
+				},
+				{
+					"value": "Mundspülung"
+				},
+				{
+					"value": "Windeln"
+				},
+				{
+					"value": "Kondome"
+				},
+				{
+					"value": "Klarspüler"
+				},
+				{
+					"value": "Marillen"
+				},
+				{
+					"value": "Oliven"
+				},
+				{
+					"value": "Kürbis"
+				},
+				{
+					"value": "Nektarine",
+					"synonyms": [
+						"Nektarinen"
+					]
+				},
+				{
+					"value": "Shampoo"
+				},
+				{
+					"value": "Bohnen"
+				},
+				{
+					"value": "Huhn"
+				},
+				{
+					"value": "Kosmetiktücher"
+				},
+				{
+					"value": "Gesichtscreme"
+				},
+				{
+					"value": "Knäckebrot"
+				},
+				{
+					"value": "Gefrorenes Gemüse",
+					"synonyms": [
+						"Gemüse gefroren",
+						"TK Gemüse",
+						"Tiefkühl Gemüse"
+					]
+				},
+				{
+					"value": "Dessert"
+				},
+				{
+					"value": "Alufolie"
+				},
+				{
+					"value": "Tortilla Chips"
+				},
+				{
+					"value": "Sachertorte"
+				},
+				{
+					"value": "Preiselbeeren",
+					"synonyms": [
+						"Preiselbeer Sauce"
+					]
+				},
+				{
+					"value": "Brühe"
+				},
+				{
+					"value": "Reibkäse"
+				},
+				{
+					"value": "Geschirrtabs",
+					"synonyms": [
+						"Geschirrspültabs"
+					]
+				},
+				{
+					"value": "Sonnenschirm"
+				},
+				{
+					"value": "Taschentücher"
+				},
+				{
+					"value": "Feuchttücher"
+				},
+				{
+					"value": "Nutella",
+					"synonyms": [
+						"Nougatcreme",
+						"Nuss Nougat Creme"
+					]
+				},
+				{
+					"value": "Torte"
+				},
+				{
+					"value": "Müllsäcke"
+				},
+				{
+					"value": "Dünger"
+				},
+				{
+					"value": "Eierschwammerl",
+					"synonyms": [
+						"Schwammerl",
+						"Pfifferlinge"
+					]
+				},
+				{
+					"value": "Blumenerde"
+				},
+				{
+					"value": "Artischocken",
+					"synonyms": [
+						"Artischocke"
+					]
+				},
+				{
+					"value": "Salzstangerl"
+				},
+				{
+					"value": "Linsenmittel"
+				},
+				{
+					"value": "Tageslinsen"
+				},
+				{
+					"value": "Nagellackentferner"
+				},
+				{
+					"value": "Bodylotion"
+				},
+				{
+					"value": "Vitamine"
+				},
+				{
+					"value": "Kekse",
+					"synonyms": [
+						"Plätzchen"
+					]
+				},
+				{
+					"value": "Binden"
+				},
+				{
+					"value": "Gurke",
+					"synonyms": [
+						"Gurken"
+					]
+				},
+				{
+					"value": "Holzkohle"
+				},
+				{
+					"value": "Weichspüler"
+				},
+				{
+					"value": "Dörrobst"
+				},
+				{
+					"value": "Würstel"
+				},
+				{
+					"value": "Wattepads"
+				},
+				{
+					"value": "Pute"
+				},
+				{
+					"value": "Vogelfutter"
+				},
+				{
+					"value": "Katzensnack"
+				},
+				{
+					"value": "Staubzucker"
+				},
+				{
+					"value": "Insektenschutzmittel"
+				},
+				{
+					"value": "Pfefferkörner"
+				},
+				{
+					"value": "Schrauben"
+				},
+				{
+					"value": "Sardellen"
+				},
+				{
+					"value": "Rindfleisch"
+				},
+				{
+					"value": "Conditioner"
+				},
+				{
+					"value": "Zitrone",
+					"synonyms": [
+						"Zitronen"
+					]
+				},
+				{
+					"value": "Nägel"
+				},
+				{
+					"value": "Chili"
+				},
+				{
+					"value": "Wurst"
+				},
+				{
+					"value": "GrieÃŸ"
+				},
+				{
+					"value": "Mandarinen"
+				},
+				{
+					"value": "Knackwurst"
+				},
+				{
+					"value": "Zahnstocher"
+				},
+				{
+					"value": "Kräuter"
+				},
+				{
+					"value": "Katzenstreu"
+				},
+				{
+					"value": "Zwetschgen",
+					"synonyms": [
+						"Zwetschken"
+					]
+				},
+				{
+					"value": "Kohl"
+				},
+				{
+					"value": "Klopapier"
+				},
+				{
+					"value": "Semmelbrösel"
+				},
+				{
+					"value": "Geschirrspülmittel",
+					"synonyms": [
+						"Spülmittel"
+					]
+				},
+				{
+					"value": "Sellerie"
+				},
+				{
+					"value": "Rindsgeschnetzeltes",
+					"synonyms": [
+						"Rindergeschnetzeltes"
+					]
+				},
+				{
+					"value": "WC-Reiniger",
+					"synonyms": [
+						"WC Reiniger"
+					]
+				},
+				{
+					"value": "Schmerzmittel",
+					"synonyms": [
+						"Ibu",
+						"Ibuprofen"
+					]
+				},
+				{
+					"value": "Badreiniger"
+				},
+				{
+					"value": "Streichhölzer"
+				},
+				{
+					"value": "Apfelstrudel"
+				},
+				{
+					"value": "Pasta Sauce"
+				},
+				{
+					"value": "Lamm",
+					"synonyms": [
+						"Lammfleisch"
+					]
+				},
+				{
+					"value": "Frischhaltefolie"
+				},
+				{
+					"value": "Zahnpasta",
+					"synonyms": [
+						"Zahncreme"
+					]
+				},
+				{
+					"value": "Haargel"
+				},
+				{
+					"value": "Haarwachs"
+				},
+				{
+					"value": "Snacks"
+				},
+				{
+					"value": "Servietten"
+				},
+				{
+					"value": "Töpfe"
+				},
+				{
+					"value": "Tupperware",
+					"synonyms": [
+						"Tapperwer"
+					]
+				},
+				{
+					"value": "Duschgel"
+				},
+				{
+					"value": "Steak",
+					"synonyms": [
+						"Steaks"
+					]
+				},
+				{
+					"value": "Hundesnack"
+				},
+				{
+					"value": "Risottoreis",
+					"synonyms": [
+						"Risotto",
+						"Risotto Reis"
+					]
+				},
+				{
+					"value": "Rasierer"
+				},
+				{
+					"value": "Deo",
+					"synonyms": [
+						"Deodorant"
+					]
+				},
+				{
+					"value": "Pflanzen"
+				},
+				{
+					"value": "Katzenfutter"
+				},
+				{
+					"value": "Nagellack"
+				},
+				{
+					"value": "Wattestäbchen"
+				},
+				{
+					"value": "Seife"
+				},
+				{
+					"value": "Süssigkeiten",
+					"synonyms": [
+						"SüÃŸigkeiten"
+					]
+				},
+				{
+					"value": "Putengeschnetzeltes"
+				},
+				{
+					"value": "Hühnerfleisch"
+				},
+				{
+					"value": "Cremefine",
+					"synonyms": [
+						"Creme Fin"
+					]
+				}
+			]
+		}
+	],
+	"intents": [
+		{
+			"name": "addItem_bringshop",
+			"description": "Füge etwas zu deiner Einkaufsliste hinzu",
+			"enabledByDefault": true,
+			"utterances": [
+				"Schreibe etwas auf meine Einkaufsliste",
+				"Schreibe bitte etwas auf meine Einkaufsliste",
+				"Bitte füge etwas auf meiner Einkaufsliste ein",
+				"Setze bitte etwas neues auf meine Einkaufsliste",
+				"Setze {Brot:=>shopItem} auf meine Einkaufsliste",
+				"Schreibe {Brot:=>shopItem} auf meine Einkaufsliste",
+				"Füge {Brot:=>shopItem} zu meiner Einkaufsliste hinzu",
+				"Ergänze {Brot:=>shopItem} {Brot:=>shopItem} und {Brot:=>shopItem} auf meiner Einkaufsliste",
+				"{Brot:=>shopItem} muss noch auf meine Einkaufsliste",
+				"{Brot:=>shopItem} fehlt noch auf meiner Einkaufsliste",
+				"{Brot:=>shopItem} steht noch nicht auf meiner Einkaufsliste",
+				"Bitte setze {Brot:=>shopItem} auf meine Einkaufsliste",
+				"Bitte schreibe {Brot:=>shopItem} auf meine Einkaufsliste",
+				"Bitte füge {Brot:=>shopItem} zu meiner Einkaufsliste hinzu",
+				"Bitte ergänze {Brot:=>shopItem} auf meiner Einkaufsliste",
+				"Bitte füge {Brot:=>shopItem} {Brot:=>shopItem} {Brot:=>shopItem} und {Brot:=>shopItem} zu meiner Einkaufsliste hinzu",
+				"Bitte ergänze {Brot:=>shopItem} und {Brot:=>shopItem} auf meiner Einkaufsliste",
+				"{Brot:=>shopItem} muss bitte noch auf meine Einkaufsliste",
+				"Setze bitte {Brot:=>shopItem} auf meine Einkaufsliste",
+				"Schreibe bitte {Brot:=>shopItem} auf meine Einkaufsliste",
+				"Füge bitte {Brot:=>shopItem} zu meiner Einkaufsliste hinzu",
+				"Ergänze bitte {Brot:=>shopItem} auf meiner Einkaufsliste",
+				"{Brot:=>shopItem} muss noch auf meine Einkaufsliste, bitte",
+				"Füge bitte {Brot:=>shopItem} sowie {Brot:=>shopItem} zu meiner Einkaufsliste hinzu",
+				"Ergänze bitte {Brot:=>shopItem} {Brot:=>shopItem} und {Brot:=>shopItem} auf meiner Einkaufsliste",
+				"{Brot:=>shopItem} und {Brot:=>shopItem} muss noch auf meine Einkaufsliste, bitte",
+				"Setze {Brot:=>shopItem} bitte auf meine Einkaufsliste",
+				"Schreibe {Brot:=>shopItem} bitte auf meine Einkaufsliste",
+				"Füge {Brot:=>shopItem} bitte zu meiner Einkaufsliste hinzu",
+				"Ergänze {Brot:=>shopItem} bitte auf meiner Einkaufsliste",
+				"Setze {Brot:=>shopItem} auf meine Einkaufsliste, bitte",
+				"Schreibe {Brot:=>shopItem} auf meine Einkaufsliste, bitte",
+				"Füge {Brot:=>shopItem} zu meiner Einkaufsliste hinzu, bitte",
+				"Ergänze {Brot:=>shopItem} auf meiner Einkaufsliste, bitte",
+				"Setze {Brot:=>shopItem} auf meine Einkaufsliste. Danke!",
+				"Schreibe {Brot:=>shopItem} auf meine Einkaufsliste. Danke!",
+				"Füge {Brot:=>shopItem} zu meiner Einkaufsliste hinzu. Danke!",
+				"Ergänze {Brot:=>shopItem} auf meiner Einkaufsliste. Danke!",
+				"Füge {Brot:=>shopItem} {Brot:=>shopItem} {Brot:=>shopItem} und noch {Brot:=>shopItem} zu meiner Einkaufsliste hinzu. Danke!",
+				"Kannst du {Brot:=>shopItem} auf meine Einkaufsliste schreiben?",
+				"Kannst du bitte {Brot:=>shopItem} auf meine Einkaufsliste schreiben?",
+				"Schreibst du bitte {Brot:=>shopItem} auf meine Einkaufsliste?",
+				"Packe {Brot:=>shopItem} auf meine Einkaufsliste.",
+				"Packe {Brot:=>shopItem} {Brot:=>shopItem} und {Brot:=>shopItem} auf meine Einkaufsliste.",
+				"Bitte packe {Brot:=>shopItem} auf meine Einkaufsliste.",
+				"Packe bitte {Brot:=>shopItem} auf meine Einkaufsliste.",
+				"Packe {Brot:=>shopItem} bitte auf meine Einkaufsliste.",
+				"Packe {Brot:=>shopItem} auf meine Einkaufsliste, bitte.",
+				"Setze {Brot:=>shopItem} auf die Einkaufsliste",
+				"Schreibe {Brot:=>shopItem} auf die Einkaufsliste",
+				"Füge {Brot:=>shopItem} zu der Einkaufsliste hinzu",
+				"Ergänze {Brot:=>shopItem} auf der Einkaufsliste",
+				"{Brot:=>shopItem} muss noch auf die Einkaufsliste",
+				"{Brot:=>shopItem} fehlt noch auf der Einkaufsliste",
+				"Bitte setze {Brot:=>shopItem} auf die Einkaufsliste",
+				"Bitte schreibe {Brot:=>shopItem} auf die Einkaufsliste",
+				"Bitte füge {Brot:=>shopItem} zu der Einkaufsliste hinzu",
+				"Bitte ergänze {Brot:=>shopItem} auf der Einkaufsliste",
+				"{Brot:=>shopItem} muss bitte noch auf die Einkaufsliste",
+				"{Brot:=>shopItem} steht noch nicht auf der Einkaufsliste",
+				"Setze bitte {Brot:=>shopItem} auf die Einkaufsliste",
+				"Schreibe bitte {Brot:=>shopItem} auf die Einkaufsliste",
+				"Füge bitte {Brot:=>shopItem} zu der Einkaufsliste hinzu",
+				"Ergänze bitte {Brot:=>shopItem} auf der Einkaufsliste",
+				"{Brot:=>shopItem} muss noch auf die Einkaufsliste, bitte",
+				"Setze {Brot:=>shopItem} bitte auf die Einkaufsliste",
+				"Schreibe {Brot:=>shopItem} bitte auf der Einkaufsliste",
+				"Füge {Brot:=>shopItem} bitte zu der Einkaufsliste hinzu",
+				"Ergänze {Brot:=>shopItem} bitte auf der Einkaufsliste",
+				"Setze {Brot:=>shopItem} auf die Einkaufsliste, bitte",
+				"Schreibe {Brot:=>shopItem} auf die Einkaufsliste, bitte",
+				"Füge {Brot:=>shopItem} zu der Einkaufsliste hinzu, bitte",
+				"Ergänze {Brot:=>shopItem} auf der Einkaufsliste, bitte",
+				"Setze {Brot:=>shopItem} auf die Einkaufsliste. Danke!",
+				"Schreibe {Brot:=>shopItem} auf die Einkaufsliste. Danke!",
+				"Füge {Brot:=>shopItem} zu der Einkaufsliste hinzu. Danke!",
+				"Ergänze {Brot:=>shopItem} auf der Einkaufsliste. Danke!",
+				"Kannst du {Brot:=>shopItem} auf die Einkaufsliste schreiben?",
+				"Kannst du bitte {Brot:=>shopItem} auf die Einkaufsliste schreiben?",
+				"Schreibst du bitte {Brot:=>shopItem} auf die Einkaufsliste?",
+				"Packe {Brot:=>shopItem} auf die Einkaufsliste.",
+				"Bitte packe {Brot:=>shopItem} auf die Einkaufsliste.",
+				"Packe bitte {Brot:=>shopItem} auf die Einkaufsliste.",
+				"Packe {Brot:=>shopItem} bitte auf die Einkaufsliste.",
+				"Packe {Brot:=>shopItem} auf die Einkaufsliste, bitte.",
+				"Setze {Brot:=>shopItem} auf meinen Einkaufszettel",
+				"Schreibe {Brot:=>shopItem} auf meinen Einkaufszettel",
+				"Füge {Brot:=>shopItem} zu meinem Einkaufszettel hinzu",
+				"Ergänze {Brot:=>shopItem} auf meinem Einkaufszettel",
+				"{Brot:=>shopItem} muss noch auf meinen Einkaufszettel",
+				"{Brot:=>shopItem} fehlt noch auf meinem Einkaufszettel",
+				"{Brot:=>shopItem} steht noch nicht auf meinem Einkaufszettel",
+				"Bitte setze {Brot:=>shopItem} auf meinen Einkaufszettel",
+				"Bitte schreibe {Brot:=>shopItem} auf meinen Einkaufszettel",
+				"Bitte füge {Brot:=>shopItem} zu meinem Einkaufszettel hinzu",
+				"Bitte ergänze {Brot:=>shopItem} auf meinem Einkaufszettel",
+				"{Brot:=>shopItem} muss bitte noch auf meinen Einkaufszettel",
+				"Setze bitte {Brot:=>shopItem} auf meinen Einkaufszettel",
+				"Schreibe bitte {Brot:=>shopItem} auf meinen Einkaufszettel",
+				"Füge bitte {Brot:=>shopItem} zu meinem Einkaufszettel hinzu",
+				"Ergänze bitte {Brot:=>shopItem} auf meinem Einkaufszettel",
+				"{Brot:=>shopItem} muss noch auf meinen Einkaufszettel, bitte",
+				"Setze {Brot:=>shopItem} bitte auf meinen Einkaufszettel",
+				"Schreibe {Brot:=>shopItem} bitte auf meinen Einkaufszettel",
+				"Füge {Brot:=>shopItem} bitte zu meinem Einkaufszettel hinzu",
+				"Ergänze {Brot:=>shopItem} bitte auf meinem Einkaufszettel",
+				"Setze {Brot:=>shopItem} auf meinen Einkaufszettel, bitte",
+				"Schreibe {Brot:=>shopItem} auf meinen Einkaufszettel, bitte",
+				"Füge {Brot:=>shopItem} zu meinem Einkaufszettel hinzu, bitte",
+				"Ergänze {Brot:=>shopItem} auf meinem Einkaufszettel, bitte",
+				"Setze {Brot:=>shopItem} auf meinen Einkaufszettel. Danke!",
+				"Schreibe {Brot:=>shopItem} auf meinen Einkaufszettel. Danke!",
+				"Füge {Brot:=>shopItem} zu meinem Einkaufszettel hinzu. Danke!",
+				"Ergänze {Brot:=>shopItem} auf meinem Einkaufszettel. Danke!",
+				"Kannst du {Brot:=>shopItem} auf meinen Einkaufszettel schreiben?",
+				"Kannst du bitte {Brot:=>shopItem} auf meinen Einkaufszettel schreiben?",
+				"Schreibst du bitte {Brot:=>shopItem} auf meinen Einkaufszettel?",
+				"Packe {Brot:=>shopItem} auf meinen Einkaufszettel.",
+				"Bitte packe {Brot:=>shopItem} auf meinen Einkaufszettel.",
+				"Packe bitte {Brot:=>shopItem} auf meinen Einkaufszettel.",
+				"Packe {Brot:=>shopItem} bitte auf meinen Einkaufszettel.",
+				"Packe {Brot:=>shopItem} auf meinen Einkaufszettel, bitte.",
+				"Setze {Brot:=>shopItem} auf den Einkaufszettel",
+				"Schreibe {Brot:=>shopItem} auf den Einkaufszettel",
+				"Füge {Brot:=>shopItem} zu dem Einkaufszettel hinzu",
+				"Ergänze {Brot:=>shopItem} auf dem Einkaufszettel",
+				"{Brot:=>shopItem} muss noch auf den Einkaufszettel",
+				"{Brot:=>shopItem} fehlt noch auf dem Einkaufszettel",
+				"{Brot:=>shopItem} steht noch nicht auf dem Einkaufszettel",
+				"Bitte setze {Brot:=>shopItem} auf den Einkaufszettel",
+				"Bitte schreibe {Brot:=>shopItem} auf den Einkaufszettel",
+				"Bitte füge {Brot:=>shopItem} zu dem Einkaufszettel hinzu",
+				"Bitte ergänze {Brot:=>shopItem} auf dem Einkaufszettel",
+				"{Brot:=>shopItem} muss bitte noch auf den Einkaufszettel",
+				"Setze bitte {Brot:=>shopItem} auf den Einkaufszettel",
+				"Schreibe bitte {Brot:=>shopItem} auf den Einkaufszettel",
+				"Füge bitte {Brot:=>shopItem} zu dem Einkaufszettel hinzu",
+				"Ergänze bitte {Brot:=>shopItem} auf dem Einkaufszettel",
+				"{Brot:=>shopItem} muss noch auf den Einkaufszettel, bitte",
+				"Setze {Brot:=>shopItem} bitte auf den Einkaufszettel",
+				"Schreibe {Brot:=>shopItem} bitte auf den Einkaufszettel",
+				"Füge {Brot:=>shopItem} bitte zu dem Einkaufszettel hinzu",
+				"Ergänze {Brot:=>shopItem} bitte auf dem Einkaufszettel",
+				"Setze {Brot:=>shopItem} {Brot:=>shopItem} und {Brot:=>shopItem} auf den Einkaufszettel, bitte",
+				"Schreibe {Brot:=>shopItem} auf den Einkaufszettel, bitte",
+				"Füge {Brot:=>shopItem} zu dem Einkaufszettel hinzu, bitte",
+				"Ergänze {Brot:=>shopItem} auf dem Einkaufszettel, bitte",
+				"Setze {Brot:=>shopItem} auf den Einkaufszettel. Danke!",
+				"Schreibe {Brot:=>shopItem} auf den Einkaufszettel. Danke!",
+				"Füge {Brot:=>shopItem} zu dem Einkaufszettel hinzu. Danke!",
+				"Ergänze {Brot:=>shopItem} auf dem Einkaufszettel. Danke!",
+				"Kannst du {Brot:=>shopItem} auf den Einkaufszettel schreiben?",
+				"Kannst du bitte {Brot:=>shopItem} auf den Einkaufszettel schreiben?",
+				"Schreibst du bitte {Brot:=>shopItem} auf den Einkaufszettel?",
+				"Packe {Brot:=>shopItem} auf den Einkaufszettel.",
+				"Bitte packe {Brot:=>shopItem} auf den Einkaufszettel.",
+				"Packe bitte {Brot:=>shopItem} auf den Einkaufszettel.",
+				"Packe {Brot:=>shopItem} bitte auf den Einkaufszettel.",
+				"Packe {Brot:=>shopItem} auf den Einkaufszettel, bitte."
+			],
+			"slots": [
+				{
+					"name": "shopItem",
+					"description": null,
+					"required": false,
+					"type": "buyable",
+					"missingQuestion": ""
+				}
+			]
+		},
+		{
+			"name": "whatItem_bringshop",
+			"description": "Spezifiziere welcher Gegenstand bearbeitet werden soll",
+			"enabledByDefault": false,
+			"utterances": [
+				"{Brot:=>shopItem}",
+				"{Brot:=>shopItem} und {Brot:=>shopItem}"
+			],
+			"slots": [
+				{
+					"name": "shopItem",
+					"description": null,
+					"required": false,
+					"type": "buyable",
+					"missingQuestion": ""
+				}
+			]
+		},
+		{
+			"name": "deleteItem_bringshop",
+			"description": "Lösche etwas von der Einkaufsliste",
+			"enabledByDefault": true,
+			"utterances": [
+				"Lösche {Brot:=>shopItem} von der Einkaufsliste",
+				"Bitte lösche {Brot:=>shopItem} von der Einkaufsliste",
+				"Lösche bitte {Brot:=>shopItem} von der Einkaufsliste",
+				"Lösche {Brot:=>shopItem} bitte von der Einkaufsliste",
+				"Lösche {Brot:=>shopItem} von der Einkaufsliste, bitte",
+				"Lösche {Brot:=>shopItem} von der Einkaufsliste, danke",
+				"Streiche {Brot:=>shopItem} von der Einkaufsliste",
+				"Bitte streiche {Brot:=>shopItem} von der Einkaufsliste",
+				"Streiche bitte {Brot:=>shopItem} von der Einkaufsliste",
+				"Streiche {Brot:=>shopItem} bitte von der Einkaufsliste",
+				"Streiche {Brot:=>shopItem} von der Einkaufsliste, bitte",
+				"Streiche {Brot:=>shopItem} von der Einkaufsliste, danke",
+				"Entferne {Brot:=>shopItem} von der Einkaufsliste",
+				"Bitte entferne {Brot:=>shopItem} von der Einkaufsliste",
+				"Entferne bitte {Brot:=>shopItem} von der Einkaufsliste",
+				"Entferne {Brot:=>shopItem} bitte von der Einkaufsliste",
+				"Entferne {Brot:=>shopItem} von der Einkaufsliste, bitte",
+				"Entferne {Brot:=>shopItem} von der Einkaufsliste, danke",
+				"Lösche {Brot:=>shopItem} {Brot:=>shopItem} und {Brot:=>shopItem} von der Einkaufsliste",
+				"Bitte lösche {Brot:=>shopItem} {Brot:=>shopItem} und {Brot:=>shopItem} von der Einkaufsliste",
+				"Lösche bitte {Brot:=>shopItem} {Brot:=>shopItem} und {Brot:=>shopItem} von der Einkaufsliste",
+				"Lösche {Brot:=>shopItem} {Brot:=>shopItem} und {Brot:=>shopItem} bitte von der Einkaufsliste",
+				"Lösche {Brot:=>shopItem} {Brot:=>shopItem} und {Brot:=>shopItem} von der Einkaufsliste, bitte",
+				"Lösche {Brot:=>shopItem} {Brot:=>shopItem} und {Brot:=>shopItem} von der Einkaufsliste, danke",
+				"Streiche {Brot:=>shopItem} {Brot:=>shopItem} und {Brot:=>shopItem} von der Einkaufsliste",
+				"Bitte streiche {Brot:=>shopItem} {Brot:=>shopItem} und {Brot:=>shopItem} von der Einkaufsliste",
+				"Streiche bitte {Brot:=>shopItem} und {Brot:=>shopItem} von der Einkaufsliste",
+				"Streiche {Brot:=>shopItem} {Brot:=>shopItem} und {Brot:=>shopItem} bitte von der Einkaufsliste",
+				"Streiche {Brot:=>shopItem} {Brot:=>shopItem} und {Brot:=>shopItem} von der Einkaufsliste, bitte",
+				"Streiche {Brot:=>shopItem} und {Brot:=>shopItem} von der Einkaufsliste, danke",
+				"Entferne {Brot:=>shopItem} {Brot:=>shopItem} und {Brot:=>shopItem} von der Einkaufsliste",
+				"Bitte entferne {Brot:=>shopItem} {Brot:=>shopItem} und {Brot:=>shopItem} von der Einkaufsliste",
+				"Entferne bitte {Brot:=>shopItem} und {Brot:=>shopItem} von der Einkaufsliste",
+				"Entferne {Brot:=>shopItem} {Brot:=>shopItem} und {Brot:=>shopItem} bitte von der Einkaufsliste",
+				"Entferne {Brot:=>shopItem} und {Brot:=>shopItem} von der Einkaufsliste, bitte",
+				"Entferne {Brot:=>shopItem} {Brot:=>shopItem} und {Brot:=>shopItem} von der Einkaufsliste, danke",
+				"Wir müssen kein {Brot:=>shopItem} und {Brot:=>shopItem} mehr Einkaufen",
+				"Wir müssen kein {Brot:=>shopItem} mehr einkaufen",
+				"Ich möchte etwas von der Einkaufsliste streichen",
+				"Streiche bitte etwas von dem Einkaufszettel",
+				"Bitte lösche etwas für mich vom Einkaufszettel"
+			],
+			"slots": [
+				{
+					"name": "shopItem",
+					"description": null,
+					"required": false,
+					"type": "buyable",
+					"missingQuestion": ""
+				}
+			]
+		},
+		{
+			"name": "readList_bringshop",
+			"description": "Liest die Einkaufsliste vor",
+			"enabledByDefault": true,
+			"utterances": [
+				"Was steht auf der Einkaufsliste?",
+				"Lese mir die Einkaufsliste vor",
+				"Lese mir bitte die Einkaufsliste vor",
+				"Lese mir die Einkaufsliste vor bitte",
+				"Bitte lese mir die Einkaufsliste vor",
+				"Was muss ich vom Einkaufen mitbringen",
+				"Was muss ich einkaufen",
+				"Was steht auf dem Einkaufszettel",
+				"Lese mir den Einkaufszettel vor",
+				"Lese mir bitte den Einkaufszettel vor",
+				"Lese mir den Einkaufszettel vor bitte",
+				"Bitte lese mir den Einkaufszettel vor",
+				"Was steht auf meiner Einkaufsliste?",
+				"Lese mir meine Einkaufsliste vor",
+				"Lese mir bitte meine Einkaufsliste vor",
+				"Lese mir meine Einkaufsliste vor bitte",
+				"Bitte lese mir meine Einkaufsliste vor",
+				"Was steht auf meinem Einkaufszettel",
+				"Lese mir meinen Einkaufszettel vor",
+				"Lese mir bitte meinen Einkaufszettel vor",
+				"Lese mir meinen Einkaufszettel vor bitte",
+				"Bitte lese mir meinen Einkaufszettel vor",
+				"Les mir bitte den Einkaufszettel vor",
+				"Bitte les die mir doch die Einkaufsliste vor",
+				"Sag mir bitte was auf dem Einkaufszettel stet",
+				"Was steht denn bitte auf der Einkaufsliste",
+				"Sag mir mal was auf der Einkaufsliste steht",
+				"Sag mir doch bitte was auf meinem Einkaufszettel steht"
+			],
+			"slots": []
+		},
+		{
+			"name": "checkList_bringshop",
+			"description": "Prüfe ob ein Gegenstand auf der Einkaufsliste steht",
+			"enabledByDefault": true,
+			"utterances": [
+				"Ist {Brot:=>shopItem} auf meiner Einkaufsliste?",
+				"Steht {Brot:=>shopItem} auf meinem Einkaufszettel?",
+				"Habe ich {Brot:=>shopItem}  {Brot:=>shopItem} oder {Brot:=>shopItem} schon auf dem Einkaufszettel?",
+				"Kannst du bitte schauen ob {Brot:=>shopItem} und {Brot:=>shopItem} schon auf meiner Einkaufsliste stehen?",
+				"Bitte prüfe ob {Brot:=>shopItem} schon auf dem Einkaufszettel steht",
+				"Ist denn {Brot:=>shopItem} oder {Brot:=>shopItem} schon auf dem Einkaufszettel?",
+				"Schau bitte mal ob {Brot:=>shopItem} und {Brot:=>shopItem} schon auf der Einkaufsliste stehen",
+				"Schau mal ob {Brot:=>shopItem} und {Brot:=>shopItem} schon auf der Einkaufsliste stehen",
+				"Brauchen wir noch {Brot:=>shopItem}",
+				"Muss ich noch {Brot:=>shopItem} einkaufen?",
+				"Müssen wir noch {Brot:=>shopItem} oder {Brot:=>shopItem} einkaufen?"
+			],
+			"slots": [
+				{
+					"name": "shopItem",
+					"description": null,
+					"required": false,
+					"type": "buyable",
+					"missingQuestion": ""
+				}
+			]
+		},
+		{
+			"name": "deleteList_bringshop",
+			"description": "Lösche die Einkaufsliste",
+			"enabledByDefault": true,
+			"utterances": [
+				"Lösche bitte die komplette Einkaufsliste.",
+				"Kannst du bitte die komplette Einkaufsliste löschen",
+				"Lösche die komplette Einkaufsliste",
+				"Lösche die komplette Einkaufsliste bitte",
+				"Kannst du die komplette Einkaufsliste löschen",
+				"Kannst du die komplette Einkaufsliste löschen, bitte",
+				"Lösche bitte meine komplette Einkaufsliste.",
+				"Kannst du bitte meine komplette Einkaufsliste löschen",
+				"Lösche meine komplette Einkaufsliste",
+				"Lösche meine komplette Einkaufsliste bitte",
+				"Kannst du meine komplette Einkaufsliste löschen",
+				"Kannst du meine komplette Einkaufsliste löschen, bitte",
+				"Entferne bitte alles von der Einkaufsliste",
+				"Entferne alles von der Einkaufsliste",
+				"Entferne bitte alles von meiner Einkaufsliste",
+				"Entferne alles von meiner Einkaufsliste",
+				"Du kannst die komplette Einkaufsliste löschen"
+			],
+			"slots": []
+		}
+	]
+}
