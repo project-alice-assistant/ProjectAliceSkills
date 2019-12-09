@@ -22,7 +22,7 @@ class InternationalSpaceStation(Module):
 	@IntentHandler('IssPosition')
 	@AnyExcept(exceptions=(RequestException, KeyError), text='noServer', printStack=True)
 	@Online
-	def getIssPosition(self, session: DialogSession, **_kwargs):
+	def getIssPosition(self, session: DialogSession):
 		data = self.queryApi('http://api.open-notify.org/iss-now.json')
 		latitude = float(data['iss_position']['latitude'])
 		longitude = float(data['iss_position']['longitude'])
@@ -64,7 +64,7 @@ class InternationalSpaceStation(Module):
 	@IntentHandler('Astronauts')
 	@AnyExcept(exceptions=(RequestException, KeyError), text='noServer', printStack=True)
 	@Online
-	def getAstronauts(self, session: DialogSession, **_kwargs):
+	def getAstronauts(self, session: DialogSession):
 		data = self.queryApi('http://api.open-notify.org/astros.json')
 		amount = data['number']
 

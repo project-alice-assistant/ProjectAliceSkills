@@ -16,11 +16,11 @@ wget http://modules.projectalice.ch/ContextSensitive \
 ### Description
 ContextSensitive is the official context sensitive module. It handle intents like "Delete this", "Forget about that"
 
-- Version: 1.0.9
+- Version: 1.0.10
 - Author: ProjectAlice
 - Maintainers:
   - Psycho, Jierka, maxbachmann
-- Alice minimum Version: 1.0.0-a3
+- Alice minimum Version: 1.0.0-a4
 - Conditions:
   - EN
   - FR

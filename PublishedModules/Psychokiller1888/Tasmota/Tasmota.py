@@ -31,15 +31,16 @@ class Tasmota(Module):
 		super().__init__(self._SUPPORTED_INTENTS)
 
 
-	def filterIntent(self, intent: str, session: DialogSession) -> bool:
-		if intent.startswith('projectalice/devices/tasmota/'):
+	def filterIntent(self, session: DialogSession) -> bool:
+		if session.intentName.startswith('projectalice/devices/tasmota/'):
 			return True
-		return super().filterIntent(intent=intent, session=session)
+		return super().filterIntent(session=session)
 
 
-	def onMessage(self, intent: str, session: DialogSession) -> bool:
+	def onMessage(self, session: DialogSession):
 		siteId = session.siteId
 		payload = session.payload
+		intent = session.intentName
 
 		if self._connectingRegex.match(intent):
 			identifier = self._connectingRegex.match(intent).group(1)
@@ -64,8 +65,6 @@ class Tasmota(Module):
 						self.ModuleManager.moduleBroadcast('onMotionDetected', args=[siteId])
 					else:
 						self.ModuleManager.moduleBroadcast('onMotionStopped', args=[siteId])
-
-		return True
 
 
 	def _initConf(self, identifier: str, deviceBrand: str, deviceType: str):

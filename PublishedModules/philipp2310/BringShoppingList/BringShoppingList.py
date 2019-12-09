@@ -166,7 +166,7 @@ class BringShoppingList(Module):
 
 
 	### INTENTS ###
-	def delListIntent(self, session: DialogSession, **_kwargs):
+	def delListIntent(self, session: DialogSession):
 		self.continueDialog(
 			sessionId=session.sessionId,
 			text=self.randomTalk('chk_del_all'),
@@ -176,7 +176,7 @@ class BringShoppingList(Module):
 
 	@AnyExcept(exceptions=BringApi.AuthentificationFailed, text='authFailed')
 	@Online
-	def confDelIntent(self, session: DialogSession, **_kwargs):
+	def confDelIntent(self, session: DialogSession):
 		if self.Commons.isYes(session):
 			self._deleteCompleteList()
 			self.endDialog(session.sessionId, text=self.randomTalk('del_all'))
@@ -213,7 +213,7 @@ class BringShoppingList(Module):
 
 	@AnyExcept(exceptions=BringApi.AuthentificationFailed, text='authFailed')
 	@Online
-	def readListIntent(self, session: DialogSession, **_kwargs):
+	def readListIntent(self, session: DialogSession):
 		"""read the content of the list"""
 		items = self.bring().get_items().json()['purchase']
 		itemlist = [item['name'] for item in items]

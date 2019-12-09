@@ -1,10 +1,10 @@
 {
 	"name": "Zigbee2Mqtt",
-	"version": "0.0.13",
+	"version": "0.0.14",
 	"author": "Psychokiller1888",
 	"maintainers": ["maxbachmann"],
 	"desc": "Have your zigbee devices communicate with alice directly over mqtt",
-	"aliceMinVersion": "1.0.0-a3",
+	"aliceMinVersion": "1.0.0-a4",
 	"pipRequirements": [],
 	"systemRequirements": [
 		"make",

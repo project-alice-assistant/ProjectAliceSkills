@@ -25,7 +25,7 @@ class Speller(Module):
 		super().__init__(self._SUPPORTED_INTENTS)
 
 
-	def spellIntent(self, session: DialogSession, **_kwargs):
+	def spellIntent(self, session: DialogSession):
 		word = session.slotValue('RandomWord') or 'unknownword'
 
 		if word == 'unknownword':

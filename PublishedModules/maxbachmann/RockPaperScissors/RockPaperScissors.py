@@ -10,6 +10,6 @@ class RockPaperScissors(Module):
 	"""
 
 	@IntentHandler('RockPaperScissors')
-	def rockPaperScissorsIntent(self, session: DialogSession, **_kwargs):
+	def rockPaperScissorsIntent(self, session: DialogSession):
 		randomItem = self.randomTalk(text='RockPaperScissors')
 		self.endDialog(session.sessionId, self.randomTalk(text='answer', replace=[randomItem]))

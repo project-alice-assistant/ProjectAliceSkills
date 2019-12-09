@@ -32,7 +32,7 @@ class FindMyPhone(Module):
 
 
 	@Online
-	def findPhoneIntent(self, session: DialogSession, **_kwargs):
+	def findPhoneIntent(self, session: DialogSession):
 		sessionId = session.sessionId
 		slots = session.slots
 

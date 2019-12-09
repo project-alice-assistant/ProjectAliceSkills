@@ -24,12 +24,12 @@ class LocalButtonPress(Module):
 
 
 	@IntentHandler('DoButtonOn')
-	def buttonOnIntent(self, session: DialogSession, **_kwargs):
+	def buttonOnIntent(self, session: DialogSession):
 		GPIO.output(self._gpioPin, GPIO.HIGH)
 		self.endDialog(session.sessionId, self.TalkManager.randomTalk('DoButtonOn'))
 
 
 	@IntentHandler('DoButtonOff')
-	def buttonOffIntent(self, session: DialogSession, **_kwargs):
+	def buttonOffIntent(self, session: DialogSession):
 		GPIO.output(self._gpioPin, GPIO.LOW)
 		self.endDialog(session.sessionId, self.TalkManager.randomTalk('DoButtonOff'))

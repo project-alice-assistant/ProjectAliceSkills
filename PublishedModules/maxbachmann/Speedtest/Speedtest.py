@@ -14,7 +14,7 @@ class Speedtest(Module):
 
 	@IntentHandler('Speedtest')
 	@Online
-	def runSpeedtest(self, session: DialogSession, **_kwargs):
+	def runSpeedtest(self, session: DialogSession):
 		self.ThreadManager.doLater(interval=0, func=self.executeSpeedtest, kwargs={'session': session})
 		self.logInfo('Starting Speedtest')
 		self.endDialog(sessionId=session.sessionId, text=self.randomTalk('running'))

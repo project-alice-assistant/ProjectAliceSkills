@@ -11,7 +11,7 @@ class IcanhazdadjokeDotCom(Module):
 	@IntentHandler('TellAJoke')
 	@AnyExcept(exceptions=RequestException, text='noJoke', printStack=True)
 	@Online
-	def jokeIntent(self, session: DialogSession, **_kwargs):
+	def jokeIntent(self, session: DialogSession):
 		url = 'https://icanhazdadjoke.com/'
 
 		headers = {

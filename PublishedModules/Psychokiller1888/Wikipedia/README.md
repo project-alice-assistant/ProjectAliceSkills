@@ -16,12 +16,12 @@ wget http://modules.projectalice.ch/Wikipedia \
 ### Description
 Allows one to find informations about a topic on wikipedia
 
-- Version: 1.0.39
+- Version: 1.0.40
 - Author: Psychokiller1888
 - Maintainers:
     - Jierka
     - maxbachmann
-- Alice minimum Version: 1.0.0-a3
+- Alice minimum Version: 1.0.0-a4
 - Conditions:
   - en
   - fr

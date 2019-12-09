@@ -28,7 +28,7 @@ class Calculator(Module):
 
 
 	@IntentHandler('Maths')
-	def mathIntent(self, session: DialogSession, **_kwargs):
+	def mathIntent(self, session: DialogSession):
 		mathOperation = self._mathOperations.get(session.slotValue('Function'))
 		left = float(session.slotValue('Left') or self._lastNumber)
 		right = float(session.slotValue('Right') or 0)

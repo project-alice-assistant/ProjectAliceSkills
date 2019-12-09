@@ -44,13 +44,13 @@ class AliceSatellite(Module):
 		self.getSensorReadings()
 
 
-	def feedbackSensorIntent(self, session: DialogSession, **_kwargs):
+	def feedbackSensorIntent(self, session: DialogSession):
 		payload = session.payload
 		if 'data' in payload:
 			self._sensorReadings[session.siteId] = payload['data']
 
 
-	def deviceDisconnectIntent(self, session: DialogSession, **_kwargs):
+	def deviceDisconnectIntent(self, session: DialogSession):
 		payload = session.payload
 		if 'uid' in payload:
 			self.DeviceManager.deviceDisconnecting(payload['uid'])
