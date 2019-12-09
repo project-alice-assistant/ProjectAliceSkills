@@ -1,5 +1,4 @@
 import importlib
-from typing import Optional
 
 from core.base.model.Intent import Intent
 from core.base.model.Module import Module
@@ -67,11 +66,12 @@ class Minigames(Module):
 			self._minigame.started = False
 
 
-	def minigameIntent(self, session: DialogSession) -> Optional[bool]:
+	def minigameIntent(self, session: DialogSession) -> bool:
 		if session.currentState != MiniGame.MiniGame.PLAYING_MINIGAME_STATE:
 			return False
 
 		self._minigame.onMessage(session.intentName, session)
+		return True
 
 
 	def answerAnotherGame(self, session: DialogSession):
