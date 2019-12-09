@@ -15,7 +15,7 @@ wget http://modules.projectalice.ch/Speller -O ~/ProjectAlice/system/skillInstal
 ### Description
 Ask alice how to spell any word!
 
-- Version: 1.0.5
+- Version: 1.0.6
 - Author: Psychokiller1888
 - Maintainers: maxbachmann
 - Alice minimum Version: 1.0.0-a4

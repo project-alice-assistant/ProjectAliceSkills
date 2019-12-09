@@ -1,6 +1,6 @@
 {
 	"name": "Zigbee2Mqtt",
-	"version": "0.0.14",
+	"version": "0.0.15",
 	"author": "Psychokiller1888",
 	"maintainers": ["maxbachmann"],
 	"desc": "Have your zigbee devices communicate with alice directly over mqtt",

@@ -15,10 +15,10 @@ wget http://modules.projectalice.ch/Netatmo -O ~/ProjectAlice/system/skillInstal
 ### Description
 Get readings from your netatmo hardware
 
-- Version: 1.0.7
+- Version: 1.0.8
 - Author: Psychokiller1888
 - Maintainers: maxbachmann
-- Alice minimum Version: 1.0.0-a3
+- Alice minimum Version: 1.0.0-a4
 - Conditions:
   - en
   - fr

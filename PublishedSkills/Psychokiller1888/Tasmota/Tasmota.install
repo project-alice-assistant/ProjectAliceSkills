@@ -1,6 +1,6 @@
 {
 	"name": "Tasmota",
-	"version": "1.0.35",
+	"version": "1.0.36",
 	"author": "Psychokiller1888",
 	"maintainers": ["maxbachmann"],
 	"desc": "This skill allows you to not only connect tasmota esp devices, but listen to them",
