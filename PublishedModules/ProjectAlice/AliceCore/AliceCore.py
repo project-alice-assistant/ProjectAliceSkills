@@ -261,7 +261,7 @@ class AliceCore(Module):
 	def tryFixAndRecapture(self, intent: str, session: DialogSession):
 		if self.Commons.isYes(session):
 			self.WakewordManager.tryCaptureFix()
-			self.confirmWakewordTrimming(intent=intent, session=session)
+			self.confirmWakewordTrimming(session=session)
 			return
 		
 		if self.delayed:
