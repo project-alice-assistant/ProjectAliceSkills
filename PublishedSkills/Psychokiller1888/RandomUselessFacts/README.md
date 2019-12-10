@@ -4,13 +4,8 @@
 
 ##### > WGET method
 ```bash
-wget http://modules.projectalice.ch/RandomUselessFacts \
+wget http://skills.projectalice.ch/RandomUselessFacts \
 -O ~/ProjectAlice/system/skillInstallTickets/RandomUselessFacts.install
-```
-
-##### > Alice CLI method
-```bash
-./alice add skill Psychokiller1888 RandomUselessFacts
 ```
 
 ### Description

@@ -4,12 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget http://modules.projectalice.ch/Minigames -O ~/ProjectAlice/system/skillInstallTickets/Minigames.install
-```
-
-##### > Alice CLI method
-```bash
-./alice add skill Psychokiller1888 Minigames
+wget http://skills.projectalice.ch/Minigames -O ~/ProjectAlice/system/skillInstallTickets/Minigames.install
 ```
 
 ### Description

@@ -4,15 +4,9 @@
 
 ##### > WGET method
 ```bash
-wget http://modules.projectalice.ch/FreeCurrencyConverterDotCom \
+wget http://skills.projectalice.ch/FreeCurrencyConverterDotCom \
 -O ~/ProjectAlice/system/skillInstallTickets/FreeCurrencyConverterDotCom.install
 ```
-
-##### > Alice CLI method
-```bash
-./alice add skill Psychokiller1888 FreeCurrencyConverterDotCom
-```
-
 ### Description
 Let's you convert world currencies
 

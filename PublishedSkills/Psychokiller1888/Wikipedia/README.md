@@ -4,13 +4,8 @@
 
 ##### > WGET method
 ```bash
-wget http://modules.projectalice.ch/Wikipedia \
+wget http://skills.projectalice.ch/Wikipedia \
 -O ~/ProjectAlice/system/skillInstallTickets/Wikipedia.install
-```
-
-##### > Alice CLI method
-```bash
-./alice add skill Psychokiller1888 Wikipedia
 ```
 
 ### Description

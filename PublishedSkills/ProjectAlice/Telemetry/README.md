@@ -4,12 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget http://modules.projectalice.ch/Telemetry -O ~/ProjectAlice/system/skillInstallTickets/Telemetry.install
-```
-
-##### > Alice CLI method
-```bash
-./alice add skill Psychokiller1888 Telemetry
+wget http://skills.projectalice.ch/Telemetry -O ~/ProjectAlice/system/skillInstallTickets/Telemetry.install
 ```
 
 ### Description

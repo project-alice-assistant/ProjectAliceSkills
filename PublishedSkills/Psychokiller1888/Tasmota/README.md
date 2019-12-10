@@ -4,13 +4,8 @@
 
 ##### > WGET method
 ```bash
-wget http://modules.projectalice.ch/Tasmota \
+wget http://skills.projectalice.ch/Tasmota \
 -O ~/ProjectAlice/system/skillInstallTickets/Tasmota.install
-```
-
-##### > Alice CLI method
-```bash
-./alice add skill Psychokiller1888 Tasmota
 ```
 
 ### Description

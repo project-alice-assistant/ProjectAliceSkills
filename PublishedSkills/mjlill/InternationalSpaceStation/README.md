@@ -4,12 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget http://modules.projectalice.ch/InternationalSpaceStation -O ~/ProjectAlice/system/skillInstallTickets/InternationalSpaceStation.install
-```
-
-##### > Alice CLI method
-```bash
-./alice add skill mjlill InternationalSpaceStation
+wget http://skills.projectalice.ch/InternationalSpaceStation -O ~/ProjectAlice/system/skillInstallTickets/InternationalSpaceStation.install
 ```
 
 ### Description

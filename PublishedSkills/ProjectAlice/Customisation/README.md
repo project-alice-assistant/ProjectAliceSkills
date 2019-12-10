@@ -4,13 +4,8 @@
 
 ##### > WGET method
 ```bash
-wget http://modules.projectalice.ch/Customisation \
+wget http://skills.projectalice.ch/Customisation \
 -O ~/ProjectAlice/system/skillInstallTickets/Customisation.install
-```
-
-##### > Alice CLI method
-```bash
-./alice add skill ProjectAlice Customisation
 ```
 
 ### Description

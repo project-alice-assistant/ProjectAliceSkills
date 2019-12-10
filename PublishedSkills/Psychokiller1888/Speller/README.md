@@ -4,12 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget http://modules.projectalice.ch/Speller -O ~/ProjectAlice/system/skillInstallTickets/Speller.install
-```
-
-##### > Alice CLI method
-```bash
-./alice add skill Psychokiller1888 Speller
+wget http://skills.projectalice.ch/Speller -O ~/ProjectAlice/system/skillInstallTickets/Speller.install
 ```
 
 ### Description

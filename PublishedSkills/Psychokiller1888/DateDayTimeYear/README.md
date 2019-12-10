@@ -4,13 +4,8 @@
 
 ##### > WGET method
 ```bash
-wget http://modules.projectalice.ch/DateDayTimeYear \
+wget http://skills.projectalice.ch/DateDayTimeYear \
 -O ~/ProjectAlice/system/skillInstallTickets/DateDayTimeYear.install
-```
-
-##### > Alice CLI method
-```bash
-./alice add skill Psychokiller1888 DateDayTimeYear
 ```
 
 ### Description

@@ -4,12 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget http://modules.projectalice.ch/FindMyPhone -O ~/ProjectAlice/system/skillInstallTickets/FindMyPhone.install
-```
-
-##### > Alice CLI method
-```bash
-./alice add skill Psychokiller1888 FindMyPhone
+wget http://skills.projectalice.ch/FindMyPhone -O ~/ProjectAlice/system/skillInstallTickets/FindMyPhone.install
 ```
 
 ### Description

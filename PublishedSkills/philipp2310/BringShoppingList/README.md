@@ -4,12 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget http://modules.projectalice.ch/BringShoppingList -O ~/ProjectAlice/system/skillInstallTickets/BringShoppingList.install
-```
-
-##### > Alice CLI method
-```bash
-alice skill:install philipp2310/BringShoppingList
+wget http://skills.projectalice.ch/BringShoppingList -O ~/ProjectAlice/system/skillInstallTickets/BringShoppingList.install
 ```
 
 ### Description

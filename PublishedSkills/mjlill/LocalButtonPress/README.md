@@ -4,12 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget http://modules.projectalice.ch/LocalButtonPress -O ~/ProjectAlice/system/skillInstallTickets/LocalButtonPress.install
-```
-
-##### > Alice CLI method
-```bash
-./alice add skill mjlill LocalButtonPress
+wget http://skills.projectalice.ch/LocalButtonPress -O ~/ProjectAlice/system/skillInstallTickets/LocalButtonPress.install
 ```
 
 ### Description

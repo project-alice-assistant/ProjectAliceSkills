@@ -4,12 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget http://modules.projectalice.ch/ifttt -O ~/ProjectAlice/system/skillInstallTickets/Ifttt.install
-```
-
-##### > Alice CLI method
-```bash
-./alice add skill Psychokiller1888 ifttt
+wget http://skills.projectalice.ch/ifttt -O ~/ProjectAlice/system/skillInstallTickets/Ifttt.install
 ```
 
 ### Description

@@ -6,12 +6,7 @@ This skill assumes you have already flashed your zigbee dongle. For more info on
 
 ##### > WGET method
 ```bash
-wget http://modules.projectalice.ch/Zigbee2Mqtt -O ~/ProjectAlice/system/skillInstallTickets/Zigbee2Mqtt.install
-```
-
-##### > Alice CLI method
-```bash
-./alice add skill Psychokiller1888 Zigbee2Mqtt
+wget http://skills.projectalice.ch/Zigbee2Mqtt -O ~/ProjectAlice/system/skillInstallTickets/Zigbee2Mqtt.install
 ```
 
 ### Description

@@ -4,12 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget http://modules.projectalice.ch/Speedtest -O ~/ProjectAlice/system/skillInstallTickets/Speedtest.install
-```
-
-##### > Alice CLI method
-```bash
-./alice add skill maxbachmann Speedtest
+wget http://skills.projectalice.ch/Speedtest -O ~/ProjectAlice/system/skillInstallTickets/Speedtest.install
 ```
 
 ### Description

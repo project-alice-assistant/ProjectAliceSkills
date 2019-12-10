@@ -4,13 +4,8 @@
 
 ##### > WGET method
 ```bash
-wget http://modules.projectalice.ch/ContextSensitive \
+wget http://skills.projectalice.ch/ContextSensitive \
 -O ~/ProjectAlice/system/skillInstallTickets/ContextSensitive.install
-```
-
-##### > Alice CLI method
-```bash
-./alice add skill ProjectAlice ContextSensitive
 ```
 
 ### Description

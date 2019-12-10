@@ -4,13 +4,8 @@
 
 ##### > WGET method
 ```bash
-wget http://modules.projectalice.ch/AliceSatellite \
+wget http://skills.projectalice.ch/AliceSatellite \
 -O ~/ProjectAlice/system/skillInstallTickets/AliceSatellite.install
-```
-
-##### > Alice CLI method
-```bash
-./alice add skill ProjectAlice AliceSatellite
 ```
 
 ### Description
