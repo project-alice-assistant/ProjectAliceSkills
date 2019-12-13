@@ -1,0 +1,21 @@
+{
+	"DoPrinterOn": {
+		"default": [
+			"OK, it is on...",
+			"Now it's on!",
+			"It's on."
+		],
+		"short": [
+			"Done"
+		]
+	},
+	"DoPrinterOff": {
+		"default": [
+			"Turned it off!",
+			"I turned it off"
+		],
+		"short": [
+			"Done!"
+		]
+	}
+}

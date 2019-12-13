@@ -1,0 +1,36 @@
+{
+	"skill": "PrinterControl",
+	"icon": "lamp",
+	"description": "Control printer on or off",
+	"slotTypes": [],
+	"intents": [
+		{
+			"name": "DoSetPrinterOn",
+			"description": "User is asking for printer turn on",
+			"enabledByDefault": true,
+			"utterances": [
+				"Schalte den Drucker ein",
+				"Drucker an danke",
+				"Bitte schalte den Drucker ein",
+				"Würdest du den Drucker einschalten",
+				"Ich brauche dich, um den Drucker einzuschalten",
+				"Schalte den Drucker bitte ein"
+			],
+			"slots": []
+		},
+		{
+			"name": "DoSetPrinterOff",
+			"description": "User is asking to turn printer off",
+			"enabledByDefault": true,
+			"utterances": [
+				"Schalte den Drucker aus",
+				"Drucker aus, danke",
+				"Bitte schalte den Drucker aus",
+				"Würdest du den Drucker ausschalten",
+				"Ich möchte, dass du den Drucker ausschaltest",
+				"Schalte den Drucker bitte aus"
+			],
+			"slots": []
+		}
+	]
+}

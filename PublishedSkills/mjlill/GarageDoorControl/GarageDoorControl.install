@@ -1,0 +1,20 @@
+{
+	"name": "GarageDoorControl",
+	"version": "0.0.1",
+	"author": "mjlill",
+	"maintainers": [
+		"maxbachmann"
+	],
+	"desc": "Garage door control",
+	"aliceMinVersion": "1.0.0-a4",
+	"systemRequirements": [],
+	"pipRequirements": [
+		"RPI.GPIO"
+	],
+	"conditions": {
+		"lang": [
+			"en"
+		]
+	}
+}
+

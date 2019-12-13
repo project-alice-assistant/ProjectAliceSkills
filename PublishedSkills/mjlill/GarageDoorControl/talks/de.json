@@ -1,0 +1,21 @@
+{
+	"DoDoorOpen": {
+		"default": [
+			"Ok, sie öffnet sich",
+			"Sie öffnet sich jetzt!",
+			"Sie öffnet sich."
+		],
+		"short": [
+			"Erledigt"
+		]
+	},
+	"DoDoorClose": {
+		"default": [
+			"Ich schließe sie!",
+			"Sie schließt jetzt"
+		],
+		"short": [
+			"Erledigt!"
+		]
+	}
+}
