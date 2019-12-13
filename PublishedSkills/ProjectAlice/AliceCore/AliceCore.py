@@ -6,8 +6,8 @@ import tempfile
 
 from core.ProjectAliceExceptions import SkillStartDelayed
 from core.base.SuperManager import SuperManager
-from core.base.model.Intent import Intent
 from core.base.model.AliceSkill import AliceSkill
+from core.base.model.Intent import Intent
 from core.commons import constants
 from core.dialog.model.DialogSession import DialogSession
 from core.interface.views.AdminAuth import AdminAuth
@@ -702,6 +702,20 @@ class AliceCore(AliceSkill):
 			self.publish(topic='projectalice/devices/connectionAccepted', payload={'siteId': siteId, 'uid': uid})
 		else:
 			self.publish(topic='projectalice/devices/connectionRefused', payload={'siteId': siteId, 'uid': uid})
+
+
+	def onInternetConnected(self):
+		self.say(
+			text=self.randomTalk('internetBack'),
+			siteId=constants.ALL
+		)
+
+
+	def onInternetLost(self):
+		self.say(
+			text=self.randomTalk('internetLost'),
+			siteId=constants.ALL
+		)
 
 
 	@Online(text='noAssistantUpdateOffline')
