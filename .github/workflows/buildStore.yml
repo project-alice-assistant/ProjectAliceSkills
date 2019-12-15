@@ -8,6 +8,13 @@ jobs:
     strategy:
       max-parallel: 4
     steps:
+    - name: create remote directories
+      uses: garygrossgarten/github-action-ssh@release
+      with:
+        command: mkdir -p "${{ secrets.DOMAIN }}/assets/${GITHUB_REF#refs/heads/}/store" "${{ secrets.DOMAIN }}/assets/${GITHUB_REF#refs/heads/}/skills"
+        host: ${{ secrets.DOMAIN }}
+        username: ${{ secrets.USERNAME }}
+        privateKey: ${{ secrets.SERVER_SSH_PRIV_KEY }}
     - uses: actions/checkout@v1
     - name: combine install files
       run: |
@@ -27,7 +34,7 @@ jobs:
       uses: horochx/deploy-via-scp@master
       with:
         local: store.json
-        remote: "${{ secrets.DOMAIN }}/assets/store"
+        remote: "${{ secrets.DOMAIN }}/assets/${GITHUB_REF#refs/heads/}/store"
         host: ${{ secrets.DOMAIN }}
         port: 22
         user: ${{ secrets.USERNAME }}
@@ -36,7 +43,7 @@ jobs:
       uses: horochx/deploy-via-scp@master
       with:
         local: "./*.zip"
-        remote: "${{ secrets.DOMAIN }}/assets/skills"
+        remote: "${{ secrets.DOMAIN }}/assets/${GITHUB_REF#refs/heads/}/skills"
         host: ${{ secrets.DOMAIN }}
         port: 22
         user: ${{ secrets.USERNAME }}
