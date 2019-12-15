@@ -1,0 +1,27 @@
+name: Skills Store Building
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 4
+    steps:
+    - uses: actions/checkout@v1
+    - name: combine install files
+      run: |
+        shopt -s nullglob
+        skills='['
+        for filepath in PublishedSkills/*/*/*.install; do
+          skills+="$(cat $filepath),"
+        done
+        echo "${skills::-1}]" > installFiles.json
+		- name: zip skills
+      run: |
+        shopt -s nullglob
+        for skillpath in PublishedSkills/*/*/*.install; do
+          zip -r $(dirname "${skillpath}" | xargs basename) $skillpath
+				done
+		- name: upload store files
+		  run: echo "TODO"
