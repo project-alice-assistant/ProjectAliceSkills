@@ -216,10 +216,10 @@
 		"Gefunden, danke! Ich konfiguriere es jetzt!"
 	],
 	"usbDeviceFound": [
-		"Verstanden! Warte einen Moment, das wird eine Weile dauern.!"
+		"Verstanden! Warte einen Moment, das wird eine Weile dauern!"
 	],
 	"noESPFound": [
-		"Ich konnte kein ESP-Gerät an meinen USB-Ports finden, ich breche die Geräteregistrierung ab."
+		"Ich konnte kein ESP-Gerät an meinen USB-Ports finden, ich breche die Geräteregistrierung ab. Falls du es doch verbunden hast, stelle sicher dass du ein USB-Kabel für Daten nutzt."
 	],
 	"espFailed": [
 		"Die Installation deines esp-Geräts ist leider fehlgeschlagen, das tut mir wirklich leid."
@@ -368,5 +368,8 @@
 		"Ok, dich mag ich. Viel Spaß in meinen Einstellungen.",
 		"Cool, das stimmt. Du hast jetzt Zugriff!",
 		"Identifizierung... erfolgreich!"
+	],
+	"noWifiConf": [
+		"Ich habe keine wlan Einstellungen gefunden. Bitte füge es ein und probier nochmals."
 	]
 }

@@ -1,8 +1,7 @@
 import subprocess
+import tempfile
 import time
 from pathlib import Path
-
-import tempfile
 
 from core.ProjectAliceExceptions import SkillStartDelayed
 from core.base.SuperManager import SuperManager
@@ -258,7 +257,7 @@ class AliceCore(AliceSkill):
 		)
 
 
-	def tryFixAndRecapture(self, intent: str, session: DialogSession):
+	def tryFixAndRecapture(self, session: DialogSession):
 		if self.Commons.isYes(session):
 			self.WakewordManager.tryCaptureFix()
 			self.confirmWakewordTrimming(session=session)
@@ -352,7 +351,7 @@ class AliceCore(AliceSkill):
 			)
 			return
 
-		accessLevel = session.slots.get('UserAccessLevel', session.customData.get('UserAccessLevel'))
+		accessLevel = session.slotValue('UserAccessLevel', defaultValue=session.customData.get('UserAccessLevel'))
 		if not accessLevel:
 			self.continueDialog(
 				sessionId=session.sessionId,
@@ -419,9 +418,9 @@ class AliceCore(AliceSkill):
 			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('busy'))
 			return
 
-		hardware = session.slots.get('Hardware')
-		espType = session.slots.get('EspType')
-		room = session.slots.get('Room')
+		hardware = session.slotValue('Hardware')
+		espType = session.slotValue('EspType')
+		room = session.slotValue('Room')
 		if not hardware:
 			self.continueDialog(
 				sessionId=session.sessionId,
@@ -453,6 +452,9 @@ class AliceCore(AliceSkill):
 			if not self.SkillManager.isSkillActive('Tasmota'):
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('requireTasmotaSkill'))
 
+			elif not self.getAliceConfig('ssid'):
+				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('noWifiConf'))
+
 			elif self.DeviceManager.isBusy():
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('busy'))
 
@@ -471,6 +473,10 @@ class AliceCore(AliceSkill):
 			self.DeviceManager.addZigBeeDevice()
 
 		elif hardware == 'satellite':
+			if not self.getAliceConfig('ssid'):
+				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('noWifiConf'))
+				return
+
 			if self.DeviceManager.startBroadcastingForNewDevice(self.Commons.cleanRoomNameToSiteId(room), session.siteId):
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('confirmDeviceAddingMode'))
 			else:
@@ -727,7 +733,7 @@ class AliceCore(AliceSkill):
 			'assistant': 3,
 			'skills': 4
 		}
-		update = updateTypes.get(session.slots.get('WhatToUpdate', 'all'), 5)
+		update = updateTypes.get(session.slotValue('WhatToUpdate', defaultValue='all'), 5)
 
 		self.endDialog(sessionId=session.sessionId, text=self.randomTalk('confirmAssistantUpdate'))
 		if update in {1, 5}:  # All or system

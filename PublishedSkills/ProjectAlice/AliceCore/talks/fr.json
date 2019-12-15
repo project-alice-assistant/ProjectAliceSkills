@@ -288,7 +288,7 @@
 	},
 	"noESPFound": {
 		"default": [
-			"Je n'ai pas pu trouver d'appareil ESP sur mes ports USB, j'annule l'ajout d'appareil"
+			"Je n'ai pas pu trouver d'appareil ESP sur mes ports USB, j'annule l'ajout d'appareil. Si tu l'as connecté, assure toi d'utiliser un cable usb de données."
 		]
 	},
 	"espFailed": {
@@ -455,5 +455,8 @@
 	"authOk": [
 		"Ok, c'est bon, tu as accès.",
 		"Cool, c'est juste, tu as maintenant accès"
+	],
+	"noWifiConf": [
+		"Je ne trouve pas de configurations pour le wifi. Ajoute les et recommence."
 	]
 }

@@ -292,7 +292,7 @@
 	},
 	"noESPFound": {
 		"default": [
-			"I couldn't find any ESP device on my USB ports, I'm aborting the device addition"
+			"I couldn't find any ESP device on my USB ports, I'm aborting the device addition. If you did connect it, make sure you are using a usb data cable."
 		]
 	},
 	"espFailed": {
@@ -468,5 +468,8 @@
 	"authOk": [
 		"Ok, you are verified, you have now access",
 		"Cool, it's correct, you have now access"
+	],
+	"noWifiConf": [
+		"I did not find your wifi settings, please make sure you have them configured and try again."
 	]
 }
