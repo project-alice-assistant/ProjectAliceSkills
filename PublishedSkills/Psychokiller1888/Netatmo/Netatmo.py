@@ -1,5 +1,5 @@
 import time
-from typing import Tuple, Generator
+from typing import Generator, Tuple
 
 import lnetatmo
 
@@ -36,7 +36,7 @@ class Netatmo(AliceSkill):
 		}
 
 
-	def onStart(self) -> list:
+	def onStart(self) -> dict:
 		super().onStart()
 		if not self.getConfig('password'):
 			raise SkillStartingFailed(skillName=self.name, error='No credentials provided')
@@ -81,7 +81,7 @@ class Netatmo(AliceSkill):
 				siteId = self.LanguageManager.getStrings('outside')[0]
 
 			for key, value in values.items():
-				yield (siteId.lower(), self._telemetryTypes.get(key), value)
+				yield siteId.lower(), self._telemetryTypes.get(key), value
 
 
 	def onFullMinute(self):
