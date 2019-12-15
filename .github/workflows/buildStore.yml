@@ -11,8 +11,6 @@ jobs:
     - uses: actions/checkout@v1
     - name: init ssh
       run: |
-        'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
-        eval $(ssh-agent -s)
         ssh-add <(echo "$SERVER_SSH_PRIV_KEY")
         ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $USERNAME@$DOMAIN "mkdir -p assets/store assets/skills"
     - name: combine install files and deploy
