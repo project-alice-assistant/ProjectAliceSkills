@@ -9,19 +9,30 @@ jobs:
       max-parallel: 4
     steps:
     - uses: actions/checkout@v1
-    - name: combine install files
+    - name: init ssh
+      run: |
+        'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+        eval $(ssh-agent -s)
+        ssh-add <(echo "$SERVER_SSH_PRIV_KEY")
+        ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $USERNAME@$DOMAIN "mkdir -p assets/store assets/skills"
+    - name: combine install files and deploy
       run: |
         shopt -s nullglob
         skills='['
         for filepath in PublishedSkills/*/*/*.install; do
           skills+="$(cat $filepath),"
         done
-        echo "${skills::-1}]" > installFiles.json
-    - name: zip skills
+        echo "${skills::-1}]" > store.json
+        scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -rp store.json "$USERNAME@$DOMAIN:$DOMAIN/assets/store"
+    - name: zip skills and deploy
       run: |
         shopt -s nullglob
         for skillpath in PublishedSkills/*/*/*.install; do
           zip -r $(dirname "${skillpath}" | xargs basename) $skillpath
         done
-    - name: upload store files
-      run: echo "TODO"
+        scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -rp *.zip "$USERNAME@$DOMAIN:$DOMAIN/assets/skills"
+
+        
+        
+        
+
