@@ -1,0 +1,53 @@
+name: Skills Store Building
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 4
+    steps:
+    - name: Get branch name
+      id: get-branch
+      uses: ypicard/get-branch-name-github-action@v1
+    - name: create remote directories
+      uses: garygrossgarten/github-action-ssh@release
+      with:
+        command: mkdir -p "${{ secrets.DOMAIN }}/assets/${{ steps.get-branch.outputs.branch }}/store" "${{ secrets.DOMAIN }}/assets/${{ steps.get-branch.outputs.branch }}/skills"
+        host: ${{ secrets.DOMAIN }}
+        username: ${{ secrets.USERNAME }}
+        privateKey: ${{ secrets.SERVER_SSH_PRIV_KEY }}
+    - uses: actions/checkout@v1
+    - name: combine install files
+      run: |
+        shopt -s nullglob
+        skills='['
+        for filepath in PublishedSkills/*/*/*.install; do
+          skills+="$(cat $filepath),"
+        done
+        echo "${skills::-1}]" > store.json
+    - name: zip skills=
+      run: |
+        shopt -s nullglob
+        for skillpath in PublishedSkills/*/*/*.install; do
+          zip -r $(dirname "${skillpath}" | xargs basename) $skillpath
+        done
+    - name: deploy store.json
+      uses: horochx/deploy-via-scp@master
+      with:
+        local: store.json
+        remote: ${{ secrets.DOMAIN }}/assets/${{ steps.get-branch.outputs.branch }}/store
+        host: ${{ secrets.DOMAIN }}
+        port: 22
+        user: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SERVER_SSH_PRIV_KEY }}
+    - name: deploy skills
+      uses: horochx/deploy-via-scp@master
+      with:
+        local: "./*.zip"
+        remote: ${{ secrets.DOMAIN }}/assets/${{ steps.get-branch.outputs.branch }}/skills
+        host: ${{ secrets.DOMAIN }}
+        port: 22
+        user: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SERVER_SSH_PRIV_KEY }}
