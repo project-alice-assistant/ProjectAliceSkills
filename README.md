@@ -1,6 +1,6 @@
 [![Skills Valid](https://github.com/project-alice-assistant/ProjectAliceSkills/workflows/Skills%20Validation/badge.svg)](https://github.com/project-alice-assistant/ProjectAliceSkills/actions)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/8c37d708cde34cb998b45ff5d6e92d43)](https://www.codacy.com/manual/ProjectAlice/ProjectAliceSkills?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=project-alice-powered-by-snips/ProjectAliceSkills&amp;utm_campaign=Badge_Grade)
-![GitHub](https://img.shields.io/github/license/Psychokiller1888/ProjectAliceSkills)
+![GitHub](https://img.shields.io/github/license/project-alice-assistant/ProjectAliceSkills)
 [![Maintainability](https://api.codeclimate.com/v1/badges/1c61965accf480b5d5ef/maintainability)](https://codeclimate.com/github/project-alice-powered-by-snips/ProjectAliceSkills/maintainability)
 
 # ProjectAliceSkills (alpha3)
