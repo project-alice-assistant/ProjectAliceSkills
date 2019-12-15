@@ -9,8 +9,6 @@ jobs:
       max-parallel: 4
     steps:
     - uses: actions/checkout@v1
-    - name: init ssh
-      run: ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $secrets.USERNAME@$secrets.DOMAIN "mkdir -p $secrets.DOMAIN/assets/store $secrets.DOMAIN/assets/skills"
     - name: combine install files
       run: |
         shopt -s nullglob
