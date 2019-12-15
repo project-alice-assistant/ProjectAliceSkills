@@ -23,14 +23,14 @@ jobs:
       run: |
         shopt -s nullglob
         skills='['
-        for filepath in PublishedSkills/*/*/*.install; do
+        for filepath in PublishedModules/*/*/*.install; do
           skills+="$(cat $filepath),"
         done
         echo "${skills::-1}]" > store.json
     - name: zip skills=
       run: |
         shopt -s nullglob
-        for skillpath in PublishedSkills/*/*/*.install; do
+        for skillpath in PublishedModules/*/*/*.install; do
           zip -r $(dirname "${skillpath}" | xargs basename) $skillpath
         done
     - name: deploy store.json
