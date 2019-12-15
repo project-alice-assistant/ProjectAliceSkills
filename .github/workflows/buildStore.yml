@@ -17,11 +17,11 @@ jobs:
           skills+="$(cat $filepath),"
         done
         echo "${skills::-1}]" > installFiles.json
-		- name: zip skills
+    - name: zip skills
       run: |
         shopt -s nullglob
         for skillpath in PublishedSkills/*/*/*.install; do
           zip -r $(dirname "${skillpath}" | xargs basename) $skillpath
-				done
-		- name: upload store files
-		  run: echo "TODO"
+        done
+    - name: upload store files
+      run: echo "TODO"
