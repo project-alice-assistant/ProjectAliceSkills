@@ -17,7 +17,7 @@ jobs:
           skills+="$(cat $filepath),"
         done
         echo "${skills::-1}]" > store.json
-    - name: zip skills and deploy
+    - name: zip skills=
       run: |
         shopt -s nullglob
         for skillpath in PublishedSkills/*/*/*.install; do
