@@ -16,22 +16,23 @@ from core.voice.WakewordManager import WakewordManagerState
 
 
 class AliceCore(AliceSkill):
+
 	_INTENT_MODULE_GREETING = 'projectalice/devices/greeting'
 	_INTENT_GLOBAL_STOP = Intent('GlobalStop')
 	_INTENT_ANSWER_YES_OR_NO = Intent('AnswerYesOrNo', isProtected=True)
 	_INTENT_ANSWER_ROOM = Intent('AnswerRoom', isProtected=True)
 	_INTENT_SWITCH_LANGUAGE = Intent('SwitchLanguage')
-	_INTENT_UPDATE_ALICE = Intent('DoAliceUpdate', isProtected=True)
-	_INTENT_REBOOT = Intent('RebootSystem')
+	_INTENT_UPDATE_ALICE = Intent('DoAliceUpdate', isProtected=True, authOnly=AccessLevel.DEFAULT)
+	_INTENT_REBOOT = Intent('RebootSystem', authOnly=AccessLevel.DEFAULT)
 	_INTENT_STOP_LISTEN = Intent('StopListening', isProtected=True)
-	_INTENT_ADD_DEVICE = Intent('AddComponent')
+	_INTENT_ADD_DEVICE = Intent('AddComponent', authOnly=AccessLevel.ADMIN)
 	_INTENT_ANSWER_HARDWARE_TYPE = Intent('AnswerHardwareType', isProtected=True)
 	_INTENT_ANSWER_ESP_TYPE = Intent('AnswerEspType', isProtected=True)
 	_INTENT_ANSWER_NAME = Intent('AnswerName', isProtected=True)
 	_INTENT_SPELL_WORD = Intent('SpellWord', isProtected=True)
 	_INTENT_ANSWER_WAKEWORD_CUTTING = Intent('AnswerWakewordCutting', isProtected=True)
 	_INTENT_WAKEWORD = Intent('CallWakeword', isProtected=True)
-	_INTENT_ADD_USER = Intent('AddNewUser', isProtected=True)
+	_INTENT_ADD_USER = Intent('AddNewUser', isProtected=True, authOnly=AccessLevel.ADMIN)
 	_INTENT_ANSWER_ACCESSLEVEL = Intent('AnswerAccessLevel', isProtected=True)
 	_INTENT_ANSWER_NUMBER = Intent('AnswerNumber', isProtected=True)
 
@@ -57,13 +58,6 @@ class AliceCore(AliceSkill):
 			(self._INTENT_ADD_USER, self.addNewUser),
 			self._INTENT_ANSWER_ACCESSLEVEL
 		]
-
-		self._AUTH_ONLY_INTENTS = {
-			self._INTENT_ADD_USER: AccessLevel.ADMIN,
-			self._INTENT_ADD_DEVICE: AccessLevel.ADMIN,
-			self._INTENT_UPDATE_ALICE: AccessLevel.DEFAULT,
-			self._INTENT_REBOOT: AccessLevel.DEFAULT
-		}
 
 		self._INTENT_ANSWER_YES_OR_NO.dialogMapping = {
 			'confirmingReboot': self.confirmSkillReboot,
@@ -92,7 +86,7 @@ class AliceCore(AliceSkill):
 		}
 
 		self._threads = dict()
-		super().__init__(self._INTENTS, authOnlyIntents=self._AUTH_ONLY_INTENTS)
+		super().__init__(self._INTENTS)
 
 
 	def authUser(self, session: DialogSession):

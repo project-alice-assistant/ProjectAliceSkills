@@ -27,7 +27,7 @@ class Ifttt(AliceSkill):
 	}
 
 	def __init__(self):
-		super().__init__(authOnlyIntents=self.DATABASE)
+		super().__init__(databaseSchema=self.DATABASE)
 
 
 	# noinspection SqlResolve
