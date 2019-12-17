@@ -12,6 +12,9 @@ jobs:
         python-version: [3.7]
 
     steps:
+    - name: Get branch name
+      id: get-branch
+      uses: ypicard/get-branch-name-github-action@v1
     - uses: actions/checkout@v1
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v1
@@ -25,7 +28,7 @@ jobs:
     - name: validate all json files
       if: always()
       run: |
-        alice-sk validate --paths PublishedSkills/*/*/ --token ${{ secrets.GITHUB_TOKEN }}
+        alice-sk validate --paths PublishedSkills/*/*/ --token ${{ secrets.GITHUB_TOKEN }} --branch ${{ steps.get-branch.outputs.branch }}
     - name: test static typing
       if: always()
       run: |
