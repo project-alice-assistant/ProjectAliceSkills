@@ -1,25 +1,14 @@
 from core.base.SuperManager import SuperManager
 from core.base.model.AliceSkill import AliceSkill
 from core.dialog.model.DialogSession import DialogSession
+from core.util.Decorators import MqttHandler
 
 
 class AliceSatellite(AliceSkill):
-	_FEEDBACK_SENSORS = 'projectalice/devices/alice/sensorsFeedback'
-	_DEVICE_DISCONNECTION = 'projectalice/devices/alice/disconnection'
-
 
 	def __init__(self):
-		self._INTENTS = [
-			(self._FEEDBACK_SENSORS, self.feedbackSensorIntent),
-			(self._DEVICE_DISCONNECTION, self.deviceDisconnectIntent)
-		]
-
 		self._sensorReadings = dict()
-
-		self.ProtectedIntentManager.protectIntent(self._FEEDBACK_SENSORS)
-		self.ProtectedIntentManager.protectIntent(self._DEVICE_DISCONNECTION)
-
-		super().__init__(self._INTENTS)
+		super().__init__()
 
 
 	def onBooted(self):
@@ -44,16 +33,18 @@ class AliceSatellite(AliceSkill):
 		self.getSensorReadings()
 
 
+	@MqttHandler('projectalice/devices/alice/sensorsFeedback')
 	def feedbackSensorIntent(self, session: DialogSession):
-		payload = session.payload
-		if 'data' in payload:
-			self._sensorReadings[session.siteId] = payload['data']
+		data = session.payload.get('data')
+		if data:
+			self._sensorReadings[session.siteId] = data
 
 
+	@MqttHandler('projectalice/devices/alice/disconnection')
 	def deviceDisconnectIntent(self, session: DialogSession):
-		payload = session.payload
-		if 'uid' in payload:
-			self.DeviceManager.deviceDisconnecting(payload['uid'])
+		uid = session.payload.get('uid')
+		if uid:
+			self.DeviceManager.deviceDisconnecting(uid)
 
 
 	def getSensorReadings(self):

@@ -10,7 +10,7 @@ wget http://skills.projectalice.ch/Telemetry -O ~/ProjectAlice/system/skillInsta
 ### Description
 Access your stored telemetry data
 
-- Version: 1.0.4
+- Version: 1.0.5
 - Author: ProjectAlice
 - Maintainers: Psychokiller1888, maxbachmann
 - Alice minimum Version: 1.0.0-a4

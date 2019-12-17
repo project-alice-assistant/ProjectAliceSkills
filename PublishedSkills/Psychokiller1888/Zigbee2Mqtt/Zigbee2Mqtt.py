@@ -1,8 +1,8 @@
 import subprocess
 
-from core.base.model.Intent import Intent
 from core.base.model.AliceSkill import AliceSkill
 from core.dialog.model.DialogSession import DialogSession
+from core.util.Decorators import MqttHandler
 
 
 class Zigbee2Mqtt(AliceSkill):
@@ -11,19 +11,12 @@ class Zigbee2Mqtt(AliceSkill):
 	Description: Have your zigbee devices communicate with alice directly over mqtt
 	"""
 
-	_INTENT_ZIGBEE_STATE = Intent('zigbee2mqtt/bridge/state', isProtected=True, userIntent=False)
-	_INTENT_ZIGBEE_MSG = 'zigbee2mqtt/#'
-
 	def __init__(self):
-		self._SUPPORTED_INTENTS	= [
-			(self._INTENT_ZIGBEE_STATE, self.bridgeStateReport),
-			(self._INTENT_ZIGBEE_MSG, self.handleMessage)
-		]
 		self._online = False
+		super().__init__()
 
-		super().__init__(self._SUPPORTED_INTENTS)
 
-
+	@MqttHandler('zigbee2mqtt/bridge/state')
 	def bridgeStateReport(self, session: DialogSession):
 		if 'online' in session.payload:
 			self._online = True
@@ -33,6 +26,7 @@ class Zigbee2Mqtt(AliceSkill):
 			self.logInfo('Now offline')
 
 
+	@MqttHandler('zigbee2mqtt/#')
 	def handleMessage(self, session: DialogSession):
 		print(session.payload)
 

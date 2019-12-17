@@ -3,6 +3,7 @@ import re
 from core.base.model.AliceSkill import AliceSkill
 from core.device.model.TasmotaConfigs import TasmotaConfigs
 from core.dialog.model.DialogSession import DialogSession
+from core.util.Decorators import MqttHandler
 
 
 class Tasmota(AliceSkill):
@@ -11,60 +12,48 @@ class Tasmota(AliceSkill):
 	Description: This skill allows you to not only connect tasmota esp devices, but listen to them
 	"""
 
-	_CONNECTING = 'projectalice/devices/tasmota/feedback/hello/+'
-	_FEEDBACK = 'projectalice/devices/tasmota/feedback/+'
-
-
 	def __init__(self):
-		self._SUPPORTED_INTENTS = [
-			self._FEEDBACK,
-			self._CONNECTING
-		]
-
-		self._connectingRegex = re.compile(self._CONNECTING.replace('+', '(.*)'))
-		self._feedbackRegex = re.compile(self._FEEDBACK.replace('+', '(.*)'))
-
 		self._initializingSkill = False
 		self._confArray = []
 		self._tasmotaConfigs = None
 
-		super().__init__(self._SUPPORTED_INTENTS)
+		super().__init__()
 
 
-	def filterIntent(self, session: DialogSession) -> bool:
-		if session.intentName.startswith('projectalice/devices/tasmota/'):
-			return True
-		return super().filterIntent(session=session)
+	@MqttHandler('projectalice/devices/tasmota/feedback/hello/+')
+	def connectingHandler(self, session: DialogSession):
+		identifier = session.intentName.split('/')[-1]
+		if self.DeviceManager.getDeviceByUID(identifier):
+			# This device is known
+			self.logInfo(f'A device just connected in {session.siteId}')
+			self.DeviceManager.deviceConnecting(uid=identifier)
+		else:
+			# We did not ask Alice to add a new device
+			if not self.DeviceManager.broadcastFlag.isSet():
+				self.logWarning('A device is trying to connect to Alice but is unknown')
 
 
-	def onMessage(self, session: DialogSession):
+	@MqttHandler('projectalice/devices/tasmota/feedback/+')
+	def feedbackHandler(self, session: DialogSession):
 		siteId = session.siteId
 		payload = session.payload
-		intent = session.intentName
 
-		if self._connectingRegex.match(intent):
-			identifier = self._connectingRegex.match(intent).group(1)
-			if self.DeviceManager.getDeviceByUID(identifier):
-				# This device is known
-				self.logInfo(f'A device just connected in {siteId}')
-				self.DeviceManager.deviceConnecting(uid=identifier)
+		feedback = payload.get('feedback')
+		if not feedback:
+			return
+		
+		deviceType = payload['deviceType']
+		
+		if deviceType == 'switch':
+			if feedback > 0:
+				self.SkillManager.skillBroadcast('onButtonPressed', siteId=siteId)
 			else:
-				# We did not ask Alice to add a new device
-				if not self.DeviceManager.broadcastFlag.isSet():
-					self.logWarning('A device is trying to connect to Alice but is unknown')
-
-		elif self._feedbackRegex.match(intent):
-			if 'feedback' in payload:
-				if payload['deviceType'] == 'switch':
-					if payload['feedback'] > 0:
-						self.SkillManager.skillBroadcast('onButtonPressed', args=[siteId])
-					else:
-						self.SkillManager.skillBroadcast('onButtonReleased', args=[siteId])
-				elif payload['deviceType'] == 'pir':
-					if payload['feedback'] > 0:
-						self.SkillManager.skillBroadcast('onMotionDetected', args=[siteId])
-					else:
-						self.SkillManager.skillBroadcast('onMotionStopped', args=[siteId])
+				self.SkillManager.skillBroadcast('onButtonReleased', siteId=siteId)
+		elif deviceType == 'pir':
+			if feedback > 0:
+				self.SkillManager.skillBroadcast('onMotionDetected', siteId=siteId)
+			else:
+				self.SkillManager.skillBroadcast('onMotionStopped', siteId=siteId)
 
 
 	def _initConf(self, identifier: str, deviceBrand: str, deviceType: str):

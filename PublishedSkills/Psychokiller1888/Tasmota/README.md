@@ -11,7 +11,7 @@ wget http://skills.projectalice.ch/Tasmota \
 ### Description
 This skill allows you to not only connect tasmota esp devices, but listen to them
 
-- Version: 1.0.36
+- Version: 1.0.37
 - Author: Psychokiller1888
 - Maintainers:
   - maxbachmann

@@ -7,30 +7,17 @@ import shutil
 from random import randint
 
 from core.ProjectAliceExceptions import SkillStartingFailed
-from core.base.model.Intent import Intent
 from core.base.model.AliceSkill import AliceSkill
 from core.commons import constants
 from core.dialog.model.DialogSession import DialogSession
+from core.util.Decorators import IntentHandler
 
 
 class RedQueen(AliceSkill):
-	_INTENT_WHO_ARE_YOU = Intent('WhoAreYou')
-	_INTENT_GOOD_MORNING = Intent('GoodMorning', isProtected=True)
-	_INTENT_GOOD_NIGHT = Intent('GoodNight', isProtected=True)
-	_INTENT_CHANGE_USER_STATE = Intent('ChangeUserState')
-
 
 	def __init__(self):
-		self._INTENTS = [
-			(self._INTENT_WHO_ARE_YOU, self.whoIntent),
-			(self._INTENT_GOOD_MORNING, self.morningIntent),
-			(self._INTENT_GOOD_NIGHT, self.nightIntent),
-			(self._INTENT_CHANGE_USER_STATE, self.userStateIntent)
-		]
-
 		self._redQueen = None
-
-		super().__init__(self._INTENTS)
+		super().__init__()
 
 
 	def onStart(self):
@@ -186,21 +173,25 @@ class RedQueen(AliceSkill):
 		return True
 
 
+	@IntentHandler('WhoAreYou')
 	def whoIntent(self, session: DialogSession):
 		self.endDialog(sessionId=session.sessionId, text=self.randomTalk('aliceInfos'), siteId=session.siteId)
 
 
+	@IntentHandler('GoodMorning', isProtected=True)
 	def morningIntent(self, session: DialogSession):
 		self.SkillManager.skillBroadcast('onWakeup')
 		time.sleep(0.5)
 		self.endDialog(sessionId=session.sessionId, text=self.randomTalk('goodMorning'), siteId=session.siteId)
 
 
+	@IntentHandler('GoodNight', isProtected=True)
 	def nightIntent(self, session: DialogSession):
 		self.endDialog(sessionId=session.sessionId, text=self.randomTalk('goodNight'), siteId=session.siteId)
 		self.SkillManager.skillBroadcast('onSleep')
 
 
+	@IntentHandler('ChangeUserState')
 	def userStateIntent(self, session: DialogSession):
 		slots = session.slotsAsObjects
 		if 'State' not in slots.keys():
