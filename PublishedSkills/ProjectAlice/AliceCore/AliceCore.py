@@ -705,17 +705,19 @@ class AliceCore(AliceSkill):
 
 
 	def onInternetConnected(self):
-		self.say(
-			text=self.randomTalk('internetBack'),
-			siteId=constants.ALL
-		)
+		if not self.ConfigManager.getAliceConfigByName('keepASROffline'):
+			self.say(
+				text=self.randomTalk('internetBack'),
+				siteId=constants.ALL
+			)
 
 
 	def onInternetLost(self):
-		self.say(
-			text=self.randomTalk('internetLost'),
-			siteId=constants.ALL
-		)
+		if not self.ConfigManager.getAliceConfigByName('keepASROffline'):
+			self.say(
+				text=self.randomTalk('internetLost'),
+				siteId=constants.ALL
+			)
 
 
 	@Online(text='noAssistantUpdateOffline')
