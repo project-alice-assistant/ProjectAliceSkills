@@ -3,7 +3,7 @@
 ![GitHub](https://img.shields.io/github/license/project-alice-assistant/ProjectAliceSkills)
 [![Maintainability](https://api.codeclimate.com/v1/badges/1c61965accf480b5d5ef/maintainability)](https://codeclimate.com/github/project-alice-powered-by-snips/ProjectAliceSkills/maintainability)
 
-# ProjectAliceSkills (alpha3)
+# ProjectAliceSkills (alpha4)
 
 This repository is home of all curated and approved skills for Project Alice.
 
