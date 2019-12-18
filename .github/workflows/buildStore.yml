@@ -51,7 +51,3 @@ jobs:
         port: 22
         user: ${{ secrets.USERNAME }}
         key: ${{ secrets.SERVER_SSH_PRIV_KEY }}
-        
-        
-        
-
