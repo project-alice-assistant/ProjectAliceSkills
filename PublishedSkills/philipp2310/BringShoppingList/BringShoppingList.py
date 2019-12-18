@@ -148,8 +148,9 @@ class BringShoppingList(AliceSkill):
 		return found, missing
 
 
-	def _getShopItems(self, answer: str, intent: str, session: DialogSession) -> list:
+	def _getShopItems(self, answer: str, session: DialogSession) -> list:
 		"""get the values of shopItem as a list of strings"""
+		intent = session.intentName
 		if intent == self._INTENT_SPELL_WORD:
 			item = ''.join([slot.value['value'] for slot in session.slotsAsObjects['Letters']])
 			return [item.capitalize()]
@@ -187,7 +188,7 @@ class BringShoppingList(AliceSkill):
 	@AnyExcept(exceptions=BringApi.AuthentificationFailed, text='authFailed')
 	@Online
 	def addItemIntent(self, session: DialogSession):
-		items = self._getShopItems('add', intent, session)
+		items = self._getShopItems('add', session)
 		if items:
 			added, exist = self._addItemInt(items)
 			self.endDialog(session.sessionId, text=self._combineLists('add', added, exist))
@@ -196,7 +197,7 @@ class BringShoppingList(AliceSkill):
 	@AnyExcept(exceptions=BringApi.AuthentificationFailed, text='authFailed')
 	@Online
 	def delItemIntent(self, session: DialogSession):
-		items = self._getShopItems('rem', intent, session)
+		items = self._getShopItems('rem', session)
 		if items:
 			removed, exist = self._deleteItemInt(items)
 			self.endDialog(session.sessionId, text=self._combineLists('rem', removed, exist))
@@ -205,7 +206,7 @@ class BringShoppingList(AliceSkill):
 	@AnyExcept(exceptions=BringApi.AuthentificationFailed, text='authFailed')
 	@Online
 	def checkListIntent(self, session: DialogSession):
-		items = self._getShopItems('chk', intent, session)
+		items = self._getShopItems('chk', session)
 		if items:
 			found, missing = self._checkListInt(items)
 			self.endDialog(session.sessionId, text=self._combineLists('chk', found, missing))
