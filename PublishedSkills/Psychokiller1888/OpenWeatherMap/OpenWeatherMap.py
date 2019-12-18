@@ -19,7 +19,7 @@ class OpenWeatherMap(AliceSkill):
 			)
 			return
 
-		city = session.slotRawValue('city') or self.getConfig('baseLocation')
+		city = session.slotRawValue('City') or self.getConfig('baseLocation')
 
 		if 'when' not in session.slots:
 			data = self._queryData(city=city)
@@ -28,7 +28,7 @@ class OpenWeatherMap(AliceSkill):
 					sessionId=session.sessionId,
 					text=self.randomTalk('notFound', replace=[city]),
 					intentFilter=[Intent('AnswerCity')],
-					slot='city',
+					slot='City',
 					currentDialogState='answeringCity'
 				)
 			else:
