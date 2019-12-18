@@ -369,7 +369,8 @@ class AliceCore(AliceSkill):
 		)
 
 
-	def confirmUsername(self, intent: str, session: DialogSession):
+	def confirmUsername(self, session: DialogSession):
+		intent = session.intentName
 		if intent == self._INTENT_ANSWER_NAME:
 			username = str(session.slots['Name']).lower()
 		else:
