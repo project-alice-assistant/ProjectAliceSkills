@@ -10,7 +10,7 @@ wget http://skills.projectalice.ch/PrinterControl -O ~/ProjectAlice/system/skill
 ### Description
 Allows for printer control for either power or enable /disable
 
-- Version: 0.0.1
+- Version: 0.0.2
 - Author: mjlill
 - Maintainers:
   - maxbachmann

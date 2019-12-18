@@ -10,7 +10,7 @@ wget http://skill.projectalice.ch/GarageDoorControl -O ~/ProjectAlice/system/ski
 ### Description
 Allows for control for a garage door or other selected device
 
-- Version: 0.0.1
+- Version: 0.0.2
 - Author: mjlill
 - Maintainers:
   - maxbachmann
