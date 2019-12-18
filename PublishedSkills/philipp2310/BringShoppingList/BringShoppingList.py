@@ -186,7 +186,7 @@ class BringShoppingList(AliceSkill):
 
 	@AnyExcept(exceptions=BringApi.AuthentificationFailed, text='authFailed')
 	@Online
-	def addItemIntent(self, intent: str, session: DialogSession):
+	def addItemIntent(self, session: DialogSession):
 		items = self._getShopItems('add', intent, session)
 		if items:
 			added, exist = self._addItemInt(items)
@@ -195,7 +195,7 @@ class BringShoppingList(AliceSkill):
 
 	@AnyExcept(exceptions=BringApi.AuthentificationFailed, text='authFailed')
 	@Online
-	def delItemIntent(self, intent: str, session: DialogSession):
+	def delItemIntent(self, session: DialogSession):
 		items = self._getShopItems('rem', intent, session)
 		if items:
 			removed, exist = self._deleteItemInt(items)
@@ -204,7 +204,7 @@ class BringShoppingList(AliceSkill):
 
 	@AnyExcept(exceptions=BringApi.AuthentificationFailed, text='authFailed')
 	@Online
-	def checkListIntent(self, intent: str, session: DialogSession):
+	def checkListIntent(self, session: DialogSession):
 		items = self._getShopItems('chk', intent, session)
 		if items:
 			found, missing = self._checkListInt(items)
