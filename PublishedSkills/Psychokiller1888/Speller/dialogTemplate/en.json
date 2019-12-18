@@ -1,0 +1,33 @@
+{
+	"skill": "Speller",
+	"icon": "assistant",
+	"description": "Ask alice how to spell any word!",
+	"slotTypes": [],
+	"intents": [
+		{
+			"name": "DoSpellWord",
+			"description": "The user asks Alice to spell a word",
+			"enabledByDefault": true,
+			"utterances": [
+				"how do you spell {cargo:=>RandomWord}",
+				"how is {constitution:=>RandomWord} spelled?",
+				"can you please tell me how to spell {odyssey:=>RandomWord}",
+				"please spell the word {hotdog:=>RandomWord}",
+				"could you spell me {galaxy:=>RandomWord}",
+				"please spell me the word {machine:=>RandomWord}",
+				"spell the word {destruction:=>RandomWord}",
+				"tell me how the word {planet:=>RandomWord} is spelled please",
+				"i need to know how to write {magician:=>RandomWord}"
+			],
+			"slots": [
+				{
+					"name": "RandomWord",
+					"description": "The word to spell",
+					"required": false,
+					"type": "RandomWords",
+					"missingQuestion": ""
+				}
+			]
+		}
+	]
+}

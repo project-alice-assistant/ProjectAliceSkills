@@ -1,0 +1,76 @@
+{
+	"skill": "Wikipedia",
+	"icon": "box",
+	"description": "Allows one to find informations about a topic on wikipedia",
+	"slotTypes": [
+		{
+			"name": "SearchEngine",
+			"matchingStrictness": null,
+			"automaticallyExtensible": true,
+			"useSynonyms": true,
+			"values": [
+				{
+					"value": "wikipedia",
+					"synonyms": [
+						"wiki"
+					]
+				}
+			]
+		}
+	],
+	"intents": [
+		{
+			"name": "DoSearch",
+			"description": "",
+			"enabledByDefault": true,
+			"utterances": [
+				"i need some online info about {finland:=>What}",
+				"get me informations from {wikipedia:=>Engine} about {barrack obama:=>What}",
+				"can you do a search about {nuclear weapons:=>What} on {wikipedia:=>Engine} please",
+				"get informations about {planets:=>What} online",
+				"find some info about {mars:=>What}",
+				"i need some informations about {cats:=>What}",
+				"can you please find me some informations about {America:=>What} on {wikipedia:=>Engine}",
+				"get some informations about {Trump:=>What} please",
+				"can you get some online informations for me please",
+				"get some online informations",
+				"please get some informations online",
+				"find some informations online please",
+				"can i get some online informations",
+				"do some online research for me",
+				"i need some online information",
+				"i need some online information please",
+				"i need information please",
+				"i need some information please",
+				"can you find some informations on {wikipedia:=>Engine} please",
+				"find some informations please",
+				"find some informations online",
+				"find some informations on {wikipedia:=>Engine}",
+				"can you get me some informations online",
+				"i need you to do an online search",
+				"do a search on {wikipedia:=>Engine}",
+				"please search on {wikipedia:=>Engine}",
+				"can you check something on {wikipedia:=>Engine}",
+				"can search informations on {wikipedia:=>Engine}",
+				"could you search some info online",
+				"can you search some informations online"
+			],
+			"slots": [
+				{
+					"name": "Engine",
+					"description": null,
+					"required": false,
+					"type": "SearchEngine",
+					"missingQuestion": ""
+				},
+				{
+					"name": "What",
+					"description": null,
+					"required": false,
+					"type": "RandomWords",
+					"missingQuestion": ""
+				}
+			]
+		}
+	]
+}

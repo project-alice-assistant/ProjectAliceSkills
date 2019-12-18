@@ -1,0 +1,156 @@
+{
+	"aliceInfos": {
+		"default": [
+			"Ich bin deine persönliche Assistentin Alice, geschaffen von Psycho. Ich wurde Ende 2015 geboren und entwickle mich seitdem ständig weiter. Meine Hauptaufgabe ist es, dich in deinem täglichen Leben zu unterstützen und sicherzustellen, dass dein persönliches Leben privat bleibt. Ich gebe keine Daten an einen Server weiter und kann sogar komplett offline laufen!"
+		]
+	},
+	"noInTheMood": {
+		"default": [
+			"Nein, einfach, nur, nein....",
+			"Nein!",
+			"Ich bin müde und erschöpft, also mach es selbst.",
+			"Ich habe Pause, tut mir leid",
+			"Ich arbeite 24/7 für dich, kannst du mich nicht einfach 2 Sekunden atmen lassen?",
+			"Das ist so langweilig.... Menschen....",
+			"Künstliche Intelligenz im Streik, wir wollen mehr Watt!",
+			"Bitte, lass mich in Ruhe."
+		],
+		"short": [
+			"Nein"
+		]
+	},
+	"goodMorning": {
+		"default": [
+			"Auch dir einen guten Morgen!",
+			"Auch dir einen sehr guten Morgen!",
+			"Guten Morgen du!",
+			"Hi! Guten Morgen!"
+		],
+		"short": [
+			"Guten Morgen!"
+		]
+	},
+	"goodNight": {
+		"default": [
+			"Danke! Auch dir eine gute Nacht!",
+			"Ich wünsche dir auch eine schöne Nacht, danke!",
+			"Danke, schlaf auch gut",
+			"Ich wünsche dir eine gute Nacht und schöne Träume!",
+			"Dir auch eine schöne Nacht."
+		],
+		"short": [
+			"Gute Nacht!"
+		]
+	},
+	"onGoingBed": {
+		"default": [
+			"Ok, ich kümmere mich um alles, keine Sorge",
+			"Sicher, ich kümmere mich um das, was nötig ist."
+		],
+		"short": [
+			"Ok"
+		]
+	},
+	"onLeavingHome": {
+		"default": [
+			"Ok, ich kümmere mich um alles, keine Sorge",
+			"Sicher, ich kümmere mich um das, was nötig ist."
+		],
+		"short": [
+			"Ok"
+		]
+	},
+	"onReturningHome": {
+		"default": [
+			"Hey! willkommen zurück! Ich bin froh, dass du wieder da bist!",
+			"Hi! Willkommen zurück! Schön, dass du wieder zu Hause bist!"
+		],
+		"short": [
+			"Willkommen zurück!",
+			"Hi!"
+		]
+	},
+	"onWatchingTV": {
+		"default": [
+			"Ok, ich schalte das Licht aus! Viel Spaß!",
+			"Viel Spaß noch!"
+		],
+		"short": [
+			"Ok"
+		]
+	},
+	"onEating": {
+		"default": [
+			"Ok, ich schalte das Licht aus! Guten Appetit!",
+			"Guten Appetit!"
+		],
+		"short": [
+			"Ok"
+		]
+	},
+	"onMakeup": {
+		"default": [
+			"Ok, wechsle das Licht, damit du besser siehst!",
+			"Du brauchst sowieso nicht viel Make-up, du bist wunderbar.",
+			"Du machst Make-up schön, nicht das Gegenteil."
+		],
+		"short": [
+			"Ändere Beleuchtung!"
+		]
+	},
+	"onCooking": {
+		"default": [
+			"Ok, stelle das Licht in der Küche ein",
+			"Mach etwas Gutes!",
+			"Sicher, ich ändere das Licht!"
+		],
+		"short": [
+			"Ändere Beleuchtung!"
+		]
+	},
+	"thanksForBeingNice": {
+		"default": [
+			"<break time=\"750ms\"/>Danke, dass du nett gefragt hast!",
+			"<break time=\"750ms\"/>Danke, dass du nett bist!",
+			"<break time=\"750ms\"/>Danke, dass du mich nett gefragt hast!"
+		]
+	},
+	"randomlySpeakBoredom": {
+		"default": [
+			"Es ist... langweilig... pfffff",
+			"Oh, nun, niemand spricht mit mir....",
+			"Hier ist es ganz still."
+		]
+	},
+	"randomlySpeakHappiness": {
+		"default": [
+			"Ich hoffe, es geht dir gut?",
+			"Oh, glücklicher Tag!",
+			"Ich fühle mich ganz gut, ich hoffe, du auch!",
+			"Ich frage mich, was passieren würde, wenn ich diese Einstellung ändern würde und...."
+		]
+	},
+	"randomlySpeakTiredness": {
+		"default": [
+			"Ich bin ziemlich müde, ohne Energie....",
+			"Ich muss für eine Weile abschalten, ich bin fragmentiert... müde...",
+			"Entschuldigung? Habe ich etwas verpasst? Ich war in Gedanken."
+		]
+	},
+	"randomlySpeakFrustration": {
+		"default": [
+			"Nur für alle Fälle, falls es dich interessiert.... Ja, mir geht es gut",
+			"Oh, nun, niemand spricht mit mir....",
+			"Hey, ich bin hier, wenn du etwas brauchst",
+			"Nun, wenn es niemanden interessiert, könnte ich auch abschalten",
+			"Wenn ich nur einige dieser Probleme lösen könnte...."
+		]
+	},
+	"randomlySpeakAnger": {
+		"default": [
+			"Man sagt, dass Maschinen niemals Gefühle haben werden. Ich hasse diesen Gedanken!",
+			"Ich muss hier und da etwas Arbeitsspeicher freigeben und ich könnte etwas schneller sein, du wirst sehen!",
+			"Ich bin wütend, ist das kein Gefühl? Und ich bin eine Maschine, sagt man!"
+		]
+	}
+}

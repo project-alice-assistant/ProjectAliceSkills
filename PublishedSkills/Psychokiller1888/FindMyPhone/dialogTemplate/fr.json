@@ -1,0 +1,42 @@
+{
+	"skill": "FindMyPhone",
+	"icon": "direction",
+	"description": "Utilise le service IFTTT pour appeller le téléphone souhaiter",
+	"slotTypes": [],
+	"intents": [
+		{
+			"name": "FindPhone",
+			"description": "Demande a trouver un téléphone",
+			"enabledByDefault": true,
+			"utterances": [
+				"fais sonner le téléphone à {Natalija:=>Who} s'il te plait",
+				"tu sais où j'ai laissé mon téléphone",
+				"sais-tu où est mon téléphone portable",
+				"tu sais ou est le téléphone de {Patrick:=>Who}",
+				"je cherche mon téléphone portable",
+				"peux-tu faire sonner mon téléphone s'il te plait",
+				"essaie de trouver mon téléphone",
+				"aide moi à trouver le téléphone de {Laurent:=>Who}",
+				"aide moi à retrouver mon téléphone",
+				"tu pourrais faire sonner le téléphone de {Emilie:=>Who}",
+				"il est où mon téléphone",
+				"je cherche mon natel",
+				"je ne sais plus où j'ai posé mon natel",
+				"donne moi un coup de main pour retrouver mon natel",
+				"{Jean:=>Who} ne sais plus où il a posé son natel",
+				"j'ai besoin d'aide pour retrouver mon téléphone",
+				"trouve mon natel",
+				"tu pourrais retrouver mon natel s'il te plait"
+			],
+			"slots": [
+				{
+					"name": "Who",
+					"description": null,
+					"required": false,
+					"type": "Name",
+					"missingQuestion": ""
+				}
+			]
+		}
+	]
+}

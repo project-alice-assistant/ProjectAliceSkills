@@ -6,4 +6,4 @@ checks:
   method-count:
     enabled: false
 exclude_patterns:
-- PublishedModules/*/*/libraries/*
+- PublishedSkills/*/*/libraries/*

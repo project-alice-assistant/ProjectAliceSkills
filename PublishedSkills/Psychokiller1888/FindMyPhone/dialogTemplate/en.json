@@ -1,0 +1,46 @@
+{
+	"skill": "FindMyPhone",
+	"icon": "direction",
+	"description": "Using ifttt one can ask alice to find his phone. sets the ring tone at max volume and initiates a call on it.",
+	"slotTypes": [],
+	"intents": [
+		{
+			"name": "FindPhone",
+			"description": "asks to find the phone",
+			"enabledByDefault": true,
+			"utterances": [
+				"can you ring {Natalija:=>Who}'s phone please",
+				"do you know where i left my phone",
+				"do you know where my phone is",
+				"do you know where the mobile of {Patrick:=>Who} is",
+				"try to find my phone please",
+				"please try to find my phone",
+				"try to find my phone",
+				"help me find {Laurent:=>Who}'s mobile phone",
+				"help me find my phone",
+				"could you try to locate {Emily:=>Who}'s phone",
+				"help me find my mobile",
+				"make my phone ring please",
+				"please help me find my phone",
+				"i don't know where i left my phone",
+				"i can't find my phone",
+				"i need help finding the phone of {John:=>Who}",
+				"find my mobile",
+				"can you please locate my phone",
+				"find my cell phone",
+				"where is my phone",
+				"locate my phone",
+				"find my phone"
+			],
+			"slots": [
+				{
+					"name": "Who",
+					"description": null,
+					"required": false,
+					"type": "Name",
+					"missingQuestion": ""
+				}
+			]
+		}
+	]
+}

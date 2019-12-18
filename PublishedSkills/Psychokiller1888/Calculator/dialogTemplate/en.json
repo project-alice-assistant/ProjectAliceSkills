@@ -1,0 +1,139 @@
+{
+	"skill": "Calculator",
+	"icon": "calculator",
+	"description": "Skill to help you calculate. Supports addition, subtraction, division, powers, square root, modulo, sine, cosine, tangente",
+	"slotTypes": [
+		{
+			"name": "MathsFunction",
+			"matchingStrictness": null,
+			"automaticallyExtensible": false,
+			"useSynonyms": true,
+			"values": [
+				{
+					"value": "+",
+					"synonyms": [
+						"plus",
+						"add"
+					]
+				},
+				{
+					"value": "-",
+					"synonyms": [
+						"minus",
+						"remove",
+						"subtract"
+					]
+				},
+				{
+					"value": "/",
+					"synonyms": [
+						"divided by",
+						"divide by"
+					]
+				},
+				{
+					"value": "*",
+					"synonyms": [
+						"times",
+						"mutiply"
+					]
+				},
+				{
+					"value": "^",
+					"synonyms": [
+						"power",
+						"to the power"
+					]
+				},
+				{
+					"value": "square root",
+					"synonyms": [
+						"square root of"
+					]
+				},
+				{
+					"value": "modulo",
+					"synonyms": []
+				},
+				{
+					"value": "sine",
+					"synonyms": [
+						"sin",
+						"sinus"
+					]
+				},
+				{
+					"value": "cosine",
+					"synonyms": [
+						"cos",
+						"cosinus"
+					]
+				},
+				{
+					"value": "tangent",
+					"synonyms": [
+						"tan"
+					]
+				}
+			]
+		}
+	],
+	"intents": [
+		{
+			"name": "Maths",
+			"description": "",
+			"enabledByDefault": true,
+			"utterances": [
+				"how much is {115:=>Left} {+:=>Function} {996:=>Right}",
+				"can you calculate {196354:=>Left} {divided by:=>Function} {10359:=>Right}",
+				"what is the result of {9999:=>Left} {plus:=>Function} {9999:=>Right}",
+				"what's the result of {221:=>Left} {-:=>Function} {196354:=>Right}",
+				"what is {10359:=>Left} {divided by:=>Function} {15:=>Right}",
+				"what's {10359:=>Left} {divided by:=>Function} {15:=>Right}",
+				"calculate {196354:=>Left} {/:=>Function} {10359:=>Right}",
+				"tell me what's {10359:=>Left} {*:=>Function} {96:=>Right}",
+				"tell me what is {6634:=>Left} {minus:=>Function} {221:=>Right}",
+				"{subtract:=>Function} {10359:=>Right}",
+				"how much is {115:=>Left} {+:=>Function} {996:=>Right}, please",
+				"can you calculate {196354:=>Left} {divided by:=>Function} {10359:=>Right}, please",
+				"what is the result of {9999:=>Left} {plus:=>Function} {9999:=>Right}, please",
+				"what's the result of {221:=>Left} {-:=>Function} {196354:=>Right}, please",
+				"what is {10359:=>Left} {divided by:=>Function} {15:=>Right}, please",
+				"what's {10359:=>Left} {divided by:=>Function} {15:=>Right}, please",
+				"calculate {196354:=>Left} {/:=>Function} {10359:=>Right}, please",
+				"tell me what's {10359:=>Left} {*:=>Function} {96:=>Right}, please",
+				"tell me what is {6634:=>Left} {minus:=>Function} {221:=>Right}, please",
+				"{subtract:=>Function} {10359:=>Right}, please",
+				"please calculate {196354:=>Left} {/:=>Function} {10359:=>Right}",
+				"please tell me what's {10359:=>Left} {*:=>Function} {96:=>Right}",
+				"please tell me what is {6634:=>Left} {minus:=>Function} {221:=>Right}",
+				"please {subtract:=>Function} {10359:=>Right}",
+				"{square root:=>Function} of {76:=>Left}",
+				"what's the {sine:=>Function} of {23:=>Left}"
+			],
+			"slots": [
+				{
+					"name": "Function",
+					"description": null,
+					"required": false,
+					"type": "MathsFunction",
+					"missingQuestion": ""
+				},
+				{
+					"name": "Right",
+					"description": null,
+					"required": false,
+					"type": "snips/number",
+					"missingQuestion": ""
+				},
+				{
+					"name": "Left",
+					"description": null,
+					"required": false,
+					"type": "snips/number",
+					"missingQuestion": ""
+				}
+			]
+		}
+	]
+}

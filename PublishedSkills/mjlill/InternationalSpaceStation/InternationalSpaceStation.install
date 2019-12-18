@@ -1,0 +1,22 @@
+{
+	"name": "InternationalSpaceStation",
+	"version": "1.0.22",
+	"author": "mjlill",
+	"maintainers": [
+		 "maxbachmann",
+		 "Jierka",
+		 "Psycho"
+	],
+	"desc": "Inquire information about the international space station",
+	"aliceMinVersion": "1.0.0-a4",
+	"systemRequirements": [],
+	"pipRequirements": [],
+	"conditions": {
+		"lang": [
+			"en",
+			"de",
+			"fr"
+		],
+		"online": true
+	}
+}

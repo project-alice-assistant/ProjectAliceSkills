@@ -1,0 +1,33 @@
+{
+	"skill": "Speller",
+	"icon": "assistant",
+	"description": "Demande à Alice d'épeller un mot",
+	"slotTypes": [],
+	"intents": [
+		{
+			"name": "DoSpellWord",
+			"description": "L'utilisateur demande a Alice d'épeller un mot",
+			"enabledByDefault": true,
+			"utterances": [
+				"comment écris-tu {maison:=>RandomWord}",
+				"comment s'écrit le mot {constitution:=>RandomWord}",
+				"peux-tu m'épeller le mot {descente:=>RandomWord} s'il te plait",
+				"épelle le mot {tricher:=>RandomWord} s'il te plait",
+				"pourrais-tu me dire comment écrire {galaxie:=>RandomWord}",
+				"j'aimerais que tu me dises comment écrire {machine:=>RandomWord}",
+				"épelle moi le mot {destruction:=>RandomWord}",
+				"comment on écris {chien:=>RandomWord} s'il te plait",
+				"comment écrit on le mot {chateau:=>RandomWord}"
+			],
+			"slots": [
+				{
+					"name": "RandomWord",
+					"description": "Le mot à épeller",
+					"required": false,
+					"type": "RandomWords",
+					"missingQuestion": ""
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,16 @@
+{
+	"name": "MpdClient",
+	"version": "0.0.21",
+	"author": "glueckself",
+	"maintainers": ["maxbachmann"],
+	"desc": "Control an MPD server",
+	"aliceMinVersion": "1.0.0-a4",
+	"systemRequirements": [],
+	"pipRequirements": ["python-mpd2"],
+	"conditions": {
+		"lang": [
+			"en",
+			"de"
+		]
+	}
+}

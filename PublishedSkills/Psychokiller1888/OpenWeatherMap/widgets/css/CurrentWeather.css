@@ -1,0 +1,27 @@
+.CurrentWeather {
+	background-color: #2e7db2;
+}
+
+.CurrentWeather > .weatherIcon {
+	position: relative;
+	top: -5px;
+	width: 100%;
+	text-align: center;
+}
+
+.CurrentWeather > .location {
+	position: relative;
+	top: -10px;
+	font-style: italic;
+	width: 100%;
+	text-align: left;
+	font-size: 100%;
+	overflow-x: hidden;
+	white-space: nowrap;
+}
+
+.CurrentWeather > .temperature {
+	font-weight: bold;
+	width: 100%;
+	text-align: center;
+}

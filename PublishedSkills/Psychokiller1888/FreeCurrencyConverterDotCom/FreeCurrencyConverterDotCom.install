@@ -1,0 +1,16 @@
+{
+	"name": "FreeCurrencyConverterDotCom",
+	"version": "1.0.30",
+	"author": "Psychokiller1888",
+	"maintainers": ["maxbachmann"],
+	"desc": "Let's you convert world currencies",
+	"aliceMinVersion": "1.0.0-a4",
+	"systemRequirements": [],
+	"pipRequirements": [],
+	"conditions": {
+		"lang": [
+			"en"
+		],
+		"online": true
+	}
+}

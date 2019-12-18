@@ -1,0 +1,66 @@
+{
+	"skill": "MpdClient",
+	"icon": "music",
+	"description": "Control an MPD server",
+	"slotTypes": [],
+	"intents": [
+		{
+			"name": "mpdPlay",
+			"description": "User wants to start the current playlist.",
+			"enabledByDefault": true,
+			"utterances": [
+				"Music please",
+				"Please play me some music",
+				"Please play some music",
+				"Please play music",
+				"Play music",
+				"Music on",
+				"Please turn on the music again",
+				"Please turn on the music"
+			],
+			"slots": []
+		},
+		{
+			"name": "mpdStop",
+			"description": "User wants to stop the current playback.",
+			"enabledByDefault": true,
+			"utterances": [
+				"Turn off the music",
+				"Please turn of the music",
+				"Music off please",
+				"Enough music, thank you"
+			],
+			"slots": []
+		},
+		{
+			"name": "mpdNext",
+			"description": "User wants to skip to the next track.",
+			"enabledByDefault": true,
+			"utterances": [
+				"Next song please",
+				"Please play the next song",
+				"Skip this song please",
+				"I want the next song",
+				"Next title please",
+				"Please play the next title",
+				"Skip to the next song"
+			],
+			"slots": []
+		},
+		{
+			"name": "mpdPrev",
+			"description": "User wants to return to the previous track.",
+			"enabledByDefault": true,
+			"utterances": [
+				"previous song please",
+				"Please play the previous song",
+				"Skip this song please",
+				"I want the previous song",
+				"previous title please",
+				"Please play the previous title",
+				"Skip to the previous song"
+			],
+			"slots": []
+		}
+	]
+}

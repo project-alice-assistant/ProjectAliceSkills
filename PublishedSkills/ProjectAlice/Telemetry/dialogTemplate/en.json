@@ -1,0 +1,163 @@
+{
+	"skill": "Telemetry",
+	"icon": "temperature",
+	"description": "Access your stored telemetry data",
+	"slotTypes": [
+		{
+			"name": "TelemetryType",
+			"matchingStrictness": null,
+			"automaticallyExtensible": false,
+			"useSynonyms": true,
+			"values": [
+				{
+					"value": "temperature",
+					"synonyms": [
+						"how warm",
+						"how cold"
+					]
+				},
+				{
+					"value": "pressure",
+					"synonyms": [
+						"barometer"
+					]
+				},
+				{
+					"value": "humidity",
+					"synonyms": [
+						"humid"
+					]
+				},
+				{
+					"value": "light",
+					"synonyms": [
+						"luminosity"
+					]
+				},
+				{
+					"value": "gas",
+					"synonyms": []
+				},
+				{
+					"value": "airQuality",
+					"synonyms": [
+						"air quality",
+						"quality of the air"
+					]
+				},
+				{
+					"value": "uvIndex",
+					"synonyms": [
+						"uv index"
+					]
+				},
+				{
+					"value": "noise",
+					"synonyms": [
+						"noisy",
+						"how loud"
+					]
+				},
+				{
+					"value": "co2",
+					"synonyms": [
+						"CO2",
+						"carbon dioxide"
+					]
+				},
+				{
+					"value": "rain",
+					"synonyms": [
+						"rainy",
+						"raining"
+					]
+				},
+				{
+					"value": "wind_strength",
+					"synonyms": [
+						"wind",
+						"wind strength"
+					]
+				},
+				{
+					"value": "gust_strength",
+					"synonyms": [
+						"gust strength"
+					]
+				},
+				{
+					"value": "wind_angle",
+					"synonyms": [
+						"wind angle",
+						"wind direction"
+					]
+				},
+				{
+					"value": "gust_angle",
+					"synonyms": [
+						"gust angle",
+						"gust direction"
+					]
+				}
+			]
+		}
+	],
+	"intents": [
+		{
+			"name": "GetTelemetryData",
+			"description": "User asks for telemetry data",
+			"enabledByDefault": true,
+			"utterances": [
+				"what's the {temperature:=>TelemetryType}",
+				"what's the {humidity:=>TelemetryType} {outside:=>Room}",
+				"tell me the {noise:=>TelemetryType} level in the {living room:=>Room}",
+				"how much is it {raining:=>TelemetryType}",
+				"can you please tell me the {wind strength:=>TelemetryType}",
+				"check the {uv index:=>TelemetryType} for me please",
+				"how much {carbon dioxide:=>TelemetryType} in the {bedroom:=>Room}",
+				"how is the {air quality:=>TelemetryType} in the {kitchenb:=>Room}",
+				"{how warm:=>TelemetryType} is it in the {kitchen:=>Room}",
+				"{how cold:=>TelemetryType} {outside:=>Room} please",
+				"please tell me how {humid:=>TelemetryType} it is in the {bathroom:=>Room}",
+				"what's the {temperature:=>TelemetryType} in the {living room:=>Room}",
+				"give me the {humidity:=>TelemetryType} in the {office:=>Room} please"
+			],
+			"slots": [
+				{
+					"name": "TelemetryType",
+					"description": "The type of data the user wants",
+					"required": false,
+					"type": "TelemetryType",
+					"missingQuestion": ""
+				},
+				{
+					"name": "Room",
+					"description": "The room where the data is from",
+					"required": false,
+					"type": "Room",
+					"missingQuestion": ""
+				}
+			]
+		},
+		{
+			"name": "AnswerTelemetryType",
+			"description": "User answers what telemetry type he wants",
+			"enabledByDefault": false,
+			"utterances": [
+				"{temperature:=>TelemetryType}",
+				"{humidity:=>TelemetryType} please",
+				"tell me the {noise:=>TelemetryType}",
+				"tell me the {uv index:=>TelemetryType} please"
+			],
+			"slots": [
+				{
+					"name": "TelemetryType",
+					"description": "The type of data the user wants",
+					"required": false,
+					"type": "TelemetryType",
+					"missingQuestion": ""
+				}
+			]
+		}
+	]
+}

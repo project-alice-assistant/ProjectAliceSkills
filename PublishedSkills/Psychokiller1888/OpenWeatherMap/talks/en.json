@@ -1,0 +1,16 @@
+{
+	"currentWeather": [
+		"Currently in {0} it's {1}° and {2}",
+		"Right now in {0} it's {1}° and {2}",
+		"It's {1}° and {2} right now in {0}"
+	],
+	"forecast": [
+		"{} in {} it'll be {} with a high of {} and a low {}"
+	],
+	"notFound": [
+		"I'm sorry, I couldn't find any weather data for {}. Tell me what city you are looking the weather for"
+	],
+	"noApiKey": [
+		"You haven't specified your API key in the open weather map skill. Please do it and I will be able to answer you!"
+	]
+}

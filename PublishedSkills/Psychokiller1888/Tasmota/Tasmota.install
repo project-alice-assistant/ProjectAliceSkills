@@ -1,0 +1,18 @@
+{
+	"name": "Tasmota",
+	"version": "1.0.37",
+	"author": "Psychokiller1888",
+	"maintainers": ["maxbachmann"],
+	"desc": "This skill allows you to not only connect tasmota esp devices, but listen to them",
+	"aliceMinVersion": "1.0.0-a4",
+	"systemRequirements": [],
+	"pipRequirements": [],
+	"conditions": {
+		"lang": [
+			"en",
+			"fr",
+			"de"
+		],
+		"online": true
+	}
+}

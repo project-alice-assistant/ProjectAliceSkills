@@ -1,0 +1,189 @@
+{
+	"skill": "Minigames",
+	"icon": "time",
+	"description": "Play a collection of many little games with alice",
+	"slotTypes": [
+		{
+			"name": "MiniGame",
+			"matchingStrictness": null,
+			"automaticallyExtensible": false,
+			"useSynonyms": true,
+			"values": [
+				{
+					"value": "FlipACoin",
+					"synonyms": [
+						"flip a coin",
+						"heads or tail",
+						"coin flipping"
+					]
+				},
+				{
+					"value": "RollADice",
+					"synonyms": [
+						"roll a dice",
+						"rolling dice",
+						"roll the dice",
+						"throw a dice"
+					]
+				},
+				{
+					"value": "RockPaperScissors",
+					"synonyms": [
+						"scissors rock paper",
+						"rock paper scissors",
+						"roshambo",
+						"stone paper scissors"
+					]
+				},
+				{
+					"value": "GuessTheNumber",
+					"synonyms": [
+						"guess the number",
+						"guess a number",
+						"guess my number"
+					]
+				}
+			]
+		},
+		{
+			"name": "HeadsOrTails",
+			"matchingStrictness": null,
+			"automaticallyExtensible": true,
+			"useSynonyms": true,
+			"values": [
+				{
+					"value": "heads",
+					"synonyms": [
+						"head",
+						"cross"
+					]
+				},
+				{
+					"value": "tails",
+					"synonyms": [
+						"tail",
+						"tale",
+						"tell",
+						"butt",
+						"ship",
+						"pile"
+					]
+				}
+			]
+		},
+		{
+			"name": "RockPaperOrScissors",
+			"matchingStrictness": null,
+			"automaticallyExtensible": true,
+			"useSynonyms": true,
+			"values": [
+				{
+					"value": "rock",
+					"synonyms": [
+						"stone"
+					]
+				},
+				{
+					"value": "paper",
+					"synonyms": [
+						"sheet"
+					]
+				},
+				{
+					"value": "scissors",
+					"synonyms": [
+						"knife"
+					]
+				}
+			]
+		}
+	],
+	"intents": [
+		{
+			"name": "PlayGame",
+			"description": "User asks to play a minigame",
+			"enabledByDefault": true,
+			"utterances": [
+				"{flip a coin:=>WhichGame}",
+				"please {flip a coin:=>WhichGame}",
+				"{flip a coin:=>WhichGame} please",
+				"let's play a game",
+				"shall we play a game",
+				"can we play {rock paper scissors:=>WhichGame}",
+				"i wanna play with you",
+				"can we play together",
+				"play with me please",
+				"can you please {flip a coin:=>WhichGame}",
+				"can you {flip a coin:=>WhichGame}",
+				"can you {roll a dice:=>WhichGame}",
+				"let's play {scissors rock paper:=>WhichGame}"
+			],
+			"slots": [
+				{
+					"name": "WhichGame",
+					"description": "The minigame to start",
+					"required": false,
+					"type": "MiniGame",
+					"missingQuestion": ""
+				}
+			]
+		},
+		{
+			"name": "AnswerMiniGame",
+			"description": "User answers with a minigame name",
+			"enabledByDefault": false,
+			"utterances": [
+				"{flip a coin:=>WhichGame}"
+			],
+			"slots": [
+				{
+					"name": "WhichGame",
+					"description": null,
+					"required": false,
+					"type": "MiniGame",
+					"missingQuestion": ""
+				}
+			]
+		},
+		{
+			"name": "AnswerHeadsOrTail",
+			"description": "User answers heads or tail",
+			"enabledByDefault": false,
+			"utterances": [
+				"{Heads:=>HeadsOrTails}",
+				"i choose {tail:=>HeadsOrTails}",
+				"i'm {tail:=>HeadsOrTails}",
+				"i take {ship:=>HeadsOrTails}"
+			],
+			"slots": [
+				{
+					"name": "HeadsOrTails",
+					"description": null,
+					"required": false,
+					"type": "HeadsOrTails",
+					"missingQuestion": ""
+				}
+			]
+		},
+		{
+			"name": "AnswerRockPaperOrScissors",
+			"description": "User answers heads or tail",
+			"enabledByDefault": false,
+			"utterances": [
+				"{rock:=>RockPaperOrScissors}",
+				"i have {paper:=>RockPaperOrScissors}",
+				"i chose {scissors:=>RockPaperOrScissors}",
+				"i take {stone:=>RockPaperOrScissors}"
+			],
+			"slots": [
+				{
+					"name": "RockPaperOrScissors",
+					"description": null,
+					"required": false,
+					"type": "RockPaperOrScissors",
+					"missingQuestion": ""
+				}
+			]
+		}
+	]
+}

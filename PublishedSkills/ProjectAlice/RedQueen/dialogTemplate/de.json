@@ -1,0 +1,225 @@
+{
+	"skill": "RedQueen",
+	"icon": "drink",
+	"description": "Die Absichten der Roten Königin",
+	"slotTypes": [
+		{
+			"name": "UserState",
+			"matchingStrictness": null,
+			"automaticallyExtensible": false,
+			"useSynonyms": true,
+			"values": [
+				{
+					"value": "onGoingBed",
+					"synonyms": [
+						"ins bett gehen",
+						"in das bett gehen",
+						"schläfrig",
+						"müde",
+						"geh ins bett",
+						"schlafen gehen",
+						"gehen ins bett",
+						"schlafen",
+						"ins bett"
+					]
+				},
+				{
+					"value": "onLeavingHome",
+					"synonyms": [
+						"weg gehen",
+						"das haus verlassen",
+						"am gehen",
+						"am aufbrechen",
+						"gehen weg",
+						"haus verlassen",
+						"zum gehen",
+						"weggehen"
+					]
+				},
+				{
+					"value": "onReturningHome",
+					"synonyms": [
+						"wieder zuhause",
+						"zurück",
+						"zurückgekommen",
+						"zurück zuhause"
+					]
+				},
+				{
+					"value": "onWatchingTV",
+					"synonyms": [
+						"fernsehen",
+						"schaut fernsehen",
+						"fernseher",
+						"am fernsehen",
+						"fernseher schauen",
+						"fernsehzeit",
+						"fern schauen"
+					]
+				},
+				{
+					"value": "onEating",
+					"synonyms": [
+						"am essen",
+						"am speisen",
+						"essen",
+						"hungrig",
+						"köstigen",
+						"zum essen"
+					]
+				},
+				{
+					"value": "onMakeup",
+					"synonyms": [
+						"am schminken",
+						"sich schön machen",
+						"beim schminken",
+						"hübsch machen",
+						"schminken",
+						"makeup auftragen",
+						"mache mich hübsch"
+					]
+				},
+				{
+					"value": "onCooking",
+					"synonyms": [
+						"kochen",
+						"essen zubereiten",
+						"beim kochen",
+						"Nahrung zubereiten"
+					]
+				}
+			]
+		},
+		{
+			"name": "PersonDesignation",
+			"matchingStrictness": null,
+			"automaticallyExtensible": true,
+			"useSynonyms": true,
+			"values": [
+				{
+					"value": "i",
+					"synonyms": [
+						"ich bin",
+						"mich"
+					]
+				},
+				{
+					"value": "we",
+					"synonyms": [
+						"wir",
+						"wir sind",
+						"uns"
+					]
+				}
+			]
+		}
+	],
+	"intents": [
+		{
+			"name": "WhoAreYou",
+			"description": "User asks informations about the assistant",
+			"enabledByDefault": true,
+			"utterances": [
+				"kannst du mir bitte sagen wer du bist",
+				"bitte sag mir wer du bist",
+				"kannst du mir sagen wer du bist",
+				"was zum fick bist du",
+				"wer zur hölle bist du",
+				"sag mir wer du bist",
+				"sag mir was du bist",
+				"wer bist du",
+				"was bist du",
+				"was zur hölle bist du",
+				"könntest du mir erläutern mit wem oder was ich das vergnügen habe",
+				"würdest du mir sagen wer du bist"
+			],
+			"slots": []
+		},
+		{
+			"name": "GoodMorning",
+			"description": "User wishes a good morning to the assistant",
+			"enabledByDefault": true,
+			"utterances": [
+				"bitte wach auf",
+				"wach auf bitte",
+				"bitte wach auf alice",
+				"öffne deinen augen es ist morgen",
+				"es ist morgen alice",
+				"guten morgen alice",
+				"es ist zeit aufzustehen alice",
+				"alice wach auf",
+				"wach auf alice",
+				"wach auf schlafmütze",
+				"einen guten start in den tag",
+				"guten morgen zeit aufzuwachen",
+				"es ist zeit aufzuwachen guten morgen",
+				"zeit aufzustehen",
+				"guten morgen"
+			],
+			"slots": []
+		},
+		{
+			"name": "GoodNight",
+			"description": "User wishes a good night to the assistant",
+			"enabledByDefault": true,
+			"utterances": [
+				"alice es ist zeit zu schlafen",
+				"schlaf gut",
+				"ich wünsche dir eine gute nacht alice",
+				"ich wünsche dir eine gute nacht träum was schönes",
+				"gute nacht und schlaf gut",
+				"gute nacht schlaf gut",
+				"schlaf tief und fest",
+				"schlaf gut alice",
+				"ich wünsche dir eine gute nacht",
+				"zeit zu schlafen, gute nacht",
+				"nacht nacht",
+				"gute nacht",
+				"hab eine gute nacht",
+				"träum was schönes"
+			],
+			"slots": []
+		},
+		{
+			"name": "ChangeUserState",
+			"description": "",
+			"enabledByDefault": true,
+			"utterances": [
+				"{Wir:=>Who} gehen {schlafen:=>State}",
+				"lass {ins bett gehen:=>State}",
+				"zeit zum {schlafen:=>State}",
+				"{wir:=>Who} sind am {kochen:=>State}",
+				"{ich:=>Who} bin am {schminken:=>State}",
+				"{ich:=>Who} {mache mich hübsch:=>State}",
+				"{ich:=>Who} gehe {schlafen:=>State}",
+				"{ich:=>Who} bin {müde:=>State}",
+				"{wir:=>Who} ghen {ins bett:=>State}",
+				"{wir:=>Who} sind {schläfrig:=>State}",
+				"es ist {fernsehzeit:=>State}",
+				"bereite dich für das {fernsehen:=>State} vor bitte",
+				"bitte bereite {uns:=>Who} vor zum {weggehen:=>State}",
+				"vorbereiten zum {essen:=>State} bitte",
+				"lasst uns {essen:=>State}",
+				"{wir:=>Who} sind gerade {zurückgekommen:=>State}",
+				"{wir:=>Who} sind {am fernsehen:=>State}"
+			],
+			"slots": [
+				{
+					"name": "State",
+					"description": null,
+					"required": false,
+					"type": "UserState",
+					"missingQuestion": ""
+				},
+				{
+					"name": "Who",
+					"description": null,
+					"required": false,
+					"type": "PersonDesignation",
+					"missingQuestion": ""
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,45 @@
+{
+	"skill": "PrinterControl",
+	"icon": "lamp",
+	"description": "Control printer on or off",
+	"slotTypes": [],
+	"intents": [
+		{
+			"name": "DoSetPrinterOn",
+			"description": "User is asking for printer turn on",
+			"enabledByDefault": true,
+			"utterances": [
+				"set the printer on",
+				"printer on thank you",
+				"please turn the printer on",
+				"please set the printer on",
+				"would you turn the printer on",
+				"i need you to set the printer on",
+				"turn on the printer please",
+				"just push the on printer",
+				"turn the damn printer on",
+				"turn the damn printer on thank you"
+			],
+			"slots": []
+		},
+		{
+			"name": "DoSetPrinterOff",
+			"description": "User is asking to turn printer off",
+			"enabledByDefault": true,
+			"utterances": [
+				"set the printer off",
+				"printer off thank you",
+				"please turn the printer off",
+				"please set the printer off",
+				"would you turn the printer off",
+				"i need you to set the printer off",
+				"turn off the printer please",
+				"just push the off printer",
+				"turn the damn printer off",
+				"turn the damn printer off thank you"
+			],
+			"slots": []
+		}
+
+	]
+}

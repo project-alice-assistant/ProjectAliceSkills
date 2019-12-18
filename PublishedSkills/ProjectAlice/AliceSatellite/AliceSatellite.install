@@ -1,0 +1,21 @@
+{
+	"name": "AliceSatellite",
+	"version": "1.0.10",
+	"author": "ProjectAlice",
+	"maintainers": [
+		"Psycho",
+		"Jierka",
+		"maxbachmann"
+	],
+	"desc": "AliceSatellite is the official skill to support Project Alice satellites",
+	"aliceMinVersion": "1.0.0-a4",
+	"systemRequirements": [],
+	"pipRequirements": [],
+	"conditions": {
+		"lang": [
+			"en",
+			"fr",
+			"de"
+		]
+	}
+}

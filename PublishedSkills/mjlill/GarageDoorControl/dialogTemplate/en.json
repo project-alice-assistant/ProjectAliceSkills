@@ -1,0 +1,45 @@
+{
+	"skill": "GarageDoorControl",
+	"icon": "lamp",
+	"description": "Open and close a garage door",
+	"slotTypes": [],
+	"intents": [
+		{
+			"name": "DoDoorOpen",
+			"description": "User is asking to open garage door",
+			"enabledByDefault": true,
+			"utterances": [
+				"open garage door",
+				"open garage door thank you",
+				"please open the garage",
+				"please open the garage door",
+				"would you open the garage door",
+				"i need you to open the garage door",
+				"press the open garage door",
+				"just open the garage door",
+				"push the damn open the garage door",
+				"push the damn open the garage door thank you"
+			],
+			"slots": []
+		},
+		{
+			"name": "DoDoorClose",
+			"description": "User is asking to close garage door",
+			"enabledByDefault": true,
+			"utterances": [
+				"close garage door",
+				"close garage door thank you",
+				"please close the garage",
+				"please close the garage door",
+				"would you close the garage door",
+				"i need you to close the garage",
+				"press the close garage",
+				"just close the garage",
+				"push the damn close the garage door",
+				"push the damn close the garage thank you"
+			],
+			"slots": []
+		}
+	]
+}
+

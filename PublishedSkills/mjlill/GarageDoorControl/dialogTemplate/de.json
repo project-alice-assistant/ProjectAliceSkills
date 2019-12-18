@@ -1,0 +1,40 @@
+{
+	"skill": "GarageDoorControl",
+	"icon": "lamp",
+	"description": "Open and close a garage door",
+	"slotTypes": [],
+	"intents": [
+		{
+			"name": "DoDoorOpen",
+			"description": "User is asking to open garage door",
+			"enabledByDefault": true,
+			"utterances": [
+				"Garagentor öffnen",
+				"Öffne das Garagentor, danke",
+				"Bitte öffne die Garage",
+				"Bitte öffne das Garagentor",
+				"Würdest du das Garagentor öffnen",
+				"Du musst das Garagentor öffnen",
+				"Drücke das Garagentor auf",
+				"Öffne einfach das Garagentor"
+			],
+			"slots": []
+		},
+		{
+			"name": "DoDoorClose",
+			"description": "User is asking to close garage door",
+			"enabledByDefault": true,
+			"utterances": [
+				"Garagentor schließen",
+				"Garagentor schließen, danke",
+				"Bitte schließe die Garage",
+				"Bitte schließe das Garagentor",
+				"Würdest du das Garagentor schließen",
+				"Ich möchte, dass du die Garage schließt",
+				"Schließ einfach die Garage"
+			],
+			"slots": []
+		}
+	]
+}
+
