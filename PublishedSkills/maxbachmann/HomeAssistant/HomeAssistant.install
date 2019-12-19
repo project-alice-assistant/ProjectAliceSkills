@@ -1,6 +1,6 @@
 {
 	"name": "HomeAssistant",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"author": "maxbachmann",
 	"maintainers": [],
 	"desc": "bridge events between alice and HomeAssistant",
