@@ -23,7 +23,7 @@ the event arguments are a string converted dict, with the structure:
 
 - Version: 0.0.1
 - Author: maxbachmann
-- Maintainers: 
+- Maintainers: N/A
 - Alice minimum Version: 1.0.0-a4
 - Requirements: N/A
 
