@@ -13,9 +13,9 @@ class HomeAssistant(AliceSkill):
 
 
 	def onEvent(self, event: str, **kwargs):
-		mqttClient = self.MqttManager.mqttClient.unsubscribe('projectalice/events/+')
+		self.MqttManager.mqttClient.unsubscribe('projectalice/events/+')
 		self.MqttManager.publish(topic=f'projectalice/events/{event}', payload=kwargs)
-		mqttClient = self.MqttManager.mqttClient.subscribe('projectalice/events/+')
+		self.MqttManager.mqttClient.subscribe('projectalice/events/+')
 
 
 	@MqttHandler('projectalice/events/+')
