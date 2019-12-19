@@ -2,7 +2,7 @@ from core.scenario.model.ScenarioTile import ScenarioTile
 from core.scenario.model.ScenarioTileType import ScenarioTileType
 
 
-class Array(ScenarioTile):
+class Speak(ScenarioTile):
 
 	def __init__(self):
 		super().__init__()
