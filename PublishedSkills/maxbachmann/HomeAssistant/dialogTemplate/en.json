@@ -1,0 +1,7 @@
+{
+	"skill": "HomeAssistant",
+	"icon": "lamp",
+	"description": "bridge events between alice and HomeAssistant",
+	"slotTypes": [],
+	"intents": []
+}
