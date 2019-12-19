@@ -1,7 +1,7 @@
 {
-	"skill": "HomeAssistant",
+	"skill": "MqttBridge",
 	"icon": "lamp",
-	"description": "bridge events between alice and HomeAssistant",
+	"description": "bridge events between alice and mqtt",
 	"slotTypes": [],
 	"intents": []
 }

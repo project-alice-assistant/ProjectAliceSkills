@@ -5,12 +5,11 @@ from core.dialog.model.DialogSession import DialogSession
 from core.util.Decorators import MqttHandler
 
 
-class HomeAssistant(AliceSkill):
+class MqttBridge(AliceSkill):
 	"""
 	Author: maxbachmann
-	Description: bridge events between alice and HomeAssistant
+	Description: bridge events between alice and mqtt
 	"""
-
 
 	def onEvent(self, event: str, **kwargs):
 		self.MqttManager.mqttClient.unsubscribe('projectalice/events/+')

@@ -1,14 +1,14 @@
-# HomeAssistant
+# MqttBridge
 
 ### Download
 
 ##### > WGET method
 ```bash
-wget http://skills.projectalice.ch/HomeAssistant -O ~/ProjectAlice/system/skillInstallTickets/HomeAssistant.install
+wget http://skills.projectalice.ch/MqttBridge -O ~/ProjectAlice/system/skillInstallTickets/mqtt.install
 ```
 
 ### Description
-bridge events between alice and HomeAssistant.
+bridge events between alice and mqtt.
 All events that are shared with skills will create the following MQTT Message:
 ```
 projectalice/events/<eventName>/<eventArguments>

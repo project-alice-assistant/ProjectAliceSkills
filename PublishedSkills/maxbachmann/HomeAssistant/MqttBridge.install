@@ -1,9 +1,9 @@
 {
-	"name": "HomeAssistant",
+	"name": "MqttBridge",
 	"version": "0.0.2",
 	"author": "maxbachmann",
 	"maintainers": [],
-	"desc": "bridge events between alice and HomeAssistant",
+	"desc": "bridge events between alice and mqtt",
 	"aliceMinVersion": "1.0.0-a4",
 	"systemRequirements": [],
 	"pipRequirements": [],
