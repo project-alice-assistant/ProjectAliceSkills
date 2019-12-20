@@ -1,4 +1,3 @@
-import os
 import random
 
 from core.base.SuperManager import SuperManager
@@ -29,16 +28,11 @@ class FlipACoin(MiniGame):
 		)
 
 
-	def onMessage(self, intent: str, session: DialogSession):
-		if intent == self._INTENT_ANSWER_HEADS_OR_TAIL:
+	def onMessage(self, session: DialogSession):
+		if session.intentName == self._INTENT_ANSWER_HEADS_OR_TAIL:
 			coin = random.choice(['heads', 'tails'])
 
-			SuperManager.getInstance().mqttManager.playSound(
-				soundFile=os.path.join(SuperManager.getInstance().commons.rootDir(), 'skills', 'Minigames', 'sounds', 'coinflip'),
-				sessionId='coinflip',
-				siteId=session.siteId,
-				absolutePath=True
-			)
+			self.sound('coinflip', session.siteId)
 
 			redQueen = SuperManager.getInstance().skillManager.getSkillInstance('RedQueen')
 			redQueen.changeRedQueenStat('happiness', 5)
@@ -49,14 +43,14 @@ class FlipACoin(MiniGame):
 			else:
 				result = 'flipACoinUserLooses'
 				redQueen.changeRedQueenStat('frustration', -5)
-				redQueen.changeRedQueenStat('hapiness', 5)
+				redQueen.changeRedQueenStat('happiness', 5)
 
 			self.MqttManager.continueDialog(
 				sessionId=session.sessionId,
 				text=self.TalkManager.randomTalk(
 					talk=result,
 					skill='Minigames'
-				).format(text=self.LanguageManager.getTranslations(skill='Minigames', key=coin, toLang=SuperManager.getInstance().languageManager.activeLanguage)[0]),
+				).format(self.LanguageManager.getTranslations(skill='Minigames', key=coin)[0]),
 				intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
 				currentDialogState=self.ANSWERING_PLAY_AGAIN_STATE
 			)

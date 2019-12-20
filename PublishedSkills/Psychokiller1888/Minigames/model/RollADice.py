@@ -1,4 +1,3 @@
-import os
 import random
 
 from core.base.SuperManager import SuperManager
@@ -24,12 +23,7 @@ class RollADice(MiniGame):
 	def start(self, session: DialogSession):
 		super().start(session)
 
-		SuperManager.getInstance().mqttManager.playSound(
-			soundFile=os.path.join(SuperManager.getInstance().commons.rootDir(), 'skills', 'Minigames', 'sounds', 'rollADice'),
-			sessionId='rollADice',
-			siteId=session.siteId,
-			absolutePath=True
-		)
+		self.sound('rollADice', session.siteId)
 
 		redQueen = SuperManager.getInstance().skillManager.getSkillInstance('RedQueen')
 		redQueen.changeRedQueenStat('happiness', 5)
@@ -41,7 +35,3 @@ class RollADice(MiniGame):
 				skill='Minigames'
 			).format(random.randint(1, 6))
 		)
-
-
-	def onMessage(self, intent: str, session: DialogSession):
-		pass

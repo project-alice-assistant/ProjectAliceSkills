@@ -231,8 +231,9 @@ class RedQueen(AliceSkill):
 
 
 	def changeRedQueenStat(self, stat: str, amount: int):
-		if stat not in self._redQueen['stats'].keys():
+		if stat not in self._redQueen['stats']:
 			self.logWarning(f'Asked to change stat {stat} but it does not exist')
+			return
 
 		self._redQueen['stats'][stat] += amount
 		if self._redQueen['stats'][stat] < 0:

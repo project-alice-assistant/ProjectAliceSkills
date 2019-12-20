@@ -1,7 +1,7 @@
 import importlib
 
-from core.base.model.Intent import Intent
 from core.base.model.AliceSkill import AliceSkill
+from core.base.model.Intent import Intent
 from core.dialog.model.DialogSession import DialogSession
 from .model import MiniGame
 
@@ -70,7 +70,7 @@ class Minigames(AliceSkill):
 		if session.currentState != MiniGame.MiniGame.PLAYING_MINIGAME_STATE:
 			return False
 
-		self._minigame.onMessage(session.intentName, session)
+		self._minigame.onMessage(session)
 		return True
 
 
@@ -117,4 +117,4 @@ class Minigames(AliceSkill):
 				self._minigame.start(session)
 
 		elif self._minigame is not None:
-			self._minigame.onMessage(session.intentName, session)
+			self._minigame.onMessage(session)

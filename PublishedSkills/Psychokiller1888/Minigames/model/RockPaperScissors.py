@@ -1,4 +1,3 @@
-import os
 import random
 
 from core.base.SuperManager import SuperManager
@@ -35,16 +34,12 @@ class RockPaperScissors(MiniGame):
 		)
 
 
-	def onMessage(self, intent: str, session: DialogSession):
-		if intent == self._INTENT_ANSWER_ROCK_PAPER_OR_SCISSORS:
+	def onMessage(self, session: DialogSession):
+		if session.intentName == self._INTENT_ANSWER_ROCK_PAPER_OR_SCISSORS:
 			choices = ['rock', 'paper', 'scissors']
 			me = random.choice(choices)
 
-			SuperManager.getInstance().mqttManager.playSound(
-				soundFile=os.path.join(SuperManager.getInstance().commons.rootDir(), 'skills', 'Minigames', 'sounds', 'drum_suspens'),
-				siteId=session.siteId,
-				absolutePath=True
-			)
+			self.sound('drum_suspens', session.siteId)
 
 			redQueen = SuperManager.getInstance().skillManager.getSkillInstance('RedQueen')
 			redQueen.changeRedQueenStat('happiness', 5)

@@ -1,6 +1,5 @@
 import time
 
-import os
 import random
 
 from core.base.SuperManager import SuperManager
@@ -46,12 +45,12 @@ class GuessTheNumber(MiniGame):
 		)
 
 
-	def onMessage(self, intent: str, session: DialogSession):
-		if intent == self._INTENT_ANSWER_NUMBER:
-			self.numberIntent(intent, session)
+	def onMessage(self, session: DialogSession):
+		if session.intentName == self._INTENT_ANSWER_NUMBER:
+			self.numberIntent(session)
 
 
-	def numberIntent(self, intent: str, session: DialogSession):
+	def numberIntent(self, session: DialogSession):
 		number = int(session.slotValue('Number'))
 		if number == self._number:
 
@@ -59,11 +58,7 @@ class GuessTheNumber(MiniGame):
 			m, s = divmod(score, 60)
 			scoreFormatted = SuperManager.getInstance().languageManager.getTranslations(skill='Minigames', key='minutesAndSeconds')[0].format(round(m), round(s))
 
-			SuperManager.getInstance().mqttManager.playSound(
-				soundFile=os.path.join(SuperManager.getInstance().commons.rootDir(), 'skills', 'Minigames', 'sounds', 'applause'),
-				siteId=session.siteId,
-				absolutePath=True
-			)
+			self.sound('applause', session.siteId)
 
 			SuperManager.getInstance().mqttManager.endDialog(
 				sessionId=session.sessionId,
@@ -99,5 +94,5 @@ class GuessTheNumber(MiniGame):
 			sessionId=session.sessionId,
 			text=SuperManager.getInstance().talkManager.randomTalk(textType, 'Minigames'),
 			intentFilter=[self._INTENT_ANSWER_NUMBER],
-			previousIntent=intent
+			previousIntent=session.intentName
 		)

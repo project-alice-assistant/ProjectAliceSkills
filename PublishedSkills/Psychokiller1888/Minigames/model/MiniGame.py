@@ -1,5 +1,7 @@
 import time
+from pathlib import Path
 
+from core.base.SuperManager import SuperManager
 from core.base.model.ProjectAliceObject import ProjectAliceObject
 from core.dialog.model import DialogSession
 
@@ -16,6 +18,10 @@ class MiniGame(ProjectAliceObject):
 		super().__init__(logDepth=4)
 		self._started = False
 		self._intents = list()
+
+
+	def onMessage(self, session) -> bool:
+		pass
 
 
 	@property
@@ -60,3 +66,13 @@ class MiniGame(ProjectAliceObject):
 
 		else:
 			return True
+
+
+	@staticmethod
+	def sound(filename: str, siteId: str):
+		SuperManager.getInstance().mqttManager.playSound(
+			soundFilename=filename,
+			location=Path(f'{SuperManager.getInstance().commons.rootDir()}/skills/Minigames/sounds'),
+			sessionId=filename,
+			siteId=siteId
+		)
