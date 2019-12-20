@@ -19,7 +19,9 @@
 				"Kannst du einen internet speed test starten",
 				"Kannst du bitte einen internet speed test starten",
 				"führe einen internet speedtest durch",
-				"mache einen speed test"
+				"mache einen speed test",
+				"was ist meine Internet Geschwindigkeit",
+				"wie schnell ist mein Internet"
 			],
 			"slots": []
 		}
