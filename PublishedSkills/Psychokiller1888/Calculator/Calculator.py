@@ -18,7 +18,8 @@ class Calculator(AliceSkill):
 			'-': lambda x,y: x-y,
 			'/': lambda x,y: x/y,
 			'*': lambda x,y: x*y,
-			'square root': lambda x,_: math.sqrt(x),
+			'^': lambda x,y: x**y 
+			'square root': lambda x,_: x**(0,5),
 			'modulo': lambda x,y: x%y,
 			'sine': lambda x,_: math.sin(x),
 			'cosine': lambda x,_: math.cos(x),
@@ -30,8 +31,8 @@ class Calculator(AliceSkill):
 	@IntentHandler('Maths')
 	def mathIntent(self, session: DialogSession):
 		mathOperation = self._mathOperations.get(session.slotValue('Function'))
-		left = float(session.slotValue('Left') or self._lastNumber)
-		right = float(session.slotValue('Right') or 0)
+		left = float(session.slotValue('Left', defaultValue=self._lastNumber))
+		right = float(session.slotValue('Right', defaultValue=0))
 
 		if not mathOperation:
 			self.continueDialog(sessionId=session.sessionId, text=self.randomTalk('notUnderstood'))

@@ -34,7 +34,7 @@ class Telemetry(AliceSkill):
 	@IntentHandler('GetTelemetryData')
 	@IntentHandler('AnswerTelemetryType')
 	def telemetryIntent(self, session: DialogSession):
-		siteId = session.slotValue('Room') or session.siteId
+		siteId = session.slotValue('Room', defaultValue=session.siteId)
 		telemetryType = session.slotValue('TelemetryType')
 
 		if not telemetryType:

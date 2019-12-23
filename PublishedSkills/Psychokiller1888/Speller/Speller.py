@@ -13,7 +13,7 @@ class Speller(AliceSkill):
 	@IntentHandler('DoSpellWord')
 	@IntentHandler('UserRandomAnswer', isProtected=True, requiredState='answerWord')
 	def spellIntent(self, session: DialogSession):
-		word = session.slotValue('RandomWord') or 'unknownword'
+		word = session.slotValue('RandomWord', defaultValue='unknownword')
 
 		if word == 'unknownword':
 			self.continueDialog(

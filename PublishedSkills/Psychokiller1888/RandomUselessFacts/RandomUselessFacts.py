@@ -18,7 +18,7 @@ class RandomUselessFacts(AliceSkill):
 	@AnyExcept(exceptions=(RequestException, KeyError), text='error', printStack=True)
 	@Online
 	def uselessFactIntent(self, session: DialogSession):
-		ttype = session.slotValue('type') or 'random'
+		ttype = session.slotValue('type', defaultValue='random')
 
 		response = requests.get(url=f'https://uselessfacts.jsph.pl/{ttype}.json?language={self.activeLanguage()}')
 		response.raise_for_status()

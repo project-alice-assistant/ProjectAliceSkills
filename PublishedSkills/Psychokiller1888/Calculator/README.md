@@ -11,7 +11,7 @@ wget skills.projectalice.ch/Calculator \
 ### Description
 Do some calculation with alice
 
-- Version: 1.0.21
+- Version: 1.0.22
 - Author: Psychokiller1888
 - Maintainers:
   - Jierka
