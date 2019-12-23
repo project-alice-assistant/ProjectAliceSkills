@@ -35,7 +35,7 @@ class MqttBridge(AliceSkill):
 		payload = self.Commons.payload(session.message)
 		
 		try:
-			self.say(**payload):
+			self.say(**payload)
 		except TypeError:
 			self.logError(f'incoming message say was ignored: The payload {payload} is not supported')
 
