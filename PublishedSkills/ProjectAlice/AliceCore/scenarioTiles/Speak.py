@@ -2,7 +2,7 @@ from core.scenario.model.ScenarioTile import ScenarioTile
 from core.scenario.model.ScenarioTileType import ScenarioTileType
 
 
-class Array(ScenarioTile):
+class Speak(ScenarioTile):
 
 	def __init__(self):
 		super().__init__()
@@ -10,7 +10,7 @@ class Array(ScenarioTile):
 		self.tileType = ScenarioTileType.ACTION
 		self.name = 'Speak'
 		self.description = 'The speak action makes Alice speak aloud the given text on the given device'
-		self.value = list()
+		self.value = ''
 
 
 	def toCode(self):
@@ -18,4 +18,4 @@ class Array(ScenarioTile):
 			self.logWarning('Speak action tile has no text to be spoken')
 			return
 
-		return f'self.MqttManager.say(text=self.value[0], siteId=self.value[1], canBeEnqueued=True)'
+		return f'self.MqttManager.say(text=self.value, siteId=self.value[1], canBeEnqueued=True)'
