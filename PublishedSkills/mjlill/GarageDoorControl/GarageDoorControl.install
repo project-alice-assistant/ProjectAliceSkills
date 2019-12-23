@@ -1,6 +1,6 @@
 {
 	"name": "GarageDoorControl",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"author": "mjlill",
 	"maintainers": [
 		"maxbachmann"
@@ -9,7 +9,7 @@
 	"aliceMinVersion": "1.0.0-a4",
 	"systemRequirements": [],
 	"pipRequirements": [
-		"RPI.GPIO"
+		"RPi.GPIO"
 	],
 	"conditions": {
 		"lang": [

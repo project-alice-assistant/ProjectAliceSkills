@@ -10,7 +10,7 @@ wget http://skill.projectalice.ch/GarageDoorControl -O ~/ProjectAlice/system/ski
 ### Description
 Allows for control for a garage door or other selected device
 
-- Version: 0.0.2
+- Version: 0.0.3
 - Author: mjlill
 - Maintainers:
   - maxbachmann
@@ -19,5 +19,5 @@ Allows for control for a garage door or other selected device
   - en
   - de
 - Requirements:
-  - RPI.GPIO
+  - RPi.GPIO
 

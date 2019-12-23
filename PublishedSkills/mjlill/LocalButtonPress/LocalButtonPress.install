@@ -1,6 +1,6 @@
 {
 	"name": "LocalButtonPress",
-	"version": "1.0.67",
+	"version": "1.0.68",
 	"author": "mjlill",
 	"maintainers": [
 		"Psycho",
@@ -10,7 +10,7 @@
 	"aliceMinVersion": "1.0.0-a4",
 	"systemRequirements": [],
 	"pipRequirements": [
-		"RPI.GPIO"
+		"RPi.GPIO"
 	],
 	"conditions": {
 		"lang": [

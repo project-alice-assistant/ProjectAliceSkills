@@ -10,7 +10,7 @@ wget http://skills.projectalice.ch/PrinterControl -O ~/ProjectAlice/system/skill
 ### Description
 Allows for printer control for either power or enable /disable
 
-- Version: 0.0.2
+- Version: 0.0.3
 - Author: mjlill
 - Maintainers:
   - maxbachmann
@@ -19,4 +19,4 @@ Allows for printer control for either power or enable /disable
   - en
   - de
 - Requirements:
-  - RPI.GPIO
+  - RPi.GPIO
