@@ -8,9 +8,8 @@ class OnTemperatureLowAlert(ScenarioTile):
 		super().__init__()
 
 		self.tileType = ScenarioTileType.EVENT
-		self.name = 'OnTemperatureLowAlert'
+		self.name = 'On temperature low alert'
 		self.description = 'This event triggers if a device reports a temperature lower than your threshold setting'
-		self.value = ''
 
 
 	@staticmethod
