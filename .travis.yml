@@ -1,0 +1,17 @@
+language: python
+dist: xenial
+python:
+  - "3.7"
+
+git:
+  depth: false
+
+addons:
+  sonarcloud:
+    organization: "project-alice-assistant"
+    token:
+      secure: $SONAR_TOKEN
+
+script:
+  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+  - sonar-scanner
