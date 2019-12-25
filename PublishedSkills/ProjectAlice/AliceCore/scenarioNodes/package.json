@@ -1,6 +1,6 @@
 {
 	"name": "alicecore",
-	"version": "0.0.1",
+	"version": "0.0.3",
 	"description": "Alice Core nodes",
 	"dependencies": {
 	},
@@ -8,7 +8,8 @@
 	"license": "GPLv3",
 	"node-red": {
 		"nodes": {
-			"onfullminute": "onFullMinute.js"
+			"onfullminute": "onFullMinute.js",
+			"onfiveminute": "onFiveMinute.js"
 		}
 	}
 }
