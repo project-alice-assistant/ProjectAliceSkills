@@ -1,0 +1,16 @@
+{
+	"name": "onfullminute",
+	"version": "1.0.0",
+	"description": "Triggers every full real time minute",
+	"main": "onFullMinute.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "Psycho",
+	"license": "ISC",
+	"node-red": {
+		"nodes": {
+			"lower-case": "onFullMinute.js"
+		}
+	}
+}
