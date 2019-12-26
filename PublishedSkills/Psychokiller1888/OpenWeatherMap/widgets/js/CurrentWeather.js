@@ -12,7 +12,7 @@
 			$('#myWeatherIcon').remove();
 			$icon = $('<img src="http://openweathermap.org/img/wn/' + answer['weather'][0]['icon'] + '.png" alt="icon" id="myWeatherIcon">');
 		}).fail(function() {
-			$icon = $('<i class="fas fa-exclamation-triangle weather-fetch-failed"></i>');
+			$icon = $('<i class="fas fa-exclamation-triangle weather-fetch-failed" aria-hidden="true"></i>');
 		}).always(function() {
 			$('#weatherIcon').append($icon);
 		});
