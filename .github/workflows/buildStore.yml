@@ -31,7 +31,10 @@ jobs:
       run: |
         shopt -s nullglob
         for skillpath in PublishedSkills/*/*/*.install; do
-          zip -r $(dirname "${skillpath}" | xargs basename) $skillpath
+	      skillpath=$(dirname "${skillpath}")
+	      cd "${skillpath}"
+        zip -r ../../../$(basename "${skillpath}") .
+	      cd ../../..
         done
     - name: deploy store.json
       uses: horochx/deploy-via-scp@master
