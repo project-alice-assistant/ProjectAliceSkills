@@ -1,8 +1,8 @@
 import time
 
 from core.ProjectAliceExceptions import SkillStartDelayed, SkillStartingFailed
-from core.base.model.Intent import Intent
 from core.base.model.AliceSkill import AliceSkill
+from core.base.model.Intent import Intent
 from core.commons import constants
 from core.dialog.model.DialogSession import DialogSession
 from .models.PhueAPI import Bridge, LinkButtonNotPressed, NoPhueIP, NoSuchGroup, NoSuchLight, NoSuchScene, NoSuchSceneInGroup, PhueRegistrationError, UnauthorizedUser
@@ -227,7 +227,7 @@ class PhilipsHue(AliceSkill):
 		for room in rooms:
 			if room == constants.EVERYWHERE:
 				group = self._bridge.group(0)
-				group.off() if group.isOn else group.off()
+				group.off() if group.isOn else group.on()
 				break
 
 			try:
