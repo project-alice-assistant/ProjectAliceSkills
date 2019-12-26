@@ -9,4 +9,4 @@ module.exports = function (RED) {
 	}
 
 	RED.nodes.registerType('onFiveMinute', OnFiveMinuteNode);
-}
+};

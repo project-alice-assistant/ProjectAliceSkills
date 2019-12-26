@@ -1,6 +1,6 @@
 {
 	"name": "alicecore",
-	"version": "0.0.3",
+	"version": "0.0.5",
 	"description": "Alice Core nodes",
 	"dependencies": {
 	},
@@ -9,7 +9,8 @@
 	"node-red": {
 		"nodes": {
 			"onfullminute": "onFullMinute.js",
-			"onfiveminute": "onFiveMinute.js"
+			"onfiveminute": "onFiveMinute.js",
+			"mqttclient": "mqttClient.js"
 		}
 	}
 }
