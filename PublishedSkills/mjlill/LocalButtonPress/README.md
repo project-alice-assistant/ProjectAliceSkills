@@ -4,7 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget http://skills.projectalice.ch/LocalButtonPress -O ~/ProjectAlice/system/skillInstallTickets/LocalButtonPress.install
+wget https://skills.projectalice.io/master/store/LocalButtonPress -O ~/ProjectAlice/system/skillInstallTickets/LocalButtonPress.install
 ```
 
 ### Description

@@ -4,7 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget http://skills.projectalice.ch/MqttBridge -O ~/ProjectAlice/system/skillInstallTickets/mqtt.install
+wget https://skills.projectalice.io/master/store/MqttBridge -O ~/ProjectAlice/system/skillInstallTickets/mqtt.install
 ```
 
 ### Description

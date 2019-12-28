@@ -43,7 +43,7 @@ jobs:
         zip -r ../../../$(basename "${skillpath}") .
         cd ../../..
         done
-    - name: deploy store.json
+    - name: deploy store
       uses: horochx/deploy-via-scp@master
       with:
         local: store/*
