@@ -14,7 +14,7 @@ jobs:
     - name: create remote directories
       uses: garygrossgarten/github-action-ssh@release
       with:
-        command: mkdir -p "${{ secrets.DOMAIN }}/assets/${{ steps.get-branch.outputs.branch }}/store" "${{ secrets.DOMAIN }}/assets/${{ steps.get-branch.outputs.branch }}/skills"
+        command: mkdir -p "${{ secrets.DOMAIN }}/${{ steps.get-branch.outputs.branch }}/store" "${{ secrets.DOMAIN }}/${{ steps.get-branch.outputs.branch }}/skills"
         host: ${{ secrets.DOMAIN }}
         username: ${{ secrets.USERNAME }}
         privateKey: ${{ secrets.SERVER_SSH_PRIV_KEY }}
@@ -26,7 +26,14 @@ jobs:
         for filepath in PublishedSkills/*/*/*.install; do
           skills+="$(cat $filepath),"
         done
-        echo "${skills::-1}]" | jq . -c > store.json
+				mkdir store
+        echo "${skills::-1}]" | jq . -c > store/store.json
+		- name: get install files
+		  run: |
+			  cp PublishedSkills/*/*/*.install store/
+				cd store
+				for i in ./*.install; do mv -i "$i" "${i%.install}"; done
+				cd ..
     - name: zip skills=
       run: |
         shopt -s nullglob
@@ -39,8 +46,8 @@ jobs:
     - name: deploy store.json
       uses: horochx/deploy-via-scp@master
       with:
-        local: store.json
-        remote: ${{ secrets.DOMAIN }}/assets/${{ steps.get-branch.outputs.branch }}/store
+        local: store/*
+        remote: ${{ secrets.DOMAIN }}/${{ steps.get-branch.outputs.branch }}/store
         host: ${{ secrets.DOMAIN }}
         port: 22
         user: ${{ secrets.USERNAME }}
@@ -49,7 +56,7 @@ jobs:
       uses: horochx/deploy-via-scp@master
       with:
         local: "./*.zip"
-        remote: ${{ secrets.DOMAIN }}/assets/${{ steps.get-branch.outputs.branch }}/skills
+        remote: ${{ secrets.DOMAIN }}/${{ steps.get-branch.outputs.branch }}/skills
         host: ${{ secrets.DOMAIN }}
         port: 22
         user: ${{ secrets.USERNAME }}
