@@ -2,7 +2,7 @@
 ### Download
 ##### > WGET method
 ```bash
-wget http://skills.projectalice.ch/MpdClient -O ~/ProjectAlice/system/skillInstallTickets/MpdClient.install
+wget https://skills.projectalice.io/master/store/MpdClient -O ~/ProjectAlice/system/skillInstallTickets/MpdClient.install
 ```
 
 ### Description

@@ -4,7 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget http://skills.projectalice.ch/Netatmo -O ~/ProjectAlice/system/skillInstallTickets/Netatmo.install
+wget https://skills.projectalice.io/master/store/Netatmo -O ~/ProjectAlice/system/skillInstallTickets/Netatmo.install
 ```
 
 ### Description

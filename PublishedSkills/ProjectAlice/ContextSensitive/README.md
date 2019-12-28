@@ -4,7 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget http://skills.projectalice.ch/ContextSensitive \
+wget https://skills.projectalice.io/master/store/ContextSensitive \
 -O ~/ProjectAlice/system/skillInstallTickets/ContextSensitive.install
 ```
 

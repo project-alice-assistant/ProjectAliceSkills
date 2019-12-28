@@ -16,7 +16,7 @@
 		"skill": [
 			{
 				"name": "Ifttt",
-				"url": "http://skills.projectalice.ch/ifttt"
+				"url": "https://skills.projectalice.io/master/store/ifttt"
 			}
 		],
 		"online": true

@@ -4,7 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget http://skills.projectalice.ch/Wikipedia \
+wget https://skills.projectalice.io/master/store/Wikipedia \
 -O ~/ProjectAlice/system/skillInstallTickets/Wikipedia.install
 ```
 

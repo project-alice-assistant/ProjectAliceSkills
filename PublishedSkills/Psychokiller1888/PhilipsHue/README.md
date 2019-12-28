@@ -4,7 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget http://skills.projectalice.ch/PhilipsHue \
+wget https://skills.projectalice.io/master/store/PhilipsHue \
 -O ~/ProjectAlice/system/skillInstallTickets/PhilipsHue.install
 ```
 

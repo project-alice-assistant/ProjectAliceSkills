@@ -4,7 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget http://skills.projectalice.ch/FreeCurrencyConverterDotCom \
+wget https://skills.projectalice.io/master/store/FreeCurrencyConverterDotCom \
 -O ~/ProjectAlice/system/skillInstallTickets/FreeCurrencyConverterDotCom.install
 ```
 ### Description

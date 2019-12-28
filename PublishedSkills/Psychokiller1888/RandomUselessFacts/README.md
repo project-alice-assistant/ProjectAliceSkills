@@ -4,7 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget http://skills.projectalice.ch/RandomUselessFacts \
+wget https://skills.projectalice.io/master/store/RandomUselessFacts \
 -O ~/ProjectAlice/system/skillInstallTickets/RandomUselessFacts.install
 ```
 

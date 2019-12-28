@@ -4,7 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget http://skills.projectalice.ch/Minigames -O ~/ProjectAlice/system/skillInstallTickets/Minigames.install
+wget https://skills.projectalice.io/master/store/Minigames -O ~/ProjectAlice/system/skillInstallTickets/Minigames.install
 ```
 
 ### Description
