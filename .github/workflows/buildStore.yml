@@ -26,14 +26,14 @@ jobs:
         for filepath in PublishedSkills/*/*/*.install; do
           skills+="$(cat $filepath),"
         done
-				mkdir store
+        mkdir store
         echo "${skills::-1}]" | jq . -c > store/store.json
-		- name: get install files
-		  run: |
-			  cp PublishedSkills/*/*/*.install store/
-				cd store
-				for i in ./*.install; do mv -i "$i" "${i%.install}"; done
-				cd ..
+    - name: get install files
+      run: |
+        cp PublishedSkills/*/*/*.install store/
+        cd store
+        for i in ./*.install; do mv -i "$i" "${i%.install}"; done
+        cd ..
     - name: zip skills=
       run: |
         shopt -s nullglob
