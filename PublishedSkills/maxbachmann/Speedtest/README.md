@@ -4,7 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget https://skills.projectalice.io/master/store/Speedtest -O ~/ProjectAlice/system/skillInstallTickets/Speedtest.install
+wget http://skills.projectalice.ch/Speedtest -O ~/ProjectAlice/system/skillInstallTickets/Speedtest.install
 ```
 
 ### Description

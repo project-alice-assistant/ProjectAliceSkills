@@ -4,7 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget https://skills.projectalice.io/master/store/Tasmota \
+wget http://skills.projectalice.ch/Tasmota \
 -O ~/ProjectAlice/system/skillInstallTickets/Tasmota.install
 ```
 

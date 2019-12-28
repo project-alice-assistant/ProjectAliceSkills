@@ -4,7 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget https://skills.projectalice.io/master/store/Speller -O ~/ProjectAlice/system/skillInstallTickets/Speller.install
+wget http://skills.projectalice.ch/Speller -O ~/ProjectAlice/system/skillInstallTickets/Speller.install
 ```
 
 ### Description

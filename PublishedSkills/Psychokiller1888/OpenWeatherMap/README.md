@@ -4,7 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget https://skills.projectalice.io/master/store/OpenWeatherMap \
+wget http://skills.projectalice.ch/OpenWeatherMap \
 -O ~/ProjectAlice/system/skillInstallTickets/OpenWeatherMap.install
 ```
 

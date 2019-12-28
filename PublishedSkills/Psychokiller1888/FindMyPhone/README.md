@@ -4,7 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget https://skills.projectalice.io/master/store/FindMyPhone -O ~/ProjectAlice/system/skillInstallTickets/FindMyPhone.install
+wget http://skills.projectalice.ch/FindMyPhone -O ~/ProjectAlice/system/skillInstallTickets/FindMyPhone.install
 ```
 
 ### Description

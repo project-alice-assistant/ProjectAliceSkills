@@ -4,7 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget https://skills.projectalice.io/master/store/ifttt -O ~/ProjectAlice/system/skillInstallTickets/Ifttt.install
+wget http://skills.projectalice.ch/ifttt -O ~/ProjectAlice/system/skillInstallTickets/Ifttt.install
 ```
 
 ### Description

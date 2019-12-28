@@ -4,7 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget https://skills.projectalice.io/master/store/RockPaperScissors -O ~/ProjectAlice/system/skillInstallTickets/RockPaperScissors.install
+wget http://skills.projectalice.ch/RockPaperScissors -O ~/ProjectAlice/system/skillInstallTickets/RockPaperScissors.install
 ```
 
 ### Description

@@ -4,7 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget https://skills.projectalice.io/master/store/YoutubeJukebox \
+wget http://skills.projectalice.ch/YoutubeJukebox \
 -O ~/ProjectAlice/system/skillInstallTickets/YoutubeJukebox.install
 ```
 

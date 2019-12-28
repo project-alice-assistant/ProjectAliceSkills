@@ -4,7 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget https://skills.projectalice.io/master/store/InternationalSpaceStation -O ~/ProjectAlice/system/skillInstallTickets/InternationalSpaceStation.install
+wget http://skills.projectalice.ch/InternationalSpaceStation -O ~/ProjectAlice/system/skillInstallTickets/InternationalSpaceStation.install
 ```
 
 ### Description
