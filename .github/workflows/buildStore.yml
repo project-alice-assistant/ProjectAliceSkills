@@ -19,8 +19,8 @@ jobs:
         username: ${{ secrets.USERNAME }}
         privateKey: ${{ secrets.SERVER_SSH_PRIV_KEY }}
     - uses: actions/checkout@v1
-		- name: combine install files
-			env:
+    - name: combine install files
+      env:
         RebrandlyApiKey: ${{ secrets.RebrandlyApiKey }}
       run: |
         clickCounts=$(curl --location --request GET 'https://api.rebrandly.com/v1/links' --header 'Content-Type: application/json' --header "apikey: ${RebrandlyApiKey}")
