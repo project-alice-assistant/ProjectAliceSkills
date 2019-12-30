@@ -20,8 +20,8 @@ jobs:
         privateKey: ${{ secrets.SERVER_SSH_PRIV_KEY }}
     - uses: actions/checkout@v1
     - name: combine install files
-			run: |
-			  clickCounts=$(curl --location --request GET 'https://api.rebrandly.com/v1/links' --header 'Content-Type: application/json' --header "apikey: ${{ secrets.RebrandlyApiKey }}")
+      run: |
+        clickCounts=$(curl --location --request GET 'https://api.rebrandly.com/v1/links' --header 'Content-Type: application/json' --header "apikey: ${{ secrets.RebrandlyApiKey }}")
         python3 .github/workflows/store.py $clickCounts
     - name: get install files
       run: |
