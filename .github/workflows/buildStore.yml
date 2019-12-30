@@ -22,8 +22,8 @@ jobs:
     - name: combine install files
       env:
         RebrandlyApiKey: "${{ secrets.testsecret }}"
-			run: |
-			  echo $RebrandlyApiKey
+      run: |
+        echo $RebrandlyApiKey
         python3 .github/workflows/store.py
     - name: get install files
       run: |
