@@ -21,9 +21,9 @@ jobs:
     - uses: actions/checkout@v1
     - name: combine install files
       env:
-        RebrandlyApiKey: "${{ secrets.testsecret }}"
+        api_key: "${{ secrets.testsecret }}"
       run: |
-        echo $RebrandlyApiKey
+        echo $INPUT_API_KEY
         python3 .github/workflows/store.py
     - name: get install files
       run: |
