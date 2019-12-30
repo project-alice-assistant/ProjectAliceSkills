@@ -20,14 +20,11 @@ jobs:
         privateKey: ${{ secrets.SERVER_SSH_PRIV_KEY }}
     - uses: actions/checkout@v1
     - name: combine install files
-      run: |
-        shopt -s nullglob
-        skills='['
-        for filepath in PublishedSkills/*/*/*.install; do
-          skills+="$(cat $filepath),"
-        done
-        mkdir store
-        echo "${skills::-1}]" | jq . -c > store/store.json
+      env:
+        RebrandlyApiKey: "${{ secrets.testsecret }}"
+			run: |
+			  echo $RebrandlyApiKey
+        python3 .github/workflows/store.py
     - name: get install files
       run: |
         cp PublishedSkills/*/*/*.install store/
