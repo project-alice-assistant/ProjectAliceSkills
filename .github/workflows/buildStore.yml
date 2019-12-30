@@ -19,15 +19,12 @@ jobs:
         username: ${{ secrets.USERNAME }}
         privateKey: ${{ secrets.SERVER_SSH_PRIV_KEY }}
     - uses: actions/checkout@v1
-    - name: curl
-      uses: wei/curl@v1
-      with:
-        args: -o 'test.json' --location --request GET 'https://api.rebrandly.com/v1/links' --header 'Content-Type: application/json' --header "apikey: ${{ secrets.RebrandlyApiKey }}"
     - name: combine install files
       run: |
-        sudo apt-get install strace
-        strace curl -o 'test.json' --location --verbose --request GET 'https://api.rebrandly.com/v1/links' --header 'Content-Type: application/json' --header "apikey: ${{ secrets.RebrandlyApiKey }}"
-        python3 .github/workflows/store.py $clickCounts
+        sudo apt-get install podman
+        podman build -t curlImage .github/workflows/
+        podman run --privileged -v $(pwd):/tmp --rm curlImage curl 'https://api.rebrandly.com/v1/links' -o /tmp/links.json --header 'Content-Type: application/json' --header "apikey: ${{ secrets.RebrandlyApiKey }}"
+        python3 .github/workflows/store.py `cat links.json`
     - name: get install files
       run: |
         cp PublishedSkills/*/*/*.install store/
