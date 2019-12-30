@@ -2,8 +2,7 @@
 	"name": "alicecore",
 	"version": "0.0.5",
 	"description": "Alice Core nodes",
-	"dependencies": {
-	},
+	"dependencies": {},
 	"author": "Psycho",
 	"license": "GPLv3",
 	"node-red": {
@@ -12,5 +11,8 @@
 			"onfiveminute": "onFiveMinute.js",
 			"mqttclient": "mqttClient.js"
 		}
+	},
+	"devDependencies": {
+		"mqtt": "^3.0.0"
 	}
 }
