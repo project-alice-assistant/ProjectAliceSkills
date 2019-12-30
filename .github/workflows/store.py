@@ -9,7 +9,7 @@ clickCounts = requests.get(
 	'https://api.rebrandly.com/v1/links',
 	headers={
 		'Content-Type': 'application/json',
-		'apikey': os.environ['RebrandlyApiKey']
+		'apikey': os.environ['secrets']['RebrandlyApiKey']
 	}
 )
 
