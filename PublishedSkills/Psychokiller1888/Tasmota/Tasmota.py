@@ -1,5 +1,3 @@
-import re
-
 from core.base.model.AliceSkill import AliceSkill
 from core.device.model.TasmotaConfigs import TasmotaConfigs
 from core.dialog.model.DialogSession import DialogSession
@@ -46,14 +44,14 @@ class Tasmota(AliceSkill):
 		
 		if deviceType == 'switch':
 			if feedback > 0:
-				self.SkillManager.skillBroadcast('onButtonPressed', siteId=siteId)
+				self.SkillManager.skillBroadcast('buttonPressed', siteId=siteId)
 			else:
-				self.SkillManager.skillBroadcast('onButtonReleased', siteId=siteId)
+				self.SkillManager.skillBroadcast('buttonReleased', siteId=siteId)
 		elif deviceType == 'pir':
 			if feedback > 0:
-				self.SkillManager.skillBroadcast('onMotionDetected', siteId=siteId)
+				self.SkillManager.skillBroadcast('motionDetected', siteId=siteId)
 			else:
-				self.SkillManager.skillBroadcast('onMotionStopped', siteId=siteId)
+				self.SkillManager.skillBroadcast('motionStopped', siteId=siteId)
 
 
 	def _initConf(self, identifier: str, deviceBrand: str, deviceType: str):

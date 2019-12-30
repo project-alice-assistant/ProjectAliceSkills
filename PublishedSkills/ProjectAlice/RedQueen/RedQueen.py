@@ -180,7 +180,7 @@ class RedQueen(AliceSkill):
 
 	@IntentHandler('GoodMorning', isProtected=True)
 	def morningIntent(self, session: DialogSession):
-		self.SkillManager.skillBroadcast('onWakeup')
+		self.SkillManager.skillBroadcast(constants.EVENT_WAKEUP)
 		time.sleep(0.5)
 		self.endDialog(sessionId=session.sessionId, text=self.randomTalk('goodMorning'), siteId=session.siteId)
 
@@ -188,7 +188,7 @@ class RedQueen(AliceSkill):
 	@IntentHandler('GoodNight', isProtected=True)
 	def nightIntent(self, session: DialogSession):
 		self.endDialog(sessionId=session.sessionId, text=self.randomTalk('goodNight'), siteId=session.siteId)
-		self.SkillManager.skillBroadcast('onSleep')
+		self.SkillManager.skillBroadcast(constants.EVENT_SLEEP)
 
 
 	@IntentHandler('ChangeUserState')
