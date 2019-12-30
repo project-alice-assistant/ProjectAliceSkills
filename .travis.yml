@@ -16,5 +16,4 @@ jobs:
             secure: $SONAR_TOKEN
       script: sonar-scanner
     - stage: deploy
-      script:
-        - curl -o 'test.json' --location 'https://api.rebrandly.com/v1/links' --header 'Content-Type: application/json' --header "apikey: ${RebrandlyApiKey}"
+      script: 'curl -o "test.json" --location "https://api.rebrandly.com/v1/links" --header "Content-Type: application/json" --header "apikey: ${RebrandlyApiKey}"'
