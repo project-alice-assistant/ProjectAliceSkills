@@ -6,12 +6,12 @@ python:
 git:
   depth: false
 
-addons:
-  sonarcloud:
-    organization: "project-alice-assistant"
-    token:
-      secure: $SONAR_TOKEN
-
-script:
-  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
-  - sonar-scanner
+jobs:
+  include:
+    - stage: test
+      addons:
+        sonarcloud:
+          organization: "project-alice-assistant"
+          token:
+            secure: $SONAR_TOKEN
+      script: sonar-scanner
