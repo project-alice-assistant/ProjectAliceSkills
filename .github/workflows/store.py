@@ -1,15 +1,15 @@
 from pathlib import Path
 import requests
 import json
-import os
+import sys
 
-
-print(os.environ['RebrandlyApiKey'])
+apikey=sys.argv[1]
+print(apikey)
 clickCounts = requests.get(
 	'https://api.rebrandly.com/v1/links',
 	headers={
 		'Content-Type': 'application/json',
-		'apikey': os.environ['secrets']['RebrandlyApiKey']
+		'apikey': apikey
 	}
 )
 

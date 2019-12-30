@@ -20,11 +20,8 @@ jobs:
         privateKey: ${{ secrets.SERVER_SSH_PRIV_KEY }}
     - uses: actions/checkout@v1
     - name: combine install files
-      env:
-        api_key: "${{ secrets.testsecret }}"
       run: |
-        echo $INPUT_API_KEY
-        python3 .github/workflows/store.py
+        python3 .github/workflows/store.py '${{ secrets.testsecret }}'
     - name: get install files
       run: |
         cp PublishedSkills/*/*/*.install store/
