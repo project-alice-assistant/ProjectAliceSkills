@@ -2,18 +2,7 @@ from pathlib import Path
 import requests
 import json
 import sys
-
-apikey=sys.argv[1]
-print(apikey)
-clickCounts = requests.get(
-	'https://api.rebrandly.com/v1/links',
-	headers={
-		'Content-Type': 'application/json',
-		'apikey': apikey
-	}
-)
-
-clickCounts = {skill['slashtag']: skill for skill in clickCounts.json()}
+clickCounts = {skill['slashtag']: skill for skill in json.loads(sys.argv[1])}
 
 skillStore = list()
 skillPath = Path('PublishedSkills')
