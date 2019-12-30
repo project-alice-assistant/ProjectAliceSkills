@@ -22,6 +22,7 @@ jobs:
     - name: combine install files
       run: |
         curl --version
+        curl https://skills.projectalice.io/assets/1.0.0-a5/store/store.json -o 'test.json'
         sudo apt-get update
         sudo apt-get -y  install software-properties-common
         sudo add-apt-repository -y ppa:projectatomic/ppa
