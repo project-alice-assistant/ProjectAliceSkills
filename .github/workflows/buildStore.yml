@@ -21,8 +21,7 @@ jobs:
     - uses: actions/checkout@v1
     - name: combine install files
       run: |
-        apiKey="apikey: ${{ secrets.RebrandlyApiKey }}"
-        clickCounts=$(curl --location --verbose --request GET 'https://api.rebrandly.com/v1/links' --header 'Content-Type: application/json' --header ${apiKey})
+        clickCounts=$(curl --location --verbose --request GET 'https://api.rebrandly.com/v1/links' --header 'Content-Type: application/json' --header "apikey: ${{ secrets.RebrandlyApiKey }}")
         python3 .github/workflows/store.py $clickCounts
     - name: get install files
       run: |
