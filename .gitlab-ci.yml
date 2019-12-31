@@ -38,7 +38,7 @@ sonarqube-check:
     SONAR_HOST_URL: "https://sonarcloud.io"
     GIT_DEPTH: 0
   script:
-    - sonar-scanner -Dsonar.qualitygate.wait=true
+    - sonar-scanner -Dsonar.qualitygate.wait=true -Dsonar.projectKey=project-alice-assistant_ProjectAliceSkills -Dsonar.organization=project-alice-assistant
   allow_failure: true
 
 
