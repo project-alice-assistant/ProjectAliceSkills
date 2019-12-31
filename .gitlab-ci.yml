@@ -58,6 +58,7 @@ store:deploy:
 
 skill:zip:deploy:
   stage: deploy
+  image: ubuntu:latest
   except:
   - schedules
   before_script:
