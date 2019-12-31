@@ -7,8 +7,8 @@ store:build:
   - eval $(ssh-agent -s)
   - ssh-add <(echo "$SERVER_SSH_PRIV_KEY")
   script:
-  - pip3 install requests
-  - python3 .github/workflows/store.py
-  - ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $USERNAME@$DOMAIN "mkdir -p $DOMAIN/$CI_COMMIT_REF_NAME/store"
-  - scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -rp store/* "$USERNAME@$DOMAIN:$DOMAIN/$CI_COMMIT_REF_NAME/store"
+  - pip3 install requests jinja2
+  - python3 ci_sources/store.py
+  - ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $USERNAME@$DOMAIN "mkdir -p $DOMAIN/assets/$CI_COMMIT_REF_NAME/store"
+  - scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -rp store/* "$USERNAME@$DOMAIN:$DOMAIN/assets/$CI_COMMIT_REF_NAME/store"
 
