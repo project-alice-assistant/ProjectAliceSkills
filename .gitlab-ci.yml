@@ -1,11 +1,31 @@
 image: python:latest
 
+
+skillValidation:
+  stage: test
+  before_script:
+  - python3 -m pip install --upgrade pip
+  - pip3 install alice-sk
+  script:
+  - alice-sk validate --paths PublishedSkills/*/*/ --token $GITHUB_TOKEN --branch $CI_COMMIT_REF_NAME
+
+
+mypyValidation:
+  stage: test
+  before_script:
+  - python3 -m pip install --upgrade pip
+  - pip3 install mypy
+  script:
+  - ./ci_sources/mypy.sh
+
+
 store:deploy:
   stage: deploy
   before_script:
   - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
   - eval $(ssh-agent -s)
   - ssh-add <(echo "$SERVER_SSH_PRIV_KEY")
+  - python3 -m pip install --upgrade pip
   - pip3 install requests jinja2
   script:
   - python3 ci_sources/store.py
@@ -26,4 +46,3 @@ skill:zip:deploy:
   - ./ci_sources/skill_zip.sh
   - ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $USERNAME@$DOMAIN "mkdir -p $DOMAIN/assets/$CI_COMMIT_REF_NAME/skills"
   - scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -rp *.zip "$USERNAME@$DOMAIN:$DOMAIN/assets/$CI_COMMIT_REF_NAME/skills"
-
