@@ -1,11 +1,10 @@
 {
 	"name": "InternationalSpaceStation",
-	"version": "1.0.22",
+	"version": "1.0.23",
 	"author": "mjlill",
 	"maintainers": [
-		 "maxbachmann",
-		 "Jierka",
-		 "Psycho"
+		"maxbachmann",
+		"Psycho"
 	],
 	"desc": "Inquire information about the international space station",
 	"aliceMinVersion": "1.0.0-a4",

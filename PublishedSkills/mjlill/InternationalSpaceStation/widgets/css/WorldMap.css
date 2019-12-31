@@ -27,9 +27,18 @@
 	min-height: 30px;
 	font-size: 1.5em;
 	color: white;
+	z-index: 10;
 }
 
 .WorldMap .icon {
 	width: 100%;
 	font-size: 1.5em;
+}
+
+.WorldMap_dots {
+	width: 6px;
+	text-align: center;
+	color: yellow;
+	position: absolute;
+	z-index: 5;
 }

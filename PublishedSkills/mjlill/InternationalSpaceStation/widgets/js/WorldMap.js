@@ -1,4 +1,6 @@
 (function () {
+	let counter = 5;
+
 	function positionISS() {
 		$.ajax({
 			datatype: 'json',
@@ -10,9 +12,21 @@
 				let x = $('.WorldMap_map').width() / 360 * (longitude + 180);
 				let y = $('.WorldMap_map').height() / 180 * (-latitude + 90);
 
-				$('.WorldMap_satellite').css('top', y - 10);
-				$('.WorldMap_satellite').css('left', x - 15);
+				$('.WorldMap_satellite').css('top', y - 12);
+				$('.WorldMap_satellite').css('left', x - 12);
 				$('.WorldMap_satellite').show();
+
+				counter += 1;
+				if (counter >= 5) {
+					let $marker = $('<div class="WorldMap_dots">&#8226;</div>');
+					$marker.css('top', y - 3);
+					$marker.css('left', x - 3);
+					$('.WorldMap_map').append($marker);
+					if ($('.WorldMap_map').children('.WorldMap_dots').length > 1000) {
+						$('.WorldMap_map').find(':nth-child(2)').remove();
+					}
+					counter = 0;
+				}
 			}
 		});
 
