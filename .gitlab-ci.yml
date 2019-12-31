@@ -1,5 +1,3 @@
-image: python:latest
-
 skillValidation:
   stage: test
   except:
@@ -44,7 +42,7 @@ sonarqube-check:
 
 store:deploy:
   stage: deploy
-  image: ubuntu:latest
+  image: python:slim-buster
   before_script:
   - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
   - eval $(ssh-agent -s)
