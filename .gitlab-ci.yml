@@ -28,7 +28,7 @@ sonarqube-check:
     entrypoint: [""]
   variables:
     SONAR_TOKEN: $SONAR_TOKEN
-    SONAR_HOST_URL: "https://https://sonarcloud.io"
+    SONAR_HOST_URL: "https://sonarcloud.io"
     GIT_DEPTH: 0
   script:
     - sonar-scanner -Dsonar.qualitygate.wait=true
