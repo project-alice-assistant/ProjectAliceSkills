@@ -2,6 +2,6 @@ image: python:latest
 
 store:build:
   stage: build
-	script:
-	- pip3 install requests
+  script:
+  - pip3 install requests
   - python3 .github/workflows/store.py
