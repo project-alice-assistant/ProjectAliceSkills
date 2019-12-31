@@ -21,6 +21,20 @@ mypyValidation:
   allow_failure: true
 
 
+sonarqube-check:
+  stage: test
+  image:
+    name: sonarsource/sonar-scanner-cli:latest
+    entrypoint: [""]
+  variables:
+    SONAR_TOKEN: $SONAR_TOKEN
+    SONAR_HOST_URL: "https://https://sonarcloud.io"
+    GIT_DEPTH: 0
+  script:
+    - sonar-scanner -Dsonar.qualitygate.wait=true
+  allow_failure: true
+
+
 store:deploy:
   stage: deploy
   before_script:
