@@ -8,6 +8,7 @@ skillValidation:
   - pip3 install alice-sk
   script:
   - alice-sk validate --paths PublishedSkills/*/*/ --token $GITHUB_TOKEN --branch $CI_COMMIT_REF_NAME
+  allow_failure: true
 
 
 mypyValidation:
@@ -17,6 +18,7 @@ mypyValidation:
   - pip3 install mypy
   script:
   - ./ci_sources/mypy.sh
+  allow_failure: true
 
 
 store:deploy:
