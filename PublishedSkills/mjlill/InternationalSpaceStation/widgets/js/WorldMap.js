@@ -19,7 +19,7 @@
 				counter += 1;
 				if (counter >= 5) {
 					let $marker = $('<div class="WorldMap_dots">&#8226;</div>');
-					$marker.css('top', y - 3);
+					$marker.css('top', y - 9);
 					$marker.css('left', x - 3);
 					$('.WorldMap_map').append($marker);
 					if ($('.WorldMap_map').children('.WorldMap_dots').length > 1000) {
