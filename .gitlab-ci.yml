@@ -1,8 +1,9 @@
 image: python:latest
 
-
 skillValidation:
   stage: test
+  except:
+  - schedules
   image: python:slim-buster
   before_script:
   - python3 -m pip install --upgrade pip
@@ -14,6 +15,8 @@ skillValidation:
 
 mypyValidation:
   stage: test
+  except:
+  - schedules
   image: python:slim-buster
   before_script:
   - python3 -m pip install --upgrade pip
@@ -25,6 +28,8 @@ mypyValidation:
 
 sonarqube-check:
   stage: test
+  except:
+  - schedules
   image:
     name: sonarsource/sonar-scanner-cli:latest
     entrypoint: [""]
