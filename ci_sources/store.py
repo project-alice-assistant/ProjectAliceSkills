@@ -4,13 +4,6 @@ import requests
 import json
 import os
 
-
-	def createTemplateFile(self, outputPath: str, templateFile: str, **kwargs) -> str:
-		templateLoader = jinja2.FileSystemLoader(searchpath=os.path.join(os.path.dirname(__file__), 'templates'))
-		templateEnv = jinja2.Environment(loader=templateLoader, autoescape=True)
-		template = templateEnv.get_template(templateFile)
-		(self._skillPath / outputPath).write_text(template.render(**kwargs))
-
 clickCounts = requests.get(
 	'https://api.rebrandly.com/v1/links',
 	headers={
