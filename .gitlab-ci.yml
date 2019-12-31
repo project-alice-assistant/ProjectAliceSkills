@@ -3,6 +3,7 @@ image: python:latest
 
 skillValidation:
   stage: test
+  image: python:slim-buster
   before_script:
   - python3 -m pip install --upgrade pip
   - pip3 install alice-sk
@@ -13,6 +14,7 @@ skillValidation:
 
 mypyValidation:
   stage: test
+  image: python:slim-buster
   before_script:
   - python3 -m pip install --upgrade pip
   - pip3 install mypy
