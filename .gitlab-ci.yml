@@ -1,7 +1,7 @@
 image: python:latest
 
-store:build:
-  stage: build
+store:deploy:
+  stage: deploy
   before_script:
   - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
   - eval $(ssh-agent -s)
@@ -11,4 +11,18 @@ store:build:
   - python3 ci_sources/store.py
   - ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $USERNAME@$DOMAIN "mkdir -p $DOMAIN/assets/$CI_COMMIT_REF_NAME/store"
   - scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -rp store/* "$USERNAME@$DOMAIN:$DOMAIN/assets/$CI_COMMIT_REF_NAME/store"
+
+
+skill:zip:deploy:
+  stage: deploy
+  except:
+  - schedules
+  before_script:
+  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+  - eval $(ssh-agent -s)
+  - ssh-add <(echo "$SERVER_SSH_PRIV_KEY")
+  script:
+  - ./ci_sources/skill_zip.sh
+  - ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $USERNAME@$DOMAIN "mkdir -p $DOMAIN/assets/$CI_COMMIT_REF_NAME/skills"
+  - scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -rp *.zip "$USERNAME@$DOMAIN:$DOMAIN/assets/$CI_COMMIT_REF_NAME/skills"
 
