@@ -4,7 +4,6 @@ import json
 import os
 
 
-print(os.environ['RebrandlyApiKey'])
 clickCounts = requests.get(
 	'https://api.rebrandly.com/v1/links',
 	headers={
