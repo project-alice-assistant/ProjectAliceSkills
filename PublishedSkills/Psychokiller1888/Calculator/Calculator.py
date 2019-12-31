@@ -14,16 +14,16 @@ class Calculator(AliceSkill):
 	def __init__(self):
 		self._lastNumber = 0
 		self._mathOperations = {
-			'+': lambda x,y: x+y,
-			'-': lambda x,y: x-y,
-			'/': lambda x,y: x/y,
-			'*': lambda x,y: x*y,
-			'^': lambda x,y: x**y 
-			'square root': lambda x,_: x**(0,5),
-			'modulo': lambda x,y: x%y,
-			'sine': lambda x,_: math.sin(x),
-			'cosine': lambda x,_: math.cos(x),
-			'tangent': lambda x,_: math.tan(x)
+			'+'          : lambda x, y: x + y,
+			'-'          : lambda x, y: x - y,
+			'/'          : lambda x, y: x / y,
+			'*'          : lambda x, y: x * y,
+			'^'          : lambda x, y: x ** y,
+			'square root': lambda x, _: x ** (0, 5),
+			'modulo'     : lambda x, y: x % y,
+			'sine'       : lambda x, _: math.sin(x),
+			'cosine'     : lambda x, _: math.cos(x),
+			'tangent'    : lambda x, _: math.tan(x)
 		}
 		super().__init__()
 
