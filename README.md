@@ -1,7 +1,7 @@
-[![Skills Valid](https://github.com/project-alice-assistant/ProjectAliceSkills/workflows/Skills%20Validation/badge.svg)](https://github.com/project-alice-assistant/ProjectAliceSkills/actions)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/8c37d708cde34cb998b45ff5d6e92d43)](https://www.codacy.com/manual/ProjectAlice/ProjectAliceSkills?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=project-alice-powered-by-snips/ProjectAliceSkills&amp;utm_campaign=Badge_Grade)
+[![Continous Integration](https://gitlab.com/ToolboxBodensee/ProjectAliceSkills/badges/master/pipeline.svg)](https://gitlab.com/ToolboxBodensee/ProjectAliceSkills/pipelines)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=project-alice-assistant_ProjectAliceSkills&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=project-alice-assistant_ProjectAliceSkills)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=project-alice-assistant_ProjectAliceSkills&metric=code_smells)](https://sonarcloud.io/dashboard?id=project-alice-assistant_ProjectAliceSkills)
 ![GitHub](https://img.shields.io/github/license/project-alice-assistant/ProjectAliceSkills)
-[![Maintainability](https://api.codeclimate.com/v1/badges/1c61965accf480b5d5ef/maintainability)](https://codeclimate.com/github/project-alice-powered-by-snips/ProjectAliceSkills/maintainability)
 
 # ProjectAliceSkills
 

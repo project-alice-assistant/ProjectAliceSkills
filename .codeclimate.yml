@@ -1,9 +1,0 @@
----
-version: "2"
-checks:
-  file-lines:
-    enabled: false
-  method-count:
-    enabled: false
-exclude_patterns:
-- PublishedSkills/*/*/libraries/*
