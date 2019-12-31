@@ -1,8 +1,19 @@
 from pathlib import Path
 import requests
 import json
-import sys
-clickCounts = {skill['slashtag']: skill for skill in json.loads(sys.argv[1])}
+import os
+
+
+print(os.environ['RebrandlyApiKey'])
+clickCounts = requests.get(
+	'https://api.rebrandly.com/v1/links',
+	headers={
+		'Content-Type': 'application/json',
+		'apikey': os.environ['RebrandlyApiKey']
+	}
+)
+
+clickCounts = {skill['slashtag']: skill for skill in clickCounts.json()}
 
 skillStore = list()
 skillPath = Path('PublishedSkills')
@@ -22,4 +33,3 @@ storePath = Path('store/store.json')
 storePath.parent.mkdir(parents=True, exist_ok=True)
 storePath.touch()
 storePath.write_text(json.dumps(skillStore))
-

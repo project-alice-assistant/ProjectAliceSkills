@@ -3,4 +3,4 @@ image: python:latest
 store:build:
   stage: build
   script:
-  - 'curl "https://api.rebrandly.com/v1/links" -o /tmp/links.json --header "Content-Type: application/json" --header "apikey: ${RebrandlyApiKey}"'
+  - python3 .github/workflows/store.py
