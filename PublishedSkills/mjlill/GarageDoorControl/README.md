@@ -4,7 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget http://skill.projectalice.ch/GarageDoorControl -O ~/ProjectAlice/system/skillInstallTickets/GarageDoorControl.install
+wget https://skills.projectalice.ch/GarageDoorControl -O ~/ProjectAlice/system/skillInstallTickets/GarageDoorControl.install
 ```
 
 ### Description
