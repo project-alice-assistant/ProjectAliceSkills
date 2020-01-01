@@ -13,14 +13,14 @@ clickCounts = requests.get(
 	}
 )
 
-skillLinks = [skill['slashtag'] for skill in clickCounts.json()]
+skillLinks = [skill['slashtag'].lower() for skill in clickCounts.json()]
 
 skillStore = list()
 skillPath = Path('PublishedSkills')
 
 err = 0
 for installer in skillPath.glob('*/*/*.install'):
-	skillName = installer.stem
+	skillName = installer.stem.lower()
 	if skillName not in skillLinks:
 		err = 1
 		click.secho(f'Install link for {skillName} does not exist yet', fg='red', bold=True)
