@@ -4,7 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget https://skills.projectalice.io/master/store/Telemetry -O ~/ProjectAlice/system/skillInstallTickets/Telemetry.install
+wget https://skills.projectalice.ch/Telemetry -O ~/ProjectAlice/system/skillInstallTickets/Telemetry.install
 ```
 
 ### Description
