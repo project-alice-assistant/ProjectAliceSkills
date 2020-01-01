@@ -21,12 +21,12 @@ skillPath = Path('PublishedSkills')
 err = 0
 for installer in skillPath.glob('*/*/*.install'):
 	skillName = installer.stem
-	if skillName in skillLinks:
-		click.secho(f'install link for {skillName} exists', fg='green', bold=True)
-		
-	else:
+	if skillName not in skillLinks:
 		err = 1
-		click.secho(f'install link for {skillName} does not exist yet', fg='red', bold=True)
+		click.secho(f'Install link for {skillName} does not exist yet', fg='red', bold=True)
+
+if not err:
+    click.secho(f'All install links exist', fg='green', bold=True)
 
 sys.exit(err)
 
