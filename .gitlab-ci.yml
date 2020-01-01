@@ -40,6 +40,19 @@ sonarqube-check:
   allow_failure: true
 
 
+skillLinkValidation:
+  stage: test
+  except:
+  - schedules
+  image: python:slim-buster
+  before_script:
+  - python3 -m pip install --upgrade pip
+  - pip3 install requests click
+  script:
+  - python3 ci_sources/skillLinkValidation.py
+  allow_failure: true
+
+
 store:deploy:
   stage: deploy
   image: python:slim-buster
