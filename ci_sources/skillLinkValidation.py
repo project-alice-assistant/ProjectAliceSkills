@@ -20,8 +20,8 @@ skillPath = Path('PublishedSkills')
 
 err = 0
 for installer in skillPath.glob('*/*/*.install'):
-	skillName = installer.stem.lower()
-	if skillName not in skillLinks:
+	skillName = installer.stem
+	if skillName.lower() not in skillLinks:
 		err = 1
 		click.secho(f'Install link for {skillName} does not exist yet', fg='red', bold=True)
 
