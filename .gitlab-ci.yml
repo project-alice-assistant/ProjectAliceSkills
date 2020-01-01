@@ -37,7 +37,7 @@ sonarqube-check:
     GIT_DEPTH: 0
   script:
     - sonar-scanner -Dsonar.qualitygate.wait=true -Dsonar.projectKey=project-alice-assistant_ProjectAliceSkills -Dsonar.organization=project-alice-assistant
-	allow_failure: true
+  allow_failure: true
 
 
 skillLinkValidation:
