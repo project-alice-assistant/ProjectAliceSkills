@@ -4,7 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget https://skills.projectalice.io/master/store/RedQueen \
+wget https://skills.projectalice.ch/RedQueen \
 -O ~/ProjectAlice/system/skillInstallTickets/RedQueen.install
 ```
 

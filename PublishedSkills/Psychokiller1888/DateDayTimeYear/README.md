@@ -4,7 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget https://skills.projectalice.io/master/store/DateDayTimeYear \
+wget https://skills.projectalice.ch/DateDayTimeYear \
 -O ~/ProjectAlice/system/skillInstallTickets/DateDayTimeYear.install
 ```
 

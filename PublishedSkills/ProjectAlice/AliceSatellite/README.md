@@ -4,7 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget https://skills.projectalice.io/master/store/AliceSatellite \
+wget https://skills.projectalice.ch/AliceSatellite \
 -O ~/ProjectAlice/system/skillInstallTickets/AliceSatellite.install
 ```
 
