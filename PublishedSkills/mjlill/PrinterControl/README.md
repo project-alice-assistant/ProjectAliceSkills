@@ -4,7 +4,7 @@
 
 ##### > WGET method
 ```bash
-wget https://skills.projectalice.io/master/store/PrinterControl -O ~/ProjectAlice/system/skillInstallTickets/PrinterControl.install
+wget https://skills.projectalice.ch/PrinterControl -O ~/ProjectAlice/system/skillInstallTickets/PrinterControl.install
 ```
 
 ### Description
