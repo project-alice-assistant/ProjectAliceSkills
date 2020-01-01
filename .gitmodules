@@ -1,0 +1,90 @@
+[submodule "PublishedSkills/skill_AliceCore"]
+	path = PublishedSkills/skill_AliceCore
+	url = https://github.com/project-alice-assistant/skill_AliceCore
+[submodule "PublishedSkills/skill_AliceSatellite"]
+	path = PublishedSkills/skill_AliceSatellite
+	url = https://github.com/project-alice-assistant/skill_AliceSatellite
+[submodule "PublishedSkills/skill_BringShoppingList"]
+	path = PublishedSkills/skill_BringShoppingList
+	url = https://github.com/project-alice-assistant/skill_BringShoppingList
+[submodule "PublishedSkills/skill_Calculator"]
+	path = PublishedSkills/skill_Calculator
+	url = https://github.com/project-alice-assistant/skill_Calculator
+[submodule "PublishedSkills/skill_ContextSensitive"]
+	path = PublishedSkills/skill_ContextSensitive
+	url = https://github.com/project-alice-assistant/skill_ContextSensitive
+[submodule "PublishedSkills/skill_DateDayTimeYear"]
+	path = PublishedSkills/skill_DateDayTimeYear
+	url = https://github.com/project-alice-assistant/skill_DateDayTimeYear
+[submodule "PublishedSkills/skill_FindMyPhone"]
+	path = PublishedSkills/skill_FindMyPhone
+	url = https://github.com/project-alice-assistant/skill_FindMyPhone
+[submodule "PublishedSkills/skill_FreeCurrencyConverterDotCom"]
+	path = PublishedSkills/skill_FreeCurrencyConverterDotCom
+	url = https://github.com/project-alice-assistant/skill_FreeCurrencyConverterDotCom
+[submodule "PublishedSkills/skill_GarageDoorControl"]
+	path = PublishedSkills/skill_GarageDoorControl
+	url = https://github.com/project-alice-assistant/skill_GarageDoorControl
+[submodule "PublishedSkills/skill_IcanhazdadjokeDotCom"]
+	path = PublishedSkills/skill_IcanhazdadjokeDotCom
+	url = https://github.com/project-alice-assistant/skill_IcanhazdadjokeDotCom
+[submodule "PublishedSkills/skill_Ifttt"]
+	path = PublishedSkills/skill_Ifttt
+	url = https://github.com/project-alice-assistant/skill_Ifttt
+[submodule "PublishedSkills/skill_InternationalSpaceStation"]
+	path = PublishedSkills/skill_InternationalSpaceStation
+	url = https://github.com/project-alice-assistant/skill_InternationalSpaceStation
+[submodule "PublishedSkills/skill_LocalButtonPress"]
+	path = PublishedSkills/skill_LocalButtonPress
+	url = https://github.com/project-alice-assistant/skill_LocalButtonPress
+[submodule "PublishedSkills/skill_Minigames"]
+	path = PublishedSkills/skill_Minigames
+	url = https://github.com/project-alice-assistant/skill_Minigames
+[submodule "PublishedSkills/skill_MpdClient"]
+	path = PublishedSkills/skill_MpdClient
+	url = https://github.com/project-alice-assistant/skill_MpdClient
+[submodule "PublishedSkills/skill_MqttBridge"]
+	path = PublishedSkills/skill_MqttBridge
+	url = https://github.com/project-alice-assistant/skill_MqttBridge
+[submodule "PublishedSkills/skill_Netatmo"]
+	path = PublishedSkills/skill_Netatmo
+	url = https://github.com/project-alice-assistant/skill_Netatmo
+[submodule "PublishedSkills/skill_OpenWeatherMap"]
+	path = PublishedSkills/skill_OpenWeatherMap
+	url = https://github.com/project-alice-assistant/skill_OpenWeatherMap
+[submodule "PublishedSkills/skill_PhilipsHue"]
+	path = PublishedSkills/skill_PhilipsHue
+	url = https://github.com/project-alice-assistant/skill_PhilipsHue
+[submodule "PublishedSkills/skill_PrinterControl"]
+	path = PublishedSkills/skill_PrinterControl
+	url = https://github.com/project-alice-assistant/skill_PrinterControl
+[submodule "PublishedSkills/skill_RandomUselessFacts"]
+	path = PublishedSkills/skill_RandomUselessFacts
+	url = https://github.com/project-alice-assistant/skill_RandomUselessFacts
+[submodule "PublishedSkills/skill_RedQueen"]
+	path = PublishedSkills/skill_RedQueen
+	url = https://github.com/project-alice-assistant/skill_RedQueen
+[submodule "PublishedSkills/skill_RockPaperScissors"]
+	path = PublishedSkills/skill_RockPaperScissors
+	url = https://github.com/project-alice-assistant/skill_RockPaperScissors
+[submodule "PublishedSkills/skill_SpeedTest"]
+	path = PublishedSkills/skill_SpeedTest
+	url = https://github.com/project-alice-assistant/skill_SpeedTest
+[submodule "PublishedSkills/skill_Tasmota"]
+	path = PublishedSkills/skill_Tasmota
+	url = https://github.com/project-alice-assistant/skill_Tasmota
+[submodule "PublishedSkills/skill_Speller"]
+	path = PublishedSkills/skill_Speller
+	url = https://github.com/project-alice-assistant/skill_Speller
+[submodule "PublishedSkills/skill_YoutubeJukebox"]
+	path = PublishedSkills/skill_YoutubeJukebox
+	url = https://github.com/project-alice-assistant/skill_YoutubeJukebox
+[submodule "PublishedSkills/skill_Zigbee2Mqtt"]
+	path = PublishedSkills/skill_Zigbee2Mqtt
+	url = https://github.com/project-alice-assistant/skill_Zigbee2Mqtt
+[submodule "PublishedSkills/skill_Wikipedia"]
+	path = PublishedSkills/skill_Wikipedia
+	url = https://github.com/project-alice-assistant/skill_Wikipedia
+[submodule "PublishedSkills/skill_Telemetry"]
+	path = PublishedSkills/skill_Telemetry
+	url = https://github.com/project-alice-assistant/skill_Telemetry
