@@ -88,3 +88,6 @@
 [submodule "PublishedSkills/skill_Telemetry"]
 	path = PublishedSkills/skill_Telemetry
 	url = https://github.com/project-alice-assistant/skill_Telemetry
+[submodule "PublishedSkills/skill_TVProgram"]
+	path = PublishedSkills/skill_TVProgram
+	url = https://github.com/project-alice-assistant/skill_TVProgram
