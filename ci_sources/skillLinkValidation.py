@@ -19,7 +19,7 @@ skillStore = list()
 skillPath = Path('PublishedSkills')
 
 err = 0
-for installer in skillPath.glob('*/*/*.install'):
+for installer in skillPath.glob('*/*.install'):
 	skillName = installer.stem
 	if skillName.lower() not in skillLinks:
 		err = 1
