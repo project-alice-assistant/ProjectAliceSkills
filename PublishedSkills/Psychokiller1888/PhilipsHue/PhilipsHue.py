@@ -151,13 +151,13 @@ class PhilipsHue(AliceSkill):
 				try:
 					self._bridge.group(0).scene(sceneName=partOfTheDay)
 					break
-				except NoSuchSceneInGroup:
+				except (NoSuchSceneInGroup, NoSuchScene):
 					self._bridge.group(0).on()
 			else:
 				try:
 					self._bridge.group(groupName=room).scene(sceneName=partOfTheDay)
 					break
-				except NoSuchSceneInGroup:
+				except (NoSuchSceneInGroup, NoSuchScene):
 					self._bridge.group(groupName=room).on()
 				except NoSuchGroup:
 					self.logWarning(f'Requested group "{room}" does not exist on the Philips Hue bridge')
