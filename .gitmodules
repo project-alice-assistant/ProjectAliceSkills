@@ -91,3 +91,6 @@
 [submodule "PublishedSkills/skill_TVProgram"]
 	path = PublishedSkills/TVProgram
 	url = https://github.com/project-alice-assistant/skill_TVProgram
+[submodule "PublishedSkills/TextInputWidget"]
+	path = PublishedSkills/TextInputWidget
+	url = https://github.com/project-alice-assistant/skill_TextInputWidget.git
