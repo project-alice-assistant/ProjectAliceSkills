@@ -19,7 +19,7 @@ skillPath = Path('PublishedSkills')
 storePath = Path(__file__).parent.parent.resolve() / 'store'
 storePath.mkdir(parents=True, exist_ok=True)
 
-for installer in skillPath.glob('*/*/*.install'):
+for installer in skillPath.glob('*/*.install'):
 	skillName = installer.stem
 	try:
 		downloads = clickCounts[skillName]['clicks']

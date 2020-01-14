@@ -1,3 +1,6 @@
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
 skillValidation:
   stage: test
   except:
@@ -7,7 +10,7 @@ skillValidation:
   - python3 -m pip install --upgrade pip
   - pip3 install alice-sk
   script:
-  - alice-sk validate --paths PublishedSkills/*/*/ --token $GITHUB_TOKEN --branch $CI_COMMIT_REF_NAME
+  - alice-sk validate --paths PublishedSkills/*/ --token $GITHUB_TOKEN --branch $CI_COMMIT_REF_NAME
   allow_failure: true
 
 
