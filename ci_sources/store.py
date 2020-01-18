@@ -89,6 +89,11 @@ for releaseType, releaseName in releaseTypes.items():
 			data = json.load(json_file)
 			data['downloads'] = downloads
 			data['versionMapping'] = versions
+			del data['pipRequirements']
+			del data['systemRequirements']
+			del data['aliceMinVersion']
+			del data['version']
+
 			skillStore[data['name']] = data
 
 	storeFile = (storePath / f'{releaseName}.json')
