@@ -64,7 +64,7 @@ store:deploy:
   - eval $(ssh-agent -s)
   - ssh-add <(echo "$SERVER_SSH_PRIV_KEY")
   - python3 -m pip install --upgrade pip
-  - pip3 install requests jinja2
+  - pip3 install requests jinja2 gitpython
   script:
   - python3 ci_sources/store.py
   - ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $USERNAME@$DOMAIN "mkdir -p $DOMAIN/assets/store"
