@@ -24,15 +24,27 @@ class TagVersion:
 			Version.fromString(aliceMinVersion))
 
 
-clickCounts = requests.get(
+clickCounts = {}
+results = requests.get(
 	'https://api.rebrandly.com/v1/links',
 	headers={
 		'Content-Type': 'application/json',
 		'apikey': os.environ['RebrandlyApiKey']
 	}
-)
+).json()
+clicks = {skill['slashtag']: skill for skill in results}
 
-clickCounts = {skill['slashtag']: skill for skill in clickCounts.json()}
+while clicks:
+	clickCounts.update(clicks)
+	results = requests.get(
+		f"https://api.rebrandly.com/v1/links?last={results[-1]['id']}",
+		headers={
+			'Content-Type': 'application/json',
+			'apikey': os.environ['RebrandlyApiKey']
+		}
+	).json()
+	clicks = {skill['slashtag']: skill for skill in results}
+
 
 skillStore = list()
 skillPath = Path('PublishedSkills')
