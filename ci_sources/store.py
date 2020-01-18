@@ -89,8 +89,10 @@ for releaseType, releaseName in releaseTypes.items():
 			data = json.load(json_file)
 			data['downloads'] = downloads
 			data['versionMapping'] = versions
-			del data['pipRequirements']
-			del data['systemRequirements']
+			if 'pipRequirements' in data:
+				del data['pipRequirements']
+			if 'systemRequirements' in data:
+				del data['systemRequirements']
 			del data['aliceMinVersion']
 			del data['version']
 
