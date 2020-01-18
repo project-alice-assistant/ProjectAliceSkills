@@ -5,15 +5,26 @@ import json
 import os
 import sys
 
-clickCounts = requests.get(
+skillLinks = []
+results = requests.get(
 	'https://api.rebrandly.com/v1/links',
 	headers={
 		'Content-Type': 'application/json',
 		'apikey': os.environ['RebrandlyApiKey']
 	}
-)
+).json()
+clicks = [skill['slashtag'].lower() for skill in results]
 
-skillLinks = [skill['slashtag'].lower() for skill in clickCounts.json()]
+while clicks:
+	skillLinks += clicks
+	results = requests.get(
+		f"https://api.rebrandly.com/v1/links?last={results[-1]['id']}",
+		headers={
+			'Content-Type': 'application/json',
+			'apikey': os.environ['RebrandlyApiKey']
+		}
+	).json()
+	clicks = [skill['slashtag'].lower() for skill in results]
 
 skillStore = list()
 skillPath = Path('PublishedSkills')

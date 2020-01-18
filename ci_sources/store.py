@@ -32,7 +32,7 @@ results = requests.get(
 		'apikey': os.environ['RebrandlyApiKey']
 	}
 ).json()
-clicks = {skill['slashtag']: skill for skill in results}
+clicks = {skill['slashtag']: skill['clicks'] for skill in results}
 
 while clicks:
 	clickCounts.update(clicks)
@@ -43,7 +43,7 @@ while clicks:
 			'apikey': os.environ['RebrandlyApiKey']
 		}
 	).json()
-	clicks = {skill['slashtag']: skill for skill in results}
+	clicks = {skill['slashtag']: skill['clicks'] for skill in results}
 
 
 skillStore = list()
@@ -63,7 +63,7 @@ for releaseType, releaseName in releaseTypes.items():
 		skillName = installer.stem
 		print(f'{releaseName}-{skillName}')
 		try:
-			downloads = clickCounts[skillName]['clicks']
+			downloads = clickCounts[skillName]
 		except KeyError:
 			downloads = 0
 
