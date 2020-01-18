@@ -46,7 +46,7 @@ while clicks:
 	clicks = {skill['slashtag']: skill['clicks'] for skill in results}
 
 
-skillStore = list()
+skillStore = dict()
 skillPath = Path('PublishedSkills')
 storePath = Path(__file__).parent.parent.resolve() / 'store'
 storePath.mkdir(parents=True, exist_ok=True)
@@ -88,8 +88,8 @@ for releaseType, releaseName in releaseTypes.items():
 		with installer.open() as json_file:
 			data = json.load(json_file)
 			data['downloads'] = downloads
-			data['aliceMinVersion'] = versions
-			skillStore.append(data)
+			data['versionMapping'] = versions
+			skillStore[data['name']] = data
 
 	storeFile = (storePath / f'{releaseName}.json')
 	storeFile.write_text(json.dumps(skillStore))
