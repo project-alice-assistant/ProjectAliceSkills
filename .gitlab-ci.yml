@@ -63,7 +63,7 @@ store:deploy:
   - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
   - eval $(ssh-agent -s)
   - ssh-add <(echo "$SERVER_SSH_PRIV_KEY")
-	- apt-get update -qq && apt-get install git -qq
+  - apt-get update -qq && apt-get install git -qq
   - python3 -m pip install --upgrade pip
   - pip3 install requests jinja2 gitpython
   script:
