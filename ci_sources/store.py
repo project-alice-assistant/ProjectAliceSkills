@@ -18,7 +18,7 @@ class TagVersion:
 
 	@classmethod
 	def fromString(cls, versionString: str) -> Version:
-		skillVersion, aliceMinVersion = str(versionString).split('>=')
+		skillVersion, aliceMinVersion = str(versionString).split('_')
 		return cls(
 			Version.fromString(skillVersion),
 			Version.fromString(aliceMinVersion))
