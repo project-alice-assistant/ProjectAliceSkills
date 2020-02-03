@@ -76,7 +76,7 @@ for releaseType, releaseName in releaseTypes.items():
 
 		skillRepo = Repo(installer.parent)
 		skillRepo.remote().fetch("--tags")
-		tags = [TagVersion.fromString(tag) for tag in skillRepo.tags if '_' in tag]
+		tags = [TagVersion.fromString(tag) for tag in skillRepo.tags if '_' in str(tag)]
 		tags = [tag for tag in tags if tag.skillVersion.releaseType >= releaseType]
 		versions = dict()
 		while tags:
