@@ -68,5 +68,5 @@ store:deploy:
   - pip3 install requests jinja2 gitpython
   script:
   - python3 ci_sources/store.py
-  - ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $USERNAME@$DOMAIN "mkdir -p $DOMAIN/assets/store"
-  - scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -rp store/* "$USERNAME@$DOMAIN:$DOMAIN/assets/store"
+  - ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $USERNAME@$DOMAIN "mkdir -p www/$DOMAIN/assets/store"
+  - scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -rp store/* "$USERNAME@$DOMAIN:www/$DOMAIN/assets/store"
