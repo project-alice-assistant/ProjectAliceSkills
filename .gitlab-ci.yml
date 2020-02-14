@@ -46,7 +46,7 @@ store:deploy:
   before_script:
   - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
   - eval $(ssh-agent -s)
-  - ssh-add <(echo "$SERVER_SSH_PRIV_KEY" | base64 -d)
+  - ssh-add <(echo "$SERVER_SSH_PRIV_KEY")
   - python3 -m pip install --upgrade pip
   - pip3 install requests jinja2
   script:
@@ -63,7 +63,7 @@ skill:zip:deploy:
   before_script:
   - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
   - eval $(ssh-agent -s)
-  - ssh-add <(echo "$SERVER_SSH_PRIV_KEY" | base64 -d)
+  - ssh-add <(echo "$SERVER_SSH_PRIV_KEY")
   - apt-get update -qq && apt-get install -y -qq zip
   script:
   - ./ci_sources/skill_zip.sh
