@@ -51,8 +51,8 @@ store:deploy:
   - pip3 install requests jinja2
   script:
   - python3 ci_sources/store.py
-  - ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $USERNAME@$DOMAIN "mkdir -p $DOMAIN/assets/$CI_COMMIT_REF_NAME/store"
-  - scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -rp store/* "$USERNAME@$DOMAIN:$DOMAIN/assets/$CI_COMMIT_REF_NAME/store"
+  - ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $USERNAME@$DOMAIN "mkdir -p www/$DOMAIN/assets/$CI_COMMIT_REF_NAME/store"
+  - scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -rp store/* "$USERNAME@$DOMAIN:www/$DOMAIN/assets/$CI_COMMIT_REF_NAME/store"
 
 
 skill:zip:deploy:
@@ -67,5 +67,5 @@ skill:zip:deploy:
   - apt-get update -qq && apt-get install -y -qq zip
   script:
   - ./ci_sources/skill_zip.sh
-  - ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $USERNAME@$DOMAIN "mkdir -p $DOMAIN/assets/$CI_COMMIT_REF_NAME/skills"
-  - scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -rp *.zip "$USERNAME@$DOMAIN:$DOMAIN/assets/$CI_COMMIT_REF_NAME/skills"
+  - ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $USERNAME@$DOMAIN "mkdir -p www/$DOMAIN/assets/$CI_COMMIT_REF_NAME/skills"
+  - scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -rp *.zip "$USERNAME@$DOMAIN:www/$DOMAIN/assets/$CI_COMMIT_REF_NAME/skills"
