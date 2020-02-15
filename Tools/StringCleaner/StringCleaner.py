@@ -19,8 +19,8 @@ class StringCleaner:
 				continue
 			with p.open() as fp:
 				fileContent = json.load(fp)
-				d = {key: p.parent for key in fileContent}
-				self._languageStrings = {**self._languageStrings, **d}
+				dictionary = {key: p.parent for key in fileContent}
+				self._languageStrings = {**self._languageStrings, **dictionary}
 
 		for p in self._skills.rglob('fr.json'):
 			if p.parent.stem != 'talks':
