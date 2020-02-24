@@ -1,9 +1,9 @@
-[![Continous Integration](https://gitlab.com/ToolboxBodensee/ProjectAliceSkills/badges/master/pipeline.svg)](https://gitlab.com/ToolboxBodensee/ProjectAliceSkills/pipelines/latest)
+[![Continous Integration](https://gitlab.com/project-alice-assistant/ProjectAliceSkills/badges/master/pipeline.svg)](https://gitlab.com/project-alice-assistant/ProjectAliceSkills/pipelines/latest)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=project-alice-assistant_ProjectAliceSkills&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=project-alice-assistant_ProjectAliceSkills)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=project-alice-assistant_ProjectAliceSkills&metric=code_smells)](https://sonarcloud.io/dashboard?id=project-alice-assistant_ProjectAliceSkills)
 ![GitHub](https://img.shields.io/github/license/project-alice-assistant/ProjectAliceSkills)
 
-# ProjectAliceSkills
+# ProjectAliceSkills (alpha5)
 
 This repository is home of all curated and approved skills for Project Alice.
 

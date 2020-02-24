@@ -1,7 +1,0 @@
-{
-	"phueBridgeIp": {
-		"defaultValue": "",
-		"dataType": "string",
-		"description": "Philips Hue bridge IP if known, otherwise it will be auto discovered if possible"
-	}
-}

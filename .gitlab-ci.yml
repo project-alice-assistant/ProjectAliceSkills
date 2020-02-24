@@ -1,20 +1,26 @@
+
+
+
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
 skillValidation:
   stage: test
   except:
-  - schedules
+  - triggers
   image: python:slim-buster
   before_script:
   - python3 -m pip install --upgrade pip
-  - pip3 install alice-sk
+  - pip3 install alice-sk==0.8.0
   script:
-  - alice-sk validate --paths PublishedSkills/*/*/ --token $GITHUB_TOKEN --branch $CI_COMMIT_REF_NAME
+  - alice-sk validate --paths PublishedSkills/*/
   allow_failure: true
 
 
 mypyValidation:
   stage: test
   except:
-  - schedules
+  - triggers
   image: python:slim-buster
   before_script:
   - python3 -m pip install --upgrade pip
@@ -27,7 +33,7 @@ mypyValidation:
 sonarqube-check:
   stage: test
   except:
-  - schedules
+  - triggers
   image:
     name: sonarsource/sonar-scanner-cli:latest
     entrypoint: [""]
@@ -40,6 +46,19 @@ sonarqube-check:
   allow_failure: true
 
 
+skillLinkValidation:
+  stage: test
+  except:
+  - triggers
+  image: python:slim-buster
+  before_script:
+  - python3 -m pip install --upgrade pip
+  - pip3 install requests click
+  script:
+  - python3 ci_sources/skillLinkValidation.py
+  allow_failure: true
+
+
 store:deploy:
   stage: deploy
   image: python:slim-buster
@@ -47,25 +66,10 @@ store:deploy:
   - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
   - eval $(ssh-agent -s)
   - ssh-add <(echo "$SERVER_SSH_PRIV_KEY")
+  - apt-get update -qq && apt-get install git -qq
   - python3 -m pip install --upgrade pip
-  - pip3 install requests jinja2
+  - pip3 install requests jinja2 gitpython
   script:
   - python3 ci_sources/store.py
-  - ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $USERNAME@$DOMAIN "mkdir -p www/$DOMAIN/assets/$CI_COMMIT_REF_NAME/store"
-  - scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -rp store/* "$USERNAME@$DOMAIN:www/$DOMAIN/assets/$CI_COMMIT_REF_NAME/store"
-
-
-skill:zip:deploy:
-  stage: deploy
-  image: ubuntu:latest
-  except:
-  - schedules
-  before_script:
-  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
-  - eval $(ssh-agent -s)
-  - ssh-add <(echo "$SERVER_SSH_PRIV_KEY")
-  - apt-get update -qq && apt-get install -y -qq zip
-  script:
-  - ./ci_sources/skill_zip.sh
-  - ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $USERNAME@$DOMAIN "mkdir -p www/$DOMAIN/assets/$CI_COMMIT_REF_NAME/skills"
-  - scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -rp *.zip "$USERNAME@$DOMAIN:www/$DOMAIN/assets/$CI_COMMIT_REF_NAME/skills"
+  - ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $USERNAME@$DOMAIN "mkdir -p www/$DOMAIN/assets/store"
+  - scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -rp store/* "$USERNAME@$DOMAIN:www/$DOMAIN/assets/store"

@@ -1,7 +1,0 @@
-{
-	"skill": "Ifttt",
-	"icon": "time",
-	"description": "Use ifttt services",
-	"slotTypes": [],
-	"intents": []
-}
