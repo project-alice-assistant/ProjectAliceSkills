@@ -3,7 +3,7 @@
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=project-alice-assistant_ProjectAliceSkills&metric=code_smells)](https://sonarcloud.io/dashboard?id=project-alice-assistant_ProjectAliceSkills)
 ![GitHub](https://img.shields.io/github/license/project-alice-assistant/ProjectAliceSkills)
 
-# ProjectAliceSkills (alpha5)
+# ProjectAliceSkills
 
 This repository is home of all curated and approved skills for Project Alice.
 
