@@ -12,10 +12,14 @@ You can share your own creation as well!
 To do so, fork this repository and start adding your skills in a sub directory of **PublishedSkills** wearing **your Github username** as directory name. Once your skills tested and working, create a pull request for us to review your skill, check it and approve it. Once your skill is published it becomes available for everybody to install through the install ticket.
 
 ## Skill Creation
-The Alice Skill Kit can be used both to automatically create the structure of new skills and to validate them.
+You can create new skills directly from the Alice interface. To access the skill dev part, make sure to turn on the "devMode" setting!
+
+We also made a python package that can help you create new skills, even without Alice running!
+
+The Project Alice Skill Kit can be used both to automatically create the structure of new skills and to validate them.
 It can be installed using 
 ```bash
-pip3 install alice-sk
+pip3 install projectalice-sk
 ```
 Further informations on how to use it can be found [here](https://github.com/project-alice-assistant/ProjectAliceSkillKit).
 
