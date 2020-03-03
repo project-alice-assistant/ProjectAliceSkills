@@ -11,7 +11,7 @@ skillValidation:
   image: python:slim-buster
   before_script:
   - python3 -m pip install --upgrade pip
-  - pip3 install projectalice-sk==1.0.2
+  - pip3 install projectalice-sk==1.0.3
   script:
   - projectalice-sk validate --paths PublishedSkills/*/
   allow_failure: true
