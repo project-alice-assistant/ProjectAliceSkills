@@ -94,3 +94,6 @@
 [submodule "PublishedSkills/TextInputWidget"]
 	path = PublishedSkills/TextInputWidget
 	url = https://github.com/project-alice-assistant/skill_TextInputWidget.git
+[submodule "PublishedSkills/SpeechVisualizer"]
+	path = PublishedSkills/SpeechVisualizer
+	url = https://github.com/project-alice-assistant/skill_SpeechVisualizer.git
