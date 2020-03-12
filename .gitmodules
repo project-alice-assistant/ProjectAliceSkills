@@ -100,3 +100,6 @@
 [submodule "PublishedSkills/Userfacts"]
 	path = PublishedSkills/Userfacts
 	url = https://github.com/project-alice-assistant/skill_Userfacts.git
+[submodule "PublishedSkills/Sonos"]
+	path = PublishedSkills/Sonos
+	url = https://github.com/project-alice-assistant/skill_Sonos.git
