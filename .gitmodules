@@ -103,3 +103,6 @@
 [submodule "PublishedSkills/Sonos"]
 	path = PublishedSkills/Sonos
 	url = https://github.com/project-alice-assistant/skill_Sonos.git
+[submodule "PublishedSkills/CoronaVirus"]
+	path = PublishedSkills/CoronaVirus
+	url = https://github.com/project-alice-assistant/skill_CoronaVirus.git
