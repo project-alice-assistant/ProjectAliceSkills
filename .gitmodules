@@ -106,3 +106,6 @@
 [submodule "PublishedSkills/CoronaVirus"]
 	path = PublishedSkills/CoronaVirus
 	url = https://github.com/project-alice-assistant/skill_CoronaVirus.git
+[submodule "PublishedSkills/OvenTemperatureConversion"]
+	path = PublishedSkills/OvenTemperatureConversion
+	url = https://github.com/project-alice-assistant/skill_OvenTemperatureConversion.git
