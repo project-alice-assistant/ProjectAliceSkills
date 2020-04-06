@@ -109,3 +109,6 @@
 [submodule "PublishedSkills/OvenTemperatureConversion"]
 	path = PublishedSkills/OvenTemperatureConversion
 	url = https://github.com/project-alice-assistant/skill_OvenTemperatureConversion.git
+[submodule "PublishedSkills/Velux"]
+	path = PublishedSkills/Velux
+	url = https://github.com/project-alice-assistant/skill_Velux.git
