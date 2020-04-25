@@ -112,3 +112,6 @@
 [submodule "PublishedSkills/Velux"]
 	path = PublishedSkills/Velux
 	url = https://github.com/project-alice-assistant/skill_Velux.git
+[submodule "PublishedSkills/Reminder"]
+	path = PublishedSkills/Reminder
+	url = https://github.com/project-alice-assistant/skill_Reminder.git
