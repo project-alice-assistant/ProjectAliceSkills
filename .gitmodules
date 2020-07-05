@@ -115,3 +115,6 @@
 [submodule "PublishedSkills/Reminder"]
 	path = PublishedSkills/Reminder
 	url = https://github.com/project-alice-assistant/skill_Reminder.git
+[submodule "PublishedSkills/AqaraDoorAndWindowSensor"]
+	path = PublishedSkills/AqaraDoorAndWindowSensor
+	url = https://github.com/project-alice-assistant/skill_AqaraDoorAndWindowSensor.git
