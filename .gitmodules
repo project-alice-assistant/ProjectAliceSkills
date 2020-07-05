@@ -118,3 +118,6 @@
 [submodule "PublishedSkills/AqaraDoorAndWindowSensor"]
 	path = PublishedSkills/AqaraDoorAndWindowSensor
 	url = https://github.com/project-alice-assistant/skill_AqaraDoorAndWindowSensor.git
+[submodule "PublishedSkills/RandomIpDevice"]
+	path = PublishedSkills/RandomIpDevice
+	url = https://github.com/project-alice-assistant/skill_RandomIpDevice.git
