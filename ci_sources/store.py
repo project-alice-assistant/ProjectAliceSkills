@@ -91,6 +91,7 @@ for releaseType, releaseName in releaseTypes.items():
 				print(data['conditions'])
 			data['downloads'] = downloads
 			data['versionMapping'] = versions
+			print(versions)
 			if 'pipRequirements' in data:
 				del data['pipRequirements']
 			if 'systemRequirements' in data:
