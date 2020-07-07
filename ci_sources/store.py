@@ -61,7 +61,7 @@ releaseTypes = {
 for releaseType, releaseName in releaseTypes.items():
 	for installer in skillPath.glob('*/*.install'):
 		skillName = installer.stem
-		print(f'{releaseName}-{skillName}')
+		print(f'{releaseName}-{skillName}:{installer["conditions"]}')
 		try:
 			downloads = clickCounts[skillName]
 		except KeyError:
