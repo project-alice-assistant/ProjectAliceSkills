@@ -87,6 +87,8 @@ for releaseType, releaseName in releaseTypes.items():
 
 		with installer.open() as json_file:
 			data = json.load(json_file)
+			if 'conditions' in data:
+				print(data['conditions'])
 			data['downloads'] = downloads
 			data['versionMapping'] = versions
 			if 'pipRequirements' in data:
