@@ -121,3 +121,6 @@
 [submodule "PublishedSkills/RandomIpDevice"]
 	path = PublishedSkills/RandomIpDevice
 	url = https://github.com/project-alice-assistant/skill_RandomIpDevice.git
+[submodule "PublishedSkills/Broadcast"]
+	path = PublishedSkills/Broadcast
+	url = https://github.com/project-alice-assistant/skill_Broadcast.git
