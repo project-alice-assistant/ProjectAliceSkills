@@ -124,3 +124,6 @@
 [submodule "PublishedSkills/Broadcast"]
 	path = PublishedSkills/Broadcast
 	url = https://github.com/project-alice-assistant/skill_Broadcast.git
+[submodule "PublishedSkills/Respeaker2"]
+	path = PublishedSkills/Respeaker2
+	url = https://github.com/project-alice-assistant/skill_Respeaker2.git
