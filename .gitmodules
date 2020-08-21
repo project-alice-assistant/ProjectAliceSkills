@@ -130,3 +130,6 @@
 [submodule "PublishedSkills/HomeAssistant"]
 	path = PublishedSkills/HomeAssistant
 	url = https://github.com/project-alice-assistant/skill_HomeAssistant.git
+[submodule "PublishedSkills/Respeaker6"]
+	path = PublishedSkills/Respeaker6
+	url = https://github.com/project-alice-assistant/skill_Respeaker6.git
