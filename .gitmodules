@@ -136,3 +136,6 @@
 [submodule "PublishedSkills/BackupAlice"]
 	path = PublishedSkills/BackupAlice
 	url = https://github.com/project-alice-assistant/skill_BackUpAlice.git
+[submodule "PublishedSkills/Vacuum"]
+	path = PublishedSkills/Vacuum
+	url = https://github.com/project-alice-assistant/skill_Vacuum.git
