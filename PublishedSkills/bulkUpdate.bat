@@ -1,6 +1,7 @@
 @echo off
 echo Be aware that this script will checkout the master of every skills, stash your changes and pull
 echo latest changes before trying to reapply your changes which might fail but no rollback is available!
+echo.
 pause
 set back=%cd%
 for /d %%i in (%cd%\*) do (
