@@ -139,3 +139,6 @@
 [submodule "PublishedSkills/Vacuum"]
 	path = PublishedSkills/Vacuum
 	url = https://github.com/project-alice-assistant/skill_Vacuum.git
+[submodule "PublishedSkills/Telegram"]
+	path = PublishedSkills/Telegram
+	url = https://github.com/project-alice-assistant/skill_Telegram.git
