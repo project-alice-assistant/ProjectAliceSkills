@@ -11,6 +11,9 @@ You can share your own creation as well!
 
 To do so, fork this repository and start adding your skills in a sub directory of **PublishedSkills** wearing **your Github username** as directory name. Once your skills tested and working, create a pull request for us to review your skill, check it and approve it. Once your skill is published it becomes available for everybody to install through the install ticket.
 
+## Browse skills
+TO browse and install new skills, use Alice's interface, or our skill store at [https://store.projectalice.io](https://store.projectalice.io)
+
 ## Skill Creation
 You can create new skills directly from the Alice interface. To access the skill dev part, make sure to turn on the "devMode" setting!
 
