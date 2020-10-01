@@ -1,9 +1,8 @@
-from pathlib import Path
-import requests
 import click
-import json
 import os
+import requests
 import sys
+from pathlib import Path
 
 skillLinks = []
 results = requests.get(
@@ -37,7 +36,7 @@ for installer in skillPath.glob('*/*.install'):
 		click.secho(f'Install link for {skillName} does not exist yet', fg='red', bold=True)
 
 if not err:
-    click.secho(f'All install links exist', fg='green', bold=True)
+	click.secho(f'All install links exist', fg='green', bold=True)
 
 sys.exit(err)
 

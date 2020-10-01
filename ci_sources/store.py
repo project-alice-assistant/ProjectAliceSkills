@@ -1,20 +1,21 @@
 from __future__ import annotations
 
-from pathlib import Path
-import jinja2
-import requests
-import json
-import os
 from dataclasses import dataclass
 
-from git import Repo
-from git.exc import InvalidGitRepositoryError, NoSuchPathError
+import jinja2
+import json
+import os
+import requests
 from Version import Version
+from git import Repo
+from pathlib import Path
+
 
 @dataclass
 class TagVersion:
 	skillVersion: Version
 	aliceMinVersion: Version
+
 
 	@classmethod
 	def fromString(cls, versionString: str) -> Version:
