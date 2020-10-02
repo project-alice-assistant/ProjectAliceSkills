@@ -29,20 +29,15 @@ def update(target: str, alicemin: str, backup: bool):
 		click.echo("Only 'hotfix', 'feature' or 'major' supported for target")
 		return
 
-	if backup:
-		if backupDir.exists():
-			shutil.rmtree(backupDir)
-		backupDir.mkdir()
+	checkBackup(backup)
 
 	aliceMinVersion = Version.fromString(alicemin) if alicemin else None
 	if aliceMinVersion and str(aliceMinVersion) == '0.0.0-0':
 		click.echo('Invalid min alice version, aborting')
 		return
 
-	for installFile in skillRoot.glob('**/*.install'):
-
-		if backup:
-			shutil.copy(installFile, backupDir)
+	for installFile in installFiles():
+		doBackup(backup, installFile)
 
 		data = json.loads(installFile.read_text())
 		version = Version.fromString(data['version'])
@@ -81,14 +76,10 @@ def revert():
 @click.argument('target', required=True)
 @click.option('-b', '--backup', default=False, help="Make a backup of the install files first")
 def droparg(target: str, backup: bool):
-	if backup:
-		if backupDir.exists():
-			shutil.rmtree(backupDir)
-		backupDir.mkdir()
+	checkBackup(backup)
 
-	for installFile in skillRoot.glob('**/*.install'):
-		if backup:
-			shutil.copy(installFile, backupDir)
+	for installFile in installFiles():
+		doBackup(backup, installFile)
 
 		data = json.loads(installFile.read_text())
 		if target in data:
@@ -102,20 +93,33 @@ def droparg(target: str, backup: bool):
 @click.argument('value', required=True)
 @click.option('-b', '--backup', default=False, help="Make a backup of the install files first")
 def addarg(target: str, value: str, backup: bool):
-	if backup:
-		if backupDir.exists():
-			shutil.rmtree(backupDir)
-		backupDir.mkdir()
+	checkBackup(backup)
 
-	for installFile in skillRoot.glob('**/*.install'):
-		if backup:
-			shutil.copy(installFile, backupDir)
+	for installFile in installFiles():
+		doBackup(backup, installFile)
 
 		data = json.loads(installFile.read_text())
 		if target not in data:
 			data[target] = value
 			installFile.write_text(json.dumps(data, indent=4, ensure_ascii=False))
 			click.echo(f'Added "{target} = {value}" to "{installFile.stem}"')
+
+
+def checkBackup(backup: bool):
+	if backup:
+		if backupDir.exists():
+			shutil.rmtree(backupDir)
+		backupDir.mkdir()
+
+
+def doBackup(backup, file: Path):
+	if backup:
+		shutil.copy(file, backupDir)
+
+
+def installFiles():
+	for installFile in skillRoot.glob('**/*.install'):
+		yield installFile
 
 
 if __name__ == '__main__':
