@@ -3,12 +3,12 @@ from __future__ import annotations
 import json
 import os
 from dataclasses import dataclass
+from pathlib import Path
+
 import jinja2
 import requests
 from Version import Version
 from git import Repo
-
-from pathlib import Path
 
 
 @dataclass
@@ -61,7 +61,7 @@ releaseTypes = {
 for releaseType, releaseName in releaseTypes.items():
 	for installer in skillPath.glob('*/*.install'):
 		skillName = installer.stem
-		print(f'{releaseName}-{skillName}')
+		print(f'{skillName} in {releaseName}')
 		try:
 			downloads = clickCounts[skillName]
 		except KeyError:
@@ -83,11 +83,12 @@ for releaseType, releaseName in releaseTypes.items():
 			tags = [tag for tag in tags if tag.aliceMinVersion < maxVersion.aliceMinVersion]
 			versions[str(maxVersion.aliceMinVersion)] = str(maxVersion.skillVersion)
 
+		print(f'- Version mapping: {versions}')
+
 		with installer.open() as json_file:
 			data = json.load(json_file)
 			data['downloads'] = downloads
 			data['versionMapping'] = versions
-			print(f'Mapping: {versions}')
 
 			skillStore[data['name']] = data
 
