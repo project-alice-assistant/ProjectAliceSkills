@@ -3,18 +3,19 @@ from __future__ import annotations
 import json
 import os
 from dataclasses import dataclass
-from pathlib import Path
-
 import jinja2
 import requests
 from Version import Version
 from git import Repo
+
+from pathlib import Path
 
 
 @dataclass
 class TagVersion:
 	skillVersion: Version
 	aliceMinVersion: Version
+
 
 	@classmethod
 	def fromString(cls, versionString: str) -> Version:
@@ -29,7 +30,7 @@ results = requests.get(
 	'https://api.rebrandly.com/v1/links',
 	headers={
 		'Content-Type': 'application/json',
-		'apikey': os.environ['RebrandlyApiKey']
+		'apikey'      : os.environ['RebrandlyApiKey']
 	}
 ).json()
 clicks = {skill['slashtag']: skill['clicks'] for skill in results}
@@ -40,11 +41,10 @@ while clicks:
 		f"https://api.rebrandly.com/v1/links?last={results[-1]['id']}",
 		headers={
 			'Content-Type': 'application/json',
-			'apikey': os.environ['RebrandlyApiKey']
+			'apikey'      : os.environ['RebrandlyApiKey']
 		}
 	).json()
 	clicks = {skill['slashtag']: skill['clicks'] for skill in results}
-
 
 skillStore = dict()
 skillPath = Path('PublishedSkills')
@@ -52,9 +52,9 @@ storePath = Path(__file__).parent.parent.resolve() / 'store'
 storePath.mkdir(parents=True, exist_ok=True)
 
 releaseTypes = {
-	'a': 'alpha',
-	'b': 'beta',
-	'rc': 'rc',
+	'a'      : 'alpha',
+	'b'      : 'beta',
+	'rc'     : 'rc',
 	'release': 'master'
 }
 
@@ -73,7 +73,6 @@ for releaseType, releaseName in releaseTypes.items():
 		badgeFile = Path(storePath / f'{skillName}.svg')
 		badgeFile.write_text(template.render({'downloads': downloads}))
 
-
 		skillRepo = Repo(installer.parent)
 		skillRepo.remote().fetch("--tags")
 		tags = [TagVersion.fromString(tag) for tag in skillRepo.tags if '_' in str(tag)]
@@ -83,7 +82,6 @@ for releaseType, releaseName in releaseTypes.items():
 			maxVersion = max(tags, key=lambda p: p.skillVersion)
 			tags = [tag for tag in tags if tag.aliceMinVersion < maxVersion.aliceMinVersion]
 			versions[str(maxVersion.aliceMinVersion)] = str(maxVersion.skillVersion)
-
 
 		with installer.open() as json_file:
 			data = json.load(json_file)

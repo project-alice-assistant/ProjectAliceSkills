@@ -109,3 +109,4 @@ venv.bak/
 .vscode/
 
 config.json
+/Tools/SkillsUpdater/backup

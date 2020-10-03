@@ -10,7 +10,7 @@ results = requests.get(
 	'https://api.rebrandly.com/v1/links',
 	headers={
 		'Content-Type': 'application/json',
-		'apikey': os.environ['RebrandlyApiKey']
+		'apikey'      : os.environ['RebrandlyApiKey']
 	}
 ).json()
 clicks = [skill['slashtag'].lower() for skill in results]
@@ -21,7 +21,7 @@ while clicks:
 		f"https://api.rebrandly.com/v1/links?last={results[-1]['id']}",
 		headers={
 			'Content-Type': 'application/json',
-			'apikey': os.environ['RebrandlyApiKey']
+			'apikey'      : os.environ['RebrandlyApiKey']
 		}
 	).json()
 	clicks = [skill['slashtag'].lower() for skill in results]
@@ -40,5 +40,3 @@ if not err:
 	click.secho(f'All install links exist', fg='green', bold=True)
 
 sys.exit(err)
-
-
