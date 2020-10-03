@@ -1,15 +1,15 @@
 from __future__ import annotations
 
-from pathlib import Path
-import jinja2
-import requests
 import json
 import os
 from dataclasses import dataclass
+from pathlib import Path
 
-from git import Repo
-from git.exc import InvalidGitRepositoryError, NoSuchPathError
+import jinja2
+import requests
 from Version import Version
+from git import Repo
+
 
 @dataclass
 class TagVersion:
@@ -87,16 +87,9 @@ for releaseType, releaseName in releaseTypes.items():
 
 		with installer.open() as json_file:
 			data = json.load(json_file)
-			if 'conditions' in data:
-				print(data['conditions'])
 			data['downloads'] = downloads
 			data['versionMapping'] = versions
-			if 'pipRequirements' in data:
-				del data['pipRequirements']
-			if 'systemRequirements' in data:
-				del data['systemRequirements']
-			del data['aliceMinVersion']
-			del data['version']
+			print(f'Mapping: {versions}')
 
 			skillStore[data['name']] = data
 
