@@ -47,7 +47,7 @@ skillLinkValidation:
   stage: test
   except:
   - triggers
-  image: python:3.7
+  image: python:slim-buster
   before_script:
   - python3 -m pip install --upgrade pip
   - pip3 install requests click
@@ -58,9 +58,7 @@ skillLinkValidation:
 
 store:deploy:
   stage: deploy
-  only:
-  - pushes
-  image: python:3.7
+  image: python:slim-buster
   before_script:
   - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
   - eval $(ssh-agent -s)
@@ -72,4 +70,3 @@ store:deploy:
   - python3 ci_sources/store.py
   - ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $USERNAME@$DOMAIN "mkdir -p www/$DOMAIN/assets/store"
   - scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -rp store/* "$USERNAME@$DOMAIN:www/$DOMAIN/assets/store"
-  allow_failure: true
