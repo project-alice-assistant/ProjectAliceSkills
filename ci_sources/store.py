@@ -94,7 +94,7 @@ for releaseType, releaseName in releaseTypes.items():
 
 	print('Generating samples file')
 	samples = dict()
-	for sample in skillPath.rglob('*.samples'):
+	for sample in skillPath.rglob('*.sample'):
 		skillName = sample.parent.parent
 
 		print(f'Found sample {sample.stem}.sample for skill {skillName}')
