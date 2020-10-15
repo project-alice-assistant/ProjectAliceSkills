@@ -1,14 +1,14 @@
 from __future__ import annotations
 
-import json
-import os
 from dataclasses import dataclass
-from pathlib import Path
 
 import jinja2
+import json
+import os
 import requests
 from Version import Version
 from git import Repo
+from pathlib import Path
 
 
 @dataclass
@@ -92,5 +92,16 @@ for releaseType, releaseName in releaseTypes.items():
 
 			skillStore[data['name']] = data
 
+	samples = dict()
+	for sample in skillPath.glob('*/dialogTemplate/*.samples'):
+		skillName = sample.parent.parent
+		language = sample.stem
+
+		data = json.loads(sample.read_text())
+		samples[skillName] = data
+
 	storeFile = (storePath / f'{releaseName}.json')
 	storeFile.write_text(json.dumps(skillStore))
+
+	sampleStoreFile = (storePath / f'{releaseName}.samples')
+	sampleStoreFile.write_text(json.dumps(samples))
