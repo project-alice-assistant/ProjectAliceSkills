@@ -92,6 +92,7 @@ for releaseType, releaseName in releaseTypes.items():
 
 			skillStore[data['name']] = data
 
+	print('Generating samples file')
 	samples = dict()
 	for sample in skillPath.glob('*/dialogTemplate/*.samples'):
 		skillName = sample.parent.parent
