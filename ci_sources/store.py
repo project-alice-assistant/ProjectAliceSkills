@@ -95,9 +95,9 @@ for releaseType, releaseName in releaseTypes.items():
 	print('Generating samples file')
 	samples = dict()
 	for sample in skillPath.rglob('*.sample'):
-		skillName = sample.parent.parent
+		skillName = sample.parent.parent.stem
 
-		print(f'Found {sample.stem}.sample for skill {skillName.stem}')
+		print(f'Found {sample.stem}.sample for skill {skillName}')
 
 		language = sample.stem
 
