@@ -94,8 +94,11 @@ for releaseType, releaseName in releaseTypes.items():
 
 	print('Generating samples file')
 	samples = dict()
-	for sample in skillPath.glob('*/dialogTemplate/*.samples'):
+	for sample in skillPath.rglob('*.samples'):
 		skillName = sample.parent.parent
+
+		print(f'Found sample {sample.stem}.sample for skill {skillName}')
+
 		language = sample.stem
 
 		data = json.loads(sample.read_text())
