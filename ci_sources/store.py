@@ -97,15 +97,16 @@ for releaseType, releaseName in releaseTypes.items():
 	for sample in skillPath.rglob('*.sample'):
 		skillName = sample.parent.parent
 
-		print(f'Found sample {sample.stem}.sample for skill {skillName}')
+		print(f'Found {sample.stem}.sample for skill {skillName.stem}')
 
 		language = sample.stem
 
 		data = json.loads(sample.read_text())
+		print(data)
 		samples[skillName] = data
 
 	storeFile = (storePath / f'{releaseName}.json')
-	storeFile.write_text(json.dumps(skillStore))
+	storeFile.write_text(json.dumps(skillStore, ensure_ascii=False, indent=4))
 
 	sampleStoreFile = (storePath / f'{releaseName}.samples')
-	sampleStoreFile.write_text(json.dumps(samples))
+	sampleStoreFile.write_text(json.dumps(samples, ensure_ascii=False, indent=4))
