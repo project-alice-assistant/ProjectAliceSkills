@@ -6,6 +6,7 @@ deployToStore:
   only:
     - triggers
     - web
+    - api
   image: python:3.7
   before_script:
     - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
