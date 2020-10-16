@@ -102,7 +102,7 @@ for releaseType, releaseName in releaseTypes.items():
 		language = sample.stem
 
 		intentsSamples = json.loads(sample.read_text())
-		samples[str(skillName)] = intentsSamples
+		samples[str(skillName)][language] = intentsSamples
 
 	storeFile = (storePath / f'{releaseName}.json')
 	storeFile.write_text(json.dumps(skillStore, ensure_ascii=False, indent=4))
