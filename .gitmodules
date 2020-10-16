@@ -142,9 +142,6 @@
 [submodule "PublishedSkills/Telegram"]
 	path = PublishedSkills/Telegram
 	url = https://github.com/project-alice-assistant/skill_Telegram.git
-[submodule "PublishedSkills/Testversionleakage"]
-	path = PublishedSkills/Testversionleakage
-	url = https://github.com/project-alice-assistant/skill_Testversionleakage.git
 [submodule "PublishedSkills/SkillTranslator"]
 	path = PublishedSkills/SkillTranslator
 	url = https://github.com/project-alice-assistant/skill_SkillTranslator
