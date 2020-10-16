@@ -106,7 +106,7 @@ for releaseType, releaseName in releaseTypes.items():
 		samples[str(skillName)][language] = intentsSamples
 
 	storeFile = (storePath / f'{releaseName}.json')
-	storeFile.write_text(json.dumps(skillStore, ensure_ascii=False, indent=4))
+	storeFile.write_text(json.dumps(skillStore, ensure_ascii=False, indent=4, sort_keys=True))
 
 	sampleStoreFile = (storePath / f'{releaseName}.samples')
-	sampleStoreFile.write_text(json.dumps(samples, ensure_ascii=False, indent=4))
+	sampleStoreFile.write_text(json.dumps(samples, ensure_ascii=False, indent=4, sort_keys=True))
