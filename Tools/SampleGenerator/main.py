@@ -1,6 +1,5 @@
-import json
-
 import click
+import json
 from pathlib import Path
 
 skillRoot = Path('../../PublishedSkills/')
@@ -19,15 +18,14 @@ def generate():
 	for dialogTemplate in skillRoot.rglob('dialogTemplate/*.json'):
 		if Path(dialogTemplate.parent, f'{dialogTemplate.stem}.sample').exists():
 			continue
+		# sample = dict()
+		# data = json.loads(dialogTemplate.read_text(encoding='utf-8'))
+		# for intent in data['intents']:
+		# 	if not intent['enabledByDefault']:
+		# 		continue
+		# 	sample[intent['name']] = list()
 
-		sample = dict()
-		data = json.loads(dialogTemplate.read_text(encoding='utf-8'))
-		for intent in data['intents']:
-			if not intent['enabledByDefault']:
-				continue
-			sample[intent['name']] = list()
-
-		Path(dialogTemplate.parent, f'{dialogTemplate.stem}.sample').write_text(json.dumps(sample, ensure_ascii=False, indent=4))
+		Path(dialogTemplate.parent, f'{dialogTemplate.stem}.sample').write_text(json.dumps(list(), indent='\t'))
 		print(f'Generated samples file for skill {dialogTemplate.parent.parent.stem} in "{dialogTemplate.stem}"')
 
 
