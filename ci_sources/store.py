@@ -87,9 +87,12 @@ for sample in skillPath.rglob('*.sample'):
 
 	language = sample.stem
 
-	intentsSamples = json.loads(sample.read_text())
-	samples.setdefault(str(skillName), dict())
-	samples[str(skillName)][language] = intentsSamples
+	try:
+		intentsSamples = json.loads(sample.read_text())
+		samples.setdefault(str(skillName), dict())
+		samples[str(skillName)][language] = intentsSamples
+	except:
+		print('Invalid sample file, skip')
 
 storeFile = (storePath / f'skills.json')
 storeFile.write_text(json.dumps(skillStore, ensure_ascii=False, indent='\t', sort_keys=True))
