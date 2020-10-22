@@ -145,3 +145,6 @@
 [submodule "PublishedSkills/SkillTranslator"]
 	path = PublishedSkills/SkillTranslator
 	url = https://github.com/project-alice-assistant/skill_SkillTranslator
+[submodule "PublishedSkills/AliceVolume"]
+	path = PublishedSkills/AliceVolume
+	url = https://github.com/project-alice-assistant/skill_AliceVolume.git
