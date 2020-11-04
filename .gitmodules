@@ -76,9 +76,6 @@
 [submodule "PublishedSkills/skill_Speller"]
 	path = PublishedSkills/Speller
 	url = https://github.com/project-alice-assistant/skill_Speller
-[submodule "PublishedSkills/skill_YoutubeJukebox"]
-	path = PublishedSkills/YoutubeJukebox
-	url = https://github.com/project-alice-assistant/skill_YoutubeJukebox
 [submodule "PublishedSkills/skill_Zigbee2Mqtt"]
 	path = PublishedSkills/Zigbee2Mqtt
 	url = https://github.com/project-alice-assistant/skill_Zigbee2Mqtt
