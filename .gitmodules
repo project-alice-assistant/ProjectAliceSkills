@@ -148,3 +148,6 @@
 [submodule "PublishedSkills/HLCpattern"]
 	path = PublishedSkills/HLCpattern
 	url = https://github.com/project-alice-assistant/skill_HLCpattern.git
+[submodule "PublishedSkills/UnitConverter"]
+	path = PublishedSkills/UnitConverter
+	url = https://github.com/project-alice-assistant/skill_UnitConverter
