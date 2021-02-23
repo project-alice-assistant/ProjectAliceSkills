@@ -12,8 +12,9 @@ deployToStore:
     - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
     - eval $(ssh-agent -s)
     - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
-    - ssh-keyscan $DEPLOY_DOMAIN >> ~/.ssh/known_hosts
+    - mkdir -p ~/.ssh && touch ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
+    - ssh-keyscan $DEPLOY_DOMAIN >> ~/.ssh/known_hosts
     - apt-get update -qq && apt-get install git -qq
     - python3 -m pip install --upgrade pip
     - pip3 install requests jinja2 gitpython
