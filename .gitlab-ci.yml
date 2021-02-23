@@ -11,12 +11,14 @@ deployToStore:
   before_script:
     - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
     - eval $(ssh-agent -s)
-    - ssh-add <(echo "$SERVER_SSH_PRIV_KEY")
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - ssh-keyscan $DEPLOY_DOMAIN >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
     - apt-get update -qq && apt-get install git -qq
     - python3 -m pip install --upgrade pip
     - pip3 install requests jinja2 gitpython
   script:
     - python3 ci_sources/store.py
-    - ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $USERNAME@$DOMAIN "mkdir -p www/$DOMAIN/assets/store"
-    - scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -rp store/* "$USERNAME@$DOMAIN:www/$DOMAIN/assets/store"
+    - ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $DEPLOY_USERNAME@$DEPLOY_DOMAIN "mkdir -p www/$DEPLOY_DOMAIN/assets/store"
+    - scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -rp store/* "$DEPLOY_USERNAME@$DEPLOY_DOMAIN:www/$DEPLOY_DOMAIN/assets/store"
   allow_failure: true
