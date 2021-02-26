@@ -17,11 +17,9 @@ class TagVersion:
 
 
 	@classmethod
-	def fromString(cls, versionString: str) -> Version:
+	def fromString(cls, versionString: str) -> TagVersion:
 		skillVersion, aliceMinVersion = str(versionString).split('_')
-		return cls(
-			Version.fromString(skillVersion),
-			Version.fromString(aliceMinVersion))
+		return cls(Version.fromString(skillVersion), Version.fromString(aliceMinVersion))
 
 
 clickCounts = dict()
@@ -82,11 +80,8 @@ print('Generating samples file')
 samples = dict()
 for sample in skillPath.rglob('*.sample'):
 	skillName = sample.parent.parent.stem
-
 	print(f'Found {sample.stem}.sample for skill {skillName}')
-
 	language = sample.stem
-
 	try:
 		intentsSamples = json.loads(sample.read_text())
 		samples.setdefault(str(skillName), dict())
