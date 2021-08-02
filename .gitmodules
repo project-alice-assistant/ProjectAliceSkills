@@ -151,3 +151,6 @@
 [submodule "PublishedSkills/UnitConverter"]
 	path = PublishedSkills/UnitConverter
 	url = https://github.com/project-alice-assistant/skill_UnitConverter
+[submodule "PublishedSkills/Nuki"]
+	path = PublishedSkills/Nuki
+	url = https://github.com/project-alice-assistant/skill_Nuki
