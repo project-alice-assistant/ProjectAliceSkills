@@ -154,3 +154,6 @@
 [submodule "PublishedSkills/Nuki"]
 	path = PublishedSkills/Nuki
 	url = https://github.com/project-alice-assistant/skill_Nuki
+[submodule "PublishedSkills/Hlclone"]
+	path = PublishedSkills/Hlclone
+	url = https://github.com/project-alice-assistant/skill_Hlclone
